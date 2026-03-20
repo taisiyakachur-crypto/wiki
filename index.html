@@ -448,13 +448,13 @@ html, body {
 .doc-compare-title { font-size:.92rem; font-weight:700; color:var(--ink); margin-bottom:.8rem; }
 
 /* US Template */
-.doc-us-template { display:flex; flex-wrap:wrap; align-items:center; gap:.7rem; margin:1.2rem 0; }
-.doc-us-part { padding:.55rem 1.2rem; border-radius:50px; font-size:.88rem; font-weight:600; }
+.doc-us-template { margin:1.2rem 0; display:flex; flex-direction:column; gap:.7rem; }
+.doc-us-row { display:flex; align-items:center; gap:.7rem; flex-wrap:nowrap; }
+.doc-us-part { padding:.55rem 1.3rem; border-radius:50px; font-size:.88rem; font-weight:600; white-space:nowrap; }
 .doc-us-role { background:#1d4ed8; color:#fff; }
 .doc-us-want { background:#1d4ed8; color:#fff; }
-.doc-us-goal { background:#1d4ed8; color:#fff; opacity:.75; }
-.doc-us-arrow { color:var(--ink-mute); font-size:1.1rem; }
-.doc-us-arrow--break { flex-basis:100%; }
+.doc-us-goal { background:#1d4ed8; color:#fff; }
+.doc-us-arrow { color:var(--ink-mute); font-size:1.1rem; flex-shrink:0; }
 
 /* Checklist grid */
 .doc-checklist-grid { display:grid; gap:.5rem; }
@@ -1069,11 +1069,15 @@ html, body {
       <div class="doc-section">
         <h2 class="doc-h2">Ідеальний шаблон User Story</h2>
         <div class="doc-us-template">
-          <div class="doc-us-part doc-us-role">Як, &lt;роль користувача&gt;</div>
-          <div class="doc-us-arrow">→</div>
-          <div class="doc-us-part doc-us-want">я &lt;хочу щось отримати&gt;</div>
-          <div class="doc-us-arrow doc-us-arrow--break">→</div>
-          <div class="doc-us-part doc-us-goal">&lt;з такою метою&gt;</div>
+          <div class="doc-us-row">
+            <div class="doc-us-part doc-us-role">Як, &lt;роль користувача&gt;</div>
+            <div class="doc-us-arrow">→</div>
+            <div class="doc-us-part doc-us-want">я &lt;хочу щось отримати&gt;</div>
+          </div>
+          <div class="doc-us-row">
+            <div class="doc-us-arrow">→</div>
+            <div class="doc-us-part doc-us-goal">&lt;з такою метою&gt;</div>
+          </div>
         </div>
         <div class="doc-callout" style="margin-top:1.2rem;">
           <strong>Саме це і є бізнес-цінність для користувача продукту.</strong> Але перевага юзер-сторі в тому, що вона формулює не лише цінність, а й вимоги для розробки та тестування.
