@@ -388,6 +388,108 @@ html, body {
 .link-card:hover .link-arrow { color: var(--gold); }
 .links-divider { border: none; border-top: 1px solid var(--cream-border); margin: 1.5rem 0; }
 
+
+/* ── DOC PAGE STYLES ── */
+.doc-section { margin-bottom: 2.5rem; }
+.doc-h2 { font-family:'Spectral',serif; font-size:1.35rem; font-weight:400; color:var(--ink); margin-bottom:1.1rem; padding-bottom:.6rem; border-bottom:1px solid var(--cream-border); }
+.doc-p { color:var(--ink-soft); margin-bottom:.8rem; line-height:1.7; font-size:.93rem; }
+.doc-callout { background:var(--gold-pale); border-left:3px solid var(--gold); border-radius:0 var(--radius) var(--radius) 0; padding:1rem 1.2rem; color:var(--ink-soft); font-size:.9rem; line-height:1.7; margin-bottom:1rem; }
+.doc-list { padding-left:1.2rem; color:var(--ink-soft); font-size:.88rem; line-height:1.8; }
+.doc-list li { margin-bottom:.2rem; }
+
+/* Cards 2-col */
+.doc-cards-2 { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+@media(max-width:640px){ .doc-cards-2{grid-template-columns:1fr;} }
+.doc-cards-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; }
+@media(max-width:768px){ .doc-cards-3{grid-template-columns:1fr;} }
+.doc-card { background:#fff; border:1px solid var(--cream-border); border-radius:var(--radius); padding:1.2rem 1.3rem; }
+.doc-card--blue { border-top:3px solid var(--accent-blue); }
+.doc-card--teal { border-top:3px solid var(--accent-teal); }
+.doc-card--gold { border-top:3px solid var(--gold); }
+.doc-card--red  { border-top:3px solid var(--accent-red); }
+.doc-card-title { font-size:.88rem; font-weight:700; color:var(--ink); margin-bottom:.7rem; }
+.doc-skill-block { background:#fff; border:1px solid var(--cream-border); border-radius:var(--radius); padding:1.2rem 1.3rem; }
+.doc-skill-title { font-size:.82rem; font-weight:700; color:var(--ink); margin-bottom:.7rem; letter-spacing:.04em; }
+
+/* Tabs/groups */
+.doc-tabs-wrap { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+@media(max-width:640px){ .doc-tabs-wrap{grid-template-columns:1fr;} }
+.doc-tab-group { background:#fff; border:1px solid var(--cream-border); border-radius:var(--radius); padding:1.1rem 1.2rem; }
+.doc-tab-title { font-size:.82rem; font-weight:700; color:var(--accent-blue); margin-bottom:.6rem; }
+
+/* Techniques */
+.doc-techniques { display:grid; gap:.7rem; }
+.doc-tech-item { display:flex; gap:.9rem; align-items:flex-start; background:#fff; border:1px solid var(--cream-border); border-radius:var(--radius-sm); padding:.9rem 1.1rem; }
+.doc-tech-icon { font-size:1.4rem; flex-shrink:0; width:28px; text-align:center; margin-top:.1rem; }
+.doc-tech-name { font-size:.88rem; font-weight:700; color:var(--ink); margin-bottom:.25rem; }
+.doc-tech-body p { font-size:.83rem; color:var(--ink-soft); margin:0; line-height:1.6; }
+
+/* Tools */
+.doc-tools-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; }
+@media(max-width:768px){ .doc-tools-grid{grid-template-columns:1fr;} }
+.doc-tool-group { background:#fff; border:1px solid var(--cream-border); border-radius:var(--radius); padding:1.1rem 1.2rem; }
+.doc-tool-cat { font-size:.8rem; font-weight:700; color:var(--ink); margin-bottom:.6rem; }
+.doc-tool-items { display:flex; flex-wrap:wrap; gap:.35rem; margin-bottom:.5rem; }
+.doc-tool-badge { background:var(--gold-pale); border:1px solid var(--gold-light); color:var(--ink-soft); font-size:.72rem; padding:.15rem .55rem; border-radius:50px; font-weight:500; }
+.doc-tool-note { font-size:.75rem; color:var(--ink-mute); margin:0; line-height:1.5; }
+
+/* Roles */
+.doc-roles-list { display:grid; gap:.6rem; }
+.doc-role-item { display:flex; gap:.9rem; align-items:flex-start; background:#fff; border:1px solid var(--cream-border); border-radius:var(--radius-sm); padding:.85rem 1.1rem; }
+.doc-role-badge { background:var(--ink); color:var(--cream); font-size:.72rem; font-weight:600; padding:.25rem .7rem; border-radius:50px; white-space:nowrap; flex-shrink:0; margin-top:.1rem; }
+.doc-role-item p { font-size:.83rem; color:var(--ink-soft); margin:0; line-height:1.55; }
+
+/* Compare */
+.doc-compare { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+@media(max-width:560px){ .doc-compare{grid-template-columns:1fr;} }
+.doc-compare-col { border-radius:var(--radius); padding:1.2rem 1.3rem; }
+.doc-compare-col--blue { background:#dbeafe; border:1px solid #93c5fd; }
+.doc-compare-col--gray { background:#f8fafc; border:1px solid var(--cream-border); }
+.doc-compare-title { font-size:.92rem; font-weight:700; color:var(--ink); margin-bottom:.8rem; }
+
+/* US Template */
+.doc-us-template { display:flex; flex-wrap:wrap; align-items:center; gap:.7rem; margin:1.2rem 0; }
+.doc-us-part { padding:.55rem 1.2rem; border-radius:50px; font-size:.88rem; font-weight:600; }
+.doc-us-role { background:#1d4ed8; color:#fff; }
+.doc-us-want { background:#1d4ed8; color:#fff; }
+.doc-us-goal { background:#1d4ed8; color:#fff; opacity:.75; }
+.doc-us-arrow { color:var(--ink-mute); font-size:1.1rem; }
+.doc-us-arrow--break { flex-basis:100%; }
+
+/* Checklist grid */
+.doc-checklist-grid { display:grid; gap:.5rem; }
+.doc-check-item { display:flex; gap:.75rem; align-items:flex-start; padding:.65rem .8rem; background:#fff; border:1px solid var(--cream-border); border-radius:var(--radius-sm); font-size:.87rem; color:var(--ink-soft); }
+.doc-check-icon { color:var(--accent-teal); font-weight:700; font-size:1rem; flex-shrink:0; margin-top:.05rem; }
+
+/* INVEST */
+.doc-invest-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:.8rem; }
+@media(max-width:640px){ .doc-invest-grid{grid-template-columns:1fr 1fr;} }
+.doc-invest-item { display:flex; gap:.7rem; align-items:flex-start; background:#fff; border:1px solid var(--cream-border); border-radius:var(--radius); padding:.9rem 1rem; }
+.doc-invest-letter { width:2rem; height:2rem; background:var(--ink); color:var(--cream); border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:'Spectral',serif; font-size:1.1rem; font-weight:600; flex-shrink:0; }
+.doc-invest-word { font-size:.85rem; font-weight:700; color:var(--ink); margin-bottom:.2rem; }
+.doc-invest-item p { font-size:.78rem; color:var(--ink-mute); margin:0; line-height:1.5; }
+
+/* Discovery */
+.doc-discovery-block { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:.8rem; }
+.doc-disc-group { background:#fff; border:1px solid var(--cream-border); border-radius:var(--radius); padding:1rem 1.1rem; }
+.doc-disc-title { font-size:.78rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--accent-blue); margin-bottom:.6rem; }
+
+/* Skills tags */
+.doc-skills-tags { display:flex; flex-wrap:wrap; gap:.5rem; }
+.doc-skill-tag { background:#fff; border:1px solid var(--cream-border); border-radius:50px; padding:.3rem .85rem; font-size:.82rem; color:var(--ink-soft); }
+
+/* Tech areas */
+.doc-tech-areas { display:grid; gap:.45rem; }
+.doc-area-item { display:flex; align-items:center; gap:.7rem; padding:.6rem .9rem; background:#fff; border:1px solid var(--cream-border); border-radius:var(--radius-sm); font-size:.86rem; color:var(--ink-soft); }
+.doc-area-badge { font-size:.68rem; font-weight:700; padding:.15rem .55rem; border-radius:50px; background:#f1f5f9; color:var(--ink-mute); flex-shrink:0; }
+.doc-area-badge--inter { background:#dbeafe; color:var(--accent-blue); }
+
+/* Reqs grid */
+.doc-reqs-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:.8rem; margin-bottom:1rem; }
+@media(max-width:640px){ .doc-reqs-grid{grid-template-columns:1fr;} }
+.doc-req-item { background:#fff; border:1px solid var(--cream-border); border-radius:var(--radius); padding:1rem 1.1rem; display:flex; gap:.7rem; align-items:flex-start; font-size:.86rem; color:var(--ink-soft); }
+.doc-req-icon { font-size:1.3rem; }
+
 </style>
 </head>
 <body>
@@ -408,10 +510,18 @@ html, body {
       <div class="sidebar-section-label">Навігація</div>
 
       <!-- 1. Корисні посилання -->
-      <div class="nav-item" id="nav-links">
-        <div class="nav-link" onclick="navigate('links', 'Корисні посилання', this)">
+      <div class="nav-item open" id="nav-links">
+        <div class="nav-link active" onclick="toggleOrNavigate('nav-links','links','Корисні посилання',this)">
           <svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M4.715 6.542L3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1 1 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4 4 0 0 1-.128-1.287z"/><path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243z"/></svg>
           Корисні посилання
+          <svg class="nav-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M6 4l4 4-4 4"/></svg>
+        </div>
+        <div class="nav-sub">
+          <div class="nav-sub-link" onclick="navigate('links','Корисні посилання',this,'Корисні посилання')">Всі посилання</div>
+          <div class="nav-sub-link" onclick="navigate('ba-daily','Що робить щодня BA',this,'Корисні посилання')">Що робить щодня BA</div>
+          <div class="nav-sub-link" onclick="navigate('user-story','User Story та AC',this,'Корисні посилання')">User Story та AC</div>
+          <div class="nav-sub-link" onclick="navigate('discovery','Чек-лист Discovery Phase',this,'Корисні посилання')">Чек-лист Discovery Phase</div>
+          <div class="nav-sub-link" onclick="navigate('middle-ba','Middle BA — чек-лист',this,'Корисні посилання')">Middle BA — чек-лист</div>
         </div>
       </div>
 
@@ -645,6 +755,654 @@ html, body {
     <div id="page-ba-main"       class="page-view" style="display:none;" data-title="Бізнес аналіз"            data-tag="Бізнес аналіз"        data-icon="🔍"></div>
     <div id="page-bpmn-main"     class="page-view" style="display:none;" data-title="BPMN"                     data-tag="Моделювання"          data-icon="🗺"></div>
     <div id="page-tech-main"     class="page-view" style="display:none;" data-title="Advanced tech skills"     data-tag="Технічні навички"     data-icon="💻"></div>
+
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- PAGE: Що робить щодня бізнес-аналітик          -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div id="page-ba-daily" class="page-view" style="display:none;">
+      <nav class="breadcrumb">
+        <span>База знань</span><span class="breadcrumb-sep">›</span>
+        <span onclick="navigate('links','Корисні посилання')" style="cursor:pointer;color:var(--ink-mute);">Корисні посилання</span>
+        <span class="breadcrumb-sep">›</span><span class="current">Що робить щодня BA</span>
+      </nav>
+      <div class="page-header">
+        <div class="page-tag">Бізнес-аналіз</div>
+        <h1 class="page-title">Що робить щодня<br>бізнес-аналітик?</h1>
+        <p class="page-desc">Повний огляд ролі BA: активності, навички, техніки роботи та інструменти. Джерело: IAMPM.</p>
+      </div>
+
+      <div class="doc-section">
+        <h2 class="doc-h2">Хто такий бізнес-аналітик?</h2>
+        <div class="doc-callout">
+          <strong>Бізнес-аналітик в IT</strong> — це сполучна ланка між замовником та командою розробки. BA виявляє потреби замовника, шукає рішення, а потім оформлює концепцію рішення у вигляді вимог, на які орієнтуватимуться розробники під час створення продукту.
+        </div>
+        <p class="doc-p">Визначення ролі BA з керівництва <strong>BABoK (Business Analysis Body of Knowledge)</strong> — настільної книги будь-якого Business Analyst. BABoK — це всесвітньо визнаний стандарт з бізнес-аналізу від IIBA (International Institute of Business Analysis). Бізнес-аналіз допомагає провести зміни в компанії через визначення бізнес-потреб та рекомендацію рішень, що приносять цінність для зацікавлених сторін.</p>
+        <p class="doc-p"><strong>Бізнес-потреба</strong> — це проблема або можливість, яка повинна бути вирішена:</p>
+        <ul class="doc-list">
+          <li>стратегічна мета</li>
+          <li>проблема у поточному процесі чи системі</li>
+          <li>проміжна мета, для якої потрібна додаткова інформація, дослідження</li>
+          <li>потреба, викликана попитом або конкуренцією</li>
+        </ul>
+      </div>
+
+      <div class="doc-section">
+        <h2 class="doc-h2">Основні напрямки в роботі BA</h2>
+        <div class="doc-cards-2">
+          <div class="doc-card doc-card--blue">
+            <div class="doc-card-title">📋 Управління вимогами</div>
+            <p>Вимоги — це практичне відображення потреб бізнесу та стейкхолдерів. BA виявляє та збирає вимоги замовника, обробляє їх — від абстрактних бажань до конкретних показників та завдань. Спочатку виявляє вимоги, потім документує та конвертує в завдання для розробників.</p>
+          </div>
+          <div class="doc-card doc-card--teal">
+            <div class="doc-card-title">🎨 Проєктування та оцінка рішень</div>
+            <p>На основі виявлених вимог BA готує документацію та створює дизайн рішення (прототипи). Проводить оцінку рішення як у процесі реалізації проєкту, так і після завершення: оцінює прототип, реліз, аналізує реалізацію рішення.</p>
+          </div>
+          <div class="doc-card doc-card--gold">
+            <div class="doc-card-title">📦 Управління продуктом</div>
+            <p>Коли продукт створено, BA продовжує комунікувати з дизайнерами, інженерами та бізнесом. На основі зібраних даних робить висновки та прогнози, знаходить закономірності поведінки користувачів та слабкі місця продукту.</p>
+          </div>
+          <div class="doc-card doc-card--red">
+            <div class="doc-card-title">🗺 Стратегічний аналіз</div>
+            <p>BA вникає у стратегію розвитку компанії нарівні з ТОП-менеджерами. Включає: вивчення потенційних клієнтів (фокус-групи), дослідження можливостей та обмежень підприємства, аналіз ризиків. Результати — стратегічний план, концепція або дорожня карта.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="doc-section">
+        <h2 class="doc-h2">Активності бізнес-аналітика</h2>
+        <div class="doc-tabs-wrap">
+          <div class="doc-tab-group">
+            <div class="doc-tab-title">📝 Робота з вимогами</div>
+            <ul class="doc-list">
+              <li>Виявлення вимог під час спілкування із замовником</li>
+              <li>Аналіз зібраних вимог</li>
+              <li>Формулювання концепції рішення</li>
+              <li>Верифікація, валідація, затвердження</li>
+              <li>Управління вимогами: відстеження зв'язків, пріоритизація</li>
+              <li>Розробка стратегії впровадження конкретних рішень</li>
+            </ul>
+          </div>
+          <div class="doc-tab-group">
+            <div class="doc-tab-title">💬 Комунікації з командою</div>
+            <ul class="doc-list">
+              <li>Відповіді на незрозумілі питання</li>
+              <li>Обговорення проблемних ситуацій та спірних моментів</li>
+              <li>Проведення мітингів для ухвалення спільних рішень</li>
+              <li>Контроль за зростанням обсягу робіт, драйвінг змін</li>
+            </ul>
+          </div>
+          <div class="doc-tab-group">
+            <div class="doc-tab-title">🤝 Комунікації із клієнтами</div>
+            <ul class="doc-list">
+              <li>Виявлення фактичних проблем та потреб стейкхолдерів</li>
+              <li>Обговорення потреб, що стоять за вимогами, на робочих зустрічах</li>
+              <li>Уточнення вимог через обговорення та демонстрацію прототипів, діаграм, демо продукту</li>
+              <li>Фіксація отриманих результатів: скріни, відео, аудіозапис</li>
+            </ul>
+          </div>
+          <div class="doc-tab-group">
+            <div class="doc-tab-title">📄 Створення документації</div>
+            <ul class="doc-list">
+              <li>Підготовка специфікацій</li>
+              <li>Написання user stories / acceptance criteria / use cases</li>
+              <li>Опрацювання дисфункційних вимог</li>
+              <li>Моделювання бізнес-процесів</li>
+              <li>Візуалізація рішень через прототипи</li>
+              <li>Оформлення концепції рішення у список завдань для команди розробки</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="doc-section">
+        <h2 class="doc-h2">Основні техніки, з якими працює BA</h2>
+        <div class="doc-techniques">
+          <div class="doc-tech-item">
+            <div class="doc-tech-icon">🎤</div>
+            <div class="doc-tech-body">
+              <div class="doc-tech-name">Інтерв'ю</div>
+              <p>Добре працює при спілкуванні сам на сам із замовником. Форма вільної розмови під час зустрічі або онлайн. Тему та питання погоджують заздалегідь, потім говорять докладно, розбиваючи тему на окремі завдання.</p>
+            </div>
+          </div>
+          <div class="doc-tech-item">
+            <div class="doc-tech-icon">🧠</div>
+            <div class="doc-tech-body">
+              <div class="doc-tech-name">Мозковий штурм (брейнстормінг)</div>
+              <p>Допомагає при з'ясуванні вимог групи стейкхолдерів. Результат — максимальна кількість ідей або вимог до нових напрямів системи. Висловлювання збирають без критики — головне згенерувати якнайбільше ідей.</p>
+            </div>
+          </div>
+          <div class="doc-tech-item">
+            <div class="doc-tech-icon">🏗</div>
+            <div class="doc-tech-body">
+              <div class="doc-tech-name">Воркшоп</div>
+              <p>Робоча нарада з заздалегідь обумовленою програмою. Ціль — прийти до єдиного вирішення проблеми, яке б влаштовувало всі сторони. Допомагає виявити приховані вимоги, узгодити список потреб, вирішити протиріччя.</p>
+            </div>
+          </div>
+          <div class="doc-tech-item">
+            <div class="doc-tech-icon">👁</div>
+            <div class="doc-tech-body">
+              <div class="doc-tech-name">Observation (спостереження)</div>
+              <p>Спостереження за робочим процесом у компанії замовника. Дозволяє перевірити інформацію з інших джерел, підібрати нові теми для інтерв'ю, знайти проблеми з поточною системою та визначити можливості для покращення.</p>
+            </div>
+          </div>
+          <div class="doc-tech-item">
+            <div class="doc-tech-icon">🖼</div>
+            <div class="doc-tech-body">
+              <div class="doc-tech-name">Prototyping (прототипування)</div>
+              <p>Початкова версія рішення, що включає виявлені раніше потреби клієнта. Варто лише візуалізувати, намалювати інтерфейс — і все стає набагато зрозумілішим. Допомагає виявити додаткові вимоги.</p>
+            </div>
+          </div>
+          <div class="doc-tech-item">
+            <div class="doc-tech-icon">📖</div>
+            <div class="doc-tech-body">
+              <div class="doc-tech-name">User Stories</div>
+              <p>Вимоги до продукту, коротко описані мовою користувача: "Я, як [роль], хочу [дія], щоб [мета]." Фокусуються на потребах замовника, не включають технічних деталей. Швидкий спосіб документування без великих формалізованих документів.</p>
+            </div>
+          </div>
+          <div class="doc-tech-item">
+            <div class="doc-tech-icon">📋</div>
+            <div class="doc-tech-body">
+              <div class="doc-tech-name">Backlog Management</div>
+              <p>Беклог — список усіх робіт, розставлених у порядку пріоритетності. BA стежить, щоб елементи беклогу були деталізовані, розсортовані та оцінені за ступенем важливості.</p>
+            </div>
+          </div>
+          <div class="doc-tech-item">
+            <div class="doc-tech-icon">⚖️</div>
+            <div class="doc-tech-body">
+              <div class="doc-tech-name">Prioritization</div>
+              <p>Спосіб вирішення конфлікту між конкуруючими вимогами за обмежені ресурси. BA визначає, в якій версії буде реалізована певна функція. Пріоритети коригуються відповідно до потреб замовника, ринкових умов та бізнес-цілей.</p>
+            </div>
+          </div>
+          <div class="doc-tech-item">
+            <div class="doc-tech-icon">🗺</div>
+            <div class="doc-tech-body">
+              <div class="doc-tech-name">Моделювання вимог</div>
+              <p>Графічна візуальна модель аналізу вимог. Відображає вимоги на абстрактному рівні. Моделі представляються у вигляді діаграм станів, процесних діаграм, діаграм послідовностей, таблиць та дерев рішень.</p>
+            </div>
+          </div>
+          <div class="doc-tech-item">
+            <div class="doc-tech-icon">⚠️</div>
+            <div class="doc-tech-body">
+              <div class="doc-tech-name">Risk Analysis and Management</div>
+              <p>Допомагає BA ідентифікувати та керувати областями невизначеності. Після аналізу розробляються стратегії реагування: як команда буде справлятися із ризиком.</p>
+            </div>
+          </div>
+          <div class="doc-tech-item">
+            <div class="doc-tech-icon">🎯</div>
+            <div class="doc-tech-body">
+              <div class="doc-tech-name">Use Cases</div>
+              <p>Сценарій використання — опис поведінки системи на зовнішні запити. Описує «Хто» та «Що» може робити з системою. Обов'язково має бути прописана мета: чого користувач хоче досягти.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="doc-section">
+        <h2 class="doc-h2">Навички та компетенції BA</h2>
+        <div class="doc-cards-3">
+          <div class="doc-skill-block">
+            <div class="doc-skill-title">💡 Soft Skills</div>
+            <ul class="doc-list">
+              <li><strong>Аналітичне мислення та вирішення проблем:</strong> оцінка ситуації, розробка суджень про можливе вирішення проблеми</li>
+              <li><strong>Поведінкові характеристики:</strong> професійна етика, надійність, самоорганізованість</li>
+              <li><strong>Комунікативні навички:</strong> ефективне вербальне та невербальне спілкування, вміння слухати та ставити питання, розмовна англійська</li>
+              <li><strong>Навички взаємодії:</strong> здатність працювати як частина команди, рухатися до спільного рішення, вміння фасилітувати переговори та керувати конфліктами</li>
+            </ul>
+          </div>
+          <div class="doc-skill-block">
+            <div class="doc-skill-title">⚙️ Hard Skills</div>
+            <ul class="doc-list">
+              <li>Розуміння методології програмного забезпечення для взаємодії з командою</li>
+              <li>Опис технічних завдань через SRS, User Story та Use Case</li>
+              <li>Моделювання бізнес-процесів та систем: робота з UML та BPMN нотаціями</li>
+              <li>Використання необхідного для BA програмного забезпечення</li>
+            </ul>
+          </div>
+          <div class="doc-skill-block">
+            <div class="doc-skill-title">🏢 Business Knowledge</div>
+            <ul class="doc-list">
+              <li>Знання домену: логістика, e-commerce, health-care тощо</li>
+              <li>Орієнтація у специфіці окремих великих компаній</li>
+              <li>Поінформованість у готових рішеннях (платформи для управління замовленнями в e-commerce)</li>
+              <li>Застосування методологій збору, аналізу та формалізації вимог</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="doc-section">
+        <h2 class="doc-h2">Інструменти бізнес-аналітика</h2>
+        <div class="doc-tools-grid">
+          <div class="doc-tool-group">
+            <div class="doc-tool-cat">📂 Робота з даними</div>
+            <div class="doc-tool-items">
+              <span class="doc-tool-badge">Google Docs</span>
+              <span class="doc-tool-badge">Confluence</span>
+              <span class="doc-tool-badge">Balsamiq</span>
+              <span class="doc-tool-badge">Lucidchart</span>
+              <span class="doc-tool-badge">InVision Studio</span>
+            </div>
+            <p class="doc-tool-note">Спільна робота з документами, діаграми, ментальні карти, вайрфрейми</p>
+          </div>
+          <div class="doc-tool-group">
+            <div class="doc-tool-cat">💬 Комунікація з командою</div>
+            <div class="doc-tool-items">
+              <span class="doc-tool-badge">Jira</span>
+              <span class="doc-tool-badge">Trello</span>
+              <span class="doc-tool-badge">Asana</span>
+            </div>
+            <p class="doc-tool-note">Jira — гнучкий task-трекер. Trello — дошка з картками. Asana — розподіл роботи в команді.</p>
+          </div>
+          <div class="doc-tool-group">
+            <div class="doc-tool-cat">📊 Аналіз поведінки користувачів</div>
+            <div class="doc-tool-items">
+              <span class="doc-tool-badge">Google Analytics</span>
+              <span class="doc-tool-badge">Amplitude</span>
+              <span class="doc-tool-badge">Mixpanel</span>
+            </div>
+            <p class="doc-tool-note">Статистика відвідувань, мобільна та веб-аналітика взаємодії користувача з продуктом.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="doc-section">
+        <h2 class="doc-h2">Хто може виконувати функції BA</h2>
+        <div class="doc-roles-list">
+          <div class="doc-role-item"><span class="doc-role-badge">Sales Manager</span><p>Перший, хто починає виявляти вимоги та розуміти, що хоче клієнт. Досвідчені сейлзи прокачують необхідні навички BA для збору першої інформації про продукт.</p></div>
+          <div class="doc-role-item"><span class="doc-role-badge">Account Manager</span><p>Знає багато про продукти та побажання клієнта і може зорієнтувати замовника, куди розвиватись.</p></div>
+          <div class="doc-role-item"><span class="doc-role-badge">Product / Project Manager</span><p>Доводиться доносити вимоги до команди та керувати ними, тому на серйозному проєкті не обійтися без знань бізнес-аналізу.</p></div>
+          <div class="doc-role-item"><span class="doc-role-badge">Team Lead / Senior Dev</span><p>Розробник може виконувати роль BA, якщо замовник має хоч якусь технічну компетенцію. Найчастіше зустрічається в аутсорсингу.</p></div>
+          <div class="doc-role-item"><span class="doc-role-badge">UI / UX Designer</span><p>Дизайнери багато комунікують з клієнтами та працюють зі зворотним зв'язком. Роль BA ділиться між дизайнером та командою.</p></div>
+          <div class="doc-role-item"><span class="doc-role-badge">Scrum Master / Scrum Team</span><p>Можуть брати на себе роль бізнес-аналітика, якщо команда працює за моделлю Agile.</p></div>
+          <div class="doc-role-item"><span class="doc-role-badge">QA Engineer</span><p>Розуміє що команда має розробляти. QA складає тест-кейси, які є мало не єдиною документацією за відсутності BA. Декілька місяців — і можна перейти в BA.</p></div>
+        </div>
+      </div>
+
+      <div class="doc-section">
+        <h2 class="doc-h2">Що корисного почитати</h2>
+        <ul class="doc-list">
+          <li><strong>BABoK Guide 3.0</strong> — настільна книга бізнес-аналітика</li>
+          <li><strong>Майк Кон «Історії користувача. Гнучка розробка програмного забезпечення»</strong> (Mike Cohn «User Stories Applied: For Agile Software Development»)</li>
+          <li><strong>Карл І. Вігерс «Розробка вимог до програмного забезпечення»</strong> (Karl E. Wiegers, «Software Requirements»)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- PAGE: User Story та Acceptance Criteria         -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div id="page-user-story" class="page-view" style="display:none;">
+      <nav class="breadcrumb">
+        <span>База знань</span><span class="breadcrumb-sep">›</span>
+        <span onclick="navigate('links','Корисні посилання')" style="cursor:pointer;color:var(--ink-mute);">Корисні посилання</span>
+        <span class="breadcrumb-sep">›</span><span class="current">User Story та AC</span>
+      </nav>
+      <div class="page-header">
+        <div class="page-tag">Вимоги</div>
+        <h1 class="page-title">Якісні User Stories<br>та Acceptance Criteria</h1>
+        <p class="page-desc">Фреймворки, шаблони та чек-листи для написання ефективних юзер-сторіз і критеріїв прийняття. Джерело: IAMPM.</p>
+      </div>
+
+      <div class="doc-section">
+        <h2 class="doc-h2">User Story vs Task — навіщо User Story?</h2>
+        <div class="doc-compare">
+          <div class="doc-compare-col doc-compare-col--blue">
+            <div class="doc-compare-title">📖 User Story</div>
+            <ul class="doc-list">
+              <li>Каже <strong>що</strong> саме треба зробити</li>
+              <li>Описує функціонал з точки зору <strong>користувача</strong></li>
+              <li>Розділяє фічі на <strong>бізнес-процеси</strong></li>
+            </ul>
+          </div>
+          <div class="doc-compare-col doc-compare-col--gray">
+            <div class="doc-compare-title">✅ Task</div>
+            <ul class="doc-list">
+              <li>Каже <strong>як</strong> треба робити</li>
+              <li>Описує кроки реалізації з точки зору <strong>команди розробки</strong></li>
+              <li>Таски є окремими <strong>частинами роботи</strong></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="doc-section">
+        <h2 class="doc-h2">Ідеальний шаблон User Story</h2>
+        <div class="doc-us-template">
+          <div class="doc-us-part doc-us-role">Як, &lt;роль користувача&gt;</div>
+          <div class="doc-us-arrow">→</div>
+          <div class="doc-us-part doc-us-want">я &lt;хочу щось отримати&gt;</div>
+          <div class="doc-us-arrow doc-us-arrow--break">→</div>
+          <div class="doc-us-part doc-us-goal">&lt;з такою метою&gt;</div>
+        </div>
+        <div class="doc-callout" style="margin-top:1.2rem;">
+          <strong>Саме це і є бізнес-цінність для користувача продукту.</strong> Але перевага юзер-сторі в тому, що вона формулює не лише цінність, а й вимоги для розробки та тестування.
+        </div>
+        <p class="doc-p" style="margin-top:.9rem;">До цього простого формулювання можна додати:</p>
+        <ul class="doc-list">
+          <li>критерії прийняття</li>
+          <li>технічні нотатки</li>
+          <li>опис обробки помилок, які підсумовують всі завдання, які потрібно зробити</li>
+        </ul>
+      </div>
+
+      <div class="doc-section">
+        <h2 class="doc-h2">Чек-ліст зрозумілих та якісних сторіз</h2>
+        <div class="doc-checklist-grid">
+          <div class="doc-check-item"><span class="doc-check-icon">✓</span><span>Повинні бути <strong>короткими та простими</strong> — краще багато коротких, ніж кілька громіздких</span></div>
+          <div class="doc-check-item"><span class="doc-check-icon">✓</span><span>Кожна написана <strong>без технічного жаргону</strong>, щоб клієнт міг пріоритезувати та включати в ітерації</span></div>
+          <div class="doc-check-item"><span class="doc-check-icon">✓</span><span>Пишіть <strong>з точки зору користувача</strong></span></div>
+          <div class="doc-check-item"><span class="doc-check-icon">✓</span><span>Спирайтесь на <strong>цінність/вигоду</strong> сторі — яка мета цієї юзер сторі?</span></div>
+          <div class="doc-check-item"><span class="doc-check-icon">✓</span><span><strong>1 юзер сторі = 1 фіча.</strong> Якщо це не так — розбийте на 2 частини</span></div>
+          <div class="doc-check-item"><span class="doc-check-icon">✓</span><span>Кожна сторія має містити <strong>оцінку</strong></span></div>
+          <div class="doc-check-item"><span class="doc-check-icon">✓</span><span>Мають бути написані так, щоб їх можна було <strong>протестувати</strong></span></div>
+          <div class="doc-check-item"><span class="doc-check-icon">✓</span><span>Використовуйте фреймворки перевірки якості, наприклад <strong>INVEST</strong></span></div>
+          <div class="doc-check-item"><span class="doc-check-icon">✓</span><span>Якомога довше <strong>уникайте UI</strong>, щоб не прив'язувати до конкретних елементів</span></div>
+          <div class="doc-check-item"><span class="doc-check-icon">✓</span><span>Сторія має мати <strong>кінцівку</strong> — призводити до конкретного результату</span></div>
+        </div>
+      </div>
+
+      <div class="doc-section">
+        <h2 class="doc-h2">Acceptance Criteria</h2>
+        <div class="doc-cards-2">
+          <div class="doc-card doc-card--blue">
+            <div class="doc-card-title">🎯 Мета АС</div>
+            <ul class="doc-list">
+              <li>Щоб уточнити, що команда повинна підготувати перед початком роботи</li>
+              <li>Щоб у всіх було спільне розуміння проблеми</li>
+              <li>Щоб допомогти команді зрозуміти кінець сторі</li>
+              <li>Щоб допомогти перевірити юзер сторі за допомогою автоматизованих тестів</li>
+            </ul>
+          </div>
+          <div class="doc-card doc-card--teal">
+            <div class="doc-card-title">📋 АС повинні включати</div>
+            <ul class="doc-list">
+              <li>Негативні сценарії функціоналу</li>
+              <li>Функціональні та нефункціональні варіанти використання</li>
+              <li>Проблеми з продуктивністю та рекомендації</li>
+              <li>Що повинна робити система/функція</li>
+              <li>End-to-user flow</li>
+              <li>Вплив юзер сторіс на інші фічі</li>
+              <li>Проблеми UX</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="doc-section">
+        <h2 class="doc-h2">INVEST — фреймворк перевірки якості User Story</h2>
+        <div class="doc-invest-grid">
+          <div class="doc-invest-item"><div class="doc-invest-letter">I</div><div><div class="doc-invest-word">Independent</div><p>Незалежна від інших сторій — можна реалізувати в будь-якому порядку</p></div></div>
+          <div class="doc-invest-item"><div class="doc-invest-letter">N</div><div><div class="doc-invest-word">Negotiable</div><p>Деталі обговорюються з командою — не жорсткий контракт</p></div></div>
+          <div class="doc-invest-item"><div class="doc-invest-letter">V</div><div><div class="doc-invest-word">Valuable</div><p>Несе реальну цінність для користувача або бізнесу</p></div></div>
+          <div class="doc-invest-item"><div class="doc-invest-letter">E</div><div><div class="doc-invest-word">Estimable</div><p>Команда може оцінити складність реалізації</p></div></div>
+          <div class="doc-invest-item"><div class="doc-invest-letter">S</div><div><div class="doc-invest-word">Small</div><p>Виконується за один спринт — великі сторії потрібно ділити</p></div></div>
+          <div class="doc-invest-item"><div class="doc-invest-letter">T</div><div><div class="doc-invest-word">Testable</div><p>Можна написати тест — якщо ні, вимоги недостатньо специфічні</p></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- PAGE: Чек-лист Discovery Phase                  -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div id="page-discovery" class="page-view" style="display:none;">
+      <nav class="breadcrumb">
+        <span>База знань</span><span class="breadcrumb-sep">›</span>
+        <span onclick="navigate('links','Корисні посилання')" style="cursor:pointer;color:var(--ink-mute);">Корисні посилання</span>
+        <span class="breadcrumb-sep">›</span><span class="current">Чек-лист Discovery Phase</span>
+      </nav>
+      <div class="page-header">
+        <div class="page-tag">Discovery</div>
+        <h1 class="page-title">Чек-лист з питань<br>на Discovery Phase</h1>
+        <p class="page-desc">Повний перелік питань для підготовки, проведення та отримання результатів на фазі відкриття проєкту. Джерело: IAMPM.</p>
+      </div>
+
+      <div class="doc-section">
+        <h2 class="doc-h2">🔵 Підготовка — Agenda</h2>
+        <div class="doc-discovery-block">
+          <div class="doc-disc-group">
+            <div class="doc-disc-title">Vision / Market</div>
+            <ul class="doc-list">
+              <li>Чому прийшла ідея створити таку систему?</li>
+              <li>Чому не можна використовувати існуючі системи?</li>
+              <li>Які проблеми вирішить саме нова система?</li>
+              <li>У якій країні працюватиме система?</li>
+              <li>Яке там законодавство та стандарти?</li>
+              <li>Які звичаї?</li>
+              <li>Чи є проблеми, які вирішує наш продукт?</li>
+            </ul>
+          </div>
+          <div class="doc-disc-group">
+            <div class="doc-disc-title">Stakeholders</div>
+            <ul class="doc-list">
+              <li>Хто ваш кінцевий користувач?</li>
+              <li>Чи буде ця система взаємопов'язана з іншими?</li>
+              <li>Хто розроблятиме систему?</li>
+              <li>Хто її тестуватиме?</li>
+            </ul>
+          </div>
+          <div class="doc-disc-group">
+            <div class="doc-disc-title">Business Goals</div>
+            <ul class="doc-list">
+              <li>Для чого замовник хоче розробити систему?</li>
+              <li>Заробити гроші? Використовувати за потребою?</li>
+            </ul>
+          </div>
+          <div class="doc-disc-group">
+            <div class="doc-disc-title">User Needs</div>
+            <ul class="doc-list">
+              <li>Хто використовуватиме систему? А це точно?</li>
+              <li>Ви вже спілкувалися із кінцевими користувачами?</li>
+              <li>Чому вони мають використовувати саме цю систему?</li>
+              <li>Які проблеми вона вирішує?</li>
+            </ul>
+          </div>
+          <div class="doc-disc-group">
+            <div class="doc-disc-title">Competitors</div>
+            <ul class="doc-list">
+              <li>Чи існують аналогічні системи?</li>
+              <li>Чим вони кращі за нову?</li>
+              <li>Чим нова система відрізнятиметься?</li>
+              <li>Які стратегії використовують конкуренти?</li>
+              <li>Які проблеми у конкурентів?</li>
+            </ul>
+          </div>
+          <div class="doc-disc-group">
+            <div class="doc-disc-title">Domain</div>
+            <ul class="doc-list">
+              <li>Які зараз тренди у вашому домені?</li>
+              <li>Які компанії вважаються передовими?</li>
+              <li>Які технології використовуються?</li>
+              <li>Які прогнози щодо розвитку галузі?</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="doc-section">
+        <h2 class="doc-h2">🟢 Проведення</h2>
+        <div class="doc-discovery-block">
+          <div class="doc-disc-group">
+            <div class="doc-disc-title">Opportunities / Solution Options</div>
+            <ul class="doc-list">
+              <li>Чи є інсайти чи можливості для розвитку системи?</li>
+              <li>Як можна їх провалідувати?</li>
+              <li>А якщо не розробляти все з нуля, а кастомізувати щось готове?</li>
+              <li>А може, бізнес-проблему можна вирішити інакше — без системи взагалі?</li>
+              <li>Робити лише web чи mobile?</li>
+            </ul>
+          </div>
+          <div class="doc-disc-group">
+            <div class="doc-disc-title">Limitations</div>
+            <ul class="doc-list">
+              <li>Які обмеження, що впливають на розвиток системи та проєкту?</li>
+              <li>Це технічні обмеження, бізнес-обмеження (терміни, бюджет, заходи), обмеження ринку?</li>
+            </ul>
+          </div>
+          <div class="doc-disc-group">
+            <div class="doc-disc-title">Risks</div>
+            <ul class="doc-list">
+              <li>Які ризики?</li>
+              <li>А якщо система не злетить?</li>
+              <li>Хто відповідає за ризики?</li>
+              <li>Який резерв для ризиків?</li>
+              <li>Чи враховано всі ризики?</li>
+              <li>Чи є план управління ризиками?</li>
+            </ul>
+          </div>
+          <div class="doc-disc-group">
+            <div class="doc-disc-title">Features / Solution Boundaries</div>
+            <ul class="doc-list">
+              <li>Як працюватиме система, які функції виконуватиме, з чим буде інтегруватись?</li>
+              <li>Система складатиметься з певних функціональних модулів та інтегруватися з конкретними сторонніми сервісами?</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="doc-section">
+        <h2 class="doc-h2">🟡 Результати</h2>
+        <div class="doc-discovery-block">
+          <div class="doc-disc-group">
+            <div class="doc-disc-title">MVP</div>
+            <ul class="doc-list">
+              <li>Які модулі потрібні, щоб система могла вийти на ринок?</li>
+              <li>Без чого взагалі не можна?</li>
+            </ul>
+          </div>
+          <div class="doc-disc-group">
+            <div class="doc-disc-title">Documents</div>
+            <ul class="doc-list">
+              <li>Architecture Vision</li>
+              <li>Business Vision</li>
+              <li>Design Vision</li>
+            </ul>
+          </div>
+          <div class="doc-disc-group">
+            <div class="doc-disc-title">Roadmap</div>
+            <p style="color:var(--ink-soft);font-size:.88rem;">Визначаються майлстоуни та значні заходи, визначаються модулі, які мають бути готові до певного майлстоуну. Розраховується приблизна тривалість проєкту.</p>
+          </div>
+          <div class="doc-disc-group">
+            <div class="doc-disc-title">Plan</div>
+            <ul class="doc-list">
+              <li>Project Plan</li>
+              <li>BA Plan</li>
+              <li>Architecture Plan</li>
+            </ul>
+          </div>
+        </div>
+        <div class="doc-callout" style="margin-top:1.2rem;">
+          На фазі Discovery будь-якому BA критично важливо заглянути "за горизонт Solution", розібратися у бізнесі замовника, при цьому не злякати його величезним потоком інформації, і все це наввипередки з часом.
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- PAGE: Middle BA — чек-лист навичок              -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div id="page-middle-ba" class="page-view" style="display:none;">
+      <nav class="breadcrumb">
+        <span>База знань</span><span class="breadcrumb-sep">›</span>
+        <span onclick="navigate('links','Корисні посилання')" style="cursor:pointer;color:var(--ink-mute);">Корисні посилання</span>
+        <span class="breadcrumb-sep">›</span><span class="current">Middle BA — чек-лист</span>
+      </nav>
+      <div class="page-header">
+        <div class="page-tag">Кар'єра</div>
+        <h1 class="page-title">Чек-лист must-have<br>навичок Middle BA</h1>
+        <p class="page-desc">Як зрозуміти, що ти готовий перейти на позицію Middle BA. Повний перелік вимог та компетенцій. Джерело: IAMPM.</p>
+      </div>
+
+      <div class="doc-section">
+        <div class="doc-callout">
+          Грейди в IT — дуже заплутана та складна тема. Як зрозуміти, коли ти ще джун, а коли вже мідл? Де ця грань, через яку потрібно переступити, щоб вийти на новий рівень та претендувати на більш вигідні офери?
+        </div>
+
+        <h2 class="doc-h2" style="margin-top:1.5rem;">Загальні вимоги</h2>
+        <div class="doc-reqs-grid">
+          <div class="doc-req-item"><div class="doc-req-icon">📅</div><div><strong>Досвід роботи:</strong> 2–4 роки</div></div>
+          <div class="doc-req-item"><div class="doc-req-icon">🌐</div><div><strong>Рівень англійської:</strong> upper-intermediate та вище</div></div>
+          <div class="doc-req-item"><div class="doc-req-icon">🏢</div><div><strong>Знання домену</strong> — при наймі особливо важливо, оскільки middle аналітиків часто беруть під проекти</div></div>
+        </div>
+      </div>
+
+      <div class="doc-section">
+        <h2 class="doc-h2">Навички роботи в команді BA</h2>
+        <div class="doc-skills-tags">
+          <span class="doc-skill-tag">Mentorship (наставництво)</span>
+          <span class="doc-skill-tag">Делегування</span>
+          <span class="doc-skill-tag">Навчання</span>
+          <span class="doc-skill-tag">Координація</span>
+          <span class="doc-skill-tag">Постановка мети</span>
+          <span class="doc-skill-tag">Процесний підхід</span>
+        </div>
+      </div>
+
+      <div class="doc-section">
+        <h2 class="doc-h2">Технічні навички — Області знань</h2>
+        <div class="doc-tech-areas">
+          <div class="doc-area-item doc-area--basic"><span class="doc-area-badge">Basic</span>Basic Needs &amp; Context Analysis</div>
+          <div class="doc-area-item doc-area--basic"><span class="doc-area-badge">Basic</span>Basic BA Planning</div>
+          <div class="doc-area-item doc-area--inter"><span class="doc-area-badge doc-area-badge--inter">Intermediate</span>Intermediate Requirements Elicitation</div>
+          <div class="doc-area-item doc-area--inter"><span class="doc-area-badge doc-area-badge--inter">Intermediate</span>Intermediate Stakeholder Collaboration</div>
+          <div class="doc-area-item doc-area--inter"><span class="doc-area-badge doc-area-badge--inter">Intermediate</span>Intermediate Requirements Analysis</div>
+          <div class="doc-area-item doc-area--inter"><span class="doc-area-badge doc-area-badge--inter">Intermediate</span>Intermediate Scope Definition</div>
+          <div class="doc-area-item doc-area--inter"><span class="doc-area-badge doc-area-badge--inter">Intermediate</span>Intermediate RLCM (Requirements Lifecycle Management)</div>
+          <div class="doc-area-item doc-area--basic"><span class="doc-area-badge">Basic</span>Basic Solution Evaluation</div>
+          <div class="doc-area-item doc-area--basic"><span class="doc-area-badge">Basic</span>Basic BA Performance Monitoring</div>
+        </div>
+      </div>
+
+      <div class="doc-section">
+        <h2 class="doc-h2">Технічні навички — Solution Delivery Areas</h2>
+        <div class="doc-skills-tags">
+          <span class="doc-skill-tag">Business Need Assessment</span>
+          <span class="doc-skill-tag">Stakeholder Collaboration</span>
+          <span class="doc-skill-tag">Requirements Elicitation</span>
+          <span class="doc-skill-tag">Requirements Analysis</span>
+          <span class="doc-skill-tag">Solution Scope Definition</span>
+          <span class="doc-skill-tag">Requirements Management</span>
+          <span class="doc-skill-tag">Solution Evaluation</span>
+        </div>
+      </div>
+
+      <div class="doc-section">
+        <h2 class="doc-h2">Технічні навички — BA Service Support Areas</h2>
+        <div class="doc-skills-tags">
+          <span class="doc-skill-tag">BA Performance Monitoring</span>
+          <span class="doc-skill-tag">Company Growth Support</span>
+          <span class="doc-skill-tag">BA Competency Support</span>
+          <span class="doc-skill-tag">BA Service Quality Assurance</span>
+          <span class="doc-skill-tag">People Management</span>
+        </div>
+      </div>
+
+      <div class="doc-section">
+        <h2 class="doc-h2">Шлях від Junior до Middle — на що звернути увагу</h2>
+        <div class="doc-cards-2">
+          <div class="doc-card doc-card--blue">
+            <div class="doc-card-title">📈 Що розвивати</div>
+            <ul class="doc-list">
+              <li>Поглиблення знань домену конкретної галузі</li>
+              <li>Самостійне ведення стейкхолдерів</li>
+              <li>Написання складних специфікацій без допомоги</li>
+              <li>Навички фасилітації воркшопів та мітингів</li>
+              <li>Розуміння бізнес-контексту, а не лише технічних вимог</li>
+            </ul>
+          </div>
+          <div class="doc-card doc-card--gold">
+            <div class="doc-card-title">⚠️ Типові помилки Junior</div>
+            <ul class="doc-list">
+              <li>Фокус на деталях замість розуміння великої картини</li>
+              <li>Документування всього підряд без пріоритизації</li>
+              <li>Уникання складних розмов зі стейкхолдерами</li>
+              <li>Не ставити питання "чому?" достатньо часто</li>
+              <li>Ігнорування нефункціональних вимог</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
 
   </main>
 </div>
