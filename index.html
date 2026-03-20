@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BA Knowledge Base</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ── RESET & ROOT ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --cream: #f7f4ee;
+  --cream-dark: #ede9e0;
+  --cream-border: #d8d2c5;
+  --ink: #1a1714;
+  --ink-soft: #4a4540;
+  --ink-mute: #8a8278;
+  --gold: #c4973a;
+  --gold-light: #f0e4c4;
+  --gold-pale: #faf6ed;
+  --accent-blue: #2d5fa6;
+  --accent-teal: #2a7a6b;
+  --accent-red: #a63030;
+  --sidebar-w: 280px;
+  --header-h: 64px;
+  --radius: 6px;
+  --shadow: 0 2px 12px rgba(26,23,20,0.08);
+  --shadow-md: 0 4px 24px rgba(26,23,20,0.12);
+}
+
+html, body {
+  height: 100%;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+/* ── HEADER ── */
+.header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--header-h);
+  background: var(--ink);
+  color: var(--cream);
+  display: flex;
+  align-items: center;
+  padding: 0 2rem;
+  z-index: 100;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.06);
+}
+
+.header-logo {
+  font-family: 'Spectral', serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--cream);
+  flex: 1;
+}
+
+.header-logo span {
+  color: var(--gold);
+}
+
+.header-subtitle {
+  font-size: .78rem;
+  color: var(--ink-mute);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+/* ── LAYOUT ── */
+.layout {
+  display: flex;
+  padding-top: var(--header-h);
+  min-height: 100vh;
+}
+
+/* ── SIDEBAR ── */
+.sidebar {
+  width: var(--sidebar-w);
+  min-height: calc(100vh - var(--header-h));
+  background: #201d19;
+  position: fixed;
+  left: 0;
+  top: var(--header-h);
+  bottom: 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #3a352e transparent;
+  padding-bottom: 2rem;
+}
+
+.sidebar::-webkit-scrollbar { width: 4px; }
+.sidebar::-webkit-scrollbar-thumb { background: #3a352e; border-radius: 2px; }
+
+.sidebar-section {
+  padding: 1.2rem 0 .4rem;
+}
+
+.sidebar-section-label {
+  font-size: .65rem;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: #5a5248;
+  padding: 0 1.2rem .5rem;
+}
+
+/* ── NAV ITEM ── */
+.nav-item {
+  position: relative;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  padding: .6rem 1.2rem;
+  color: #a09890;
+  font-size: .875rem;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all .15s;
+  border-left: 2px solid transparent;
+  user-select: none;
+}
+
+.nav-link:hover {
+  color: #d4cfc8;
+  background: rgba(255,255,255,0.04);
+}
+
+.nav-link.active {
+  color: var(--gold);
+  border-left-color: var(--gold);
+  background: rgba(196,151,58,0.06);
+  font-weight: 500;
+}
+
+.nav-link .icon {
+  width: 16px;
+  height: 16px;
+  opacity: .6;
+  flex-shrink: 0;
+}
+
+.nav-link.active .icon { opacity: 1; }
+
+.nav-chevron {
+  margin-left: auto;
+  width: 14px;
+  height: 14px;
+  transition: transform .2s;
+  opacity: .4;
+}
+
+.nav-item.open > .nav-link .nav-chevron {
+  transform: rotate(90deg);
+  opacity: .7;
+}
+
+/* ── SUB-ITEMS ── */
+.nav-sub {
+  display: none;
+  background: rgba(0,0,0,0.15);
+}
+
+.nav-item.open > .nav-sub {
+  display: block;
+}
+
+.nav-sub-link {
+  display: block;
+  padding: .45rem 1.2rem .45rem 2.8rem;
+  color: #7a7068;
+  font-size: .82rem;
+  cursor: pointer;
+  transition: all .15s;
+  border-left: 2px solid transparent;
+}
+
+.nav-sub-link:hover {
+  color: #b0a898;
+  background: rgba(255,255,255,0.03);
+}
+
+.nav-sub-link.active {
+  color: var(--gold);
+  border-left-color: var(--gold);
+  background: rgba(196,151,58,0.05);
+}
+
+/* ── MAIN CONTENT ── */
+.main {
+  margin-left: var(--sidebar-w);
+  flex: 1;
+  padding: 2.5rem 3rem;
+  max-width: 900px;
+}
+
+/* ── BREADCRUMB ── */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  font-size: .78rem;
+  color: var(--ink-mute);
+  margin-bottom: 1.8rem;
+}
+
+.breadcrumb-sep { opacity: .4; }
+.breadcrumb .current { color: var(--ink-soft); font-weight: 500; }
+
+/* ── PAGE HEADER ── */
+.page-header {
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--cream-border);
+}
+
+.page-tag {
+  display: inline-block;
+  font-size: .68rem;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: var(--gold-pale);
+  border: 1px solid var(--gold-light);
+  padding: .2rem .7rem;
+  border-radius: 50px;
+  margin-bottom: .9rem;
+}
+
+.page-title {
+  font-family: 'Spectral', serif;
+  font-size: 2.1rem;
+  font-weight: 300;
+  letter-spacing: -.02em;
+  color: var(--ink);
+  line-height: 1.25;
+  margin-bottom: .6rem;
+}
+
+.page-desc {
+  color: var(--ink-soft);
+  font-size: .95rem;
+  max-width: 600px;
+  line-height: 1.7;
+}
+
+/* ── CONTENT PLACEHOLDER ── */
+.content-placeholder {
+  background: var(--gold-pale);
+  border: 1.5px dashed var(--gold-light);
+  border-radius: var(--radius);
+  padding: 3rem 2rem;
+  text-align: center;
+  color: var(--ink-mute);
+}
+
+.content-placeholder .ph-icon {
+  font-size: 2rem;
+  margin-bottom: .8rem;
+  opacity: .5;
+}
+
+.content-placeholder p {
+  font-size: .88rem;
+  line-height: 1.6;
+}
+
+.content-placeholder strong {
+  color: var(--ink-soft);
+}
+
+/* ── INFO CARDS (for welcome page) ── */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.info-card {
+  background: #fff;
+  border: 1px solid var(--cream-border);
+  border-radius: var(--radius);
+  padding: 1.2rem 1.3rem;
+  cursor: pointer;
+  transition: all .18s;
+}
+
+.info-card:hover {
+  border-color: var(--gold);
+  box-shadow: var(--shadow);
+  transform: translateY(-1px);
+}
+
+.info-card-icon {
+  font-size: 1.4rem;
+  margin-bottom: .6rem;
+}
+
+.info-card h4 {
+  font-size: .88rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: .25rem;
+}
+
+.info-card p {
+  font-size: .78rem;
+  color: var(--ink-mute);
+  line-height: 1.5;
+}
+
+/* ── DIVIDER ── */
+.section-divider {
+  border: none;
+  border-top: 1px solid var(--cream-border);
+  margin: 2rem 0;
+}
+
+/* ── SCROLLBAR MAIN ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--cream-border); border-radius: 3px; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .sidebar { transform: translateX(-100%); }
+  .main { margin-left: 0; padding: 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-logo">BA <span>Knowledge Base</span></div>
+  <div class="header-subtitle">База знань системного аналітика</div>
+</header>
+
+<!-- LAYOUT -->
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar" id="sidebar">
+
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Навігація</div>
+
+      <!-- 1. Корисні посилання -->
+      <div class="nav-item" id="nav-links">
+        <div class="nav-link" onclick="navigate('links', 'Корисні посилання', this)">
+          <svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M4.715 6.542L3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1 1 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4 4 0 0 1-.128-1.287z"/><path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243z"/></svg>
+          Корисні посилання
+        </div>
+      </div>
+
+      <!-- 2. Системний аналіз -->
+      <div class="nav-item" id="nav-sa">
+        <div class="nav-link" onclick="toggleOrNavigate('nav-sa', 'sa-main', 'Системний аналіз', this)">
+          <svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H5zm.5 2h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1zm0 2h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1zm0 2h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1 0-1z"/></svg>
+          Системний аналіз
+          <svg class="nav-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M6 4l4 4-4 4"/></svg>
+        </div>
+        <div class="nav-sub">
+          <div class="nav-sub-link" onclick="navigate('sa-main', 'Системний аналіз', this, 'Системний аналіз')">Огляд</div>
+        </div>
+      </div>
+
+      <!-- 3. Бази даних і Power BI -->
+      <div class="nav-item" id="nav-db">
+        <div class="nav-link" onclick="toggleOrNavigate('nav-db', 'db-main', 'Бази даних і Power BI', this)">
+          <svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M4.318 2.687C5.234 2.271 6.536 2 8 2s2.766.27 3.682.687C12.644 3.125 13 3.627 13 4c0 .374-.356.875-1.318 1.313C10.766 5.729 9.464 6 8 6s-2.766-.271-3.682-.688C3.356 4.875 3 4.373 3 4c0-.373.356-.875 1.318-1.313z"/><path d="M13 5.698V7c0 .374-.356.875-1.318 1.313C10.766 8.729 9.464 9 8 9s-2.766-.27-3.682-.687C3.356 7.875 3 7.373 3 7V5.698c.271.202.58.378.904.525C4.978 6.711 6.427 7 8 7s3.022-.289 4.096-.777A5 5 0 0 0 13 5.698zM3 8.698V10c0 .374.356.875 1.318 1.313C5.234 11.729 6.536 12 8 12s2.766-.27 3.682-.687C12.644 10.875 13 10.373 13 10V8.698c-.271.202-.58.378-.904.525C11.022 9.71 9.573 10 8 10s-3.022-.29-4.096-.777A5 5 0 0 1 3 8.698zM3 11.698V13c0 .374.356.875 1.318 1.313C5.234 14.729 6.536 15 8 15s2.766-.27 3.682-.687C12.644 13.875 13 13.373 13 13v-1.302c-.271.202-.58.378-.904.525C11.022 12.71 9.573 13 8 13s-3.022-.29-4.096-.777A5 5 0 0 1 3 11.698z"/></svg>
+          Бази даних і Power BI
+          <svg class="nav-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M6 4l4 4-4 4"/></svg>
+        </div>
+        <div class="nav-sub">
+          <div class="nav-sub-link" onclick="navigate('db-main', 'Бази даних і Power BI', this, 'Бази даних і Power BI')">Огляд</div>
+        </div>
+      </div>
+
+      <!-- 4. 1C:ERP -->
+      <div class="nav-item" id="nav-erp">
+        <div class="nav-link" onclick="toggleOrNavigate('nav-erp', 'erp-main', 'Використання консолі запитів в 1С:ERP', this)">
+          <svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M0 3a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3zm9.5 5.5h-3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1zm-6.354-.354a.5.5 0 1 0 .707.708l2-2a.5.5 0 0 0 0-.708l-2-2a.5.5 0 1 0-.707.708L4.793 6.5 3.146 8.146z"/></svg>
+          Консоль запитів 1С:ERP
+          <svg class="nav-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M6 4l4 4-4 4"/></svg>
+        </div>
+        <div class="nav-sub">
+          <div class="nav-sub-link" onclick="navigate('erp-main', 'Консоль запитів 1С:ERP', this, 'Консоль запитів 1С:ERP')">Огляд</div>
+        </div>
+      </div>
+
+      <!-- 5. UML -->
+      <div class="nav-item" id="nav-uml">
+        <div class="nav-link" onclick="toggleOrNavigate('nav-uml', 'uml-main', 'Створення UML-діаграм', this)">
+          <svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M6 1h6v6H6V1zm0 7h6v6H6V8zm-5-7h4v3H1V1zm0 4h4v3H1V5zm0 4h4v6H1V9z"/></svg>
+          Створення UML-діаграм
+          <svg class="nav-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M6 4l4 4-4 4"/></svg>
+        </div>
+        <div class="nav-sub">
+          <div class="nav-sub-link" onclick="navigate('uml-main', 'Створення UML-діаграм', this, 'Створення UML-діаграм')">Огляд</div>
+        </div>
+      </div>
+
+      <!-- 6. API -->
+      <div class="nav-item" id="nav-api">
+        <div class="nav-link" onclick="toggleOrNavigate('nav-api', 'api-main', 'API', this)">
+          <svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM8 5.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/></svg>
+          API
+          <svg class="nav-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M6 4l4 4-4 4"/></svg>
+        </div>
+        <div class="nav-sub">
+          <div class="nav-sub-link" onclick="navigate('api-main', 'API', this, 'API')">Огляд</div>
+        </div>
+      </div>
+
+      <!-- 7. SRS -->
+      <div class="nav-item" id="nav-srs">
+        <div class="nav-link" onclick="toggleOrNavigate('nav-srs', 'srs-main', 'SRS', this)">
+          <svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M4 0h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H4z"/><path d="M4.5 12.5A.5.5 0 0 1 5 12h3a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zm0-2A.5.5 0 0 1 5 10h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zm1.639-3.708 1.33.886 1.854-1.855a.25.25 0 0 1 .289-.047l1.888.974V7.5a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V7s1.54-1.274 1.639-1.208z"/></svg>
+          SRS
+          <svg class="nav-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M6 4l4 4-4 4"/></svg>
+        </div>
+        <div class="nav-sub">
+          <div class="nav-sub-link" onclick="navigate('srs-main', 'SRS', this, 'SRS')">Огляд</div>
+        </div>
+      </div>
+
+      <!-- 8. PRINCE2 -->
+      <div class="nav-item" id="nav-prince2">
+        <div class="nav-link" onclick="toggleOrNavigate('nav-prince2', 'prince2-main', 'Методологія PRINCE2', this)">
+          <svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/></svg>
+          Методологія PRINCE2
+          <svg class="nav-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M6 4l4 4-4 4"/></svg>
+        </div>
+        <div class="nav-sub">
+          <div class="nav-sub-link" onclick="navigate('prince2-main', 'Методологія PRINCE2', this, 'Методологія PRINCE2')">Огляд</div>
+        </div>
+      </div>
+
+      <!-- 9. Бізнес аналіз -->
+      <div class="nav-item" id="nav-ba">
+        <div class="nav-link" onclick="toggleOrNavigate('nav-ba', 'ba-main', 'Бізнес аналіз', this)">
+          <svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/></svg>
+          Бізнес аналіз
+          <svg class="nav-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M6 4l4 4-4 4"/></svg>
+        </div>
+        <div class="nav-sub">
+          <div class="nav-sub-link" onclick="navigate('ba-main', 'Бізнес аналіз', this, 'Бізнес аналіз')">Огляд</div>
+        </div>
+      </div>
+
+      <!-- 10. BPMN -->
+      <div class="nav-item" id="nav-bpmn">
+        <div class="nav-link" onclick="toggleOrNavigate('nav-bpmn', 'bpmn-main', 'BPMN', this)">
+          <svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M2 1a1 1 0 0 0-1 1v4.586a1 1 0 0 0 .293.707l7 7a1 1 0 0 0 1.414 0l4.586-4.586a1 1 0 0 0 0-1.414l-7-7A1 1 0 0 0 6.586 1H2zm4 3.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/></svg>
+          BPMN
+          <svg class="nav-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M6 4l4 4-4 4"/></svg>
+        </div>
+        <div class="nav-sub">
+          <div class="nav-sub-link" onclick="navigate('bpmn-main', 'BPMN', this, 'BPMN')">Огляд</div>
+        </div>
+      </div>
+
+      <!-- 11. Advanced tech skills -->
+      <div class="nav-item" id="nav-tech">
+        <div class="nav-link" onclick="toggleOrNavigate('nav-tech', 'tech-main', 'Advanced tech skills', this)">
+          <svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M5.854 4.854a.5.5 0 1 0-.708-.708l-3.5 3.5a.5.5 0 0 0 0 .708l3.5 3.5a.5.5 0 0 0 .708-.708L2.707 8l3.147-3.146zm4.292 0a.5.5 0 0 1 .708-.708l3.5 3.5a.5.5 0 0 1 0 .708l-3.5 3.5a.5.5 0 0 1-.708-.708L13.293 8l-3.147-3.146z"/></svg>
+          Advanced tech skills
+          <svg class="nav-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M6 4l4 4-4 4"/></svg>
+        </div>
+        <div class="nav-sub">
+          <div class="nav-sub-link" onclick="navigate('tech-main', 'Advanced tech skills', this, 'Advanced tech skills')">Огляд</div>
+        </div>
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main class="main" id="main-content">
+
+    <!-- Default: welcome / links page -->
+    <div id="page-links" class="page-view">
+      <nav class="breadcrumb">
+        <span>База знань</span>
+        <span class="breadcrumb-sep">›</span>
+        <span class="current">Корисні посилання</span>
+      </nav>
+      <div class="page-header">
+        <div class="page-tag">Головна</div>
+        <h1 class="page-title">Корисні посилання</h1>
+        <p class="page-desc">Тут зберігаються усі корисні ресурси, матеріали та посилання.</p>
+      </div>
+      <div class="content-placeholder">
+        <div class="ph-icon">🔗</div>
+        <p><strong>Розділ очікує наповнення.</strong><br>Додай посилання, ресурси та матеріали до цього розділу.</p>
+      </div>
+    </div>
+
+    <!-- Template pages — will be shown by JS -->
+    <div id="page-sa-main"       class="page-view" style="display:none;" data-title="Системний аналіз"         data-tag="Системний аналіз"    data-icon="📐"></div>
+    <div id="page-db-main"       class="page-view" style="display:none;" data-title="Бази даних і Power BI"    data-tag="Бази даних"           data-icon="🗄"></div>
+    <div id="page-erp-main"      class="page-view" style="display:none;" data-title="Консоль запитів 1С:ERP"   data-tag="1С:ERP"               data-icon="⌨️"></div>
+    <div id="page-uml-main"      class="page-view" style="display:none;" data-title="Створення UML-діаграм"    data-tag="UML"                  data-icon="📊"></div>
+    <div id="page-api-main"      class="page-view" style="display:none;" data-title="API"                      data-tag="API"                  data-icon="🔌"></div>
+    <div id="page-srs-main"      class="page-view" style="display:none;" data-title="SRS"                      data-tag="Документація"         data-icon="📄"></div>
+    <div id="page-prince2-main"  class="page-view" style="display:none;" data-title="Методологія PRINCE2"      data-tag="Методологія"          data-icon="🏗"></div>
+    <div id="page-ba-main"       class="page-view" style="display:none;" data-title="Бізнес аналіз"            data-tag="Бізнес аналіз"        data-icon="🔍"></div>
+    <div id="page-bpmn-main"     class="page-view" style="display:none;" data-title="BPMN"                     data-tag="Моделювання"          data-icon="🗺"></div>
+    <div id="page-tech-main"     class="page-view" style="display:none;" data-title="Advanced tech skills"     data-tag="Технічні навички"     data-icon="💻"></div>
+
+  </main>
+</div>
+
+<script>
+// ── STATE ──
+let currentPageId = 'links';
+
+// ── NAVIGATE ──
+function navigate(pageId, title, linkEl, parentTitle) {
+  // Hide all pages
+  document.querySelectorAll('.page-view').forEach(p => p.style.display = 'none');
+
+  const pageEl = document.getElementById('page-' + pageId);
+  if (!pageEl) return;
+
+  // If template page — build its content
+  if (pageEl.dataset.title) {
+    buildTemplatePage(pageEl);
+  }
+
+  pageEl.style.display = 'block';
+  currentPageId = pageId;
+
+  // Update nav active states
+  document.querySelectorAll('.nav-link, .nav-sub-link').forEach(l => l.classList.remove('active'));
+  if (linkEl) linkEl.classList.add('active');
+}
+
+// ── BUILD TEMPLATE PAGE ──
+function buildTemplatePage(el) {
+  if (el.dataset.built) return; // already built
+  el.dataset.built = '1';
+
+  const title = el.dataset.title;
+  const tag   = el.dataset.tag;
+  const icon  = el.dataset.icon;
+
+  el.innerHTML = `
+    <nav class="breadcrumb">
+      <span>База знань</span>
+      <span class="breadcrumb-sep">›</span>
+      <span class="current">${title}</span>
+    </nav>
+    <div class="page-header">
+      <div class="page-tag">${tag}</div>
+      <h1 class="page-title">${title}</h1>
+      <p class="page-desc">Огляд розділу.</p>
+    </div>
+    <div class="content-placeholder">
+      <div class="ph-icon">${icon}</div>
+      <p><strong>Розділ очікує наповнення.</strong><br>Додай матеріали до цього розділу.</p>
+    </div>
+  `;
+}
+
+// ── TOGGLE EXPAND + NAVIGATE ──
+function toggleOrNavigate(navId, pageId, title, linkEl) {
+  const navItem = document.getElementById(navId);
+  const isOpen  = navItem.classList.contains('open');
+
+  // Close all
+  document.querySelectorAll('.nav-item.open').forEach(i => {
+    if (i.id !== navId) i.classList.remove('open');
+  });
+
+  // Toggle current
+  navItem.classList.toggle('open', !isOpen);
+
+  // Navigate
+  navigate(pageId, title, linkEl);
+}
+
+// ── ADD SUB-ITEM helper (called from content) ──
+window.addSubItem = function(navId, pageId, label) {
+  const navItem = document.getElementById(navId);
+  if (!navItem) return;
+
+  let sub = navItem.querySelector('.nav-sub');
+  if (!sub) { sub = document.createElement('div'); sub.className = 'nav-sub'; navItem.appendChild(sub); }
+
+  const link = document.createElement('div');
+  link.className = 'nav-sub-link';
+  link.textContent = label;
+  link.onclick = () => navigate(pageId, label, link, label);
+  sub.appendChild(link);
+
+  // Register empty page if not exists
+  if (!document.getElementById('page-' + pageId)) {
+    const page = document.createElement('div');
+    page.id = 'page-' + pageId;
+    page.className = 'page-view';
+    page.style.display = 'none';
+    page.dataset.title = label;
+    page.dataset.tag   = label;
+    page.dataset.icon  = '📝';
+    document.getElementById('main-content').appendChild(page);
+  }
+};
+
+// ── INIT: activate links ──
+document.addEventListener('DOMContentLoaded', () => {
+  const firstLink = document.querySelector('#nav-links .nav-link');
+  if (firstLink) firstLink.classList.add('active');
+});
+</script>
+
+</body>
+</html>
