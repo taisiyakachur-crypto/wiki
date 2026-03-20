@@ -338,6 +338,56 @@ html, body {
   .sidebar { transform: translateX(-100%); }
   .main { margin-left: 0; padding: 1.5rem; }
 }
+
+/* ── LINKS PAGE ── */
+.links-category { margin-bottom: 2rem; }
+.links-cat-title {
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-bottom: .9rem;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+.links-cat-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--cream-border);
+}
+.links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: .6rem;
+}
+.link-card {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  padding: .75rem 1rem;
+  background: #fff;
+  border: 1px solid var(--cream-border);
+  border-radius: var(--radius);
+  text-decoration: none;
+  color: inherit;
+  transition: all .15s;
+}
+.link-card:hover {
+  border-color: var(--gold);
+  box-shadow: 0 2px 10px rgba(196,151,58,0.12);
+  transform: translateX(2px);
+}
+.link-icon { font-size: 1.1rem; flex-shrink: 0; width: 28px; text-align: center; }
+.link-body { flex: 1; min-width: 0; }
+.link-title { font-size: .85rem; font-weight: 600; color: var(--ink); margin-bottom: .1rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.link-desc { font-size: .75rem; color: var(--ink-mute); }
+.link-arrow { font-size: .9rem; color: var(--cream-border); flex-shrink: 0; transition: color .15s; }
+.link-card:hover .link-arrow { color: var(--gold); }
+.links-divider { border: none; border-top: 1px solid var(--cream-border); margin: 1.5rem 0; }
+
 </style>
 </head>
 <body>
@@ -499,14 +549,89 @@ html, body {
         <span class="current">Корисні посилання</span>
       </nav>
       <div class="page-header">
-        <div class="page-tag">Головна</div>
+        <div class="page-tag">Ресурси</div>
         <h1 class="page-title">Корисні посилання</h1>
-        <p class="page-desc">Тут зберігаються усі корисні ресурси, матеріали та посилання.</p>
+        <p class="page-desc">Зібрані матеріали, курси, відеоуроки та документація для навчання і роботи.</p>
       </div>
-      <div class="content-placeholder">
-        <div class="ph-icon">🔗</div>
-        <p><strong>Розділ очікує наповнення.</strong><br>Додай посилання, ресурси та матеріали до цього розділу.</p>
+
+      <div class="links-category">
+        <div class="links-cat-title">🎓 Навчальні платформи</div>
+        <div class="links-grid">
+          <a href="https://osvita.diia.gov.ua/login" target="_blank" class="link-card"><div class="link-icon">🇺🇦</div><div class="link-body"><div class="link-title">Дія.Освіта</div><div class="link-desc">Безкоштовні курси від держави</div></div><div class="link-arrow">↗</div></a>
+          <a href="https://learning.google/intl/uk_ua/" target="_blank" class="link-card"><div class="link-icon">🔵</div><div class="link-body"><div class="link-title">Google Learning</div><div class="link-desc">Безкоштовне навчання від Google</div></div><div class="link-arrow">↗</div></a>
+          <a href="https://learn.microsoft.com/uk-ua/training/" target="_blank" class="link-card"><div class="link-icon">🟦</div><div class="link-body"><div class="link-title">Microsoft Learn</div><div class="link-desc">Курси Microsoft українською мовою</div></div><div class="link-arrow">↗</div></a>
+          <a href="https://ugf.academy/all-lectures/" target="_blank" class="link-card"><div class="link-icon">🎯</div><div class="link-body"><div class="link-title">UGF Academy</div><div class="link-desc">Лекції з різних IT дисциплін</div></div><div class="link-arrow">↗</div></a>
+          <a href="https://www.youtube.com/@code_brains" target="_blank" class="link-card"><div class="link-icon">▶️</div><div class="link-body"><div class="link-title">Code Brains (YouTube)</div><div class="link-desc">IT-канал з технічними темами</div></div><div class="link-arrow">↗</div></a>
+          <a href="https://dou.ua/lenta/articles/interview-ba/?from=jobsrelated" target="_blank" class="link-card"><div class="link-icon">💼</div><div class="link-body"><div class="link-title">DOU — Інтерв'ю BA</div><div class="link-desc">Досвід BA-спеціалістів на DOU</div></div><div class="link-arrow">↗</div></a>
+        </div>
       </div>
+
+      <hr class="links-divider">
+
+      <div class="links-category">
+        <div class="links-cat-title">📊 Бізнес-аналіз</div>
+        <div class="links-grid">
+          <a href="https://youtube.com/playlist?list=PLmU1v031bKT_Ig7__sVccVDW39_uTZVq1&si=Syoj6xMqSsV8QW1o" target="_blank" class="link-card"><div class="link-icon">▶️</div><div class="link-body"><div class="link-title">Основи бізнес-аналізу (BA)</div><div class="link-desc">Відеокурс: основи роботи BA</div></div><div class="link-arrow">↗</div></a>
+          <a href="https://www.iiba.org/globalassets/business-analysis-resources/the-business-analysis-standard/files/the-business-analysis-standard.pdf" target="_blank" class="link-card"><div class="link-icon">📘</div><div class="link-body"><div class="link-title">IIBA Business Analysis Standard</div><div class="link-desc">Офіційний стандарт IIBA (PDF)</div></div><div class="link-arrow">↗</div></a>
+          <a href="https://youtube.com/playlist?list=PLLACapFZr4Xu833HdV69ftYWDMHkhrLuW&si=-suio2Vgam-crLwF" target="_blank" class="link-card"><div class="link-icon">▶️</div><div class="link-body"><div class="link-title">BA — плейліст</div><div class="link-desc">Добірка відео про бізнес-аналіз</div></div><div class="link-arrow">↗</div></a>
+          <a href="https://youtube.com/playlist?list=PLmU1v031bKT8nYdpq-Igxve1lr35G2tFM&si=qFQyFBVPLjs1Jg3v" target="_blank" class="link-card"><div class="link-icon">▶️</div><div class="link-body"><div class="link-title">BA — додатковий плейліст</div><div class="link-desc">Ще один курс з бізнес-аналізу</div></div><div class="link-arrow">↗</div></a>
+          <a href="https://www.youtube.com/watch?v=4tit3krzbbQ" target="_blank" class="link-card"><div class="link-icon">▶️</div><div class="link-body"><div class="link-title">BA vs SA — у чому різниця?</div><div class="link-desc">Відмінності аналітика та системника</div></div><div class="link-arrow">↗</div></a>
+          <a href="https://drive.google.com/drive/folders/19YTqLJBD7stC8X5z7V0AssUd8gTQS_2s?usp=sharing" target="_blank" class="link-card"><div class="link-icon">📁</div><div class="link-body"><div class="link-title">Google Drive — матеріали BA</div><div class="link-desc">Папка з навчальними матеріалами</div></div><div class="link-arrow">↗</div></a>
+        </div>
+      </div>
+
+      <hr class="links-divider">
+
+      <div class="links-category">
+        <div class="links-cat-title">🔬 Системний аналіз</div>
+        <div class="links-grid">
+          <a href="https://ipacs.knu.ua/pages/dop/391/files/16db659a-6764-4c03-86b2-f517aec290b6.pdf" target="_blank" class="link-card"><div class="link-icon">📄</div><div class="link-body"><div class="link-title">КНУ — Системний аналіз</div><div class="link-desc">Підручник КНУ з системного аналізу</div></div><div class="link-arrow">↗</div></a>
+          <a href="https://web.posibnyky.vntu.edu.ua/fksa/13kolesnycky,rojik,bokocey_osn_syst_anal_objekt-i-proces_komp/zmist.html" target="_blank" class="link-card"><div class="link-icon">📚</div><div class="link-body"><div class="link-title">ВНТУ — Основи СА</div><div class="link-desc">Посібник ВНТУ з системного аналізу</div></div><div class="link-arrow">↗</div></a>
+          <a href="https://bstudy.net/808774/ekonomika/vvedenie#678" target="_blank" class="link-card"><div class="link-icon">📖</div><div class="link-body"><div class="link-title">bstudy — Економіка</div><div class="link-desc">Введення в економічний аналіз</div></div><div class="link-arrow">↗</div></a>
+          <a href="https://bstudy.net/932869/tehnika/vvedenie_bolshie_dannye#26" target="_blank" class="link-card"><div class="link-icon">📖</div><div class="link-body"><div class="link-title">bstudy — Великі дані</div><div class="link-desc">Введення в Big Data аналіз</div></div><div class="link-arrow">↗</div></a>
+          <a href="https://bstudy.net/865323/tehnika/vvedenie" target="_blank" class="link-card"><div class="link-icon">📖</div><div class="link-body"><div class="link-title">bstudy — Технічна база</div><div class="link-desc">Технічний вступний матеріал</div></div><div class="link-arrow">↗</div></a>
+        </div>
+      </div>
+
+      <hr class="links-divider">
+
+      <div class="links-category">
+        <div class="links-cat-title">🗺 BPMN та моделювання</div>
+        <div class="links-grid">
+          <a href="https://www.omg.org/spec/BPMN/2.0/PDF" target="_blank" class="link-card"><div class="link-icon">📘</div><div class="link-body"><div class="link-title">BPMN 2.0 — специфікація OMG</div><div class="link-desc">Офіційний стандарт нотації BPMN</div></div><div class="link-arrow">↗</div></a>
+          <a href="https://youtube.com/playlist?list=PLALLLrN5wyOLh5hEQwfNps4tDPcTyfxHu&si=RqAHh4jrwcOj1ofh" target="_blank" class="link-card"><div class="link-icon">▶️</div><div class="link-body"><div class="link-title">Розуміння моделей: BPMN</div><div class="link-desc">Блок-схеми і BPMN відеокурс</div></div><div class="link-arrow">↗</div></a>
+          <a href="https://youtube.com/playlist?list=PLALLLrN5wyOKHOEmmXKgL_BnfR68wJbUb&si=WfzAp8pLON14Tq6-" target="_blank" class="link-card"><div class="link-icon">▶️</div><div class="link-body"><div class="link-title">BPMN — плейліст 2</div><div class="link-desc">Додаткові відео з BPMN нотації</div></div><div class="link-arrow">↗</div></a>
+          <a href="https://youtube.com/playlist?list=PLALLLrN5wyOL3-5s-LsK3rr-2Xlzst7rd&si=BmHcPouO7puV7w3d" target="_blank" class="link-card"><div class="link-icon">▶️</div><div class="link-body"><div class="link-title">Моделювання процесів</div><div class="link-desc">Відео з моделювання бізнес-процесів</div></div><div class="link-arrow">↗</div></a>
+        </div>
+      </div>
+
+      <hr class="links-divider">
+
+      <div class="links-category">
+        <div class="links-cat-title">💻 Технічні навички</div>
+        <div class="links-grid">
+          <a href="https://youtube.com/playlist?list=PL9mn2EBC_SSzNGTMlT5NHUPJ5JG5JEkCu&si=mDF-3VoKtjoBn-TO" target="_blank" class="link-card"><div class="link-icon">▶️</div><div class="link-body"><div class="link-title">API та Postman</div><div class="link-desc">API інтеграції, робота з Postman</div></div><div class="link-arrow">↗</div></a>
+          <a href="https://youtube.com/playlist?list=PL9mn2EBC_SSwi3XiORhAi75Hk1TNRidN1&si=4adFkIgWSnlguNH5" target="_blank" class="link-card"><div class="link-icon">▶️</div><div class="link-body"><div class="link-title">Бази даних</div><div class="link-desc">Відеокурс з основ баз даних</div></div><div class="link-arrow">↗</div></a>
+          <a href="https://youtube.com/playlist?list=PL9mn2EBC_SSyu6I4DQ9-r1vm_CX4jaPWf&si=A3jrBi__l_2p8WU6" target="_blank" class="link-card"><div class="link-icon">▶️</div><div class="link-body"><div class="link-title">Git — контроль версій</div><div class="link-desc">Курс з системи контролю версій Git</div></div><div class="link-arrow">↗</div></a>
+          <a href="https://youtube.com/playlist?list=PL9mn2EBC_SSySAfIxo72mzoaskkN7RNGU&si=GpJ0v2BZY5b-FVs9" target="_blank" class="link-card"><div class="link-icon">▶️</div><div class="link-body"><div class="link-title">Тестування ПЗ</div><div class="link-desc">Основи QA та тестування</div></div><div class="link-arrow">↗</div></a>
+          <a href="https://www.w3schools.com/excel/index.php" target="_blank" class="link-card"><div class="link-icon">📊</div><div class="link-body"><div class="link-title">W3Schools — Excel</div><div class="link-desc">Навчання Excel з нуля</div></div><div class="link-arrow">↗</div></a>
+          <a href="https://youtube.com/playlist?list=PL_7WPxI7RwgfNZfZvBIMqHKnlLLmNX-pw&si=tWy6lIbTrT2cv9Rb" target="_blank" class="link-card"><div class="link-icon">▶️</div><div class="link-body"><div class="link-title">ERP — плейліст</div><div class="link-desc">Основи роботи з ERP системами</div></div><div class="link-arrow">↗</div></a>
+          <a href="https://youtube.com/playlist?list=PLmU1v031bKT_nUlfwjppyP4vgFbvCzJ6L&si=WJ-R_KokC9spEY2A" target="_blank" class="link-card"><div class="link-icon">▶️</div><div class="link-body"><div class="link-title">Основи роботи з ERP</div><div class="link-desc">Відеокурс про ERP системи</div></div><div class="link-arrow">↗</div></a>
+          <a href="https://youtube.com/playlist?list=PLmU1v031bKT_8SGvqtp6ga8ncPdCrP1PT&si=t5f5dms6qtNS50-O" target="_blank" class="link-card"><div class="link-icon">▶️</div><div class="link-body"><div class="link-title">Soft skills для IT</div><div class="link-desc">Гнучкі навички для IT-фахівців</div></div><div class="link-arrow">↗</div></a>
+        </div>
+      </div>
+
+      <hr class="links-divider">
+
+      <div class="links-category">
+        <div class="links-cat-title">🤖 AI та інструменти</div>
+        <div class="links-grid">
+          <a href="https://youtube.com/playlist?list=PLmU1v031bKT--ClXqbC3Cxo5bAqBe5XY6&si=fZU6QrRw54xq0EIs" target="_blank" class="link-card"><div class="link-icon">▶️</div><div class="link-body"><div class="link-title">Основи роботи з AI</div><div class="link-desc">Відеокурс про штучний інтелект</div></div><div class="link-arrow">↗</div></a>
+          <a href="https://google.brandlive.com/AI-for-productivity/uk/registration" target="_blank" class="link-card"><div class="link-icon">🔵</div><div class="link-body"><div class="link-title">Google — AI for Productivity</div><div class="link-desc">AI для підвищення продуктивності</div></div><div class="link-arrow">↗</div></a>
+          <a href="https://www.youtube.com/live/QFd4oQWrjlw" target="_blank" class="link-card"><div class="link-icon">📺</div><div class="link-body"><div class="link-title">AI Live — YouTube</div><div class="link-desc">Прямий ефір про AI технології</div></div><div class="link-arrow">↗</div></a>
+        </div>
+      </div>
+
     </div>
 
     <!-- Template pages — will be shown by JS -->
