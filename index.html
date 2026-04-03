@@ -1037,6 +1037,7 @@ body {
           <div class="nav-sub-link" onclick="navigate('tech-m16','Mobile розробка',this,'Tech Skills')">Mobile розробка</div>
           <div class="nav-sub-link" onclick="navigate('tech-m17','Mobile реліз',this,'Tech Skills')">Mobile реліз</div>
           <div class="nav-sub-link" onclick="navigate('tech-m18','AI для BA',this,'Tech Skills')">AI для BA</div>
+          <div class="nav-sub-link" onclick="navigate('tech-devtools','Browser DevTools для аналітика',this,'Tech Skills')">Browser DevTools</div>
         </div>
       </div>
 
@@ -28555,6 +28556,467 @@ project = MYAPP
 
       <div style="margin-top:2rem;display:flex;justify-content:flex-start;">
         <div onclick="navigate('db-mod19','Data Warehouse, Data Lake, ETL',this,'Бази даних і Power BI')" style="cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.4rem;background:#f1f5f9;color:var(--ink2);border-radius:50px;font-size:.87rem;font-weight:600;">← Модуль 19: DW та ETL</div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- PAGE: Browser DevTools для аналітика                           -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <div id="page-tech-devtools" class="page-view" style="display:none;">
+      <nav class="breadcrumb"><span>База знань</span><span class="breadcrumb-sep">›</span><span style="cursor:pointer;color:var(--ink-mute);" onclick="navigate('tech-m01','Tech Skills',this,'Tech Skills')">Tech Skills</span><span class="breadcrumb-sep">›</span><span class="current">Browser DevTools для аналітика</span></nav>
+      <div class="page-header">
+        <div class="page-tag">Tech Skills</div>
+        <h1 class="page-title">Browser DevTools <span class="grad">для аналітика</span></h1>
+        <p class="page-desc">Як використовувати інструменти розробника в Chrome, Safari, Firefox та Edge для аналізу систем, перевірки API, дебагу інтеграцій і валідації вимог. Повний гайд по кожній вкладці з прикладами для BA/SA.</p>
+      </div>
+
+      <!-- ─── СЕКЦІЯ 1: Навіщо аналітику DevTools ─── -->
+      <div class="doc-section">
+        <h2 class="doc-h2">🛠️ Навіщо аналітику DevTools?</h2>
+        <div class="doc-callout">Уяви: ти на demo-сесії з клієнтом, він каже «форма не відправляється». Замість того щоб писати баг-репорт зі слів — ти відкриваєш DevTools, бачиш <strong>422 Validation Error</strong> у Network, розгортаєш response body і одразу бачиш: поле <code>email</code> не пройшло серверну валідацію. Ти не просто аналітик — ти людина, яка <strong>БАЧИТЬ</strong> систему зсередини.</div>
+        <div class="doc-cards-3">
+          <div class="doc-card doc-card--blue">
+            <div class="doc-card-title">🔍 Для аналізу систем</div>
+            <p style="font-size:.84rem;color:var(--ink2);line-height:1.6;">Перевірка API-відповідей, headers, статусів. Розуміння як frontend спілкується з backend. Аналіз cookies, localStorage, tokens.</p>
+          </div>
+          <div class="doc-card doc-card--teal">
+            <div class="doc-card-title">🐛 Для дебагу та QA</div>
+            <p style="font-size:.84rem;color:var(--ink2);line-height:1.6;">Відтворення багів, перевірка валідацій, тестування responsive design. Аналіз console errors та warnings без залучення розробника.</p>
+          </div>
+          <div class="doc-card doc-card--gold">
+            <div class="doc-card-title">📋 Для документації</div>
+            <p style="font-size:.84rem;color:var(--ink2);line-height:1.6;">Скріншоти з Network tab для API-специфікацій. Запис послідовності запитів для sequence-діаграм. Витяг реальних payload-ів для прикладів у вимогах.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── СЕКЦІЯ 2: Як відкрити DevTools ─── -->
+      <div class="doc-section">
+        <h2 class="doc-h2">⌨️ Як відкрити DevTools</h2>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Браузер</th><th>Windows / Linux</th><th>macOS</th><th>Альтернатива</th></tr></thead>
+          <tbody>
+            <tr><td style="font-weight:600;">Chrome</td><td>F12 або Ctrl+Shift+I</td><td>Cmd+Option+I</td><td>Правий клік → «Перевірити» (Inspect)</td></tr>
+            <tr><td style="font-weight:600;">Safari</td><td>—</td><td>Cmd+Option+I</td><td>Safari → Preferences → Advanced → Show Develop menu</td></tr>
+            <tr><td style="font-weight:600;">Firefox</td><td>F12 або Ctrl+Shift+I</td><td>Cmd+Option+I</td><td>Правий клік → «Дослідити елемент»</td></tr>
+            <tr><td style="font-weight:600;">Edge</td><td>F12 або Ctrl+Shift+I</td><td>Cmd+Option+I</td><td>Аналогічно Chrome (Chromium-based)</td></tr>
+          </tbody>
+        </table></div>
+        <div class="doc-callout" style="border-left-color:#f59e0b;">💡 Safari вимагає попереднього увімкнення: Safari → Settings → Advanced → поставити галочку <strong>«Show features for web developers»</strong>. Без цього DevTools не доступні.</div>
+      </div>
+
+      <!-- ─── СЕКЦІЯ 3: Вкладки DevTools — SVG ─── -->
+      <div class="doc-section">
+        <h2 class="doc-h2">🗂️ Вкладки DevTools — повний огляд для аналітика</h2>
+        <div class="diagram-wrap">
+          <svg viewBox="0 0 800 120" width="100%" style="max-width:800px;display:block;margin:0 auto;" xmlns="http://www.w3.org/2000/svg">
+            <style>text{font-family:'DM Sans',sans-serif;}</style>
+            <!-- Elements -->
+            <rect x="4" y="10" width="82" height="38" rx="6" fill="#6366f1"/>
+            <text x="45" y="34" text-anchor="middle" fill="#fff" font-size="10" font-weight="600">Elements</text>
+            <text x="45" y="65" text-anchor="middle" fill="#475569" font-size="8">HTML/CSS</text>
+            <!-- Console -->
+            <rect x="92" y="10" width="82" height="38" rx="6" fill="#dc2626"/>
+            <text x="133" y="34" text-anchor="middle" fill="#fff" font-size="10" font-weight="600">Console</text>
+            <text x="133" y="65" text-anchor="middle" fill="#475569" font-size="8">Логи</text>
+            <!-- Sources -->
+            <rect x="180" y="10" width="82" height="38" rx="6" fill="#8b5cf6"/>
+            <text x="221" y="34" text-anchor="middle" fill="#fff" font-size="10" font-weight="600">Sources</text>
+            <text x="221" y="65" text-anchor="middle" fill="#475569" font-size="8">Код</text>
+            <!-- Network -->
+            <rect x="268" y="10" width="82" height="38" rx="6" fill="#10b981"/>
+            <text x="309" y="34" text-anchor="middle" fill="#fff" font-size="10" font-weight="600">Network</text>
+            <text x="309" y="65" text-anchor="middle" fill="#475569" font-size="8">Запити</text>
+            <!-- Performance -->
+            <rect x="356" y="10" width="82" height="38" rx="6" fill="#f59e0b"/>
+            <text x="397" y="34" text-anchor="middle" fill="#fff" font-size="10" font-weight="600">Performance</text>
+            <text x="397" y="65" text-anchor="middle" fill="#475569" font-size="8">Швидкість</text>
+            <!-- Application -->
+            <rect x="444" y="10" width="82" height="38" rx="6" fill="#3b82f6"/>
+            <text x="485" y="34" text-anchor="middle" fill="#fff" font-size="10" font-weight="600">Application</text>
+            <text x="485" y="65" text-anchor="middle" fill="#475569" font-size="8">Сховище</text>
+            <!-- Lighthouse -->
+            <rect x="532" y="10" width="82" height="38" rx="6" fill="#ec4899"/>
+            <text x="573" y="34" text-anchor="middle" fill="#fff" font-size="10" font-weight="600">Lighthouse</text>
+            <text x="573" y="65" text-anchor="middle" fill="#475569" font-size="8">Аудит</text>
+            <!-- Security -->
+            <rect x="620" y="10" width="82" height="38" rx="6" fill="#475569"/>
+            <text x="661" y="34" text-anchor="middle" fill="#fff" font-size="10" font-weight="600">Security</text>
+            <text x="661" y="65" text-anchor="middle" fill="#475569" font-size="8">HTTPS</text>
+            <!-- Memory -->
+            <rect x="708" y="10" width="82" height="38" rx="6" fill="#f97316"/>
+            <text x="749" y="34" text-anchor="middle" fill="#fff" font-size="10" font-weight="600">Memory</text>
+            <text x="749" y="65" text-anchor="middle" fill="#475569" font-size="8">Пам'ять</text>
+          </svg>
+        </div>
+      </div>
+
+      <!-- ─── СЕКЦІЯ 4: Elements ─── -->
+      <div class="doc-section">
+        <h2 class="doc-h2">🔵 Elements — інспектор HTML та CSS</h2>
+        <p class="doc-p"><strong>Що це:</strong> Вкладка Elements показує DOM-дерево сторінки — живу HTML-структуру, яку браузер відрендерив. Праворуч — CSS-стилі, що застосовані до обраного елемента. Все можна редагувати в реальному часі (зміни зникають після перезавантаження).</p>
+        <div class="doc-cards-2">
+          <div class="doc-card doc-card--blue">
+            <div class="doc-card-title">Можливості</div>
+            <ul class="doc-list">
+              <li>Інспектувати будь-який елемент сторінки (правий клік → Inspect)</li>
+              <li>Редагувати HTML прямо в браузері (двічі клікнути на тег)</li>
+              <li>Змінювати CSS-стилі та бачити результат миттєво</li>
+              <li>Бачити Box Model (margin, border, padding, content)</li>
+              <li>Перевіряти Accessibility (ролі, aria-атрибути)</li>
+              <li>Шукати елементи через Ctrl+F у DOM-дереві</li>
+              <li>Дивитись Event Listeners на елементах (які JS-обробники навішані)</li>
+              <li>Емулювати стани елементів (:hover, :focus, :active, :visited)</li>
+            </ul>
+          </div>
+          <div class="doc-card doc-card--teal">
+            <div class="doc-card-title">Як це допомагає аналітику</div>
+            <ul class="doc-list">
+              <li>Перевірити чи правильно відображаються дані з бекенду (чи прив'язаний текст до правильного поля)</li>
+              <li>Протестувати зміни в UI без залучення розробника — наприклад, перевірити як буде виглядати довший текст у кнопці</li>
+              <li>Знайти id або class елемента для написання точних баг-репортів (<code>.checkout-btn не реагує на клік</code>)</li>
+              <li>Перевірити responsive поведінку через Device Toolbar (Ctrl+Shift+M) — як сторінка виглядає на iPhone, iPad</li>
+              <li>Витягнути лого, іконки та інші ассети зі сторінки (знайти URL зображення в src атрибуті)</li>
+              <li>Перевірити форми: які поля обов'язкові (required), які мають валідацію (pattern, maxlength)</li>
+            </ul>
+          </div>
+        </div>
+        <div class="highlight green">🎯 <strong>Практичний приклад:</strong> Клієнт каже «кнопка Submit не працює». Ти відкриваєш Elements, знаходиш кнопку, бачиш що вона має атрибут <code>disabled</code>. Перевіряєш Event Listeners — немає жодного обробника onclick. Висновок для баг-репорту: «Кнопка Submit залишається в стані disabled після заповнення всіх обов'язкових полів форми. Очікувана поведінка: disabled прибирається після валідації всіх required полів.»</div>
+      </div>
+
+      <!-- ─── СЕКЦІЯ 5: Console ─── -->
+      <div class="doc-section">
+        <h2 class="doc-h2">🔴 Console — логи, помилки та JavaScript</h2>
+        <p class="doc-p"><strong>Що це:</strong> Console — це журнал повідомлень браузера та інтерактивний JavaScript-термінал. Сюди потрапляють помилки (червоні), попередження (жовті) та інформаційні повідомлення (сині). Аналітик може побачити проблеми ще до того, як їх помітить користувач.</p>
+        <div class="doc-cards-2">
+          <div class="doc-card doc-card--blue">
+            <div class="doc-card-title">Типи повідомлень у Console</div>
+            <ul class="doc-list">
+              <li>🔴 <strong>Error</strong> (червоні) — критичні помилки JavaScript, 404 для ресурсів, CORS-помилки. Зазвичай означають щось зламалось</li>
+              <li>🟡 <strong>Warning</strong> (жовті) — попередження: deprecated API, незахищені ресурси (mixed content), потенційні проблеми</li>
+              <li>🔵 <strong>Info</strong> (сині) — інформаційні повідомлення від додатку, логи розробника</li>
+              <li>⚪ <strong>Log</strong> (сірі) — звичайні console.log() повідомлення, debug-інформація</li>
+            </ul>
+          </div>
+          <div class="doc-card doc-card--teal">
+            <div class="doc-card-title">Як це допомагає аналітику</div>
+            <ul class="doc-list">
+              <li>Побачити JavaScript-помилки при відтворенні бага (замість «не працює» — конкретна помилка)</li>
+              <li>Перевірити CORS-помилки при інтеграції з API («Access-Control-Allow-Origin» blocked)</li>
+              <li>Побачити 404 помилки для відсутніх ресурсів (зображення, шрифти, скрипти)</li>
+              <li>Відфільтрувати помилки по типу: натиснути Errors, Warnings, Info</li>
+              <li>Виконати простий JavaScript для перевірки: <code>document.querySelectorAll('input[required]').length</code> — скільки обов'язкових полів на сторінці</li>
+              <li>Перевірити чи працює localStorage: <code>localStorage.getItem('token')</code> — чи є збережений токен</li>
+            </ul>
+          </div>
+        </div>
+        <div class="highlight yellow">⚠️ <strong>Типова ситуація для BA:</strong> Відкриваєш сторінку реєстрації, в Console бачиш <code>Uncaught TypeError: Cannot read property 'email' of undefined</code>. Це означає — код намагається прочитати поле email з об'єкта, якого не існує. Не треба розуміти код — достатньо скопіювати помилку в баг-репорт, і розробник одразу зрозуміє де шукати.</div>
+      </div>
+
+      <!-- ─── СЕКЦІЯ 6: Network ─── -->
+      <div class="doc-section">
+        <h2 class="doc-h2">🟢 Network — аналіз HTTP-запитів</h2>
+        <div class="doc-callout" style="border-left-color:#8b5cf6;">Це <strong>НАЙВАЖЛИВІША</strong> вкладка для системного аналітика. Тут ти бачиш ВСЮ комунікацію між frontend і backend — кожен API-запит, кожну відповідь, кожен header. Це як Wireshark, але зручніше.</div>
+        <p class="doc-p" style="margin-top:1rem;"><strong>Що ти бачиш у кожному запиті:</strong></p>
+        <div class="doc-cards-3">
+          <div class="doc-card">
+            <div class="doc-card-title">Headers</div>
+            <p style="font-size:.83rem;color:var(--ink2);line-height:1.6;">Request URL, Method (GET/POST/PUT/DELETE), Status Code (200/201/400/401/403/404/422/500), Request Headers (Authorization, Content-Type, Accept), Response Headers (Set-Cookie, Cache-Control, CORS headers)</p>
+          </div>
+          <div class="doc-card">
+            <div class="doc-card-title">Payload / Request Body</div>
+            <p style="font-size:.83rem;color:var(--ink2);line-height:1.6;">Тіло запиту — що frontend відправляє на backend. Для POST/PUT — JSON з даними форми. Наприклад: <code>{name: 'Іван', email: 'ivan@test.com', role: 'admin'}</code></p>
+          </div>
+          <div class="doc-card">
+            <div class="doc-card-title">Response / Preview</div>
+            <p style="font-size:.83rem;color:var(--ink2);line-height:1.6;">Відповідь сервера — JSON з даними або помилками. Preview показує відформатований JSON. Наприклад: <code>{id: 42, status: 'created', message: 'User registered successfully'}</code></p>
+          </div>
+        </div>
+        <div class="doc-cards-2" style="margin-top:1rem;">
+          <div class="doc-card doc-card--blue">
+            <div class="doc-card-title">Можливості Network tab</div>
+            <ul class="doc-list">
+              <li>Фільтрація за типом: XHR/Fetch (API-запити), JS, CSS, Img, Doc, WS (WebSocket)</li>
+              <li>Пошук по URL або тілу запиту (Ctrl+F у Network panel)</li>
+              <li>Сортування за розміром, часом, статусом</li>
+              <li>Перегляд Timing (DNS lookup, TTFB, Content Download) — де саме гальмує</li>
+              <li>Throttling — емуляція повільного інтернету (Slow 3G, Fast 3G, Offline)</li>
+              <li>Preserve Log — зберігати запити після навігації між сторінками</li>
+              <li>Copy as cURL — скопіювати запит для відтворення в Postman або терміналі</li>
+              <li>Block request URL — заблокувати конкретний ресурс для тестування</li>
+              <li>Перегляд cookies, що відправляються з кожним запитом</li>
+              <li>Initiator — хто ініціював запит (який JS-файл, який рядок коду)</li>
+            </ul>
+          </div>
+          <div class="doc-card doc-card--teal">
+            <div class="doc-card-title">Як це допомагає аналітику</div>
+            <ul class="doc-list">
+              <li>Побачити ВСІ API-ендпоінти, які використовує frontend — для документування API</li>
+              <li>Перевірити HTTP-статуси: 401 = не авторизований, 403 = немає прав, 422 = невалідні дані, 500 = серверна помилка</li>
+              <li>Витягнути реальні payload-и для прикладів у SRS/API-специфікації</li>
+              <li>Перевірити чи правильно передаються tokens/cookies при автентифікації</li>
+              <li>Відстежити послідовність API-викликів для створення sequence-діаграм</li>
+              <li>Перевірити CORS-налаштування при інтеграції з third-party API</li>
+              <li>Виміряти час відповіді API — чи відповідає NFR вимогам (наприклад, P95 &lt; 200ms)</li>
+              <li>Тестувати поведінку при поганому з'єднанні (Throttling → Slow 3G)</li>
+              <li>Аналізувати розмір відповідей — чи не передається зайва дата</li>
+            </ul>
+          </div>
+        </div>
+        <div class="highlight green">🎯 <strong>Практичний сценарій:</strong> Тестуєш інтеграцію з платіжним шлюзом. Відкриваєш Network, фільтруєш XHR. Натискаєш «Оплатити». Бачиш: <code>POST /api/payments → Status 422</code>. Дивишся Response: <code>{error: 'Card expired', field: 'expiry_date'}</code>. Тепер твій баг-репорт містить конкретну помилку API, а не «оплата не працює».</div>
+
+        <h3 style="font-size:.95rem;font-weight:700;color:var(--ink);margin:1.5rem 0 .8rem;">Шпаргалка HTTP-статусів для аналітика</h3>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Код</th><th>Категорія</th><th>Значення</th><th>Коли зустрінеш</th></tr></thead>
+          <tbody>
+            <tr><td style="font-weight:700;">200</td><td>✅ Success</td><td>OK — запит успішний</td><td>Нормальна відповідь на GET</td></tr>
+            <tr><td style="font-weight:700;">201</td><td>✅ Success</td><td>Created — ресурс створено</td><td>Після успішного POST (нова сутність)</td></tr>
+            <tr><td style="font-weight:700;">204</td><td>✅ Success</td><td>No Content — успішно, без тіла</td><td>Після DELETE</td></tr>
+            <tr><td style="font-weight:700;">301</td><td>🔄 Redirect</td><td>Moved Permanently</td><td>SEO-редирект, зміна URL</td></tr>
+            <tr><td style="font-weight:700;">302</td><td>🔄 Redirect</td><td>Found (тимчасовий)</td><td>Редирект після логіну</td></tr>
+            <tr><td style="font-weight:700;">400</td><td>❌ Client Error</td><td>Bad Request — некоректний запит</td><td>Невалідний JSON, пропущені поля</td></tr>
+            <tr><td style="font-weight:700;">401</td><td>❌ Client Error</td><td>Unauthorized — не автентифікований</td><td>Token відсутній або expired</td></tr>
+            <tr><td style="font-weight:700;">403</td><td>❌ Client Error</td><td>Forbidden — немає прав</td><td>Юзер намагається в admin endpoint</td></tr>
+            <tr><td style="font-weight:700;">404</td><td>❌ Client Error</td><td>Not Found — не знайдено</td><td>Неправильний URL або видалений ресурс</td></tr>
+            <tr><td style="font-weight:700;">405</td><td>❌ Client Error</td><td>Method Not Allowed</td><td>GET замість POST</td></tr>
+            <tr><td style="font-weight:700;">409</td><td>❌ Client Error</td><td>Conflict — конфлікт</td><td>Дублікат email при реєстрації</td></tr>
+            <tr><td style="font-weight:700;">422</td><td>❌ Client Error</td><td>Unprocessable Entity</td><td>Валідація не пройшла (невірний формат)</td></tr>
+            <tr><td style="font-weight:700;">429</td><td>❌ Client Error</td><td>Too Many Requests</td><td>Rate limiting спрацював</td></tr>
+            <tr><td style="font-weight:700;">500</td><td>💥 Server Error</td><td>Internal Server Error</td><td>Баг на бекенді — не вина клієнта</td></tr>
+            <tr><td style="font-weight:700;">502</td><td>💥 Server Error</td><td>Bad Gateway</td><td>Проксі не може дістатися до сервера</td></tr>
+            <tr><td style="font-weight:700;">503</td><td>💥 Server Error</td><td>Service Unavailable</td><td>Сервер перевантажений або на обслуговуванні</td></tr>
+            <tr><td style="font-weight:700;">504</td><td>💥 Server Error</td><td>Gateway Timeout</td><td>Бекенд не відповів вчасно</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+
+      <!-- ─── СЕКЦІЯ 7: Application ─── -->
+      <div class="doc-section">
+        <h2 class="doc-h2">🔵 Application — сховище даних у браузері</h2>
+        <p class="doc-p">Вкладка Application показує ВСЕ, що веб-додаток зберігає у твоєму браузері: cookies, localStorage, sessionStorage, IndexedDB, Cache Storage, Service Workers.</p>
+        <div class="doc-cards-2">
+          <div class="doc-card doc-card--blue">
+            <div class="doc-card-title">Що тут можна побачити</div>
+            <ul class="doc-list">
+              <li><strong>Cookies</strong> — всі cookies сайту (session tokens, tracking IDs, preferences). Можна подивитись Name, Value, Domain, Path, Expires, HttpOnly, Secure, SameSite</li>
+              <li><strong>Local Storage</strong> — дані, що зберігаються між сесіями (налаштування користувача, draft-и форм, JWT-tokens)</li>
+              <li><strong>Session Storage</strong> — дані тільки для поточної вкладки (wizard-стани, тимчасові фільтри)</li>
+              <li><strong>IndexedDB</strong> — структурована клієнтська база (offline-дані, кешовані записи)</li>
+              <li><strong>Cache Storage</strong> — кешовані відповіді Service Worker (PWA, offline mode)</li>
+              <li><strong>Service Workers</strong> — скрипти, що працюють у фоні (push notifications, offline)</li>
+            </ul>
+          </div>
+          <div class="doc-card doc-card--teal">
+            <div class="doc-card-title">Як це допомагає аналітику</div>
+            <ul class="doc-list">
+              <li>Перевірити що зберігається після логіну (JWT token, session_id, refresh_token)</li>
+              <li>Зрозуміти чому юзер «вилітає» з системи — перевірити Expires cookie</li>
+              <li>Побачити які дані кешуються і як довго (Cache-Control headers)</li>
+              <li>Тестувати «Remember me» — чи створюється persistent cookie</li>
+              <li>Перевірити GDPR compliance — які tracking cookies ставляться до consent</li>
+              <li>Вручну видалити cookie/token для тестування поведінки незалогіненого юзера</li>
+              <li>Перевірити чи використовується HttpOnly і Secure для чутливих cookies (безпека)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── СЕКЦІЯ 8: Performance ─── -->
+      <div class="doc-section">
+        <h2 class="doc-h2">🟡 Performance — аналіз швидкодії</h2>
+        <p class="doc-p">Вкладка Performance записує «стрічку» всього, що робить браузер: завантаження ресурсів, виконання JavaScript, рендеринг, paint. Для аналітика це інструмент перевірки NFR по швидкодії.</p>
+        <div class="doc-cards-2">
+          <div class="doc-card doc-card--blue">
+            <div class="doc-card-title">Можливості</div>
+            <ul class="doc-list">
+              <li>Запис та аналіз повного циклу завантаження сторінки</li>
+              <li>Core Web Vitals у реальному часі: LCP (Largest Contentful Paint), FID (First Input Delay), CLS (Cumulative Layout Shift)</li>
+              <li>Flame chart — візуалізація що саме займає час (які скрипти, які функції)</li>
+              <li>Screenshots timeline — покадровий перегляд завантаження сторінки</li>
+              <li>CPU та Network throttling — емуляція слабкого пристрою (4x slowdown)</li>
+            </ul>
+          </div>
+          <div class="doc-card doc-card--teal">
+            <div class="doc-card-title">Як це допомагає аналітику</div>
+            <ul class="doc-list">
+              <li>Валідація NFR: «Сторінка має завантажуватись &lt; 3 секунд» — запиши Performance trace і виміряй</li>
+              <li>Зрозуміти ЧОМУ сторінка повільна — великий JS bundle, важкі зображення, або повільний API</li>
+              <li>Порівняти performance до і після оптимізації</li>
+              <li>Зібрати дані для обґрунтування technical debt задач («ось доказ що сторінка завантажується 8 секунд»)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── СЕКЦІЯ 9: Lighthouse ─── -->
+      <div class="doc-section">
+        <h2 class="doc-h2">🟣 Lighthouse — аудит якості</h2>
+        <p class="doc-p">Lighthouse виконує автоматичний аудит сторінки по 5 категоріях і видає звіт з оцінками від 0 до 100 та конкретними рекомендаціями.</p>
+        <div class="doc-cards-3">
+          <div class="doc-card" style="border-top:3px solid #10b981;">
+            <div class="doc-card-title">Performance</div>
+            <p style="font-size:.83rem;color:var(--ink2);">🟢 90-100 / 🟡 50-89 / 🔴 0-49<br>LCP, FID, CLS, Speed Index, Time to Interactive</p>
+          </div>
+          <div class="doc-card" style="border-top:3px solid #3b82f6;">
+            <div class="doc-card-title">Accessibility</div>
+            <p style="font-size:.83rem;color:var(--ink2);">Контрастність тексту, alt-тексти, ARIA roles, keyboard navigation, screen reader support</p>
+          </div>
+          <div class="doc-card" style="border-top:3px solid #6366f1;">
+            <div class="doc-card-title">Best Practices</div>
+            <p style="font-size:.83rem;color:var(--ink2);">HTTPS, no deprecated APIs, no console errors, correct image aspect ratios</p>
+          </div>
+        </div>
+        <div class="doc-cards-2" style="margin-top:.7rem;">
+          <div class="doc-card" style="border-top:3px solid #f59e0b;">
+            <div class="doc-card-title">SEO</div>
+            <p style="font-size:.83rem;color:var(--ink2);">Meta tags, robots.txt, canonical URLs, mobile-friendly, structured data</p>
+          </div>
+          <div class="doc-card" style="border-top:3px solid #ec4899;">
+            <div class="doc-card-title">PWA</div>
+            <p style="font-size:.83rem;color:var(--ink2);">Service Worker, manifest.json, offline support, installable</p>
+          </div>
+        </div>
+        <div class="highlight green">🎯 <strong>Для аналітика:</strong> Запусти Lighthouse на продакшн-сторінці і додай результат до вимог: «Поточний Performance score: 43. Ціль після оптимізації: &gt; 80. Основні bottleneck-и: LCP 6.2s (ціль &lt; 2.5s), CLS 0.35 (ціль &lt; 0.1).»</div>
+      </div>
+
+      <!-- ─── СЕКЦІЯ 10: Security ─── -->
+      <div class="doc-section">
+        <h2 class="doc-h2">🔒 Security — перевірка безпеки з'єднання</h2>
+        <p class="doc-p">Показує статус HTTPS-з'єднання, деталі SSL-сертифіката, та виявляє mixed content (коли HTTPS-сторінка завантажує ресурси через HTTP).</p>
+        <div class="doc-card doc-card--blue">
+          <ul class="doc-list">
+            <li>Перевірити чи сайт має валідний SSL-сертифікат (хто видав, коли закінчується)</li>
+            <li>Знайти mixed content — HTTP-ресурси на HTTPS-сторінці (проблема безпеки)</li>
+            <li>Перевірити TLS-версію (TLS 1.2+ required для PCI DSS)</li>
+            <li>Побачити certificate chain та перевірити trust</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ─── СЕКЦІЯ 11: Memory ─── -->
+      <div class="doc-section">
+        <h2 class="doc-h2">🟠 Memory — діагностика пам'яті</h2>
+        <p class="doc-p">Вкладка Memory дозволяє зняти heap snapshot та знайти витоки пам'яті (memory leaks). Для аналітика корисна, коли додаток «гальмує» після тривалого використання.</p>
+        <div class="doc-card doc-card--teal">
+          <ul class="doc-list">
+            <li><strong>Heap Snapshot</strong> — знімок використання пам'яті (скільки і які об'єкти)</li>
+            <li><strong>Allocation Timeline</strong> — відстежити нарощування пам'яті в часі</li>
+            <li>Корисно коли: «додаток стає повільніше через 30 хвилин роботи» — скоріш за все memory leak</li>
+            <li>Аналітик може зафіксувати факт leak-у і передати розробнику для дебагу</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ─── СЕКЦІЯ 12: Sources ─── -->
+      <div class="doc-section">
+        <h2 class="doc-h2">🟣 Sources — код додатку</h2>
+        <p class="doc-p">Вкладка Sources показує всі файли (JS, CSS, HTML), які завантажив браузер. Аналітику рідко потрібен дебаг коду, але ця вкладка корисна для розуміння структури додатку.</p>
+        <div class="doc-card doc-card--blue">
+          <ul class="doc-list">
+            <li>Побачити структуру файлів додатку (якщо не minified)</li>
+            <li>Переглянути source maps для зрозумілого коду</li>
+            <li>Знайти конфігурації та endpoints, які використовуються</li>
+            <li>Поставити breakpoint для спостереження за потоком даних (advanced)</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ─── СЕКЦІЯ 13: Device Mode ─── -->
+      <div class="doc-section">
+        <h2 class="doc-h2">📱 Device Mode — responsive тестування</h2>
+        <p class="doc-p">Відкривається через Ctrl+Shift+M (або іконка мобільного у верхній панелі DevTools). Емулює різні пристрої та розміри екрану.</p>
+        <div class="doc-cards-2">
+          <div class="doc-card doc-card--blue">
+            <div class="doc-card-title">Можливості</div>
+            <ul class="doc-list">
+              <li>Preset-и: iPhone SE, iPhone 14 Pro, iPad, Galaxy S series, Pixel, Nest Hub</li>
+              <li>Кастомні розміри: задати будь-яку ширину × висоту</li>
+              <li>DPR (Device Pixel Ratio) — емуляція Retina-дисплеїв</li>
+              <li>Touch events — емуляція тач-екрану</li>
+              <li>Throttling мережі та CPU</li>
+            </ul>
+          </div>
+          <div class="doc-card doc-card--teal">
+            <div class="doc-card-title">Для аналітика</div>
+            <ul class="doc-list">
+              <li>Перевірити чи макет відповідає вимогам для мобільних (breakpoints: 320px, 375px, 768px, 1024px, 1440px)</li>
+              <li>Протестувати як форми виглядають на маленьких екранах</li>
+              <li>Перевірити чи виконується вимога «mobile-first design»</li>
+              <li>Зробити скріншоти для документації по різних пристроях</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── СЕКЦІЯ 14: Браузери ─── -->
+      <div class="doc-section">
+        <h2 class="doc-h2">🌐 DevTools у різних браузерах — що відрізняється</h2>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Функція</th><th>Chrome</th><th>Firefox</th><th>Safari</th><th>Edge</th></tr></thead>
+          <tbody>
+            <tr><td style="font-weight:600;">Elements/Inspector</td><td>Elements</td><td>Inspector</td><td>Elements</td><td>Elements</td></tr>
+            <tr><td style="font-weight:600;">Network tab</td><td>✅ Повний</td><td>✅ Повний</td><td>✅ Базовий</td><td>✅ Повний (= Chrome)</td></tr>
+            <tr><td style="font-weight:600;">Lighthouse</td><td>✅ Вбудований</td><td>❌ Плагін</td><td>❌ Ні</td><td>✅ Вбудований</td></tr>
+            <tr><td style="font-weight:600;">CSS Grid inspector</td><td>✅</td><td>✅ Найкращий</td><td>⚠️ Обмежений</td><td>✅</td></tr>
+            <tr><td style="font-weight:600;">Accessibility Tree</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr>
+            <tr><td style="font-weight:600;">3D View (layers)</td><td>❌</td><td>❌</td><td>✅ (Web Inspector 3D)</td><td>✅</td></tr>
+            <tr><td style="font-weight:600;">Storage/Application</td><td>Application</td><td>Storage</td><td>Storage</td><td>Application</td></tr>
+            <tr><td style="font-weight:600;">Performance profiling</td><td>✅ Розширений</td><td>✅</td><td>✅</td><td>✅</td></tr>
+            <tr><td style="font-weight:600;">Mobile emulation</td><td>✅ Найкращий</td><td>✅ Responsive Mode</td><td>✅ (через Simulator)</td><td>✅</td></tr>
+            <tr><td style="font-weight:600;">AI assistance</td><td>✅ (Debug with AI)</td><td>❌</td><td>❌</td><td>✅ (Copilot)</td></tr>
+          </tbody>
+        </table></div>
+        <div class="doc-callout">💡 <strong>Рекомендація для аналітика:</strong> використовуй Chrome як основний інструмент (найбільше функцій + Lighthouse), але тестуй критичні сценарії і в Safari (iOS) та Firefox (інший rendering engine).</div>
+      </div>
+
+      <!-- ─── СЕКЦІЯ 15: Чек-лист ─── -->
+      <div class="doc-section">
+        <h2 class="doc-h2">✅ Чек-лист: DevTools перед demo/UAT</h2>
+        <div class="doc-checklist-grid">
+          <div class="doc-check-item"><span class="doc-check-icon">✓</span><span>Console: немає червоних помилок (Errors = 0)</span></div>
+          <div class="doc-check-item"><span class="doc-check-icon">✓</span><span>Console: немає жовтих попереджень про deprecated API</span></div>
+          <div class="doc-check-item"><span class="doc-check-icon">✓</span><span>Network: всі API-запити повертають 2xx (немає 4xx/5xx)</span></div>
+          <div class="doc-check-item"><span class="doc-check-icon">✓</span><span>Network: час відповіді API &lt; threshold з NFR</span></div>
+          <div class="doc-check-item"><span class="doc-check-icon">✓</span><span>Network: немає CORS-помилок</span></div>
+          <div class="doc-check-item"><span class="doc-check-icon">✓</span><span>Network: авторизаційні tokens передаються коректно</span></div>
+          <div class="doc-check-item"><span class="doc-check-icon">✓</span><span>Application: cookies мають правильний Expires та Secure flag</span></div>
+          <div class="doc-check-item"><span class="doc-check-icon">✓</span><span>Elements: responsive design працює на основних breakpoints</span></div>
+          <div class="doc-check-item"><span class="doc-check-icon">✓</span><span>Lighthouse: Performance score &gt; 70, Accessibility &gt; 90</span></div>
+          <div class="doc-check-item"><span class="doc-check-icon">✓</span><span>Security: валідний SSL-сертифікат, немає mixed content</span></div>
+        </div>
+      </div>
+
+      <!-- ─── СЕКЦІЯ 16: Senior-питання ─── -->
+      <div class="doc-section">
+        <h2 class="doc-h2">💼 Питання на Senior-співбесіді</h2>
+        <div class="doc-card doc-card--blue">
+          <ul class="doc-list">
+            <li>Як ти використовуєш DevTools у щоденній роботі аналітика?</li>
+            <li>Як би ти задокументував API-взаємодію, яку побачив у Network tab?</li>
+            <li>Як перевірити чи виконується NFR вимога «response time &lt; 500ms»?</li>
+            <li>Що означає HTTP 422 і чим він відрізняється від 400?</li>
+            <li>Як ти відрізняєш клієнтську помилку від серверної при аналізі бага?</li>
+            <li>Як би ти тестував поведінку додатку при поганому інтернет-з'єднанні?</li>
+            <li>Чи використовував Lighthouse? Як інтерпретуєш результати?</li>
+            <li>Як перевірити що авторизація працює правильно через DevTools?</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ─── СЕКЦІЯ 17: Ресурси ─── -->
+      <div class="doc-section">
+        <h2 class="doc-h2">🔗 Корисні ресурси</h2>
+        <div class="links-grid">
+          <a href="https://developer.chrome.com/docs/devtools" target="_blank" class="link-card"><div class="link-icon">📘</div><div class="link-body"><div class="link-title">Chrome DevTools — офіційна документація</div><div class="link-desc">Повний reference від Google</div></div><div class="link-arrow">↗</div></a>
+          <a href="https://firefox-source-docs.mozilla.org/devtools-user/" target="_blank" class="link-card"><div class="link-icon">📘</div><div class="link-body"><div class="link-title">Firefox Developer Tools</div><div class="link-desc">Документація Mozilla</div></div><div class="link-arrow">↗</div></a>
+          <a href="https://webkit.org/web-inspector/" target="_blank" class="link-card"><div class="link-icon">📘</div><div class="link-body"><div class="link-title">Safari Web Inspector</div><div class="link-desc">Документація Apple WebKit</div></div><div class="link-arrow">↗</div></a>
+          <a href="https://frontendmasters.com/courses/dev-tools-v4/" target="_blank" class="link-card"><div class="link-icon">▶️</div><div class="link-body"><div class="link-title">Chrome DevTools — Frontend Masters</div><div class="link-desc">Відеокурс від Jon Kuperman</div></div><div class="link-arrow">↗</div></a>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <div style="margin-top:2rem;display:flex;justify-content:flex-start;">
+        <div onclick="navigate('tech-m18','AI для BA',this,'Tech Skills')" style="cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.4rem;background:#f1f5f9;color:var(--ink2);border-radius:50px;font-size:.87rem;font-weight:600;">← AI для BA</div>
       </div>
     </div>
 
