@@ -882,7 +882,6 @@ body {
           <div class="nav-sub-link" onclick="navigate('bpmn-m3','Root Cause Analysis',this,'Процеси та BPMN')">Root Cause Analysis</div>
           <div class="nav-sub-link" onclick="navigate('bpmn-m4','Value Diagram',this,'Процеси та BPMN')">Value Diagram</div>
           <div class="nav-sub-link" onclick="navigate('bpmn-m5','ARIS — моделювання архітектури',this,'Процеси та BPMN')">ARIS</div>
-          <div class="nav-sub-link" onclick="navigate('tech-m30','BPMN 2.0 — практика',this,'Процеси та BPMN')">BPMN 2.0 — практика</div>
         </div>
       </div>
 
@@ -1022,7 +1021,6 @@ body {
           <svg class="nav-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M6 4l4 4-4 4"/></svg>
         </div>
         <div class="nav-sub">
-          <div class="nav-sub-link" onclick="navigate('tech-main','Tech Skills',this,'Tech Skills')">Огляд</div>
           <div class="nav-sub-link" onclick="navigate('tech-m01','Як працюють IT-продукти',this,'Tech Skills')">Як працюють IT-продукти</div>
           <div class="nav-sub-link" onclick="navigate('tech-m02','Технічний стек',this,'Tech Skills')">Технічний стек</div>
           <div class="nav-sub-link" onclick="navigate('tech-m05','Frontend основи',this,'Tech Skills')">Frontend основи</div>
@@ -1032,10 +1030,8 @@ body {
           <div class="nav-sub-link" onclick="navigate('tech-m10','Git та контроль версій',this,'Tech Skills')">Git та контроль версій</div>
           <div class="nav-sub-link" onclick="navigate('tech-m11','DevOps та Cloud',this,'Tech Skills')">DevOps та Cloud</div>
           <div class="nav-sub-link" onclick="navigate('tech-m13','Аналітика проєкту',this,'Tech Skills')">Аналітика проєкту</div>
-          <div class="nav-sub-link" onclick="navigate('tech-m14','Тестування — основи',this,'Tech Skills')">Тестування — основи</div>
-          <div class="nav-sub-link" onclick="navigate('tech-m15','Тестування — advanced',this,'Tech Skills')">Тестування — advanced</div>
-          <div class="nav-sub-link" onclick="navigate('tech-m16','Mobile розробка',this,'Tech Skills')">Mobile розробка</div>
-          <div class="nav-sub-link" onclick="navigate('tech-m17','Mobile реліз',this,'Tech Skills')">Mobile реліз</div>
+          <div class="nav-sub-link" onclick="navigate('tech-m14','Тестування — основи та системний підхід',this,'Tech Skills')">Тестування (основи + advanced)</div>
+          <div class="nav-sub-link" onclick="navigate('tech-m16','Mobile — розробка та реліз',this,'Tech Skills')">Mobile (розробка + реліз)</div>
           <div class="nav-sub-link" onclick="navigate('tech-m18','AI для BA',this,'Tech Skills')">AI для BA</div>
           <div class="nav-sub-link" onclick="navigate('tech-devtools','Browser DevTools для аналітика',this,'Tech Skills')">Browser DevTools</div>
         </div>
@@ -16594,21 +16590,13 @@ wss.on('<span style="color:#6366f1;">connection</span>', (ws) => {
             <div class="doc-card-title">📊 Аналітика проєкту</div>
             <p style="font-size:.83rem;color:var(--ink2);">Google Analytics, Hotjar, Amplitude, Jira, Legacy-проєкти.</p>
           </div>
-          <div class="doc-card doc-card--gold" style="cursor:pointer;" onclick="navigate('tech-m14','Тестування — основи та QA',this,'Advanced tech skills')">
-            <div class="doc-card-title">🧪 Тестування — основи</div>
-            <p style="font-size:.83rem;color:var(--ink2);">Types of testing, піраміда тестування, 3-Amigos, UAT.</p>
+          <div class="doc-card doc-card--gold" style="cursor:pointer;" onclick="navigate('tech-m14','Тестування — основи та системний підхід',this,'Advanced tech skills')">
+            <div class="doc-card-title">🧪 Тестування — основи та advanced</div>
+            <p style="font-size:.83rem;color:var(--ink2);">Types of testing, піраміда, 3-Amigos, UAT, тест-кейси, BVA, State Transition, 7 принципів.</p>
           </div>
-          <div class="doc-card doc-card--blue" style="cursor:pointer;" onclick="navigate('tech-m15','Тестування — системний підхід',this,'Advanced tech skills')">
-            <div class="doc-card-title">🔬 Тестування — advanced</div>
-            <p style="font-size:.83rem;color:var(--ink2);">Тест-кейси, BVA, State Transition, 7 принципів тестування.</p>
-          </div>
-          <div class="doc-card doc-card--teal" style="cursor:pointer;" onclick="navigate('tech-m16','Mobile — розробка додатків',this,'Advanced tech skills')">
-            <div class="doc-card-title">📱 Mobile розробка</div>
-            <p style="font-size:.83rem;color:var(--ink2);">iOS vs Android, Flutter vs React Native, монетизація, Mobile UX.</p>
-          </div>
-          <div class="doc-card doc-card--gold" style="cursor:pointer;" onclick="navigate('tech-m17','Mobile — реліз та аналітика',this,'Advanced tech skills')">
-            <div class="doc-card-title">🚀 Mobile реліз</div>
-            <p style="font-size:.83rem;color:var(--ink2);">App Store vs Google Play, Staged Rollout, DAU/MAU, ARPU.</p>
+          <div class="doc-card doc-card--teal" style="cursor:pointer;" onclick="navigate('tech-m16','Mobile — розробка та реліз',this,'Advanced tech skills')">
+            <div class="doc-card-title">📱 Mobile — розробка та реліз</div>
+            <p style="font-size:.83rem;color:var(--ink2);">iOS vs Android, Flutter vs React Native, монетизація, Mobile UX, App Store, Google Play, DAU/MAU, ARPU.</p>
           </div>
           <div class="doc-card doc-card--red" style="cursor:pointer;" onclick="navigate('tech-m18','AI для BA та менеджерів',this,'Advanced tech skills')">
             <div class="doc-card-title">🤖 AI для BA</div>
@@ -19786,11 +19774,11 @@ info:
     <!-- TECHM14: Тестування — основи та QA              -->
     <!-- ═══════════════════════════════════════════════ -->
     <div id="page-tech-m14" class="page-view" style="display:none;">
-      <nav class="breadcrumb"><span>База знань</span><span class="breadcrumb-sep">›</span><span onclick="navigate('tech-main','Advanced tech skills',this,'Advanced tech skills')" style="cursor:pointer;color:var(--ink-mute);">Advanced tech skills</span><span class="breadcrumb-sep">›</span><span class="current">М14: Тестування основи</span></nav>
+      <nav class="breadcrumb"><span>База знань</span><span class="breadcrumb-sep">›</span><span onclick="navigate('tech-main','Advanced tech skills',this,'Advanced tech skills')" style="cursor:pointer;color:var(--ink-mute);">Advanced tech skills</span><span class="breadcrumb-sep">›</span><span class="current">М14–15: Тестування — основи та системний підхід</span></nav>
       <div class="page-header">
-        <div class="page-tag">Модуль 14 · Advanced Tech</div>
-        <h1 class="page-title">Тестування — основи та QA: <span class="grad">Мануальне, авто, регресійне тестування</span></h1>
-        <p class="page-desc">Навіщо BA знати про тестування. Піраміда тестування. 3-Amigos. Роль BA в UAT.</p>
+        <div class="page-tag">Модуль 14–15 · Advanced Tech</div>
+        <h1 class="page-title">Тестування — основи, QA та системний підхід: <span class="grad">Мануальне, авто, регресійне тестування, тест-кейси, тест-дизайн, 7 принципів</span></h1>
+        <p class="page-desc">Навіщо BA знати про тестування. Піраміда тестування. 3-Amigos. Роль BA в UAT. Артефакти тестування, техніки тест-дизайну, 7 принципів тестування та роль BA.</p>
       </div>
 
       <div class="doc-section">
@@ -19871,21 +19859,11 @@ info:
         </table></div>
       </div>
 
-      <div style="margin-top:1.5rem;display:flex;justify-content:space-between;">
-        <div onclick="navigate('tech-m09','CI/CD та безпека',this,'Advanced tech skills')" style="cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.4rem;background:#f1f5f9;color:var(--ink2);border-radius:50px;font-size:.87rem;font-weight:600;">← М09: CI/CD та безпека</div>
-        <div onclick="navigate('tech-m15','Тестування — системний підхід',this,'Advanced tech skills')" style="cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.4rem;background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;border-radius:50px;font-size:.87rem;font-weight:600;">М15: Тестування advanced →</div>
-      </div>
-    </div>
-
-    <!-- ═══════════════════════════════════════════════ -->
-    <!-- TECHM15: Тестування — системний підхід          -->
-    <!-- ═══════════════════════════════════════════════ -->
-    <div id="page-tech-m15" class="page-view" style="display:none;">
-      <nav class="breadcrumb"><span>База знань</span><span class="breadcrumb-sep">›</span><span onclick="navigate('tech-main','Advanced tech skills',this,'Advanced tech skills')" style="cursor:pointer;color:var(--ink-mute);">Advanced tech skills</span><span class="breadcrumb-sep">›</span><span class="current">М15: Тестування advanced</span></nav>
-      <div class="page-header">
-        <div class="page-tag">Модуль 15 · Advanced Tech</div>
-        <h1 class="page-title">Тестування — системний підхід: <span class="grad">Тест-кейси, тест-дизайн, 7 принципів</span></h1>
-        <p class="page-desc">Артефакти тестування, техніки тест-дизайну, 7 принципів тестування та роль BA.</p>
+      <div class="doc-section" style="margin-top:2rem;padding-top:1.5rem;border-top:2px dashed var(--border);">
+        <div style="background:linear-gradient(135deg,rgba(99,102,241,.08),rgba(139,92,246,.08));border-left:4px solid #8b5cf6;border-radius:var(--radius-sm);padding:.8rem 1.1rem;margin-bottom:1.2rem;">
+          <strong style="color:#6366f1;">📚 Частина 2 · Системний підхід до тестування</strong>
+          <p style="font-size:.82rem;color:var(--ink2);margin:.3rem 0 0;">Тест-кейси, тест-дизайн, 7 принципів тестування — поглиблений матеріал для senior BA.</p>
+        </div>
       </div>
 
       <div class="doc-section">
@@ -19958,20 +19936,20 @@ info:
       </div>
 
       <div style="margin-top:1.5rem;display:flex;justify-content:space-between;">
-        <div onclick="navigate('tech-m14','Тестування — основи та QA',this,'Advanced tech skills')" style="cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.4rem;background:#f1f5f9;color:var(--ink2);border-radius:50px;font-size:.87rem;font-weight:600;">← М14: Тестування основи</div>
-        <div onclick="navigate('tech-m16','Mobile — розробка додатків',this,'Advanced tech skills')" style="cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.4rem;background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;border-radius:50px;font-size:.87rem;font-weight:600;">М16: Mobile розробка →</div>
+        <div onclick="navigate('tech-m09','CI/CD та безпека',this,'Advanced tech skills')" style="cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.4rem;background:#f1f5f9;color:var(--ink2);border-radius:50px;font-size:.87rem;font-weight:600;">← М09: CI/CD та безпека</div>
+        <div onclick="navigate('tech-m16','Mobile — розробка та реліз',this,'Advanced tech skills')" style="cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.4rem;background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;border-radius:50px;font-size:.87rem;font-weight:600;">М16: Mobile розробка та реліз →</div>
       </div>
     </div>
 
     <!-- ═══════════════════════════════════════════════ -->
-    <!-- TECHM16: Mobile — розробка додатків             -->
+    <!-- TECHM16: Mobile — розробка та реліз (М16 + М17) -->
     <!-- ═══════════════════════════════════════════════ -->
     <div id="page-tech-m16" class="page-view" style="display:none;">
-      <nav class="breadcrumb"><span>База знань</span><span class="breadcrumb-sep">›</span><span onclick="navigate('tech-main','Advanced tech skills',this,'Advanced tech skills')" style="cursor:pointer;color:var(--ink-mute);">Advanced tech skills</span><span class="breadcrumb-sep">›</span><span class="current">М16: Mobile розробка</span></nav>
+      <nav class="breadcrumb"><span>База знань</span><span class="breadcrumb-sep">›</span><span onclick="navigate('tech-main','Advanced tech skills',this,'Advanced tech skills')" style="cursor:pointer;color:var(--ink-mute);">Advanced tech skills</span><span class="breadcrumb-sep">›</span><span class="current">М16–17: Mobile — розробка та реліз</span></nav>
       <div class="page-header">
-        <div class="page-tag">Модуль 16 · Advanced Tech</div>
-        <h1 class="page-title">Mobile — розробка додатків: <span class="grad">iOS, Android, вимоги, монетизація, UX</span></h1>
-        <p class="page-desc">Нативна vs кросплатформена розробка. API-обмеження платформ. Монетизація та мобільний UX.</p>
+        <div class="page-tag">Модуль 16–17 · Advanced Tech</div>
+        <h1 class="page-title">Mobile — розробка додатків та реліз: <span class="grad">iOS, Android, вимоги, монетизація, UX, App Store, Google Play, метрики</span></h1>
+        <p class="page-desc">Нативна vs кросплатформена розробка. API-обмеження платформ. Монетизація та мобільний UX. Публікація в сторах, staged rollout, ключові мобільні метрики та тренди 2025–2026.</p>
       </div>
 
       <div class="doc-section">
@@ -20041,21 +20019,11 @@ info:
         </div>
       </div>
 
-      <div style="margin-top:1.5rem;display:flex;justify-content:space-between;">
-        <div onclick="navigate('tech-m15','Тестування — системний підхід',this,'Advanced tech skills')" style="cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.4rem;background:#f1f5f9;color:var(--ink2);border-radius:50px;font-size:.87rem;font-weight:600;">← М15: Тестування advanced</div>
-        <div onclick="navigate('tech-m17','Mobile — реліз та аналітика',this,'Advanced tech skills')" style="cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.4rem;background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;border-radius:50px;font-size:.87rem;font-weight:600;">М17: Mobile реліз →</div>
-      </div>
-    </div>
-
-    <!-- ═══════════════════════════════════════════════ -->
-    <!-- TECHM17: Mobile — реліз та аналітика            -->
-    <!-- ═══════════════════════════════════════════════ -->
-    <div id="page-tech-m17" class="page-view" style="display:none;">
-      <nav class="breadcrumb"><span>База знань</span><span class="breadcrumb-sep">›</span><span onclick="navigate('tech-main','Advanced tech skills',this,'Advanced tech skills')" style="cursor:pointer;color:var(--ink-mute);">Advanced tech skills</span><span class="breadcrumb-sep">›</span><span class="current">М17: Mobile реліз</span></nav>
-      <div class="page-header">
-        <div class="page-tag">Модуль 17 · Advanced Tech</div>
-        <h1 class="page-title">Mobile — реліз та аналітика: <span class="grad">App Store, Google Play, метрики</span></h1>
-        <p class="page-desc">Публікація в сторах, staged rollout, ключові мобільні метрики та тренди 2025–2026.</p>
+      <div class="doc-section" style="margin-top:2rem;padding-top:1.5rem;border-top:2px dashed var(--border);">
+        <div style="background:linear-gradient(135deg,rgba(99,102,241,.08),rgba(139,92,246,.08));border-left:4px solid #8b5cf6;border-radius:var(--radius-sm);padding:.8rem 1.1rem;margin-bottom:1.2rem;">
+          <strong style="color:#6366f1;">🚀 Частина 2 · Реліз та аналітика</strong>
+          <p style="font-size:.82rem;color:var(--ink2);margin:.3rem 0 0;">Публікація в сторах, staged rollout, ключові мобільні метрики та тренди 2025–2026.</p>
+        </div>
       </div>
 
       <div class="doc-section">
@@ -20107,7 +20075,7 @@ info:
       </div>
 
       <div style="margin-top:1.5rem;display:flex;justify-content:space-between;">
-        <div onclick="navigate('tech-m16','Mobile — розробка додатків',this,'Advanced tech skills')" style="cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.4rem;background:#f1f5f9;color:var(--ink2);border-radius:50px;font-size:.87rem;font-weight:600;">← М16: Mobile розробка</div>
+        <div onclick="navigate('tech-m14','Тестування — основи та системний підхід',this,'Advanced tech skills')" style="cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.4rem;background:#f1f5f9;color:var(--ink2);border-radius:50px;font-size:.87rem;font-weight:600;">← М14–15: Тестування</div>
         <div onclick="navigate('tech-m18','AI для BA та менеджерів',this,'Advanced tech skills')" style="cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.4rem;background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;border-radius:50px;font-size:.87rem;font-weight:600;">М18: AI для BA →</div>
       </div>
     </div>
@@ -20215,7 +20183,7 @@ info:
       </div>
 
       <div style="margin-top:1.5rem;display:flex;justify-content:flex-start;">
-        <div onclick="navigate('tech-m17','Mobile — реліз та аналітика',this,'Advanced tech skills')" style="cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.4rem;background:#f1f5f9;color:var(--ink2);border-radius:50px;font-size:.87rem;font-weight:600;">← М17: Mobile реліз</div>
+        <div onclick="navigate('tech-m16','Mobile — розробка та реліз',this,'Advanced tech skills')" style="cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.4rem;background:#f1f5f9;color:var(--ink2);border-radius:50px;font-size:.87rem;font-weight:600;">← М16–17: Mobile</div>
       </div>
     </div>
 
@@ -24398,23 +24366,6 @@ project = MYAPP
 
       <div style="margin-top:1.5rem;display:flex;justify-content:space-between;">
         <div onclick="navigate('tech-m28','Traceability Matrix (RTM)',this,'Advanced tech skills')" style="cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.4rem;background:#f1f5f9;color:var(--ink2);border-radius:50px;font-size:.87rem;font-weight:600;">← М28: RTM</div>
-        <div onclick="navigate('tech-m30','BPMN 2.0 і моделювання',this,'Advanced tech skills')" style="cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.4rem;background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;border-radius:50px;font-size:.87rem;font-weight:600;">М30: BPMN 2.0 і моделювання →</div>
-      </div>
-    </div>
-
-    <!-- ══════════════════════════════════════════════════════════ -->
-    <!-- TECH-M30: BPMN 2.0 і моделювання                         -->
-    <!-- ══════════════════════════════════════════════════════════ -->
-    <div id="page-tech-m30" class="page-view" style="display:none;">
-      <nav class="breadcrumb"><span>База знань</span><span class="breadcrumb-sep">›</span><span onclick="navigate('bpmn-m1','BPMN',this,'Процеси та BPMN')" style="cursor:pointer;color:var(--ink-mute);">Процеси та BPMN</span><span class="breadcrumb-sep">›</span><span class="current">BPMN 2.0 і моделювання</span></nav>
-      <div class="page-header">
-        <div class="page-tag">Модуль 30 · Advanced Tech</div>
-        <h1 class="page-title">BPMN 2.0 і моделювання: <span class="grad">Нотація, рівні деталізації, типові помилки</span></h1>
-        <p class="page-desc">BPMN 2.0 — найпоширеніша нотація для моделювання процесів. BA-практик повинен не просто знати елементи, а розуміти рівні деталізації та типові помилки, які перетворюють корисну діаграму на хаос.</p>
-      </div>
-
-      <div class="doc-callout" style="border-left-color:#8b5cf6;">
-        📌 <strong>Ця тема консолідована:</strong> Повний матеріал зібрано в розділі <span style="color:var(--r1);cursor:pointer;text-decoration:underline;" onclick="navigate('bpmn-m6','Глибоке моделювання BPMN 2.0',this,'Процеси та BPMN')">Процеси та BPMN → Глибоке моделювання BPMN 2.0 →</span>
       </div>
     </div>
 
