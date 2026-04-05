@@ -22655,7 +22655,53 @@ project = MYAPP
         </div>
 
         <div class="doc-callout" style="border-left-color:#f59e0b;">
-          <strong>🎯 Правило читання кружечків:</strong> Пустий тонкий контур = початкова. Подвійний контур = проміжна оброблююча. Подвійний контур + заливка = проміжна генеруюча. Жирний заповнений = завершальна.
+          <strong>🎯 Правило читання кружечків:</strong> форма контуру одразу каже, <em>коли</em> подія відбувається у процесі та <em>що</em> вона робить — чекає на стимул чи сама його створює.
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:.7rem;margin-top:.8rem;">
+
+            <div style="background:#fff;border:1px solid var(--border);border-radius:var(--radius-sm);padding:.7rem;">
+              <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.35rem;">
+                <svg width="28" height="28" viewBox="0 0 28 28"><circle cx="14" cy="14" r="11" fill="#fff" stroke="#6366f1" stroke-width="1.6"/></svg>
+                <strong style="font-size:.85rem;color:var(--ink);">Пустий тонкий контур</strong>
+              </div>
+              <div style="font-size:.78rem;color:var(--ink2);margin-bottom:.3rem;"><strong>Початкова подія (Start Event).</strong> Запускає процес. Завжди тільки <em>ловить</em> (catching) зовнішній тригер — не може генерувати події сама.</div>
+              <div style="font-size:.78rem;color:var(--ink2);"><strong>Відмінність:</strong> одинарне тонке коло без заливки.</div>
+              <div style="font-size:.74rem;color:var(--r1);margin-top:.3rem;"><em>💼 Приклад: надійшла заявка клієнта → стартує процес обробки замовлення.</em></div>
+            </div>
+
+            <div style="background:#fff;border:1px solid var(--border);border-radius:var(--radius-sm);padding:.7rem;">
+              <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.35rem;">
+                <svg width="28" height="28" viewBox="0 0 28 28"><circle cx="14" cy="14" r="11" fill="#fff" stroke="#6366f1" stroke-width="1.6"/><circle cx="14" cy="14" r="8" fill="none" stroke="#6366f1" stroke-width="1.2"/></svg>
+                <strong style="font-size:.85rem;color:var(--ink);">Подвійний контур (без заливки)</strong>
+              </div>
+              <div style="font-size:.78rem;color:var(--ink2);margin-bottom:.3rem;"><strong>Проміжна оброблююча (Intermediate Catching).</strong> Ставиться всередині процесу і <em>чекає</em>, доки станеться певна подія, щоб продовжити потік.</div>
+              <div style="font-size:.78rem;color:var(--ink2);"><strong>Відмінність:</strong> два тонких кола, внутрішній символ <em>порожній</em> (не залитий).</div>
+              <div style="font-size:.74rem;color:var(--r1);margin-top:.3rem;"><em>💼 Приклад: після надсилання рахунку процес зупиняється і чекає на оплату від клієнта, потім іде далі.</em></div>
+            </div>
+
+            <div style="background:#fff;border:1px solid var(--border);border-radius:var(--radius-sm);padding:.7rem;">
+              <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.35rem;">
+                <svg width="28" height="28" viewBox="0 0 28 28"><circle cx="14" cy="14" r="11" fill="#fff" stroke="#6366f1" stroke-width="1.6"/><circle cx="14" cy="14" r="8" fill="#6366f1" stroke="#6366f1" stroke-width="1"/></svg>
+                <strong style="font-size:.85rem;color:var(--ink);">Подвійний контур + заливка</strong>
+              </div>
+              <div style="font-size:.78rem;color:var(--ink2);margin-bottom:.3rem;"><strong>Проміжна генеруюча (Intermediate Throwing).</strong> Всередині процесу сама <em>створює</em> (кидає) подію — повідомлення, сигнал, ескалацію — і передає потік далі.</div>
+              <div style="font-size:.78rem;color:var(--ink2);"><strong>Відмінність:</strong> два кола, внутрішній символ <em>залитий</em> кольором — ознака «throwing».</div>
+              <div style="font-size:.74rem;color:var(--r1);margin-top:.3rem;"><em>💼 Приклад: після схвалення заявки система надсилає email-повідомлення клієнту, і процес продовжується.</em></div>
+            </div>
+
+            <div style="background:#fff;border:1px solid var(--border);border-radius:var(--radius-sm);padding:.7rem;">
+              <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.35rem;">
+                <svg width="28" height="28" viewBox="0 0 28 28"><circle cx="14" cy="14" r="11" fill="#fff" stroke="#6366f1" stroke-width="3"/></svg>
+                <strong style="font-size:.85rem;color:var(--ink);">Жирний заповнений контур</strong>
+              </div>
+              <div style="font-size:.78rem;color:var(--ink2);margin-bottom:.3rem;"><strong>Завершальна подія (End Event).</strong> Закінчує гілку або весь процес. Завжди <em>кидає</em> (throwing) результат — повідомлення, помилку, термінацію тощо.</div>
+              <div style="font-size:.78rem;color:var(--ink2);"><strong>Відмінність:</strong> одинарне, але <em>потовщене</em> коло (жирна лінія).</div>
+              <div style="font-size:.74rem;color:var(--r1);margin-top:.3rem;"><em>💼 Приклад: замовлення доставлено клієнту → процес завершено успішно.</em></div>
+            </div>
+
+          </div>
+          <div style="margin-top:.7rem;font-size:.78rem;color:var(--ink2);">
+            <strong>📌 Коротко:</strong> товщина лінії показує <em>позицію</em> у процесі (тонка — початок, подвійна — середина, жирна — кінець), а <em>заливка</em> внутрішнього символу показує напрям: <strong>порожній = ловить</strong> подію, <strong>залитий = кидає</strong> подію.
+          </div>
         </div>
 
         <!-- Граничні події -->
