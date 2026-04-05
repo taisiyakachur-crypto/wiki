@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Як взаємодіяти з проблемними людьми · Курс для BA/SA</title>
+<style>
+  :root {
+    --blue: #3498db;
+    --green: #27ae60;
+    --yellow: #f39c12;
+    --purple: #9b59b6;
+    --gray: #7f8c8d;
+    --ink: #1e293b;
+    --ink2: #475569;
+    --ink3: #64748b;
+    --bg: #fafbff;
+    --bg2: #f1f5f9;
+    --border: #e2e8f0;
+    --radius: 14px;
+    --radius-sm: 10px;
+    --shadow: 0 1px 3px rgba(15,23,42,.06), 0 4px 16px rgba(15,23,42,.04);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.6;
+    font-size: 16px;
+  }
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 1.2rem 4rem;
+  }
+  .breadcrumb {
+    font-size: .82rem;
+    color: var(--ink3);
+    margin-bottom: 1rem;
+  }
+  .breadcrumb span + span::before { content: " › "; color: #cbd5e1; }
+  .page-header {
+    background: linear-gradient(135deg, #eef2ff, #faf5ff);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2rem 1.6rem;
+    margin-bottom: 2rem;
+  }
+  .page-tag {
+    display: inline-block;
+    background: rgba(155, 89, 182, .12);
+    color: var(--purple);
+    font-size: .75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    padding: .3rem .7rem;
+    border-radius: 50px;
+  }
+  h1 {
+    font-size: 2.1rem;
+    margin: .7rem 0 .5rem;
+    line-height: 1.2;
+  }
+  h1 .grad {
+    background: linear-gradient(135deg, #3498db, #9b59b6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .page-desc {
+    color: var(--ink2);
+    font-size: 1.02rem;
+    margin: 0;
+    max-width: 820px;
+  }
+  h2 {
+    font-size: 1.4rem;
+    margin: 0 0 1rem;
+    padding-bottom: .4rem;
+    border-bottom: 2px solid var(--border);
+  }
+  h2 .num {
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    background: linear-gradient(135deg, #3498db, #9b59b6);
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 2rem;
+    font-size: .9rem;
+    margin-right: .55rem;
+    vertical-align: middle;
+  }
+  h3 { font-size: 1.08rem; margin: 1.2rem 0 .5rem; }
+  section {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.4rem 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow);
+  }
+  p { margin: .5rem 0 .8rem; color: var(--ink2); }
+  ul, ol { padding-left: 1.2rem; color: var(--ink2); }
+  ul li, ol li { margin-bottom: .4rem; }
+
+  /* TOC */
+  .toc {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.2rem 1.4rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
+  }
+  .toc h3 { margin: 0 0 .8rem; font-size: 1rem; color: var(--ink); }
+  .toc ol {
+    columns: 2;
+    column-gap: 1.5rem;
+    padding-left: 1.2rem;
+    margin: 0;
+  }
+  .toc a {
+    color: var(--blue);
+    text-decoration: none;
+    font-size: .87rem;
+  }
+  .toc a:hover { text-decoration: underline; }
+  @media (max-width: 640px) { .toc ol { columns: 1; } }
+
+  /* Callouts */
+  .callout {
+    border-left: 4px solid var(--blue);
+    background: rgba(52,152,219,.06);
+    padding: .8rem 1rem;
+    border-radius: var(--radius-sm);
+    margin: 1rem 0;
+    font-size: .92rem;
+  }
+  .callout.green  { border-color: var(--green);  background: rgba(39,174,96,.06); }
+  .callout.yellow { border-color: var(--yellow); background: rgba(243,156,18,.07); }
+  .callout.purple { border-color: var(--purple); background: rgba(155,89,182,.06); }
+  .callout.gray   { border-color: var(--gray);   background: rgba(127,140,141,.07); }
+  .callout strong { color: var(--ink); }
+
+  /* Cards grid */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+  .card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--blue);
+    border-radius: var(--radius-sm);
+    padding: 1rem 1.1rem;
+  }
+  .card.green  { border-top-color: var(--green); }
+  .card.yellow { border-top-color: var(--yellow); }
+  .card.purple { border-top-color: var(--purple); }
+  .card.gray   { border-top-color: var(--gray); }
+  .card-title {
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: .4rem;
+    font-size: .98rem;
+  }
+  .card p { font-size: .86rem; margin: .3rem 0; }
+
+  /* Table */
+  .table-wrap { overflow-x: auto; margin: 1rem 0; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .86rem;
+    background: #fff;
+  }
+  th, td {
+    padding: .6rem .8rem;
+    border: 1px solid var(--border);
+    text-align: left;
+    vertical-align: top;
+  }
+  th {
+    background: rgba(52,152,219,.08);
+    color: var(--ink);
+    font-weight: 700;
+  }
+  tbody tr:nth-child(even) { background: #fafbff; }
+
+  /* Dialogue scripts */
+  .dialogue {
+    background: #f8fafc;
+    border: 1px dashed #cbd5e1;
+    border-radius: var(--radius-sm);
+    padding: .8rem 1rem;
+    margin: .6rem 0;
+    font-size: .9rem;
+  }
+  .dialogue .role {
+    display: inline-block;
+    font-size: .72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    padding: .12rem .45rem;
+    border-radius: 4px;
+    margin-right: .5rem;
+  }
+  .dialogue .role.ba  { background: rgba(39,174,96,.15); color: #166534; }
+  .dialogue .role.them{ background: rgba(243,156,18,.18); color: #92400e; }
+
+  /* Checklist */
+  .checklist {
+    list-style: none;
+    padding: 0;
+  }
+  .checklist li {
+    padding: .4rem 0 .4rem 1.8rem;
+    position: relative;
+    font-size: .9rem;
+    color: var(--ink2);
+  }
+  .checklist li::before {
+    content: "☐";
+    position: absolute;
+    left: 0;
+    top: .35rem;
+    color: var(--blue);
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+
+  /* SVG container */
+  .svg-wrap {
+    background: var(--bg2);
+    border-radius: var(--radius-sm);
+    padding: 1rem;
+    margin: 1rem 0;
+    overflow-x: auto;
+  }
+  .svg-wrap svg { display: block; margin: 0 auto; max-width: 100%; height: auto; }
+
+  /* Persona */
+  .persona {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--purple);
+    border-radius: var(--radius-sm);
+    padding: 1rem 1.2rem;
+    margin: .8rem 0;
+  }
+  .persona-title {
+    font-weight: 700;
+    color: var(--ink);
+    font-size: 1rem;
+    margin-bottom: .3rem;
+  }
+  .persona-meta {
+    font-size: .8rem;
+    color: var(--gray);
+    font-style: italic;
+    margin-bottom: .5rem;
+  }
+
+  /* Back-to-top */
+  .back-top {
+    display: inline-block;
+    font-size: .78rem;
+    color: var(--gray);
+    text-decoration: none;
+    margin-top: .5rem;
+  }
+  .back-top:hover { color: var(--blue); }
+
+  /* Helpers */
+  .muted { color: var(--ink3); font-size: .82rem; }
+  .tag-pill {
+    display: inline-block;
+    font-size: .7rem;
+    font-weight: 700;
+    padding: .15rem .5rem;
+    border-radius: 10px;
+    background: rgba(52,152,219,.1);
+    color: var(--blue);
+    margin-right: .3rem;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <nav class="breadcrumb">
+    <span>База знань</span><span>Skills</span><span>Soft Skills</span><span>Як взаємодіяти з проблемними людьми</span>
+  </nav>
+
+  <header class="page-header">
+    <div class="page-tag">Soft Skills · Senior Track</div>
+    <h1>Як взаємодіяти з <span class="grad">проблемними людьми</span></h1>
+    <p class="page-desc">Практичний курс для BA/SA, які хочуть перестати «виживати» на мітингах із складними стейкхолдерами та почати керувати комунікацією. Від принципів Роя Ліллея — до скриптів для discovery-сесій, фасилітації та ескалації в IT-проєктах.</p>
+  </header>
+
+  <nav class="toc">
+    <h3>📖 Зміст курсу</h3>
+    <ol>
+      <li><a href="#difficult-intro">Чому це критично для BA/SA</a></li>
+      <li><a href="#difficult-principles">Базові принципи</a></li>
+      <li><a href="#difficult-types">7 класичних типів</a></li>
+      <li><a href="#difficult-diagnosis">Діагностика типу</a></li>
+      <li><a href="#difficult-it-personas">IT-персонажі</a></li>
+      <li><a href="#difficult-scripts">Скрипти для ситуацій</a></li>
+      <li><a href="#difficult-facilitation">Фасилітація при конфліктах</a></li>
+      <li><a href="#difficult-escalation">Коли і як ескалювати</a></li>
+      <li><a href="#difficult-mistakes">Типові помилки мідл-аналітиків</a></li>
+      <li><a href="#difficult-selfcheck">Перевір себе</a></li>
+      <li><a href="#difficult-interview">Питання на senior-співбесіді</a></li>
+      <li><a href="#difficult-resources">Ресурси та література</a></li>
+    </ol>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- 1. ВСТУП                                                    -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <section id="difficult-intro">
+    <h2><span class="num">1</span>Чому це критично для BA/SA</h2>
+    <p>Якщо ти мідл-аналітик, який читає цей курс — ймовірно, цього тижня хтось на зустрічі вже перебив тебе, заблокував розумну вимогу фразою «це не спрацює» або погодився на все — а потім зник. Ласкаво просимо в реальність BA/SA.</p>
+
+    <div class="callout purple">
+      <strong>Факт:</strong> 70–80% часу бізнес-аналітика — це комунікація: інтерв'ю, воркшопи, узгодження, ескалація, презентації. Якщо ти блокуєшся на «складних людях» — ти блокуєшся в 70% своєї роботи.
+    </div>
+
+    <h3>Скільки коштує неефективна комунікація</h3>
+    <div class="cards">
+      <div class="card">
+        <div class="card-title">⏱ Затримки</div>
+        <p>Discovery, що мав зайняти тиждень, розтягується на місяць, бо SME «не має часу», а PO «ще думає».</p>
+      </div>
+      <div class="card yellow">
+        <div class="card-title">🐛 Дефектні вимоги</div>
+        <p>Надмірно сприятливий PO погодився на все → у спринті команда робить «не те» → переробка на 30–40% sprint capacity.</p>
+      </div>
+      <div class="card green">
+        <div class="card-title">💔 Зруйновані відносини</div>
+        <p>Один невдалий конфлікт з техлідом — і наступні півроку кожен reqs review перетворюється на війну.</p>
+      </div>
+      <div class="card purple">
+        <div class="card-title">🚪 Burnout</div>
+        <p>Мідл-аналітики йдуть з проєктів не через складність задач, а через токсичних стейкхолдерів, з якими не навчилися працювати.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>🎯 Senior відрізняється від мідла не знанням BABOK, а вмінням провести складну розмову так, щоб після неї всі залишились партнерами.</strong>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- 2. ПРИНЦИПИ                                                 -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <section id="difficult-principles">
+    <h2><span class="num">2</span>Базові принципи (Рой Ліллей)</h2>
+    <p>Рой Ліллей у книзі «Dealing with Difficult People» пропонує 4 принципи, які радикально змінюють підхід. Вони звучать як банальності — але на практиці більшість мідлів їх ігнорує.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-title">1️⃣ «Проблемних людей» не існує</div>
+        <p><em>«Просто є люди, мати справу з якими ми маємо навчитися.»</em></p>
+        <p>Щойно ти вішаєш на людину ярлик «проблемний», ти закриваєш для себе всі варіанти окрім конфронтації. Перемаркуй: це не «токсичний PO» — це «стейкхолдер, стиль якого я ще не розшифрував».</p>
+      </div>
+      <div class="card green">
+        <div class="card-title">2️⃣ Їм байдуже на вас</div>
+        <p>Проблемні люди зациклені на собі — на своєму статусі, страхах, репутації. Їхня поведінка майже ніколи <em>не про тебе</em>. Не приймай на особистий рахунок — і пів проблеми зникне.</p>
+      </div>
+      <div class="card purple">
+        <div class="card-title">3️⃣ Вони передбачувані</div>
+        <p>Поведінкові патерни повторюються. Якщо PO тричі міняв вимоги за тиждень — на четвертий раз це не сюрприз. <strong>Передбачуваність = твоя перевага.</strong> Підготовка + маневр — усе, що потрібно.</p>
+      </div>
+      <div class="card yellow">
+        <div class="card-title">4️⃣ Ти їх не змінеш</div>
+        <p>Ти можеш змінити <em>свій</em> підхід і отримати результат. Мета не «виховати» техліда — мета провести зустріч так, щоб вимоги були узгоджені. Це різні задачі.</p>
+      </div>
+    </div>
+
+    <h3>Mind map: 4 принципи</h3>
+    <div class="svg-wrap">
+      <svg viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="center" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#9b59b6"/>
+            <stop offset="100%" stop-color="#3498db"/>
+          </radialGradient>
+        </defs>
+        <!-- center -->
+        <circle cx="380" cy="180" r="62" fill="url(#center)"/>
+        <text x="380" y="172" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">4 принципи</text>
+        <text x="380" y="192" text-anchor="middle" fill="#fff" font-size="11">Ліллея</text>
+
+        <!-- 1: top-left -->
+        <line x1="340" y1="135" x2="200" y2="60" stroke="#3498db" stroke-width="2"/>
+        <rect x="40" y="30" width="260" height="60" rx="10" fill="#eaf4fc" stroke="#3498db" stroke-width="1.5"/>
+        <text x="170" y="52" text-anchor="middle" fill="#1e3a8a" font-size="12" font-weight="700">1. Проблемних людей не існує</text>
+        <text x="170" y="72" text-anchor="middle" fill="#475569" font-size="10">Перемарковуй ярлик → поведінку</text>
+
+        <!-- 2: top-right -->
+        <line x1="420" y1="135" x2="560" y2="60" stroke="#27ae60" stroke-width="2"/>
+        <rect x="460" y="30" width="260" height="60" rx="10" fill="#ecfdf5" stroke="#27ae60" stroke-width="1.5"/>
+        <text x="590" y="52" text-anchor="middle" fill="#065f46" font-size="12" font-weight="700">2. Їм байдуже на тебе</text>
+        <text x="590" y="72" text-anchor="middle" fill="#475569" font-size="10">Не переходь на особистості</text>
+
+        <!-- 3: bottom-left -->
+        <line x1="340" y1="225" x2="200" y2="300" stroke="#9b59b6" stroke-width="2"/>
+        <rect x="40" y="270" width="260" height="60" rx="10" fill="#f5f3ff" stroke="#9b59b6" stroke-width="1.5"/>
+        <text x="170" y="292" text-anchor="middle" fill="#5b21b6" font-size="12" font-weight="700">3. Вони передбачувані</text>
+        <text x="170" y="312" text-anchor="middle" fill="#475569" font-size="10">Підготовка + маневр = перемога</text>
+
+        <!-- 4: bottom-right -->
+        <line x1="420" y1="225" x2="560" y2="300" stroke="#f39c12" stroke-width="2"/>
+        <rect x="460" y="270" width="260" height="60" rx="10" fill="#fef3c7" stroke="#f39c12" stroke-width="1.5"/>
+        <text x="590" y="292" text-anchor="middle" fill="#92400e" font-size="12" font-weight="700">4. Ти їх не змінеш</text>
+        <text x="590" y="312" text-anchor="middle" fill="#475569" font-size="10">Змінюй свій підхід, не людину</text>
+      </svg>
+    </div>
+
+    <h3>Переконання, що створюють конфлікти (Bramson)</h3>
+    <p>Роберт Брамсон у «Coping with Difficult People» виділяє <strong>15 ірраціональних переконань</strong>, які перетворюють звичайну взаємодію на драму. Найнебезпечніші для аналітика:</p>
+    <ul>
+      <li><strong>«Мене повинні всі любити»</strong> — веде до надмірної поступливості, розмитих AC, «так» замість «давайте уточнимо».</li>
+      <li><strong>«Я повинен бути ідеальним»</strong> — параліч перед PO-перфекціоністом, страх показати чернетки.</li>
+      <li><strong>«Легше уникнути труднощів, ніж стикатися»</strong> — несказане на мітингу стає боргом, який лопається на sprint review.</li>
+      <li><strong>«Конфліктів слід уникати будь-якою ціною»</strong> — класична пастка: мовчазний SME перемагає, вимоги провалюються.</li>
+      <li><strong>«Люди не змінюються»</strong> — самосправджуване пророцтво, що вбиває партнерство.</li>
+      <li><strong>«Світ (та вимоги) мають бути досконалими»</strong> — нескінченне полірування, зірвані дедлайни.</li>
+      <li><strong>«Десь є ідеальне рішення»</strong> — паралізує прийняття рішень discovery-фази.</li>
+    </ul>
+    <div class="callout yellow">
+      <strong>Вправа на 2 хв:</strong> Прочитай список вище ще раз і познач, які 2 переконання найчастіше «вмикаються» у тебе. Це твоя особиста мапа вразливостей.
+    </div>
+    <a href="#" class="back-top">↑ нагору</a>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- 3. 7 ТИПІВ                                                  -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <section id="difficult-types">
+    <h2><span class="num">3</span>7 класичних типів проблемних людей</h2>
+    <p>Класифікація Брамсона — стара (1981), але досі працює, бо базується на поведінкових патернах, а не на психотипах. Розпізнай тип — і половина задачі вирішена.</p>
+
+    <div class="svg-wrap">
+      <svg viewBox="0 0 780 420" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="390" cy="210" r="55" fill="url(#center)"/>
+        <text x="390" y="205" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">7 типів</text>
+        <text x="390" y="222" text-anchor="middle" fill="#fff" font-size="10">Bramson</text>
+
+        <!-- 7 nodes around center -->
+        <!-- 1 Sherman Tank -->
+        <line x1="390" y1="155" x2="390" y2="80" stroke="#e74c3c" stroke-width="1.5"/>
+        <rect x="280" y="30" width="220" height="50" rx="8" fill="#fef2f2" stroke="#e74c3c" stroke-width="1.3"/>
+        <text x="390" y="50" text-anchor="middle" fill="#991b1b" font-size="11" font-weight="700">1. Sherman Tank</text>
+        <text x="390" y="67" text-anchor="middle" fill="#64748b" font-size="9">Агресивні, домінують</text>
+
+        <!-- 2 Complainers -->
+        <line x1="445" y1="175" x2="610" y2="100" stroke="#f39c12" stroke-width="1.5"/>
+        <rect x="555" y="60" width="215" height="50" rx="8" fill="#fef3c7" stroke="#f39c12" stroke-width="1.3"/>
+        <text x="662" y="80" text-anchor="middle" fill="#92400e" font-size="11" font-weight="700">2. Complainers</text>
+        <text x="662" y="97" text-anchor="middle" fill="#64748b" font-size="9">Скаржаться, не діють</text>
+
+        <!-- 3 Clams -->
+        <line x1="445" y1="230" x2="620" y2="220" stroke="#7f8c8d" stroke-width="1.5"/>
+        <rect x="565" y="195" width="210" height="50" rx="8" fill="#f1f5f9" stroke="#7f8c8d" stroke-width="1.3"/>
+        <text x="670" y="215" text-anchor="middle" fill="#334155" font-size="11" font-weight="700">3. Clams (мовчуни)</text>
+        <text x="670" y="232" text-anchor="middle" fill="#64748b" font-size="9">Не дають фідбек</text>
+
+        <!-- 4 Super-Agreeables -->
+        <line x1="420" y1="260" x2="590" y2="340" stroke="#27ae60" stroke-width="1.5"/>
+        <rect x="545" y="325" width="225" height="50" rx="8" fill="#ecfdf5" stroke="#27ae60" stroke-width="1.3"/>
+        <text x="657" y="345" text-anchor="middle" fill="#065f46" font-size="11" font-weight="700">4. Super-Agreeables</text>
+        <text x="657" y="362" text-anchor="middle" fill="#64748b" font-size="9">«Так» на все, не роблять</text>
+
+        <!-- 5 Negativists -->
+        <line x1="360" y1="265" x2="215" y2="340" stroke="#9b59b6" stroke-width="1.5"/>
+        <rect x="10" y="325" width="220" height="50" rx="8" fill="#f5f3ff" stroke="#9b59b6" stroke-width="1.3"/>
+        <text x="120" y="345" text-anchor="middle" fill="#5b21b6" font-size="11" font-weight="700">5. Negativists</text>
+        <text x="120" y="362" text-anchor="middle" fill="#64748b" font-size="9">«Це не спрацює»</text>
+
+        <!-- 6 Know-It-Alls -->
+        <line x1="335" y1="230" x2="165" y2="220" stroke="#3498db" stroke-width="1.5"/>
+        <rect x="5" y="195" width="220" height="50" rx="8" fill="#eaf4fc" stroke="#3498db" stroke-width="1.3"/>
+        <text x="115" y="215" text-anchor="middle" fill="#1e3a8a" font-size="11" font-weight="700">6. Know-It-Alls</text>
+        <text x="115" y="232" text-anchor="middle" fill="#64748b" font-size="9">«Я все знаю краще»</text>
+
+        <!-- 7 Indecisives -->
+        <line x1="340" y1="175" x2="170" y2="100" stroke="#0891b2" stroke-width="1.5"/>
+        <rect x="5" y="60" width="220" height="50" rx="8" fill="#ecfeff" stroke="#0891b2" stroke-width="1.3"/>
+        <text x="115" y="80" text-anchor="middle" fill="#155e75" font-size="11" font-weight="700">7. Indecisives</text>
+        <text x="115" y="97" text-anchor="middle" fill="#64748b" font-size="9">Не можуть вирішити</text>
+      </svg>
+    </div>
+
+    <h3>Матриця: тип → ознаки → стратегія → IT-приклад</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Тип</th>
+            <th>Ознаки</th>
+            <th>Стратегія</th>
+            <th>Приклад з IT</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>1. Sherman Tank</strong><br><span class="muted">ворожий, агресивний</span></td>
+            <td>Підвищує голос, перебиває, атакує ідеї, тисне авторитетом.</td>
+            <td>Не конфронтуй у моменті спалаху. Дай випустити пару (1–2 хв мовчання). Тоді назви його ім'я, тверезо повтори тезу, тримай позицію.</td>
+            <td>CTO на архітектурному review кричить: «Це абсолютно неприйнятно!» → чекаєш, потім: «Олеже, я зрозумів занепокоєння. Давай я покажу 3 альтернативи.»</td>
+          </tr>
+          <tr>
+            <td><strong>2. Complainer</strong><br><span class="muted">вічно скаржиться</span></td>
+            <td>Кожна зустріч починається з «у нас все погано», але конкретики немає.</td>
+            <td>Слухай 30 секунд. Відзеркалюй почуття. Питай: «Що саме ти хотів би, щоб було інакше?» Перенаправ на факти та дії.</td>
+            <td>QA на ретро: «Вимоги завжди неповні!» → «Чую, що фрустрація велика. Назви мені 1 конкретну US цього спринту, де AC були неповні — зафіксуємо.»</td>
+          </tr>
+          <tr>
+            <td><strong>3. Clam</strong><br><span class="muted">мовчун</span></td>
+            <td>На зустрічах мовчить, відповідає «нормально», email ігнорує.</td>
+            <td>Відкриті питання (не yes/no). Витримуй тишу 5–8 секунд — не поспішай заповнювати. Створюй приватний канал (1:1, чат).</td>
+            <td>Senior Dev на grooming мовчить. Ти: «Андрію, з твого досвіду, що найкритичніше врахувати в цій US?» — пауза 8 сек. Відповідь прийде.</td>
+          </tr>
+          <tr>
+            <td><strong>4. Super-Agreeable</strong><br><span class="muted">на все згодний</span></td>
+            <td>«Так, звісно!», «Без проблем!» — але потім не виконує.</td>
+            <td>Проси конкретні зобов'язання (хто, що, до коли). Перевіряй розуміння («своїми словами поясни, що ми домовились»). Фіксуй письмово.</td>
+            <td>PO на review: «Ок, беремо!» Ти: «Супер. Я запишу: ми додаємо AC про role-based access, fix до п'ятниці. Ок?» Одразу в Jira.</td>
+          </tr>
+          <tr>
+            <td><strong>5. Negativist</strong><br><span class="muted">«це не спрацює»</span></td>
+            <td>На будь-яку ідею — «вже пробували», «не вийде», «замало ресурсів».</td>
+            <td>Не сперечайся. Проси конкретику: «Що саме не спрацює?» Залучай до пошуку рішення: «Як ти б зробив, враховуючи цей ризик?»</td>
+            <td>Техлід: «API Gateway — це overkill.» Ти: «Які 2–3 конкретні причини? І що буде кращим варіантом при 50 RPS?»</td>
+          </tr>
+          <tr>
+            <td><strong>6. Know-It-All</strong><br><span class="muted">всезнайка</span></td>
+            <td>Експерт у всьому, зневажає чужі думки, перериває поясненням «насправді…»</td>
+            <td>Визнай експертизу щиро. Став уточнюючі питання (не суперечливі). Пропонуй альтернативи як розширення його ідеї, а не спростування.</td>
+            <td>Архітектор: «Events — єдиний правильний шлях.» Ти: «Згоден з eventual consistency. Як би ти обробив кейс, коли UI потребує синхронної відповіді?»</td>
+          </tr>
+          <tr>
+            <td><strong>7. Indecisive</strong><br><span class="muted">нерішучий</span></td>
+            <td>«Давайте ще подумаємо», «треба порадитись», відкладає рішення тижнями.</td>
+            <td>Структуруй вибір (2–3 опції, не 10). Встановлюй deadline з наслідками («якщо до п'ятниці не вирішимо — беремо варіант А за замовч.»). Забирай відповідальність частково.</td>
+            <td>PO: «Я не впевнений щодо пріоритизації.» Ти: «Давай оберемо з 2: А — оплата, Б — профіль. Якщо до завтра 18:00 без рішення — беремо А, бо це блокує команду.»</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <a href="#" class="back-top">↑ нагору</a>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- 4. ДІАГНОСТИКА                                              -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <section id="difficult-diagnosis">
+    <h2><span class="num">4</span>Як діагностувати тип (4 кроки МакРея)</h2>
+    <p>Бред МакРей у «Negotiating and Influencing Skills» пропонує 4 швидкі питання, щоб відрізнити <strong>справді складну людину</strong> від <strong>ситуативного конфлікту</strong>. Це критично: неправильний діагноз = неправильна стратегія.</p>
+
+    <div class="svg-wrap">
+      <svg viewBox="0 0 760 480" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+            <polygon points="0 0, 10 5, 0 10" fill="#3498db"/>
+          </marker>
+        </defs>
+
+        <!-- Start -->
+        <rect x="280" y="10" width="200" height="50" rx="25" fill="#3498db"/>
+        <text x="380" y="40" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">Конфлікт з людиною</text>
+
+        <!-- Q1 -->
+        <line x1="380" y1="60" x2="380" y2="90" stroke="#3498db" stroke-width="2" marker-end="url(#arr)"/>
+        <polygon points="380,90 560,140 380,190 200,140" fill="#eaf4fc" stroke="#3498db" stroke-width="1.8"/>
+        <text x="380" y="132" text-anchor="middle" fill="#1e3a8a" font-size="11" font-weight="700">Крок 1: Спостерігав</text>
+        <text x="380" y="148" text-anchor="middle" fill="#1e3a8a" font-size="11" font-weight="700">цю поведінку ≥ 3 рази?</text>
+
+        <!-- No → situational -->
+        <line x1="200" y1="140" x2="80" y2="140" stroke="#7f8c8d" stroke-width="2" marker-end="url(#arr)"/>
+        <text x="140" y="132" text-anchor="middle" fill="#7f8c8d" font-size="10">Ні</text>
+        <rect x="5" y="115" width="150" height="50" rx="8" fill="#f1f5f9" stroke="#7f8c8d" stroke-width="1.5"/>
+        <text x="80" y="138" text-anchor="middle" fill="#334155" font-size="10" font-weight="700">Ситуативно</text>
+        <text x="80" y="153" text-anchor="middle" fill="#64748b" font-size="9">(збіг, не патерн)</text>
+
+        <!-- Q2 -->
+        <line x1="380" y1="190" x2="380" y2="215" stroke="#3498db" stroke-width="2" marker-end="url(#arr)"/>
+        <text x="540" y="155" fill="#27ae60" font-size="10">Так</text>
+        <polygon points="380,215 560,260 380,305 200,260" fill="#eaf4fc" stroke="#3498db" stroke-width="1.8"/>
+        <text x="380" y="252" text-anchor="middle" fill="#1e3a8a" font-size="11" font-weight="700">Крок 2: Людина</text>
+        <text x="380" y="268" text-anchor="middle" fill="#1e3a8a" font-size="11" font-weight="700">під стресом зараз?</text>
+
+        <!-- Q2 yes -->
+        <line x1="560" y1="260" x2="680" y2="260" stroke="#f39c12" stroke-width="2" marker-end="url(#arr)"/>
+        <text x="610" y="252" fill="#f39c12" font-size="10">Так</text>
+        <rect x="600" y="235" width="155" height="50" rx="8" fill="#fef3c7" stroke="#f39c12" stroke-width="1.5"/>
+        <text x="677" y="258" text-anchor="middle" fill="#92400e" font-size="10" font-weight="700">Тимчасово</text>
+        <text x="677" y="273" text-anchor="middle" fill="#64748b" font-size="9">(дай часу)</text>
+
+        <!-- Q3 -->
+        <line x1="380" y1="305" x2="380" y2="330" stroke="#3498db" stroke-width="2" marker-end="url(#arr)"/>
+        <polygon points="380,330 560,370 380,410 200,370" fill="#eaf4fc" stroke="#3498db" stroke-width="1.8"/>
+        <text x="380" y="362" text-anchor="middle" fill="#1e3a8a" font-size="11" font-weight="700">Крок 3: ТИ під</text>
+        <text x="380" y="378" text-anchor="middle" fill="#1e3a8a" font-size="11" font-weight="700">стресом зараз?</text>
+
+        <!-- Q3 yes -->
+        <line x1="200" y1="370" x2="80" y2="370" stroke="#9b59b6" stroke-width="2" marker-end="url(#arr)"/>
+        <text x="140" y="362" fill="#9b59b6" font-size="10">Так</text>
+        <rect x="5" y="345" width="150" height="50" rx="8" fill="#f5f3ff" stroke="#9b59b6" stroke-width="1.5"/>
+        <text x="80" y="368" text-anchor="middle" fill="#5b21b6" font-size="10" font-weight="700">Спотворення</text>
+        <text x="80" y="383" text-anchor="middle" fill="#64748b" font-size="9">(попрацюй з собою)</text>
+
+        <!-- Q4 -->
+        <line x1="380" y1="410" x2="380" y2="430" stroke="#3498db" stroke-width="2" marker-end="url(#arr)"/>
+        <rect x="230" y="430" width="300" height="40" rx="8" fill="#ecfdf5" stroke="#27ae60" stroke-width="1.8"/>
+        <text x="380" y="447" text-anchor="middle" fill="#065f46" font-size="11" font-weight="700">Крок 4: Була доросла розмова?</text>
+        <text x="380" y="463" text-anchor="middle" fill="#64748b" font-size="9">Якщо ні — спочатку розмова, тільки потім «ярлик»</text>
+      </svg>
+    </div>
+
+    <ol>
+      <li><strong>Чи спостерігали ви поведінку мінімум 3 рази?</strong> Перші 2 — збіг. 3-й — закономірність. Не вішай ярлик після першого інциденту.</li>
+      <li><strong>Чи людина зараз під стресом?</strong> Реліз-week, розлучення, звільнення колеги — усе спотворює. Стрес робить «сермана» з мирного архітектора.</li>
+      <li><strong>Чи ВИ під стресом?</strong> Найчесніше питання. Коли ти виснажений — усі здаються «токсичними». Перевір свій стан, перш ніж діагностувати інших.</li>
+      <li><strong>Чи була доросла розмова про проблему?</strong> Часто людина просто не знає, що її поведінка заважає. Один чесний 1:1 вирішує 50% «проблемних» випадків ще до того, як ти почав будувати стратегію.</li>
+    </ol>
+
+    <div class="callout green">
+      <strong>Правило senior BA:</strong> «Стратегію проти проблемної людини застосовуємо <em>тільки після</em> того, як пройдено всі 4 кроки й підтверджено, що це патерн — а не ситуація.»
+    </div>
+    <a href="#" class="back-top">↑ нагору</a>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- 5. IT-ПЕРСОНАЖІ                                             -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <section id="difficult-it-personas">
+    <h2><span class="num">5</span>Проблемні персонажі в IT-проєктах</h2>
+    <p>Тепер — від класичної теорії до реальних персонажів, з якими ти зустрінешся в fintech, e-commerce та enterprise-проєктах. Кожен персонаж — це комбінація 1–2 класичних типів + IT-контекст.</p>
+
+    <div class="persona">
+      <div class="persona-title">🎯 Product Owner-перфекціоніст</div>
+      <div class="persona-meta">Класична база: Indecisive + Know-It-All · Домени: fintech, enterprise</div>
+      <p>Постійно міняє вимоги, ніколи не задоволений. «А давай ще подумаємо», «а що як користувачі захочуть…». Спринт на 3-й день уже виглядає інакше, ніж у планінгу.</p>
+      <p><strong>Як розпізнати:</strong> зміна AC після sprint start ≥ 2 разів, «давай ще раз переглянемо» на кожному grooming, немає письмових рішень.</p>
+      <p><strong>Стратегія:</strong> freeze-правила (після planning міняти тільки за CR), decision log, структурований вибір (2–3 опції замість відкритого «що скажеш?»), дедлайни з наслідками.</p>
+      <div class="dialogue">
+        <span class="role them">PO:</span> А може, додамо ще й фільтр за датою реєстрації?<br>
+        <span class="role ba">Ти:</span> Добра ідея. Фіксую її як CR на наступний спринт. У цьому вже немає capacity — або додаємо, або вилучаємо щось із беклогу. Що обираємо?
+      </div>
+    </div>
+
+    <div class="persona">
+      <div class="persona-title">🤐 Мовчазний SME</div>
+      <div class="persona-meta">Класична база: Clam · Домени: enterprise, legacy, регульовані галузі</div>
+      <p>Експерт домену, знає все — але на інтерв'ю відповідає «ну, як зазвичай», «це залежить», «треба подивитись». 45 хвилин зустрічі — 3 сторінки нотаток, з яких корисних 5 рядків.</p>
+      <p><strong>Як розпізнати:</strong> закриті відповіді, мінімум прикладів, уникнення гіпотез, «а нащо тобі це?»</p>
+      <p><strong>Стратегія:</strong> приходь з артефактом (чернетка flow, bpmn, таблиця). SME легше критикувати щось готове, ніж відповідати з нуля. Використовуй shadowing — посидь поруч, подивись, як він працює. Питай через приклади.</p>
+      <div class="dialogue">
+        <span class="role ba">Ти:</span> Я набросав as-is для процесу відшкодування. Подивись, де я помиляюсь — тільки помилки, правильне пропустимо.<br>
+        <span class="role them">SME:</span> (пауза 10 сек) Ну... тут ти пропустив кейс з частковим відшкодуванням. І ще...
+      </div>
+    </div>
+
+    <div class="persona">
+      <div class="persona-title">🛑 Техлід-блокер</div>
+      <div class="persona-meta">Класична база: Negativist + Know-It-All · Домени: всі</div>
+      <p>На будь-яку вимогу — «це нереалізовувано», «ми не маємо ресурсів», «це вплине на performance». Аналітик виходить зі зустрічі без AC і з відчуттям провалу.</p>
+      <p><strong>Як розпізнати:</strong> відсікає вимоги до пояснення контексту, немає альтернатив, argument by authority.</p>
+      <p><strong>Стратегія:</strong> не заперечуй — проси конкретику («які саме обмеження?»), запрошуй у discovery <em>до</em> requirements (тоді він partner, а не оппонент), валідуй бізнес-цінність разом.</p>
+      <div class="dialogue">
+        <span class="role them">Техлід:</span> Це не спрацює. Занадто складно.<br>
+        <span class="role ba">Ти:</span> Окей. Які 2 топ-обмеження роблять це складним — архітектура, дані, час? Давай на 15 хв разом подивимось, який MVP-scope був би реалістичним.
+      </div>
+    </div>
+
+    <div class="persona">
+      <div class="persona-title">🔬 Stakeholder-мікроменеджер</div>
+      <div class="persona-meta">Класична база: Know-It-All + Indecisive · Домени: enterprise, державний сектор</div>
+      <p>Контролює кожен крок. Вимагає щоденних звітів, лізе в details, не довіряє команді. Одне рішення обговорюється в 3-х email-тредах + 2 дзвінках.</p>
+      <p><strong>Як розпізнати:</strong> CC на всіх листах, переспитування, запити «дай мені повний контекст» щотижня.</p>
+      <p><strong>Стратегія:</strong> проактивна прозорість (дашборд статусу, weekly digest). Коли він бачить, що ти все контролюєш — мікроменеджмент зменшується. Проси чіткі межі («що саме ти хочеш бачити в звіті?»).</p>
+    </div>
+
+    <div class="persona">
+      <div class="persona-title">🧠 «Всезнайка»-розробник</div>
+      <div class="persona-meta">Класична база: Know-It-All · Домени: всі, особливо startup-и</div>
+      <p>Ігнорує документацію, робить «як краще». AC не читає, Figma — «для галочки», на code review каже «я знав, що так буде правильніше».</p>
+      <p><strong>Як розпізнати:</strong> deviations від AC без узгодження, «я вже зробив інакше» на demo.</p>
+      <p><strong>Стратегія:</strong> визнай експертизу, залучай <em>до</em> написання AC (а не після). «Як би ти описав цю вимогу, щоб для тебе було очевидно?» — тепер це <em>його</em> AC, їх не проігноруєш.</p>
+    </div>
+
+    <div class="persona">
+      <div class="persona-title">😶 Пасивно-агресивний колега</div>
+      <div class="persona-meta">Класична база: Super-Agreeable + Complainer · Домени: всі</div>
+      <p>На мітингах погоджується, у кулуарах критикує. Email через тиждень: «Я ще тоді говорив, що це не спрацює…» Ніколи — публічно.</p>
+      <p><strong>Як розпізнати:</strong> розбіжність між словами на зустрічі і діями/словами після, sarcasm у чатах.</p>
+      <p><strong>Стратегія:</strong> фіксуй публічно, викликай на пряму розмову 1:1. «Я помітив, що на planning ти погодився, а потім у чаті написав інше — давай розберемось, що саме тебе не влаштовує». Без звинувачень, з фактами.</p>
+    </div>
+
+    <a href="#" class="back-top">↑ нагору</a>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- 6. СКРИПТИ                                                  -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <section id="difficult-scripts">
+    <h2><span class="num">6</span>Скрипти для типових ситуацій</h2>
+    <p>Найцінніше, що senior може забрати з цього курсу — готові шаблони, які можна модифікувати під ситуацію. Використовуй їх як стартову точку, не як догму.</p>
+
+    <h3>🎬 Скрипт 1: Discovery-сесія зі складним стейкхолдером</h3>
+    <div class="dialogue">
+      <span class="role ba">Ти (на старті):</span> Дякую, що знайшли час. У нас 45 хв. Моя мета — зрозуміти, як процес X працює у вас сьогодні, і які 2–3 найбільші болі. Я зробив чернетку — подивимось разом, де вона хибна. Ок?<br>
+      <span class="role them">SH:</span> Ну, давайте…<br>
+      <span class="role ba">Ти:</span> Перше, що я помітив у ваших даних — 30% заявок «зависають». Розкажіть мені історію однієї такої заявки — від моменту, коли вона прийшла, і до того, як ви зрозуміли, що вона зависла.
+    </div>
+    <div class="callout green">
+      <strong>Чому працює:</strong> приходиш підготовленим (артефакт + гіпотеза), даєш контроль через конкретне питання-історію, обмежуєш тему.
+    </div>
+
+    <h3>🛡 Скрипт 2: Реакція на «це не спрацює» від техліда</h3>
+    <div class="dialogue">
+      <span class="role them">ТЛ:</span> Це неможливо імплементувати.<br>
+      <span class="role ba">Ти:</span> Допоможи зрозуміти — що саме не можливо: архітектура, навантаження, або timeline? (пауза)<br>
+      <span class="role them">ТЛ:</span> Performance. При такому навантаженні наша база це не витримає.<br>
+      <span class="role ba">Ти:</span> Ок, зрозумів. Якщо відсунути частину навантаження в async через чергу — це знімає проблему? Або потрібне інше рішення?
+    </div>
+    <div class="callout green">
+      <strong>Чому працює:</strong> не сперечаєшся, розбиваєш «неможливо» на конкретні причини, одразу пропонуєш варіант, переводиш з «блокера» на «партнера з рішення».
+    </div>
+
+    <h3>🔓 Скрипт 3: Як розговорити мовчазного SME</h3>
+    <div class="dialogue">
+      <span class="role ba">Ти:</span> Я не хочу витрачати твій час на загальні питання. Я зробив діаграму процесу, як я його розумію. Вона напевно з помилками — твоя єдина задача зараз показати, де я помиляюсь. Добре?<br>
+      <span class="role them">SME:</span> ...(дивиться)<br>
+      <span class="role ba">Ти:</span> (мовчиш 8 секунд, не коментуєш)<br>
+      <span class="role them">SME:</span> Ну, тут у тебе помилка. У нас цей етап після, не до.
+    </div>
+    <div class="callout green">
+      <strong>Чому працює:</strong> критикувати чернетку легше, ніж створювати. Пауза — ключовий інструмент. Не заповнюй тишу.
+    </div>
+
+    <h3>📝 Скрипт 4: Фіксація домовленостей з «надмірно сприятливим» PO</h3>
+    <div class="dialogue">
+      <span class="role them">PO:</span> Так, звісно, беремо обидві фічі в спринт!<br>
+      <span class="role ba">Ти:</span> Супер. Щоб ми точно на одній сторінці — підтверди, будь ласка: <br>
+      &nbsp;&nbsp;1) Фіча A — з повним role-based access<br>
+      &nbsp;&nbsp;2) Фіча B — MVP, без інтеграції з CRM<br>
+      Дедлайн — п'ятниця 18:00. Я зараз запишу це в Jira як Definition of Done. Ок?<br>
+      <span class="role them">PO:</span> Так… хоча, можливо, CRM треба одразу…<br>
+      <span class="role ba">Ти:</span> Ось тут і важливо визначитись. CRM-інтеграція додає 3 дні. Беремо на наступний спринт чи переносимо B?
+    </div>
+    <div class="callout green">
+      <strong>Чому працює:</strong> повторення вголос + конкретні пункти + дедлайн + одразу письмова фіксація = «так» перетворюється на зобов'язання.
+    </div>
+
+    <h3>📢 Скрипт 5: Ескалація без руйнування відносин</h3>
+    <div class="dialogue">
+      <span class="role ba">Ти (колезі):</span> Я хочу попередити — я збираюсь підняти питання з deadlines на PMO-meeting завтра. Причина: 3 тижні ми не можемо отримати finalized AC, і це блокує 4 story. Я не «жаліюсь на тебе» — я ескалюю <em>проблему</em>. Хочу, щоб ти знав заздалегідь і міг або долучитись, або дати свій кут зору.
+    </div>
+    <div class="callout green">
+      <strong>Чому працює:</strong> ескалація «попереджена» — не сюрприз; формулювання «ескалюю проблему, а не людину»; даєш можливість приєднатись.
+    </div>
+
+    <h3>🔑 Таблиця: фраза-тригер → що відповісти</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Що ти чуєш</th>
+            <th>Що НЕ казати</th>
+            <th>Що сказати</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>«Це неможливо»</td>
+            <td>«Та ні, це легко!»</td>
+            <td>«Що саме робить це складним — дані, архітектура чи час?»</td>
+          </tr>
+          <tr>
+            <td>«Ми завжди так робили»</td>
+            <td>«Це застарілий підхід»</td>
+            <td>«Допоможи зрозуміти історію — чому саме так склалося? Може, контекст уже змінився.»</td>
+          </tr>
+          <tr>
+            <td>«У мене немає на це часу»</td>
+            <td>«Але мені треба!»</td>
+            <td>«Зрозумів. Скільки часу ти реально можеш виділити — 15 хв, 30? Я підготую так, щоб вписатись.»</td>
+          </tr>
+          <tr>
+            <td>«Хай розробники самі розберуться»</td>
+            <td>«Це твоя відповідальність»</td>
+            <td>«Без твоїх вхідних команда зробить припущення — потім все одно повернемось з question list. Давай зекономимо раунд.»</td>
+          </tr>
+          <tr>
+            <td>«Це все давно вирішено»</td>
+            <td>«Ніхто мені не говорив»</td>
+            <td>«Супер, допоможи знайти де — в якому документі / тікеті? Хочу не дублювати.»</td>
+          </tr>
+          <tr>
+            <td>«Ти не розумієш нашого бізнесу»</td>
+            <td>«Я 5 років у BA!»</td>
+            <td>«Абсолютно вірно — тому я тут. Покажи мені 1–2 приклади, де я точно помиляюсь у припущеннях.»</td>
+          </tr>
+          <tr>
+            <td>«Зроби як хочеш»</td>
+            <td>«Окей!»</td>
+            <td>«Я можу вибрати, але рішення вплине на X. Хочу твоє підтвердження — або delegation officially.»</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <a href="#" class="back-top">↑ нагору</a>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- 7. ФАСИЛІТАЦІЯ                                              -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <section id="difficult-facilitation">
+    <h2><span class="num">7</span>Фасилітація при конфліктах</h2>
+    <p>Коли ти модеруєш воркшоп на 8+ людей, ймовірність наявності «складного» учасника — майже 100%. Senior BA не реагує — він <em>передбачає</em> і має техніки напоготові.</p>
+
+    <h3>Техніки деескалації</h3>
+    <div class="cards">
+      <div class="card">
+        <div class="card-title">⏸ Пауза на 30 секунд</div>
+        <p>Коли атмосфера нагрівається — «Дайте мені 30 секунд підсумувати, що ми почули.» Пауза перериває ескалацію, дає всім видихнути.</p>
+      </div>
+      <div class="card green">
+        <div class="card-title">🔁 Paraphrase the pain</div>
+        <p>«Якщо я правильно зрозумів, Олеже — тебе турбує X, тому що Y. Правильно?» Людина, яку зрозуміли, перестає кричати.</p>
+      </div>
+      <div class="card purple">
+        <div class="card-title">🎯 Return to purpose</div>
+        <p>«Нагадаю мету цієї сесії — визначити top-3 ризики для релізу. Це питання про це чи про щось інше? Якщо інше — в parking lot.»</p>
+      </div>
+      <div class="card yellow">
+        <div class="card-title">🙋 Round robin</div>
+        <p>Коли один домінує — «Давайте кожен по колу — 1 хв. Почнемо з Марії.» Структурує й вирівнює голоси.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">🅿️ Parking lot</div>
+        <p>Для off-topic суперечок — «Важлива тема, але не для цієї сесії. Записую в parking lot, обговоримо окремо.»</p>
+      </div>
+      <div class="card gray">
+        <div class="card-title">🧊 Break</div>
+        <p>Якщо конфлікт зайшов далеко — оголоси 10-хвилинну перерву. Часто достатньо, щоб емоції спали, а люди поговорили кулуарно.</p>
+      </div>
+    </div>
+
+    <h3>SVG: Алгоритм вибору техніки</h3>
+    <div class="svg-wrap">
+      <svg viewBox="0 0 760 380" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="arr2" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+            <polygon points="0 0, 10 5, 0 10" fill="#3498db"/>
+          </marker>
+        </defs>
+        <rect x="290" y="10" width="180" height="45" rx="22" fill="#3498db"/>
+        <text x="380" y="37" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">Конфлікт на воркшопі</text>
+
+        <line x1="380" y1="55" x2="380" y2="80" stroke="#3498db" stroke-width="2" marker-end="url(#arr2)"/>
+        <polygon points="380,80 540,120 380,160 220,120" fill="#eaf4fc" stroke="#3498db" stroke-width="1.5"/>
+        <text x="380" y="118" text-anchor="middle" fill="#1e3a8a" font-size="11" font-weight="700">Один домінує?</text>
+
+        <line x1="540" y1="120" x2="640" y2="120" stroke="#f39c12" stroke-width="2" marker-end="url(#arr2)"/>
+        <text x="580" y="112" fill="#f39c12" font-size="10">Так</text>
+        <rect x="610" y="98" width="145" height="45" rx="8" fill="#fef3c7" stroke="#f39c12" stroke-width="1.5"/>
+        <text x="682" y="120" text-anchor="middle" fill="#92400e" font-size="10" font-weight="700">Round robin</text>
+        <text x="682" y="133" text-anchor="middle" fill="#64748b" font-size="9">+ parking lot</text>
+
+        <line x1="380" y1="160" x2="380" y2="185" stroke="#3498db" stroke-width="2" marker-end="url(#arr2)"/>
+        <polygon points="380,185 540,225 380,265 220,225" fill="#eaf4fc" stroke="#3498db" stroke-width="1.5"/>
+        <text x="380" y="223" text-anchor="middle" fill="#1e3a8a" font-size="11" font-weight="700">Емоції високі?</text>
+
+        <line x1="220" y1="225" x2="120" y2="225" stroke="#e74c3c" stroke-width="2" marker-end="url(#arr2)"/>
+        <text x="180" y="217" fill="#e74c3c" font-size="10">Так</text>
+        <rect x="5" y="203" width="145" height="45" rx="8" fill="#fef2f2" stroke="#e74c3c" stroke-width="1.5"/>
+        <text x="77" y="225" text-anchor="middle" fill="#991b1b" font-size="10" font-weight="700">Пауза 30 сек</text>
+        <text x="77" y="238" text-anchor="middle" fill="#64748b" font-size="9">або break 10 хв</text>
+
+        <line x1="380" y1="265" x2="380" y2="290" stroke="#3498db" stroke-width="2" marker-end="url(#arr2)"/>
+        <rect x="220" y="290" width="320" height="50" rx="8" fill="#ecfdf5" stroke="#27ae60" stroke-width="1.8"/>
+        <text x="380" y="310" text-anchor="middle" fill="#065f46" font-size="11" font-weight="700">Paraphrase + Return to purpose</text>
+        <text x="380" y="325" text-anchor="middle" fill="#64748b" font-size="10">«Якщо правильно зрозумів… Нагадаю мету…»</text>
+      </svg>
+    </div>
+
+    <h3>Типові виклики фасилітатора</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Ситуація</th><th>Що робити</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Домінуючий учасник</td><td>Round robin; «Дякую, Іване — хочу почути інших. Маріє, твоя думка?»</td></tr>
+          <tr><td>Мовчазні учасники</td><td>Анонімні стікери/Miro; прямий виклик на ім'я; 1:1 після сесії</td></tr>
+          <tr><td>Негативіст блокує ідеї</td><td>«Запишімо критику. Тепер — на 5 хв режим «тільки ідеї, без критики».»</td></tr>
+          <tr><td>Суперечка 2 людей</td><td>«Пропоную зафіксувати обидві точки — і на 10 хв до parking lot. Продовжимо після сесії 1:1.»</td></tr>
+          <tr><td>Флейм у чаті</td><td>Модеруй голосом: «Я бачу питання в чаті, давайте розглянемо його офлайн, бо воно складне.»</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <a href="#" class="back-top">↑ нагору</a>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- 8. ЕСКАЛАЦІЯ                                                -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <section id="difficult-escalation">
+    <h2><span class="num">8</span>Коли і як ескалювати</h2>
+    <p>Ескалація — це не «скарга», це інструмент. Мідли ескалюють або занадто пізно (коли вже пізно), або занадто часто (тоді їх перестають слухати). Senior розуміє, <em>де середина</em>.</p>
+
+    <h3>Шкала ескалації</h3>
+    <div class="svg-wrap">
+      <svg viewBox="0 0 760 280" xmlns="http://www.w3.org/2000/svg">
+        <!-- scale bar -->
+        <rect x="40" y="100" width="680" height="40" rx="6" fill="url(#scaleGrad)"/>
+        <defs>
+          <linearGradient id="scaleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#27ae60"/>
+            <stop offset="40%" stop-color="#3498db"/>
+            <stop offset="70%" stop-color="#f39c12"/>
+            <stop offset="100%" stop-color="#e74c3c"/>
+          </linearGradient>
+        </defs>
+        <!-- labels -->
+        <text x="40" y="90" fill="#065f46" font-size="11" font-weight="700">Вирішуй сам</text>
+        <text x="720" y="90" text-anchor="end" fill="#991b1b" font-size="11" font-weight="700">Ескалюй зараз</text>
+
+        <!-- ticks -->
+        <line x1="40"  y1="140" x2="40"  y2="155" stroke="#334155" stroke-width="2"/>
+        <line x1="210" y1="140" x2="210" y2="155" stroke="#334155" stroke-width="2"/>
+        <line x1="380" y1="140" x2="380" y2="155" stroke="#334155" stroke-width="2"/>
+        <line x1="550" y1="140" x2="550" y2="155" stroke="#334155" stroke-width="2"/>
+        <line x1="720" y1="140" x2="720" y2="155" stroke="#334155" stroke-width="2"/>
+
+        <text x="40"  y="175" text-anchor="middle" fill="#334155" font-size="10" font-weight="700">Рутина</text>
+        <text x="210" y="175" text-anchor="middle" fill="#334155" font-size="10" font-weight="700">Проблема</text>
+        <text x="380" y="175" text-anchor="middle" fill="#334155" font-size="10" font-weight="700">Ризик</text>
+        <text x="550" y="175" text-anchor="middle" fill="#334155" font-size="10" font-weight="700">Блокер</text>
+        <text x="720" y="175" text-anchor="middle" fill="#334155" font-size="10" font-weight="700">Криза</text>
+
+        <text x="40"  y="210" text-anchor="middle" fill="#64748b" font-size="9">Ти сам</text>
+        <text x="210" y="210" text-anchor="middle" fill="#64748b" font-size="9">1:1 з людиною</text>
+        <text x="380" y="210" text-anchor="middle" fill="#64748b" font-size="9">Team lead</text>
+        <text x="550" y="210" text-anchor="middle" fill="#64748b" font-size="9">PM / PMO</text>
+        <text x="720" y="210" text-anchor="middle" fill="#64748b" font-size="9">Sponsor/CTO</text>
+
+        <text x="40"  y="240" text-anchor="middle" fill="#94a3b8" font-size="9">негайно</text>
+        <text x="210" y="240" text-anchor="middle" fill="#94a3b8" font-size="9">1–2 дні</text>
+        <text x="380" y="240" text-anchor="middle" fill="#94a3b8" font-size="9">у тижні</text>
+        <text x="550" y="240" text-anchor="middle" fill="#94a3b8" font-size="9">&lt;24 год</text>
+        <text x="720" y="240" text-anchor="middle" fill="#94a3b8" font-size="9">негайно</text>
+
+        <text x="380" y="30" text-anchor="middle" fill="#1e293b" font-size="13" font-weight="700">Шкала ескалації для BA/SA</text>
+      </svg>
+    </div>
+
+    <h3>Критерії — коли ескалювати</h3>
+    <ul>
+      <li>Проблема повторюється ≥ 3 разів попри прямі розмови.</li>
+      <li>Блокує роботу команди / scope / deadline.</li>
+      <li>Ти вже вичерпав власні інструменти (1:1, фасилітація, альтернативні пропозиції).</li>
+      <li>Вплив виходить за межі твоєї зони відповідальності (архітектура, budget, legal).</li>
+      <li>Ризик зростає швидше, ніж ти можеш локально управляти.</li>
+    </ul>
+
+    <h3>Чекліст підготовки до ескалації</h3>
+    <ul class="checklist">
+      <li>Сформульована <strong>проблема</strong> (не «людина погана», а «фіча X заблокована 3 тижні»).</li>
+      <li>Зібрані <strong>факти</strong> (дати, кількість, impact у грошах/часі).</li>
+      <li>Описані <strong>вже спробувані кроки</strong> (що робив, результат).</li>
+      <li>Підготовлено <strong>2–3 варіанти рішення</strong>, не тільки «допоможіть».</li>
+      <li>Попереджено <strong>залучену людину</strong>, що ти ескалюєш (без сюрпризу).</li>
+      <li>Обраний <strong>правильний рівень</strong> (не стрибай через голову team lead одразу до CTO).</li>
+      <li>Сформульовано в <strong>impact-мові</strong>: «це коштує нам 2 спринти», «ризик зриву релізу».</li>
+      <li>Ти готовий узяти на себе <strong>частку рішення</strong> — ескалація не значить «скиньте це з мене».</li>
+    </ul>
+
+    <div class="callout green">
+      <strong>Як ескалювати без руйнування відносин:</strong> 1) Попередь людину заздалегідь. 2) Формулюй про проблему, не про особу. 3) Давай людині можливість долучитись / виправити. 4) Після ескалації — повертайся до нормальних відносин, не «переможець».
+    </div>
+    <a href="#" class="back-top">↑ нагору</a>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- 9. ПОМИЛКИ                                                  -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <section id="difficult-mistakes">
+    <h2><span class="num">9</span>Типові помилки мідл-аналітиків</h2>
+
+    <div class="callout yellow">
+      <strong>⚠️ 1. «Я просто спробую бути приємним»</strong><br>
+      <em>Чому провал:</em> приємність ≠ узгодженість. Super-Agreeable PO — найнебезпечніший персонаж, бо його «так» не значить «зроблено». Ти отримаєш рахунок на sprint review.
+    </div>
+
+    <div class="callout yellow">
+      <strong>⚠️ 2. Приймати поведінку на особистий рахунок</strong><br>
+      <em>Чому провал:</em> коли ти думаєш «він мене ненавидить», ти реагуєш емоційно. А він просто під дедлайном. Ти програв зустріч ще до її початку.
+    </div>
+
+    <div class="callout yellow">
+      <strong>⚠️ 3. Відкладати складну розмову «до кращого моменту»</strong><br>
+      <em>Чому провал:</em> кращого моменту не буде. Відкладена розмова → накопичення фрустрації → вибух на ретро → репутаційні збитки для обох.
+    </div>
+
+    <div class="callout yellow">
+      <strong>⚠️ 4. Ескалювати без попередження</strong><br>
+      <em>Чому провал:</em> людина дізнається про ескалацію від свого керівника — сприймає як удар у спину. Надалі — жодної довіри, навіть коли ти правий.
+    </div>
+
+    <div class="callout yellow">
+      <strong>⚠️ 5. Намагатись «виховати» стейкхолдера</strong><br>
+      <em>Чому провал:</em> твоя задача — результат у проєкті, не соціальна робота. «Виховання» займає роки, спринти ідуть зараз.
+    </div>
+
+    <div class="callout yellow">
+      <strong>⚠️ 6. Мовчати у конфлікті «щоб не погіршити»</strong><br>
+      <em>Чому провал:</em> мовчання — це згода. Ти береш на себе тягар, команда сприймає це як стандарт, наступного разу буде важче.
+    </div>
+
+    <div class="callout yellow">
+      <strong>⚠️ 7. Вступати в суперечку замість diagnostic questions</strong><br>
+      <em>Чому провал:</em> «Це неможливо» — «Ні, можливо!» — це безглуздий пінг-понг. Senior завжди питає «Що робить це неможливим?» — і переводить розмову в конструктив.
+    </div>
+
+    <div class="callout yellow">
+      <strong>⚠️ 8. Думати, що «мовчазний = агресивний»</strong><br>
+      <em>Чому провал:</em> мовчуни частіше інтроверти або невпевнені. Агресивна реакція («ну скажи ж щось!») тільки закриє їх остаточно.
+    </div>
+    <a href="#" class="back-top">↑ нагору</a>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- 10. SELF-CHECK                                              -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <section id="difficult-selfcheck">
+    <h2><span class="num">10</span>Перевір себе</h2>
+    <p>Дай собі чесні відповіді. Це не тест «на оцінку» — це діагностика твоїх зон росту.</p>
+
+    <ol>
+      <li><strong>Назви 4 принципи Ліллея</strong> своїми словами. Який з них найскладніше дотримуватись особисто тобі?</li>
+      <li><strong>Згадай останній конфлікт у проєкті.</strong> Пройди 4 кроки МакРея — це був справді «проблемний» патерн, чи ситуативне?</li>
+      <li><strong>З 7 класичних типів</strong> який ти найчастіше зустрічав у своїх проєктах? Яка стратегія працювала, а яка ні?</li>
+      <li><strong>Опиши сценарій</strong>: PO каже «беремо в спринт!» — як ти зафіксуєш домовленість, щоб це не розсипалось?</li>
+      <li><strong>На воркшопі</strong> один учасник перебиває всіх і «знає краще». Які 2 техніки ти застосуєш — і в якому порядку?</li>
+      <li><strong>Перевір свої переконання:</strong> які 2 з 7 ірраціональних переконань Брамсона активуються у тебе найчастіше? Як це виявляється в роботі?</li>
+      <li><strong>Остання твоя ескалація</strong> — чи був чекліст виконаний повністю? Що б ти змінив зараз?</li>
+    </ol>
+
+    <div class="callout purple">
+      <strong>🎓 Практичне завдання: mock-інтерв'ю з «складним» колегою</strong><br>
+      Знайди колегу (dev, QA, іншого BA). Поясни задачу: «я відпрацьовую техніку discovery з складними стейкхолдерами, твоя роль — грати <em>Negativist</em> (або обери інший тип). Я проведу 15-хвилинне інтерв'ю про фіктивний процес (напр., онбординг нового співробітника). Після — дай фідбек: що спрацювало, де я здувся».<br><br>
+      <strong>Що перевірити у фідбеку:</strong> чи ставив diagnostic questions замість суперечки; чи витримав паузи; чи зафіксував домовленості; чи залишив колегу партнером.
+    </div>
+    <a href="#" class="back-top">↑ нагору</a>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- 11. ПИТАННЯ НА СПІВБЕСІДІ                                   -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <section id="difficult-interview">
+    <h2><span class="num">11</span>Питання на senior-співбесіді</h2>
+    <p>Ось реальні питання, які задають на senior BA/SA співбесідах — і фреймворк, як відповідати.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-title">Q1. Розкажи про складний конфлікт зі стейкхолдером. Як ти його вирішив?</div>
+        <p><strong>Фреймворк STAR:</strong> Situation → Task → Action → Result. Обов'язково: конкретика (хто, коли, impact у грошах/часі), що ти <em>сам</em> зробив, чому <em>не спрацювало</em> інше, чому людина залишилась партнером.</p>
+      </div>
+      <div class="card green">
+        <div class="card-title">Q2. Як ти працюєш з мовчазним SME, який не дає відповідей?</div>
+        <p>Відповідай техніками: <em>приходь з артефактом, відкриті питання, shadowing, витримай паузу 8 сек</em>. Покажи, що у тебе є <strong>більше одного</strong> підходу — не тільки «наполягаю на інтерв'ю».</p>
+      </div>
+      <div class="card purple">
+        <div class="card-title">Q3. Що робити, якщо техлід каже «це неможливо реалізувати»?</div>
+        <p>Показуй diagnostic questions («що саме?»), залучення до рішення, альтернативи. <strong>Уникай:</strong> «я б пішов до CTO» — це сигнал, що ти не вмієш працювати на своєму рівні.</p>
+      </div>
+      <div class="card yellow">
+        <div class="card-title">Q4. Як ти ескалюєш, щоб не зруйнувати відносини?</div>
+        <p>Відповідь-ключ: <em>попередження, факти, impact-мова, варіанти рішення, повернення до нормальних відносин після</em>. Покажи, що ти розумієш різницю між «скаргою» і «ескалацією».</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Q5. Опиши випадок, коли ти помилився у комунікації. Чого навчився?</div>
+        <p><strong>Улюблене питання senior-панелей.</strong> Не уникай, не «я ідеальний». Покажи рефлексію: конкретна помилка → наслідок → що б зробив інакше → як застосовуєш зараз. Це показник зрілості.</p>
+      </div>
+      <div class="card green">
+        <div class="card-title">Q6. Як ти фасилітуєш воркшоп, де один домінує, а інші мовчать?</div>
+        <p>Round robin, parking lot, anonymous input через Miro/Mural, прямі звернення на ім'я. Покажи <strong>structural</strong> підхід (я спроектую сесію так, щоб…), не тільки reactive.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>💡 Мета-порада:</strong> senior-інтерв'юери слухають не «що ти зробив», а <em>як ти про це думаєш</em>. Завжди додавай reflection («зараз я б зробив інакше, бо…»). Відсутність рефлексії = red flag на senior-рівні.
+    </div>
+    <a href="#" class="back-top">↑ нагору</a>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- 12. РЕСУРСИ                                                 -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <section id="difficult-resources">
+    <h2><span class="num">12</span>Додаткові ресурси</h2>
+
+    <h3>📚 Книги</h3>
+    <ul>
+      <li><strong>Roy Lilley — «Dealing with Difficult People»</strong> · база цього курсу, 4 принципи + практичні кейси.</li>
+      <li><strong>Robert Bramson — «Coping with Difficult People»</strong> · оригінальна класифікація 7 типів + 15 ірраціональних переконань.</li>
+      <li><strong>Brad McRae — «Negotiating and Influencing Skills»</strong> · 4-крокова діагностика, техніки впливу для не-менеджерів.</li>
+      <li><strong>Kerry Patterson — «Crucial Conversations»</strong> · must-read. Як вести розмову, коли ставки високі, емоції сильні, думки різні.</li>
+      <li><strong>Chris Voss — «Never Split the Difference»</strong> · FBI-технік переговорів: tactical empathy, labeling, mirroring — усе застосовно в BA.</li>
+      <li><strong>Douglas Stone et al. — «Difficult Conversations»</strong> · класика Harvard Negotiation Project.</li>
+    </ul>
+
+    <h3>📖 Стандарти та фреймворки</h3>
+    <ul>
+      <li><strong>BABOK 3.0 — Section 10.43 Stakeholder List, Map, or Personas</strong> · структура роботи зі стейкхолдерами.</li>
+      <li><strong>BABOK 3.0 — Underlying Competencies 9.5 «Interaction Skills»</strong> · facilitation, leadership, negotiation.</li>
+      <li><strong>PMBOK — Stakeholder Engagement Plan</strong> · матриця power/interest.</li>
+      <li><strong>IIBA Certifications (CCBA, CBAP)</strong> · секції зі стейкхолдерами для підготовки.</li>
+    </ul>
+
+    <h3>🔗 Суміжні теми для вивчення</h3>
+    <div class="cards">
+      <div class="card">
+        <div class="card-title">Facilitation Mastery</div>
+        <p>Design Thinking Workshops, Liberating Structures, Event Storming facilitation.</p>
+      </div>
+      <div class="card green">
+        <div class="card-title">Negotiation for BA</div>
+        <p>BATNA, ZOPA, tactical empathy, anchoring — особливо на етапі scope negotiations.</p>
+      </div>
+      <div class="card purple">
+        <div class="card-title">Emotional Intelligence (EQ)</div>
+        <p>Daniel Goleman — 4 домени EQ: self-awareness, self-management, social awareness, relationship management.</p>
+      </div>
+      <div class="card yellow">
+        <div class="card-title">Conflict Styles</div>
+        <p>Thomas-Kilmann Conflict Mode Instrument: competing, collaborating, compromising, avoiding, accommodating.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Active Listening</div>
+        <p>Rogerian listening, paraphrasing, labeling — основа для всіх технік з цього курсу.</p>
+      </div>
+      <div class="card gray">
+        <div class="card-title">Stakeholder Analysis</div>
+        <p>RACI, Salience Model, Power-Interest Grid — structural інструменти до soft-skills.</p>
+      </div>
+    </div>
+
+    <div class="callout purple">
+      <strong>🎯 Наступний крок у твоєму розвитку:</strong> пройди курс «Facilitation Mastery» або «Crucial Conversations» (2-денний тренінг). Soft skills не вчаться з книжок — вони ставляться на практиці з фідбеком.
+    </div>
+    <a href="#" class="back-top">↑ нагору</a>
+  </section>
+
+  <footer style="text-align:center;color:var(--gray);font-size:.8rem;margin-top:2rem;">
+    Courseware · BA/SA Knowledge Base · Soft Skills Track
+  </footer>
+
+</div>
+</body>
+</html>

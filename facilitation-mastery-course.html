@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Facilitation Mastery · Курс для BA/SA</title>
+<style>
+  :root {
+    --blue: #3498db;
+    --green: #27ae60;
+    --yellow: #f39c12;
+    --purple: #9b59b6;
+    --orange: #e67e22;
+    --gray: #7f8c8d;
+    --ink: #1e293b;
+    --ink2: #475569;
+    --ink3: #64748b;
+    --bg: #fafbff;
+    --bg2: #f1f5f9;
+    --border: #e2e8f0;
+    --radius: 14px;
+    --radius-sm: 10px;
+    --shadow: 0 1px 3px rgba(15,23,42,.06), 0 4px 16px rgba(15,23,42,.04);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.6;
+    font-size: 16px;
+  }
+  .container { max-width: 1100px; margin: 0 auto; padding: 2rem 1.2rem 4rem; }
+
+  .breadcrumb { font-size: .82rem; color: var(--ink3); margin-bottom: 1rem; }
+  .breadcrumb span + span::before { content: " › "; color: #cbd5e1; }
+
+  .page-header {
+    background: linear-gradient(135deg, #ecfdf5, #eff6ff);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2rem 1.6rem;
+    margin-bottom: 2rem;
+  }
+  .page-tag {
+    display: inline-block;
+    background: rgba(39,174,96,.14);
+    color: #047857;
+    font-size: .75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    padding: .3rem .7rem;
+    border-radius: 50px;
+  }
+  h1 { font-size: 2.1rem; margin: .7rem 0 .5rem; line-height: 1.2; }
+  h1 .grad {
+    background: linear-gradient(135deg, #27ae60, #3498db);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .page-desc { color: var(--ink2); font-size: 1.02rem; margin: 0; max-width: 820px; }
+
+  h2 {
+    font-size: 1.4rem;
+    margin: 0 0 1rem;
+    padding-bottom: .4rem;
+    border-bottom: 2px solid var(--border);
+  }
+  h2 .num {
+    display: inline-block;
+    width: 2rem; height: 2rem;
+    background: linear-gradient(135deg, #27ae60, #3498db);
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 2rem;
+    font-size: .9rem;
+    margin-right: .55rem;
+    vertical-align: middle;
+  }
+  h3 { font-size: 1.08rem; margin: 1.2rem 0 .5rem; color: var(--ink); }
+  h4 { font-size: .98rem; margin: .9rem 0 .4rem; color: var(--ink); }
+
+  section {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.4rem 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow);
+  }
+  p { margin: .5rem 0 .8rem; color: var(--ink2); }
+  ul, ol { padding-left: 1.2rem; color: var(--ink2); }
+  ul li, ol li { margin-bottom: .4rem; }
+
+  /* TOC */
+  .toc {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.2rem 1.4rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
+  }
+  .toc h3 { margin: 0 0 .8rem; font-size: 1rem; }
+  .toc ol {
+    columns: 2;
+    column-gap: 1.5rem;
+    padding-left: 1.2rem;
+    margin: 0;
+  }
+  .toc a { color: var(--green); text-decoration: none; font-size: .87rem; }
+  .toc a:hover { text-decoration: underline; }
+  @media (max-width: 640px) { .toc ol { columns: 1; } }
+
+  /* Callouts */
+  .callout {
+    border-left: 4px solid var(--blue);
+    background: rgba(52,152,219,.06);
+    padding: .8rem 1rem;
+    border-radius: var(--radius-sm);
+    margin: 1rem 0;
+    font-size: .92rem;
+  }
+  .callout.green  { border-color: var(--green);  background: rgba(39,174,96,.06); }
+  .callout.yellow { border-color: var(--yellow); background: rgba(243,156,18,.08); }
+  .callout.purple { border-color: var(--purple); background: rgba(155,89,182,.06); }
+  .callout.orange { border-color: var(--orange); background: rgba(230,126,34,.07); }
+  .callout.gray   { border-color: var(--gray);   background: rgba(127,140,141,.07); }
+  .callout strong { color: var(--ink); }
+
+  /* Cards grid */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+  .card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--blue);
+    border-radius: var(--radius-sm);
+    padding: 1rem 1.1rem;
+  }
+  .card.green  { border-top-color: var(--green); }
+  .card.yellow { border-top-color: var(--yellow); }
+  .card.purple { border-top-color: var(--purple); }
+  .card.orange { border-top-color: var(--orange); }
+  .card.gray   { border-top-color: var(--gray); }
+  .card-title { font-weight: 700; color: var(--ink); margin-bottom: .4rem; font-size: .96rem; }
+  .card p { font-size: .85rem; margin: .3rem 0; }
+
+  /* Table */
+  .table-wrap { overflow-x: auto; margin: 1rem 0; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .86rem;
+    background: #fff;
+  }
+  th, td {
+    padding: .55rem .75rem;
+    border: 1px solid var(--border);
+    text-align: left;
+    vertical-align: top;
+  }
+  th { background: rgba(39,174,96,.08); color: var(--ink); font-weight: 700; }
+  tbody tr:nth-child(even) { background: #fafbff; }
+
+  /* Technique box */
+  .technique {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--green);
+    border-radius: var(--radius-sm);
+    padding: .9rem 1.1rem;
+    margin: .7rem 0;
+  }
+  .technique-name {
+    font-weight: 700;
+    font-size: .98rem;
+    color: var(--ink);
+    margin-bottom: .3rem;
+  }
+  .technique .when {
+    display: inline-block;
+    font-size: .74rem;
+    background: rgba(52,152,219,.1);
+    color: var(--blue);
+    padding: .15rem .55rem;
+    border-radius: 4px;
+    margin-top: .4rem;
+    font-weight: 600;
+  }
+  .technique p { font-size: .86rem; margin: .3rem 0; }
+
+  /* Checklist */
+  .checklist {
+    list-style: none;
+    padding: 0;
+    background: #fafbff;
+    border: 1px dashed #cbd5e1;
+    border-radius: var(--radius-sm);
+    padding: 1rem 1.2rem;
+  }
+  .checklist li {
+    padding: .4rem 0 .4rem 1.8rem;
+    position: relative;
+    font-size: .9rem;
+    color: var(--ink2);
+  }
+  .checklist li::before {
+    content: "☐";
+    position: absolute;
+    left: 0;
+    top: .3rem;
+    color: var(--green);
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+
+  /* Agenda block */
+  .agenda {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    margin: .8rem 0;
+  }
+  .agenda-row {
+    display: flex;
+    align-items: stretch;
+    border-bottom: 1px solid var(--border);
+  }
+  .agenda-row:last-child { border-bottom: none; }
+  .agenda-time {
+    min-width: 80px;
+    background: rgba(39,174,96,.1);
+    color: #065f46;
+    font-weight: 700;
+    font-size: .82rem;
+    padding: .6rem .8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid var(--border);
+  }
+  .agenda-body {
+    flex: 1;
+    padding: .6rem .9rem;
+    font-size: .87rem;
+  }
+  .agenda-body strong { color: var(--ink); }
+
+  /* SVG wrap */
+  .svg-wrap {
+    background: var(--bg2);
+    border-radius: var(--radius-sm);
+    padding: 1rem;
+    margin: 1rem 0;
+    overflow-x: auto;
+  }
+  .svg-wrap svg { display: block; margin: 0 auto; max-width: 100%; height: auto; }
+
+  /* Email template */
+  .email-template {
+    background: #fafbff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 1.1rem 1.3rem;
+    font-family: "SF Mono", Monaco, Consolas, monospace;
+    font-size: .82rem;
+    line-height: 1.6;
+    color: var(--ink);
+    white-space: pre-wrap;
+    margin: 1rem 0;
+  }
+
+  /* Back-to-top */
+  .back-top {
+    display: inline-block;
+    font-size: .78rem;
+    color: var(--gray);
+    text-decoration: none;
+    margin-top: .5rem;
+  }
+  .back-top:hover { color: var(--green); }
+
+  .muted { color: var(--ink3); font-size: .82rem; }
+  .pill {
+    display: inline-block;
+    font-size: .7rem;
+    font-weight: 700;
+    padding: .15rem .55rem;
+    border-radius: 10px;
+    margin-right: .3rem;
+  }
+  .pill.blue   { background: rgba(52,152,219,.12); color: var(--blue); }
+  .pill.green  { background: rgba(39,174,96,.12);  color: #047857; }
+  .pill.purple { background: rgba(155,89,182,.12); color: #6b21a8; }
+  .pill.orange { background: rgba(230,126,34,.12); color: #c2410c; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <nav class="breadcrumb">
+    <span>База знань</span><span>Skills</span><span>Soft Skills</span><span>Facilitation Mastery</span>
+  </nav>
+
+  <header class="page-header">
+    <div class="page-tag">Soft Skills · Senior Track</div>
+    <h1><span class="grad">Facilitation Mastery</span> для BA/SA</h1>
+    <p class="page-desc">Практичний курс для мідл-аналітиків, які хочуть вийти на senior-рівень. Від дизайну сесій до керування динамікою групи, від discovery-воркшопів до онлайн-фасилітації. Усе, що відрізняє senior від «секретаря мітингів».</p>
+  </header>
+
+  <nav class="toc">
+    <h3>📖 Зміст курсу</h3>
+    <ol>
+      <li><a href="#facil-why">Чому це критично для BA/SA</a></li>
+      <li><a href="#facil-basics">Основи: фасилітація vs модерація vs презентація</a></li>
+      <li><a href="#facil-principles">5 ключових принципів</a></li>
+      <li><a href="#facil-prep">Підготовка до сесії</a></li>
+      <li><a href="#facil-agenda">Дизайн agenda</a></li>
+      <li><a href="#facil-diamond">Diamond: Diverge → Converge → Decide</a></li>
+      <li><a href="#facil-divergence">Техніки генерації ідей</a></li>
+      <li><a href="#facil-convergence">Техніки пріоритизації</a></li>
+      <li><a href="#facil-decision">Техніки прийняття рішень</a></li>
+      <li><a href="#facil-dynamics">Керування динамікою групи</a></li>
+      <li><a href="#facil-conflict">Конфлікти на сесії</a></li>
+      <li><a href="#facil-online">Онлайн-фасилітація</a></li>
+      <li><a href="#facil-sessions">Типові сесії BA/SA</a></li>
+      <li><a href="#facil-after">Після сесії: документування</a></li>
+      <li><a href="#facil-mistakes">Типові помилки</a></li>
+      <li><a href="#facil-selfcheck">Self-check</a></li>
+      <li><a href="#facil-interview">Питання на senior-співбесіді</a></li>
+      <li><a href="#facil-resources">Ресурси</a></li>
+    </ol>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- 1. ЧОМУ                                                     -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <section id="facil-why">
+    <h2><span class="num">1</span>Чому це критично для BA/SA</h2>
+    <p>Мідл пише документацію. Senior — витягує знання з голів людей, приводить групу до консенсусу й перетворює хаос обговорень на структуроване рішення. Це і є фасилітація.</p>
+
+    <div class="callout purple">
+      <strong>Правда про роль BA:</strong> 80% цінності, яку ти створюєш — це не документ, а <em>розмова</em>, яка цей документ породжує. Без навичок фасилітації ти залишаєшся «секретарем мітингів», а не лідером discovery.
+    </div>
+
+    <div class="cards">
+      <div class="card green">
+        <div class="card-title">🎯 Витягуєш знання</div>
+        <p>SME не «віддає» свої знання — їх треба структуровано виймати. Фасилітація — твій інструмент розкопок.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">🤝 Приводиш до консенсусу</div>
+        <p>8 стейкхолдерів з різними болями → одне пріоритизоване рішення за 90 хвилин. Тільки фасилітація робить це можливим.</p>
+      </div>
+      <div class="card purple">
+        <div class="card-title">🧩 Структуруєш хаос</div>
+        <p>Ідеї, суперечки, стікери — перетворюєш у structured deliverable (user story map, decision log, priority list).</p>
+      </div>
+      <div class="card orange">
+        <div class="card-title">⚡ Керуєш енергією</div>
+        <p>Відчуваєш, коли група «провисає» — і знаєш, як її повернути. Це senior-рівень.</p>
+      </div>
+    </div>
+    <a href="#" class="back-top">↑ нагору</a>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- 2. ОСНОВИ                                                   -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <section id="facil-basics">
+    <h2><span class="num">2</span>Фасилітація vs модерація vs презентація</h2>
+    <p>Три ролі, які мідли часто плутають. А senior чітко розуміє, в якій ролі зараз перебуває — і не змішує їх в одній зустрічі.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Характеристика</th>
+            <th>Фасилітатор</th>
+            <th>Модератор</th>
+            <th>Презентер</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Контроль над чим?</strong></td>
+            <td>Процес</td>
+            <td>Дискусія</td>
+            <td>Контент</td>
+          </tr>
+          <tr>
+            <td><strong>Нейтральність</strong></td>
+            <td>✅ Повна</td>
+            <td>Часткова</td>
+            <td>❌ Відсутня</td>
+          </tr>
+          <tr>
+            <td><strong>Власні ідеї?</strong></td>
+            <td>Ні</td>
+            <td>Можна</td>
+            <td>Так, основні</td>
+          </tr>
+          <tr>
+            <td><strong>Мета</strong></td>
+            <td>Група створює результат</td>
+            <td>Правильна дискусія</td>
+            <td>Передача інформації</td>
+          </tr>
+          <tr>
+            <td><strong>Типова BA-ситуація</strong></td>
+            <td>Discovery workshop, story mapping</td>
+            <td>Standup, reqs review</td>
+            <td>Demo, solution pitch</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout yellow">
+      <strong>⚠️ Найчастіша помилка мідла:</strong> починає як фасилітатор — «я нейтральний, хочу почути всіх» — а через 15 хвилин починає захищати свою ідею. Група це відразу відчуває, довіра падає.
+    </div>
+
+    <h3>Роль фасилітатора — 5 зобов'язань</h3>
+    <ul>
+      <li><strong>Безпека</strong> — створюєш середовище, де можна висловлюватись без страху осуду.</li>
+      <li><strong>Процес</strong> — керуєш <em>як</em>, а не <em>що</em>. Тайминг, переходи, техніки.</li>
+      <li><strong>Нейтральність</strong> — не маєш улюбленців, не захищаєш ідей, не оцінюєш якість.</li>
+      <li><strong>Участь кожного</strong> — стежиш, щоб тихі висловились, а гучні — дали місце.</li>
+      <li><strong>Результат</strong> — ведеш групу до конкретного deliverable до кінця часу.</li>
+    </ul>
+    <a href="#" class="back-top">↑ нагору</a>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- 3. ПРИНЦИПИ                                                 -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <section id="facil-principles">
+    <h2><span class="num">3</span>5 ключових принципів фасилітації</h2>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-title">1️⃣ Група знає більше</div>
+        <p>«Група знає більше, ніж будь-хто окремо.» Твоя задача — не розумнішати перед нею, а витягти й зібрати те, що вона знає.</p>
+      </div>
+      <div class="card green">
+        <div class="card-title">2️⃣ Процес визначає результат</div>
+        <p>Поганий процес = поганий результат, навіть з крутими людьми. Продумай дизайн сесії — і якість прийде сама.</p>
+      </div>
+      <div class="card purple">
+        <div class="card-title">3️⃣ Нейтральність — твоя суперсила</div>
+        <p>Щойно ти почав захищати свою ідею — ти втратив можливість фасилітувати. Не змішуй ролі.</p>
+      </div>
+      <div class="card orange">
+        <div class="card-title">4️⃣ Тиша — це інструмент</div>
+        <p>Пауза 7–10 секунд після питання — це не незручно, це дає людям думати. Інтроверти потребують цього часу.</p>
+      </div>
+      <div class="card yellow">
+        <div class="card-title">5️⃣ Енергія — твоя відповідальність</div>
+        <p>Група «провисає» о 14:30 — це не їхня провина, це твоя задача: енерджайзер, перерва, зміна формату.</p>
+      </div>
+    </div>
+    <a href="#" class="back-top">↑ нагору</a>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- 4. ПІДГОТОВКА                                               -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <section id="facil-prep">
+    <h2><span class="num">4</span>Підготовка до сесії</h2>
+
+    <div class="callout">
+      <strong>Правило 3:1:</strong> на кожну годину фасилітації — 3 години підготовки. Senior не імпровізує, senior підготовлений. Імпровізація = хаос.
+    </div>
+
+    <h3>✅ Чекліст підготовки (готовий до друку)</h3>
+    <ul class="checklist">
+      <li><strong>Мета сесії</strong> — сформульована в 1 реченні за формулою нижче.</li>
+      <li><strong>Очікуваний артефакт</strong> — що конкретно буде на виході (user story map, priority list, decision log).</li>
+      <li><strong>Учасники</strong> — MUST hаve vs NICE to have; перевірив calendar availability.</li>
+      <li><strong>Agenda з таймінгом</strong> — 5 блоків мінімум, кожен із часом та технікою.</li>
+      <li><strong>Матеріали</strong> — шаблони, Miro/Figma board, стікери, маркери, таймер.</li>
+      <li><strong>Pre-read</strong> — учасники отримали контекст за 1–2 дні, не «з нуля».</li>
+      <li><strong>План Б</strong> — що робити, якщо ключовий учасник відсутній / технологія впала / тема буксує.</li>
+      <li><strong>Tech check</strong> — відеозв'язок, дошка, права доступу, мікрофон (за 15 хв до старту).</li>
+      <li><strong>Co-facilitator</strong> (для сесій 8+ учасників) — хтось для чату/таймера.</li>
+      <li><strong>Follow-up шаблон</strong> — підготовлений заздалегідь, а не пишеться після сесії.</li>
+    </ul>
+
+    <h3>Формула мети сесії</h3>
+    <div class="callout green">
+      <strong>«На кінець сесії ми матимемо [конкретний артефакт], щоб [бізнес-ціль].»</strong>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>❌ Погана мета</th><th>✅ Добра мета</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>«Обговорити вимоги до модуля оплати»</td>
+            <td>«На кінець сесії ми матимемо пріоритизований список 10 user stories для MVP модуля оплати, щоб розпочати розробку в наступному спринті.»</td>
+          </tr>
+          <tr>
+            <td>«Пройтись по процесу онбордингу»</td>
+            <td>«На кінець сесії ми матимемо BPMN as-is діаграму процесу онбордингу з 3 top-болями, щоб визначити scope для to-be.»</td>
+          </tr>
+          <tr>
+            <td>«Обговорити проблему з checkout»</td>
+            <td>«На кінець сесії ми матимемо root cause analysis падіння конверсії на checkout (5 Whys) з 2–3 гіпотезами для A/B тесту.»</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Як обрати правильних учасників</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Роль</th>
+            <th>Чому потрібен</th>
+            <th>Ризик відсутності</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Decision Maker</strong></td>
+            <td>Затвердження рішень на місці</td>
+            <td>Результати не будуть прийняті — доведеться переробляти</td>
+          </tr>
+          <tr>
+            <td><strong>SME (Domain Expert)</strong></td>
+            <td>Експертиза, нюанси, edge cases</td>
+            <td>Пропустимо критичні деталі, виявимо їх на тестуванні</td>
+          </tr>
+          <tr>
+            <td><strong>End User Representative</strong></td>
+            <td>Реальні потреби, а не здогадки</td>
+            <td>Рішення відірване від реальності</td>
+          </tr>
+          <tr>
+            <td><strong>Tech Lead / Architect</strong></td>
+            <td>Технічна feasibility, обмеження</td>
+            <td>Нереалізовувані вимоги, rework на development</td>
+          </tr>
+          <tr>
+            <td><strong>Co-facilitator</strong> (для 8+)</td>
+            <td>Допомагає з процесом, чатом, таймером</td>
+            <td>Ти один не впораєшся — впаде якість</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout yellow">
+      <strong>⚠️ Правило 7 ± 2:</strong> оптимальний розмір групи — 5–9 людей. Менше — замало перспектив, більше — складно всіх залучити. Якщо >9 — розбивай на підгрупи.
+    </div>
+    <a href="#" class="back-top">↑ нагору</a>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- 5. AGENDA                                                   -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <section id="facil-agenda">
+    <h2><span class="num">5</span>Дизайн agenda</h2>
+    <p>Стандартна структура для 75-хвилинної сесії. Адаптуй пропорції під свою тривалість — але 6 блоків мають бути завжди.</p>
+
+    <div class="agenda">
+      <div class="agenda-row">
+        <div class="agenda-time">5 хв</div>
+        <div class="agenda-body"><strong>🚪 Opening</strong> — мета, правила (ground rules), knолодне знайомство, перевірка очікувань. «Одним реченням — що ви хочете винести з цієї сесії».</div>
+      </div>
+      <div class="agenda-row">
+        <div class="agenda-time">10 хв</div>
+        <div class="agenda-body"><strong>🗺 Context Setting</strong> — де ми зараз, куди йдемо, що вже відомо. Мінімум слайдів, максимум фокусу на проблемі.</div>
+      </div>
+      <div class="agenda-row">
+        <div class="agenda-time">30 хв</div>
+        <div class="agenda-body"><strong>💭 Divergence</strong> — генерація ідей. Brainwriting, Silent brainstorm, Crazy 8s, HMW. Тут кількість важить більше за якість.</div>
+      </div>
+      <div class="agenda-row">
+        <div class="agenda-time">15 хв</div>
+        <div class="agenda-body"><strong>🎯 Convergence</strong> — групування, фільтрація, пріоритизація. Affinity mapping, dot voting, MoSCoW.</div>
+      </div>
+      <div class="agenda-row">
+        <div class="agenda-time">10 хв</div>
+        <div class="agenda-body"><strong>✅ Decision</strong> — фінальне рішення, зобов'язання, action items. Fist of Five, підтвердження.</div>
+      </div>
+      <div class="agenda-row">
+        <div class="agenda-time">5 хв</div>
+        <div class="agenda-body"><strong>🚪 Closing</strong> — next steps (хто-що-коли), parking lot огляд, швидкий feedback («+/Δ» або one-word check-out).</div>
+      </div>
+    </div>
+
+    <h3>Шаблони agenda для 5 типів сесій BA/SA</h3>
+    <div class="cards">
+      <div class="card">
+        <div class="card-title">🔎 Discovery Workshop (3 год)</div>
+        <p>10 opening · 30 context · 45 empathy + customer journey · 15 break · 45 problem statement · 25 top-3 болі · 10 closing</p>
+      </div>
+      <div class="card green">
+        <div class="card-title">📝 Reqs Elicitation (2 год)</div>
+        <p>10 opening · 15 context · 30 silent brainstorm · 20 affinity mapping · 20 MoSCoW · 15 US mapping · 10 closing</p>
+      </div>
+      <div class="card purple">
+        <div class="card-title">🏗 Solution Design (2.5 год)</div>
+        <p>10 opening · 20 requirements recap · 40 C4 models · 30 trade-off analysis · 30 decision matrix · 20 closing</p>
+      </div>
+      <div class="card orange">
+        <div class="card-title">🔁 Retrospective (75 хв)</div>
+        <p>5 opening · 5 check-in · 20 Start/Stop/Continue (silent) · 15 dot voting · 15 action items · 10 check-out · 5 closing</p>
+      </div>
+      <div class="card yellow">
+        <div class="card-title">🤝 Stakeholder Alignment (90 хв)</div>
+        <p>10 opening · 15 vision reading · 25 silent feedback · 20 affinity · 15 consensus check · 10 action items · 5 closing</p>
+      </div>
+    </div>
+    <a href="#" class="back-top">↑ нагору</a>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- 6. DIAMOND                                                  -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <section id="facil-diamond">
+    <h2><span class="num">6</span>Diamond model: Diverge → Converge → Decide</h2>
+    <p>Sam Kaner описав класичну модель фасилітації: будь-яке групове рішення проходить через ромб — спочатку розширення (всі ідеї), потім звуження (фільтр), потім вибір. Між divergence і convergence — <em>groan zone</em>, найскладніша частина.</p>
+
+    <div class="svg-wrap">
+      <svg viewBox="0 0 800 320" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="divG" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#3498db"/>
+            <stop offset="100%" stop-color="#9b59b6"/>
+          </linearGradient>
+          <linearGradient id="convG" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#9b59b6"/>
+            <stop offset="100%" stop-color="#27ae60"/>
+          </linearGradient>
+        </defs>
+
+        <!-- Diamond -->
+        <polygon points="50,160 400,40 750,160 400,280" fill="none" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="5,4"/>
+
+        <!-- Divergence half -->
+        <polygon points="50,160 400,40 400,280" fill="url(#divG)" opacity="0.15"/>
+        <!-- Convergence half -->
+        <polygon points="400,40 750,160 400,280" fill="url(#convG)" opacity="0.15"/>
+
+        <!-- Groan zone marker -->
+        <circle cx="400" cy="160" r="38" fill="#fef3c7" stroke="#f39c12" stroke-width="2"/>
+        <text x="400" y="156" text-anchor="middle" fill="#92400e" font-size="11" font-weight="700">GROAN</text>
+        <text x="400" y="170" text-anchor="middle" fill="#92400e" font-size="11" font-weight="700">ZONE</text>
+
+        <!-- Start point -->
+        <circle cx="50" cy="160" r="10" fill="#3498db"/>
+        <text x="50" y="195" text-anchor="middle" fill="#1e3a8a" font-size="12" font-weight="700">Проблема</text>
+
+        <!-- Mid peak -->
+        <text x="400" y="28" text-anchor="middle" fill="#5b21b6" font-size="12" font-weight="700">Багато ідей</text>
+
+        <!-- End point -->
+        <circle cx="750" cy="160" r="10" fill="#27ae60"/>
+        <text x="750" y="195" text-anchor="middle" fill="#065f46" font-size="12" font-weight="700">Рішення</text>
+
+        <!-- Bottom label -->
+        <text x="400" y="305" text-anchor="middle" fill="#64748b" font-size="11">Більше варіантів не значить більше хаосу</text>
+
+        <!-- Phase labels -->
+        <text x="210" y="100" text-anchor="middle" fill="#3498db" font-size="14" font-weight="700">DIVERGE</text>
+        <text x="210" y="118" text-anchor="middle" fill="#64748b" font-size="10">Brainwriting, Crazy 8s, HMW</text>
+
+        <text x="590" y="100" text-anchor="middle" fill="#27ae60" font-size="14" font-weight="700">CONVERGE</text>
+        <text x="590" y="118" text-anchor="middle" fill="#64748b" font-size="10">Dot voting, MoSCoW, Affinity</text>
+
+        <text x="400" y="220" text-anchor="middle" fill="#f39c12" font-size="11" font-weight="700">↑ найскладніша фаза</text>
+        <text x="400" y="234" text-anchor="middle" fill="#64748b" font-size="9">група відчуває втому, хаос, бажання «просто вирішити»</text>
+      </svg>
+    </div>
+
+    <div class="callout yellow">
+      <strong>⚠️ Groan zone — найчастіша точка провалу сесій.</strong> Ідей багато, але як вибрати? Тут мідли панікують і починають вирішувати за групу. Senior розуміє: groan zone — це нормально, треба просто застосувати техніку конвергенції (dot voting, affinity), і група вийде сама.
+    </div>
+    <a href="#" class="back-top">↑ нагору</a>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- 7. DIVERGENCE                                               -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <section id="facil-divergence">
+    <h2><span class="num">7</span>Техніки генерації ідей (Divergence)</h2>
+
+    <div class="technique">
+      <div class="technique-name">1. Brainwriting 6-3-5 <span class="pill green">силова техніка</span></div>
+      <p><strong>Як:</strong> 6 людей, 3 ідеї кожен, 5 хвилин. Потім передають листок сусідові — той додає свої 3 ідеї (розвиває чи контрастує). 6 раундів = 108 ідей за 30 хвилин.</p>
+      <p><strong>Чому працює:</strong> обмежує домінаторів, захищає інтровертів, змушує всіх внести внесок. Ідеї одна одну живлять.</p>
+      <span class="when">🎯 Коли: багато ідей швидко · є домінуючі учасники</span>
+    </div>
+
+    <div class="technique">
+      <div class="technique-name">2. Crazy 8s <span class="pill orange">творча</span></div>
+      <p><strong>Як:</strong> 8 ідей за 8 хвилин — по 1 хвилині на ідею. Скетчі, не текст. Папір A4, складений на 8 частин.</p>
+      <p><strong>Чому працює:</strong> жорсткий таймінг вимикає внутрішнього критика. Скетчі обходять «я не вмію малювати» — швидкість важливіша за естетику.</p>
+      <span class="when">🎯 Коли: UX/дизайн-сесії · пошук нестандартних ідей</span>
+    </div>
+
+    <div class="technique">
+      <div class="technique-name">3. How Might We (HMW) <span class="pill purple">переформулювання</span></div>
+      <p><strong>Як:</strong> переформулюй проблему як питання-можливість. «Як ми можемо [дія] для [користувача], щоб [outcome]?»</p>
+      <p><strong>Приклад:</strong> проблема «юзери не завершують checkout» → HMW «як ми можемо зробити checkout відчуттям, що вже майже готово, для нетерплячих юзерів?»</p>
+      <span class="when">🎯 Коли: група застрягла в проблемі · потрібен свіжий погляд</span>
+    </div>
+
+    <div class="technique">
+      <div class="technique-name">4. Round Robin <span class="pill blue">інклюзивна</span></div>
+      <p><strong>Як:</strong> кожен по черзі висловлює 1 ідею. Ніхто не перебиває, не коментує. Коло повторюється, поки є ідеї (хто не має — «пас»).</p>
+      <p><strong>Чому працює:</strong> мовчуни не можуть сховатись, домінатори не можуть захопити сесію. Демократія у дії.</p>
+      <span class="when">🎯 Коли: є мовчуни + домінатори · потрібна рівна участь</span>
+    </div>
+
+    <div class="technique">
+      <div class="technique-name">5. Silent Brainstorm <span class="pill blue">інтровертна</span></div>
+      <p><strong>Як:</strong> 5–7 хвилин усі пишуть ідеї на стікерах <em>мовчки</em>. Потім по черзі презентують по одній. Нові ідеї тригерять інші.</p>
+      <p><strong>Чому працює:</strong> захищає інтровертів, дає час подумати, нівелює anchoring bias (коли перша висловлена ідея «забарвлює» всі наступні).</p>
+      <span class="when">🎯 Коли: багато інтровертів · потрібні незалежні ідеї</span>
+    </div>
+    <a href="#" class="back-top">↑ нагору</a>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- 8. CONVERGENCE                                              -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <section id="facil-convergence">
+    <h2><span class="num">8</span>Техніки пріоритизації (Convergence)</h2>
+
+    <div class="technique">
+      <div class="technique-name">1. Dot Voting <span class="pill green">найшвидша</span></div>
+      <p><strong>Як:</strong> кожен отримує 3–5 голосів (dots / стікерів). Голосують за найважливіші ідеї. Можна розподіляти (1+1+1) або концентрувати (3 на одну).</p>
+      <p><strong>Варіації:</strong> anonymous dot voting (у Miro), weighted voting (різна вага голосів).</p>
+      <span class="when">🎯 Коли: швидка пріоритизація · демократичне рішення</span>
+    </div>
+
+    <div class="technique">
+      <div class="technique-name">2. MoSCoW <span class="pill blue">класична</span></div>
+      <p><strong>Як:</strong> кожна ідея / вимога розподіляється по 4 категоріях: <strong>M</strong>ust, <strong>S</strong>hould, <strong>C</strong>ould, <strong>W</strong>on't. Групове обговорення + узгодження.</p>
+      <p><strong>Тонкість:</strong> Must — «без цього релізу не буде». Won't — НЕ «ніколи», а «не в цьому релізі».</p>
+      <span class="when">🎯 Коли: пріоритизація вимог · scope definition · reqs elicitation</span>
+    </div>
+
+    <div class="technique">
+      <div class="technique-name">3. Impact / Effort Matrix <span class="pill purple">візуальна</span></div>
+      <p><strong>Як:</strong> 2×2 матриця — вертикаль Impact, горизонталь Effort. Розподіляй ідеї по 4 квадрантах.</p>
+      <ul>
+        <li><strong>Quick Wins</strong> (high impact, low effort) — роби першими!</li>
+        <li><strong>Major Projects</strong> (high impact, high effort) — плануй</li>
+        <li><strong>Fill-ins</strong> (low impact, low effort) — якщо є час</li>
+        <li><strong>Thankless Tasks</strong> (low impact, high effort) — уникай</li>
+      </ul>
+      <span class="when">🎯 Коли: планування спринту · вибір фіч · roadmap</span>
+    </div>
+
+    <div class="technique">
+      <div class="technique-name">4. Buy a Feature <span class="pill orange">геймована</span></div>
+      <p><strong>Як:</strong> кожна фіча отримує «ціну» (виходячи з effort). Кожен учасник отримує фіксований «бюджет» ($100). Учасники «купують» фічі, можуть скидатись на дорогі.</p>
+      <p><strong>Чому геніально:</strong> виявляє <em>справжні</em> пріоритети (коли доводиться платити — обираєш те, що реально болить).</p>
+      <span class="when">🎯 Коли: stakeholder alignment · виявлення реальних пріоритетів</span>
+    </div>
+
+    <div class="technique">
+      <div class="technique-name">5. Affinity Mapping <span class="pill green">сенсорна</span></div>
+      <p><strong>Як:</strong> купа стікерів з ідеями → група тихо групує схожі разом → називає кластери. Спочатку silent (10 хв), потім discussion.</p>
+      <p><strong>Результат:</strong> 50 хаотичних стікерів перетворюються на 5–7 тем, з якими можна працювати.</p>
+      <span class="when">🎯 Коли: багато хаотичних ідей · пошук патернів</span>
+    </div>
+    <a href="#" class="back-top">↑ нагору</a>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- 9. DECISION                                                 -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <section id="facil-decision">
+    <h2><span class="num">9</span>Техніки прийняття рішень</h2>
+
+    <div class="technique">
+      <div class="technique-name">1. Fist of Five <span class="pill green">експрес-консенсус</span></div>
+      <p><strong>Як:</strong> голосування пальцями від 1 до 5:<br>
+      ✋ <strong>5</strong> — повністю підтримую, готовий очолити<br>
+      ✋ <strong>4</strong> — згоден, підтримую<br>
+      ✋ <strong>3</strong> — можу жити з цим<br>
+      ✋ <strong>2</strong> — сильні сумніви<br>
+      ✋ <strong>1</strong> — блокую, не згоден</p>
+      <p><strong>Правило:</strong> якщо є хоч одна «1» або «2» — обговорюєш далі. Консенсус = всі 3+.</p>
+      <span class="when">🎯 Коли: швидка перевірка консенсусу · commitment check</span>
+    </div>
+
+    <div class="technique">
+      <div class="technique-name">2. Decision Matrix <span class="pill blue">математична</span></div>
+      <p><strong>Як:</strong> таблиця: рядки — опції, колонки — критерії. Критерії мають вагу (1–5). Кожна опція оцінюється по критерію (1–10). Рахуєш зважену суму — перемагає найбільше.</p>
+      <p><strong>Приклад:</strong> вибір між 3 архітектурними рішеннями за критеріями cost / time-to-market / scalability / risk.</p>
+      <span class="when">🎯 Коли: складні рішення з багатьма факторами · solution design</span>
+    </div>
+
+    <div class="technique">
+      <div class="technique-name">3. Six Thinking Hats (De Bono) <span class="pill purple">перспективна</span></div>
+      <p><strong>Як:</strong> група по черзі «вдягає» 6 шапок — кожна представляє одну перспективу:</p>
+      <ul>
+        <li>⚪ <strong>Біла</strong> — тільки факти, дані</li>
+        <li>🔴 <strong>Червона</strong> — емоції, інтуїція, без пояснень</li>
+        <li>⚫ <strong>Чорна</strong> — ризики, критика, worst case</li>
+        <li>🟡 <strong>Жовта</strong> — переваги, оптимізм, benefits</li>
+        <li>🟢 <strong>Зелена</strong> — альтернативи, креативність</li>
+        <li>🔵 <strong>Синя</strong> — процес, мета, контроль</li>
+      </ul>
+      <p>Усі одночасно в одній шапці — уникає суперечок «оптиміст vs песиміст».</p>
+      <span class="when">🎯 Коли: комплексні рішення · потрібні різні перспективи</span>
+    </div>
+    <a href="#" class="back-top">↑ нагору</a>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- 10. ДИНАМІКА                                                -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <section id="facil-dynamics">
+    <h2><span class="num">10</span>Керування динамікою групи</h2>
+
+    <h3>Типи учасників і як з ними працювати</h3>
+    <div class="svg-wrap">
+      <svg viewBox="0 0 780 360" xmlns="http://www.w3.org/2000/svg">
+        <rect x="30" y="20" width="220" height="95" rx="10" fill="#fef2f2" stroke="#e74c3c" stroke-width="1.5"/>
+        <text x="140" y="45" text-anchor="middle" fill="#991b1b" font-size="12" font-weight="700">🗣 Домінатор</text>
+        <text x="140" y="65" text-anchor="middle" fill="#64748b" font-size="9">Говорить 80% часу, перебиває</text>
+        <text x="140" y="85" text-anchor="middle" fill="#334155" font-size="10" font-weight="600">→ Round Robin</text>
+        <text x="140" y="100" text-anchor="middle" fill="#334155" font-size="9">+ «Дякую, хочу почути інших»</text>
+
+        <rect x="280" y="20" width="220" height="95" rx="10" fill="#f1f5f9" stroke="#7f8c8d" stroke-width="1.5"/>
+        <text x="390" y="45" text-anchor="middle" fill="#334155" font-size="12" font-weight="700">🤐 Мовчун</text>
+        <text x="390" y="65" text-anchor="middle" fill="#64748b" font-size="9">Не висловлюється</text>
+        <text x="390" y="85" text-anchor="middle" fill="#334155" font-size="10" font-weight="600">→ Silent brainstorm</text>
+        <text x="390" y="100" text-anchor="middle" fill="#334155" font-size="9">+ прямий виклик на ім'я</text>
+
+        <rect x="530" y="20" width="220" height="95" rx="10" fill="#f5f3ff" stroke="#9b59b6" stroke-width="1.5"/>
+        <text x="640" y="45" text-anchor="middle" fill="#5b21b6" font-size="12" font-weight="700">🙅 Негативіст</text>
+        <text x="640" y="65" text-anchor="middle" fill="#64748b" font-size="9">«Це не спрацює»</text>
+        <text x="640" y="85" text-anchor="middle" fill="#334155" font-size="10" font-weight="600">→ «Що потрібно,</text>
+        <text x="640" y="100" text-anchor="middle" fill="#334155" font-size="9">щоб спрацювало?»</text>
+
+        <rect x="30" y="135" width="220" height="95" rx="10" fill="#fef3c7" stroke="#f39c12" stroke-width="1.5"/>
+        <text x="140" y="160" text-anchor="middle" fill="#92400e" font-size="12" font-weight="700">🦋 Відволікач</text>
+        <text x="140" y="180" text-anchor="middle" fill="#64748b" font-size="9">Уходить від теми</text>
+        <text x="140" y="200" text-anchor="middle" fill="#334155" font-size="10" font-weight="600">→ Parking Lot</text>
+        <text x="140" y="215" text-anchor="middle" fill="#334155" font-size="9">+ повернення до теми</text>
+
+        <rect x="280" y="135" width="220" height="95" rx="10" fill="#eaf4fc" stroke="#3498db" stroke-width="1.5"/>
+        <text x="390" y="160" text-anchor="middle" fill="#1e3a8a" font-size="12" font-weight="700">🎓 Експерт</text>
+        <text x="390" y="180" text-anchor="middle" fill="#64748b" font-size="9">Деталізує надмірно</text>
+        <text x="390" y="200" text-anchor="middle" fill="#334155" font-size="10" font-weight="600">→ «Запаркуємо деталі,</text>
+        <text x="390" y="215" text-anchor="middle" fill="#334155" font-size="9">фокус на high-level»</text>
+
+        <rect x="530" y="135" width="220" height="95" rx="10" fill="#ecfdf5" stroke="#27ae60" stroke-width="1.5"/>
+        <text x="640" y="160" text-anchor="middle" fill="#065f46" font-size="12" font-weight="700">⚔ Конфліктер</text>
+        <text x="640" y="180" text-anchor="middle" fill="#64748b" font-size="9">Сперечається з іншими</text>
+        <text x="640" y="200" text-anchor="middle" fill="#334155" font-size="10" font-weight="600">→ Парафраз обох</text>
+        <text x="640" y="215" text-anchor="middle" fill="#334155" font-size="9">+ пошук спільного</text>
+
+        <rect x="150" y="260" width="480" height="80" rx="10" fill="#fafbff" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="5,3"/>
+        <text x="390" y="285" text-anchor="middle" fill="#1e293b" font-size="12" font-weight="700">Правило senior фасилітатора</text>
+        <text x="390" y="305" text-anchor="middle" fill="#475569" font-size="10">Тип учасника — не особистість, а поведінка в цей момент.</text>
+        <text x="390" y="320" text-anchor="middle" fill="#475569" font-size="10">Стратегія — не перевиховати, а провести сесію з результатом.</text>
+      </svg>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Тип</th><th>Ознаки</th><th>Техніка реакції</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Домінатор</strong></td>
+            <td>Перебиває, говорить 80% часу, відкидає чужі ідеї</td>
+            <td>«Дякую, Іване — цікава думка. Хочу почути інших.» + Round Robin. Встанови ground rule «1 голос — 1 хвилина».</td>
+          </tr>
+          <tr>
+            <td><strong>Мовчун</strong></td>
+            <td>Не висловлюється, мовчить, уникає погляду</td>
+            <td>Прямі запитання: «Марія, що думаєш?» + Silent brainstorm (дає писати замість говорити). Підходь 1:1 на break.</td>
+          </tr>
+          <tr>
+            <td><strong>Негативіст</strong></td>
+            <td>«Це не спрацює», «ми вже пробували»</td>
+            <td>«Що потрібно, щоб спрацювало?» / «Які 2 умови зроблять це реалістичним?» Переводь з блокера на рішення.</td>
+          </tr>
+          <tr>
+            <td><strong>Відволікач</strong></td>
+            <td>Перескакує на інші теми</td>
+            <td>«Цікаво, додам до Parking Lot. Повернімось до…» Обов'язково повернись до parking lot у кінці.</td>
+          </tr>
+          <tr>
+            <td><strong>Експерт</strong></td>
+            <td>Заглиблюється в деталі, втрачає high-level</td>
+            <td>«Супер деталі — запаркуємо. Зараз фокус на 30,000 foot level.» + окрема 1:1 потім для деталей.</td>
+          </tr>
+          <tr>
+            <td><strong>Конфліктер</strong></td>
+            <td>Сперечається особисто, не з ідеєю</td>
+            <td>Парафраз обох позицій → «В чому ви згодні?» → «Де розходження?» → переводь у спільний критерій.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Техніки керування енергією</h3>
+    <div class="cards">
+      <div class="card orange">
+        <div class="card-title">⚡ Енерджайзери (група «засинає»)</div>
+        <ul>
+          <li>Встати + потягнутись 30 сек</li>
+          <li>Швидке голосування руками / fist of five</li>
+          <li>Зміна формату: дискусія → індивідуальна робота</li>
+          <li>Коротка перерва (5 хв)</li>
+          <li>Зміна локації (якщо офлайн)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">🧘 Заземлення (занадто емоційно)</div>
+        <ul>
+          <li>Повернення до фактів: «Подивимось на дані»</li>
+          <li>Парафраз: «Правильно розумію, що…»</li>
+          <li>Пауза: «2 хвилини мовчки подумати»</li>
+          <li>Переключення до візуалу (дошка замість слів)</li>
+        </ul>
+      </div>
+      <div class="card purple">
+        <div class="card-title">🅿️ Parking Lot</div>
+        <ul>
+          <li>Окрема дошка / стікери для «не зараз»</li>
+          <li>«Важливе, але поза scope сесії»</li>
+          <li>Обов'язково огляд у кінці</li>
+          <li>Документуй у follow-up як «до обговорення»</li>
+        </ul>
+      </div>
+    </div>
+    <a href="#" class="back-top">↑ нагору</a>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- 11. КОНФЛІКТИ                                               -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <section id="facil-conflict">
+    <h2><span class="num">11</span>Робота з конфліктами на сесії</h2>
+    <p>Конфлікт — не провал сесії, а нормальна частина групової динаміки. Senior розуміє: суперечка 2 людей — це часто сигнал, що тема важлива. Задача — не «приглушити», а <em>керувати</em>.</p>
+
+    <h3>Алгоритм деескалації (5 кроків)</h3>
+    <div class="svg-wrap">
+      <svg viewBox="0 0 800 240" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="arr3" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+            <polygon points="0 0, 10 5, 0 10" fill="#27ae60"/>
+          </marker>
+        </defs>
+        <rect x="10" y="90" width="140" height="60" rx="10" fill="#eaf4fc" stroke="#3498db" stroke-width="1.5"/>
+        <text x="80" y="115" text-anchor="middle" fill="#1e3a8a" font-size="11" font-weight="700">1. Визнай</text>
+        <text x="80" y="132" text-anchor="middle" fill="#64748b" font-size="9">обидві позиції</text>
+
+        <line x1="150" y1="120" x2="170" y2="120" stroke="#27ae60" stroke-width="2" marker-end="url(#arr3)"/>
+
+        <rect x="172" y="90" width="140" height="60" rx="10" fill="#ecfdf5" stroke="#27ae60" stroke-width="1.5"/>
+        <text x="242" y="115" text-anchor="middle" fill="#065f46" font-size="11" font-weight="700">2. Спільне</text>
+        <text x="242" y="132" text-anchor="middle" fill="#64748b" font-size="9">«В чому згодні?»</text>
+
+        <line x1="312" y1="120" x2="332" y2="120" stroke="#27ae60" stroke-width="2" marker-end="url(#arr3)"/>
+
+        <rect x="334" y="90" width="140" height="60" rx="10" fill="#fef3c7" stroke="#f39c12" stroke-width="1.5"/>
+        <text x="404" y="115" text-anchor="middle" fill="#92400e" font-size="11" font-weight="700">3. Розбіжність</text>
+        <text x="404" y="132" text-anchor="middle" fill="#64748b" font-size="9">«Де розходимось?»</text>
+
+        <line x1="474" y1="120" x2="494" y2="120" stroke="#27ae60" stroke-width="2" marker-end="url(#arr3)"/>
+
+        <rect x="496" y="90" width="140" height="60" rx="10" fill="#f5f3ff" stroke="#9b59b6" stroke-width="1.5"/>
+        <text x="566" y="115" text-anchor="middle" fill="#5b21b6" font-size="11" font-weight="700">4. Reframe</text>
+        <text x="566" y="132" text-anchor="middle" fill="#64748b" font-size="9">«Як врахувати?»</text>
+
+        <line x1="636" y1="120" x2="656" y2="120" stroke="#27ae60" stroke-width="2" marker-end="url(#arr3)"/>
+
+        <rect x="658" y="90" width="140" height="60" rx="10" fill="#fef2f2" stroke="#e74c3c" stroke-width="1.5"/>
+        <text x="728" y="115" text-anchor="middle" fill="#991b1b" font-size="11" font-weight="700">5. Park</text>
+        <text x="728" y="132" text-anchor="middle" fill="#64748b" font-size="9">якщо тупик</text>
+
+        <text x="400" y="40" text-anchor="middle" fill="#1e293b" font-size="13" font-weight="700">Алгоритм: від конфлікту — до продовження сесії</text>
+        <text x="400" y="200" text-anchor="middle" fill="#64748b" font-size="10">Кожен крок — 30–60 секунд. Увесь алгоритм — 3–5 хвилин.</text>
+      </svg>
+    </div>
+
+    <ol>
+      <li><strong>Визнай обидві позиції.</strong> «Бачу, що є два сильні погляди — це нормально для такої теми.» Не оцінюй, не приставай на чиюсь сторону.</li>
+      <li><strong>Знайди спільне.</strong> «Ви обидва хочете X — правильно?» 90% конфліктів мають спільну основу, просто її не видно через емоції.</li>
+      <li><strong>Уточни розбіжність.</strong> «Де саме ви розходитесь — в підході, в priorities, в timeline?» Конкретизація зменшує емоцію.</li>
+      <li><strong>Перефреймуй.</strong> «Як ми можемо врахувати обидва погляди?» Переводиш зі «або-або» в «і-і».</li>
+      <li><strong>Якщо тупик — park.</strong> «Пропоную зафіксувати обидві позиції, продовжити сесію, і вирішити окремо на 1:1». Не дозволяй одному конфлікту зірвати 90-хвилинну роботу групи.</li>
+    </ol>
+    <a href="#" class="back-top">↑ нагору</a>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- 12. ОНЛАЙН                                                  -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <section id="facil-online">
+    <h2><span class="num">12</span>Онлайн-фасилітація</h2>
+    <p>Онлайн — не «той самий воркшоп, але в Zoom». Це окрема дисципліна зі своїми правилами. Мідли провалюються, бо переносять офлайн-підхід без адаптації.</p>
+
+    <h3>Особливості віддаленого формату</h3>
+    <div class="cards">
+      <div class="card yellow">
+        <div class="card-title">👁 Невербаліка</div>
+        <p>Бачиш тільки обличчя в квадратиках. Втрачаєш пози, нахили, microexpressions.</p>
+      </div>
+      <div class="card yellow">
+        <div class="card-title">🫥 Легко сховатись</div>
+        <p>Вимкнена камера + мікрофон = людина «присутня, але відсутня». Multitasking — норма.</p>
+      </div>
+      <div class="card yellow">
+        <div class="card-title">💻 Tech ризики</div>
+        <p>Падіння Zoom, повільний Miro, проблема з правами доступу — у 20% сесій хоча б одна.</p>
+      </div>
+      <div class="card yellow">
+        <div class="card-title">😴 Zoom fatigue</div>
+        <p>Після 90 хв онлайн-сесії увага падає катастрофічно. Офлайн — витримуєш 3 години легко.</p>
+      </div>
+    </div>
+
+    <h3>Інструменти: що для чого</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Задача</th><th>Інструменти</th><th>Коли що</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>Відеозв'язок</td>
+            <td>Zoom · MS Teams · Google Meet</td>
+            <td>Teams — enterprise, Zoom — найкращі breakout rooms, Meet — швидкі сесії</td>
+          </tr>
+          <tr>
+            <td>Дошка для колаборації</td>
+            <td>Miro · FigJam · Mural</td>
+            <td>Miro — найбагатша бібліотека шаблонів, FigJam — якщо вже в Figma</td>
+          </tr>
+          <tr>
+            <td>Голосування</td>
+            <td>Mentimeter · Slido · Zoom polls</td>
+            <td>Menti — найкращі візуалізації, Zoom polls — коли не хочеш ще один tool</td>
+          </tr>
+          <tr>
+            <td>Документування</td>
+            <td>Notion · Confluence · Google Docs</td>
+            <td>Notion — collaborative real-time, Confluence — якщо enterprise</td>
+          </tr>
+          <tr>
+            <td>Таймер</td>
+            <td>Вбудовані в Miro · Timer tab</td>
+            <td>Обов'язково великий таймер, видимий усім</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>✅ Best practices онлайн-фасилітації</h3>
+    <ul class="checklist">
+      <li><strong>Камери ON</strong> — обов'язково. Встанови це як ground rule на старті.</li>
+      <li><strong>Коротші сесії</strong> — максимум 90 хвилин + перерва 10 хв. Для 3-годинної — розбивай на 2 дні.</li>
+      <li><strong>Інтерактив кожні 5–7 хв</strong> — питання, голосування, стікер, chat response. Без інтерактиву люди «відпливають» за 8 хвилин.</li>
+      <li><strong>Чіткі інструкції</strong> — show don't tell. Поділи екран, покажи куди клікати. Не «додайте стікер» а «клікніть + внизу зліва, оберіть жовтий, напишіть ідею».</li>
+      <li><strong>Co-facilitator</strong> — обов'язково для 8+ учасників. Один веде процес, другий чистить чат, таймерить, техніку.</li>
+      <li><strong>Backup план</strong> — що робити, якщо Miro впав? Google Doc? Фото дошки після?</li>
+      <li><strong>Check-in на старті</strong> — 1 слово / емоджі від кожного. Одразу активує камери й голоси.</li>
+      <li><strong>Async pre-work</strong> — дай людям заповнити стікери до сесії. На сесії — обговорюй, не генеруй.</li>
+    </ul>
+    <a href="#" class="back-top">↑ нагору</a>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- 13. ТИПОВІ СЕСІЇ                                            -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <section id="facil-sessions">
+    <h2><span class="num">13</span>Типові сесії BA/SA</h2>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-title">🔎 1. Discovery Workshop</div>
+        <p><strong>Мета:</strong> зрозуміти проблему, контекст, болі стейкхолдерів.</p>
+        <p><strong>Тривалість:</strong> 2–4 години</p>
+        <p><strong>Учасники:</strong> PO, SME, End Users, Tech Lead</p>
+        <p><strong>Техніки:</strong> Empathy Map, Customer Journey, Problem Statement, 5 Whys</p>
+        <p><strong>Deliverable:</strong> problem statement + top-3 болі + stakeholder map</p>
+      </div>
+      <div class="card green">
+        <div class="card-title">📝 2. Requirements Elicitation</div>
+        <p><strong>Мета:</strong> зібрати та пріоритизувати вимоги для майбутнього спринту/релізу.</p>
+        <p><strong>Тривалість:</strong> 1.5–2 години</p>
+        <p><strong>Учасники:</strong> PO, SME, End Users</p>
+        <p><strong>Техніки:</strong> User Story Mapping, Silent Brainstorm, MoSCoW, Affinity</p>
+        <p><strong>Deliverable:</strong> пріоритизований бек of user stories / story map</p>
+      </div>
+      <div class="card purple">
+        <div class="card-title">🏗 3. Solution Design Workshop</div>
+        <p><strong>Мета:</strong> визначити архітектуру рішення, trade-offs.</p>
+        <p><strong>Тривалість:</strong> 2–3 години</p>
+        <p><strong>Учасники:</strong> Tech Lead, Architects, BA, PO</p>
+        <p><strong>Техніки:</strong> C4 Diagrams, Decision Matrix, Trade-off Analysis, 6 Hats</p>
+        <p><strong>Deliverable:</strong> architecture decision record (ADR) + C4 схеми</p>
+      </div>
+      <div class="card orange">
+        <div class="card-title">🔁 4. Retrospective</div>
+        <p><strong>Мета:</strong> lessons learned, improvements для команди.</p>
+        <p><strong>Тривалість:</strong> 1–1.5 години</p>
+        <p><strong>Учасники:</strong> вся команда</p>
+        <p><strong>Техніки:</strong> Start/Stop/Continue, 4Ls (Liked/Learned/Lacked/Longed-for), Sailboat</p>
+        <p><strong>Deliverable:</strong> 3–5 action items з owners та датами</p>
+      </div>
+      <div class="card yellow">
+        <div class="card-title">🤝 5. Stakeholder Alignment</div>
+        <p><strong>Мета:</strong> узгодити бачення між ключовими stakeholders.</p>
+        <p><strong>Тривалість:</strong> 1.5–2 години</p>
+        <p><strong>Учасники:</strong> ключові stakeholders (3–6 людей)</p>
+        <p><strong>Техніки:</strong> Vision Statement, Elevator Pitch, Goals Alignment, Dot Voting</p>
+        <p><strong>Deliverable:</strong> узгоджений vision statement + top-3 пріоритети</p>
+      </div>
+    </div>
+
+    <h3>Швидкий вибір: Ситуація → Техніка</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Ситуація</th><th>Найкраща техніка</th><th>Фаза</th></tr></thead>
+        <tbody>
+          <tr><td>Потрібно багато ідей швидко</td><td>Brainwriting 6-3-5</td><td>Divergence</td></tr>
+          <tr><td>Дизайн-сесія, UX-рішення</td><td>Crazy 8s</td><td>Divergence</td></tr>
+          <tr><td>Застрягли в проблемі</td><td>How Might We</td><td>Divergence</td></tr>
+          <tr><td>Мовчуни + домінатори</td><td>Round Robin або Silent Brainstorm</td><td>Divergence</td></tr>
+          <tr><td>Купа хаотичних стікерів</td><td>Affinity Mapping</td><td>Convergence</td></tr>
+          <tr><td>Швидка пріоритизація</td><td>Dot Voting</td><td>Convergence</td></tr>
+          <tr><td>Пріоритизація вимог для MVP</td><td>MoSCoW</td><td>Convergence</td></tr>
+          <tr><td>Вибір фіч для спринту</td><td>Impact/Effort Matrix</td><td>Convergence</td></tr>
+          <tr><td>Виявити реальні пріоритети</td><td>Buy a Feature</td><td>Convergence</td></tr>
+          <tr><td>Перевірка консенсусу</td><td>Fist of Five</td><td>Decision</td></tr>
+          <tr><td>Складне рішення, багато критеріїв</td><td>Decision Matrix</td><td>Decision</td></tr>
+          <tr><td>Потрібно врахувати всі перспективи</td><td>Six Thinking Hats</td><td>Decision</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <a href="#" class="back-top">↑ нагору</a>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- 14. ПІСЛЯ СЕСІЇ                                             -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <section id="facil-after">
+    <h2><span class="num">14</span>Після сесії: документування</h2>
+
+    <div class="callout">
+      <strong>Правило 24 годин:</strong> якщо follow-up не надіслано протягом 24 годин після сесії — 50% цінності втрачено. Люди забувають деталі, action items губляться, контекст розмивається.
+    </div>
+
+    <h3>Що зберігати</h3>
+    <ul>
+      <li><strong>Фото/експорт дошок</strong> — Miro PDF, фото флічпарта, скріншоти. Сирі артефакти.</li>
+      <li><strong>Summary email</strong> — протягом 24 годин усім учасникам + sponsor.</li>
+      <li><strong>Action items</strong> — з WHO + WHAT + WHEN у Jira/Linear/wiki.</li>
+      <li><strong>Decision log</strong> — що вирішили, хто підтвердив, на якій підставі.</li>
+      <li><strong>Parking Lot</strong> — як окремий список для наступних сесій.</li>
+      <li><strong>Feedback</strong> — що спрацювало, що ні — у свій фасилітатор-лог.</li>
+    </ul>
+
+    <h3>Шаблон follow-up email</h3>
+    <div class="email-template"><strong>Subject:</strong> [Workshop Name] — Summary &amp; Action Items
+
+Hi team,
+
+Дякую за продуктивну сесію! Ось підсумок:
+
+📎 МЕТА: [що ми хотіли досягти одним реченням]
+
+✅ РЕЗУЛЬТАТ: [що отримали — 1–2 речення]
+
+🎯 ACTION ITEMS:
+  1. [Хто] — [Що конкретно] — до [Коли]
+  2. [Хто] — [Що конкретно] — до [Коли]
+  3. [Хто] — [Що конкретно] — до [Коли]
+
+📂 АРТЕФАКТИ:
+  • Miro board: [посилання]
+  • Decision log: [посилання]
+  • User story map: [посилання]
+
+🅿️ PARKING LOT (для наступної сесії):
+  • [тема 1 — одним рядком]
+  • [тема 2]
+  • [тема 3]
+
+📅 НАСТУПНІ КРОКИ:
+  • [Follow-up сесія X — дата]
+  • [Перевірка action items на [дата]]
+
+Questions / коментарі? Пишіть у thread або прямо мені.
+
+Дякую!
+[Ім'я]</div>
+    <a href="#" class="back-top">↑ нагору</a>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- 15. ПОМИЛКИ                                                 -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <section id="facil-mistakes">
+    <h2><span class="num">15</span>Типові помилки фасилітатора-початківця</h2>
+
+    <div class="callout yellow">
+      <strong>⚠️ 1. Фасилітувати і брати участь одночасно</strong><br>
+      <em>Чому провал:</em> коли ти захищаєш свою ідею, ти втрачаєш нейтральність, а група втрачає довіру до процесу. Обери одну роль — або фасилітатор, або учасник. Якщо тема дуже в твоєму експертізі — проси колегу фасилітувати замість тебе.
+    </div>
+
+    <div class="callout yellow">
+      <strong>⚠️ 2. Не тримати тайминг</strong><br>
+      <em>Чому провал:</em> «Давайте ще 5 хвилин на цю тему» 3 рази поспіль — і ти вже 30 хвилин позаду agenda. Фінал зріже закритий. Використовуй видимий таймер, будь жорстким: «Дякую, час блоку вийшов — рухаємось далі».
+    </div>
+
+    <div class="callout yellow">
+      <strong>⚠️ 3. Дозволяти домінування</strong><br>
+      <em>Чому провал:</em> один гучний голос = рішення групи. Результати сесії не представляють реальну групову думку. Round Robin, silent brainstorm — твої інструменти проти цього.
+    </div>
+
+    <div class="callout yellow">
+      <strong>⚠️ 4. Пропускати підготовку</strong><br>
+      <em>Чому провал:</em> «На місці розберемось» = хаос. Без agenda, без техніки під фазу, без очікуваного deliverable — сесія перетворюється на балаканину. Правило 3:1 (3 години підготовки на 1 годину сесії) — не жарт.
+    </div>
+
+    <div class="callout yellow">
+      <strong>⚠️ 5. Не фіксувати результати</strong><br>
+      <em>Чому провал:</em> все забудеться за 48 годин. Через тиждень команда почне сперечатись «а ми так не домовлялись». Пиши follow-up одразу, з action items у Jira.
+    </div>
+
+    <div class="callout yellow">
+      <strong>⚠️ 6. Боятися тиші</strong><br>
+      <em>Чому провал:</em> задав питання — чекаєш 3 секунди — ніхто не відповідає — ти починаєш сам відповідати. Помилка! Люди думають. Інтроверти потребують 7–10 секунд. Витримай паузу.
+    </div>
+
+    <div class="callout yellow">
+      <strong>⚠️ 7. Вирішувати за групу</strong><br>
+      <em>Чому провал:</em> «Мені здається, що краще зробити X» — і ти вже не фасилітатор, а диктатор. Група кивне, але результат не «привласнить». Твоя роль — процес, рішення — групи.
+    </div>
+
+    <div class="callout yellow">
+      <strong>⚠️ 8. Ігнорувати енергію групи</strong><br>
+      <em>Чому провал:</em> 14:30, obід, всі «провисають» — а ти продовжуєш по agenda. Ідеї якість падає, decision quality — теж. Break, енерджайзер, зміна формату — обов'язкові.
+    </div>
+    <a href="#" class="back-top">↑ нагору</a>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- 16. SELF-CHECK                                              -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <section id="facil-selfcheck">
+    <h2><span class="num">16</span>Перевір себе</h2>
+    <p>Дай собі чесні відповіді. Це діагностика, а не тест.</p>
+    <ol>
+      <li><strong>Сформулюй мету останньої сесії, яку ти вів</strong>, за формулою «на кінець сесії ми матимемо X, щоб Y». Чи була вона такою, коли ти планував?</li>
+      <li><strong>Різниця фасилітатор / модератор / презентер</strong> — назви 1 ключову відмінність кожної ролі. В якій ролі ти перебував останні 3 сесії?</li>
+      <li><strong>Яку техніку divergence</strong> ти обереш для групи з 3 домінаторів і 2 мовчунів? Чому?</li>
+      <li><strong>Які 3 техніки convergence</strong> ти знаєш, і коли застосовуєш кожну?</li>
+      <li><strong>Опиши алгоритм деескалації</strong> (5 кроків) своїми словами.</li>
+      <li><strong>Groan zone</strong> — що це, і що робити, якщо група в ній застрягла?</li>
+      <li><strong>Твоя остання сесія</strong> — чи був follow-up email протягом 24 годин з action items? Якщо ні — що завадило?</li>
+    </ol>
+
+    <div class="callout purple">
+      <strong>🎓 Практичне завдання:</strong> запроси колегу-BA подивитись твою наступну discovery-сесію як «тихого спостерігача». Після — попроси фідбек по 5 пунктах:<br>
+      1) Чи чітко була озвучена мета? 2) Чи тримав тайминг? 3) Чи всі брали участь? 4) Чи був зрозумілий перехід між фазами? 5) Чи були action items в кінці?
+    </div>
+    <a href="#" class="back-top">↑ нагору</a>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- 17. ІНТЕРВ'Ю                                                -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <section id="facil-interview">
+    <h2><span class="num">17</span>Питання на senior-співбесіді</h2>
+    <p>Реальні питання, які задають на senior BA/SA позиціях. Фасилітація — одна з топ-5 областей, які перевіряють на senior-level.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-title">Q1. Розкажіть про найскладнішу сесію, яку ви фасилітували. Що пішло не так і як ви впоралися?</div>
+        <p><strong>Фреймворк STAR:</strong> Situation → Task → Action → Result. Опиши конкретну сесію (тип, кількість людей, тема). Що саме пішло не так (конфлікт, домінатор, тупик)? Яку техніку застосував? Результат (у діях та в рефлексії).</p>
+      </div>
+      <div class="card green">
+        <div class="card-title">Q2. Як ви працюєте з домінуючими учасниками на воркшопах?</div>
+        <p>Відповідь-ключ: Round Robin + silent brainstorm + ground rules + прямі фрази («Дякую, Іване, хочу почути інших»). Покажи, що у тебе є <strong>кілька рівнів</strong> — від м'якого до жорсткого.</p>
+      </div>
+      <div class="card purple">
+        <div class="card-title">Q3. Яку техніку оберете для пріоритизації 50+ user stories з групою 8 stakeholders?</div>
+        <p>Комбінуй: Affinity Mapping (50 → 8 кластерів) → MoSCoW на кластерах → Buy a Feature для final priorities. Не бий одну техніку. Покажи, що розумієш: різні фази — різні інструменти.</p>
+      </div>
+      <div class="card yellow">
+        <div class="card-title">Q4. Як забезпечуєте, що результати сесії не втрачаються?</div>
+        <p>Правило 24 годин · follow-up email з action items (WHO/WHAT/WHEN) · Jira/Linear tickets · decision log · parking lot · фото/експорт дошок. Покажи systemic підхід, не «я запам'ятаю».</p>
+      </div>
+      <div class="card orange">
+        <div class="card-title">Q5. Як відрізняється ваш підхід до онлайн vs офлайн фасилітації?</div>
+        <p>Ключові точки: коротші сесії (90 хв max), камери ON, інтерактив кожні 5–7 хв, co-facilitator для 8+, async pre-work, backup tool, chіткі show-me-not-tell інструкції. Покажи, що це <strong>окрема дисципліна</strong>, не просто «Zoom replay» офлайну.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Q6. Опишіть випадок, коли ви помилилися у фасилітації. Чого навчились?</div>
+        <p><strong>Класика senior-панелей.</strong> Не ухиляйся, не «я ідеальний фасилітатор». Конкретна помилка → наслідок → що робив би інакше → як застосовуєш зараз. <em>Відсутність рефлексії = red flag.</em></p>
+      </div>
+    </div>
+    <a href="#" class="back-top">↑ нагору</a>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- 18. РЕСУРСИ                                                 -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <section id="facil-resources">
+    <h2><span class="num">18</span>Додаткові ресурси</h2>
+
+    <h3>📚 Книги</h3>
+    <ul>
+      <li><strong>Sam Kaner — «Facilitator's Guide to Participatory Decision-Making»</strong> · біблія професійного фасилітатора. Diamond model, groan zone, participatory approach.</li>
+      <li><strong>Dave Gray — «Gamestorming»</strong> · 80+ практичних ігор/технік для продуктових і дизайн-сесій.</li>
+      <li><strong>Jake Knapp — «Sprint»</strong> · 5-денна структура design sprint від Google Ventures. Дуже прикладна.</li>
+      <li><strong>Michael Wilkinson — «The Secrets of Facilitation»</strong> · SMART framework, інтерв'ю-техніки, керування групою.</li>
+      <li><strong>Priya Parker — «The Art of Gathering»</strong> · про дизайн будь-яких зустрічей як досвіду, а не просто meeting.</li>
+    </ul>
+
+    <h3>🌐 Онлайн-ресурси</h3>
+    <ul>
+      <li><strong>Liberating Structures</strong> (<em>liberatingstructures.com</em>) · 33 безкоштовні structures для фасилітації — 1-2-4-All, TRIZ, Troika Consulting тощо.</li>
+      <li><strong>SessionLab</strong> (<em>sessionlab.com</em>) · найбільша онлайн-бібліотека технік фасилітації з фільтрами.</li>
+      <li><strong>Miro templates library</strong> · готові шаблони для всіх описаних технік.</li>
+      <li><strong>MURAL templates</strong> · альтернатива Miro з фокусом на enterprise.</li>
+    </ul>
+
+    <h3>📖 Стандарти</h3>
+    <ul>
+      <li><strong>BABOK 3.0 — Chapter 4: Elicitation and Collaboration</strong> · формальний опис workshop-facilitation для BA.</li>
+      <li><strong>IIBA Underlying Competencies 9.5</strong> · Interaction Skills (facilitation, leadership, negotiation).</li>
+      <li><strong>IAF Core Competencies</strong> · International Association of Facilitators — 6 ключових компетенцій сертифікованого фасилітатора.</li>
+    </ul>
+
+    <h3>🔗 Суміжні теми для поглиблення</h3>
+    <div class="cards">
+      <div class="card">
+        <div class="card-title">Design Thinking</div>
+        <p>Empathize → Define → Ideate → Prototype → Test. Природна структура для discovery-сесій.</p>
+      </div>
+      <div class="card green">
+        <div class="card-title">Event Storming</div>
+        <p>Alberto Brandolini's technique для моделювання складних доменів. Важлива для DDD.</p>
+      </div>
+      <div class="card purple">
+        <div class="card-title">User Story Mapping</div>
+        <p>Jeff Patton's technique — візуальна структура беклогу через user journey.</p>
+      </div>
+      <div class="card orange">
+        <div class="card-title">Visual Thinking</div>
+        <p>Sketchnoting, graphic facilitation — як візуалізувати дискусію в реальному часі.</p>
+      </div>
+      <div class="card yellow">
+        <div class="card-title">Active Listening</div>
+        <p>Базова навичка для всіх інших — парафраз, labeling, відкриті питання.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Negotiation skills</div>
+        <p>BATNA, ZOPA, tactical empathy — особливо для stakeholder alignment сесій.</p>
+      </div>
+    </div>
+
+    <div class="callout purple">
+      <strong>🎯 Наступний крок у розвитку:</strong> 1) Пройди 2-денний live-training з facilitation (не онлайн-курс, а тренінг з фідбеком). 2) Фасилітуй мінімум 10 сесій під супервізією колеги-senior з розбором. 3) Сертифікація IAF CPF — якщо хочеш формалізувати компетенцію.
+    </div>
+    <a href="#" class="back-top">↑ нагору</a>
+  </section>
+
+  <footer style="text-align:center;color:var(--gray);font-size:.8rem;margin-top:2rem;">
+    Courseware · BA/SA Knowledge Base · Soft Skills Track · Facilitation Mastery
+  </footer>
+
+</div>
+</body>
+</html>
