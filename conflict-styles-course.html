@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conflict Styles · Курс для BA/SA</title>
+<style>
+  :root {
+    --red: #e74c3c;
+    --green: #27ae60;
+    --blue: #3498db;
+    --gray: #95a5a6;
+    --yellow: #f1c40f;
+    --purple: #9b59b6;
+    --orange: #e67e22;
+    --ink: #1e293b;
+    --ink2: #475569;
+    --ink3: #64748b;
+    --bg: #fafbff;
+    --bg2: #f1f5f9;
+    --border: #e2e8f0;
+    --radius: 14px;
+    --radius-sm: 10px;
+    --shadow: 0 1px 3px rgba(15,23,42,.06), 0 4px 16px rgba(15,23,42,.04);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.6;
+    font-size: 16px;
+  }
+  .container { max-width: 1100px; margin: 0 auto; padding: 2rem 1.2rem 4rem; }
+
+  .breadcrumb { font-size: .82rem; color: var(--ink3); margin-bottom: 1rem; }
+  .breadcrumb span + span::before { content: " › "; color: #cbd5e1; }
+
+  .page-header {
+    background: linear-gradient(135deg, #fef2f2, #eff6ff);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2rem 1.6rem;
+    margin-bottom: 2rem;
+  }
+  .page-tag {
+    display: inline-block;
+    background: rgba(231,76,60,.12);
+    color: #b91c1c;
+    font-size: .75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    padding: .3rem .7rem;
+    border-radius: 50px;
+  }
+  h1 { font-size: 2.1rem; margin: .7rem 0 .5rem; line-height: 1.2; }
+  h1 .grad {
+    background: linear-gradient(135deg, #e74c3c, #3498db);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .page-desc { color: var(--ink2); font-size: 1.02rem; margin: 0; max-width: 820px; }
+
+  h2 {
+    font-size: 1.4rem;
+    margin: 0 0 1rem;
+    padding-bottom: .4rem;
+    border-bottom: 2px solid var(--border);
+  }
+  h2 .num {
+    display: inline-block;
+    width: 2rem; height: 2rem;
+    background: linear-gradient(135deg, #e74c3c, #3498db);
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 2rem;
+    font-size: .9rem;
+    margin-right: .55rem;
+    vertical-align: middle;
+  }
+  h3 { font-size: 1.08rem; margin: 1.2rem 0 .5rem; color: var(--ink); }
+  h4 { font-size: .98rem; margin: .9rem 0 .4rem; color: var(--ink); }
+
+  section {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.4rem 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow);
+  }
+  p { margin: .5rem 0 .8rem; color: var(--ink2); }
+  ul, ol { padding-left: 1.2rem; color: var(--ink2); }
+  ul li, ol li { margin-bottom: .4rem; }
+
+  /* TOC */
+  .toc {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.2rem 1.4rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
+  }
+  .toc h3 { margin: 0 0 .8rem; font-size: 1rem; }
+  .toc ol {
+    columns: 2;
+    column-gap: 1.5rem;
+    padding-left: 1.2rem;
+    margin: 0;
+  }
+  .toc a { color: var(--red); text-decoration: none; font-size: .87rem; }
+  .toc a:hover { text-decoration: underline; }
+  @media (max-width: 640px) { .toc ol { columns: 1; } }
+
+  /* Callouts */
+  .callout {
+    border-left: 4px solid var(--blue);
+    background: rgba(52,152,219,.06);
+    padding: .8rem 1rem;
+    border-radius: var(--radius-sm);
+    margin: 1rem 0;
+    font-size: .92rem;
+  }
+  .callout.red    { border-color: var(--red);    background: rgba(231,76,60,.06); }
+  .callout.green  { border-color: var(--green);  background: rgba(39,174,96,.06); }
+  .callout.yellow { border-color: var(--yellow); background: rgba(241,196,15,.08); }
+  .callout.purple { border-color: var(--purple); background: rgba(155,89,182,.06); }
+  .callout.orange { border-color: var(--orange); background: rgba(230,126,34,.07); }
+  .callout.gray   { border-color: var(--gray);   background: rgba(149,165,166,.07); }
+  .callout strong { color: var(--ink); }
+
+  /* Cards grid */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+  .card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--blue);
+    border-radius: var(--radius-sm);
+    padding: 1rem 1.1rem;
+  }
+  .card.red    { border-top-color: var(--red); }
+  .card.green  { border-top-color: var(--green); }
+  .card.yellow { border-top-color: var(--yellow); }
+  .card.purple { border-top-color: var(--purple); }
+  .card.gray   { border-top-color: var(--gray); }
+  .card-title { font-weight: 700; color: var(--ink); margin-bottom: .4rem; font-size: .96rem; }
+  .card p { font-size: .85rem; margin: .3rem 0; }
+
+  /* Table */
+  .table-wrap { overflow-x: auto; margin: 1rem 0; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .86rem;
+    background: #fff;
+  }
+  th, td {
+    padding: .55rem .75rem;
+    border: 1px solid var(--border);
+    text-align: left;
+    vertical-align: top;
+  }
+  th { background: rgba(231,76,60,.07); color: var(--ink); font-weight: 700; }
+  tbody tr:nth-child(even) { background: #fafbff; }
+
+  /* Script box */
+  .script {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--purple);
+    border-radius: var(--radius-sm);
+    padding: .9rem 1.1rem;
+    margin: .7rem 0;
+  }
+  .script-label {
+    font-weight: 700;
+    font-size: .82rem;
+    color: var(--purple);
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    margin-bottom: .3rem;
+  }
+  .script p { font-size: .86rem; margin: .3rem 0; }
+
+  /* Style card (for 5 styles) */
+  .style-block {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.2rem 1.3rem;
+    margin: 1rem 0;
+    background: #fff;
+  }
+  .style-block .style-header {
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+    margin-bottom: .7rem;
+  }
+  .style-block .style-icon {
+    width: 2.6rem; height: 2.6rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .style-block .style-name { font-size: 1.12rem; font-weight: 700; }
+  .style-block .style-sub { font-size: .82rem; color: var(--ink3); }
+
+  /* Quiz */
+  .quiz-q {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 1rem 1.1rem;
+    margin: .8rem 0;
+  }
+  .quiz-q .q-text { font-weight: 600; font-size: .94rem; margin-bottom: .5rem; color: var(--ink); }
+  .quiz-q label {
+    display: block;
+    padding: .35rem .6rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: .86rem;
+    color: var(--ink2);
+    transition: background .15s;
+  }
+  .quiz-q label:hover { background: var(--bg2); }
+  .quiz-q input[type="radio"] { margin-right: .4rem; accent-color: var(--red); }
+
+  /* Result box */
+  .result-box {
+    display: none;
+    border: 2px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.2rem 1.4rem;
+    margin-top: 1rem;
+    background: linear-gradient(135deg, #fef2f2, #eff6ff);
+  }
+  .result-box.show { display: block; }
+  .result-box h3 { margin-top: 0; }
+
+  .btn {
+    display: inline-block;
+    padding: .6rem 1.4rem;
+    border: none;
+    border-radius: 50px;
+    font-size: .88rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity .15s;
+    color: #fff;
+  }
+  .btn:hover { opacity: .85; }
+  .btn-red { background: linear-gradient(135deg, #e74c3c, #c0392b); }
+  .btn-blue { background: linear-gradient(135deg, #3498db, #2980b9); }
+  .btn-green { background: linear-gradient(135deg, #27ae60, #219a52); }
+
+  /* Decision tree */
+  .dtree {
+    font-size: .86rem;
+    color: var(--ink2);
+    padding-left: .5rem;
+  }
+  .dtree .node {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: .5rem .8rem;
+    margin: .3rem 0;
+    display: inline-block;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .dtree .branch { padding-left: 1.5rem; border-left: 2px solid var(--border); margin-left: .5rem; }
+  .dtree .answer { font-weight: 600; }
+
+  /* SVG diagram container */
+  .diagram-wrap {
+    overflow-x: auto;
+    margin: 1rem 0;
+    text-align: center;
+  }
+  .diagram-wrap svg { max-width: 100%; height: auto; }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    color: var(--ink3);
+    text-decoration: none;
+    font-size: .87rem;
+    margin-top: 2rem;
+    padding: .6rem 1.2rem;
+    background: var(--bg2);
+    border-radius: 50px;
+    font-weight: 600;
+    transition: color .15s;
+  }
+  .back-link:hover { color: var(--ink); }
+
+  @media (max-width: 640px) {
+    .container { padding: 1rem .7rem 3rem; }
+    .page-header { padding: 1.3rem 1rem; }
+    h1 { font-size: 1.5rem; }
+    section { padding: 1rem; }
+    .cards { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <nav class="breadcrumb">
+    <span><a href="index.html" style="color:inherit;text-decoration:none;">Base</a></span>
+    <span>Skills</span>
+    <span>Soft Skills</span>
+    <span style="color:var(--ink);">Conflict Styles</span>
+  </nav>
+
+  <div class="page-header">
+    <div class="page-tag">Soft Skills Course</div>
+    <h1>Conflict Styles: <span class="grad">Thomas-Kilmann Model для BA/SA</span></h1>
+    <p class="page-desc">Розпізнай свій стиль конфлікту, навчись адаптувати його до ситуації та перетворюй конфлікт на можливість для кращого рішення. Від теорії до готових скриптів.</p>
+  </div>
+
+  <!-- Why -->
+  <section>
+    <h2><span class="num">!</span> Чому це критично для BA/SA</h2>
+    <p>BA/SA працює на перетині інтересів: бізнес vs технології, швидкість vs якість, scope vs бюджет vs терміни. Різні stakeholders з різними пріоритетами — це не виняток, а норма.</p>
+    <div class="callout red">
+      <strong>Конфлікт — не проблема, а сигнал.</strong> Проблема — неправильна реакція на конфлікт. Senior-аналітик розпізнає свій природний стиль, адаптує його до ситуації та перетворює конфлікт на можливість для кращого рішення.
+    </div>
+    <div class="cards">
+      <div class="card red">
+        <div class="card-title">Scope vs Бюджет vs Терміни</div>
+        <p>Класичний "залізний трикутник" — конфлікт вшитий у кожен проєкт.</p>
+      </div>
+      <div class="card green">
+        <div class="card-title">Бізнес vs Технології</div>
+        <p>"Хочу вчора" vs "Це займе 3 місяці" — щоденна реальність аналітика.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Stakeholder vs Stakeholder</div>
+        <p>Різні підрозділи, різні пріоритети — аналітик у центрі.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOC -->
+  <div class="toc">
+    <h3>Зміст курсу</h3>
+    <ol>
+      <li><a href="#p1">Thomas-Kilmann Conflict Model</a></li>
+      <li><a href="#p2">5 стилів конфлікту — детально</a></li>
+      <li><a href="#p3">Діагностика свого стилю (тест)</a></li>
+      <li><a href="#p4">Матриця вибору стилю</a></li>
+      <li><a href="#p5">Адаптація стилю</a></li>
+      <li><a href="#p6">Конфлікт як можливість</a></li>
+      <li><a href="#p7">Практичні скрипти для BA/SA</a></li>
+      <li><a href="#p8">Типові помилки</a></li>
+      <li><a href="#p9">Self-check та співбесіда</a></li>
+      <li><a href="#p10">Ресурси</a></li>
+    </ol>
+  </div>
+
+  <!-- ═══ PART 1: Thomas-Kilmann Model ═══ -->
+  <section id="p1">
+    <h2><span class="num">1</span> Thomas-Kilmann Conflict Model</h2>
+    <p>Модель побудована на двох осях — <strong>Assertiveness</strong> (наскільки ти дбаєш про свої інтереси) та <strong>Cooperativeness</strong> (наскільки ти дбаєш про інтереси іншого). Це дає 5 стилів поведінки в конфлікті.</p>
+
+    <div class="diagram-wrap">
+      <svg viewBox="0 0 660 480" width="660" xmlns="http://www.w3.org/2000/svg" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
+        <!-- Background -->
+        <rect x="80" y="30" width="540" height="400" rx="16" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+
+        <!-- Grid lines -->
+        <line x1="350" y1="30" x2="350" y2="430" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="6,4"/>
+        <line x1="80" y1="230" x2="620" y2="230" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="6,4"/>
+
+        <!-- Axes -->
+        <line x1="80" y1="430" x2="80" y2="30" stroke="#94a3b8" stroke-width="2" marker-end="url(#arr)"/>
+        <line x1="80" y1="430" x2="620" y2="430" stroke="#94a3b8" stroke-width="2" marker-end="url(#arr)"/>
+        <defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#94a3b8"/></marker></defs>
+
+        <!-- Axis labels -->
+        <text x="28" y="230" text-anchor="middle" font-size="13" font-weight="700" fill="#64748b" transform="rotate(-90,28,230)">ASSERTIVENESS (Наполегливість)</text>
+        <text x="350" y="465" text-anchor="middle" font-size="13" font-weight="700" fill="#64748b">COOPERATIVENESS (Кооперативність)</text>
+        <text x="90" y="50" font-size="11" fill="#94a3b8">Високо</text>
+        <text x="90" y="425" font-size="11" fill="#94a3b8">Низько</text>
+        <text x="580" y="455" font-size="11" fill="#94a3b8">Високо</text>
+        <text x="100" y="455" font-size="11" fill="#94a3b8">Низько</text>
+
+        <!-- Competing (top-left) -->
+        <rect x="120" y="65" width="180" height="120" rx="14" fill="#e74c3c" fill-opacity=".12" stroke="#e74c3c" stroke-width="2"/>
+        <text x="210" y="110" text-anchor="middle" font-size="16" font-weight="700" fill="#e74c3c">COMPETING</text>
+        <text x="210" y="130" text-anchor="middle" font-size="12" fill="#b91c1c">Змагання</text>
+        <text x="210" y="150" text-anchor="middle" font-size="14" font-weight="700" fill="#e74c3c">Win-Lose</text>
+        <text x="210" y="170" text-anchor="middle" font-size="11" fill="#94a3b8">Високо наполегливий</text>
+
+        <!-- Collaborating (top-right) -->
+        <rect x="400" y="65" width="180" height="120" rx="14" fill="#27ae60" fill-opacity=".12" stroke="#27ae60" stroke-width="2"/>
+        <text x="490" y="110" text-anchor="middle" font-size="16" font-weight="700" fill="#27ae60">COLLABORATING</text>
+        <text x="490" y="130" text-anchor="middle" font-size="12" fill="#1e7a47">Колаборація</text>
+        <text x="490" y="150" text-anchor="middle" font-size="14" font-weight="700" fill="#27ae60">Win-Win</text>
+        <text x="490" y="170" text-anchor="middle" font-size="11" fill="#94a3b8">Високо кооперативний</text>
+
+        <!-- Compromising (center) -->
+        <rect x="260" y="195" width="180" height="80" rx="14" fill="#3498db" fill-opacity=".12" stroke="#3498db" stroke-width="2"/>
+        <text x="350" y="228" text-anchor="middle" font-size="16" font-weight="700" fill="#3498db">COMPROMISING</text>
+        <text x="350" y="248" text-anchor="middle" font-size="12" fill="#2471a3">Компроміс</text>
+        <text x="350" y="265" text-anchor="middle" font-size="13" font-weight="700" fill="#3498db">Win Some / Lose Some</text>
+
+        <!-- Avoiding (bottom-left) -->
+        <rect x="120" y="310" width="180" height="100" rx="14" fill="#95a5a6" fill-opacity=".15" stroke="#95a5a6" stroke-width="2"/>
+        <text x="210" y="350" text-anchor="middle" font-size="16" font-weight="700" fill="#7f8c8d">AVOIDING</text>
+        <text x="210" y="370" text-anchor="middle" font-size="12" fill="#6b7b7c">Уникнення</text>
+        <text x="210" y="390" text-anchor="middle" font-size="14" font-weight="700" fill="#7f8c8d">Lose-Lose</text>
+
+        <!-- Accommodating (bottom-right) -->
+        <rect x="400" y="310" width="180" height="100" rx="14" fill="#f1c40f" fill-opacity=".15" stroke="#f1c40f" stroke-width="2"/>
+        <text x="490" y="350" text-anchor="middle" font-size="16" font-weight="700" fill="#b7950b">ACCOMMODATING</text>
+        <text x="490" y="370" text-anchor="middle" font-size="12" fill="#9a7d0a">Поступка</text>
+        <text x="490" y="390" text-anchor="middle" font-size="14" font-weight="700" fill="#b7950b">Lose-Win</text>
+      </svg>
+    </div>
+
+    <div class="callout">
+      <strong>Жоден стиль не є "поганим" або "хорошим".</strong> Кожен стиль ефективний у своєму контексті. Senior-аналітик вміє переключатися між стилями залежно від ситуації.
+    </div>
+  </section>
+
+  <!-- ═══ PART 2: 5 Styles in detail ═══ -->
+  <section id="p2">
+    <h2><span class="num">2</span> 5 стилів конфлікту — детально</h2>
+
+    <!-- COMPETING -->
+    <div class="style-block" style="border-left: 4px solid var(--red);">
+      <div class="style-header">
+        <div class="style-icon" style="background:var(--red);">1</div>
+        <div>
+          <div class="style-name" style="color:var(--red);">COMPETING (Змагання) — Win-Lose</div>
+          <div class="style-sub">Високо наполегливий, низько кооперативний. "Я правий, ти — ні. Буде по-моєму."</div>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th style="background:rgba(231,76,60,.08);">Плюси</th><th style="background:rgba(231,76,60,.08);">Мінуси</th></tr></thead>
+          <tbody>
+            <tr><td>Швидке рішення</td><td>Псує відносини</td></tr>
+            <tr><td>Захист важливих принципів</td><td>Інші відчувають себе програвшими</td></tr>
+            <tr><td>Ефективно в кризі</td><td>Пропускаєш хороші ідеї інших</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="cards">
+        <div class="card green">
+          <div class="card-title">Коли використовувати</div>
+          <ul style="font-size:.85rem;">
+            <li>Кризова ситуація, потрібне швидке рішення</li>
+            <li>Непопулярне, але правильне рішення (безпека, compliance)</li>
+            <li>Захист від маніпуляцій</li>
+          </ul>
+        </div>
+        <div class="card red">
+          <div class="card-title">Коли НЕ використовувати</div>
+          <ul style="font-size:.85rem;">
+            <li>Довготривалі відносини</li>
+            <li>Потрібен buy-in команди</li>
+            <li>Немає достатньої влади</li>
+          </ul>
+        </div>
+      </div>
+      <div class="script">
+        <div class="script-label">Приклад для BA</div>
+        <p><em>"Ми НЕ будемо релізити без security review. Це не обговорюється."</em></p>
+      </div>
+    </div>
+
+    <!-- COLLABORATING -->
+    <div class="style-block" style="border-left: 4px solid var(--green);">
+      <div class="style-header">
+        <div class="style-icon" style="background:var(--green);">2</div>
+        <div>
+          <div class="style-name" style="color:var(--green);">COLLABORATING (Колаборація) — Win-Win</div>
+          <div class="style-sub">Високо наполегливий, високо кооперативний. "Давай знайдемо рішення, яке задовольнить обох."</div>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th style="background:rgba(39,174,96,.08);">Плюси</th><th style="background:rgba(39,174,96,.08);">Мінуси</th></tr></thead>
+          <tbody>
+            <tr><td>Найкраще рішення</td><td>Займає багато часу</td></tr>
+            <tr><td>Зберігає відносини</td><td>Вимагає довіри</td></tr>
+            <tr><td>Креативні рішення</td><td>Не завжди можливо</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="cards">
+        <div class="card green">
+          <div class="card-title">Коли використовувати</div>
+          <ul style="font-size:.85rem;">
+            <li>Важливі і інтереси, і відносини</li>
+            <li>Є час для обговорення</li>
+            <li>Потрібна інноваційність</li>
+            <li>Складна проблема, що вимагає різних перспектив</li>
+          </ul>
+        </div>
+        <div class="card red">
+          <div class="card-title">Коли НЕ використовувати</div>
+          <ul style="font-size:.85rem;">
+            <li>Термінове рішення</li>
+            <li>Тривіальне питання</li>
+            <li>Інша сторона не готова до колаборації</li>
+          </ul>
+        </div>
+      </div>
+      <div class="script">
+        <div class="script-label">Приклад для BA</div>
+        <p><em>"Бачу, що терміни критичні для вас, а якість — для команди. Давай разом подивимось, як досягти обох цілей. Можливо, є фічі, які можна спростити без втрати цінності?"</em></p>
+      </div>
+    </div>
+
+    <!-- COMPROMISING -->
+    <div class="style-block" style="border-left: 4px solid var(--blue);">
+      <div class="style-header">
+        <div class="style-icon" style="background:var(--blue);">3</div>
+        <div>
+          <div class="style-name" style="color:var(--blue);">COMPROMISING (Компроміс) — Win Some / Lose Some</div>
+          <div class="style-sub">Середня наполегливість, середня кооперативність. "Давай зустрінемось посередині."</div>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th style="background:rgba(52,152,219,.08);">Плюси</th><th style="background:rgba(52,152,219,.08);">Мінуси</th></tr></thead>
+          <tbody>
+            <tr><td>Швидше за колаборацію</td><td>Ніхто не задоволений повністю</td></tr>
+            <tr><td>"Справедливо" для обох</td><td>Може не вирішити корінь проблеми</td></tr>
+            <tr><td>Підтримує відносини</td><td>"Половинчасте" рішення</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="cards">
+        <div class="card green">
+          <div class="card-title">Коли використовувати</div>
+          <ul style="font-size:.85rem;">
+            <li>Обмежений час</li>
+            <li>Тимчасове рішення</li>
+            <li>Обидві сторони готові поступитися</li>
+            <li>Колаборація не працює</li>
+          </ul>
+        </div>
+        <div class="card red">
+          <div class="card-title">Коли НЕ використовувати</div>
+          <ul style="font-size:.85rem;">
+            <li>Є чітко правильне рішення</li>
+            <li>Компроміс не вирішує проблему</li>
+          </ul>
+        </div>
+      </div>
+      <div class="script">
+        <div class="script-label">Приклад для BA</div>
+        <p><em>"Ви хочете 20 фіч, команда реалістично може 10. Давайте візьмемо 15, але з чітким розумінням пріоритетів?"</em></p>
+      </div>
+    </div>
+
+    <!-- AVOIDING -->
+    <div class="style-block" style="border-left: 4px solid var(--gray);">
+      <div class="style-header">
+        <div class="style-icon" style="background:var(--gray);">4</div>
+        <div>
+          <div class="style-name" style="color:#7f8c8d;">AVOIDING (Уникнення) — Lose-Lose</div>
+          <div class="style-sub">Низько наполегливий, низько кооперативний. "Давайте поговоримо про це пізніше" (ніколи).</div>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th style="background:rgba(149,165,166,.1);">Плюси</th><th style="background:rgba(149,165,166,.1);">Мінуси</th></tr></thead>
+          <tbody>
+            <tr><td>Час охолонути</td><td>Проблема не вирішується</td></tr>
+            <tr><td>Уникнення непотрібних конфліктів</td><td>Накопичення tension</td></tr>
+            <tr><td>Збереження енергії</td><td>Втрата поваги</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="cards">
+        <div class="card green">
+          <div class="card-title">Коли використовувати</div>
+          <ul style="font-size:.85rem;">
+            <li>Тривіальне питання</li>
+            <li>Потрібен час подумати</li>
+            <li>Немає шансів виграти</li>
+            <li>Інші можуть вирішити краще</li>
+            <li>Занадто емоційна ситуація</li>
+          </ul>
+        </div>
+        <div class="card red">
+          <div class="card-title">Коли НЕ використовувати</div>
+          <ul style="font-size:.85rem;">
+            <li>Важливе питання</li>
+            <li>Проблема наростає</li>
+            <li>Ваша відповідальність вирішити</li>
+          </ul>
+        </div>
+      </div>
+      <div class="script">
+        <div class="script-label">Приклад для BA (коли уникнення ОК)</div>
+        <p><em>"Це питання краще вирішити Tech Lead з архітектором. Я передам їм контекст."</em></p>
+      </div>
+    </div>
+
+    <!-- ACCOMMODATING -->
+    <div class="style-block" style="border-left: 4px solid var(--yellow);">
+      <div class="style-header">
+        <div class="style-icon" style="background:var(--yellow); color:#1e293b;">5</div>
+        <div>
+          <div class="style-name" style="color:#b7950b;">ACCOMMODATING (Поступка) — Lose-Win</div>
+          <div class="style-sub">Низько наполегливий, високо кооперативний. "Гаразд, нехай буде по-твоєму."</div>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th style="background:rgba(241,196,15,.1);">Плюси</th><th style="background:rgba(241,196,15,.1);">Мінуси</th></tr></thead>
+          <tbody>
+            <tr><td>Зберігає відносини</td><td>Твої потреби не задоволені</td></tr>
+            <tr><td>Швидке завершення</td><td>Може сприйматися як слабкість</td></tr>
+            <tr><td>Добра воля</td><td>Накопичення resentment</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="cards">
+        <div class="card green">
+          <div class="card-title">Коли використовувати</div>
+          <ul style="font-size:.85rem;">
+            <li>Ти неправий</li>
+            <li>Відносини важливіші за це питання</li>
+            <li>Будуєш "кредит" для майбутнього</li>
+            <li>Навчання команди</li>
+          </ul>
+        </div>
+        <div class="card red">
+          <div class="card-title">Коли НЕ використовувати</div>
+          <ul style="font-size:.85rem;">
+            <li>Принципове питання</li>
+            <li>Шкода проєкту/команді</li>
+            <li>Постійний патерн (тебе "їдять")</li>
+          </ul>
+        </div>
+      </div>
+      <div class="script">
+        <div class="script-label">Приклад для BA</div>
+        <p><em>"Ваш підхід до пріоритизації відрізняється від мого, але ви ближче до клієнтів. Давайте спробуємо вашу версію."</em></p>
+      </div>
+    </div>
+
+    <!-- Summary SVG: pros/cons scale -->
+    <h3>Порівняльна шкала стилів</h3>
+    <div class="diagram-wrap">
+      <svg viewBox="0 0 700 340" width="700" xmlns="http://www.w3.org/2000/svg" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
+        <rect width="700" height="340" rx="14" fill="#f8fafc"/>
+        <!-- Headers -->
+        <text x="160" y="30" text-anchor="middle" font-size="12" font-weight="700" fill="#64748b">Швидкість рішення</text>
+        <text x="350" y="30" text-anchor="middle" font-size="12" font-weight="700" fill="#64748b">Якість рішення</text>
+        <text x="540" y="30" text-anchor="middle" font-size="12" font-weight="700" fill="#64748b">Збереження відносин</text>
+
+        <!-- Competing -->
+        <text x="32" y="70" font-size="12" font-weight="700" fill="#e74c3c">Competing</text>
+        <rect x="110" y="55" width="100" height="20" rx="4" fill="#e74c3c" fill-opacity=".7"/><!-- speed: high -->
+        <rect x="320" y="55" width="40" height="20" rx="4" fill="#e74c3c" fill-opacity=".4"/><!-- quality: low -->
+        <rect x="510" y="55" width="20" height="20" rx="4" fill="#e74c3c" fill-opacity=".3"/><!-- relationship: very low -->
+
+        <!-- Collaborating -->
+        <text x="16" y="120" font-size="12" font-weight="700" fill="#27ae60">Collaborating</text>
+        <rect x="110" y="105" width="30" height="20" rx="4" fill="#27ae60" fill-opacity=".4"/>
+        <rect x="320" y="105" width="100" height="20" rx="4" fill="#27ae60" fill-opacity=".7"/>
+        <rect x="510" y="105" width="100" height="20" rx="4" fill="#27ae60" fill-opacity=".7"/>
+
+        <!-- Compromising -->
+        <text x="12" y="170" font-size="12" font-weight="700" fill="#3498db">Compromising</text>
+        <rect x="110" y="155" width="70" height="20" rx="4" fill="#3498db" fill-opacity=".5"/>
+        <rect x="320" y="155" width="60" height="20" rx="4" fill="#3498db" fill-opacity=".5"/>
+        <rect x="510" y="155" width="70" height="20" rx="4" fill="#3498db" fill-opacity=".5"/>
+
+        <!-- Avoiding -->
+        <text x="35" y="220" font-size="12" font-weight="700" fill="#7f8c8d">Avoiding</text>
+        <rect x="110" y="205" width="10" height="20" rx="4" fill="#95a5a6" fill-opacity=".5"/>
+        <rect x="320" y="205" width="10" height="20" rx="4" fill="#95a5a6" fill-opacity=".3"/>
+        <rect x="510" y="205" width="50" height="20" rx="4" fill="#95a5a6" fill-opacity=".4"/>
+
+        <!-- Accommodating -->
+        <text x="5" y="270" font-size="12" font-weight="700" fill="#b7950b">Accommodating</text>
+        <rect x="110" y="255" width="80" height="20" rx="4" fill="#f1c40f" fill-opacity=".6"/>
+        <rect x="320" y="255" width="35" height="20" rx="4" fill="#f1c40f" fill-opacity=".4"/>
+        <rect x="510" y="255" width="90" height="20" rx="4" fill="#f1c40f" fill-opacity=".6"/>
+
+        <!-- Legend -->
+        <text x="350" y="320" text-anchor="middle" font-size="11" fill="#94a3b8">Довжина смуги = відносна ефективність у цьому вимірі</text>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ═══ PART 3: Self-assessment ═══ -->
+  <section id="p3">
+    <h2><span class="num">3</span> Діагностика свого стилю</h2>
+    <p>Для кожної ситуації оберіть свою <strong>природну</strong> (першу) реакцію. Не думайте, яка "правильна" — тут немає правильних відповідей.</p>
+
+    <form id="quizForm">
+      <div class="quiz-q">
+        <div class="q-text">1. Колега публічно критикує твої вимоги на мітингу:</div>
+        <label><input type="radio" name="q1" value="A"> (A) Захищаю свою позицію агресивно</label>
+        <label><input type="radio" name="q1" value="B"> (B) Пропоную обговорити конструктивно після мітингу</label>
+        <label><input type="radio" name="q1" value="C"> (C) Кажу "може, ти правий" і йду далі</label>
+        <label><input type="radio" name="q1" value="D"> (D) Ігнорую і продовжую презентацію</label>
+        <label><input type="radio" name="q1" value="E"> (E) Пропоную компроміс: "частково згоден, але..."</label>
+      </div>
+
+      <div class="quiz-q">
+        <div class="q-text">2. PO хоче фічу, яку Tech каже неможливо зробити:</div>
+        <label><input type="radio" name="q2" value="A"> (A) Стаю на бік того, хто більш впливовий</label>
+        <label><input type="radio" name="q2" value="B"> (B) Організовую воркшоп для пошуку альтернатив</label>
+        <label><input type="radio" name="q2" value="C"> (C) Кажу PO, що Tech правий, і закриваю питання</label>
+        <label><input type="radio" name="q2" value="D"> (D) "Це не моя відповідальність вирішувати"</label>
+        <label><input type="radio" name="q2" value="E"> (E) "Може, зробимо частину фічі?"</label>
+      </div>
+
+      <div class="quiz-q">
+        <div class="q-text">3. Дедлайн нереалістичний, і всі це знають:</div>
+        <label><input type="radio" name="q3" value="A"> (A) "Хто поставив цей дедлайн — нехай і пояснює, як це зробити"</label>
+        <label><input type="radio" name="q3" value="B"> (B) "Давайте разом перегляньмо scope або терміни"</label>
+        <label><input type="radio" name="q3" value="C"> (C) "Окей, спробуємо" (і овертаймимо)</label>
+        <label><input type="radio" name="q3" value="D"> (D) Нічого не кажу, чекаю, поки хтось інший підніме питання</label>
+        <label><input type="radio" name="q3" value="E"> (E) "Можемо доставити 70% до дедлайну, решту — після"</label>
+      </div>
+
+      <div class="quiz-q">
+        <div class="q-text">4. Два stakeholders мають протилежні вимоги:</div>
+        <label><input type="radio" name="q4" value="A"> (A) Підтримую того, чиї вимоги об'єктивно кращі</label>
+        <label><input type="radio" name="q4" value="B"> (B) Організовую спільну зустріч для пошуку рішення</label>
+        <label><input type="radio" name="q4" value="C"> (C) Приймаю вимоги того, хто більш наполегливий</label>
+        <label><input type="radio" name="q4" value="D"> (D) Ескалую на менеджера і знімаю з себе</label>
+        <label><input type="radio" name="q4" value="E"> (E) Пропоную взяти частину від кожного</label>
+      </div>
+
+      <div class="quiz-q">
+        <div class="q-text">5. Розробник каже, що твої вимоги "неможливо реалізувати":</div>
+        <label><input type="radio" name="q5" value="A"> (A) "Покажи мені proof, що це неможливо"</label>
+        <label><input type="radio" name="q5" value="B"> (B) "Давай сядемо разом і подивимось варіанти"</label>
+        <label><input type="radio" name="q5" value="C"> (C) "Ок, зробимо як ти кажеш"</label>
+        <label><input type="radio" name="q5" value="D"> (D) Мовчки переписую вимоги самостійно</label>
+        <label><input type="radio" name="q5" value="E"> (E) "Може, спростимо цю частину?"</label>
+      </div>
+
+      <div class="quiz-q">
+        <div class="q-text">6. На ретро команда скаржиться на "нечіткі вимоги" від тебе:</div>
+        <label><input type="radio" name="q6" value="A"> (A) "Покажіть конкретні приклади, де вимоги були нечіткі"</label>
+        <label><input type="radio" name="q6" value="B"> (B) "Давайте разом визначимо формат, який працює для всіх"</label>
+        <label><input type="radio" name="q6" value="C"> (C) "Вибачте, виправлю. Як вам буде зручніше?"</label>
+        <label><input type="radio" name="q6" value="D"> (D) Мовчки приймаю до уваги, але не реагую</label>
+        <label><input type="radio" name="q6" value="E"> (E) "Домовимось: я покращу деталі, а ви будете давати фідбек раніше"</label>
+      </div>
+
+      <button type="button" class="btn btn-red" onclick="calcQuiz()" style="margin-top:.7rem;">Визначити мій стиль</button>
+    </form>
+
+    <div id="quizResult" class="result-box">
+      <h3 id="quizTitle">Ваш природний стиль:</h3>
+      <p id="quizDesc"></p>
+      <div id="quizScores" style="margin-top:.8rem;"></div>
+    </div>
+  </section>
+
+  <!-- ═══ PART 4: Decision matrix ═══ -->
+  <section id="p4">
+    <h2><span class="num">4</span> Матриця вибору стилю</h2>
+
+    <h3>Quick Reference: Ситуація → Стиль</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Ситуація</th><th>Рекомендований стиль</th><th>Чому</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Критична безпека / compliance</td><td style="color:var(--red);font-weight:700;">Competing</td><td>Немає місця для компромісу</td></tr>
+          <tr><td>Scope negotiation з PO</td><td style="color:var(--green);font-weight:700;">Collaborating</td><td>Важливі і терміни, і відносини</td></tr>
+          <tr><td>Вибір інструменту документації</td><td style="color:var(--blue);font-weight:700;">Compromising</td><td>Не принципово, швидке рішення</td></tr>
+          <tr><td>Конфлікт між іншими командами</td><td style="color:#7f8c8d;font-weight:700;">Avoiding</td><td>Не твоя відповідальність</td></tr>
+          <tr><td>Ти неправий і це очевидно</td><td style="color:#b7950b;font-weight:700;">Accommodating</td><td>Визнай і рухайся далі</td></tr>
+          <tr><td>Дизайн архітектури з Tech Lead</td><td style="color:var(--green);font-weight:700;">Collaborating</td><td>Потрібні обидві експертизи</td></tr>
+          <tr><td>Нереалістичний дедлайн</td><td style="font-weight:700;"><span style="color:var(--red);">Competing</span> або <span style="color:var(--green);">Collaborating</span></td><td>Залежить від stakes</td></tr>
+          <tr><td>Чиясь пропозиція краща</td><td style="color:#b7950b;font-weight:700;">Accommodating</td><td>Підтримай і вчись</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Decision Tree: Вибір стилю</h3>
+    <div class="diagram-wrap">
+      <svg viewBox="0 0 720 520" width="720" xmlns="http://www.w3.org/2000/svg" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
+        <rect width="720" height="520" rx="14" fill="#f8fafc"/>
+
+        <!-- Q1: Принципове? -->
+        <rect x="260" y="20" width="200" height="44" rx="10" fill="#1e293b" stroke="#1e293b" stroke-width="1.5"/>
+        <text x="360" y="47" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">Питання принципове?</text>
+
+        <!-- Branches from Q1 -->
+        <line x1="310" y1="64" x2="170" y2="110" stroke="#94a3b8" stroke-width="2"/>
+        <text x="220" y="82" font-size="12" font-weight="700" fill="#e74c3c">НІ</text>
+        <line x1="410" y1="64" x2="540" y2="110" stroke="#94a3b8" stroke-width="2"/>
+        <text x="490" y="82" font-size="12" font-weight="700" fill="#27ae60">ТАК</text>
+
+        <!-- Q2a: Чи варте конфлікту? -->
+        <rect x="70" y="110" width="200" height="44" rx="10" fill="#475569" stroke="#475569" stroke-width="1.5"/>
+        <text x="170" y="137" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">Чи варте це конфлікту?</text>
+
+        <!-- Q2b: Є час на обговорення? -->
+        <rect x="440" y="110" width="210" height="44" rx="10" fill="#475569" stroke="#475569" stroke-width="1.5"/>
+        <text x="545" y="137" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">Чи є час на обговорення?</text>
+
+        <!-- Branches from Q2a -->
+        <line x1="120" y1="154" x2="80" y2="210" stroke="#94a3b8" stroke-width="2"/>
+        <text x="80" y="182" font-size="11" font-weight="700" fill="#e74c3c">НІ</text>
+        <line x1="220" y1="154" x2="260" y2="210" stroke="#94a3b8" stroke-width="2"/>
+        <text x="250" y="182" font-size="11" font-weight="700" fill="#27ae60">ТАК</text>
+
+        <!-- Result: Avoiding/Accommodating -->
+        <rect x="10" y="210" width="150" height="60" rx="10" fill="#95a5a6" fill-opacity=".15" stroke="#95a5a6" stroke-width="2"/>
+        <text x="85" y="235" text-anchor="middle" font-size="12" font-weight="700" fill="#7f8c8d">AVOIDING</text>
+        <text x="85" y="253" text-anchor="middle" font-size="11" fill="#7f8c8d">або ACCOMMODATING</text>
+
+        <!-- Result: Compromising -->
+        <rect x="195" y="210" width="140" height="48" rx="10" fill="#3498db" fill-opacity=".15" stroke="#3498db" stroke-width="2"/>
+        <text x="265" y="240" text-anchor="middle" font-size="13" font-weight="700" fill="#3498db">COMPROMISING</text>
+
+        <!-- Branches from Q2b -->
+        <line x1="495" y1="154" x2="420" y2="210" stroke="#94a3b8" stroke-width="2"/>
+        <text x="440" y="182" font-size="11" font-weight="700" fill="#e74c3c">НІ</text>
+        <line x1="595" y1="154" x2="620" y2="210" stroke="#94a3b8" stroke-width="2"/>
+        <text x="620" y="182" font-size="11" font-weight="700" fill="#27ae60">ТАК</text>
+
+        <!-- Q3a: НІ from Q2b -->
+        <rect x="350" y="210" width="160" height="62" rx="10" fill="#e74c3c" fill-opacity=".12" stroke="#e74c3c" stroke-width="2"/>
+        <text x="430" y="234" text-anchor="middle" font-size="12" font-weight="700" fill="#e74c3c">COMPETING</text>
+        <text x="430" y="252" text-anchor="middle" font-size="10" fill="#b91c1c">(якщо маєш владу)</text>
+        <text x="430" y="266" text-anchor="middle" font-size="10" fill="#b7950b">або ACCOMMODATING</text>
+
+        <!-- Q3b: ТАК from Q2b — готова інша сторона? -->
+        <rect x="530" y="210" width="170" height="44" rx="10" fill="#475569" stroke="#475569" stroke-width="1.5"/>
+        <text x="615" y="237" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Інша сторона готова?</text>
+
+        <!-- Branches from Q3b -->
+        <line x1="575" y1="254" x2="530" y2="310" stroke="#94a3b8" stroke-width="2"/>
+        <text x="535" y="282" font-size="11" font-weight="700" fill="#e74c3c">НІ</text>
+        <line x1="655" y1="254" x2="660" y2="310" stroke="#94a3b8" stroke-width="2"/>
+        <text x="670" y="282" font-size="11" font-weight="700" fill="#27ae60">ТАК</text>
+
+        <!-- Result: Compromising/Competing -->
+        <rect x="440" y="310" width="150" height="52" rx="10" fill="#3498db" fill-opacity=".15" stroke="#3498db" stroke-width="2"/>
+        <text x="515" y="333" text-anchor="middle" font-size="12" font-weight="700" fill="#3498db">COMPROMISING</text>
+        <text x="515" y="351" text-anchor="middle" font-size="10" fill="#e74c3c">або COMPETING</text>
+
+        <!-- Result: Collaborating -->
+        <rect x="605" y="310" width="100" height="48" rx="10" fill="#27ae60" fill-opacity=".15" stroke="#27ae60" stroke-width="2"/>
+        <text x="655" y="340" text-anchor="middle" font-size="13" font-weight="700" fill="#27ae60">COLLABORATING</text>
+
+        <!-- Summary tip -->
+        <rect x="120" y="420" width="480" height="70" rx="12" fill="rgba(155,89,182,.08)" stroke="#9b59b6" stroke-width="1.5"/>
+        <text x="360" y="448" text-anchor="middle" font-size="13" font-weight="700" fill="#9b59b6">Три ключових питання для вибору стилю:</text>
+        <text x="360" y="470" text-anchor="middle" font-size="12" fill="#64748b">1. Наскільки важливе питання? 2. Скільки є часу? 3. Якою є інша сторона?</text>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ═══ PART 5: Adapting style ═══ -->
+  <section id="p5">
+    <h2><span class="num">5</span> Адаптація стилю</h2>
+    <p>Кожен має <strong>природний стиль</strong> — той, до якого вдаєшся автоматично. Senior-аналітик вміє свідомо переключатися.</p>
+
+    <h3>Якщо твій природний стиль...</h3>
+    <div class="cards" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+      <div class="card gray">
+        <div class="card-title" style="color:#7f8c8d;">Avoiding (Уникнення)</div>
+        <p><strong>Ризик:</strong> проблеми накопичуються, тебе не поважають</p>
+        <p><strong>Розвивай:</strong></p>
+        <ul style="font-size:.85rem;">
+          <li><span style="color:var(--red);font-weight:700;">Competing</span> — для принципових питань</li>
+          <li><span style="color:var(--green);font-weight:700;">Collaborating</span> — для важливих</li>
+        </ul>
+      </div>
+      <div class="card yellow">
+        <div class="card-title" style="color:#b7950b;">Accommodating (Поступка)</div>
+        <p><strong>Ризик:</strong> тебе "їдять", burn out</p>
+        <p><strong>Розвивай:</strong></p>
+        <ul style="font-size:.85rem;">
+          <li><span style="color:var(--red);font-weight:700;">Competing</span> — для захисту своїх інтересів</li>
+          <li><span style="color:var(--green);font-weight:700;">Collaborating</span> — для win-win</li>
+        </ul>
+      </div>
+      <div class="card red">
+        <div class="card-title" style="color:var(--red);">Competing (Змагання)</div>
+        <p><strong>Ризик:</strong> псуєш відносини, пропускаєш хороші ідеї</p>
+        <p><strong>Розвивай:</strong></p>
+        <ul style="font-size:.85rem;">
+          <li><span style="color:var(--green);font-weight:700;">Collaborating</span> — для складних питань</li>
+          <li><span style="color:#b7950b;font-weight:700;">Accommodating</span> — коли ти неправий</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title" style="color:var(--blue);">Compromising (Компроміс)</div>
+        <p><strong>Ризик:</strong> "половинчасті" рішення, не вирішуєш корінь проблеми</p>
+        <p><strong>Розвивай:</strong></p>
+        <ul style="font-size:.85rem;">
+          <li><span style="color:var(--green);font-weight:700;">Collaborating</span> — коли є час</li>
+          <li><span style="color:var(--red);font-weight:700;">Competing</span> — для принципових питань</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Як змінити стиль "на ходу" — 5 кроків</h3>
+    <div class="callout purple">
+      <ol style="margin:0;">
+        <li><strong>Помітити</strong> свою природну реакцію</li>
+        <li><strong>Пауза</strong> (3 секунди)</li>
+        <li><strong>Оцінити</strong> ситуацію: що на кону? які відносини? скільки часу?</li>
+        <li><strong>Свідомо обрати</strong> стиль</li>
+        <li><strong>Діяти</strong> відповідно</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ═══ PART 6: Conflict as opportunity ═══ -->
+  <section id="p6">
+    <h2><span class="num">6</span> Конфлікт як можливість</h2>
+
+    <h3>Продуктивний vs Деструктивний конфлікт</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th style="background:rgba(39,174,96,.08);color:var(--green);">Продуктивний</th><th style="background:rgba(231,76,60,.08);color:var(--red);">Деструктивний</th></tr></thead>
+        <tbody>
+          <tr><td>Фокус на проблемі</td><td>Фокус на особі</td></tr>
+          <tr><td>Відкрита комунікація</td><td>Маніпуляції, пасивна агресія</td></tr>
+          <tr><td>Пошук рішення</td><td>Пошук винного</td></tr>
+          <tr><td>Збереження поваги</td><td>Приниження, сарказм</td></tr>
+          <tr><td>Результат: краще рішення</td><td>Результат: зіпсовані відносини</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Від деструктивного до продуктивного — 4 кроки</h3>
+    <div class="diagram-wrap">
+      <svg viewBox="0 0 700 200" width="700" xmlns="http://www.w3.org/2000/svg" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
+        <rect width="700" height="200" rx="14" fill="#f8fafc"/>
+        <!-- Step 1 -->
+        <rect x="20" y="40" width="140" height="120" rx="12" fill="#e74c3c" fill-opacity=".1" stroke="#e74c3c" stroke-width="1.5"/>
+        <text x="90" y="70" text-anchor="middle" font-size="22" font-weight="700" fill="#e74c3c">1</text>
+        <text x="90" y="92" text-anchor="middle" font-size="11" font-weight="700" fill="#e74c3c">Деперсоналізуй</text>
+        <text x="90" y="110" text-anchor="middle" font-size="10" fill="#64748b">"Це не про тебе,</text>
+        <text x="90" y="124" text-anchor="middle" font-size="10" fill="#64748b">це про проблему"</text>
+        <!-- Arrow -->
+        <path d="M165 100 L185 100" stroke="#94a3b8" stroke-width="2" marker-end="url(#arr2)"/>
+
+        <!-- Step 2 -->
+        <rect x="190" y="40" width="140" height="120" rx="12" fill="#f1c40f" fill-opacity=".12" stroke="#f1c40f" stroke-width="1.5"/>
+        <text x="260" y="70" text-anchor="middle" font-size="22" font-weight="700" fill="#b7950b">2</text>
+        <text x="260" y="92" text-anchor="middle" font-size="11" font-weight="700" fill="#b7950b">Визнай емоції</text>
+        <text x="260" y="110" text-anchor="middle" font-size="10" fill="#64748b">"Бачу, що це</text>
+        <text x="260" y="124" text-anchor="middle" font-size="10" fill="#64748b">викликає frustration"</text>
+        <!-- Arrow -->
+        <path d="M335 100 L355 100" stroke="#94a3b8" stroke-width="2" marker-end="url(#arr2)"/>
+
+        <!-- Step 3 -->
+        <rect x="360" y="40" width="140" height="120" rx="12" fill="#3498db" fill-opacity=".1" stroke="#3498db" stroke-width="1.5"/>
+        <text x="430" y="70" text-anchor="middle" font-size="22" font-weight="700" fill="#3498db">3</text>
+        <text x="430" y="92" text-anchor="middle" font-size="11" font-weight="700" fill="#3498db">Переформулюй</text>
+        <text x="430" y="110" text-anchor="middle" font-size="10" fill="#64748b">"Наша спільна</text>
+        <text x="430" y="124" text-anchor="middle" font-size="10" fill="#64748b">проблема — X"</text>
+        <!-- Arrow -->
+        <path d="M505 100 L525 100" stroke="#94a3b8" stroke-width="2" marker-end="url(#arr2)"/>
+
+        <!-- Step 4 -->
+        <rect x="530" y="40" width="150" height="120" rx="12" fill="#27ae60" fill-opacity=".1" stroke="#27ae60" stroke-width="1.5"/>
+        <text x="605" y="70" text-anchor="middle" font-size="22" font-weight="700" fill="#27ae60">4</text>
+        <text x="605" y="92" text-anchor="middle" font-size="11" font-weight="700" fill="#27ae60">Запропонуй процес</text>
+        <text x="605" y="110" text-anchor="middle" font-size="10" fill="#64748b">"Давай зберемо факти,</text>
+        <text x="605" y="124" text-anchor="middle" font-size="10" fill="#64748b">потім — варіанти"</text>
+
+        <defs><marker id="arr2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#94a3b8"/></marker></defs>
+      </svg>
+    </div>
+
+    <h3>Конфлікт як сигнал — що він каже?</h3>
+    <div class="cards">
+      <div class="card red">
+        <div class="card-title">Конфлікт про scope</div>
+        <p>Сигнал: нечіткі вимоги або пріоритети</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Конфлікт про терміни</div>
+        <p>Сигнал: нереалістичне планування</p>
+      </div>
+      <div class="card green">
+        <div class="card-title">Конфлікт про рішення</div>
+        <p>Сигнал: брак інформації або критеріїв</p>
+      </div>
+      <div class="card purple">
+        <div class="card-title">Конфлікт між людьми</div>
+        <p>Сигнал: можливо, структурна проблема</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PART 7: Scripts ═══ -->
+  <section id="p7">
+    <h2><span class="num">7</span> Практичні скрипти для BA/SA</h2>
+
+    <div class="style-block" style="border-left:4px solid var(--purple);">
+      <h3 style="margin-top:0;">Сценарій 1: Scope Creep</h3>
+      <div class="callout gray" style="font-size:.86rem;">
+        <strong>PO:</strong> "Нам потрібна ще ця фіча. Додайте до спринту."<br>
+        <strong>Dev:</strong> "Ми не встигнемо. Scope заморожено."
+      </div>
+      <div class="script">
+        <div class="script-label">BA (Collaborating)</div>
+        <p>"Зрозуміло, що обидві позиції мають сенс. <strong>[PO]</strong>, що робить цю фічу терміновою? <strong>[Dev]</strong>, що саме зараз у спринті? Давайте подивимось, чи можемо ми знайти win-win: може, щось можна замінити, або фіча може піти в спрощеному вигляді?"</p>
+      </div>
+    </div>
+
+    <div class="style-block" style="border-left:4px solid var(--purple);">
+      <h3 style="margin-top:0;">Сценарій 2: Технічний борг vs Нова фіча</h3>
+      <div class="callout gray" style="font-size:.86rem;">
+        <strong>Tech Lead:</strong> "Нам потрібно 2 спринти на рефакторинг, інакше все впаде."<br>
+        <strong>PO:</strong> "У нас реліз, немає часу на технічні забаганки."
+      </div>
+      <div class="script">
+        <div class="script-label">BA (Collaborating)</div>
+        <p>"Обидва аргументи важливі. <strong>[Tech Lead]</strong>, можеш показати конкретні ризики, якщо не робити рефакторинг? <strong>[PO]</strong>, які фічі критичні для релізу? Можливо, ми можемо зробити частину рефакторингу, яка найбільш критична, і запланувати решту одразу після релізу з commitment від бізнесу?"</p>
+      </div>
+    </div>
+
+    <div class="style-block" style="border-left:4px solid var(--purple);">
+      <h3 style="margin-top:0;">Сценарій 3: Конфлікт між Stakeholders</h3>
+      <div class="callout gray" style="font-size:.86rem;">
+        <strong>Stakeholder A:</strong> "Звітність першочергова!"<br>
+        <strong>Stakeholder B:</strong> "Ні, інтеграція!"
+      </div>
+      <div class="script">
+        <div class="script-label">BA (Facilitating + Collaborating)</div>
+        <p>"Давайте відступимо від 'що' і подивимось на 'чому'. <strong>[A]</strong>, яку проблему вирішує звітність? Хто постраждає без неї? <strong>[B]</strong>, що дасть інтеграція? Яка ціна затримки? Пропоную: визначимо критерії (revenue impact, user count, strategic alignment) і оцінимо обидва за ними. Так рішення буде об'єктивним."</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PART 8: Common mistakes ═══ -->
+  <section id="p8">
+    <h2><span class="num">8</span> Типові помилки</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th style="width:40%;">Помилка</th><th>Чому це погано</th><th>Що робити</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>1. Застрявати в одному стилі</strong></td>
+            <td>Кожна ситуація вимагає адаптації</td>
+            <td>Використовуй Decision Tree з частини 4</td>
+          </tr>
+          <tr>
+            <td><strong>2. Уникати конфлікту завжди</strong></td>
+            <td>Проблеми накопичуються і "вибухають"</td>
+            <td>Розвивай Competing і Collaborating</td>
+          </tr>
+          <tr>
+            <td><strong>3. Переходити на особистості</strong></td>
+            <td>Деструктивний конфлікт, зіпсовані відносини</td>
+            <td>Атакуй проблему, не людину</td>
+          </tr>
+          <tr>
+            <td><strong>4. Не визнавати свою неправоту</strong></td>
+            <td>Втрата довіри, ескалація конфлікту</td>
+            <td>Іноді Accommodating — найкраще</td>
+          </tr>
+          <tr>
+            <td><strong>5. Компроміс як дефолт</strong></td>
+            <td>"Половинчасті" рішення не вирішують проблему</td>
+            <td>Іноді потрібна колаборація або competing</td>
+          </tr>
+          <tr>
+            <td><strong>6. Ігнорувати емоції</strong></td>
+            <td>Емоції заважають раціональному рішенню</td>
+            <td>Спочатку визнай, потім вирішуй</td>
+          </tr>
+          <tr>
+            <td><strong>7. Не документувати результат</strong></td>
+            <td>Конфлікт повторюється через непорозуміння</td>
+            <td>Домовленість має бути зафіксована</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ═══ PART 9: Self-check & Interview ═══ -->
+  <section id="p9">
+    <h2><span class="num">9</span> Self-check та співбесіда</h2>
+
+    <h3>Self-check: перевір себе</h3>
+    <div class="callout green">
+      <ol>
+        <li>Чи можеш ти назвати свій природний стиль конфлікту?</li>
+        <li>Наведи приклад, коли Competing був доречним для BA.</li>
+        <li>Чим Compromising відрізняється від Collaborating? Коли обирати кожен?</li>
+        <li>У якій ситуації Avoiding — правильний вибір?</li>
+        <li>Як перетворити деструктивний конфлікт на продуктивний?</li>
+        <li>Які 3 питання допомагають обрати стиль конфлікту?</li>
+        <li>Що таке "конфлікт як сигнал"? Наведи приклад.</li>
+      </ol>
+    </div>
+
+    <h3>Питання на Senior-співбесіді</h3>
+    <div class="cards" style="grid-template-columns: 1fr;">
+      <div class="card purple">
+        <div class="card-title">1. Який ваш природний стиль?</div>
+        <p>"Який ваш природний стиль вирішення конфліктів? Як ви його адаптуєте до різних ситуацій?"</p>
+        <div class="callout purple" style="margin:.5rem 0 0;font-size:.82rem;">
+          <strong>Що хочуть почути:</strong> самоусвідомлення + конкретні приклади адаптації. Не "я завжди шукаю компроміс" — а "мій природний стиль X, але в ситуації Y я свідомо переключаюсь на Z, тому що..."
+        </div>
+      </div>
+      <div class="card purple">
+        <div class="card-title">2. Конфлікт між stakeholders</div>
+        <p>"Розкажіть про конфлікт між stakeholders, який ви вирішили. Яку стратегію обрали і чому?"</p>
+        <div class="callout purple" style="margin:.5rem 0 0;font-size:.82rem;">
+          <strong>Що хочуть почути:</strong> STAR-формат. Опиши ситуацію, обрану стратегію, чому саме її, і результат. Покажи, що ти свідомо обирав стиль.
+        </div>
+      </div>
+      <div class="card purple">
+        <div class="card-title">3. Коли ви поступились?</div>
+        <p>"Коли ви востаннє поступилися своєю позицією? Чому?"</p>
+        <div class="callout purple" style="margin:.5rem 0 0;font-size:.82rem;">
+          <strong>Що хочуть почути:</strong> зрілість. Що Accommodating — це не слабкість, а свідомий вибір. "Я поступився, бо інша сторона мала більше контексту / мої аргументи виявились слабшими."
+        </div>
+      </div>
+      <div class="card purple">
+        <div class="card-title">4. Люди, які уникають конфлікту</div>
+        <p>"Як ви справляєтесь з людьми, які уникають конфлікту і не дають чесного фідбеку?"</p>
+        <div class="callout purple" style="margin:.5rem 0 0;font-size:.82rem;">
+          <strong>Що хочуть почути:</strong> розуміння, що Avoiding у інших — це не проблема характеру, а стиль. Техніки: 1-on-1 замість групових обговорень, анонімне голосування, прямі запитання, safe space.
+        </div>
+      </div>
+      <div class="card purple">
+        <div class="card-title">5. Жорстка позиція (Competing)</div>
+        <p>"Розкажіть про ситуацію, коли вам довелося зайняти жорстку позицію. Як ви зберегли відносини?"</p>
+        <div class="callout purple" style="margin:.5rem 0 0;font-size:.82rem;">
+          <strong>Що хочуть почути:</strong> баланс. Competing не означає "зіпсувати відносини". Ключ: пояснити <em>чому</em> ти зайняв жорстку позицію, показати повагу до іншої сторони, і follow-up після рішення.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PART 10: Resources ═══ -->
+  <section id="p10">
+    <h2><span class="num">10</span> Ресурси</h2>
+    <div class="cards">
+      <div class="card">
+        <div class="card-title">Thomas-Kilmann Conflict Mode Instrument (TKI)</div>
+        <p>Оригінальний інструмент діагностики стилю конфлікту. Золотий стандарт.</p>
+      </div>
+      <div class="card green">
+        <div class="card-title">"Crucial Conversations" — Kerry Patterson</div>
+        <p>Як вести розмови, коли ставки високі, думки різні та емоції сильні.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">"Difficult Conversations" — Douglas Stone</div>
+        <p>Harvard Negotiation Project. Три шари кожної складної розмови.</p>
+      </div>
+      <div class="card purple">
+        <div class="card-title">BABOK 3.0 — Stakeholder Engagement</div>
+        <p>Розділ про управління стейкхолдерами та їх очікуваннями. Частина бази знань IIBA.</p>
+      </div>
+    </div>
+  </section>
+
+  <a href="index.html" class="back-link">← Повернутися до бази знань</a>
+
+</div>
+
+<script>
+function calcQuiz() {
+  var counts = { A:0, B:0, C:0, D:0, E:0 };
+  var total = 6;
+  var answered = 0;
+  for (var i = 1; i <= total; i++) {
+    var radios = document.getElementsByName('q' + i);
+    for (var j = 0; j < radios.length; j++) {
+      if (radios[j].checked) {
+        counts[radios[j].value]++;
+        answered++;
+        break;
+      }
+    }
+  }
+  if (answered < total) {
+    alert('Будь ласка, дайте відповідь на всі ' + total + ' питань.');
+    return;
+  }
+
+  var styles = {
+    A: { name: 'Competing (Змагання)', color: '#e74c3c', desc: 'Ти схильний відстоювати свою позицію та домагатися свого. Це ефективно в кризі та для захисту принципів, але може псувати відносини. Розвивай Collaborating для складних ситуацій та Accommodating, коли ти неправий.' },
+    B: { name: 'Collaborating (Колаборація)', color: '#27ae60', desc: 'Ти шукаєш win-win рішення та залучаєш обидві сторони. Це найкращий стиль для складних проблем, але займає час. Не забувай про Competing, коли потрібне швидке рішення, та Avoiding для тривіальних питань.' },
+    C: { name: 'Accommodating (Поступка)', color: '#b7950b', desc: 'Ти схильний поступатися і ставити інтереси інших вище. Це зберігає відносини, але ризикуєш burn out та втратою поваги. Розвивай Competing для захисту своїх інтересів та Collaborating для win-win.' },
+    D: { name: 'Avoiding (Уникнення)', color: '#7f8c8d', desc: 'Ти схильний уникати конфліктів. Це корисно для тривіальних питань та емоційних ситуацій, але проблеми накопичуються. Розвивай Competing для принципових питань та Collaborating для важливих.' },
+    E: { name: 'Compromising (Компроміс)', color: '#3498db', desc: 'Ти шукаєш середину та готовий поступитися частиною. Це швидко і "справедливо", але може давати "половинчасті" рішення. Розвивай Collaborating, коли є час на глибше рішення, та Competing для принципових питань.' }
+  };
+
+  var max = 0, maxKey = 'B';
+  for (var k in counts) { if (counts[k] > max) { max = counts[k]; maxKey = k; } }
+
+  var s = styles[maxKey];
+  document.getElementById('quizTitle').innerHTML = 'Ваш природний стиль: <span style="color:' + s.color + ';">' + s.name + '</span>';
+  document.getElementById('quizDesc').textContent = s.desc;
+
+  var scoresHTML = '<div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.5rem;">';
+  var labels = { A:'Competing', B:'Collaborating', C:'Accommodating', D:'Avoiding', E:'Compromising' };
+  var colors = { A:'#e74c3c', B:'#27ae60', C:'#b7950b', D:'#7f8c8d', E:'#3498db' };
+  for (var k in counts) {
+    var pct = Math.round(counts[k] / total * 100);
+    scoresHTML += '<div style="background:' + colors[k] + '15;border:1px solid ' + colors[k] + '40;border-radius:8px;padding:.3rem .7rem;font-size:.82rem;">';
+    scoresHTML += '<strong style="color:' + colors[k] + ';">' + labels[k] + ':</strong> ' + counts[k] + '/' + total + ' (' + pct + '%)';
+    scoresHTML += '</div>';
+  }
+  scoresHTML += '</div>';
+  document.getElementById('quizScores').innerHTML = scoresHTML;
+
+  var box = document.getElementById('quizResult');
+  box.className = 'result-box show';
+  box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+</script>
+
+</body>
+</html>
