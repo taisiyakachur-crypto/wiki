@@ -883,6 +883,7 @@ body {
           <div class="nav-sub-link" onclick="navigate('bpmn-m3','Root Cause Analysis',this,'Процеси та BPMN')">Root Cause Analysis</div>
           <div class="nav-sub-link" onclick="navigate('bpmn-m4','Value Diagram',this,'Процеси та BPMN')">Value Diagram</div>
           <div class="nav-sub-link" onclick="navigate('bpmn-m5','ARIS — моделювання архітектури',this,'Процеси та BPMN')">ARIS</div>
+          <div class="nav-sub-link" onclick="navigate('babok-bpm','BA в управлінні бізнес-процесами (BABOK)',this,'Процеси та BPMN')">BA в управлінні процесами (BABOK)</div>
         </div>
       </div>
 
@@ -896,6 +897,10 @@ body {
         <div class="nav-sub">
           <div class="nav-sub-link" onclick="navigate('ba-m1','Техніки бізнес-аналізу',this,'Бізнес аналіз')">Техніки BA</div>
           <div class="nav-sub-link" onclick="navigate('ba-m2','BACCM та ключові концепції',this,'Бізнес аналіз')">BACCM та концепції</div>
+          <div class="nav-sub-link" onclick="navigate('babok-planning','BA Planning & Monitoring',this,'Бізнес аналіз')">BA Planning & Monitoring</div>
+          <div class="nav-sub-link" onclick="navigate('babok-solution-eval','Solution Evaluation',this,'Бізнес аналіз')">Solution Evaluation</div>
+          <div class="nav-sub-link" onclick="navigate('babok-strategy','Strategy Analysis (BABOK)',this,'Бізнес аналіз')">Strategy Analysis (BABOK)</div>
+          <div class="nav-sub-link" onclick="navigate('babok-business-rules','Business Rules Analysis',this,'Бізнес аналіз')">Business Rules Analysis</div>
           <div class="nav-sub-link" onclick="navigate('ba-m3','Agile / Scrum / Kanban / Waterfall',this,'Бізнес аналіз')">Методології (Agile/Scrum/Kanban)</div>
           <div class="nav-sub-link" onclick="navigate('ba-m4','Lean методологія',this,'Бізнес аналіз')">Lean</div>
           <div class="nav-sub-link" onclick="navigate('ba-m6','Ризики на проекті',this,'Бізнес аналіз')">Ризики</div>
@@ -1066,6 +1071,7 @@ body {
         <div class="nav-sub">
           <div class="nav-sub-link" onclick="navigate('ea-togaf','TOGAF для аналітика',this,'Enterprise Architecture')">TOGAF для аналітика</div>
           <div class="nav-sub-link" onclick="navigate('ea-c4','C4 Model — візуалізація архітектури',this,'Enterprise Architecture')">C4 Model</div>
+          <div class="nav-sub-link" onclick="navigate('babok-capability-map','Business Capability Mapping',this,'Enterprise Architecture')">Business Capability Mapping</div>
         </div>
       </div>
 
@@ -29216,6 +29222,1296 @@ project = MYAPP
         <div onclick="navigate('tech-m18','AI для BA',this,'Tech Skills')" style="cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.4rem;background:#f1f5f9;color:var(--ink2);border-radius:50px;font-size:.87rem;font-weight:600;">← AI для BA</div>
       </div>
     </div>
+
+<!-- ═══ PAGE: BA Planning & Monitoring ═══ -->
+<div id="page-babok-planning" class="page-view" style="display:none;">
+  <nav class="breadcrumb">
+    <span>База знань</span><span class="breadcrumb-sep">›</span>
+    <span onclick="navigate('ba-m1','Техніки бізнес-аналізу',this,'Бізнес аналіз')" style="cursor:pointer;color:var(--ink-mute);">Бізнес аналіз</span>
+    <span class="breadcrumb-sep">›</span><span class="current">BA Planning & Monitoring</span>
+  </nav>
+
+  <div class="page-header">
+    <div class="page-tag">BABOK v3 · Область знань 2</div>
+    <h1 class="page-title">BA Planning <span class="grad">&amp; Monitoring</span></h1>
+    <p class="page-desc">Як аналітик планує свою роботу на проєкті: підхід до BA, план комунікацій, stakeholder engagement та моніторинг виконання. BABOK v3, Knowledge Area 2.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2 class="doc-h2">Чому BA Planning — це не бюрократія, а виживання</h2>
+    <div class="doc-callout">
+      Уяви: тебе призначили BA на новий проєкт. З понеділка — discovery-сесії. Хто твої стейкхолдери? Як часто ти з ними комунікуєш? Яка глибина аналізу потрібна? Без відповідей на ці питання ти витрачаєш час на не тих людей, збираєш не ті вимоги — і проєкт іде в wall. BABOK v3 виділяє Planning &amp; Monitoring як окрему область знань саме тому, що без плану BA-робота перетворюється на хаотичний firefighting.
+    </div>
+    <div class="doc-cards-2">
+      <div class="doc-card doc-card--blue">
+        <div class="doc-card-title">Що планує BA (за BABOK v3)</div>
+        <ul class="doc-list">
+          <li><strong>BA Approach</strong> — який підхід до аналізу (predictive / adaptive)</li>
+          <li><strong>Stakeholder Engagement</strong> — хто, коли, як глибоко</li>
+          <li><strong>BA Governance</strong> — як приймаються рішення щодо вимог</li>
+          <li><strong>Information Management</strong> — де та як зберігаються артефакти</li>
+          <li><strong>Performance Improvement</strong> — як BA вдосконалює власний процес</li>
+        </ul>
+      </div>
+      <div class="doc-card doc-card--teal">
+        <div class="doc-card-title">Реальний вплив на проєкт</div>
+        <ul class="doc-list">
+          <li>Без BA Plan → аналітик реагує замість того, щоб вести</li>
+          <li>Без Stakeholder Plan → ключові люди дізнаються про вимоги на UAT</li>
+          <li>Без Governance → зміни вимог прилітають безконтрольно в будь-який момент</li>
+          <li>Без Information Plan → артефакти губляться, версії плутаються</li>
+          <li>З планом → BA контролює процес, а не процес контролює BA</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <h2 class="doc-h2">Task 2.1: Визначення підходу до BA</h2>
+    <p class="doc-p">Перше рішення, яке приймає Senior BA на проєкті — <strong>яким буде підхід до аналізу</strong>. Від цього залежить все: глибина документації, частота зустрічей, формат артефактів.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Параметр</th><th>Predictive (Waterfall)</th><th>Adaptive (Agile)</th><th>Hybrid</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Коли обирати</strong></td><td>Стабільні вимоги, regulated домен (банк, медицина), великий масштаб</td><td>Невизначені вимоги, стартап, швидкі зміни ринку</td><td>Стабільний core + гнучкий UI/UX шар</td></tr>
+          <tr><td><strong>Глибина вимог</strong></td><td>Повна специфікація перед розробкою</td><td>Just enough — деталізуємо перед спринтом</td><td>Epic-рівень наперед, story-рівень по ходу</td></tr>
+          <tr><td><strong>Документація</strong></td><td>BRD + SRS + повний RTM</td><td>Product backlog + AC + Definition of Ready</td><td>BRD (скорочений) + спринтові stories</td></tr>
+          <tr><td><strong>Комунікація зі стейкхолдерами</strong></td><td>Формальні sign-off на кожному gate</td><td>Щоденні standup + sprint review</td><td>Формальні milestone + гнучкі проміжні</td></tr>
+          <tr><td><strong>Зміни вимог</strong></td><td>Change request process (дорого)</td><td>Backlog refinement (дешево)</td><td>CR для baseline, backlog для решти</td></tr>
+          <tr><td><strong>Приклад домену</strong></td><td>ERP-впровадження, банківська система</td><td>Мобільний додаток, e-commerce</td><td>Enterprise SaaS з regulatory core</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="doc-callout" style="margin-top:1rem;border-left-color:var(--r1);">
+      <strong>Типова помилка мідл-BA:</strong> обирати підхід за звичкою ("ми завжди так робили"), а не за характеристиками проєкту. Senior BA аналізує: рівень невизначеності вимог, розмір команди, compliance вимоги, зрілість замовника — і аргументує вибір.
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <h2 class="doc-h2">Task 2.2: Stakeholder Engagement Plan</h2>
+    <p class="doc-p">Не всіх стейкхолдерів потрібно залучати однаково. Завдання BA — визначити <strong>хто, коли, як глибоко</strong> бере участь у BA-роботі.</p>
+
+    <div class="doc-cards-2">
+      <div class="doc-card doc-card--blue">
+        <div class="doc-card-title">Рівні залучення (BABOK)</div>
+        <ul class="doc-list">
+          <li><strong>Unaware</strong> — не знають про зміни (треба поінформувати)</li>
+          <li><strong>Resistant</strong> — знають, але проти (потрібна робота з опором)</li>
+          <li><strong>Neutral</strong> — знають, але байдужі (можна залучити за потреби)</li>
+          <li><strong>Supportive</strong> — знають і підтримують (тримати в курсі)</li>
+          <li><strong>Leading</strong> — активно просувають зміни (партнери BA)</li>
+        </ul>
+      </div>
+      <div class="doc-card doc-card--teal">
+        <div class="doc-card-title">Що входить до Engagement Plan</div>
+        <ul class="doc-list">
+          <li>Список стейкхолдерів + їх роль (sponsor, SME, end user, approver)</li>
+          <li>Поточний vs бажаний рівень залучення</li>
+          <li>Формат взаємодії: 1-on-1, workshop, email update, demo</li>
+          <li>Частота та тривалість зустрічей</li>
+          <li>Мова і деталізація комунікації для кожної аудиторії</li>
+          <li>Хто має право sign-off вимоги</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="doc-section" style="margin-top:1.2rem;">
+      <h3 style="font-size:.97rem;font-weight:700;color:var(--ink1);margin-bottom:.8rem;">Шаблон: Stakeholder Engagement Matrix</h3>
+      <div class="table-wrap">
+        <table style="font-size:.83rem;">
+          <thead><tr><th>Стейкхолдер</th><th>Роль</th><th>Інтерес</th><th>Вплив</th><th>Поточний рівень</th><th>Цільовий рівень</th><th>Дія BA</th></tr></thead>
+          <tbody>
+            <tr><td>CFO</td><td>Sponsor</td><td>ROI, budget</td><td>Високий</td><td>Neutral</td><td>Supportive</td><td>Quarterly review + business case</td></tr>
+            <tr><td>Head of Ops</td><td>Business owner</td><td>Ефективність процесів</td><td>Високий</td><td>Resistant</td><td>Supportive</td><td>1-on-1 сесії, демо прототипу</td></tr>
+            <tr><td>IT Manager</td><td>Technical approver</td><td>Безпека, інтеграція</td><td>Середній</td><td>Supportive</td><td>Leading</td><td>Technical workshops</td></tr>
+            <tr><td>End Users</td><td>SME + user</td><td>Зручність, зміна процесу</td><td>Низький</td><td>Unaware</td><td>Neutral</td><td>Комунікація, UAT-залучення</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <h2 class="doc-h2">Task 2.3: BA Governance — як приймаються рішення</h2>
+    <div class="doc-callout">
+      <strong>Проблема без Governance:</strong> стейкхолдер А хоче фічу X, стейкхолдер Б — фічу Y. Обидва "головні". BA не знає, чию вимогу пріоритизувати. Результат — конфлікт і затримка. <strong>Governance</strong> встановлює правила гри ще на старті.
+    </div>
+    <div class="doc-cards-2">
+      <div class="doc-card doc-card--blue">
+        <div class="doc-card-title">Що визначає BA Governance</div>
+        <ul class="doc-list">
+          <li>Хто має право ініціювати зміну вимог (change request)</li>
+          <li>Хто аналізує та оцінює impact змін</li>
+          <li>Хто фінально approves зміну (Change Control Board)</li>
+          <li>Яка процедура escalation при конфліктах</li>
+          <li>Які вимоги потребують формального sign-off, які — усного</li>
+          <li>Як документуються прийняті рішення (Decision Log)</li>
+        </ul>
+      </div>
+      <div class="doc-card doc-card--teal">
+        <div class="doc-card-title">Change Control Process (базовий)</div>
+        <ul class="doc-list">
+          <li><strong>1. Запит</strong> — стейкхолдер подає Change Request</li>
+          <li><strong>2. Аналіз</strong> — BA оцінює impact на scope, терміни, бюджет</li>
+          <li><strong>3. Рішення</strong> — CCB або Product Owner approve/reject/defer</li>
+          <li><strong>4. Впровадження</strong> — оновлення документації, backlog</li>
+          <li><strong>5. Комунікація</strong> — повідомлення всіх стейкхолдерів</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <h2 class="doc-h2">Task 2.4: Information Management</h2>
+    <p class="doc-p">Де і як зберігаються BA-артефакти? Без плану — документи губляться, з'являються "тіньові версії" в листах, команда не знає де актуальна специфікація.</p>
+
+    <div class="doc-cards-2">
+      <div class="doc-card doc-card--blue">
+        <div class="doc-card-title">Що потрібно визначити</div>
+        <ul class="doc-list">
+          <li>Централізоване сховище (Confluence, SharePoint, Notion)</li>
+          <li>Naming convention для документів і версій</li>
+          <li>Рівні доступу (хто може читати/редагувати)</li>
+          <li>Lifecycle артефактів (draft → review → approved → archived)</li>
+          <li>Retention policy — як довго зберігаються артефакти</li>
+        </ul>
+      </div>
+      <div class="doc-card doc-card--teal">
+        <div class="doc-card-title">Атрибути якісного артефакту (BABOK)</div>
+        <ul class="doc-list">
+          <li><strong>Cohesion</strong> — всі елементи пов'язані між собою</li>
+          <li><strong>Completeness</strong> — покриває всі необхідні аспекти</li>
+          <li><strong>Consistency</strong> — не суперечить іншим артефактам</li>
+          <li><strong>Correctness</strong> — відображає реальні потреби бізнесу</li>
+          <li><strong>Feasibility</strong> — реалістично реалізовне</li>
+          <li><strong>Unambiguous</strong> — одне тлумачення для всіх</li>
+          <li><strong>Testable</strong> — можна верифікувати</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <h2 class="doc-h2">Task 2.5: Monitoring & Performance Improvement</h2>
+    <p class="doc-p">Senior BA не просто виконує роботу — він <strong>вимірює та вдосконалює</strong> власний процес. Це відрізняє professional BA від виконавця завдань.</p>
+
+    <div class="doc-cards-2">
+      <div class="doc-card doc-card--blue">
+        <div class="doc-card-title">Що вимірює BA</div>
+        <ul class="doc-list">
+          <li>Час від виявлення вимоги до її approval</li>
+          <li>Кількість defects пов'язаних з неясними вимогами</li>
+          <li>Кількість changes після baseline freeze</li>
+          <li>Задоволеність стейкхолдерів BA-процесом</li>
+          <li>Coverage вимог тест-кейсами</li>
+          <li>Час на rework через неповні/змінені вимоги</li>
+        </ul>
+      </div>
+      <div class="doc-card doc-card--teal">
+        <div class="doc-card-title">Lessons Learned (BABOK 10.27)</div>
+        <ul class="doc-list">
+          <li>Проводиться в кінці проєкту або ітерації</li>
+          <li>Що спрацювало добре в BA-процесі → закріпити</li>
+          <li>Що не спрацювало → план покращення</li>
+          <li>Оновлення BA Plan для наступного проєкту/спринту</li>
+          <li>Документується як організаційне знання</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <h2 class="doc-h2">Типові помилки мідл-аналітика</h2>
+    <div class="doc-cards-2">
+      <div class="doc-card" style="border-top:3px solid #f59e0b;">
+        <div class="doc-card-title" style="color:#92400e;">⚠ Помилки планування</div>
+        <ul class="doc-list">
+          <li><strong>«BA Plan — це зайвий документ»</strong> — без плану BA реактивний, не проактивний</li>
+          <li><strong>Однаковий підхід на всіх проєктах</strong> — Agile-підхід у regulated fintech = катастрофа</li>
+          <li><strong>Stakeholder List без Engagement Plan</strong> — список без стратегії комунікації марний</li>
+          <li><strong>Не визначено хто approves вимоги</strong> — конфлікти і deadlock на фіналізації</li>
+          <li><strong>Артефакти в особистих папках</strong> — команда не знає де актуальна версія</li>
+        </ul>
+      </div>
+      <div class="doc-card" style="border-top:3px solid #6366f1;">
+        <div class="doc-card-title" style="color:#3730a3;">🎯 Senior підхід</div>
+        <ul class="doc-list">
+          <li>Перший тиждень проєкту — завжди BA kickoff: визначаємо підхід, стейкхолдерів, governance</li>
+          <li>BA Plan — живий документ, оновлюється при зміні контексту</li>
+          <li>Governance узгоджується з PM і Product Owner до старту розробки</li>
+          <li>Всі артефакти в Confluence з чіткою структурою і versioning</li>
+          <li>Retrospective після кожного релізу — що покращити в BA-процесі</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <h2 class="doc-h2">Чеклист: BA на старті проєкту</h2>
+    <div class="doc-card doc-card--blue">
+      <ul class="doc-list">
+        <li>☐ Визначено підхід до BA (predictive / adaptive / hybrid) та обґрунтовано вибір</li>
+        <li>☐ Складений список стейкхолдерів з роллю, інтересом, рівнем залучення</li>
+        <li>☐ Побудована Stakeholder Engagement Matrix з цільовими рівнями</li>
+        <li>☐ Узгоджено governance: хто ініціює зміни, хто approves, escalation path</li>
+        <li>☐ Визначено централізоване сховище артефактів і naming convention</li>
+        <li>☐ Погоджено формати звітності та частоту комунікацій зі стейкхолдерами</li>
+        <li>☐ Заплановані retrospectives для покращення BA-процесу</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <h2 class="doc-h2">Питання на Senior-співбесіді</h2>
+    <div class="doc-card doc-card--blue">
+      <ul class="doc-list">
+        <li>Як ти визначаєш підхід до BA-роботи на початку проєкту? Які фактори враховуєш?</li>
+        <li>Опиши випадок, коли governance вимог не був визначений. Що сталось і як вирішували?</li>
+        <li>Як ти керуєш стейкхолдерами, які або не доступні, або не зацікавлені у роботі з вимогами?</li>
+        <li>Як організуєш сховище BA-артефактів у великому проєкті з кількома командами?</li>
+        <li>Які метрики ти використовуєш для оцінки ефективності власної роботи як BA?</li>
+        <li>Як BA Plan змінюється при переході від Waterfall до Agile на середині проєкту?</li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="margin-top:2rem;display:flex;justify-content:space-between;">
+    <div onclick="navigate('ba-m2','BACCM та ключові концепції',this,'Бізнес аналіз')" style="cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.4rem;background:#f1f5f9;color:var(--ink2);border-radius:50px;font-size:.87rem;font-weight:600;">← BACCM та концепції</div>
+    <div onclick="navigate('babok-solution-eval','Solution Evaluation',this,'Бізнес аналіз')" style="cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.4rem;background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;border-radius:50px;font-size:.87rem;font-weight:600;">Solution Evaluation →</div>
+  </div>
+</div>
+
+<!-- ═══ PAGE: Solution Evaluation ═══ -->
+<div id="page-babok-solution-eval" class="page-view" style="display:none;">
+  <nav class="breadcrumb">
+    <span>База знань</span><span class="breadcrumb-sep">›</span>
+    <span onclick="navigate('ba-m1','Техніки бізнес-аналізу',this,'Бізнес аналіз')" style="cursor:pointer;color:var(--ink-mute);">Бізнес аналіз</span>
+    <span class="breadcrumb-sep">›</span><span class="current">Solution Evaluation</span>
+  </nav>
+
+  <div class="page-header">
+    <div class="page-tag">BABOK v3 · Область знань 6</div>
+    <h1 class="page-title">Solution <span class="grad">Evaluation</span></h1>
+    <p class="page-desc">Що BA робить після релізу: вимірювання цінності рішення, оцінка обмежень, рекомендації щодо покращень. BABOK v3, Knowledge Area 6.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2 class="doc-h2">Робота BA не закінчується після релізу</h2>
+    <div class="doc-callout">
+      Поширений міф: "BA здав вимоги — місія виконана". BABOK v3 руйнує цей міф. Knowledge Area 6 — Solution Evaluation — описує, як BA вимірює, чи рішення справді вирішило бізнес-проблему. Уяви: fintech-стартап випустив нову функцію онбордингу. Розробка завершена. Але conversion rate впав на 15%. Без Solution Evaluation ніхто не знає чому. З нею — BA аналізує, де рішення не дотягнуло до очікувань, і рекомендує корекцію.
+    </div>
+    <div class="doc-cards-2">
+      <div class="doc-card doc-card--blue">
+        <div class="doc-card-title">5 задач Solution Evaluation (BABOK)</div>
+        <ul class="doc-list">
+          <li><strong>Measure Solution Performance</strong> — вимірювання метрик після впровадження</li>
+          <li><strong>Analyze Performance Measures</strong> — аналіз: чи досягнуто цілей?</li>
+          <li><strong>Assess Solution Limitations</strong> — що заважає рішенню бути кращим?</li>
+          <li><strong>Assess Enterprise Limitations</strong> — що в організації обмежує цінність рішення?</li>
+          <li><strong>Recommend Actions to Increase Solution Value</strong> — що робити далі?</li>
+        </ul>
+      </div>
+      <div class="doc-card doc-card--teal">
+        <div class="doc-card-title">Коли проводиться Solution Evaluation</div>
+        <ul class="doc-list">
+          <li>Після релізу нової функції або системи</li>
+          <li>Після пілотного запуску (pilot evaluation)</li>
+          <li>При плануванні наступного релізу / спринту</li>
+          <li>Як частина quarterly/annual business review</li>
+          <li>При запиті на нові інвестиції в продукт</li>
+          <li>Коли бізнес скаржиться: "система є, але ефекту немає"</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <h2 class="doc-h2">Task 6.1: Вимірювання ефективності рішення</h2>
+    <p class="doc-p">Перед тим як міряти — потрібно знати, що вважається успіхом. BA має ще на етапі планування визначити <strong>Solution Performance Measures</strong> — конкретні метрики з baseline і target.</p>
+
+    <div class="doc-cards-2">
+      <div class="doc-card doc-card--blue">
+        <div class="doc-card-title">Типи метрик (BABOK)</div>
+        <ul class="doc-list">
+          <li><strong>Financial</strong> — ROI, NPV, payback period, cost savings</li>
+          <li><strong>Operational</strong> — час обробки, error rate, throughput</li>
+          <li><strong>Satisfaction</strong> — NPS, CSAT, user adoption rate</li>
+          <li><strong>Compliance</strong> — відповідність регуляторним вимогам</li>
+          <li><strong>Strategic</strong> — market share, competitive positioning</li>
+        </ul>
+      </div>
+      <div class="doc-card doc-card--teal">
+        <div class="doc-card-title">Формула визначення метрики</div>
+        <ul class="doc-list">
+          <li><strong>Що міряємо</strong> — конкретний показник (напр. onboarding completion rate)</li>
+          <li><strong>Baseline</strong> — поточне значення до впровадження (35%)</li>
+          <li><strong>Target</strong> — очікуване значення після (60%)</li>
+          <li><strong>Timeframe</strong> — коли оцінюємо (через 3 місяці після релізу)</li>
+          <li><strong>Data source</strong> — звідки дані (Google Analytics, Mixpanel, CRM)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="doc-section" style="margin-top:1.2rem;">
+      <h3 style="font-size:.97rem;font-weight:700;color:var(--ink1);margin-bottom:.8rem;">Приклад: Solution Performance Framework для e-commerce</h3>
+      <div class="table-wrap">
+        <table style="font-size:.83rem;">
+          <thead><tr><th>Бізнес-ціль</th><th>Метрика</th><th>Baseline</th><th>Target</th><th>Timeframe</th><th>Data Source</th></tr></thead>
+          <tbody>
+            <tr><td>Збільшити конверсію</td><td>Checkout completion rate</td><td>42%</td><td>58%</td><td>3 місяці</td><td>GA4</td></tr>
+            <tr><td>Знизити операційні витрати</td><td>Час обробки замовлення (хв)</td><td>12 хв</td><td>5 хв</td><td>1 місяць</td><td>ERP logs</td></tr>
+            <tr><td>Підвищити задоволеність</td><td>NPS score</td><td>22</td><td>45</td><td>6 місяців</td><td>Survey tool</td></tr>
+            <tr><td>Знизити помилки</td><td>Order error rate</td><td>8%</td><td>2%</td><td>2 місяці</td><td>Support tickets</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <h2 class="doc-h2">Task 6.3–6.4: Оцінка обмежень рішення та організації</h2>
+    <div class="doc-callout">
+      Рішення може бути технічно правильним, але не приносити цінність. Причина — або в самому рішенні (solution limitations), або в організації навколо нього (enterprise limitations).
+    </div>
+    <div class="doc-cards-2">
+      <div class="doc-card doc-card--blue">
+        <div class="doc-card-title">Solution Limitations — обмеження рішення</div>
+        <ul class="doc-list">
+          <li><strong>Design flaws</strong> — архітектурні рішення, що обмежують масштабування</li>
+          <li><strong>Technical debt</strong> — накопичений борг, що уповільнює розвиток</li>
+          <li><strong>Usability issues</strong> — інтерфейс занадто складний для користувачів</li>
+          <li><strong>Integration gaps</strong> — рішення не інтегрується з потрібними системами</li>
+          <li><strong>Missing features</strong> — функціонал, що не був реалізований в scope</li>
+        </ul>
+      </div>
+      <div class="doc-card doc-card--teal">
+        <div class="doc-card-title">Enterprise Limitations — обмеження організації</div>
+        <ul class="doc-list">
+          <li><strong>People</strong> — низький рівень adoption, брак навчання</li>
+          <li><strong>Process</strong> — старі процеси не адаптовані під нове рішення</li>
+          <li><strong>Technology</strong> — legacy-системи блокують інтеграцію</li>
+          <li><strong>Policy</strong> — внутрішні правила обмежують використання рішення</li>
+          <li><strong>Culture</strong> — опір змінам на рівні команди або менеджменту</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <h2 class="doc-h2">Task 6.5: Рекомендації для підвищення цінності</h2>
+    <p class="doc-p">Фінальна задача Solution Evaluation — не просто "зафіксувати проблему", а запропонувати конкретні рекомендації. BABOK визначає 4 типи дій:</p>
+
+    <div class="doc-cards-2">
+      <div class="doc-card doc-card--blue">
+        <div class="doc-card-title">4 типи рекомендацій (BABOK)</div>
+        <ul class="doc-list">
+          <li><strong>Continue</strong> — рішення працює, продовжуємо без змін</li>
+          <li><strong>Improve</strong> — рішення частково ефективне, потрібні доопрацювання</li>
+          <li><strong>Replace</strong> — рішення не виконує свою функцію, потрібна заміна</li>
+          <li><strong>Retire</strong> — рішення більше не потрібне, виводимо з експлуатації</li>
+        </ul>
+      </div>
+      <div class="doc-card doc-card--teal">
+        <div class="doc-card-title">Структура рекомендації BA</div>
+        <ul class="doc-list">
+          <li><strong>Observation</strong> — що спостерігаємо (факти, дані)</li>
+          <li><strong>Root cause</strong> — чому так відбувається</li>
+          <li><strong>Impact</strong> — який бізнес-вплив</li>
+          <li><strong>Recommendation</strong> — що конкретно зробити</li>
+          <li><strong>Expected outcome</strong> — очікуваний результат і метрика успіху</li>
+          <li><strong>Priority</strong> — High/Medium/Low з обґрунтуванням</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <h2 class="doc-h2">Практичний кейс: Solution Evaluation у fintech</h2>
+    <div class="doc-card doc-card--blue">
+      <div class="doc-card-title">Контекст</div>
+      <p class="doc-p">Банк впровадив нову функцію: онлайн-заявка на кредит. Очікування: 500 заявок/місяць, конверсія 40%. Реальність через 2 місяці: 180 заявок, конверсія 18%.</p>
+    </div>
+    <div style="margin-top:1rem;">
+      <div class="sa-steps">
+        <div class="sa-step"><div class="sa-step-dot">1</div><div><strong>Measure:</strong> Зібрали дані — funnel з Google Analytics: 80% користувачів відвалюються на кроці "Завантаження документів"</div></div>
+        <div class="sa-step"><div class="sa-step-dot">2</div><div><strong>Analyze:</strong> Порівняли з baseline. Gap значний. Провели 10 user interviews — користувачі не розуміють формат документів (що завантажувати?)</div></div>
+        <div class="sa-step"><div class="sa-step-dot">3</div><div><strong>Assess Solution Limitations:</strong> Відсутність підказок у формі, немає drag-and-drop, немає preview документа після завантаження</div></div>
+        <div class="sa-step"><div class="sa-step-dot">4</div><div><strong>Assess Enterprise Limitations:</strong> Юридичний відділ заборонив зберігати документи у хмарі → обхідне рішення погіршило UX</div></div>
+        <div class="sa-step"><div class="sa-step-dot">5</div><div><strong>Recommend:</strong> "Improve" — переробити UX кроку завантаження (inline help, drag-and-drop), узгодити з Legal компромісне рішення щодо хмарного сховища. Expected: конверсія 35%+ за 1 місяць</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <h2 class="doc-h2">Типові помилки</h2>
+    <div class="doc-cards-2">
+      <div class="doc-card" style="border-top:3px solid #f59e0b;">
+        <div class="doc-card-title" style="color:#92400e;">⚠ Помилки</div>
+        <ul class="doc-list">
+          <li>Вважати проєкт завершеним після go-live</li>
+          <li>Не мати визначених метрик успіху до релізу — немає з чим порівнювати</li>
+          <li>Міряти "usage" замість "value" (кількість кліків ≠ бізнес-цінність)</li>
+          <li>Ігнорувати enterprise limitations — шукати проблему тільки в коді</li>
+          <li>Рекомендувати "replace" без аналізу — дорогий і ризикований вибір</li>
+        </ul>
+      </div>
+      <div class="doc-card" style="border-top:3px solid #6366f1;">
+        <div class="doc-card-title" style="color:#3730a3;">🎯 Senior підхід</div>
+        <ul class="doc-list">
+          <li>Метрики успіху визначаються в Business Case до старту проєкту</li>
+          <li>Post-implementation review планується заздалегідь (через 1/3/6 місяців)</li>
+          <li>Дані збираються автоматично (analytics, monitoring) — не вручну</li>
+          <li>Висновки оформлюються як структурований звіт зі стейкхолдерами</li>
+          <li>Recommendations пов'язані з бізнес-цілями, а не технічними деталями</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <h2 class="doc-h2">Чеклист Solution Evaluation</h2>
+    <div class="doc-card doc-card--blue">
+      <ul class="doc-list">
+        <li>☐ Визначені KPI та baseline ще до релізу (щоб мати з чим порівнювати)</li>
+        <li>☐ Запланований post-implementation review (дати, учасники, формат)</li>
+        <li>☐ Зібрані кількісні дані (analytics, logs, reports)</li>
+        <li>☐ Зібрані якісні дані (user interviews, support tickets, feedback)</li>
+        <li>☐ Проаналізовані solution limitations (технічні, UX, функціональні)</li>
+        <li>☐ Проаналізовані enterprise limitations (люди, процеси, культура, policy)</li>
+        <li>☐ Підготовлені recommendations з пріоритетами та expected outcomes</li>
+        <li>☐ Звіт презентований ключовим стейкхолдерам</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <h2 class="doc-h2">Питання на Senior-співбесіді</h2>
+    <div class="doc-card doc-card--blue">
+      <ul class="doc-list">
+        <li>Як ти визначаєш успішність впровадженого рішення? Які метрики використовуєш?</li>
+        <li>Розкажи про випадок, коли технічно правильне рішення не принесло бізнес-цінності. Що було причиною?</li>
+        <li>Як BA бере участь у post-implementation review? Яка його роль там?</li>
+        <li>Чим відрізняється Solution Limitation від Enterprise Limitation? Наведи приклад.</li>
+        <li>Коли ти рекомендував би "Replace" рішення, а не "Improve"?</li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="margin-top:2rem;display:flex;justify-content:space-between;">
+    <div onclick="navigate('babok-planning','BA Planning & Monitoring',this,'Бізнес аналіз')" style="cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.4rem;background:#f1f5f9;color:var(--ink2);border-radius:50px;font-size:.87rem;font-weight:600;">← BA Planning & Monitoring</div>
+    <div onclick="navigate('babok-strategy','Strategy Analysis',this,'Бізнес аналіз')" style="cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.4rem;background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;border-radius:50px;font-size:.87rem;font-weight:600;">Strategy Analysis →</div>
+  </div>
+</div>
+
+<!-- ═══ PAGE: Strategy Analysis ═══ -->
+<div id="page-babok-strategy" class="page-view" style="display:none;">
+  <nav class="breadcrumb">
+    <span>База знань</span><span class="breadcrumb-sep">›</span>
+    <span onclick="navigate('ba-m1','Техніки бізнес-аналізу',this,'Бізнес аналіз')" style="cursor:pointer;color:var(--ink-mute);">Бізнес аналіз</span>
+    <span class="breadcrumb-sep">›</span><span class="current">Strategy Analysis (BABOK)</span>
+  </nav>
+
+  <div class="page-header">
+    <div class="page-tag">BABOK v3 · Область знань 4</div>
+    <h1 class="page-title">Strategy Analysis <span class="grad">за BABOK</span></h1>
+    <p class="page-desc">Як BA аналізує поточний стан, визначає майбутній і формує рекомендації щодо змін. Від SWOT до Business Case — стратегічне мислення аналітика. BABOK v3, KA 4.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2 class="doc-h2">Strategy Analysis — це не тільки SWOT</h2>
+    <div class="doc-callout">
+      Мідл-аналітики часто зупиняються на рівні "виявлення вимог". Senior BA мислить ширше: перш ніж збирати вимоги, він відповідає на питання <strong>навіщо</strong>. Strategy Analysis — це область знань, яка з'єднує бізнес-стратегію організації з конкретними ініціативами та вимогами. Без неї BA вирішує задачу, не знаючи навіщо вона поставлена.
+    </div>
+    <div class="doc-cards-2">
+      <div class="doc-card doc-card--blue">
+        <div class="doc-card-title">5 задач Strategy Analysis (BABOK)</div>
+        <ul class="doc-list">
+          <li><strong>Analyze Current State</strong> — оцінити де ми зараз (AS-IS)</li>
+          <li><strong>Define Future State</strong> — визначити де хочемо бути (TO-BE)</li>
+          <li><strong>Assess Risks</strong> — оцінити ризики переходу</li>
+          <li><strong>Define Change Strategy</strong> — стратегія досягнення TO-BE</li>
+          <li><strong>Business Case</strong> — обґрунтування інвестицій у зміни</li>
+        </ul>
+      </div>
+      <div class="doc-card doc-card--teal">
+        <div class="doc-card-title">Де Strategy Analysis в роботі BA</div>
+        <ul class="doc-list">
+          <li>Discovery phase нового проєкту або продукту</li>
+          <li>Обґрунтування бюджету перед management</li>
+          <li>Оцінка альтернативних рішень (build vs buy)</li>
+          <li>Реорганізація бізнес-процесів (BPR)</li>
+          <li>M&amp;A — оцінка впливу злиття/поглинання</li>
+          <li>Стратегічний roadmap продукту</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <h2 class="doc-h2">Task 4.1: Аналіз поточного стану (Current State)</h2>
+    <p class="doc-p">Current state — це не просто "опис того як є зараз". Це <strong>системний аналіз</strong> можливостей, обмежень і причин, чому поточний стан не задовольняє бізнес-потреби.</p>
+
+    <div class="doc-cards-2">
+      <div class="doc-card doc-card--blue">
+        <div class="doc-card-title">Що аналізуємо в Current State</div>
+        <ul class="doc-list">
+          <li><strong>Business needs</strong> — яка проблема або можливість існує</li>
+          <li><strong>Organizational structure</strong> — хто задіяний, які ролі</li>
+          <li><strong>Capabilities</strong> — що організація вміє зараз (Capability Map)</li>
+          <li><strong>Processes</strong> — як зараз виконуються ключові процеси (AS-IS BPMN)</li>
+          <li><strong>Technology</strong> — які системи використовуються, їх стан</li>
+          <li><strong>Culture</strong> — готовність організації до змін</li>
+          <li><strong>Policies</strong> — регулятори, внутрішні правила</li>
+        </ul>
+      </div>
+      <div class="doc-card doc-card--teal">
+        <div class="doc-card-title">Root Cause Analysis в Current State</div>
+        <ul class="doc-list">
+          <li>5 Why's — доходимо до справжньої причини проблеми</li>
+          <li>Fishbone (Ishikawa) — категоризація причин: People, Process, Technology, Environment</li>
+          <li>Symptom vs Root Cause: "клієнти скаржаться на повільну обробку" (symptom) → "ручна верифікація через відсутність API-інтеграції" (root cause)</li>
+          <li>Gap Analysis: різниця між поточним і бажаним станом по кожному виміру</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <h2 class="doc-h2">Task 4.2: Визначення майбутнього стану (Future State)</h2>
+    <div class="doc-callout">
+      Future State — не список фіч. Це опис <strong>бажаного бізнес-результату</strong>: як буде виглядати організація/продукт/процес після змін, і як це вимірюватиметься. Без чіткого Future State вимоги збираються "в нікуди".
+    </div>
+
+    <div class="doc-cards-2">
+      <div class="doc-card doc-card--blue">
+        <div class="doc-card-title">Компоненти Future State</div>
+        <ul class="doc-list">
+          <li><strong>Business goals</strong> — конкретні цілі зі вимірюваними KPI</li>
+          <li><strong>Desired capabilities</strong> — що організація має вміти після змін</li>
+          <li><strong>TO-BE processes</strong> — нові або покращені процеси (TO-BE BPMN)</li>
+          <li><strong>Scope of change</strong> — що змінюється, що залишається незмінним</li>
+          <li><strong>Assumptions and constraints</strong> — що приймається як даність</li>
+          <li><strong>Transition states</strong> — проміжні стани при поетапному впровадженні</li>
+        </ul>
+      </div>
+      <div class="doc-card doc-card--teal">
+        <div class="doc-card-title">SMART-цілі для Future State</div>
+        <ul class="doc-list">
+          <li><strong>Specific</strong> — "збільшити conversion rate онбордингу"</li>
+          <li><strong>Measurable</strong> — "з 35% до 60%"</li>
+          <li><strong>Achievable</strong> — реалістично з наявними ресурсами</li>
+          <li><strong>Relevant</strong> — пов'язано зі стратегічними цілями компанії</li>
+          <li><strong>Time-bound</strong> — "протягом 6 місяців після релізу"</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <h2 class="doc-h2">Task 4.3: Оцінка ризиків стратегії</h2>
+    <p class="doc-p">Strategy Analysis включає оцінку ризиків не тільки реалізації, але і <strong>ризиків самої стратегії</strong> — що може не дозволити досягти Future State навіть при якісній реалізації.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Категорія ризику</th><th>Приклад</th><th>Вплив на стратегію</th><th>Мітигація</th></tr></thead>
+        <tbody>
+          <tr><td><strong>External / Market</strong></td><td>Конкурент випускає аналогічний продукт</td><td>Future State стає менш цінним</td><td>Прискорення time-to-market</td></tr>
+          <tr><td><strong>Regulatory</strong></td><td>Зміна закону про персональні дані</td><td>Частина функціоналу стає нелегальною</td><td>Legal review на старті</td></tr>
+          <tr><td><strong>Organizational</strong></td><td>Ключовий спонсор покидає компанію</td><td>Втрата підтримки і бюджету</td><td>Залучення multiple sponsors</td></tr>
+          <tr><td><strong>Technology</strong></td><td>Legacy система не підтримує інтеграцію</td><td>Ключова capability недосяжна</td><td>Технічна оцінка на етапі стратегії</td></tr>
+          <tr><td><strong>Adoption</strong></td><td>Команда не приймає нові процеси</td><td>ROI не досягається</td><td>Change Management план</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <h2 class="doc-h2">Business Case — обґрунтування інвестицій</h2>
+    <p class="doc-p">Business Case — це документ, що обґрунтовує <strong>чому варто інвестувати</strong> в зміну. Це не технічна специфікація, це бізнес-аргумент для decision-makers.</p>
+
+    <div class="doc-cards-2">
+      <div class="doc-card doc-card--blue">
+        <div class="doc-card-title">Структура Business Case (BABOK)</div>
+        <ul class="doc-list">
+          <li><strong>Executive Summary</strong> — 1 сторінка для C-level</li>
+          <li><strong>Problem Statement</strong> — чітка бізнес-проблема з даними</li>
+          <li><strong>Options Analysis</strong> — мінімум 3 варіанти (Do nothing / Minimum / Full)</li>
+          <li><strong>Recommended Option</strong> — обраний варіант з обґрунтуванням</li>
+          <li><strong>Benefits</strong> — tangible (ROI, cost savings) + intangible (reputation, compliance)</li>
+          <li><strong>Costs</strong> — capex + opex + opportunity cost</li>
+          <li><strong>Risks</strong> — ключові ризики і мітигація</li>
+          <li><strong>Timeline</strong> — коли реалізуємо, коли очікуємо results</li>
+        </ul>
+      </div>
+      <div class="doc-card doc-card--teal">
+        <div class="doc-card-title">Фінансові метрики Business Case</div>
+        <ul class="doc-list">
+          <li><strong>ROI</strong> = (Net Benefit / Total Cost) × 100%</li>
+          <li><strong>Payback Period</strong> — коли інвестиція окупається</li>
+          <li><strong>NPV</strong> — чиста приведена вартість майбутніх грошових потоків</li>
+          <li><strong>Cost-Benefit Analysis</strong> — порівняння варіантів по витратах і вигоді</li>
+          <li><strong>Break-even point</strong> — точка беззбитковості</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="doc-callout" style="margin-top:1rem;border-left-color:var(--r2);">
+      <strong>Важливо:</strong> BA не обов'язково розраховує фінансові показники самостійно — але він <strong>формулює питання та збирає дані</strong> від Finance, Operations, Sales для Business Case. Ключова навичка — зв'язати технічні деталі з бізнес-вартістю мовою, зрозумілою для CFO.
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <h2 class="doc-h2">Task 4.4: Change Strategy — як досягти Future State</h2>
+    <div class="doc-cards-2">
+      <div class="doc-card doc-card--blue">
+        <div class="doc-card-title">Компоненти Change Strategy</div>
+        <ul class="doc-list">
+          <li><strong>Solution scope</strong> — що саме змінюємо (in scope / out of scope)</li>
+          <li><strong>Implementation approach</strong> — big bang vs phased vs pilot</li>
+          <li><strong>Transition states</strong> — проміжні стани при поетапному впровадженні</li>
+          <li><strong>Dependencies</strong> — від чого залежить кожна фаза</li>
+          <li><strong>Resource requirements</strong> — люди, бюджет, час, технології</li>
+        </ul>
+      </div>
+      <div class="doc-card doc-card--teal">
+        <div class="doc-card-title">Big Bang vs Phased vs Pilot</div>
+        <ul class="doc-list">
+          <li><strong>Big Bang</strong> — всі переходять одночасно. Швидко, але ризиковано. Підходить для малих систем</li>
+          <li><strong>Phased</strong> — поступове впровадження по групах/регіонах/функціях. Менший ризик, довший час</li>
+          <li><strong>Pilot</strong> — спочатку тестуємо на одній групі. Найбезпечніше, але уповільнює rollout</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <h2 class="doc-h2">Питання на Senior-співбесіді</h2>
+    <div class="doc-card doc-card--blue">
+      <ul class="doc-list">
+        <li>Як BA бере участь у стратегічному плануванні? Де починається і де закінчується зона відповідальності?</li>
+        <li>Ти отримав завдання "автоматизувати процес X". Як ти перевіряєш, чи це правильне рішення?</li>
+        <li>Розкажи як ти будував або брав участь у Business Case. Які метрики використовував?</li>
+        <li>Як вибрати між Big Bang і Phased підходом до впровадження? Від чого залежить рішення?</li>
+        <li>Що робити, якщо стейкхолдери мають різне бачення Future State?</li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="margin-top:2rem;display:flex;justify-content:space-between;">
+    <div onclick="navigate('babok-solution-eval','Solution Evaluation',this,'Бізнес аналіз')" style="cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.4rem;background:#f1f5f9;color:var(--ink2);border-radius:50px;font-size:.87rem;font-weight:600;">← Solution Evaluation</div>
+    <div onclick="navigate('babok-business-rules','Business Rules Analysis',this,'Бізнес аналіз')" style="cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.4rem;background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;border-radius:50px;font-size:.87rem;font-weight:600;">Business Rules Analysis →</div>
+  </div>
+</div>
+
+<!-- ═══ PAGE: Business Rules Analysis ═══ -->
+<div id="page-babok-business-rules" class="page-view" style="display:none;">
+  <nav class="breadcrumb">
+    <span>База знань</span><span class="breadcrumb-sep">›</span>
+    <span onclick="navigate('ba-m1','Техніки бізнес-аналізу',this,'Бізнес аналіз')" style="cursor:pointer;color:var(--ink-mute);">Бізнес аналіз</span>
+    <span class="breadcrumb-sep">›</span><span class="current">Business Rules Analysis</span>
+  </nav>
+
+  <div class="page-header">
+    <div class="page-tag">BABOK v3 · Техніка 10.9</div>
+    <h1 class="page-title">Business Rules <span class="grad">Analysis</span></h1>
+    <p class="page-desc">Виявлення, класифікація та документування бізнес-правил. Від if-then логіки до DMN-таблиць рішень — як BA перетворює правила бізнесу на специфікацію для розробників.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2 class="doc-h2">Що таке бізнес-правило і чому це не вимога</h2>
+    <div class="doc-callout">
+      Уяви: ти аналітик у страховій компанії. Стейкхолдер каже: "Клієнти до 25 років не можуть отримати знижку на КАСКО". Це — <strong>бізнес-правило</strong>. Воно не описує фічу, не є user story, але воно <strong>обмежує</strong> поведінку системи і процес. Business Rules Analysis — це техніка BABOK для систематичного виявлення і документування таких правил.
+    </div>
+
+    <div class="doc-cards-2">
+      <div class="doc-card doc-card--blue">
+        <div class="doc-card-title">Визначення (BABOK v3)</div>
+        <p class="doc-p">Бізнес-правило — це директива, яка призначена для контролю, впливу або забезпечення бізнес-поведінки. Правила <strong>незалежні від реалізації</strong> — вони залишаються правилами незалежно від того, в якій системі реалізовані.</p>
+      </div>
+      <div class="doc-card doc-card--teal">
+        <div class="doc-card-title">Бізнес-правило vs Вимога</div>
+        <ul class="doc-list">
+          <li><strong>Правило:</strong> "Знижка &gt; 20% вимагає approval від керівника" — незалежне від системи</li>
+          <li><strong>Вимога:</strong> "Система повинна відправити approval request при discount &gt; 20%" — реалізація правила в системі</li>
+          <li>Одне правило → може породжувати кілька вимог до різних систем</li>
+          <li>Правила змінюються частіше ніж архітектура → їх треба виокремлювати</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <h2 class="doc-h2">Класифікація бізнес-правил (BABOK)</h2>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Тип</th><th>Опис</th><th>Приклад (fintech)</th><th>Нотація</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Definitional (Structural)</strong></td><td>Визначають поняття, категорії, класифікації</td><td>"Клієнт вважається VIP якщо: депозит &gt; 100K або 3+ роки в банку"</td><td>Опис у глосарії + умови</td></tr>
+          <tr><td><strong>Behavioral (Operative)</strong></td><td>Регулюють дії і процеси</td><td>"Транзакції &gt; 50K вимагають manual review протягом 24 год"</td><td>IF-THEN, Decision Table</td></tr>
+          <tr><td><strong>Computation</strong></td><td>Формули та розрахунки</td><td>"Ліміт кредиту = дохід × 0.3 – існуючі зобов'язання"</td><td>Формула + параметри</td></tr>
+          <tr><td><strong>Constraint</strong></td><td>Обмеження на дозволені стани</td><td>"Не можна відкрити &gt; 3 кредитних рахунків одночасно"</td><td>Обмеження + умова</td></tr>
+          <tr><td><strong>Timing</strong></td><td>Правила, пов'язані з часом</td><td>"Звіт генерується автоматично о 23:59 UTC щодня"</td><td>Тригер + час + дія</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <h2 class="doc-h2">Техніки виявлення бізнес-правил</h2>
+    <div class="doc-cards-2">
+      <div class="doc-card doc-card--blue">
+        <div class="doc-card-title">Джерела правил</div>
+        <ul class="doc-list">
+          <li><strong>Законодавство та регуляції</strong> — GDPR, PCI DSS, НБУ нормативи</li>
+          <li><strong>Внутрішні policies</strong> — HR-правила, фінансові ліміти, кредитні умови</li>
+          <li><strong>Інтерв'ю зі SME</strong> — експерти доменної галузі знають неформальні правила</li>
+          <li><strong>Аналіз документів</strong> — контракти, procedures manual, training materials</li>
+          <li><strong>Спостереження</strong> — "чому ти так зробив?" → неявне правило</li>
+          <li><strong>Аналіз інцидентів</strong> — що пішло не так → де правило не виконувалось</li>
+        </ul>
+      </div>
+      <div class="doc-card doc-card--teal">
+        <div class="doc-card-title">Формат документування правила</div>
+        <ul class="doc-list">
+          <li><strong>ID</strong> — унікальний ідентифікатор (BR-001)</li>
+          <li><strong>Name</strong> — коротка назва правила</li>
+          <li><strong>Statement</strong> — повне формулювання (IF … THEN …)</li>
+          <li><strong>Source</strong> — звідки правило (закон, внутрішня policy)</li>
+          <li><strong>Owner</strong> — хто відповідає за правило в бізнесі</li>
+          <li><strong>Effective date</strong> — коли набирає чинності</li>
+          <li><strong>Status</strong> — Active / Draft / Deprecated</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <h2 class="doc-h2">Decision Table — найпотужніший інструмент</h2>
+    <div class="doc-callout">
+      Decision Table (таблиця рішень) — це спосіб документувати правила з кількома умовами та діями. Вона виявляє пропуски (gap) та суперечності в логіці краще за будь-який текстовий опис.
+    </div>
+
+    <div class="doc-section" style="margin-top:1rem;">
+      <h3 style="font-size:.95rem;font-weight:700;color:var(--ink1);margin-bottom:.8rem;">Приклад: Розрахунок знижки для e-commerce</h3>
+      <div class="table-wrap">
+        <table style="font-size:.82rem;">
+          <thead>
+            <tr style="background:rgba(99,102,241,.08);">
+              <th colspan="3" style="text-align:center;border:1px solid var(--border);padding:.5rem;">УМОВИ</th>
+              <th colspan="2" style="text-align:center;border:1px solid var(--border);padding:.5rem;">ДІЇ</th>
+            </tr>
+            <tr>
+              <th>Сума замовлення</th>
+              <th>Статус клієнта</th>
+              <th>Промо-код</th>
+              <th>Знижка</th>
+              <th>Безкоштовна доставка</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>&lt; 500 грн</td><td>Будь-який</td><td>Ні</td><td>0%</td><td>Ні</td></tr>
+            <tr><td>500–2000 грн</td><td>Звичайний</td><td>Ні</td><td>5%</td><td>Ні</td></tr>
+            <tr><td>500–2000 грн</td><td>VIP</td><td>Ні</td><td>10%</td><td>Так</td></tr>
+            <tr><td>&gt; 2000 грн</td><td>Будь-який</td><td>Ні</td><td>15%</td><td>Так</td></tr>
+            <tr><td>Будь-яка</td><td>Будь-який</td><td>Так</td><td>+5% додатково</td><td>Так якщо сума &gt; 500</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="doc-p" style="margin-top:.8rem;font-size:.84rem;color:var(--ink2);">Такий формат одразу виявляє: "А що якщо VIP клієнт з промо-кодом і сумою &lt; 500? Правило не визначено!" — це gap, який треба вирішити зі стейкхолдером.</p>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <h2 class="doc-h2">DMN — Decision Model and Notation</h2>
+    <div class="doc-callout" style="border-left-color:var(--r5);">
+      DMN — стандарт OMG для моделювання рішень. Розширює BPMN для опису логіки бізнес-рішень. Використовується в інструментах: Camunda, Signavio, IBM ODM.
+    </div>
+    <div class="doc-cards-2">
+      <div class="doc-card doc-card--blue">
+        <div class="doc-card-title">Елементи DMN</div>
+        <ul class="doc-list">
+          <li><strong>Decision</strong> — результат застосування правил (прямокутник)</li>
+          <li><strong>Input Data</strong> — вхідні дані для рішення (овал)</li>
+          <li><strong>Business Knowledge Model</strong> — функція або таблиця правил</li>
+          <li><strong>Knowledge Source</strong> — джерело правила (регуляція, policy)</li>
+          <li><strong>Decision Table</strong> — деталізація логіки всередині Decision</li>
+        </ul>
+      </div>
+      <div class="doc-card doc-card--teal">
+        <div class="doc-card-title">Коли використовувати DMN</div>
+        <ul class="doc-list">
+          <li>Складна багаторівнева логіка з кількома умовами</li>
+          <li>Правила часто змінюються і їх треба виокремити від коду</li>
+          <li>Business хоче сам редагувати правила без розробників</li>
+          <li>Аудит і compliance — правила мають бути traceable</li>
+          <li>Automated decision making (кредитний скоринг, fraud detection)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <h2 class="doc-h2">Типові помилки при роботі з бізнес-правилами</h2>
+    <div class="doc-cards-2">
+      <div class="doc-card" style="border-top:3px solid #f59e0b;">
+        <div class="doc-card-title" style="color:#92400e;">⚠ Помилки</div>
+        <ul class="doc-list">
+          <li><strong>Правила "зашиті" у вимогах</strong> — при зміні правила потрібно переписувати специфікацію повністю</li>
+          <li><strong>Неповна таблиця рішень</strong> — не всі комбінації умов покриті → "дірки" в логіці</li>
+          <li><strong>Суперечливі правила</strong> — BR-001 і BR-047 дають різні результати для однієї ситуації</li>
+          <li><strong>Правила без owner</strong> — хто відповідає коли правило застаріло?</li>
+          <li><strong>Зміна правила без впливу на суміжні</strong> — правила часто залежать одне від одного</li>
+        </ul>
+      </div>
+      <div class="doc-card" style="border-top:3px solid #6366f1;">
+        <div class="doc-card-title" style="color:#3730a3;">🎯 Best Practices</div>
+        <ul class="doc-list">
+          <li>Окремий Business Rules Catalog (BR ID, statement, source, owner, status)</li>
+          <li>Decision Tables для правил з 3+ умовами — текст не справляється</li>
+          <li>Валідація правил зі стейкхолдерами через конкретні сценарії</li>
+          <li>Versioning правил — при зміні зберігати попередню версію</li>
+          <li>Трейсабільність: бізнес-правило → вимога → тест-кейс</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <h2 class="doc-h2">Чеклист Business Rules Analysis</h2>
+    <div class="doc-card doc-card--blue">
+      <ul class="doc-list">
+        <li>☐ Визначено всі джерела бізнес-правил (законодавство, policy, SME-знання)</li>
+        <li>☐ Правила класифіковані (definitional / behavioral / computation / constraint / timing)</li>
+        <li>☐ Кожне правило має ID, statement, source, owner</li>
+        <li>☐ Для складної логіки використана Decision Table або DMN</li>
+        <li>☐ Decision Table перевірена на повноту (всі комбінації) і несуперечність</li>
+        <li>☐ Правила валідовані зі стейкхолдерами через конкретні тест-кейси</li>
+        <li>☐ Business Rules Catalog доступний команді розробки</li>
+        <li>☐ Визначений process для зміни правил (governance)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <h2 class="doc-h2">Питання на Senior-співбесіді</h2>
+    <div class="doc-card doc-card--blue">
+      <ul class="doc-list">
+        <li>Чим відрізняється бізнес-правило від функціональної вимоги? Наведи приклад.</li>
+        <li>Як ти виявляєш "неявні" бізнес-правила, про які стейкхолдери не думають і не говорять?</li>
+        <li>Що таке Decision Table і коли ти її використовуєш?</li>
+        <li>Як перевірити Decision Table на повноту і несуперечність?</li>
+        <li>Як керувати бізнес-правилами в Agile-проєкті, де вони змінюються щоспринту?</li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="margin-top:2rem;display:flex;justify-content:space-between;">
+    <div onclick="navigate('babok-strategy','Strategy Analysis (BABOK)',this,'Бізнес аналіз')" style="cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.4rem;background:#f1f5f9;color:var(--ink2);border-radius:50px;font-size:.87rem;font-weight:600;">← Strategy Analysis</div>
+    <div onclick="navigate('babok-bpm','BPM ракурс BABOK',this,'Бізнес аналіз')" style="cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.4rem;background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;border-radius:50px;font-size:.87rem;font-weight:600;">BPM ракурс →</div>
+  </div>
+</div>
+
+<!-- ═══ PAGE: BPM ракурс BABOK ═══ -->
+<div id="page-babok-bpm" class="page-view" style="display:none;">
+  <nav class="breadcrumb">
+    <span>База знань</span><span class="breadcrumb-sep">›</span>
+    <span onclick="navigate('bpmn-m1','Процеси та BPMN',this,'Процеси та BPMN')" style="cursor:pointer;color:var(--ink-mute);">Процеси та BPMN</span>
+    <span class="breadcrumb-sep">›</span><span class="current">BA в управлінні процесами (BABOK)</span>
+  </nav>
+
+  <div class="page-header">
+    <div class="page-tag">BABOK v3 · Ракурс 11.5 · BPM</div>
+    <h1 class="page-title">BA в управлінні <span class="grad">бізнес-процесами</span></h1>
+    <p class="page-desc">Business Process Management ракурс BABOK v3: як аналітик працює в середовищі BPM, від виявлення процесів до Process Governance та continuous improvement.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2 class="doc-h2">BPM ракурс — це більше ніж BPMN-діаграми</h2>
+    <div class="doc-callout">
+      BPMN — це нотація. BPM — це <strong>дисципліна управління процесами</strong>: від виявлення та моделювання до виконання, моніторингу та покращення. У BABOK v3 ракурс BPM описує специфіку BA-роботи в організаціях, де процеси є стратегічним активом. Fintech, страхові компанії, телеком, enterprise-сектор — всюди, де є BPM-платформи (Camunda, Pega, Appian, IBM BPM).
+    </div>
+    <div class="doc-cards-2">
+      <div class="doc-card doc-card--blue">
+        <div class="doc-card-title">BPM Lifecycle (BABOK)</div>
+        <ul class="doc-list">
+          <li><strong>Design</strong> — моделювання AS-IS і TO-BE процесів</li>
+          <li><strong>Model</strong> — формальна специфікація для automation</li>
+          <li><strong>Execute</strong> — запуск процесу на BPM-платформі</li>
+          <li><strong>Monitor</strong> — відстеження KPI процесу в реальному часі</li>
+          <li><strong>Optimize</strong> — аналіз bottlenecks і continuous improvement</li>
+        </ul>
+      </div>
+      <div class="doc-card doc-card--teal">
+        <div class="doc-card-title">Роль BA у BPM-проєктах</div>
+        <ul class="doc-list">
+          <li>Проводить Process Discovery та документує AS-IS</li>
+          <li>Ідентифікує неефективності, bottlenecks, ризики процесу</li>
+          <li>Проєктує TO-BE з врахуванням automation capabilities</li>
+          <li>Визначає Process KPI та умови для monitoring</li>
+          <li>Перекладає BPMN-процес в requirements для BPM-платформи</li>
+          <li>Налагоджує Process Governance — хто власник, як змінюється</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <h2 class="doc-h2">Process Discovery — як знайти справжній процес</h2>
+    <div class="doc-callout">
+      <strong>Правило Process Discovery:</strong> процес "на папері" і процес "як є насправді" — часто різні. BA виявляє реальний процес, а не ідеалізований опис з документації.
+    </div>
+
+    <div class="doc-cards-2">
+      <div class="doc-card doc-card--blue">
+        <div class="doc-card-title">Техніки Process Discovery</div>
+        <ul class="doc-list">
+          <li><strong>Shadowing / Observation</strong> — спостереження за роботою live (найточніший метод)</li>
+          <li><strong>Process Interview</strong> — структуровані питання до виконавців і керівників</li>
+          <li><strong>Workshop</strong> — спільна сесія для побудови map всього процесу</li>
+          <li><strong>Document Analysis</strong> — вивчення інструкцій, регуляцій, звітів</li>
+          <li><strong>Process Mining</strong> — автоматичне відновлення процесу з event logs системи</li>
+        </ul>
+      </div>
+      <div class="doc-card doc-card--teal">
+        <div class="doc-card-title">Питання для Process Discovery</div>
+        <ul class="doc-list">
+          <li>"Що є тригером цього процесу?"</li>
+          <li>"Які ролі залучені і хто за що відповідає?"</li>
+          <li>"Де найчастіше виникають затримки або помилки?"</li>
+          <li>"Що відбувається в exception-випадках?"</li>
+          <li>"Як ви знаєте, що процес завершений успішно?"</li>
+          <li>"Які рішення приймаються і на основі чого?"</li>
+          <li>"Де ручна робота, яку можна автоматизувати?"</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <h2 class="doc-h2">Process Analysis — від опису до інсайтів</h2>
+    <p class="doc-p">Після документування AS-IS BA аналізує процес для виявлення проблем та можливостей покращення. BABOK виділяє кілька типів аналізу:</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Тип аналізу</th><th>Що виявляємо</th><th>Інструмент</th><th>Приклад</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Value-Added Analysis</strong></td><td>Які кроки додають цінність, які — waste</td><td>Value Stream Mapping</td><td>3 з 8 кроків — тільки очікування approval</td></tr>
+          <tr><td><strong>Bottleneck Analysis</strong></td><td>Де процес сповільнюється</td><td>Process Mining, Little's Law</td><td>Ручна перевірка документів — 2 дні затримки</td></tr>
+          <tr><td><strong>Root Cause Analysis</strong></td><td>Чому виникають помилки</td><td>5 Why's, Fishbone</td><td>Помилки у даних через відсутність валідації на вході</td></tr>
+          <tr><td><strong>Compliance Check</strong></td><td>Чи процес відповідає регуляціям</td><td>Control Framework аналіз</td><td>KYC кроки відсутні у 30% онбордингу</td></tr>
+          <tr><td><strong>Simulation</strong></td><td>Як зміна впливає на throughput</td><td>Camunda Simulate, Arena</td><td>Додавання 1 approver зменшує time 40%</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <h2 class="doc-h2">Value Stream Mapping для BA</h2>
+    <div class="doc-callout" style="border-left-color:var(--r5);">
+      Value Stream Map (VSM) — техніка з Lean, яка BABOK включає до BPM ракурсу. VSM показує повний потік від customer request до delivery з виміром часу на кожному кроці. Ідеальна для виявлення waste.
+    </div>
+
+    <div class="doc-cards-2">
+      <div class="doc-card doc-card--blue">
+        <div class="doc-card-title">8 видів waste (Lean) в процесах</div>
+        <ul class="doc-list">
+          <li><strong>Defects</strong> — помилки, що вимагають rework</li>
+          <li><strong>Overproduction</strong> — виробляємо більше ніж потрібно</li>
+          <li><strong>Waiting</strong> — очікування approval, даних, ресурсів</li>
+          <li><strong>Non-utilized talent</strong> — люди роблять не ту роботу</li>
+          <li><strong>Transportation</strong> — зайве переміщення даних/документів</li>
+          <li><strong>Inventory</strong> — незавершена робота в черзі</li>
+          <li><strong>Motion</strong> — зайві дії без цінності</li>
+          <li><strong>Extra-processing</strong> — обробка понад необхідне</li>
+        </ul>
+      </div>
+      <div class="doc-card doc-card--teal">
+        <div class="doc-card-title">Метрики VSM</div>
+        <ul class="doc-list">
+          <li><strong>Lead Time</strong> — загальний час від запиту до результату</li>
+          <li><strong>Process Time</strong> — час безпосередньої роботи (value-added)</li>
+          <li><strong>Wait Time</strong> — час очікування (non-value-added)</li>
+          <li><strong>Process Efficiency</strong> = Process Time / Lead Time × 100%</li>
+          <li><strong>Throughput</strong> — кількість одиниць за одиницю часу</li>
+          <li><strong>First Pass Yield</strong> — % без rework з першого разу</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <h2 class="doc-h2">Process Governance — хто відповідає за процес</h2>
+    <div class="doc-callout">
+      В BPM-середовищі кожен бізнес-процес має <strong>Process Owner</strong> — людину, відповідальну за кінцевий результат і покращення процесу. BA допомагає визначити та налагодити Process Governance.
+    </div>
+
+    <div class="doc-cards-2">
+      <div class="doc-card doc-card--blue">
+        <div class="doc-card-title">Ролі в Process Governance</div>
+        <ul class="doc-list">
+          <li><strong>Process Owner</strong> — відповідає за результат і KPI процесу. Часто: VP або Director</li>
+          <li><strong>Process Manager</strong> — операційне управління, звітність</li>
+          <li><strong>Process Participant</strong> — виконавці кроків процесу</li>
+          <li><strong>BA / Process Analyst</strong> — моделювання, аналіз, improvement proposals</li>
+          <li><strong>Process Architect</strong> — дизайн процесної архітектури компанії</li>
+        </ul>
+      </div>
+      <div class="doc-card doc-card--teal">
+        <div class="doc-card-title">Process Change Management</div>
+        <ul class="doc-list">
+          <li>Ініціатива зміни → оцінка impact (BA)</li>
+          <li>Аналіз AS-IS vs TO-BE → delta</li>
+          <li>Approval від Process Owner</li>
+          <li>Оновлення BPMN-моделі та документації</li>
+          <li>Навчання учасників процесу</li>
+          <li>Моніторинг нового процесу (KPI validation)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <h2 class="doc-h2">Process KPI — що вимірювати в BPM</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>KPI</th><th>Визначення</th><th>Приклад (Loan Processing)</th><th>Формула</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Cycle Time</strong></td><td>Час від старту до завершення</td><td>12 днів від заявки до видачі</td><td>End time – Start time</td></tr>
+          <tr><td><strong>Error Rate</strong></td><td>% випадків з помилками</td><td>8% заявок з помилками в даних</td><td>Errors / Total × 100</td></tr>
+          <tr><td><strong>SLA Compliance</strong></td><td>% виконаних в термін</td><td>94% у встановлений термін (5 дн)</td><td>On-time / Total × 100</td></tr>
+          <tr><td><strong>Cost per Transaction</strong></td><td>Вартість одного кейсу</td><td>350 грн на обробку заявки</td><td>Total Cost / Volume</td></tr>
+          <tr><td><strong>Automation Rate</strong></td><td>% кроків виконаних автоматично</td><td>65% без ручної участі</td><td>Auto steps / Total steps × 100</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <h2 class="doc-h2">Типові помилки</h2>
+    <div class="doc-cards-2">
+      <div class="doc-card" style="border-top:3px solid #f59e0b;">
+        <div class="doc-card-title" style="color:#92400e;">⚠ Помилки в BPM-проєктах</div>
+        <ul class="doc-list">
+          <li><strong>Автоматизувати поганий процес</strong> — швидше отримуємо поганий результат. Спершу optimize, потім automate</li>
+          <li><strong>BPMN без власника</strong> — гарна діаграма, яку ніхто не підтримує</li>
+          <li><strong>Ігнорувати exception paths</strong> — 80% проблем у 20% edge cases</li>
+          <li><strong>Не вимірювати baseline</strong> — після впровадження невідомо, чи покращилось</li>
+          <li><strong>Забути про зміни для людей</strong> — процес змінили, навчання не провели</li>
+        </ul>
+      </div>
+      <div class="doc-card" style="border-top:3px solid #6366f1;">
+        <div class="doc-card-title" style="color:#3730a3;">🎯 Senior BPM підхід</div>
+        <ul class="doc-list">
+          <li>Process Discovery → Process Analysis → Improvement → Automation (саме в такому порядку)</li>
+          <li>Кожен процес має Process Owner з KPI до початку автоматизації</li>
+          <li>VSM щоб показати бізнесу де вони втрачають гроші — найпереконливіший аргумент</li>
+          <li>Exception paths документуються так само детально як happy path</li>
+          <li>Post-implementation: порівнюємо cycle time і error rate з baseline</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <h2 class="doc-h2">Чеклист BPM Analysis</h2>
+    <div class="doc-card doc-card--blue">
+      <ul class="doc-list">
+        <li>☐ Проведено Process Discovery (observation або workshop)</li>
+        <li>☐ AS-IS процес задокументований з усіма ролями, happy path, exceptions</li>
+        <li>☐ Проведено Process Analysis: bottlenecks, waste, compliance gaps</li>
+        <li>☐ Визначений Process Owner і Process KPI з baseline</li>
+        <li>☐ TO-BE процес узгоджений зі стейкхолдерами</li>
+        <li>☐ Automation requirements специфіковані для BPM-платформи</li>
+        <li>☐ Process Governance визначена: хто ініціює зміни, хто approves</li>
+        <li>☐ Заплановано вимірювання KPI після впровадження</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <h2 class="doc-h2">Питання на Senior-співбесіді</h2>
+    <div class="doc-card doc-card--blue">
+      <ul class="doc-list">
+        <li>Як ти підходиш до Process Discovery? Який метод вибереш якщо не можеш спостерігати за процесом live?</li>
+        <li>Як BA визначає, що процес готовий до автоматизації, а не спочатку потребує оптимізації?</li>
+        <li>Що таке Process Owner і чому це важливо для BA?</li>
+        <li>Розкажи як ти застосовував VSM або подібну техніку. Які insights отримав?</li>
+        <li>Як документуєш exception paths у складних процесах?</li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="margin-top:2rem;display:flex;justify-content:space-between;">
+    <div onclick="navigate('babok-business-rules','Business Rules Analysis',this,'Бізнес аналіз')" style="cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.4rem;background:#f1f5f9;color:var(--ink2);border-radius:50px;font-size:.87rem;font-weight:600;">← Business Rules Analysis</div>
+    <div onclick="navigate('babok-capability-map','Capability Mapping',this,'Бізнес аналіз')" style="cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.4rem;background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;border-radius:50px;font-size:.87rem;font-weight:600;">Capability Mapping →</div>
+  </div>
+</div>
+
+<!-- ═══ PAGE: Business Capability Mapping ═══ -->
+<div id="page-babok-capability-map" class="page-view" style="display:none;">
+  <nav class="breadcrumb">
+    <span>База знань</span><span class="breadcrumb-sep">›</span>
+    <span onclick="navigate('ea-togaf','TOGAF для аналітика',this,'Enterprise Architecture')" style="cursor:pointer;color:var(--ink-mute);">Enterprise Architecture</span>
+    <span class="breadcrumb-sep">›</span><span class="current">Business Capability Mapping</span>
+  </nav>
+
+  <div class="page-header">
+    <div class="page-tag">BABOK v3 · Бізнес-архітектура · Senior рівень</div>
+    <h1 class="page-title">Business Capability <span class="grad">Mapping</span></h1>
+    <p class="page-desc">Як побудувати карту можливостей організації: від стратегії до вимог. Capability Map як інструмент стратегічного планування, gap analysis та roadmap-побудови.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2 class="doc-h2">Capability — що організація ВМІЄ робити</h2>
+    <div class="doc-callout">
+      Capability (можливість) — це <strong>здатність організації досягати певного результату</strong>. На відміну від процесу ("як ми це робимо") або функції ("хто це робить"), capability описує <em>що</em> організація вміє, незалежно від реалізації. "Обробка кредитних заявок" — capability. "Процес розгляду заявки в відділенні" — реалізація цієї capability.
+    </div>
+
+    <div class="doc-cards-2">
+      <div class="doc-card doc-card--blue">
+        <div class="doc-card-title">Capability vs Process vs Function</div>
+        <div class="table-wrap" style="margin:0;">
+          <table style="font-size:.81rem;">
+            <thead><tr><th>Концепт</th><th>Питання</th><th>Приклад</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Capability</strong></td><td>Що ми вміємо?</td><td>Управління ризиками</td></tr>
+              <tr><td><strong>Process</strong></td><td>Як ми це робимо?</td><td>BPMN: Risk Assessment Process</td></tr>
+              <tr><td><strong>Function / Org unit</strong></td><td>Хто це робить?</td><td>Risk Management Department</td></tr>
+              <tr><td><strong>System</strong></td><td>Чим ми це підтримуємо?</td><td>GRC-платформа</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="doc-card doc-card--teal">
+        <div class="doc-card-title">Навіщо BA потрібна Capability Map</div>
+        <ul class="doc-list">
+          <li>Визначити scope проєкту: "які capabilities зачіпаємо?"</li>
+          <li>Gap Analysis: "яких capabilities не вистачає для стратегії?"</li>
+          <li>Пріоритизація інвестицій: "куди вкладати в першу чергу?"</li>
+          <li>Оцінка впливу змін: "які суміжні capabilities постраждають?"</li>
+          <li>Уникнення дублювання: "ця capability вже є в іншому підрозділі?"</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <h2 class="doc-h2">Як побудувати Capability Map — 5 кроків</h2>
+    <div class="sa-steps">
+      <div class="sa-step"><div class="sa-step-dot">1</div><div><strong>Визначити scope:</strong> вся організація (L0) чи певний домен? Для BA-проєктів зазвичай достатньо 2-3 рівні по конкретному домену</div></div>
+      <div class="sa-step"><div class="sa-step-dot">2</div><div><strong>Виявити top-level capabilities (L1):</strong> через інтерв'ю з C-level та аналіз стратегії. Зазвичай 6-12 capabilities на рівні L1</div></div>
+      <div class="sa-step"><div class="sa-step-dot">3</div><div><strong>Деталізувати до L2-L3:</strong> кожна L1 capability розкладається на підможливості. Правило: capability атомарна, якщо не розкладається далі без втрати сенсу</div></div>
+      <div class="sa-step"><div class="sa-step-dot">4</div><div><strong>Оцінити зрілість (Heat Map):</strong> для кожної capability — рівень зрілості: 1 (відсутня) / 2 (базова) / 3 (оптимізована). Кольоровий overlay</div></div>
+      <div class="sa-step"><div class="sa-step-dot">5</div><div><strong>Накласти стратегічну важливість:</strong> які capabilities є ключовими для стратегії? Де потрібні інвестиції? → основа для roadmap</div></div>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <h2 class="doc-h2">Capability Heat Map — стратегічна пріоритизація</h2>
+    <p class="doc-p">Heat Map накладає оцінку зрілості та стратегічної важливості на Capability Map. Це дозволяє визначити <strong>де інвестувати</strong> в першу чергу.</p>
+
+    <div class="doc-cards-2">
+      <div class="doc-card doc-card--blue">
+        <div class="doc-card-title">Матриця пріоритизації</div>
+        <div class="table-wrap" style="margin:0;">
+          <table style="font-size:.8rem;">
+            <thead><tr><th></th><th>Низька важливість</th><th>Висока важливість</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Висока зрілість</strong></td><td style="background:rgba(99,102,241,.08);">Підтримувати (Maintain)</td><td style="background:rgba(16,185,129,.1);">Конкурентна перевага (Leverage)</td></tr>
+              <tr><td><strong>Низька зрілість</strong></td><td style="background:rgba(251,191,36,.1);">Можна аутсорсити (Consider)</td><td style="background:rgba(239,68,68,.1);">Критична прогалина (Invest Now!)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="doc-card doc-card--teal">
+        <div class="doc-card-title">Приклад для e-commerce (фрагмент)</div>
+        <ul class="doc-list">
+          <li>🔴 <strong>Personalization</strong> — стратегічно важлива, зрілість: 1 → Invest Now</li>
+          <li>🟡 <strong>Warehouse Management</strong> — важлива, зрілість: 2 → Improve</li>
+          <li>🟢 <strong>Payment Processing</strong> — важлива, зрілість: 3 → Leverage</li>
+          <li>⚪ <strong>IT Help Desk</strong> — низька важливість → Consider outsourcing</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <h2 class="doc-h2">Приклад: Capability Map для fintech-компанії</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr style="background:rgba(99,102,241,.08);">
+            <th colspan="4" style="text-align:center;border:1px solid var(--border);">L1: Customer Management</th>
+            <th colspan="3" style="text-align:center;border:1px solid var(--border);">L1: Product Management</th>
+            <th colspan="3" style="text-align:center;border:1px solid var(--border);">L1: Risk Management</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="border:1px solid var(--border);font-size:.8rem;padding:.4rem;background:rgba(239,68,68,.08);"><strong>Customer Onboarding</strong><br><span style="color:#dc2626;font-size:.75rem;">Зрілість: 2</span></td>
+            <td style="border:1px solid var(--border);font-size:.8rem;padding:.4rem;background:rgba(16,185,129,.08);"><strong>Identity Verification</strong><br><span style="color:#059669;font-size:.75rem;">Зрілість: 4</span></td>
+            <td style="border:1px solid var(--border);font-size:.8rem;padding:.4rem;background:rgba(239,68,68,.08);"><strong>Customer 360</strong><br><span style="color:#dc2626;font-size:.75rem;">Зрілість: 1</span></td>
+            <td style="border:1px solid var(--border);font-size:.8rem;padding:.4rem;background:rgba(251,191,36,.08);"><strong>Loyalty Management</strong><br><span style="color:#d97706;font-size:.75rem;">Зрілість: 3</span></td>
+            <td style="border:1px solid var(--border);font-size:.8rem;padding:.4rem;background:rgba(16,185,129,.08);"><strong>Product Catalog Mgmt</strong><br><span style="color:#059669;font-size:.75rem;">Зрілість: 4</span></td>
+            <td style="border:1px solid var(--border);font-size:.8rem;padding:.4rem;background:rgba(239,68,68,.08);"><strong>Pricing Engine</strong><br><span style="color:#dc2626;font-size:.75rem;">Зрілість: 2</span></td>
+            <td style="border:1px solid var(--border);font-size:.8rem;padding:.4rem;background:rgba(251,191,36,.08);"><strong>Product Performance</strong><br><span style="color:#d97706;font-size:.75rem;">Зрілість: 3</span></td>
+            <td style="border:1px solid var(--border);font-size:.8rem;padding:.4rem;background:rgba(16,185,129,.08);"><strong>Credit Risk</strong><br><span style="color:#059669;font-size:.75rem;">Зрілість: 4</span></td>
+            <td style="border:1px solid var(--border);font-size:.8rem;padding:.4rem;background:rgba(251,191,36,.08);"><strong>Fraud Detection</strong><br><span style="color:#d97706;font-size:.75rem;">Зрілість: 3</span></td>
+            <td style="border:1px solid var(--border);font-size:.8rem;padding:.4rem;background:rgba(239,68,68,.08);"><strong>Operational Risk</strong><br><span style="color:#dc2626;font-size:.75rem;">Зрілість: 2</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="doc-callout" style="margin-top:.8rem;border-left-color:var(--r1);">
+      🔴 Зрілість 1-2 = потенційний investment target. Але лише якщо стратегічно важливо. Customer 360 + Pricing Engine → ключові для персоналізації → пріоритет.
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <h2 class="doc-h2">Типові помилки та Senior підхід</h2>
+    <div class="doc-cards-2">
+      <div class="doc-card" style="border-top:3px solid #f59e0b;">
+        <div class="doc-card-title" style="color:#92400e;">⚠ Помилки</div>
+        <ul class="doc-list">
+          <li><strong>Capability = Org Unit</strong> — "HR Department" — це не capability, це підрозділ. Capability: "Talent Acquisition", "Performance Management"</li>
+          <li><strong>Занадто глибока деталізація</strong> — L5 і глибше → плутанина. Зазвичай 3 рівні достатньо</li>
+          <li><strong>Capability Map без context</strong> — гарна картинка без зв'язку зі стратегією не дає цінності</li>
+          <li><strong>Одноразовий артефакт</strong> — Capability Map треба оновлювати при зміні стратегії</li>
+        </ul>
+      </div>
+      <div class="doc-card" style="border-top:3px solid #6366f1;">
+        <div class="doc-card-title" style="color:#3730a3;">🎯 Senior підхід</div>
+        <ul class="doc-list">
+          <li>Capability Map — відповідь на питання "які зміни нам потрібні для стратегії"</li>
+          <li>Heat Map + стратегічні пріоритети = основа для roadmap і бюджетного планування</li>
+          <li>Зв'язок: Capability → Value Stream → Process → System → Requirements</li>
+          <li>Артефакт для розмови з C-level, не з розробниками</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <h2 class="doc-h2">Питання на Senior-співбесіді</h2>
+    <div class="doc-card doc-card--blue">
+      <ul class="doc-list">
+        <li>Що таке business capability і чим вона відрізняється від процесу і функції?</li>
+        <li>Як Capability Map допомагає в пріоритизації бек-логу або roadmap?</li>
+        <li>Як ти пов'язуєш capabilities зі стратегічними цілями компанії?</li>
+        <li>Які рівні деталізації ти використовуєш і як вирішуєш, коли зупинитись?</li>
+        <li>Як Capability Heat Map допомагає аргументувати інвестиції в нові проєкти?</li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="margin-top:2rem;display:flex;justify-content:space-between;">
+    <div onclick="navigate('babok-bpm','BA в управлінні процесами (BABOK)',this,'Процеси та BPMN')" style="cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.4rem;background:#f1f5f9;color:var(--ink2);border-radius:50px;font-size:.87rem;font-weight:600;">← BPM ракурс BABOK</div>
+    <div onclick="navigate('ea-togaf','TOGAF для аналітика',this,'Enterprise Architecture')" style="cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.4rem;background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;border-radius:50px;font-size:.87rem;font-weight:600;">TOGAF для аналітика →</div>
+  </div>
+</div>
 
 </main>
 </div>
