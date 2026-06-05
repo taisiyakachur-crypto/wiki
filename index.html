@@ -660,6 +660,42 @@ body {
 :root { --text2: var(--ink2); --text: var(--ink); --accent: var(--r6); --accent2: var(--r1); --accent3: var(--r5); --accent4: var(--r3); --card: #fff; }
 .keyword { color:#a5b4fc; } .string { color:#fca5a5; } .comment { color:#475569; } .fn { color:#6ee7b7; }
 
+/* ═══════════════ MONGODB MODULE ═══════════════ */
+.mongo-section { margin-bottom:2rem; }
+.mongo-section h2 { font-family:'Cormorant Garamond',serif; font-size:1.35rem; font-weight:500; color:var(--ink); margin-bottom:1rem; padding-bottom:.5rem; border-bottom:1px solid var(--border); }
+.mongo-section h3 { font-size:1rem; font-weight:700; color:var(--ink); margin:1.2rem 0 .6rem; }
+.mongo-section p, .mongo-section li { font-size:.9rem; color:var(--ink2); line-height:1.7; }
+.mongo-section ul, .mongo-section ol { padding-left:1.3rem; margin-bottom:.8rem; }
+.mongo-section li { margin-bottom:.3rem; }
+.callout-info { background:#eff6ff; border-left:4px solid #3b82f6; padding:1rem 1.2rem; margin:1rem 0; border-radius:0 8px 8px 0; font-size:.88rem; color:#1e40af; line-height:1.7; }
+.callout-warning { background:#fffbeb; border-left:4px solid #f59e0b; padding:1rem 1.2rem; margin:1rem 0; border-radius:0 8px 8px 0; font-size:.88rem; color:#92400e; line-height:1.7; }
+.callout-success { background:#f0fdf4; border-left:4px solid #10b981; padding:1rem 1.2rem; margin:1rem 0; border-radius:0 8px 8px 0; font-size:.88rem; color:#065f46; line-height:1.7; }
+.callout-tip { background:#faf5ff; border-left:4px solid #8b5cf6; padding:1rem 1.2rem; margin:1rem 0; border-radius:0 8px 8px 0; font-size:.88rem; color:#5b21b6; line-height:1.7; }
+.mongo-table { width:100%; border-collapse:collapse; margin:1rem 0; font-size:.85rem; }
+.mongo-table th { background:rgba(91,174,200,.1); padding:.6rem .8rem; text-align:left; border:1px solid var(--border); font-weight:700; color:var(--ink); font-size:.82rem; }
+.mongo-table td { padding:.55rem .8rem; border:1px solid var(--border); color:var(--ink2); vertical-align:top; }
+.mongo-table tr:nth-child(even) { background:rgba(0,0,0,.02); }
+.mongo-code { background:#1E3448; border-radius:var(--radius-sm); padding:1rem 1.2rem; font-family:'JetBrains Mono',monospace; font-size:.78rem; color:#B8DCEA; line-height:1.75; overflow-x:auto; white-space:pre-wrap; word-break:break-all; margin:.8rem 0; position:relative; }
+.mongo-code .cm { color:#546e7a; }
+.mongo-code .kw { color:#a5b4fc; }
+.mongo-code .str { color:#fca5a5; }
+.mongo-code .fn { color:#6ee7b7; }
+.mongo-code .num { color:#f9a825; }
+.badge-blue { display:inline-block; background:#dbeafe; color:#1d4ed8; border-radius:4px; padding:2px 8px; font-size:.78rem; font-weight:600; }
+.badge-green { display:inline-block; background:#d1fae5; color:#065f46; border-radius:4px; padding:2px 8px; font-size:.78rem; font-weight:600; }
+.badge-purple { display:inline-block; background:#ede9fe; color:#5b21b6; border-radius:4px; padding:2px 8px; font-size:.78rem; font-weight:600; }
+.badge-yellow { display:inline-block; background:#fef3c7; color:#92400e; border-radius:4px; padding:2px 8px; font-size:.78rem; font-weight:600; }
+.badge-gray { display:inline-block; background:#f3f4f6; color:#4b5563; border-radius:4px; padding:2px 8px; font-size:.78rem; font-weight:600; }
+.mongo-nav { display:flex; flex-wrap:wrap; gap:.5rem; margin-bottom:1.5rem; padding:1rem; background:var(--bg2); border-radius:var(--radius); border:1px solid var(--border); }
+.mongo-nav a { font-size:.8rem; color:var(--r1); cursor:pointer; padding:.3rem .7rem; border-radius:50px; border:1px solid rgba(91,174,200,.2); transition:all .15s; text-decoration:none; }
+.mongo-nav a:hover { background:rgba(91,174,200,.1); border-color:var(--r1); }
+.self-check, .interview-block, .mistakes-block { background:#fff; border:1px solid var(--border); border-radius:var(--radius); padding:1.2rem 1.4rem; margin:1.2rem 0; }
+.self-check h3 { color:#059669; margin-bottom:.8rem; font-size:.95rem; }
+.interview-block h3 { color:#7c3aed; margin-bottom:.8rem; font-size:.95rem; }
+.mistakes-block h3 { color:#d97706; margin-bottom:.8rem; font-size:.95rem; }
+.self-check ol, .interview-block ol, .mistakes-block ul { padding-left:1.3rem; font-size:.87rem; color:var(--ink2); line-height:1.8; }
+.mongo-diagram { background:var(--bg2); border:1px solid var(--border); border-radius:var(--radius); padding:1rem; margin:1rem 0; overflow-x:auto; text-align:center; }
+.mongo-diagram figcaption { font-size:.78rem; color:var(--ink3); margin-top:.5rem; text-align:center; }
 
 /* ═══════════════ GLOBAL SEARCH ═══════════════ */
 .header-search-wrap {
@@ -1003,6 +1039,30 @@ body {
           <div class="nav-sub-link" onclick="navigate('db-mod20','CAP, ACID vs BASE',this,'Бази даних і Power BI')">CAP та ACID vs BASE</div>
           <div class="nav-sub-link" onclick="navigate('tech-m07','Backend та бази даних',this,'Бази даних і Power BI')">Backend та бази даних (Tech)</div>
           <div class="nav-sub-link" onclick="navigate('tech-m23','Data Analysis для BA',this,'Бази даних і Power BI')">Data Analysis для BA</div>
+        </div>
+      </div>
+
+      <!-- 8.5 MongoDB для BA/SA -->
+      <div class="nav-item" id="nav-mongodb">
+        <div class="nav-link" onclick="toggleOrNavigate('nav-mongodb','mongodb-intro','MongoDB: Вступ та термінологія',this)">
+          <svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1C5.2 1 3 3.2 3 6c0 1.9 1 3.5 2.5 4.3V14c0 .6.4 1 1 1h3c.6 0 1-.4 1-1v-3.7C12 9.5 13 7.9 13 6c0-2.8-2.2-5-5-5zm.5 13h-1v-1h1v1zm0-2h-1V9.8l-.3-.1C5.9 9 5 7.6 5 6c0-1.7 1.3-3 3-3s3 1.3 3 3c0 1.6-.9 3-2.2 3.7l-.3.1V12z"/></svg>
+          🍃 MongoDB для BA/SA
+          <svg class="nav-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M6 4l4 4-4 4"/></svg>
+        </div>
+        <div class="nav-sub">
+          <div class="nav-sub-link" onclick="navigate('mongodb-intro','MongoDB: Вступ та термінологія',this,'MongoDB для BA/SA')">Вступ та термінологія</div>
+          <div class="nav-sub-link" onclick="navigate('mongodb-datamodel','Модель даних MongoDB',this,'MongoDB для BA/SA')">Модель даних</div>
+          <div class="nav-sub-link" onclick="navigate('mongodb-queries','Запити та оператори MongoDB',this,'MongoDB для BA/SA')">Запити та оператори</div>
+          <div class="nav-sub-link" onclick="navigate('mongodb-writes','Операції запису MongoDB',this,'MongoDB для BA/SA')">Операції запису</div>
+          <div class="nav-sub-link" onclick="navigate('mongodb-indexes','Індекси MongoDB',this,'MongoDB для BA/SA')">Індекси</div>
+          <div class="nav-sub-link" onclick="navigate('mongodb-aggregation','Агрегація MongoDB',this,'MongoDB для BA/SA')">Агрегація</div>
+          <div class="nav-sub-link" onclick="navigate('mongodb-transactions','Транзакції MongoDB',this,'MongoDB для BA/SA')">Транзакції</div>
+          <div class="nav-sub-link" onclick="navigate('mongodb-schema','Дизайн схеми MongoDB',this,'MongoDB для BA/SA')">Дизайн схеми</div>
+          <div class="nav-sub-link" onclick="navigate('mongodb-replication','Реплікація MongoDB',this,'MongoDB для BA/SA')">Реплікація</div>
+          <div class="nav-sub-link" onclick="navigate('mongodb-sharding','Шардинг MongoDB',this,'MongoDB для BA/SA')">Шардинг</div>
+          <div class="nav-sub-link" onclick="navigate('mongodb-security','Безпека MongoDB',this,'MongoDB для BA/SA')">Безпека та моніторинг</div>
+          <div class="nav-sub-link" onclick="navigate('mongodb-gridfs','GridFS MongoDB',this,'MongoDB для BA/SA')">GridFS та спец. колекції</div>
+          <div class="nav-sub-link" onclick="navigate('mongodb-communication','Комунікація з розробниками',this,'MongoDB для BA/SA')">Як говорити з розробником</div>
         </div>
       </div>
 
@@ -30513,6 +30573,1977 @@ project = MYAPP
   </div>
 </div>
 
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     MONGODB MODULE — PAGE 1: INTRO
+     ═══════════════════════════════════════════════════════════════════════ -->
+<div id="page-mongodb-intro" class="page-view" style="display:none;">
+  <nav class="breadcrumb"><span>База знань</span><span class="breadcrumb-sep">›</span><span>MongoDB для BA/SA</span><span class="breadcrumb-sep">›</span><span class="current">Вступ та термінологія</span></nav>
+  <div class="page-header">
+    <div class="page-tag">🍃 MongoDB</div>
+    <h1 class="page-title">MongoDB для BA/SA: Від нуля до впевненого розуміння</h1>
+    <p class="page-desc">Базові поняття, типи даних, термінологія та порівняння з реляційними БД — все, що потрібно аналітику для старту.</p>
+  </div>
+
+  <div class="mongo-nav">
+    <a onclick="document.getElementById('mi-why').scrollIntoView({behavior:'smooth'})">Чому BA/SA</a>
+    <a onclick="document.getElementById('mi-compare').scrollIntoView({behavior:'smooth'})">SQL vs MongoDB</a>
+    <a onclick="document.getElementById('mi-terms').scrollIntoView({behavior:'smooth'})">Термінологія</a>
+    <a onclick="document.getElementById('mi-structure').scrollIntoView({behavior:'smooth'})">Структура</a>
+    <a onclick="document.getElementById('mi-types').scrollIntoView({behavior:'smooth'})">Типи даних</a>
+  </div>
+
+  <div class="mongo-section" id="mi-why">
+    <h2>🔵 Чому BA/SA має знати MongoDB</h2>
+    <p>MongoDB — одна з найпоширеніших NoSQL БД у продуктових компаніях (fintech, e-commerce, SaaS). BA/SA часто стикається з MongoDB при:</p>
+    <ul>
+      <li>Описі API вимог та контрактів — формат даних у MongoDB безпосередньо відображається в JSON API</li>
+      <li>Аналізі схеми даних — embedded vs referenced документи впливають на NFR</li>
+      <li>Participation у data modeling — оптимальна схема залежить від read/write патернів</li>
+      <li>Написанні acceptance criteria для пошукових та фільтраційних фічей</li>
+    </ul>
+    <div class="callout-info"><strong>Без розуміння MongoDB</strong> — ти залежний від розробника у базових питаннях. <strong>З розумінням</strong> — ти можеш самостійно перевіряти дані в БД, писати запити для аналізу, коректно описувати NFR по продуктивності.</div>
+  </div>
+
+  <div class="mongo-section" id="mi-compare">
+    <h2>⚖️ MongoDB vs Реляційні БД — Порівняння</h2>
+    <table class="mongo-table">
+      <thead><tr><th>Поняття SQL</th><th>Поняття MongoDB</th><th>Примітка для BA/SA</th></tr></thead>
+      <tbody>
+        <tr><td>База даних</td><td>База даних</td><td>Те саме</td></tr>
+        <tr><td>Таблиця</td><td>Колекція (Collection)</td><td>Немає фіксованої схеми</td></tr>
+        <tr><td>Рядок</td><td>Документ (Document)</td><td>JSON-подібний об'єкт (BSON)</td></tr>
+        <tr><td>Колонка</td><td>Поле (Field)</td><td>Може бути відсутнє в документі</td></tr>
+        <tr><td>Первинний ключ</td><td><code>_id</code> (ObjectId)</td><td>Автогенерується, НЕ Integer</td></tr>
+        <tr><td>JOIN</td><td><code>$lookup</code> або embedded doc</td><td>Різна поведінка та вартість</td></tr>
+        <tr><td>NULL</td><td><code>null</code> або відсутнє поле</td><td>⚠️ Різна семантика!</td></tr>
+        <tr><td>Індекс</td><td>Індекс</td><td>Схожа концепція</td></tr>
+        <tr><td>Транзакція</td><td>Транзакція (з v4.0+)</td><td>ACID з обмеженнями</td></tr>
+        <tr><td>VIEW</td><td>Аналог через агрегацію</td><td><code>$merge</code>, <code>$out</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="mongo-section" id="mi-terms">
+    <h2>📋 Базова термінологія з прикладами</h2>
+    <h3>Document — основна одиниця даних</h3>
+    <div class="mongo-code"><span class="cm">// Типовий документ MongoDB</span>
+{
+  <span class="str">"_id"</span>: ObjectId(<span class="str">"64a7f3b2c8d1e2f3a4b5c6d7"</span>),
+  <span class="str">"name"</span>: <span class="str">"Олена Коваль"</span>,
+  <span class="str">"email"</span>: <span class="str">"elena@example.com"</span>,
+  <span class="str">"age"</span>: <span class="num">28</span>,
+  <span class="str">"address"</span>: {
+    <span class="str">"city"</span>: <span class="str">"Київ"</span>,
+    <span class="str">"street"</span>: <span class="str">"Хрещатик, 1"</span>
+  },
+  <span class="str">"tags"</span>: [<span class="str">"premium"</span>, <span class="str">"verified"</span>],
+  <span class="str">"createdAt"</span>: ISODate(<span class="str">"2024-01-15T10:30:00Z"</span>)
+}</div>
+
+    <h3>Collection — аналог таблиці</h3>
+    <p>Колекція — група документів. На відміну від SQL-таблиці, документи в одній колекції <strong>можуть мати різну структуру</strong> (динамічна схема).</p>
+
+    <h3>_id та ObjectId</h3>
+    <p>Кожен документ має унікальний <code>_id</code>. За замовчуванням це ObjectId — 12-байтне значення:</p>
+    <ul>
+      <li>Timestamp створення (4 байти)</li>
+      <li>Ідентифікатор машини (5 байт)</li>
+      <li>Лічильник (3 байти)</li>
+    </ul>
+    <div class="callout-warning"><strong>Важливо для BA/SA:</strong> при інтеграції між системами — <code>_id</code> це НЕ number, а рядок типу <code>"64a7f3b2c8d1e2f3a4b5c6d7"</code>. Це впливає на API контракти!</div>
+
+    <h3>Namespace</h3>
+    <p>Повна назва колекції: <code>database.collection</code>. Наприклад: <code>ecommerce.orders</code>. Розробники часто кажуть "колекція orders в ecommerce БД" — це і є namespace.</p>
+  </div>
+
+  <div class="mongo-section" id="mi-structure">
+    <h2>🏗️ Структура MongoDB</h2>
+    <div class="mongo-diagram">
+      <svg viewBox="0 0 700 340" xmlns="http://www.w3.org/2000/svg" style="max-width:700px;width:100%;">
+        <defs>
+          <linearGradient id="mg-inst" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1e3a5f"/><stop offset="100%" stop-color="#2d5a87"/></linearGradient>
+          <linearGradient id="mg-db" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#3b82f6"/><stop offset="100%" stop-color="#2563eb"/></linearGradient>
+          <linearGradient id="mg-col" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#7dd3fc"/><stop offset="100%" stop-color="#38bdf8"/></linearGradient>
+        </defs>
+        <!-- Instance -->
+        <rect x="10" y="10" width="680" height="320" rx="14" fill="url(#mg-inst)" opacity=".12" stroke="#1e3a5f" stroke-width="2"/>
+        <text x="350" y="38" text-anchor="middle" font-family="Nunito,sans-serif" font-size="15" font-weight="700" fill="#1e3a5f">MongoDB Instance</text>
+        <!-- DB 1 -->
+        <rect x="30" y="55" width="310" height="260" rx="10" fill="url(#mg-db)" opacity=".12" stroke="#3b82f6" stroke-width="1.5"/>
+        <text x="185" y="80" text-anchor="middle" font-family="Nunito,sans-serif" font-size="13" font-weight="700" fill="#1d4ed8">📦 Database: ecommerce</text>
+        <!-- Collections DB1 -->
+        <rect x="50" y="95" width="120" height="55" rx="8" fill="url(#mg-col)" opacity=".25" stroke="#0ea5e9" stroke-width="1"/>
+        <text x="110" y="118" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#0c4a6e">🗂 users</text>
+        <text x="110" y="138" text-anchor="middle" font-family="Nunito,sans-serif" font-size="8" fill="#64748b">1.2M docs</text>
+        <rect x="200" y="95" width="120" height="55" rx="8" fill="url(#mg-col)" opacity=".25" stroke="#0ea5e9" stroke-width="1"/>
+        <text x="260" y="118" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#0c4a6e">🗂 orders</text>
+        <text x="260" y="138" text-anchor="middle" font-family="Nunito,sans-serif" font-size="8" fill="#64748b">5.8M docs</text>
+        <rect x="50" y="165" width="120" height="55" rx="8" fill="url(#mg-col)" opacity=".25" stroke="#0ea5e9" stroke-width="1"/>
+        <text x="110" y="188" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#0c4a6e">🗂 products</text>
+        <text x="110" y="208" text-anchor="middle" font-family="Nunito,sans-serif" font-size="8" fill="#64748b">45K docs</text>
+        <rect x="200" y="165" width="120" height="55" rx="8" fill="url(#mg-col)" opacity=".25" stroke="#0ea5e9" stroke-width="1"/>
+        <text x="260" y="188" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#0c4a6e">🗂 reviews</text>
+        <text x="260" y="208" text-anchor="middle" font-family="Nunito,sans-serif" font-size="8" fill="#64748b">890K docs</text>
+        <!-- Document example -->
+        <rect x="50" y="235" width="270" height="65" rx="6" fill="#fff" stroke="#e2e8f0" stroke-width="1"/>
+        <text x="60" y="255" font-family="JetBrains Mono,monospace" font-size="8.5" fill="#475569">{ "_id": ObjectId("..."),</text>
+        <text x="66" y="268" font-family="JetBrains Mono,monospace" font-size="8.5" fill="#475569">"name": "Олена", "email": "..." }</text>
+        <text x="185" y="292" text-anchor="middle" font-family="Nunito,sans-serif" font-size="8" fill="#94a3b8">↑ Один документ (Document)</text>
+        <!-- DB 2 -->
+        <rect x="360" y="55" width="310" height="260" rx="10" fill="url(#mg-db)" opacity=".12" stroke="#3b82f6" stroke-width="1.5"/>
+        <text x="515" y="80" text-anchor="middle" font-family="Nunito,sans-serif" font-size="13" font-weight="700" fill="#1d4ed8">📦 Database: analytics</text>
+        <rect x="380" y="95" width="120" height="55" rx="8" fill="url(#mg-col)" opacity=".25" stroke="#0ea5e9" stroke-width="1"/>
+        <text x="440" y="118" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#0c4a6e">🗂 events</text>
+        <text x="440" y="138" text-anchor="middle" font-family="Nunito,sans-serif" font-size="8" fill="#64748b">120M docs</text>
+        <rect x="530" y="95" width="120" height="55" rx="8" fill="url(#mg-col)" opacity=".25" stroke="#0ea5e9" stroke-width="1"/>
+        <text x="590" y="118" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#0c4a6e">🗂 sessions</text>
+        <text x="590" y="138" text-anchor="middle" font-family="Nunito,sans-serif" font-size="8" fill="#64748b">3.5M docs</text>
+        <rect x="380" y="165" width="120" height="55" rx="8" fill="url(#mg-col)" opacity=".25" stroke="#0ea5e9" stroke-width="1"/>
+        <text x="440" y="188" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#0c4a6e">🗂 metrics</text>
+        <text x="440" y="208" text-anchor="middle" font-family="Nunito,sans-serif" font-size="8" fill="#64748b">50M docs</text>
+      </svg>
+      <figcaption>Структура MongoDB: Instance → Databases → Collections → Documents</figcaption>
+    </div>
+  </div>
+
+  <div class="mongo-section" id="mi-types">
+    <h2>📊 Типи даних MongoDB</h2>
+    <table class="mongo-table">
+      <thead><tr><th>Тип</th><th>Приклад</th><th>⚠️ Увага для BA/SA</th></tr></thead>
+      <tbody>
+        <tr><td><span class="badge-blue">String</span></td><td><code>"Kyiv"</code></td><td>UTF-8, порівняння регістрозалежне за замовчуванням</td></tr>
+        <tr><td><span class="badge-blue">Number</span> (Int32/Int64/Double)</td><td><code>42</code>, <code>3.14</code></td><td>Double ≠ Int для точних фінансових розрахунків!</td></tr>
+        <tr><td><span class="badge-blue">Boolean</span></td><td><code>true</code> / <code>false</code></td><td>—</td></tr>
+        <tr><td><span class="badge-blue">Date</span></td><td><code>ISODate("2024-01-15")</code></td><td>Завжди UTC! Timezone на стороні додатку</td></tr>
+        <tr><td><span class="badge-green">Array</span></td><td><code>["a", "b", "c"]</code></td><td>Поле може бути масивом або скаляром</td></tr>
+        <tr><td><span class="badge-green">Embedded Document</span></td><td><code>{"city": "Kyiv"}</code></td><td>Вкладений JSON-об'єкт</td></tr>
+        <tr><td><span class="badge-purple">ObjectId</span></td><td><code>ObjectId("...")</code></td><td>12 байт, НЕ рядок-UUID</td></tr>
+        <tr><td><span class="badge-yellow">null</span></td><td><code>null</code></td><td>Відрізняється від відсутнього поля!</td></tr>
+        <tr><td><span class="badge-purple">Decimal128</span></td><td><code>NumberDecimal("9.99")</code></td><td>Для точних фінансових розрахунків</td></tr>
+      </tbody>
+    </table>
+    <div class="callout-warning"><strong>Типова помилка BA:</strong> в acceptance criteria написати "поле amount типу number" — але для фінансів потрібен <code>Decimal128</code>, інакше float-point помилки при агрегаціях. Наприклад, <code>0.1 + 0.2 = 0.30000000000000004</code> у Double.</div>
+  </div>
+
+  <div class="self-check">
+    <h3>✅ Питання для самоперевірки</h3>
+    <ol>
+      <li>Чим відрізняється документ від рядка в SQL?</li>
+      <li>Що таке ObjectId і чому це важливо при API інтеграції?</li>
+      <li>Чому <code>null</code> і відсутнє поле — різні речі в MongoDB?</li>
+      <li>Що означає "динамічна схема" з точки зору вимог?</li>
+      <li>Який тип даних слід обирати для фінансових полів і чому?</li>
+    </ol>
+  </div>
+
+  <div class="interview-block">
+    <h3>💼 Питання на senior-співбесіді</h3>
+    <ol>
+      <li>"Опиши ситуацію, коли ти аналізував схему MongoDB і знайшов проблему з дизайном даних"</li>
+      <li>"Які типи даних MongoDB ти б зазначив у вимогах для фінансового продукту?"</li>
+      <li>"Як ObjectId впливає на дизайн API контрактів між мікросервісами?"</li>
+    </ol>
+  </div>
+
+  <div class="mistakes-block">
+    <h3>⚠️ Типові помилки мідл-аналітика</h3>
+    <ul>
+      <li>Вважати що MongoDB = "база без схеми" і не описувати структуру даних у вимогах</li>
+      <li>Не вказувати тип <code>Decimal128</code> для фінансових полів</li>
+      <li>Плутати <code>null</code> з відсутністю поля в acceptance criteria</li>
+      <li>Описувати <code>_id</code> як integer у API специфікації</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     MONGODB MODULE — PAGE 2: DATA MODEL
+     ═══════════════════════════════════════════════════════════════════════ -->
+<div id="page-mongodb-datamodel" class="page-view" style="display:none;">
+  <nav class="breadcrumb"><span>База знань</span><span class="breadcrumb-sep">›</span><span>MongoDB для BA/SA</span><span class="breadcrumb-sep">›</span><span class="current">Модель даних</span></nav>
+  <div class="page-header">
+    <div class="page-tag">🍃 MongoDB</div>
+    <h1 class="page-title">Дизайн схеми MongoDB: Embedding vs Referencing</h1>
+    <p class="page-desc">Головне правило MongoDB — дані, які використовуються разом, зберігаються разом. Як це застосовувати на практиці.</p>
+  </div>
+
+  <div class="mongo-nav">
+    <a onclick="document.getElementById('md-rule').scrollIntoView({behavior:'smooth'})">Головне правило</a>
+    <a onclick="document.getElementById('md-embed').scrollIntoView({behavior:'smooth'})">Embedding</a>
+    <a onclick="document.getElementById('md-ref').scrollIntoView({behavior:'smooth'})">Referencing</a>
+    <a onclick="document.getElementById('md-matrix').scrollIntoView({behavior:'smooth'})">Матриця вибору</a>
+    <a onclick="document.getElementById('md-patterns').scrollIntoView({behavior:'smooth'})">Шаблони</a>
+    <a onclick="document.getElementById('md-case').scrollIntoView({behavior:'smooth'})">E-commerce кейс</a>
+  </div>
+
+  <div class="mongo-section" id="md-rule">
+    <h2>🎯 Головне правило MongoDB</h2>
+    <div class="callout-tip" style="font-size:1rem;"><strong>"Дані, які використовуються разом — зберігаються разом"</strong><br>Це протилежність нормалізації в SQL. Схема MongoDB оптимізується під патерни читання, а не під усунення дублювання.</div>
+  </div>
+
+  <div class="mongo-section" id="md-embed">
+    <h2>📎 Embedding (Вкладення) — коли і чому</h2>
+    <p><strong>Коли вкладати:</strong></p>
+    <ul>
+      <li>Зв'язок <span class="badge-green">one-to-one</span> (один до одного)</li>
+      <li>Зв'язок <span class="badge-green">one-to-few</span> (один до кількох) — менше ~100 елементів</li>
+      <li>Дані завжди потрібні разом (наприклад, замовлення + адреса доставки)</li>
+      <li>Дані не змінюються незалежно один від одного</li>
+    </ul>
+    <h3>Приклад — замовлення з адресою:</h3>
+    <div class="mongo-code">{
+  <span class="str">"_id"</span>: ObjectId(<span class="str">"..."</span>),
+  <span class="str">"orderId"</span>: <span class="str">"ORD-2024-001"</span>,
+  <span class="str">"total"</span>: <span class="num">1250.00</span>,
+  <span class="str">"shippingAddress"</span>: {             <span class="cm">// ← Embedded document</span>
+    <span class="str">"street"</span>: <span class="str">"Хрещатик, 1"</span>,
+    <span class="str">"city"</span>: <span class="str">"Київ"</span>,
+    <span class="str">"zipCode"</span>: <span class="str">"01001"</span>
+  },
+  <span class="str">"items"</span>: [                        <span class="cm">// ← Embedded array</span>
+    {<span class="str">"productId"</span>: <span class="str">"P001"</span>, <span class="str">"name"</span>: <span class="str">"Ноутбук"</span>, <span class="str">"qty"</span>: <span class="num">1</span>, <span class="str">"price"</span>: <span class="num">1200.00</span>},
+    {<span class="str">"productId"</span>: <span class="str">"P002"</span>, <span class="str">"name"</span>: <span class="str">"Мишка"</span>, <span class="str">"qty"</span>: <span class="num">1</span>, <span class="str">"price"</span>: <span class="num">50.00</span>}
+  ]
+}</div>
+    <div class="callout-success"><strong>Чому embed address:</strong> адреса доставки фіксується на момент замовлення. Навіть якщо юзер змінить адресу в профілі — замовлення має зберегти стару адресу.</div>
+  </div>
+
+  <div class="mongo-section" id="md-ref">
+    <h2>🔗 Referencing (Посилання) — коли і чому</h2>
+    <p><strong>Коли посилатися:</strong></p>
+    <ul>
+      <li>Зв'язок <span class="badge-yellow">one-to-many</span> (більше 100 елементів)</li>
+      <li>Зв'язок <span class="badge-yellow">many-to-many</span></li>
+      <li>Дані змінюються незалежно</li>
+      <li>Дочірні дані можуть бути великими (ризик перевищити 16MB ліміт документа)</li>
+      <li>Дочірні дані часто потрібні окремо від батьківського</li>
+    </ul>
+    <h3>Приклад — юзер та його замовлення:</h3>
+    <div class="mongo-code"><span class="cm">// Колекція users</span>
+{ <span class="str">"_id"</span>: ObjectId(<span class="str">"user123"</span>), <span class="str">"name"</span>: <span class="str">"Олена"</span> }
+
+<span class="cm">// Колекція orders — посилання на юзера</span>
+{ <span class="str">"_id"</span>: ObjectId(<span class="str">"..."</span>), <span class="str">"userId"</span>: ObjectId(<span class="str">"user123"</span>), <span class="str">"total"</span>: <span class="num">500</span> }
+{ <span class="str">"_id"</span>: ObjectId(<span class="str">"..."</span>), <span class="str">"userId"</span>: ObjectId(<span class="str">"user123"</span>), <span class="str">"total"</span>: <span class="num">750</span> }</div>
+  </div>
+
+  <div class="mongo-section" id="md-matrix">
+    <h2>📊 Матриця вибору: Embedding vs Referencing</h2>
+    <div class="mongo-diagram">
+      <svg viewBox="0 0 650 350" xmlns="http://www.w3.org/2000/svg" style="max-width:650px;width:100%;">
+        <!-- Grid background -->
+        <rect x="120" y="50" width="500" height="260" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+        <!-- Axis labels -->
+        <text x="370" y="35" text-anchor="middle" font-family="Nunito,sans-serif" font-size="12" font-weight="700" fill="#475569">Кардинальність →</text>
+        <text x="50" y="180" text-anchor="middle" font-family="Nunito,sans-serif" font-size="12" font-weight="700" fill="#475569" transform="rotate(-90,50,180)">Дані потрібні разом ↑</text>
+        <!-- Column headers -->
+        <text x="185" y="68" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" font-weight="600" fill="#64748b">1:1</text>
+        <text x="310" y="68" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" font-weight="600" fill="#64748b">1:Few (&lt;100)</text>
+        <text x="430" y="68" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" font-weight="600" fill="#64748b">1:Many (100-10K)</text>
+        <text x="555" y="68" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" font-weight="600" fill="#64748b">1:Millions</text>
+        <!-- Row headers -->
+        <text x="115" y="120" text-anchor="end" font-family="Nunito,sans-serif" font-size="10" font-weight="600" fill="#64748b">Завжди</text>
+        <text x="115" y="190" text-anchor="end" font-family="Nunito,sans-serif" font-size="10" font-weight="600" fill="#64748b">Часто</text>
+        <text x="115" y="260" text-anchor="end" font-family="Nunito,sans-serif" font-size="10" font-weight="600" fill="#64748b">Рідко</text>
+        <!-- Green cells (Embed) -->
+        <rect x="130" y="85" width="120" height="55" rx="6" fill="#d1fae5" stroke="#10b981" stroke-width="1.5"/>
+        <text x="190" y="116" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" font-weight="700" fill="#065f46">✅ EMBED</text>
+        <rect x="255" y="85" width="120" height="55" rx="6" fill="#d1fae5" stroke="#10b981" stroke-width="1.5"/>
+        <text x="315" y="116" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" font-weight="700" fill="#065f46">✅ EMBED</text>
+        <!-- Yellow cells (Depends) -->
+        <rect x="380" y="85" width="120" height="55" rx="6" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.5"/>
+        <text x="440" y="116" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" font-weight="700" fill="#92400e">⚖️ DEPENDS</text>
+        <rect x="130" y="155" width="120" height="55" rx="6" fill="#d1fae5" stroke="#10b981" stroke-width="1.5"/>
+        <text x="190" y="186" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" font-weight="700" fill="#065f46">✅ EMBED</text>
+        <rect x="255" y="155" width="120" height="55" rx="6" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.5"/>
+        <text x="315" y="186" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" font-weight="700" fill="#92400e">⚖️ DEPENDS</text>
+        <!-- Red cells (Reference) -->
+        <rect x="505" y="85" width="120" height="55" rx="6" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5"/>
+        <text x="565" y="116" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" font-weight="700" fill="#991b1b">🔗 REFERENCE</text>
+        <rect x="380" y="155" width="120" height="55" rx="6" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5"/>
+        <text x="440" y="186" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" font-weight="700" fill="#991b1b">🔗 REFERENCE</text>
+        <rect x="505" y="155" width="120" height="55" rx="6" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5"/>
+        <text x="565" y="186" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" font-weight="700" fill="#991b1b">🔗 REFERENCE</text>
+        <rect x="130" y="225" width="120" height="55" rx="6" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.5"/>
+        <text x="190" y="256" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" font-weight="700" fill="#92400e">⚖️ DEPENDS</text>
+        <rect x="255" y="225" width="120" height="55" rx="6" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5"/>
+        <text x="315" y="256" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" font-weight="700" fill="#991b1b">🔗 REFERENCE</text>
+        <rect x="380" y="225" width="120" height="55" rx="6" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5"/>
+        <text x="440" y="256" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" font-weight="700" fill="#991b1b">🔗 REFERENCE</text>
+        <rect x="505" y="225" width="120" height="55" rx="6" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5"/>
+        <text x="565" y="256" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" font-weight="700" fill="#991b1b">🔗 REFERENCE</text>
+        <!-- Legend -->
+        <rect x="180" y="320" width="14" height="14" rx="3" fill="#d1fae5" stroke="#10b981"/>
+        <text x="200" y="332" font-family="Nunito,sans-serif" font-size="10" fill="#475569">Embed</text>
+        <rect x="270" y="320" width="14" height="14" rx="3" fill="#fef3c7" stroke="#f59e0b"/>
+        <text x="290" y="332" font-family="Nunito,sans-serif" font-size="10" fill="#475569">Depends on context</text>
+        <rect x="420" y="320" width="14" height="14" rx="3" fill="#fee2e2" stroke="#ef4444"/>
+        <text x="440" y="332" font-family="Nunito,sans-serif" font-size="10" fill="#475569">Reference</text>
+      </svg>
+      <figcaption>Матриця вибору Embedding vs Referencing за кардинальністю та частотою спільного доступу</figcaption>
+    </div>
+  </div>
+
+  <div class="mongo-section" id="md-patterns">
+    <h2>🧩 Шаблони проектування схем (Design Patterns)</h2>
+
+    <h3><span class="badge-blue">Polymorphic Pattern</span></h3>
+    <p>Всі документи в колекції схожі, але не ідентичні. Наприклад, колекція <code>vehicles</code>: автомобілі мають <code>engineType</code>, мотоцикли — <code>wheelCount</code>. Загальні поля (<code>brand</code>, <code>price</code>, <code>year</code>) підтримують спільні запити.</p>
+
+    <h3><span class="badge-green">Bucket Pattern</span></h3>
+    <p>Для time-series даних. Замість одного документа на подію — групуємо події за часовим вікном:</p>
+    <div class="mongo-code">{
+  <span class="str">"sensorId"</span>: <span class="str">"S001"</span>,
+  <span class="str">"date"</span>: <span class="str">"2024-01-15"</span>,
+  <span class="str">"measurements"</span>: [
+    {<span class="str">"time"</span>: <span class="str">"10:00"</span>, <span class="str">"value"</span>: <span class="num">22.5</span>},
+    {<span class="str">"time"</span>: <span class="str">"10:05"</span>, <span class="str">"value"</span>: <span class="num">22.7</span>}
+  ],
+  <span class="str">"count"</span>: <span class="num">2</span>,
+  <span class="str">"avgTemp"</span>: <span class="num">22.6</span>
+}</div>
+    <div class="callout-info"><strong>Коли актуально для BA/SA:</strong> аналітика подій, IoT, логи — якщо розробник пропонує bucket pattern, тепер знаєте навіщо.</div>
+
+    <h3><span class="badge-purple">Extended Reference Pattern</span></h3>
+    <p>Денормалізація частини полів пов'язаного документа для уникнення JOIN:</p>
+    <div class="mongo-code"><span class="cm">// Замість окремого $lookup на users</span>
+{
+  <span class="str">"orderId"</span>: <span class="str">"ORD-001"</span>,
+  <span class="str">"customer"</span>: {
+    <span class="str">"id"</span>: ObjectId(<span class="str">"user123"</span>),
+    <span class="str">"name"</span>: <span class="str">"Олена"</span>,          <span class="cm">// ← денормалізовано</span>
+    <span class="str">"email"</span>: <span class="str">"elena@example.com"</span>  <span class="cm">// ← денормалізовано</span>
+  }
+}</div>
+
+    <h3><span class="badge-yellow">Outlier Pattern</span></h3>
+    <p>Якщо більшість документів мають маленький масив, але деякі — величезний (наприклад, "celebrity" з мільйонами підписників). Основний документ зберігає перші N, надлишок — в окремих "overflow" документах.</p>
+  </div>
+
+  <div class="mongo-section">
+    <h2>⚖️ Нормалізація vs Денормалізація</h2>
+    <table class="mongo-table">
+      <thead><tr><th>Характеристика</th><th>Нормалізація (Reference)</th><th>Денормалізація (Embed)</th></tr></thead>
+      <tbody>
+        <tr><td>Дублювання даних</td><td><span class="badge-green">Немає</span></td><td><span class="badge-yellow">Є</span></td></tr>
+        <tr><td>Оновлення</td><td><span class="badge-green">Одне місце</span></td><td><span class="badge-yellow">Всі копії</span></td></tr>
+        <tr><td>Читання</td><td><span class="badge-yellow">Потрібен $lookup</span></td><td><span class="badge-green">Один запит</span></td></tr>
+        <tr><td>Консистентність</td><td><span class="badge-green">Висока</span></td><td><span class="badge-yellow">Ризик inconsistency</span></td></tr>
+        <tr><td>Продуктивність читання</td><td><span class="badge-yellow">Нижча</span></td><td><span class="badge-green">Вища</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="mongo-section">
+    <h2>⚠️ Ліміти та обмеження</h2>
+    <div class="callout-warning">
+      <strong>Максимальний розмір документа: 16 MB</strong> — embedding має ліміт.<br>
+      <strong>Максимальна глибина вкладення:</strong> без жорсткого ліміту, але >10 рівнів — погана практика.<br>
+      <strong>Масиви в масивах:</strong> підтримуються, але <code>$elemMatch</code> не підтримує багаторівневі масиви повністю.
+    </div>
+  </div>
+
+  <div class="mongo-section" id="md-case">
+    <h2>🛒 Кейс: E-commerce схема</h2>
+    <div class="doc-cards-3" style="margin-bottom:1rem;">
+      <div class="doc-card doc-card--blue">
+        <div class="doc-card-title">🗂 Product</div>
+        <p style="font-size:.83rem;color:var(--ink2);line-height:1.6;">
+          <code>name</code>, <code>price</code> — основні поля<br>
+          <code>categoryId</code> — <span class="badge-yellow">ref</span> (категорії змінюються окремо)<br>
+          <code>images</code> — <span class="badge-green">embed</span> (URL-и прив'язані до товару)<br>
+          <code>variants</code> — <span class="badge-green">embed</span> (розміри/кольори < 50 шт)
+        </p>
+      </div>
+      <div class="doc-card doc-card--teal">
+        <div class="doc-card-title">🗂 Order</div>
+        <p style="font-size:.83rem;color:var(--ink2);line-height:1.6;">
+          <code>userId</code> — <span class="badge-yellow">ref</span><br>
+          <code>items</code> — <span class="badge-green">embed</span> (snapshot product на момент покупки)<br>
+          <code>shippingAddress</code> — <span class="badge-green">embed</span> (snapshot адреси)<br>
+          <code>status</code> — поле документа
+        </p>
+      </div>
+      <div class="doc-card doc-card--gold">
+        <div class="doc-card-title">🗂 User</div>
+        <p style="font-size:.83rem;color:var(--ink2);line-height:1.6;">
+          <code>profile</code> — <span class="badge-green">embed</span> (1:1)<br>
+          <code>addressBook</code> — <span class="badge-green">embed array</span> (< 20 адрес)<br>
+          <code>orders</code> — <span class="badge-yellow">ref</span> (можуть бути тисячі)
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="self-check">
+    <h3>✅ Питання для самоперевірки</h3>
+    <ol>
+      <li>Коли обирати embedding, а коли referencing?</li>
+      <li>Чому адреса доставки embed в замовлення, а не reference?</li>
+      <li>Що таке Extended Reference Pattern і коли він корисний?</li>
+      <li>Який максимальний розмір документа в MongoDB?</li>
+    </ol>
+  </div>
+  <div class="interview-block">
+    <h3>💼 Питання на senior-співбесіді</h3>
+    <ol>
+      <li>"Як ти вирішуєш конфлікт між read optimization та write complexity при дизайні схеми?"</li>
+      <li>"Розкажи про ситуацію де embedded document виріс до проблемних розмірів"</li>
+    </ol>
+  </div>
+  <div class="mistakes-block">
+    <h3>⚠️ Типові помилки мідл-аналітика</h3>
+    <ul>
+      <li>Завжди обирати embedding "бо так швидше" без аналізу кардинальності</li>
+      <li>Не враховувати 16 MB ліміт при embedded масивах</li>
+      <li>Нормалізувати все як у SQL — втрачати переваги MongoDB</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     MONGODB MODULE — PAGE 3: QUERIES
+     ═══════════════════════════════════════════════════════════════════════ -->
+<div id="page-mongodb-queries" class="page-view" style="display:none;">
+  <nav class="breadcrumb"><span>База знань</span><span class="breadcrumb-sep">›</span><span>MongoDB для BA/SA</span><span class="breadcrumb-sep">›</span><span class="current">Запити та оператори</span></nav>
+  <div class="page-header">
+    <div class="page-tag">🍃 MongoDB</div>
+    <h1 class="page-title">Запити в MongoDB: від базових до складних</h1>
+    <p class="page-desc">Метод find(), оператори порівняння, логічні оператори, dot notation, запити по масивах, $elemMatch та регулярні вирази.</p>
+  </div>
+
+  <div class="mongo-nav">
+    <a onclick="document.getElementById('mq-find').scrollIntoView({behavior:'smooth'})">find()</a>
+    <a onclick="document.getElementById('mq-compare').scrollIntoView({behavior:'smooth'})">Порівняння</a>
+    <a onclick="document.getElementById('mq-logic').scrollIntoView({behavior:'smooth'})">Логічні</a>
+    <a onclick="document.getElementById('mq-dot').scrollIntoView({behavior:'smooth'})">Dot Notation</a>
+    <a onclick="document.getElementById('mq-array').scrollIntoView({behavior:'smooth'})">Масиви</a>
+    <a onclick="document.getElementById('mq-elem').scrollIntoView({behavior:'smooth'})">$elemMatch</a>
+    <a onclick="document.getElementById('mq-null').scrollIntoView({behavior:'smooth'})">null / $exists</a>
+    <a onclick="document.getElementById('mq-cursor').scrollIntoView({behavior:'smooth'})">Курсори</a>
+  </div>
+
+  <div class="mongo-section" id="mq-find">
+    <h2>🔍 Метод find() — анатомія запиту</h2>
+    <div class="mongo-code">db.collection.<span class="fn">find</span>(
+  { filter },      <span class="cm">// що шукаємо (query document)</span>
+  { projection }   <span class="cm">// які поля повертаємо</span>
+)</div>
+    <h3>Базові приклади:</h3>
+    <div class="mongo-code"><span class="cm">// Всі документи</span>
+db.users.<span class="fn">find</span>()
+
+<span class="cm">// Знайти за точним значенням</span>
+db.users.<span class="fn">find</span>({ <span class="str">"city"</span>: <span class="str">"Kyiv"</span> })
+
+<span class="cm">// Знайти і повернути тільки name та email (1=включити, 0=виключити)</span>
+db.users.<span class="fn">find</span>({ <span class="str">"city"</span>: <span class="str">"Kyiv"</span> }, { <span class="str">"name"</span>: <span class="num">1</span>, <span class="str">"email"</span>: <span class="num">1</span>, <span class="str">"_id"</span>: <span class="num">0</span> })
+
+<span class="cm">// Перший знайдений документ</span>
+db.users.<span class="fn">findOne</span>({ <span class="str">"email"</span>: <span class="str">"test@example.com"</span> })</div>
+  </div>
+
+  <div class="mongo-section" id="mq-compare">
+    <h2>⚖️ Оператори порівняння</h2>
+    <div class="mongo-code"><span class="cm">// $eq, $ne, $gt, $gte, $lt, $lte</span>
+db.orders.<span class="fn">find</span>({ <span class="str">"total"</span>: { <span class="kw">$gte</span>: <span class="num">1000</span>, <span class="kw">$lt</span>: <span class="num">5000</span> } })
+<span class="cm">// Замовлення від 1000 до 5000</span>
+
+db.users.<span class="fn">find</span>({ <span class="str">"status"</span>: { <span class="kw">$ne</span>: <span class="str">"blocked"</span> } })
+<span class="cm">// Всі юзери крім заблокованих</span>
+
+db.products.<span class="fn">find</span>({ <span class="str">"stock"</span>: { <span class="kw">$gt</span>: <span class="num">0</span> } })
+<span class="cm">// Товари в наявності</span></div>
+  </div>
+
+  <div class="mongo-section" id="mq-logic">
+    <h2>🧠 Логічні оператори</h2>
+    <div class="mongo-code"><span class="cm">// $and — всі умови (неявний варіант):</span>
+db.users.<span class="fn">find</span>({ <span class="str">"age"</span>: { <span class="kw">$gte</span>: <span class="num">18</span> }, <span class="str">"status"</span>: <span class="str">"active"</span>, <span class="str">"city"</span>: <span class="str">"Kyiv"</span> })
+
+<span class="cm">// $or — хоча б одна умова</span>
+db.orders.<span class="fn">find</span>({
+  <span class="kw">$or</span>: [
+    { <span class="str">"status"</span>: <span class="str">"pending"</span> },
+    { <span class="str">"status"</span>: <span class="str">"processing"</span> }
+  ]
+})
+
+<span class="cm">// $in — значення зі списку (замінює множинний $or)</span>
+db.orders.<span class="fn">find</span>({ <span class="str">"status"</span>: { <span class="kw">$in</span>: [<span class="str">"pending"</span>, <span class="str">"processing"</span>, <span class="str">"shipped"</span>] } })
+
+<span class="cm">// $nin — НЕ зі списку</span>
+db.products.<span class="fn">find</span>({ <span class="str">"category"</span>: { <span class="kw">$nin</span>: [<span class="str">"archived"</span>, <span class="str">"deleted"</span>] } })</div>
+  </div>
+
+  <div class="mongo-section" id="mq-dot">
+    <h2>📌 Dot Notation — запити по вкладених документах</h2>
+    <div class="mongo-code"><span class="cm">// Документ: { address: { city: "Kyiv", region: "Kyivska" } }</span>
+
+<span class="cm">// ✅ ПРАВИЛЬНО — dot notation дозволяє часткове співпадіння</span>
+db.users.<span class="fn">find</span>({ <span class="str">"address.city"</span>: <span class="str">"Kyiv"</span> })
+
+<span class="cm">// ❌ НЕПРАВИЛЬНО — точне співпадіння ВСЬОГО вкладеного документа</span>
+db.users.<span class="fn">find</span>({ <span class="str">"address"</span>: { <span class="str">"city"</span>: <span class="str">"Kyiv"</span> } })
+<span class="cm">// Не знайде, бо address також має region!</span></div>
+  </div>
+
+  <div class="mongo-section" id="mq-array">
+    <h2>📋 Запити по масивах</h2>
+    <div class="mongo-code"><span class="cm">// Документ: { tags: ["premium", "verified", "active"] }</span>
+
+<span class="cm">// Містить елемент</span>
+db.users.<span class="fn">find</span>({ <span class="str">"tags"</span>: <span class="str">"premium"</span> })
+
+<span class="cm">// Містить ВСІ елементи з масиву ($all)</span>
+db.users.<span class="fn">find</span>({ <span class="str">"tags"</span>: { <span class="kw">$all</span>: [<span class="str">"premium"</span>, <span class="str">"verified"</span>] } })
+
+<span class="cm">// Масив розміром N ($size)</span>
+db.users.<span class="fn">find</span>({ <span class="str">"tags"</span>: { <span class="kw">$size</span>: <span class="num">3</span> } })
+
+<span class="cm">// За індексом в масиві</span>
+db.users.<span class="fn">find</span>({ <span class="str">"tags.0"</span>: <span class="str">"premium"</span> })  <span class="cm">// перший елемент = "premium"</span></div>
+  </div>
+
+  <div class="mongo-section" id="mq-elem">
+    <h2>🔴 $elemMatch — КРИТИЧНО ВАЖЛИВО!</h2>
+    <div class="callout-warning"><strong>Це найчастіша помилка при написанні запитів до масивів об'єктів!</strong></div>
+    <div class="mongo-code"><span class="cm">// Документ:</span>
+<span class="cm">// { orders: [</span>
+<span class="cm">//   { id: "O1", status: "shipped", amount: 500 },</span>
+<span class="cm">//   { id: "O2", status: "pending", amount: 1500 }</span>
+<span class="cm">// ]}</span>
+
+<span class="cm">// ❌ НЕПРАВИЛЬНО — умови можуть матчитися на РІЗНИХ елементах масиву</span>
+db.users.<span class="fn">find</span>({
+  <span class="str">"orders.status"</span>: <span class="str">"pending"</span>,
+  <span class="str">"orders.amount"</span>: { <span class="kw">$gt</span>: <span class="num">1000</span> }
+})
+<span class="cm">// Знайде документ де БУДЬ-ЯКИЙ order має status=pending</span>
+<span class="cm">// І БУДЬ-ЯКИЙ order має amount > 1000 (навіть різні!)</span>
+
+<span class="cm">// ✅ ПРАВИЛЬНО — $elemMatch гарантує обидві умови на ОДНОМУ елементі</span>
+db.users.<span class="fn">find</span>({
+  <span class="str">"orders"</span>: {
+    <span class="kw">$elemMatch</span>: {
+      <span class="str">"status"</span>: <span class="str">"pending"</span>,
+      <span class="str">"amount"</span>: { <span class="kw">$gt</span>: <span class="num">1000</span> }
+    }
+  }
+})</div>
+  </div>
+
+  <div class="mongo-section" id="mq-null">
+    <h2>⚠️ Null та $exists — підводні камені</h2>
+    <div class="mongo-code"><span class="cm">// ⚠️ Запит на null повертає документи ДЕ ПОЛЕ ВІДСУТНЄ або де значення null</span>
+db.users.<span class="fn">find</span>({ <span class="str">"middleName"</span>: <span class="kw">null</span> })
+
+<span class="cm">// ✅ Тільки ті де поле існує і дорівнює null</span>
+db.users.<span class="fn">find</span>({ <span class="str">"middleName"</span>: { <span class="kw">$eq</span>: <span class="kw">null</span>, <span class="kw">$exists</span>: <span class="kw">true</span> } })
+
+<span class="cm">// Перевірка існування поля</span>
+db.users.<span class="fn">find</span>({ <span class="str">"phone"</span>: { <span class="kw">$exists</span>: <span class="kw">true</span> } })   <span class="cm">// має поле phone</span>
+db.users.<span class="fn">find</span>({ <span class="str">"phone"</span>: { <span class="kw">$exists</span>: <span class="kw">false</span> } })  <span class="cm">// не має поля phone</span></div>
+  </div>
+
+  <div class="mongo-section">
+    <h2>🔤 Регулярні вирази</h2>
+    <div class="mongo-code"><span class="cm">// Пошук без урахування регістру</span>
+db.users.<span class="fn">find</span>({ <span class="str">"name"</span>: { <span class="kw">$regex</span>: /олена/i } })
+
+<span class="cm">// ✅ Пошук за початком рядка (використовує індекс!)</span>
+db.users.<span class="fn">find</span>({ <span class="str">"email"</span>: { <span class="kw">$regex</span>: /^admin/ } })
+
+<span class="cm">// ⚠️ /олена/i НЕ використовує індекс — повний scan колекції</span>
+<span class="cm">// ✅ /^admin/ використовує індекс — швидко</span></div>
+  </div>
+
+  <div class="mongo-section" id="mq-cursor">
+    <h2>📄 Курсори: limit, skip, sort</h2>
+    <div class="mongo-code"><span class="cm">// Сортування (1 = ASC, -1 = DESC)</span>
+db.orders.<span class="fn">find</span>().<span class="fn">sort</span>({ <span class="str">"createdAt"</span>: <span class="num">-1</span> })  <span class="cm">// новіші перші</span>
+
+<span class="cm">// Пагінація (skip + limit)</span>
+<span class="kw">const</span> page = <span class="num">3</span>, pageSize = <span class="num">20</span>;
+db.orders.<span class="fn">find</span>().<span class="fn">skip</span>((page - <span class="num">1</span>) * pageSize).<span class="fn">limit</span>(pageSize)
+
+<span class="cm">// ⚠️ skip() погано масштабується на великих колекціях (>100k документів)</span>
+<span class="cm">// ✅ Краща альтернатива — cursor-based pagination</span>
+db.orders.<span class="fn">find</span>({ <span class="str">"_id"</span>: { <span class="kw">$gt</span>: lastSeenId } }).<span class="fn">limit</span>(<span class="num">20</span>).<span class="fn">sort</span>({ <span class="str">"_id"</span>: <span class="num">1</span> })</div>
+  </div>
+
+  <div class="mongo-section">
+    <h2>🗺️ Дерево операторів MongoDB</h2>
+    <div class="mongo-diagram">
+      <svg viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg" style="max-width:700px;width:100%;">
+        <!-- Root -->
+        <rect x="270" y="10" width="160" height="35" rx="8" fill="#1e3a5f" stroke="#1e3a5f"/>
+        <text x="350" y="33" text-anchor="middle" font-family="Nunito,sans-serif" font-size="12" font-weight="700" fill="#fff">MongoDB Operators</text>
+        <!-- Lines from root -->
+        <line x1="310" y1="45" x2="100" y2="75" stroke="#94a3b8" stroke-width="1.5"/>
+        <line x1="340" y1="45" x2="280" y2="75" stroke="#94a3b8" stroke-width="1.5"/>
+        <line x1="370" y1="45" x2="440" y2="75" stroke="#94a3b8" stroke-width="1.5"/>
+        <line x1="400" y1="45" x2="600" y2="75" stroke="#94a3b8" stroke-width="1.5"/>
+        <!-- Comparison (blue) -->
+        <rect x="20" y="75" width="160" height="28" rx="6" fill="#dbeafe" stroke="#3b82f6"/>
+        <text x="100" y="94" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" font-weight="700" fill="#1d4ed8">Порівняння</text>
+        <text x="100" y="120" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#3b82f6">$eq $ne $gt $gte</text>
+        <text x="100" y="135" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#3b82f6">$lt $lte $in $nin</text>
+        <!-- Logical (green) -->
+        <rect x="200" y="75" width="160" height="28" rx="6" fill="#d1fae5" stroke="#10b981"/>
+        <text x="280" y="94" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" font-weight="700" fill="#065f46">Логічні</text>
+        <text x="280" y="120" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#059669">$and $or $not $nor</text>
+        <!-- Array (purple) -->
+        <rect x="380" y="75" width="130" height="28" rx="6" fill="#ede9fe" stroke="#8b5cf6"/>
+        <text x="445" y="94" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" font-weight="700" fill="#5b21b6">Масив</text>
+        <text x="445" y="120" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#7c3aed">$all $elemMatch $size</text>
+        <!-- Element (gray) -->
+        <rect x="530" y="75" width="150" height="28" rx="6" fill="#f3f4f6" stroke="#9ca3af"/>
+        <text x="605" y="94" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" font-weight="700" fill="#4b5563">Елемент / Рядок</text>
+        <text x="605" y="120" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#6b7280">$exists $type $regex</text>
+        <!-- Warning -->
+        <rect x="530" y="145" width="150" height="28" rx="6" fill="#fee2e2" stroke="#ef4444"/>
+        <text x="605" y="164" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" font-weight="700" fill="#991b1b">⚠️ $where (небезпечно!)</text>
+      </svg>
+      <figcaption>Дерево операторів MongoDB за категоріями</figcaption>
+    </div>
+  </div>
+
+  <div class="mongo-section">
+    <h2>🎯 Реальний кейс: Discovery-сесія</h2>
+    <div class="callout-info"><strong>Сценарій:</strong> ти на discovery-сесії для e-commerce проєкту. Розробник каже: "Нам треба фіча пошуку замовлень — за статусом, сумою і датою".</div>
+    <div class="mongo-code">db.orders.<span class="fn">find</span>({
+  <span class="str">"userId"</span>: ObjectId(<span class="str">"user123"</span>),
+  <span class="str">"status"</span>: { <span class="kw">$in</span>: [<span class="str">"pending"</span>, <span class="str">"shipped"</span>] },
+  <span class="str">"total"</span>: { <span class="kw">$gte</span>: <span class="num">500</span> },
+  <span class="str">"createdAt"</span>: {
+    <span class="kw">$gte</span>: ISODate(<span class="str">"2024-01-01"</span>),
+    <span class="kw">$lt</span>: ISODate(<span class="str">"2024-02-01"</span>)
+  }
+}, {
+  <span class="str">"orderId"</span>: <span class="num">1</span>, <span class="str">"status"</span>: <span class="num">1</span>, <span class="str">"total"</span>: <span class="num">1</span>, <span class="str">"createdAt"</span>: <span class="num">1</span>
+}).<span class="fn">sort</span>({ <span class="str">"createdAt"</span>: <span class="num">-1</span> }).<span class="fn">limit</span>(<span class="num">50</span>)</div>
+    <div class="callout-tip"><strong>Що ти можеш сказати розробнику:</strong> "На поля <code>userId</code>, <code>status</code>, <code>createdAt</code> потрібен compound index для цього запиту."</div>
+  </div>
+
+  <div class="self-check">
+    <h3>✅ Питання для самоперевірки</h3>
+    <ol>
+      <li>Яка різниця між <code>$in</code> і <code>$all</code>?</li>
+      <li>Чому dot notation <code>"address.city"</code> працює інакше ніж <code>{ address: { city: ... } }</code>?</li>
+      <li>Коли обов'язковий <code>$elemMatch</code>?</li>
+      <li>Чому <code>/regex/i</code> без <code>^</code> не використовує індекс?</li>
+      <li>Чому skip-based пагінація погана для великих колекцій?</li>
+    </ol>
+  </div>
+  <div class="interview-block">
+    <h3>💼 Питання на senior-співбесіді</h3>
+    <ol>
+      <li>"Як ти описуєш acceptance criteria для пошукових фічей з урахуванням індексів?"</li>
+      <li>"Розкажи про типовий кейс де некоректний запит по масиву об'єктів спричинив баг"</li>
+    </ol>
+  </div>
+  <div class="mistakes-block">
+    <h3>⚠️ Типові помилки мідл-аналітика</h3>
+    <ul>
+      <li>Не розрізняти <code>null</code> і відсутнє поле в acceptance criteria</li>
+      <li>Не знати про <code>$elemMatch</code> і описувати некоректні фільтри для масивів</li>
+      <li>Не враховувати що <code>/regex/i</code> без <code>^</code> не використовує індекс</li>
+      <li>Описувати skip-based пагінацію для великих колекцій без cursor-based альтернативи</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     MONGODB MODULE — PAGE 4: WRITES
+     ═══════════════════════════════════════════════════════════════════════ -->
+<div id="page-mongodb-writes" class="page-view" style="display:none;">
+  <nav class="breadcrumb"><span>База знань</span><span class="breadcrumb-sep">›</span><span>MongoDB для BA/SA</span><span class="breadcrumb-sep">›</span><span class="current">Операції запису</span></nav>
+  <div class="page-header">
+    <div class="page-tag">🍃 MongoDB</div>
+    <h1 class="page-title">Операції запису: insert, update, delete та атомарність</h1>
+    <p class="page-desc">Всі операції зміни даних — від простої вставки до атомарного findOneAndUpdate та bulk operations.</p>
+  </div>
+
+  <div class="mongo-nav">
+    <a onclick="document.getElementById('mw-insert').scrollIntoView({behavior:'smooth'})">Insert</a>
+    <a onclick="document.getElementById('mw-update').scrollIntoView({behavior:'smooth'})">Update</a>
+    <a onclick="document.getElementById('mw-upsert').scrollIntoView({behavior:'smooth'})">Upsert</a>
+    <a onclick="document.getElementById('mw-atomic').scrollIntoView({behavior:'smooth'})">Атомарність</a>
+    <a onclick="document.getElementById('mw-delete').scrollIntoView({behavior:'smooth'})">Delete</a>
+    <a onclick="document.getElementById('mw-bulk').scrollIntoView({behavior:'smooth'})">Bulk</a>
+  </div>
+
+  <div class="mongo-section" id="mw-insert">
+    <h2>➕ Вставка документів</h2>
+    <div class="mongo-code"><span class="cm">// Вставити один документ</span>
+db.users.<span class="fn">insertOne</span>({
+  <span class="str">"name"</span>: <span class="str">"Олена"</span>,
+  <span class="str">"email"</span>: <span class="str">"elena@example.com"</span>,
+  <span class="str">"createdAt"</span>: <span class="kw">new</span> Date()
+})
+<span class="cm">// Повертає: { acknowledged: true, insertedId: ObjectId("...") }</span>
+
+<span class="cm">// Вставити кілька документів</span>
+db.products.<span class="fn">insertMany</span>([
+  { <span class="str">"name"</span>: <span class="str">"Ноутбук"</span>, <span class="str">"price"</span>: <span class="num">1200</span> },
+  { <span class="str">"name"</span>: <span class="str">"Мишка"</span>, <span class="str">"price"</span>: <span class="num">50</span> },
+  { <span class="str">"name"</span>: <span class="str">"Клавіатура"</span>, <span class="str">"price"</span>: <span class="num">80</span> }
+])</div>
+    <div class="callout-warning"><strong>Якщо <code>_id</code> дублюється</strong> — <code>insertOne</code> кине помилку <code>DuplicateKeyError</code>. <code>insertMany</code> за замовчуванням зупиниться на першій помилці (передайте <code>{ ordered: false }</code> щоб продовжити вставку решти).</div>
+  </div>
+
+  <div class="mongo-section" id="mw-update">
+    <h2>✏️ Оператори оновлення</h2>
+    <div class="mongo-code"><span class="cm">// $set — встановити значення поля (або створити якщо немає)</span>
+db.users.<span class="fn">updateOne</span>(
+  { <span class="str">"email"</span>: <span class="str">"elena@example.com"</span> },
+  { <span class="kw">$set</span>: { <span class="str">"status"</span>: <span class="str">"active"</span>, <span class="str">"lastLogin"</span>: <span class="kw">new</span> Date() } }
+)
+
+<span class="cm">// $unset — видалити поле</span>
+db.users.<span class="fn">updateOne</span>(
+  { <span class="str">"email"</span>: <span class="str">"elena@example.com"</span> },
+  { <span class="kw">$unset</span>: { <span class="str">"temporaryToken"</span>: <span class="str">""</span> } }
+)
+
+<span class="cm">// $inc — збільшити/зменшити числове поле</span>
+db.products.<span class="fn">updateOne</span>(
+  { <span class="str">"_id"</span>: ObjectId(<span class="str">"..."</span>) },
+  { <span class="kw">$inc</span>: { <span class="str">"stock"</span>: <span class="num">-1</span>, <span class="str">"soldCount"</span>: <span class="num">1</span> } }
+)
+
+<span class="cm">// $push — додати елемент до масиву (дозволяє дублікати)</span>
+db.posts.<span class="fn">updateOne</span>(
+  { <span class="str">"_id"</span>: ObjectId(<span class="str">"..."</span>) },
+  { <span class="kw">$push</span>: { <span class="str">"tags"</span>: <span class="str">"новий-тег"</span> } }
+)
+
+<span class="cm">// $addToSet — додати тільки якщо немає (без дублікатів)</span>
+db.users.<span class="fn">updateOne</span>(
+  { <span class="str">"_id"</span>: ObjectId(<span class="str">"..."</span>) },
+  { <span class="kw">$addToSet</span>: { <span class="str">"roles"</span>: <span class="str">"admin"</span> } }
+)
+
+<span class="cm">// $pull — видалити елементи з масиву за умовою</span>
+db.users.<span class="fn">updateOne</span>(
+  { <span class="str">"_id"</span>: ObjectId(<span class="str">"..."</span>) },
+  { <span class="kw">$pull</span>: { <span class="str">"tags"</span>: <span class="str">"old-tag"</span> } }
+)</div>
+
+    <h3>updateOne vs updateMany vs replaceOne</h3>
+    <table class="mongo-table">
+      <thead><tr><th>Метод</th><th>Поведінка</th><th>⚠️ Увага</th></tr></thead>
+      <tbody>
+        <tr><td><code>updateOne</code></td><td>Оновлює ПЕРШИЙ знайдений документ</td><td>Безпечний за замовчуванням</td></tr>
+        <tr><td><code>updateMany</code></td><td>Оновлює ВСІ знайдені документи</td><td>Масова операція — обережно!</td></tr>
+        <tr><td><code>replaceOne</code></td><td>ПОВНІСТЮ замінює документ (лише _id зберігається)</td><td>⚠️ Всі інші поля ВИДАЛЯЮТЬСЯ!</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="mongo-section" id="mw-upsert">
+    <h2>🔄 Upsert — Insert якщо не існує</h2>
+    <div class="mongo-code">db.userSettings.<span class="fn">updateOne</span>(
+  { <span class="str">"userId"</span>: ObjectId(<span class="str">"user123"</span>) },      <span class="cm">// фільтр</span>
+  { <span class="kw">$set</span>: { <span class="str">"theme"</span>: <span class="str">"dark"</span>, <span class="str">"lang"</span>: <span class="str">"uk"</span> } }, <span class="cm">// оновлення</span>
+  { <span class="str">"upsert"</span>: <span class="kw">true</span> }                      <span class="cm">// якщо не знайдено — створити</span>
+)</div>
+    <div class="callout-tip"><strong>Кейс для BA/SA:</strong> якщо ти описуєш інтеграцію де "зовнішня система надсилає дані про юзера, і ми маємо оновити або створити запис" — це upsert. Ключове слово в вимогах: <strong>"create or update"</strong> або <strong>"idempotent sync"</strong>.</div>
+  </div>
+
+  <div class="mongo-section" id="mw-atomic">
+    <h2>⚛️ findOneAndUpdate — атомарна операція</h2>
+    <div class="mongo-code"><span class="cm">// Знайти, оновити і повернути ОНОВЛЕНИЙ документ</span>
+<span class="kw">const</span> updatedOrder = db.orders.<span class="fn">findOneAndUpdate</span>(
+  { <span class="str">"_id"</span>: ObjectId(<span class="str">"..."</span>), <span class="str">"status"</span>: <span class="str">"pending"</span> },
+  { <span class="kw">$set</span>: { <span class="str">"status"</span>: <span class="str">"processing"</span>, <span class="str">"processedAt"</span>: <span class="kw">new</span> Date() } },
+  { <span class="str">"returnDocument"</span>: <span class="str">"after"</span> }  <span class="cm">// повернути документ ПІСЛЯ оновлення</span>
+)</div>
+    <div class="callout-info"><strong>Чому важливо:</strong> ця операція атомарна. Ніхто інший не може "втиснутись" між <code>find</code> і <code>update</code>. Це критично для систем де кілька процесів можуть обробляти одні й ті ж документи (конкурентна обробка замовлень, черги задач).</div>
+  </div>
+
+  <div class="mongo-section" id="mw-delete">
+    <h2>🗑️ Видалення</h2>
+    <div class="mongo-code"><span class="cm">// Видалити один документ</span>
+db.sessions.<span class="fn">deleteOne</span>({ <span class="str">"sessionId"</span>: <span class="str">"abc123"</span> })
+
+<span class="cm">// Видалити всі документи за умовою</span>
+db.logs.<span class="fn">deleteMany</span>({ <span class="str">"createdAt"</span>: { <span class="kw">$lt</span>: ISODate(<span class="str">"2023-01-01"</span>) } })
+
+<span class="cm">// ⚠️ Видалити ВСІ документи в колекції (обережно!)</span>
+db.tempData.<span class="fn">deleteMany</span>({})
+
+<span class="cm">// ✅ Краще — drop колекції якщо треба очистити повністю</span>
+db.tempData.<span class="fn">drop</span>()  <span class="cm">// швидше і чистіше</span></div>
+  </div>
+
+  <div class="mongo-section" id="mw-bulk">
+    <h2>📦 Bulk Operations</h2>
+    <div class="mongo-code"><span class="kw">const</span> bulk = db.products.<span class="fn">initializeUnorderedBulkOp</span>();
+bulk.<span class="fn">find</span>({ <span class="str">"category"</span>: <span class="str">"electronics"</span> }).<span class="fn">update</span>({ <span class="kw">$set</span>: { <span class="str">"vat"</span>: <span class="num">0.2</span> } });
+bulk.<span class="fn">insert</span>({ <span class="str">"name"</span>: <span class="str">"New Product"</span>, <span class="str">"price"</span>: <span class="num">100</span> });
+bulk.<span class="fn">find</span>({ <span class="str">"stock"</span>: <span class="num">0</span> }).<span class="fn">remove</span>();
+bulk.<span class="fn">execute</span>();</div>
+    <div class="callout-info"><strong>Коли актуально:</strong> імпорт даних, масові оновлення, batch processing — замість N окремих запитів один bulk виклик.</div>
+  </div>
+
+  <div class="mongo-section">
+    <h2>📊 CRUD операції — зведена діаграма</h2>
+    <div class="mongo-diagram">
+      <svg viewBox="0 0 660 200" xmlns="http://www.w3.org/2000/svg" style="max-width:660px;width:100%;">
+        <!-- C -->
+        <rect x="10" y="20" width="150" height="160" rx="10" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
+        <text x="85" y="48" text-anchor="middle" font-family="Nunito,sans-serif" font-size="14" font-weight="700" fill="#1d4ed8">C — Create</text>
+        <text x="85" y="75" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#3b82f6">insertOne()</text>
+        <text x="85" y="95" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#3b82f6">insertMany()</text>
+        <!-- R -->
+        <rect x="175" y="20" width="150" height="160" rx="10" fill="#d1fae5" stroke="#10b981" stroke-width="2"/>
+        <text x="250" y="48" text-anchor="middle" font-family="Nunito,sans-serif" font-size="14" font-weight="700" fill="#065f46">R — Read</text>
+        <text x="250" y="75" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#059669">findOne()</text>
+        <text x="250" y="95" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#059669">find()</text>
+        <text x="250" y="115" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#059669">aggregate()</text>
+        <!-- U -->
+        <rect x="340" y="20" width="150" height="160" rx="10" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+        <text x="415" y="48" text-anchor="middle" font-family="Nunito,sans-serif" font-size="14" font-weight="700" fill="#92400e">U — Update</text>
+        <text x="415" y="75" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#d97706">updateOne()</text>
+        <text x="415" y="95" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#d97706">updateMany()</text>
+        <text x="415" y="115" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#d97706">replaceOne()</text>
+        <text x="415" y="135" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#d97706">findOneAndUpdate()</text>
+        <text x="415" y="155" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#b45309">+ upsert: true</text>
+        <!-- D -->
+        <rect x="505" y="20" width="150" height="160" rx="10" fill="#fee2e2" stroke="#ef4444" stroke-width="2"/>
+        <text x="580" y="48" text-anchor="middle" font-family="Nunito,sans-serif" font-size="14" font-weight="700" fill="#991b1b">D — Delete</text>
+        <text x="580" y="75" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#ef4444">deleteOne()</text>
+        <text x="580" y="95" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#ef4444">deleteMany()</text>
+        <text x="580" y="115" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#ef4444">drop()</text>
+      </svg>
+      <figcaption>CRUD операції MongoDB та їх варіанти</figcaption>
+    </div>
+  </div>
+
+  <div class="self-check">
+    <h3>✅ Питання для самоперевірки</h3>
+    <ol>
+      <li>Яка різниця між <code>$push</code> і <code>$addToSet</code>?</li>
+      <li>Що таке upsert і коли його використовувати?</li>
+      <li>Чому <code>findOneAndUpdate</code> краще ніж окремі <code>find</code> + <code>update</code>?</li>
+      <li>Що станеться при <code>replaceOne</code> якщо не вказати всі поля?</li>
+    </ol>
+  </div>
+  <div class="interview-block">
+    <h3>💼 Питання на senior-співбесіді</h3>
+    <ol>
+      <li>"Як ти описуєш idempotent операції в acceptance criteria?"</li>
+      <li>"Коли б ти рекомендував використовувати bulk operations замість окремих запитів?"</li>
+    </ol>
+  </div>
+  <div class="mistakes-block">
+    <h3>⚠️ Типові помилки мідл-аналітика</h3>
+    <ul>
+      <li>Плутати <code>updateOne</code> та <code>replaceOne</code> — останній видаляє всі поля!</li>
+      <li>Не знати про upsert при описі інтеграційних сценаріїв</li>
+      <li>Не враховувати атомарність при описі конкурентних сценаріїв</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     MONGODB MODULE — PAGE 5: INDEXES
+     ═══════════════════════════════════════════════════════════════════════ -->
+<div id="page-mongodb-indexes" class="page-view" style="display:none;">
+  <nav class="breadcrumb"><span>База знань</span><span class="breadcrumb-sep">›</span><span>MongoDB для BA/SA</span><span class="breadcrumb-sep">›</span><span class="current">Індекси</span></nav>
+  <div class="page-header">
+    <div class="page-tag">🍃 MongoDB</div>
+    <h1 class="page-title">Індекси MongoDB: продуктивність запитів та NFR</h1>
+    <p class="page-desc">Як індекси прискорюють запити, як читати explain(), типи індексів та їх вплив на NFR.</p>
+  </div>
+
+  <div class="mongo-nav">
+    <a onclick="document.getElementById('mx-what').scrollIntoView({behavior:'smooth'})">Що таке індекс</a>
+    <a onclick="document.getElementById('mx-compound').scrollIntoView({behavior:'smooth'})">Compound</a>
+    <a onclick="document.getElementById('mx-explain').scrollIntoView({behavior:'smooth'})">explain()</a>
+    <a onclick="document.getElementById('mx-types').scrollIntoView({behavior:'smooth'})">Типи</a>
+    <a onclick="document.getElementById('mx-nfr').scrollIntoView({behavior:'smooth'})">NFR</a>
+  </div>
+
+  <div class="mongo-section" id="mx-what">
+    <h2>📖 Що таке індекс і навіщо</h2>
+    <p>Уяви книгу на 1000 сторінок. <strong>Без індексу</strong> — читати всі сторінки щоб знайти слово (<span class="badge-yellow">COLLSCAN</span>). <strong>З індексом</strong> — відкрити алфавітний покажчик і відразу перейти на потрібну сторінку (<span class="badge-green">IXSCAN</span>).</p>
+    <div class="callout-warning">MongoDB без індексів на великих колекціях = повний перебір всіх документів. На <strong>10 млн документів</strong> — це секунди. З індексом — мілісекунди.</div>
+    <div class="mongo-code"><span class="cm">// Простий індекс (1 = ascending, -1 = descending)</span>
+db.users.<span class="fn">createIndex</span>({ <span class="str">"email"</span>: <span class="num">1</span> })
+
+<span class="cm">// Складений індекс (compound)</span>
+db.orders.<span class="fn">createIndex</span>({ <span class="str">"userId"</span>: <span class="num">1</span>, <span class="str">"createdAt"</span>: <span class="num">-1</span> })
+
+<span class="cm">// Унікальний індекс</span>
+db.users.<span class="fn">createIndex</span>({ <span class="str">"email"</span>: <span class="num">1</span> }, { <span class="str">"unique"</span>: <span class="kw">true</span> })
+
+<span class="cm">// Переглянути всі індекси колекції</span>
+db.users.<span class="fn">getIndexes</span>()</div>
+  </div>
+
+  <div class="mongo-section" id="mx-compound">
+    <h2>🔗 Compound Index — порядок має значення!</h2>
+    <div class="mongo-code">db.orders.<span class="fn">createIndex</span>({ <span class="str">"userId"</span>: <span class="num">1</span>, <span class="str">"status"</span>: <span class="num">1</span>, <span class="str">"createdAt"</span>: <span class="num">-1</span> })</div>
+    <p>Цей індекс ефективний для:</p>
+    <table class="mongo-table">
+      <thead><tr><th>Запит</th><th>Ефективність</th><th>Чому</th></tr></thead>
+      <tbody>
+        <tr><td><code>{ userId: "123" }</code></td><td><span class="badge-green">✅ Так</span></td><td>Prefix match</td></tr>
+        <tr><td><code>{ userId: "123", status: "active" }</code></td><td><span class="badge-green">✅ Так</span></td><td>Prefix match</td></tr>
+        <tr><td><code>{ userId: "123", status: "active", createdAt: ... }</code></td><td><span class="badge-green">✅ Так</span></td><td>Повний match</td></tr>
+        <tr><td><code>{ status: "active" }</code></td><td><span class="badge-yellow">❌ Ні</span></td><td>Не починається з userId!</td></tr>
+        <tr><td><code>{ createdAt: ... }</code></td><td><span class="badge-yellow">❌ Ні</span></td><td>Не починається з userId!</td></tr>
+      </tbody>
+    </table>
+    <div class="callout-tip"><strong>Правило ESR (Equality, Sort, Range):</strong><br>
+    1. Спочатку поля точної рівності (<strong>E</strong>quality): <code>userId</code><br>
+    2. Потім поля сортування (<strong>S</strong>ort): <code>createdAt</code><br>
+    3. Потім поля діапазону (<strong>R</strong>ange): <code>total: { $gte: 100 }</code></div>
+  </div>
+
+  <div class="mongo-section" id="mx-explain">
+    <h2>🔬 explain() — читаємо план виконання</h2>
+    <div class="mongo-code">db.orders.<span class="fn">find</span>({ <span class="str">"userId"</span>: ObjectId(<span class="str">"..."</span>) }).<span class="fn">explain</span>(<span class="str">"executionStats"</span>)</div>
+    <p><strong>На що дивитись:</strong></p>
+    <table class="mongo-table">
+      <thead><tr><th>Поле</th><th>Добре</th><th>Погано</th></tr></thead>
+      <tbody>
+        <tr><td><code>stage</code></td><td><span class="badge-green">IXSCAN</span> — індекс</td><td><span class="badge-yellow">COLLSCAN</span> — повний перебір</td></tr>
+        <tr><td><code>totalDocsExamined</code></td><td>≈ <code>nReturned</code></td><td>>> <code>nReturned</code> — індекс не підходить</td></tr>
+        <tr><td><code>executionTimeMillis</code></td><td>&lt; 50ms</td><td>> 100ms — для продуктових запитів забагато</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="mongo-section" id="mx-types">
+    <h2>📋 Типи індексів для BA/SA</h2>
+    <h3><span class="badge-blue">Унікальний індекс</span></h3>
+    <div class="mongo-code">db.users.<span class="fn">createIndex</span>({ <span class="str">"email"</span>: <span class="num">1</span> }, { <span class="str">"unique"</span>: <span class="kw">true</span> })
+<span class="cm">// Ефект: DuplicateKeyError при спробі вставити email що вже є</span></div>
+    <p>Якщо AC говорить "email має бути унікальним" — це унікальний індекс.</p>
+
+    <h3><span class="badge-green">TTL Index — автоматичне видалення</span></h3>
+    <div class="mongo-code"><span class="cm">// Видалити документ через 24 год після createdAt</span>
+db.logs.<span class="fn">createIndex</span>({ <span class="str">"createdAt"</span>: <span class="num">1</span> }, { <span class="str">"expireAfterSeconds"</span>: <span class="num">86400</span> })</div>
+    <div class="callout-success"><strong>Вплив на вимоги:</strong> TTL index = автоматична архівація/видалення. Якщо у вимогах є "сесії видаляються через X годин" — BA може запропонувати TTL index замість cronjob.</div>
+
+    <h3><span class="badge-purple">Partial Index</span></h3>
+    <div class="mongo-code"><span class="cm">// Індексувати тільки активні замовлення</span>
+db.orders.<span class="fn">createIndex</span>(
+  { <span class="str">"userId"</span>: <span class="num">1</span> },
+  { <span class="str">"partialFilterExpression"</span>: { <span class="str">"status"</span>: <span class="str">"active"</span> } }
+)</div>
+
+    <h3><span class="badge-blue">Text Index</span></h3>
+    <div class="mongo-code">db.products.<span class="fn">createIndex</span>({ <span class="str">"name"</span>: <span class="str">"text"</span>, <span class="str">"description"</span>: <span class="str">"text"</span> })
+db.products.<span class="fn">find</span>({ <span class="kw">$text</span>: { <span class="kw">$search</span>: <span class="str">"ноутбук ігровий"</span> } })</div>
+    <div class="callout-warning">Одна колекція може мати тільки <strong>один</strong> text index. Для складного full-text search → Elasticsearch.</div>
+
+    <h3><span class="badge-green">Геопросторовий індекс</span></h3>
+    <div class="mongo-code">db.stores.<span class="fn">createIndex</span>({ <span class="str">"location"</span>: <span class="str">"2dsphere"</span> })
+<span class="cm">// Знайти магазини в радіусі 5 км</span>
+db.stores.<span class="fn">find</span>({
+  <span class="str">"location"</span>: {
+    <span class="kw">$near</span>: {
+      <span class="kw">$geometry</span>: { <span class="str">"type"</span>: <span class="str">"Point"</span>, <span class="str">"coordinates"</span>: [<span class="num">30.52</span>, <span class="num">50.45</span>] },
+      <span class="kw">$maxDistance</span>: <span class="num">5000</span>
+    }
+  }
+})</div>
+  </div>
+
+  <div class="mongo-section">
+    <h2>📊 Типи індексів — зведена таблиця</h2>
+    <div class="mongo-diagram">
+      <svg viewBox="0 0 680 260" xmlns="http://www.w3.org/2000/svg" style="max-width:680px;width:100%;">
+        <rect x="5" y="5" width="670" height="250" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+        <!-- Headers -->
+        <rect x="5" y="5" width="110" height="35" rx="8" fill="#1e3a5f"/><text x="60" y="28" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" font-weight="700" fill="#fff">Тип індексу</text>
+        <rect x="115" y="5" width="100" height="35" fill="#1e3a5f"/><text x="165" y="28" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" font-weight="700" fill="#fff">Пошук</text>
+        <rect x="215" y="5" width="100" height="35" fill="#1e3a5f"/><text x="265" y="28" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" font-weight="700" fill="#fff">Сортування</text>
+        <rect x="315" y="5" width="100" height="35" fill="#1e3a5f"/><text x="365" y="28" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" font-weight="700" fill="#fff">Унікальність</text>
+        <rect x="415" y="5" width="120" height="35" fill="#1e3a5f"/><text x="475" y="28" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" font-weight="700" fill="#fff">Автовидалення</text>
+        <rect x="535" y="5" width="140" height="35" rx="8" fill="#1e3a5f"/><text x="605" y="28" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" font-weight="700" fill="#fff">Geo-запити</text>
+        <!-- Row data -->
+        <text x="60" y="60" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" font-weight="600" fill="#1e3a5f">Single</text>
+        <text x="165" y="60" text-anchor="middle" font-size="13" fill="#059669">✅</text><text x="265" y="60" text-anchor="middle" font-size="13" fill="#059669">✅</text><text x="365" y="60" text-anchor="middle" font-size="13" fill="#94a3b8">—</text><text x="475" y="60" text-anchor="middle" font-size="13" fill="#94a3b8">—</text><text x="605" y="60" text-anchor="middle" font-size="13" fill="#94a3b8">—</text>
+        <text x="60" y="90" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" font-weight="600" fill="#1e3a5f">Compound</text>
+        <text x="165" y="90" text-anchor="middle" font-size="13" fill="#059669">✅</text><text x="265" y="90" text-anchor="middle" font-size="13" fill="#059669">✅</text><text x="365" y="90" text-anchor="middle" font-size="13" fill="#94a3b8">—</text><text x="475" y="90" text-anchor="middle" font-size="13" fill="#94a3b8">—</text><text x="605" y="90" text-anchor="middle" font-size="13" fill="#94a3b8">—</text>
+        <text x="60" y="120" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" font-weight="600" fill="#1e3a5f">Unique</text>
+        <text x="165" y="120" text-anchor="middle" font-size="13" fill="#059669">✅</text><text x="265" y="120" text-anchor="middle" font-size="13" fill="#059669">✅</text><text x="365" y="120" text-anchor="middle" font-size="13" fill="#059669">✅</text><text x="475" y="120" text-anchor="middle" font-size="13" fill="#94a3b8">—</text><text x="605" y="120" text-anchor="middle" font-size="13" fill="#94a3b8">—</text>
+        <text x="60" y="150" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" font-weight="600" fill="#1e3a5f">TTL</text>
+        <text x="165" y="150" text-anchor="middle" font-size="13" fill="#059669">✅</text><text x="265" y="150" text-anchor="middle" font-size="13" fill="#94a3b8">—</text><text x="365" y="150" text-anchor="middle" font-size="13" fill="#94a3b8">—</text><text x="475" y="150" text-anchor="middle" font-size="13" fill="#059669">✅</text><text x="605" y="150" text-anchor="middle" font-size="13" fill="#94a3b8">—</text>
+        <text x="60" y="180" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" font-weight="600" fill="#1e3a5f">Text</text>
+        <text x="165" y="180" text-anchor="middle" font-size="13" fill="#059669">✅</text><text x="265" y="180" text-anchor="middle" font-size="13" fill="#94a3b8">—</text><text x="365" y="180" text-anchor="middle" font-size="13" fill="#94a3b8">—</text><text x="475" y="180" text-anchor="middle" font-size="13" fill="#94a3b8">—</text><text x="605" y="180" text-anchor="middle" font-size="13" fill="#94a3b8">—</text>
+        <text x="60" y="210" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" font-weight="600" fill="#1e3a5f">2dsphere</text>
+        <text x="165" y="210" text-anchor="middle" font-size="13" fill="#94a3b8">—</text><text x="265" y="210" text-anchor="middle" font-size="13" fill="#94a3b8">—</text><text x="365" y="210" text-anchor="middle" font-size="13" fill="#94a3b8">—</text><text x="475" y="210" text-anchor="middle" font-size="13" fill="#94a3b8">—</text><text x="605" y="210" text-anchor="middle" font-size="13" fill="#059669">✅</text>
+        <text x="60" y="240" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" font-weight="600" fill="#1e3a5f">Partial</text>
+        <text x="165" y="240" text-anchor="middle" font-size="13" fill="#059669">✅</text><text x="265" y="240" text-anchor="middle" font-size="13" fill="#059669">✅</text><text x="365" y="240" text-anchor="middle" font-size="13" fill="#94a3b8">—</text><text x="475" y="240" text-anchor="middle" font-size="13" fill="#94a3b8">—</text><text x="605" y="240" text-anchor="middle" font-size="13" fill="#94a3b8">—</text>
+      </svg>
+      <figcaption>Типи індексів MongoDB та їх можливості</figcaption>
+    </div>
+  </div>
+
+  <div class="mongo-section">
+    <h2>⚠️ Коли індекс НЕ допомагає</h2>
+    <ul>
+      <li>Колекція &lt; 1000 документів — COLLSCAN може бути швидшим</li>
+      <li>Low cardinality поля: <code>status</code> має 3 значення → індекс неефективний</li>
+      <li>Запити повертають > 20-30% документів — краще COLLSCAN</li>
+      <li>Масиви з великою кількістю елементів — multikey index дорогий</li>
+    </ul>
+    <div class="callout-warning"><strong>Вплив індексів на запис:</strong> кожен індекс = overhead при insert/update/delete. Якщо колекція має 10 індексів — кожна вставка оновлює 10 індексів. <strong>Правило:</strong> видаляй невикористовувані індекси, не створюй "на всяк випадок".</div>
+  </div>
+
+  <div class="mongo-section" id="mx-nfr">
+    <h2>📋 NFR та індекси для BA/SA</h2>
+    <table class="mongo-table">
+      <thead><tr><th>NFR</th><th>Що потрібно</th></tr></thead>
+      <tbody>
+        <tr><td>"Пошук за email &lt; 10ms"</td><td>Unique index на <code>email</code></td></tr>
+        <tr><td>"Список замовлень юзера відсортований за датою &lt; 50ms"</td><td>Compound: <code>{userId, createdAt}</code></td></tr>
+        <tr><td>"Сесії видаляються через 2 год"</td><td>TTL index на <code>createdAt</code></td></tr>
+        <tr><td>"Повнотекстовий пошук по назві товару"</td><td>Text index або Elasticsearch</td></tr>
+        <tr><td>"Знайти магазини поруч"</td><td>2dsphere геоіндекс</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="self-check">
+    <h3>✅ Питання для самоперевірки</h3>
+    <ol>
+      <li>Що таке compound index і чому порядок полів важливий?</li>
+      <li>Як прочитати результат <code>explain()</code>?</li>
+      <li>Коли TTL index краще ніж cronjob?</li>
+      <li>Що таке правило ESR?</li>
+    </ol>
+  </div>
+  <div class="interview-block">
+    <h3>💼 Питання на senior-співбесіді</h3>
+    <ol>
+      <li>"Як ти зв'язуєш NFR по продуктивності з індексами в MongoDB?"</li>
+      <li>"Розкажи про ситуацію де COLLSCAN на продуктивності спричинив проблему"</li>
+    </ol>
+  </div>
+  <div class="mistakes-block">
+    <h3>⚠️ Типові помилки мідл-аналітика</h3>
+    <ul>
+      <li>Описувати NFR без згадки індексної стратегії</li>
+      <li>Не знати про prefix rule для compound indexes</li>
+      <li>Не пропонувати TTL index для тимчасових даних</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     MONGODB MODULE — PAGE 6: AGGREGATION
+     ═══════════════════════════════════════════════════════════════════════ -->
+<div id="page-mongodb-aggregation" class="page-view" style="display:none;">
+  <nav class="breadcrumb"><span>База знань</span><span class="breadcrumb-sep">›</span><span>MongoDB для BA/SA</span><span class="breadcrumb-sep">›</span><span class="current">Агрегація</span></nav>
+  <div class="page-header">
+    <div class="page-tag">🍃 MongoDB</div>
+    <h1 class="page-title">Aggregation Pipeline: аналітика та звіти</h1>
+    <p class="page-desc">Конвейер агрегації — послідовність етапів для трансформації та аналізу даних. Аналогія: Linux pipe.</p>
+  </div>
+
+  <div class="mongo-nav">
+    <a onclick="document.getElementById('ma-what').scrollIntoView({behavior:'smooth'})">Що таке Pipeline</a>
+    <a onclick="document.getElementById('ma-stages').scrollIntoView({behavior:'smooth'})">Ключові stages</a>
+    <a onclick="document.getElementById('ma-example').scrollIntoView({behavior:'smooth'})">Реальний приклад</a>
+    <a onclick="document.getElementById('ma-opt').scrollIntoView({behavior:'smooth'})">Оптимізація</a>
+  </div>
+
+  <div class="mongo-section" id="ma-what">
+    <h2>🔄 Що таке Aggregation Pipeline</h2>
+    <p>Конвейер агрегації = послідовність етапів (stages), де вихід одного є входом наступного.</p>
+    <div class="mongo-code">db.orders.<span class="fn">aggregate</span>([
+  { <span class="kw">$match</span>: { <span class="str">"status"</span>: <span class="str">"completed"</span> } },             <span class="cm">// Stage 1: фільтруємо</span>
+  { <span class="kw">$group</span>: { <span class="str">"_id"</span>: <span class="str">"$userId"</span>, <span class="str">"total"</span>: { <span class="kw">$sum</span>: <span class="str">"$amount"</span> } } },  <span class="cm">// Stage 2: групуємо</span>
+  { <span class="kw">$sort</span>: { <span class="str">"total"</span>: <span class="num">-1</span> } },                       <span class="cm">// Stage 3: сортуємо</span>
+  { <span class="kw">$limit</span>: <span class="num">10</span> }                                  <span class="cm">// Stage 4: топ-10</span>
+])</div>
+  </div>
+
+  <div class="mongo-section" id="ma-stages">
+    <h2>🧩 Ключові stages</h2>
+
+    <h3><span class="badge-blue">$match</span> — фільтрація (як WHERE)</h3>
+    <div class="mongo-code">{ <span class="kw">$match</span>: { <span class="str">"status"</span>: <span class="str">"active"</span>, <span class="str">"createdAt"</span>: { <span class="kw">$gte</span>: ISODate(<span class="str">"2024-01-01"</span>) } } }
+<span class="cm">// ⚡ $match треба ставити якомога раніше для продуктивності!</span></div>
+
+    <h3><span class="badge-purple">$group</span> — групування (як GROUP BY)</h3>
+    <div class="mongo-code">{ <span class="kw">$group</span>: {
+    <span class="str">"_id"</span>: <span class="str">"$category"</span>,
+    <span class="str">"totalRevenue"</span>: { <span class="kw">$sum</span>: <span class="str">"$price"</span> },
+    <span class="str">"avgPrice"</span>: { <span class="kw">$avg</span>: <span class="str">"$price"</span> },
+    <span class="str">"count"</span>: { <span class="kw">$sum</span>: <span class="num">1</span> },
+    <span class="str">"products"</span>: { <span class="kw">$push</span>: <span class="str">"$name"</span> }
+}}</div>
+
+    <h3><span class="badge-green">$project</span> — трансформація полів (як SELECT)</h3>
+    <div class="mongo-code">{ <span class="kw">$project</span>: {
+    <span class="str">"_id"</span>: <span class="num">0</span>,
+    <span class="str">"fullName"</span>: { <span class="kw">$concat</span>: [<span class="str">"$firstName"</span>, <span class="str">" "</span>, <span class="str">"$lastName"</span>] },
+    <span class="str">"year"</span>: { <span class="kw">$year</span>: <span class="str">"$createdAt"</span> },
+    <span class="str">"isExpensive"</span>: { <span class="kw">$gt</span>: [<span class="str">"$price"</span>, <span class="num">1000</span>] }
+}}</div>
+
+    <h3><span class="badge-yellow">$unwind</span> — розгортання масиву</h3>
+    <div class="mongo-code"><span class="cm">// До $unwind: { orderId: "O1", items: [{ product: "A" }, { product: "B" }] }</span>
+<span class="cm">// Після $unwind:</span>
+<span class="cm">// { orderId: "O1", items: { product: "A" } }</span>
+<span class="cm">// { orderId: "O1", items: { product: "B" } }</span>
+{ <span class="kw">$unwind</span>: <span class="str">"$items"</span> }</div>
+
+    <h3><span class="badge-blue">$lookup</span> — JOIN між колекціями</h3>
+    <div class="mongo-code">{ <span class="kw">$lookup</span>: {
+    <span class="str">"from"</span>: <span class="str">"users"</span>,          <span class="cm">// колекція для JOIN</span>
+    <span class="str">"localField"</span>: <span class="str">"userId"</span>,   <span class="cm">// поле в поточній колекції</span>
+    <span class="str">"foreignField"</span>: <span class="str">"_id"</span>,    <span class="cm">// поле в users</span>
+    <span class="str">"as"</span>: <span class="str">"userDetails"</span>       <span class="cm">// назва нового поля (масив!)</span>
+}}</div>
+  </div>
+
+  <div class="mongo-section" id="ma-example">
+    <h2>🎯 Реальний приклад: Revenue звіт по категоріях</h2>
+    <div class="mongo-code">db.orders.<span class="fn">aggregate</span>([
+  <span class="cm">// 1. Тільки завершені замовлення за поточний рік</span>
+  { <span class="kw">$match</span>: {
+      <span class="str">"status"</span>: <span class="str">"completed"</span>,
+      <span class="str">"createdAt"</span>: { <span class="kw">$gte</span>: ISODate(<span class="str">"2024-01-01"</span>), <span class="kw">$lt</span>: ISODate(<span class="str">"2025-01-01"</span>) }
+  }},
+  <span class="cm">// 2. Розгорнути масив items</span>
+  { <span class="kw">$unwind</span>: <span class="str">"$items"</span> },
+  <span class="cm">// 3. Приєднати інформацію про продукти</span>
+  { <span class="kw">$lookup</span>: { <span class="str">"from"</span>: <span class="str">"products"</span>, <span class="str">"localField"</span>: <span class="str">"items.productId"</span>, <span class="str">"foreignField"</span>: <span class="str">"_id"</span>, <span class="str">"as"</span>: <span class="str">"product"</span> }},
+  { <span class="kw">$unwind</span>: <span class="str">"$product"</span> },
+  <span class="cm">// 4. Групувати по категорії</span>
+  { <span class="kw">$group</span>: {
+      <span class="str">"_id"</span>: <span class="str">"$product.category"</span>,
+      <span class="str">"totalRevenue"</span>: { <span class="kw">$sum</span>: { <span class="kw">$multiply</span>: [<span class="str">"$items.qty"</span>, <span class="str">"$items.price"</span>] } },
+      <span class="str">"totalOrders"</span>: { <span class="kw">$sum</span>: <span class="num">1</span> },
+      <span class="str">"avgOrderValue"</span>: { <span class="kw">$avg</span>: { <span class="kw">$multiply</span>: [<span class="str">"$items.qty"</span>, <span class="str">"$items.price"</span>] } }
+  }},
+  <span class="cm">// 5. Відсортувати за revenue</span>
+  { <span class="kw">$sort</span>: { <span class="str">"totalRevenue"</span>: <span class="num">-1</span> } },
+  <span class="cm">// 6. Перейменувати поля</span>
+  { <span class="kw">$project</span>: {
+      <span class="str">"category"</span>: <span class="str">"$_id"</span>, <span class="str">"_id"</span>: <span class="num">0</span>,
+      <span class="str">"totalRevenue"</span>: { <span class="kw">$round</span>: [<span class="str">"$totalRevenue"</span>, <span class="num">2</span>] },
+      <span class="str">"totalOrders"</span>: <span class="num">1</span>,
+      <span class="str">"avgOrderValue"</span>: { <span class="kw">$round</span>: [<span class="str">"$avgOrderValue"</span>, <span class="num">2</span>] }
+  }}
+])</div>
+  </div>
+
+  <div class="mongo-section">
+    <h2>🔄 Pipeline Flow</h2>
+    <div class="mongo-diagram">
+      <svg viewBox="0 0 700 120" xmlns="http://www.w3.org/2000/svg" style="max-width:700px;width:100%;">
+        <rect x="5" y="35" width="80" height="45" rx="8" fill="#f1f5f9" stroke="#94a3b8"/><text x="45" y="55" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" font-weight="600" fill="#475569">Колекція</text><text x="45" y="68" text-anchor="middle" font-family="Nunito,sans-serif" font-size="8" fill="#94a3b8">5.8M docs</text>
+        <line x1="85" y1="57" x2="100" y2="57" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow-agg)"/>
+        <rect x="100" y="35" width="80" height="45" rx="8" fill="#dbeafe" stroke="#3b82f6"/><text x="140" y="55" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" font-weight="700" fill="#1d4ed8">$match</text><text x="140" y="68" text-anchor="middle" font-family="Nunito,sans-serif" font-size="8" fill="#3b82f6">→ 120K</text>
+        <line x1="180" y1="57" x2="195" y2="57" stroke="#94a3b8" stroke-width="1.5"/>
+        <rect x="195" y="35" width="80" height="45" rx="8" fill="#fef3c7" stroke="#f59e0b"/><text x="235" y="55" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" font-weight="700" fill="#92400e">$unwind</text><text x="235" y="68" text-anchor="middle" font-family="Nunito,sans-serif" font-size="8" fill="#d97706">→ 450K</text>
+        <line x1="275" y1="57" x2="290" y2="57" stroke="#94a3b8" stroke-width="1.5"/>
+        <rect x="290" y="35" width="80" height="45" rx="8" fill="#dbeafe" stroke="#3b82f6"/><text x="330" y="55" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" font-weight="700" fill="#1d4ed8">$lookup</text><text x="330" y="68" text-anchor="middle" font-family="Nunito,sans-serif" font-size="8" fill="#3b82f6">+products</text>
+        <line x1="370" y1="57" x2="385" y2="57" stroke="#94a3b8" stroke-width="1.5"/>
+        <rect x="385" y="35" width="80" height="45" rx="8" fill="#ede9fe" stroke="#8b5cf6"/><text x="425" y="55" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" font-weight="700" fill="#5b21b6">$group</text><text x="425" y="68" text-anchor="middle" font-family="Nunito,sans-serif" font-size="8" fill="#7c3aed">→ 15</text>
+        <line x1="465" y1="57" x2="480" y2="57" stroke="#94a3b8" stroke-width="1.5"/>
+        <rect x="480" y="35" width="80" height="45" rx="8" fill="#f3f4f6" stroke="#9ca3af"/><text x="520" y="55" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" font-weight="700" fill="#4b5563">$sort</text><text x="520" y="68" text-anchor="middle" font-family="Nunito,sans-serif" font-size="8" fill="#6b7280">→ 15</text>
+        <line x1="560" y1="57" x2="575" y2="57" stroke="#94a3b8" stroke-width="1.5"/>
+        <rect x="575" y="35" width="110" height="45" rx="8" fill="#d1fae5" stroke="#10b981"/><text x="630" y="55" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" font-weight="700" fill="#065f46">Результат</text><text x="630" y="68" text-anchor="middle" font-family="Nunito,sans-serif" font-size="8" fill="#059669">15 categories</text>
+      </svg>
+      <figcaption>Pipeline flow: дані проходять через етапи, кількість змінюється на кожному кроці</figcaption>
+    </div>
+  </div>
+
+  <div class="mongo-section" id="ma-opt">
+    <h2>⚡ Оптимізація pipeline</h2>
+    <ol>
+      <li><strong><code>$match</code> раніше</strong> — зменшує кількість документів для обробки</li>
+      <li><strong><code>$project</code> раніше</strong> — зменшує розмір документів</li>
+      <li><strong>Індекси для <code>$match</code></strong> — перший <code>$match</code> може використовувати індекс</li>
+      <li><strong>Не робити <code>$lookup</code> по неіндексованих полях</strong></li>
+    </ol>
+  </div>
+
+  <div class="mongo-section">
+    <h2>📊 Аккумулятори</h2>
+    <table class="mongo-table">
+      <thead><tr><th>Аккумулятор</th><th>Опис</th><th>Приклад</th></tr></thead>
+      <tbody>
+        <tr><td><code>$sum</code></td><td>Сума</td><td><code>{ $sum: "$price" }</code></td></tr>
+        <tr><td><code>$avg</code></td><td>Середнє</td><td><code>{ $avg: "$price" }</code></td></tr>
+        <tr><td><code>$min</code> / <code>$max</code></td><td>Мін / Макс</td><td><code>{ $max: "$price" }</code></td></tr>
+        <tr><td><code>$first</code> / <code>$last</code></td><td>Перший / Останній</td><td><code>{ $first: "$name" }</code></td></tr>
+        <tr><td><code>$push</code></td><td>Зібрати в масив</td><td><code>{ $push: "$name" }</code></td></tr>
+        <tr><td><code>$addToSet</code></td><td>Унікальні в масив</td><td><code>{ $addToSet: "$category" }</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="self-check">
+    <h3>✅ Питання для самоперевірки</h3>
+    <ol>
+      <li>Навіщо потрібен <code>$unwind</code> перед <code>$group</code> по масиву?</li>
+      <li>Яка різниця між <code>$push</code> і <code>$addToSet</code> в агрегації?</li>
+      <li>Чому <code>$match</code> треба ставити раніше?</li>
+      <li>Що повертає <code>$lookup</code> — об'єкт чи масив?</li>
+    </ol>
+  </div>
+  <div class="interview-block">
+    <h3>💼 Питання на senior-співбесіді</h3>
+    <ol>
+      <li>"Як ти б описав вимоги для Revenue-звіту в MongoDB системі?"</li>
+      <li>"Коли aggregation pipeline краще ніж кілька окремих find()-запитів?"</li>
+    </ol>
+  </div>
+  <div class="mistakes-block">
+    <h3>⚠️ Типові помилки мідл-аналітика</h3>
+    <ul>
+      <li>Забути <code>$unwind</code> перед <code>$group</code> по полях масиву</li>
+      <li>Ставити <code>$sort</code> перед <code>$match</code></li>
+      <li>Робити <code>$lookup</code> по неіндексованим полям</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     MONGODB MODULE — PAGE 7: TRANSACTIONS
+     ═══════════════════════════════════════════════════════════════════════ -->
+<div id="page-mongodb-transactions" class="page-view" style="display:none;">
+  <nav class="breadcrumb"><span>База знань</span><span class="breadcrumb-sep">›</span><span>MongoDB для BA/SA</span><span class="breadcrumb-sep">›</span><span class="current">Транзакції</span></nav>
+  <div class="page-header">
+    <div class="page-tag">🍃 MongoDB</div>
+    <h1 class="page-title">Транзакції в MongoDB: ACID та коли їх використовувати</h1>
+    <p class="page-desc">Multi-document транзакції, ACID гарантії, обмеження та зв'язок з дизайном схеми.</p>
+  </div>
+
+  <div class="mongo-section">
+    <h2>🔒 ACID в MongoDB</h2>
+    <div class="doc-cards-2">
+      <div class="doc-card doc-card--blue"><div class="doc-card-title">Atomicity (Атомарність)</div><p style="font-size:.83rem;color:var(--ink2);">Всі операції транзакції або виконуються всі, або жодна.</p></div>
+      <div class="doc-card doc-card--teal"><div class="doc-card-title">Consistency (Узгодженість)</div><p style="font-size:.83rem;color:var(--ink2);">БД переходить від одного валідного стану до іншого.</p></div>
+      <div class="doc-card doc-card--gold"><div class="doc-card-title">Isolation (Ізольованість)</div><p style="font-size:.83rem;color:var(--ink2);">Паралельні транзакції не бачать незавершені зміни одна одної.</p></div>
+      <div class="doc-card doc-card--red"><div class="doc-card-title">Durability (Довговічність)</div><p style="font-size:.83rem;color:var(--ink2);">Зафіксовані зміни збережені навіть при збої.</p></div>
+    </div>
+    <div class="callout-info"><strong>Важливо:</strong> до MongoDB 4.0 — транзакції лише на рівні одного документа. З 4.0+ — multi-document transactions. З 4.2+ — у sharded cluster.</div>
+  </div>
+
+  <div class="mongo-section">
+    <h2>✅ Коли потрібні транзакції</h2>
+    <div class="doc-cards-2">
+      <div class="doc-card doc-card--teal">
+        <div class="doc-card-title">✅ Використовуй</div>
+        <ul style="font-size:.83rem;color:var(--ink2);padding-left:1rem;line-height:1.7;">
+          <li>Переказ коштів між рахунками</li>
+          <li>Оформлення замовлення (stock - order + бонуси)</li>
+          <li>Будь-яка операція що змінює кілька документів атомарно</li>
+        </ul>
+      </div>
+      <div class="doc-card doc-card--red">
+        <div class="doc-card-title">❌ НЕ потрібні</div>
+        <ul style="font-size:.83rem;color:var(--ink2);padding-left:1rem;line-height:1.7;">
+          <li>Операція на одному документі (атомарний за замовчуванням)</li>
+          <li>Якщо правильний embedding усуває потребу</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="mongo-section">
+    <h2>💰 Приклад: Переказ коштів</h2>
+    <div class="mongo-code"><span class="cm">// Python (pymongo)</span>
+<span class="kw">with</span> client.<span class="fn">start_session</span>() <span class="kw">as</span> session:
+    <span class="kw">def</span> <span class="fn">callback</span>(session):
+        accounts = db.accounts
+        <span class="cm">// Перевіряємо баланс</span>
+        sender = accounts.<span class="fn">find_one</span>({<span class="str">"_id"</span>: from_account}, session=session)
+        <span class="kw">if</span> sender[<span class="str">"balance"</span>] &lt; amount:
+            <span class="kw">raise</span> ValueError(<span class="str">"Недостатньо коштів"</span>)
+        <span class="cm">// Знімаємо з відправника</span>
+        accounts.<span class="fn">update_one</span>(
+            {<span class="str">"_id"</span>: from_account},
+            {<span class="kw">$inc</span>: {<span class="str">"balance"</span>: -amount}}, session=session)
+        <span class="cm">// Додаємо отримувачу</span>
+        accounts.<span class="fn">update_one</span>(
+            {<span class="str">"_id"</span>: to_account},
+            {<span class="kw">$inc</span>: {<span class="str">"balance"</span>: amount}}, session=session)
+
+    session.<span class="fn">with_transaction</span>(callback)</div>
+  </div>
+
+  <div class="mongo-section">
+    <h2>⚠️ Обмеження транзакцій</h2>
+    <table class="mongo-table">
+      <thead><tr><th>Обмеження</th><th>Значення</th><th>Вплив</th></tr></thead>
+      <tbody>
+        <tr><td>Max transaction time</td><td>60 секунд</td><td>Довгі операції не підходять</td></tr>
+        <tr><td>Max lock wait time</td><td>5 мс</td><td>Конкурентні транзакції можуть падати</td></tr>
+        <tr><td>Max oplog entry size</td><td>16 MB</td><td>Не для масових операцій</td></tr>
+      </tbody>
+    </table>
+    <div class="callout-warning"><strong>Антипатерн:</strong> транзакція що займає 30+ секунд і залучає сотні документів — це погане рішення. Потрібен redesign схеми або інший підхід.</div>
+  </div>
+
+  <div class="mongo-section">
+    <h2>🔄 Lifecycle транзакції</h2>
+    <div class="mongo-diagram">
+      <svg viewBox="0 0 600 150" xmlns="http://www.w3.org/2000/svg" style="max-width:600px;width:100%;">
+        <rect x="10" y="50" width="100" height="40" rx="20" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/><text x="60" y="75" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" font-weight="600" fill="#1d4ed8">startSession</text>
+        <line x1="110" y1="70" x2="140" y2="70" stroke="#94a3b8" stroke-width="2" marker-end="url(#arr-tx)"/>
+        <rect x="140" y="50" width="120" height="40" rx="20" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/><text x="200" y="75" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" font-weight="600" fill="#92400e">startTransaction</text>
+        <line x1="260" y1="70" x2="290" y2="70" stroke="#94a3b8" stroke-width="2"/>
+        <rect x="290" y="50" width="100" height="40" rx="8" fill="#f3f4f6" stroke="#9ca3af" stroke-width="2"/><text x="340" y="75" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" font-weight="600" fill="#4b5563">Operations</text>
+        <line x1="390" y1="60" x2="440" y2="30" stroke="#10b981" stroke-width="2"/>
+        <line x1="390" y1="80" x2="440" y2="120" stroke="#ef4444" stroke-width="2"/>
+        <rect x="440" y="10" width="100" height="40" rx="20" fill="#d1fae5" stroke="#10b981" stroke-width="2"/><text x="490" y="35" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" font-weight="700" fill="#065f46">COMMIT ✅</text>
+        <rect x="440" y="100" width="100" height="40" rx="20" fill="#fee2e2" stroke="#ef4444" stroke-width="2"/><text x="490" y="125" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" font-weight="700" fill="#991b1b">ABORT ❌</text>
+      </svg>
+      <figcaption>Lifecycle транзакції: startSession → startTransaction → Operations → Commit або Abort</figcaption>
+    </div>
+  </div>
+
+  <div class="mongo-section">
+    <h2>💡 Транзакція vs Хороший дизайн схеми</h2>
+    <div class="callout-tip">Якщо ти часто потребуєш транзакцій в MongoDB — це сигнал що схема погано спроєктована. <strong>Приклад:</strong> замість окремих колекцій <code>orders</code> і <code>order_items</code> з транзакцією — використай embedding items в order. Тоді вся операція атомарна в межах одного документа.</div>
+  </div>
+
+  <div class="self-check">
+    <h3>✅ Питання для самоперевірки</h3>
+    <ol>
+      <li>З якої версії MongoDB підтримує multi-document транзакції?</li>
+      <li>Чому часта потреба в транзакціях — сигнал поганого дизайну?</li>
+      <li>Яке обмеження часу на транзакцію за замовчуванням?</li>
+    </ol>
+  </div>
+  <div class="interview-block">
+    <h3>💼 Питання на senior-співбесіді</h3>
+    <ol>
+      <li>"Розкажи про ситуацію де MongoDB транзакції були потрібні і як ти їх обґрунтував"</li>
+      <li>"Як ти балансуєш між embedding і транзакціями?"</li>
+    </ol>
+  </div>
+  <div class="mistakes-block">
+    <h3>⚠️ Типові помилки мідл-аналітика</h3>
+    <ul>
+      <li>Вважати що MongoDB не підтримує транзакції (підтримує з v4.0)</li>
+      <li>Описувати транзакції для операцій на одному документі (зайве)</li>
+      <li>Не враховувати 60-секундний ліміт транзакцій</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     MONGODB MODULE — PAGE 8: SCHEMA DESIGN
+     ═══════════════════════════════════════════════════════════════════════ -->
+<div id="page-mongodb-schema" class="page-view" style="display:none;">
+  <nav class="breadcrumb"><span>База знань</span><span class="breadcrumb-sep">›</span><span>MongoDB для BA/SA</span><span class="breadcrumb-sep">›</span><span class="current">Дизайн схеми</span></nav>
+  <div class="page-header">
+    <div class="page-tag">🍃 MongoDB</div>
+    <h1 class="page-title">Просунутий дизайн схеми: від вимог до колекцій</h1>
+    <p class="page-desc">Методологія проектування, всі ключові шаблони, schema validation та аналіз відносин для senior-рівня.</p>
+  </div>
+
+  <div class="mongo-section">
+    <h2>🔄 Методологія: Data Modeling Process</h2>
+    <div class="doc-cards-3">
+      <div class="doc-card doc-card--blue"><div class="doc-card-title">1. Use Cases</div><p style="font-size:.83rem;color:var(--ink2);">Які запити виконуватиме додаток?</p></div>
+      <div class="doc-card doc-card--teal"><div class="doc-card-title">2. Зв'язки</div><p style="font-size:.83rem;color:var(--ink2);">1:1, 1:N, N:M — визначити кардинальність</p></div>
+      <div class="doc-card doc-card--gold"><div class="doc-card-title">3. Обрати патерн</div><p style="font-size:.83rem;color:var(--ink2);">Embed vs Reference + Design Pattern</p></div>
+    </div>
+  </div>
+
+  <div class="mongo-section">
+    <h2>📊 Детальний аналіз відносин</h2>
+    <table class="mongo-table">
+      <thead><tr><th>Відношення</th><th>Кардинальність</th><th>Стратегія</th><th>Приклад</th></tr></thead>
+      <tbody>
+        <tr><td><span class="badge-green">One-to-One</span></td><td>1</td><td>Embed</td><td>User → Profile</td></tr>
+        <tr><td><span class="badge-green">One-to-Few</span></td><td>&lt; 100</td><td>Embed</td><td>Post → Comments (small blog)</td></tr>
+        <tr><td><span class="badge-yellow">One-to-Many</span></td><td>100 — 10K</td><td>Reference</td><td>User → Orders</td></tr>
+        <tr><td><span class="badge-yellow">One-to-Millions</span></td><td>> 10K</td><td>Reference + денормалізація</td><td>User → Log events</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="mongo-section">
+    <h2>🧩 Шаблони проектування (повний список)</h2>
+    <table class="mongo-table">
+      <thead><tr><th>Шаблон</th><th>Проблема</th><th>Рішення</th><th>Use Case</th></tr></thead>
+      <tbody>
+        <tr><td><span class="badge-blue">Polymorphic</span></td><td>Документи схожі, але не ідентичні</td><td>Спільні поля + type-specific</td><td>Vehicles, Products</td></tr>
+        <tr><td><span class="badge-blue">Attribute</span></td><td>Багато схожих полів-атрибутів</td><td>Масив {key, value} пар</td><td>Product specs</td></tr>
+        <tr><td><span class="badge-green">Bucket</span></td><td>Time-series з мільйонами подій</td><td>Групувати в часових вікнах</td><td>IoT, Logs, Metrics</td></tr>
+        <tr><td><span class="badge-yellow">Outlier</span></td><td>Деякі документи мають величезні масиви</td><td>Overflow документи</td><td>Celebrity followers</td></tr>
+        <tr><td><span class="badge-purple">Extended Reference</span></td><td>Часті $lookup дорогі</td><td>Денормалізація ключових полів</td><td>Order + Customer name</td></tr>
+        <tr><td><span class="badge-purple">Subset</span></td><td>Документ занадто великий для кешу</td><td>Часто потрібні поля окремо</td><td>Product + top reviews</td></tr>
+        <tr><td><span class="badge-green">Computed</span></td><td>Часті агрегації дорогі</td><td>Попередньо обчислені поля</td><td>Running totals, counters</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="mongo-section">
+    <h2>✅ Schema Validation</h2>
+    <div class="mongo-code">db.<span class="fn">createCollection</span>(<span class="str">"users"</span>, {
+  <span class="str">"validator"</span>: {
+    <span class="kw">$jsonSchema</span>: {
+      <span class="str">"bsonType"</span>: <span class="str">"object"</span>,
+      <span class="str">"required"</span>: [<span class="str">"name"</span>, <span class="str">"email"</span>],
+      <span class="str">"properties"</span>: {
+        <span class="str">"name"</span>: { <span class="str">"bsonType"</span>: <span class="str">"string"</span>, <span class="str">"minLength"</span>: <span class="num">2</span> },
+        <span class="str">"email"</span>: { <span class="str">"bsonType"</span>: <span class="str">"string"</span>,
+          <span class="str">"pattern"</span>: <span class="str">"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"</span> },
+        <span class="str">"age"</span>: { <span class="str">"bsonType"</span>: <span class="str">"int"</span>, <span class="str">"minimum"</span>: <span class="num">18</span>, <span class="str">"maximum"</span>: <span class="num">120</span> }
+      }
+    }
+  },
+  <span class="str">"validationLevel"</span>: <span class="str">"moderate"</span>,  <span class="cm">// "off", "moderate", "strict"</span>
+  <span class="str">"validationAction"</span>: <span class="str">"error"</span>     <span class="cm">// "error" або "warn"</span>
+})</div>
+    <div class="callout-tip"><strong>Для BA/SA:</strong> Schema validation = спосіб закласти data quality rules прямо в БД. Альтернатива або доповнення до validation на рівні додатку.</div>
+  </div>
+
+  <div class="mongo-section">
+    <h2>❌ Коли MongoDB не підходить</h2>
+    <ul>
+      <li>Складні many-to-many зв'язки з частими JOIN</li>
+      <li>Строга фінансова цілісність з багатьма пов'язаними таблицями</li>
+      <li>Складна звітність із невідомими заздалегідь запитами → краще OLAP</li>
+      <li>Необхідність повного ACID на рівні множини колекцій</li>
+    </ul>
+  </div>
+
+  <div class="self-check">
+    <h3>✅ Питання для самоперевірки</h3>
+    <ol>
+      <li>Які 6 кроків Data Modeling Process?</li>
+      <li>Для чого потрібен Bucket Pattern?</li>
+      <li>Як Schema Validation допомагає з data quality?</li>
+    </ol>
+  </div>
+  <div class="interview-block">
+    <h3>💼 Питання на senior-співбесіді</h3>
+    <ol>
+      <li>"Як ти вирішував конфлікт між дизайном схеми MongoDB і вимогами до продуктивності?"</li>
+      <li>"Коли ти б рекомендував НЕ використовувати MongoDB?"</li>
+    </ol>
+  </div>
+  <div class="mistakes-block">
+    <h3>⚠️ Типові помилки мідл-аналітика</h3>
+    <ul>
+      <li>Не знати про schema validation і покладатись тільки на app-level validation</li>
+      <li>Проектувати MongoDB схему як SQL (повна нормалізація)</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     MONGODB MODULE — PAGE 9: REPLICATION
+     ═══════════════════════════════════════════════════════════════════════ -->
+<div id="page-mongodb-replication" class="page-view" style="display:none;">
+  <nav class="breadcrumb"><span>База знань</span><span class="breadcrumb-sep">›</span><span>MongoDB для BA/SA</span><span class="breadcrumb-sep">›</span><span class="current">Реплікація</span></nav>
+  <div class="page-header">
+    <div class="page-tag">🍃 MongoDB</div>
+    <h1 class="page-title">Replica Sets: доступність та надійність</h1>
+    <p class="page-desc">Як MongoDB забезпечує High Availability через реплікацію, Write Concern, Read Preference та Failover.</p>
+  </div>
+
+  <div class="mongo-section">
+    <h2>🔄 Що таке Replica Set</h2>
+    <p>Replica Set = кілька копій однакових даних на різних серверах. Мінімум 3 вузли:</p>
+    <ul>
+      <li><strong>Primary</strong> — приймає всі записи</li>
+      <li><strong>Secondary (2+)</strong> — синхронізуються з Primary, можуть приймати читання</li>
+      <li><strong>Arbiter</strong> (опційно) — бере участь у виборах, але не зберігає даних</li>
+    </ul>
+    <div class="mongo-diagram">
+      <svg viewBox="0 0 600 220" xmlns="http://www.w3.org/2000/svg" style="max-width:600px;width:100%;">
+        <!-- Client -->
+        <rect x="230" y="5" width="140" height="35" rx="8" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.5"/><text x="300" y="28" text-anchor="middle" font-family="Nunito,sans-serif" font-size="12" font-weight="600" fill="#475569">Application</text>
+        <!-- Primary -->
+        <rect x="220" y="70" width="160" height="50" rx="10" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/><text x="300" y="92" text-anchor="middle" font-family="Nunito,sans-serif" font-size="13" font-weight="700" fill="#1d4ed8">PRIMARY</text><text x="300" y="108" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" fill="#3b82f6">reads + writes</text>
+        <line x1="300" y1="40" x2="300" y2="70" stroke="#3b82f6" stroke-width="2" stroke-dasharray="5,3"/>
+        <!-- Secondary 1 -->
+        <rect x="40" y="155" width="160" height="50" rx="10" fill="#d1fae5" stroke="#10b981" stroke-width="2"/><text x="120" y="177" text-anchor="middle" font-family="Nunito,sans-serif" font-size="13" font-weight="700" fill="#065f46">SECONDARY 1</text><text x="120" y="193" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" fill="#059669">reads (optional)</text>
+        <!-- Secondary 2 -->
+        <rect x="400" y="155" width="160" height="50" rx="10" fill="#d1fae5" stroke="#10b981" stroke-width="2"/><text x="480" y="177" text-anchor="middle" font-family="Nunito,sans-serif" font-size="13" font-weight="700" fill="#065f46">SECONDARY 2</text><text x="480" y="193" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" fill="#059669">reads (optional)</text>
+        <!-- Replication arrows -->
+        <line x1="260" y1="120" x2="160" y2="155" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4,3"/>
+        <text x="195" y="135" font-family="Nunito,sans-serif" font-size="8" fill="#94a3b8">replication</text>
+        <line x1="340" y1="120" x2="440" y2="155" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4,3"/>
+        <text x="400" y="135" font-family="Nunito,sans-serif" font-size="8" fill="#94a3b8">replication</text>
+        <!-- Heartbeat -->
+        <line x1="200" y1="180" x2="400" y2="180" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3,3"/>
+        <text x="300" y="215" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" fill="#94a3b8">← heartbeat / elections →</text>
+      </svg>
+      <figcaption>Replica Set: Primary приймає запис, Secondary синхронізуються та можуть приймати читання</figcaption>
+    </div>
+  </div>
+
+  <div class="mongo-section">
+    <h2>⚡ Failover — автоматичне відновлення</h2>
+    <ol>
+      <li>Primary перестає відповідати</li>
+      <li>Secondary вузли проводять вибори (elections)</li>
+      <li>Вузол з більшістю голосів стає новим Primary</li>
+      <li>Час failover: зазвичай <strong>10-30 секунд</strong></li>
+      <li>За цей час — <span class="badge-yellow">операції запису недоступні!</span></li>
+    </ol>
+    <div class="callout-warning"><strong>Вплив на NFR:</strong> якщо вимога "система має бути доступна 99.9%" — треба врахувати вікна failover.</div>
+  </div>
+
+  <div class="mongo-section">
+    <h2>📝 Write Concern — рівні надійності запису</h2>
+    <table class="mongo-table">
+      <thead><tr><th>Write Concern</th><th>Надійність</th><th>Продуктивність</th><th>Use Case</th></tr></thead>
+      <tbody>
+        <tr><td><code>w: 0</code></td><td><span class="badge-yellow">Найнижча</span></td><td><span class="badge-green">Найвища</span></td><td>Аналітичні події, логи</td></tr>
+        <tr><td><code>w: 1</code></td><td><span class="badge-blue">Середня</span></td><td><span class="badge-green">Висока</span></td><td>Загальне використання</td></tr>
+        <tr><td><code>w: "majority"</code></td><td><span class="badge-green">Висока</span></td><td><span class="badge-yellow">Нижча</span></td><td>Фінансові операції, критичні дані</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="mongo-section">
+    <h2>📖 Read Preference — звідки читати</h2>
+    <div class="mongo-code"><span class="cm">// primary (за замовч.) — завжди актуальні дані</span>
+db.orders.<span class="fn">find</span>().<span class="fn">readPref</span>(<span class="str">"primary"</span>)
+
+<span class="cm">// secondary — може бути застарілим (replication lag!)</span>
+db.reports.<span class="fn">find</span>().<span class="fn">readPref</span>(<span class="str">"secondary"</span>)
+
+<span class="cm">// nearest — мінімальна latency</span>
+db.products.<span class="fn">find</span>().<span class="fn">readPref</span>(<span class="str">"nearest"</span>)</div>
+    <div class="callout-info"><strong>Replication Lag:</strong> затримка між записом на Primary і появою на Secondary. Зазвичай &lt; 1 секунда, але при навантаженні може зростати. Для фінансів — читання тільки з Primary!</div>
+  </div>
+
+  <div class="self-check">
+    <h3>✅ Питання для самоперевірки</h3>
+    <ol>
+      <li>Скільки мінімум вузлів у Replica Set?</li>
+      <li>Що відбувається під час failover?</li>
+      <li>Коли використовувати <code>w: "majority"</code>?</li>
+    </ol>
+  </div>
+  <div class="interview-block">
+    <h3>💼 Питання на senior-співбесіді</h3>
+    <ol><li>"Як replication lag впливає на consistency і як це враховувати у вимогах?"</li></ol>
+  </div>
+  <div class="mistakes-block">
+    <h3>⚠️ Типові помилки мідл-аналітика</h3>
+    <ul>
+      <li>Не знати про replication lag при описі read consistency</li>
+      <li>Не враховувати failover window при описі availability NFR</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     MONGODB MODULE — PAGE 10: SHARDING
+     ═══════════════════════════════════════════════════════════════════════ -->
+<div id="page-mongodb-sharding" class="page-view" style="display:none;">
+  <nav class="breadcrumb"><span>База знань</span><span class="breadcrumb-sep">›</span><span>MongoDB для BA/SA</span><span class="breadcrumb-sep">›</span><span class="current">Шардинг</span></nav>
+  <div class="page-header">
+    <div class="page-tag">🍃 MongoDB</div>
+    <h1 class="page-title">Sharding: горизонтальне масштабування</h1>
+    <p class="page-desc">Коли одного сервера недостатньо — розподіл даних між шардами, вибір shard key та вплив на запити.</p>
+  </div>
+
+  <div class="mongo-section">
+    <h2>📊 Коли потрібен шардинг</h2>
+    <ul>
+      <li>Дані не вміщуються на одному сервері (> кількох TB)</li>
+      <li>Запити перевищують пропускну здатність одного сервера</li>
+      <li>Write throughput вищий ніж може обробити один replica set</li>
+    </ul>
+  </div>
+
+  <div class="mongo-section">
+    <h2>🏗️ Архітектура шардингу</h2>
+    <div class="mongo-diagram">
+      <svg viewBox="0 0 650 260" xmlns="http://www.w3.org/2000/svg" style="max-width:650px;width:100%;">
+        <!-- App -->
+        <rect x="255" y="5" width="140" height="35" rx="8" fill="#f1f5f9" stroke="#94a3b8"/><text x="325" y="28" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" font-weight="600" fill="#475569">Application</text>
+        <line x1="325" y1="40" x2="325" y2="60" stroke="#94a3b8" stroke-width="1.5"/>
+        <!-- mongos -->
+        <rect x="240" y="60" width="170" height="40" rx="10" fill="#ede9fe" stroke="#8b5cf6" stroke-width="2"/><text x="325" y="85" text-anchor="middle" font-family="Nunito,sans-serif" font-size="12" font-weight="700" fill="#5b21b6">mongos (Router)</text>
+        <!-- Config -->
+        <rect x="475" y="60" width="160" height="40" rx="10" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/><text x="555" y="85" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" font-weight="700" fill="#92400e">Config Servers</text>
+        <line x1="410" y1="80" x2="475" y2="80" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="4,3"/>
+        <!-- Shards -->
+        <line x1="275" y1="100" x2="110" y2="145" stroke="#94a3b8" stroke-width="1.5"/>
+        <line x1="325" y1="100" x2="325" y2="145" stroke="#94a3b8" stroke-width="1.5"/>
+        <line x1="375" y1="100" x2="540" y2="145" stroke="#94a3b8" stroke-width="1.5"/>
+        <rect x="20" y="145" width="180" height="55" rx="10" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/><text x="110" y="170" text-anchor="middle" font-family="Nunito,sans-serif" font-size="12" font-weight="700" fill="#1d4ed8">Shard 1</text><text x="110" y="188" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" fill="#3b82f6">(Replica Set)</text>
+        <rect x="235" y="145" width="180" height="55" rx="10" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/><text x="325" y="170" text-anchor="middle" font-family="Nunito,sans-serif" font-size="12" font-weight="700" fill="#1d4ed8">Shard 2</text><text x="325" y="188" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" fill="#3b82f6">(Replica Set)</text>
+        <rect x="450" y="145" width="180" height="55" rx="10" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/><text x="540" y="170" text-anchor="middle" font-family="Nunito,sans-serif" font-size="12" font-weight="700" fill="#1d4ed8">Shard 3</text><text x="540" y="188" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" fill="#3b82f6">(Replica Set)</text>
+        <!-- Labels -->
+        <text x="325" y="245" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" fill="#94a3b8">Дані розподіляються між шардами за Shard Key</text>
+      </svg>
+      <figcaption>Архітектура шардингу: Application → mongos → Shards (кожен є Replica Set)</figcaption>
+    </div>
+  </div>
+
+  <div class="mongo-section">
+    <h2>🔑 Shard Key — найважливіше рішення</h2>
+    <p>Shard key = поле(я), за яким MongoDB розподіляє документи між шардами.</p>
+    <div class="mongo-code"><span class="cm">// ❌ ПОГАНО — ObjectId монотонно зростає → всі нові документи на один шард</span>
+sh.<span class="fn">shardCollection</span>(<span class="str">"db.orders"</span>, { <span class="str">"_id"</span>: <span class="num">1</span> })
+
+<span class="cm">// ✅ ДОБРЕ — хешований shard key → рівномірний розподіл</span>
+sh.<span class="fn">shardCollection</span>(<span class="str">"db.orders"</span>, { <span class="str">"_id"</span>: <span class="str">"hashed"</span> })
+
+<span class="cm">// ✅ ДОБРЕ для multi-tenant — дані одного tenant на одному шарді</span>
+sh.<span class="fn">shardCollection</span>(<span class="str">"db.orders"</span>, { <span class="str">"tenantId"</span>: <span class="num">1</span>, <span class="str">"createdAt"</span>: <span class="num">1</span> })</div>
+  </div>
+
+  <div class="mongo-section">
+    <h2>⚠️ Targeted vs Scatter-Gather</h2>
+    <table class="mongo-table">
+      <thead><tr><th>Тип запиту</th><th>Має shard key?</th><th>Швидкість</th></tr></thead>
+      <tbody>
+        <tr><td><span class="badge-green">Targeted</span></td><td>Так — іде на один шард</td><td>Швидко</td></tr>
+        <tr><td><span class="badge-yellow">Scatter-Gather</span></td><td>Ні — іде на ВСІ шарди</td><td>Дорого</td></tr>
+      </tbody>
+    </table>
+    <div class="callout-warning"><strong>Вплив на вимоги:</strong> якщо ти описуєш запити для шардованої системи — питай розробника чи включений shard key у найчастіших запитах.</div>
+    <div class="callout-info"><code>$lookup</code> між двома шардованими колекціями — <strong>дуже дорогий</strong> (cross-shard). У шардованих системах embedded documents ще важливіші ніж зазвичай.</div>
+  </div>
+
+  <div class="self-check">
+    <h3>✅ Питання для самоперевірки</h3>
+    <ol>
+      <li>Що таке shard key і чому він критично важливий?</li>
+      <li>Яка різниця між targeted та scatter-gather запитами?</li>
+      <li>Чому ObjectId — поганий shard key?</li>
+    </ol>
+  </div>
+  <div class="interview-block">
+    <h3>💼 Питання на senior-співбесіді</h3>
+    <ol><li>"Яку стратегію шардингу ти б запропонував для multi-tenant SaaS?"</li></ol>
+  </div>
+  <div class="mistakes-block">
+    <h3>⚠️ Типові помилки мідл-аналітика</h3>
+    <ul>
+      <li>Не знати про scatter-gather при описі фічей для шардованих систем</li>
+      <li>Не враховувати вибір shard key при проектуванні API</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     MONGODB MODULE — PAGE 11: SECURITY
+     ═══════════════════════════════════════════════════════════════════════ -->
+<div id="page-mongodb-security" class="page-view" style="display:none;">
+  <nav class="breadcrumb"><span>База знань</span><span class="breadcrumb-sep">›</span><span>MongoDB для BA/SA</span><span class="breadcrumb-sep">›</span><span class="current">Безпека та моніторинг</span></nav>
+  <div class="page-header">
+    <div class="page-tag">🍃 MongoDB</div>
+    <h1 class="page-title">Безпека, моніторинг та діагностика</h1>
+    <p class="page-desc">Аутентифікація, ролі, шифрування, профілювальник та метрики — все що потрібно для безпечної та швидкої системи.</p>
+  </div>
+
+  <div class="mongo-section">
+    <h2>🔐 Ролі та авторизація (RBAC)</h2>
+    <table class="mongo-table">
+      <thead><tr><th>Роль</th><th>Права</th><th>Для кого</th></tr></thead>
+      <tbody>
+        <tr><td><code>read</code></td><td>Тільки читання</td><td>Аналітики, BI</td></tr>
+        <tr><td><code>readWrite</code></td><td>Читання + запис</td><td>Сервіси додатку</td></tr>
+        <tr><td><code>dbAdmin</code></td><td>Управління індексами, схемою</td><td>DBA</td></tr>
+        <tr><td><code>userAdmin</code></td><td>Управління юзерами</td><td>Security admin</td></tr>
+        <tr><td><code>root</code></td><td>Повний доступ</td><td>SuperAdmin (обережно!)</td></tr>
+      </tbody>
+    </table>
+    <div class="mongo-code"><span class="cm">// Створити юзера з read-only доступом</span>
+db.<span class="fn">createUser</span>({
+  <span class="str">"user"</span>: <span class="str">"analyst"</span>,
+  <span class="str">"pwd"</span>: <span class="str">"securePassword"</span>,
+  <span class="str">"roles"</span>: [{ <span class="str">"role"</span>: <span class="str">"read"</span>, <span class="str">"db"</span>: <span class="str">"production"</span> }]
+})</div>
+    <div class="callout-tip"><strong>Для BA/SA:</strong> при описі вимог до безпеки — знаєш які ролі запропонувати. "Аналітик має read-only до orders і products" = роль <code>read</code> на ці колекції.</div>
+  </div>
+
+  <div class="mongo-section">
+    <h2>🔒 Security Layers</h2>
+    <div class="mongo-diagram">
+      <svg viewBox="0 0 500 280" xmlns="http://www.w3.org/2000/svg" style="max-width:500px;width:100%;">
+        <!-- Outer: Network -->
+        <rect x="10" y="10" width="480" height="260" rx="14" fill="#fee2e2" opacity=".3" stroke="#ef4444" stroke-width="2"/>
+        <text x="250" y="35" text-anchor="middle" font-family="Nunito,sans-serif" font-size="12" font-weight="700" fill="#991b1b">🌐 Network: Firewall + TLS/SSL</text>
+        <!-- Mid: Auth -->
+        <rect x="40" y="50" width="420" height="200" rx="12" fill="#fef3c7" opacity=".4" stroke="#f59e0b" stroke-width="2"/>
+        <text x="250" y="75" text-anchor="middle" font-family="Nunito,sans-serif" font-size="12" font-weight="700" fill="#92400e">🔑 Authentication: SCRAM / x.509</text>
+        <!-- Inner: Authorization -->
+        <rect x="70" y="90" width="360" height="140" rx="10" fill="#dbeafe" opacity=".4" stroke="#3b82f6" stroke-width="2"/>
+        <text x="250" y="115" text-anchor="middle" font-family="Nunito,sans-serif" font-size="12" font-weight="700" fill="#1d4ed8">🛡️ Authorization: RBAC Roles</text>
+        <!-- Core: Encryption -->
+        <rect x="110" y="130" width="280" height="80" rx="8" fill="#d1fae5" opacity=".5" stroke="#10b981" stroke-width="2"/>
+        <text x="250" y="160" text-anchor="middle" font-family="Nunito,sans-serif" font-size="12" font-weight="700" fill="#065f46">🔐 Data Encryption</text>
+        <text x="250" y="180" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#059669">At Rest (AES-256) + Field-Level Encryption</text>
+        <text x="250" y="196" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#059669">PCI DSS / GDPR / ISO 27001</text>
+      </svg>
+      <figcaption>Шари захисту MongoDB: Network → Authentication → Authorization → Encryption</figcaption>
+    </div>
+  </div>
+
+  <div class="mongo-section">
+    <h2>🔍 Моніторинг та діагностика</h2>
+    <h3>Профілювальник — повільні запити</h3>
+    <div class="mongo-code"><span class="cm">// Включити профілювання для запитів > 100ms</span>
+db.<span class="fn">setProfilingLevel</span>(<span class="num">1</span>, { <span class="str">"slowms"</span>: <span class="num">100</span> })
+
+<span class="cm">// Подивитись повільні запити</span>
+db.system.profile.<span class="fn">find</span>().<span class="fn">sort</span>({ <span class="str">"ts"</span>: <span class="num">-1</span> }).<span class="fn">limit</span>(<span class="num">10</span>)
+
+<span class="cm">// Рівні: 0=вимкнено, 1=тільки повільні, 2=всі (тільки dev!)</span></div>
+
+    <h3>explain() — аналіз продуктивності</h3>
+    <div class="mongo-code">db.orders.<span class="fn">find</span>({ <span class="str">"userId"</span>: <span class="str">"u1"</span> }).<span class="fn">explain</span>(<span class="str">"executionStats"</span>)
+<span class="cm">// Дивимось: stage (IXSCAN vs COLLSCAN), nReturned,</span>
+<span class="cm">// totalDocsExamined, executionTimeMillis</span></div>
+
+    <h3>Поточні операції</h3>
+    <div class="mongo-code"><span class="cm">// Переглянути активні операції</span>
+db.<span class="fn">currentOp</span>({ <span class="str">"active"</span>: <span class="kw">true</span> })
+
+<span class="cm">// Знайти повільні операції (> 100ms)</span>
+db.<span class="fn">currentOp</span>({ <span class="str">"active"</span>: <span class="kw">true</span>, <span class="str">"secs_running"</span>: { <span class="kw">$gt</span>: <span class="num">0.1</span> } })</div>
+  </div>
+
+  <div class="self-check">
+    <h3>✅ Питання для самоперевірки</h3>
+    <ol>
+      <li>Яку роль призначити аналітику що потребує тільки читання?</li>
+      <li>Як увімкнути профілювання повільних запитів?</li>
+      <li>Які compliance стандарти вимагають шифрування?</li>
+    </ol>
+  </div>
+  <div class="interview-block">
+    <h3>💼 Питання на senior-співбесіді</h3>
+    <ol><li>"Як ти описуєш security requirements для MongoDB системи з урахуванням GDPR?"</li></ol>
+  </div>
+  <div class="mistakes-block">
+    <h3>⚠️ Типові помилки мідл-аналітика</h3>
+    <ul>
+      <li>Не знати про RBAC при описі security вимог</li>
+      <li>Не згадувати шифрування at rest та in transit для compliance</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     MONGODB MODULE — PAGE 12: GRIDFS
+     ═══════════════════════════════════════════════════════════════════════ -->
+<div id="page-mongodb-gridfs" class="page-view" style="display:none;">
+  <nav class="breadcrumb"><span>База знань</span><span class="breadcrumb-sep">›</span><span>MongoDB для BA/SA</span><span class="breadcrumb-sep">›</span><span class="current">GridFS та спец. колекції</span></nav>
+  <div class="page-header">
+    <div class="page-tag">🍃 MongoDB</div>
+    <h1 class="page-title">GridFS, TTL колекції та спеціальні типи</h1>
+    <p class="page-desc">Зберігання великих файлів, Capped Collections та порівняння TTL vs Capped підходів.</p>
+  </div>
+
+  <div class="mongo-section">
+    <h2>📁 GridFS — зберігання великих файлів</h2>
+    <p>MongoDB документ обмежений 16 MB. Для більших файлів — GridFS.</p>
+    <ul>
+      <li>Файл розбивається на <strong>chunks</strong> (за замовч. 255 KB)</li>
+      <li>Дві системні колекції: <code>fs.files</code> (metadata) та <code>fs.chunks</code> (бінарні дані)</li>
+    </ul>
+    <div class="mongo-code"><span class="cm">// Node.js — завантажити файл</span>
+<span class="kw">const</span> bucket = <span class="kw">new</span> mongodb.<span class="fn">GridFSBucket</span>(db, { <span class="str">"bucketName"</span>: <span class="str">"photos"</span> });
+<span class="kw">const</span> uploadStream = bucket.<span class="fn">openUploadStream</span>(<span class="str">"profile.jpg"</span>, {
+  <span class="str">"metadata"</span>: { <span class="str">"userId"</span>: <span class="str">"u123"</span>, <span class="str">"type"</span>: <span class="str">"avatar"</span> }
+});
+fs.<span class="fn">createReadStream</span>(<span class="str">"/path/to/photo.jpg"</span>).<span class="fn">pipe</span>(uploadStream);
+
+<span class="cm">// Знайти файли по metadata</span>
+<span class="kw">const</span> cursor = bucket.<span class="fn">find</span>({ <span class="str">"metadata.userId"</span>: <span class="str">"u123"</span> });</div>
+
+    <h3>Коли використовувати GridFS</h3>
+    <div class="doc-cards-2">
+      <div class="doc-card doc-card--teal"><div class="doc-card-title">✅ Використовуй</div><ul style="font-size:.83rem;color:var(--ink2);padding-left:1rem;line-height:1.7;"><li>Файли > 16 MB</li><li>Потрібен пошук по metadata</li><li>Реплікація файлів разом з БД</li></ul></div>
+      <div class="doc-card doc-card--red"><div class="doc-card-title">❌ Краще альтернативи</div><ul style="font-size:.83rem;color:var(--ink2);padding-left:1rem;line-height:1.7;"><li>Маленькі файли &lt; 1 MB → BinData</li><li>Великий об'єм + CDN → S3/GCS</li></ul></div>
+    </div>
+  </div>
+
+  <div class="mongo-section">
+    <h2>🔄 Capped Collections</h2>
+    <div class="mongo-code">db.<span class="fn">createCollection</span>(<span class="str">"recentLogs"</span>, {
+  <span class="str">"capped"</span>: <span class="kw">true</span>,
+  <span class="str">"size"</span>: <span class="num">10485760</span>,  <span class="cm">// 10 MB</span>
+  <span class="str">"max"</span>: <span class="num">1000</span>        <span class="cm">// максимум документів</span>
+})</div>
+    <p>При досягненні ліміту — найстаріші документи автоматично видаляються (FIFO). Дуже швидкий insert. Але: не можна видаляти окремі документи.</p>
+  </div>
+
+  <div class="mongo-section">
+    <h2>⚖️ TTL vs Capped Collections</h2>
+    <table class="mongo-table">
+      <thead><tr><th>Характеристика</th><th>TTL</th><th>Capped</th></tr></thead>
+      <tbody>
+        <tr><td>Умова видалення</td><td>За часом поля</td><td>Розмір/кількість</td></tr>
+        <tr><td>Видалення</td><td>Background (~60s)</td><td>Автоматично при insert</td></tr>
+        <tr><td>Порядок</td><td>Довільний</td><td>FIFO гарантований</td></tr>
+        <tr><td>Use case</td><td>Сесії, токени, кеш</td><td>Логи, rolling buffer</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="self-check">
+    <h3>✅ Питання для самоперевірки</h3>
+    <ol>
+      <li>Коли GridFS краще ніж S3?</li>
+      <li>Яка різниця між TTL і Capped Collections?</li>
+      <li>Який максимальний розмір документа в MongoDB?</li>
+    </ol>
+  </div>
+  <div class="interview-block">
+    <h3>💼 Питання на senior-співбесіді</h3>
+    <ol><li>"Як ти обираєш між GridFS та об'єктним сховищем (S3) для зберігання файлів?"</li></ol>
+  </div>
+  <div class="mistakes-block">
+    <h3>⚠️ Типові помилки мідл-аналітика</h3>
+    <ul>
+      <li>Не знати про 16 MB ліміт документа</li>
+      <li>Пропонувати cronjob замість TTL index для автовидалення</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     MONGODB MODULE — PAGE 13: COMMUNICATION
+     ═══════════════════════════════════════════════════════════════════════ -->
+<div id="page-mongodb-communication" class="page-view" style="display:none;">
+  <nav class="breadcrumb"><span>База знань</span><span class="breadcrumb-sep">›</span><span>MongoDB для BA/SA</span><span class="breadcrumb-sep">›</span><span class="current">Як говорити з розробником</span></nav>
+  <div class="page-header">
+    <div class="page-tag">🍃 MongoDB</div>
+    <h1 class="page-title">MongoDB у комунікації BA/SA з командою розробки</h1>
+    <p class="page-desc">Питання для discovery, шаблони NFR, чекліст code review та словник термінів розробника.</p>
+  </div>
+
+  <div class="mongo-section">
+    <h2>🔍 Discovery-сесія: питання про схему даних</h2>
+    <div class="doc-cards-3">
+      <div class="doc-card doc-card--blue">
+        <div class="doc-card-title">📋 Про структуру</div>
+        <ul style="font-size:.8rem;color:var(--ink2);padding-left:1rem;line-height:1.7;">
+          <li>"Які основні колекції є?"</li>
+          <li>"Які поля обов'язкові? Є schema validation?"</li>
+          <li>"Де embedding, де referencing? Чому?"</li>
+          <li>"Яка макс. кардинальність масивів?"</li>
+        </ul>
+      </div>
+      <div class="doc-card doc-card--teal">
+        <div class="doc-card-title">⚡ Про продуктивність</div>
+        <ul style="font-size:.8rem;color:var(--ink2);padding-left:1rem;line-height:1.7;">
+          <li>"Які індекси є на колекції X?"</li>
+          <li>"Скільки документів? Очікуваний ріст?"</li>
+          <li>"Найчастіші запити покриті індексами?"</li>
+          <li>"Є повільні запити у профілювальнику?"</li>
+        </ul>
+      </div>
+      <div class="doc-card doc-card--gold">
+        <div class="doc-card-title">🏗️ Про архітектуру</div>
+        <ul style="font-size:.8rem;color:var(--ink2);padding-left:1rem;line-height:1.7;">
+          <li>"Replica set чи standalone?"</li>
+          <li>"Шардована БД? Які shard keys?"</li>
+          <li>"Яка версія MongoDB?"</li>
+          <li>"Write concern для критичних даних?"</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="mongo-section">
+    <h2>📝 Grooming: як описувати вимоги</h2>
+    <div class="doc-cards-2">
+      <div class="doc-card doc-card--red">
+        <div class="doc-card-title">❌ Погано</div>
+        <p style="font-size:.83rem;color:var(--ink2);">"Система має шукати замовлення за датою"</p>
+        <p style="font-size:.83rem;color:var(--ink2);margin-top:.5rem;">"Видаляти старі сесії через крон"</p>
+      </div>
+      <div class="doc-card doc-card--teal">
+        <div class="doc-card-title">✅ Добре</div>
+        <p style="font-size:.83rem;color:var(--ink2);">"Повертати замовлення для userId, відфільтровані за status, відсортовані за createdAt DESC, з cursor-based пагінацією (20/стор). Compound index: {userId: 1, status: 1, createdAt: -1}"</p>
+        <p style="font-size:.83rem;color:var(--ink2);margin-top:.5rem;">"Сесії видаляються через 24 год після expiredAt. TTL index з expireAfterSeconds: 0"</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="mongo-section">
+    <h2>📋 NFR шаблон для MongoDB</h2>
+    <div class="callout-tip"><strong>Шаблон:</strong><br>
+    "Запит <em>[назва операції]</em> має виконуватись &lt; <em>[X]</em> мс при <em>[N]</em> документах у колекції.<br>
+    Для забезпечення цього NFR необхідний <em>[тип індексу]</em> на поля <em>[список полів]</em>.<br>
+    Приклад запиту: <code>db.[collection].find({...}).sort({...})</code>"</div>
+  </div>
+
+  <div class="mongo-section">
+    <h2>✅ Code Review чекліст</h2>
+    <table class="mongo-table">
+      <thead><tr><th>Перевірка</th><th>Чому важливо</th></tr></thead>
+      <tbody>
+        <tr><td>☐ Є індекс для кожного поля у filter</td><td>Уникнення COLLSCAN</td></tr>
+        <tr><td>☐ <code>$elemMatch</code> для масивів об'єктів</td><td>Правильна фільтрація</td></tr>
+        <tr><td>☐ Немає COLLSCAN на великих колекціях</td><td>Перевірити через explain()</td></tr>
+        <tr><td>☐ Правильний write concern для критичних операцій</td><td>Надійність даних</td></tr>
+        <tr><td>☐ Документ не перевищує 16 MB</td><td>Ліміт embedded arrays</td></tr>
+        <tr><td>☐ TTL для тимчасових даних</td><td>Автоматичне очищення</td></tr>
+        <tr><td>☐ Унікальний індекс захищає від дублікатів</td><td>Data integrity</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="mongo-section">
+    <h2>📖 Словник: розробник → BA/SA</h2>
+    <table class="mongo-table">
+      <thead><tr><th>Розробник каже</th><th>BA/SA розуміє</th></tr></thead>
+      <tbody>
+        <tr><td>"Колекція захардкоджена під read pattern"</td><td>Запити оптимізовані, нові типи можуть бути повільними</td></tr>
+        <tr><td>"Треба <code>$lookup</code>"</td><td>JOIN між колекціями — може бути дорогим</td></tr>
+        <tr><td>"Документ перевищує 16MB"</td><td>Embedded масив занадто великий</td></tr>
+        <tr><td>"Hot spot на шарді"</td><td>Один шард перевантажений — поганий shard key</td></tr>
+        <tr><td>"Oplog відстає"</td><td>Реплікація повільна, secondary мають застарілі дані</td></tr>
+        <tr><td>"COLLSCAN на проді"</td><td>Відсутній індекс — критична проблема!</td></tr>
+        <tr><td>"Upsert"</td><td>"Оновити або створити" — для інтеграцій</td></tr>
+        <tr><td>"Multikey index"</td><td>Індекс на поле-масив</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="self-check">
+    <h3>✅ Питання для самоперевірки</h3>
+    <ol>
+      <li>Які 5 питань задати на discovery про MongoDB систему?</li>
+      <li>Як правильно описати NFR для MongoDB запиту?</li>
+      <li>Що перевіряти при code review MongoDB запитів?</li>
+    </ol>
+  </div>
+
+  <div class="interview-block">
+    <h3>💼 Питання на senior-співбесіді</h3>
+    <ol>
+      <li>"Як ти вирішував конфлікт між дизайном схеми MongoDB і вимогами до продуктивності?"</li>
+      <li>"Як ти перевіряєш що acceptance criteria для пошукових фічей враховують індекси?"</li>
+      <li>"Як ти описуєш NFR по продуктивності для MongoDB систем?"</li>
+      <li>"Яку стратегію шардингу ти б запропонував для multi-tenant SaaS?"</li>
+    </ol>
+  </div>
+  <div class="mistakes-block">
+    <h3>⚠️ Типові помилки мідл-аналітика</h3>
+    <ul>
+      <li>Описувати вимоги без деталей про індекси та продуктивність</li>
+      <li>Не задавати технічних питань на discovery</li>
+      <li>Не знати базових MongoDB термінів при спілкуванні з розробниками</li>
+    </ul>
+  </div>
+</div>
 </main>
 </div>
 
