@@ -874,6 +874,7 @@ body {
           <div class="nav-sub-link" onclick="navigate('sa-mod13','Кейс-проект для СА',this,'Системний аналіз')">Кейс-проект</div>
           <div class="nav-sub-link" onclick="navigate('sa-mod14','Архітектура ПЗ і DevOps',this,'Системний аналіз')">Архітектура ПЗ і DevOps</div>
           <div class="nav-sub-link" onclick="navigate('sa-mod15','UX-дизайн і прототипування',this,'Системний аналіз')">UX і прототипи</div>
+          <div class="nav-sub-link" onclick="navigate('sa-kafka','Apache Kafka',this,'Системний аналіз')">Apache Kafka</div>
         </div>
       </div>
 
@@ -19060,6 +19061,790 @@ info:
       <div style="margin-top:1.5rem;display:flex;justify-content:space-between;">
         <div onclick="navigate('sa-mod14','',this)" style="cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.4rem;background:#f1f5f9;color:var(--ink2);border-radius:50px;font-size:.87rem;font-weight:600;">← Модуль 14: Архітектура</div>
         <div onclick="navigate('sa-mod16','',this)" style="cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.4rem;background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;border-radius:50px;font-size:.87rem;font-weight:600;">Модуль 16: Документація →</div>
+      </div>
+    </div>
+
+    <!-- ═══ SA KAFKA: Apache Kafka ═══ -->
+    <div id="page-sa-kafka" class="page-view" style="display:none;">
+      <nav class="breadcrumb"><span>База знань</span><span class="breadcrumb-sep">›</span><span onclick="navigate('sa-mod1','Системний аналіз',this)" style="cursor:pointer;color:var(--ink-mute);">Системний аналіз</span><span class="breadcrumb-sep">›</span><span class="current">Apache Kafka</span></nav>
+      <style>
+        #page-sa-kafka .kafka-wrap { max-width: 1000px; margin: 0 auto; padding: 1rem 0 2rem; }
+        #page-sa-kafka .kafka-header { background: linear-gradient(135deg, #1E3A8A 0%, #1D4ED8 50%, #0D7377 100%); color: #fff; padding: 2.5rem 2rem 2rem; border-radius: 14px; margin-bottom: 2rem; position: relative; overflow: hidden; }
+        #page-sa-kafka .kafka-header::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+        #page-sa-kafka .kafka-header .k-badge { display: inline-block; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; margin-bottom: 1rem; }
+        #page-sa-kafka .kafka-header h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; line-height: 1.15; margin-bottom: 0.75rem; position: relative; }
+        #page-sa-kafka .kafka-header p { font-size: 1rem; color: rgba(255,255,255,0.92); max-width: 640px; position: relative; }
+        #page-sa-kafka .kafka-header .k-meta { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-top: 1.5rem; font-size: 13px; opacity: 0.8; position: relative; }
+        #page-sa-kafka .k-toc { background: #EFF6FF; border: 1px solid #BFDBFE; border-radius: 12px; padding: 1.5rem 1.75rem; margin-bottom: 2rem; }
+        #page-sa-kafka .k-toc h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 700; color: #1E40AF; margin-bottom: 0.75rem; }
+        #page-sa-kafka .k-toc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 6px; }
+        #page-sa-kafka .k-toc-grid a { font-size: 13px; color: #1D4ED8; text-decoration: none; padding: 4px 0; display: flex; align-items: center; gap: 6px; }
+        #page-sa-kafka .k-toc-grid a::before { content: '→'; font-size: 11px; }
+        #page-sa-kafka .k-section-divider { display: flex; align-items: center; gap: 1rem; margin: 2.5rem 0 1.5rem; }
+        #page-sa-kafka .k-section-num { flex-shrink: 0; width: 36px; height: 36px; background: #2563EB; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; }
+        #page-sa-kafka .k-section-divider h2 { font-family: 'Cormorant Garamond', serif; font-size: 1.7rem; font-weight: 700; color: #1E3A8A; flex: 1; }
+        #page-sa-kafka .k-section-divider::after { content: ''; flex: 1; height: 1px; background: #BFDBFE; }
+        #page-sa-kafka h3.k-sub { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 700; color: #1E40AF; margin: 1.5rem 0 0.75rem; }
+        #page-sa-kafka .k-card { background: #fff; border: 1px solid #E2E8F0; border-radius: 12px; padding: 1.25rem 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.07); margin-bottom: 1rem; }
+        #page-sa-kafka .k-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+        #page-sa-kafka .k-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1rem; }
+        @media(max-width: 700px) { #page-sa-kafka .k-grid-2, #page-sa-kafka .k-grid-3 { grid-template-columns: 1fr; } }
+        #page-sa-kafka .k-callout { border-radius: 10px; padding: 1rem 1.25rem; margin: 1rem 0; border-left: 4px solid; font-size: 14px; }
+        #page-sa-kafka .k-callout-blue { background: #EFF6FF; border-color: #2563EB; }
+        #page-sa-kafka .k-callout-teal { background: #CCFBF1; border-color: #0F9488; }
+        #page-sa-kafka .k-callout-green { background: #D1FAE5; border-color: #059669; }
+        #page-sa-kafka .k-callout-amber { background: #FEF3C7; border-color: #D97706; }
+        #page-sa-kafka .k-callout-red { background: #FEE2E2; border-color: #DC2626; }
+        #page-sa-kafka .k-callout-purple { background: #EDE9FE; border-color: #7C3AED; }
+        #page-sa-kafka .k-callout strong { display: block; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
+        #page-sa-kafka .k-callout p, #page-sa-kafka .k-callout li { font-size: 14px; line-height: 1.6; }
+        #page-sa-kafka .k-callout-blue strong { color: #1D4ED8; }
+        #page-sa-kafka .k-callout-teal strong { color: #0D7377; }
+        #page-sa-kafka .k-callout-green strong { color: #059669; }
+        #page-sa-kafka .k-callout-amber strong { color: #D97706; }
+        #page-sa-kafka .k-callout-red strong { color: #DC2626; }
+        #page-sa-kafka .k-callout-purple strong { color: #7C3AED; }
+        #page-sa-kafka .k-badge-pill { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-right: 4px; margin-bottom: 4px; }
+        #page-sa-kafka .k-pill-blue { background: #BFDBFE; color: #1E40AF; }
+        #page-sa-kafka .k-pill-teal { background: #CCFBF1; color: #0D7377; }
+        #page-sa-kafka .k-pill-green { background: #D1FAE5; color: #059669; }
+        #page-sa-kafka .k-pill-amber { background: #FEF3C7; color: #D97706; }
+        #page-sa-kafka .k-pill-red { background: #FEE2E2; color: #DC2626; }
+        #page-sa-kafka .k-pill-purple { background: #EDE9FE; color: #7C3AED; }
+        #page-sa-kafka .k-table-wrap { overflow-x: auto; margin: 1rem 0; border-radius: 10px; border: 1px solid #E2E8F0; }
+        #page-sa-kafka .k-table-wrap table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+        #page-sa-kafka .k-table-wrap thead th { background: #1E3A8A; color: #fff; padding: 10px 14px; text-align: left; font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; }
+        #page-sa-kafka .k-table-wrap tbody tr:nth-child(even) { background: #EFF6FF; }
+        #page-sa-kafka .k-table-wrap tbody td { padding: 9px 14px; border-bottom: 1px solid #E2E8F0; vertical-align: top; }
+        #page-sa-kafka .k-table-wrap tbody tr:last-child td { border-bottom: none; }
+        #page-sa-kafka .k-table-wrap td strong { color: #1E40AF; }
+        #page-sa-kafka .k-code { background: #0f172a; color: #e2e8f0; border-radius: 10px; padding: 1.25rem 1.5rem; font-family: 'Courier New', monospace; font-size: 13px; line-height: 1.8; overflow-x: auto; margin: 1rem 0; white-space: pre; }
+        #page-sa-kafka .k-code .c { color: #64748b; }
+        #page-sa-kafka .k-code .k { color: #93c5fd; }
+        #page-sa-kafka .k-code .s { color: #86efac; }
+        #page-sa-kafka .k-code .n { color: #fcd34d; }
+        #page-sa-kafka .k-diagram { background: #fff; border: 1px solid #E2E8F0; border-radius: 12px; padding: 1.5rem; margin: 1.25rem 0; overflow-x: auto; }
+        #page-sa-kafka .k-diagram-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: #94a3b8; margin-bottom: 1rem; }
+        #page-sa-kafka .k-interview { background: linear-gradient(135deg, #1E3A8A, #0D7377); border-radius: 12px; padding: 1.5rem; color: #fff; margin-top: 1.5rem; }
+        #page-sa-kafka .k-interview h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem; opacity: 0.9; }
+        #page-sa-kafka .k-interview-q { background: rgba(255,255,255,0.1); border-radius: 8px; padding: 10px 14px; margin-bottom: 8px; font-size: 13.5px; border-left: 3px solid rgba(255,255,255,0.4); }
+        #page-sa-kafka .k-selfcheck { background: #EFF6FF; border: 1px solid #BFDBFE; border-radius: 8px; padding: 12px 16px; margin-bottom: 8px; font-size: 14px; cursor: pointer; }
+        #page-sa-kafka .k-selfcheck:hover { background: #BFDBFE; }
+        #page-sa-kafka .k-selfcheck-ans { display: none; margin-top: 8px; padding: 8px 12px; background: #D1FAE5; border-radius: 6px; font-size: 13px; color: #059669; border-left: 3px solid #059669; }
+        #page-sa-kafka .k-checklist { list-style: none; padding: 0; }
+        #page-sa-kafka .k-checklist li { display: flex; gap: 10px; align-items: flex-start; padding: 8px 0; border-bottom: 1px solid #E2E8F0; font-size: 14px; color: #475569; }
+        #page-sa-kafka .k-checklist li:last-child { border-bottom: none; }
+        #page-sa-kafka .k-checklist li::before { content: '☐'; color: #2563EB; font-size: 16px; flex-shrink: 0; }
+        #page-sa-kafka .k-domain-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #94a3b8; display: block; margin-bottom: 4px; }
+        #page-sa-kafka p { color: #475569; margin-bottom: 0.75rem; }
+        #page-sa-kafka svg text { font-family: 'Nunito', sans-serif; }
+      </style>
+      <div class="kafka-wrap">
+        <div class="kafka-header">
+          <div class="k-badge">Advanced Tech Skills · Модуль</div>
+          <h1>Apache Kafka</h1>
+          <p>Повний розбір сервісу: від базової концепції pub/sub до архітектурних рішень для реальних систем у ролі BA/SA</p>
+          <div class="k-meta">
+            <span>⏱ ~45 хв</span>
+            <span>🎯 Рівень: mid → senior</span>
+            <span>🏷 Розподілені системи · Event Streaming · Integration</span>
+          </div>
+        </div>
+
+        <div class="k-toc">
+          <h3>Зміст модуля</h3>
+          <div class="k-toc-grid">
+            <a href="javascript:void(0)" onclick="document.getElementById('k-why').scrollIntoView({behavior:'smooth'})">Навіщо Kafka існує</a>
+            <a href="javascript:void(0)" onclick="document.getElementById('k-core').scrollIntoView({behavior:'smooth'})">Ключові концепції</a>
+            <a href="javascript:void(0)" onclick="document.getElementById('k-arch').scrollIntoView({behavior:'smooth'})">Архітектура та потік даних</a>
+            <a href="javascript:void(0)" onclick="document.getElementById('k-partitions').scrollIntoView({behavior:'smooth'})">Партиції та offsets</a>
+            <a href="javascript:void(0)" onclick="document.getElementById('k-consumer-groups').scrollIntoView({behavior:'smooth'})">Consumer Groups</a>
+            <a href="javascript:void(0)" onclick="document.getElementById('k-replication').scrollIntoView({behavior:'smooth'})">Реплікація та відмовостійкість</a>
+            <a href="javascript:void(0)" onclick="document.getElementById('k-kraft').scrollIntoView({behavior:'smooth'})">ZooKeeper vs KRaft</a>
+            <a href="javascript:void(0)" onclick="document.getElementById('k-apis').scrollIntoView({behavior:'smooth'})">API екосистема</a>
+            <a href="javascript:void(0)" onclick="document.getElementById('k-usecases').scrollIntoView({behavior:'smooth'})">Use cases для BA/SA</a>
+            <a href="javascript:void(0)" onclick="document.getElementById('k-mistakes').scrollIntoView({behavior:'smooth'})">Типові помилки аналітика</a>
+            <a href="javascript:void(0)" onclick="document.getElementById('k-interview').scrollIntoView({behavior:'smooth'})">Питання на співбесіді</a>
+            <a href="javascript:void(0)" onclick="document.getElementById('k-checklist').scrollIntoView({behavior:'smooth'})">Чекліст</a>
+          </div>
+        </div>
+
+        <!-- 1. НАВІЩО KAFKA -->
+        <div id="k-why" class="k-section-divider">
+          <div class="k-section-num">1</div>
+          <h2>Навіщо Kafka існує: проблема, яку вона вирішує</h2>
+        </div>
+
+        <div class="k-callout k-callout-blue">
+          <strong>📌 Контекст для BA/SA</strong>
+          <p>Уяви, що ти на discovery-сесії з командою e-commerce платформи. У них є: сайт, мобільний додаток, сервіс аналітики, система знижок, Email-маркетинг і служба підтримки — і всі вони хочуть отримувати дані про події (замовлення, кліки, оплати). Як їх з'єднати?</p>
+        </div>
+
+        <div class="k-grid-2">
+          <div class="k-card" style="border-top: 3px solid #DC2626;">
+            <span class="k-domain-label">❌ Без Kafka — Point-to-Point інтеграції</span>
+            <p>При <strong>4 джерелах і 4 цільових системах</strong> = <strong>16 прямих з'єднань</strong>. Кожне — окремий контракт, окрема логіка помилок, окрема підтримка.</p>
+            <div class="k-diagram" style="padding: 1rem; background: #FEE2E2;">
+              <svg width="100%" viewBox="0 0 280 180">
+                <rect x="10" y="20" width="70" height="28" rx="6" fill="#FCA5A5" stroke="#DC2626" stroke-width="0.8"/>
+                <text x="45" y="38" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="700">Сайт</text>
+                <rect x="10" y="65" width="70" height="28" rx="6" fill="#FCA5A5" stroke="#DC2626" stroke-width="0.8"/>
+                <text x="45" y="83" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="700">Мобайл</text>
+                <rect x="10" y="110" width="70" height="28" rx="6" fill="#FCA5A5" stroke="#DC2626" stroke-width="0.8"/>
+                <text x="45" y="128" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="700">CRM</text>
+                <rect x="10" y="155" width="70" height="28" rx="6" fill="#FCA5A5" stroke="#DC2626" stroke-width="0.8"/>
+                <text x="45" y="173" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="700">API</text>
+                <rect x="200" y="20" width="70" height="28" rx="6" fill="#FCA5A5" stroke="#DC2626" stroke-width="0.8"/>
+                <text x="235" y="38" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="700">Аналітика</text>
+                <rect x="200" y="65" width="70" height="28" rx="6" fill="#FCA5A5" stroke="#DC2626" stroke-width="0.8"/>
+                <text x="235" y="83" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="700">Email</text>
+                <rect x="200" y="110" width="70" height="28" rx="6" fill="#FCA5A5" stroke="#DC2626" stroke-width="0.8"/>
+                <text x="235" y="128" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="700">Знижки</text>
+                <rect x="200" y="155" width="70" height="28" rx="6" fill="#FCA5A5" stroke="#DC2626" stroke-width="0.8"/>
+                <text x="235" y="173" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="700">Support</text>
+                <line x1="80" y1="34" x2="200" y2="34" stroke="#DC2626" stroke-width="0.6" opacity="0.6"/>
+                <line x1="80" y1="34" x2="200" y2="79" stroke="#DC2626" stroke-width="0.6" opacity="0.6"/>
+                <line x1="80" y1="34" x2="200" y2="124" stroke="#DC2626" stroke-width="0.6" opacity="0.6"/>
+                <line x1="80" y1="34" x2="200" y2="169" stroke="#DC2626" stroke-width="0.6" opacity="0.6"/>
+                <line x1="80" y1="79" x2="200" y2="34" stroke="#DC2626" stroke-width="0.6" opacity="0.6"/>
+                <line x1="80" y1="79" x2="200" y2="79" stroke="#DC2626" stroke-width="0.6" opacity="0.6"/>
+                <line x1="80" y1="79" x2="200" y2="124" stroke="#DC2626" stroke-width="0.6" opacity="0.6"/>
+                <line x1="80" y1="79" x2="200" y2="169" stroke="#DC2626" stroke-width="0.6" opacity="0.6"/>
+                <line x1="80" y1="124" x2="200" y2="34" stroke="#DC2626" stroke-width="0.6" opacity="0.6"/>
+                <line x1="80" y1="124" x2="200" y2="79" stroke="#DC2626" stroke-width="0.6" opacity="0.6"/>
+                <line x1="80" y1="124" x2="200" y2="124" stroke="#DC2626" stroke-width="0.6" opacity="0.6"/>
+                <line x1="80" y1="124" x2="200" y2="169" stroke="#DC2626" stroke-width="0.6" opacity="0.6"/>
+                <line x1="80" y1="169" x2="200" y2="34" stroke="#DC2626" stroke-width="0.6" opacity="0.6"/>
+                <line x1="80" y1="169" x2="200" y2="79" stroke="#DC2626" stroke-width="0.6" opacity="0.6"/>
+                <line x1="80" y1="169" x2="200" y2="124" stroke="#DC2626" stroke-width="0.6" opacity="0.6"/>
+                <line x1="80" y1="169" x2="200" y2="169" stroke="#DC2626" stroke-width="0.6" opacity="0.6"/>
+                <text x="140" y="100" text-anchor="middle" font-size="18" fill="#DC2626" font-weight="900" opacity="0.3">16×</text>
+              </svg>
+            </div>
+          </div>
+          <div class="k-card" style="border-top: 3px solid #059669;">
+            <span class="k-domain-label">✅ З Kafka — Hub-and-Spoke</span>
+            <p>Kafka виступає <strong>центральною шиною подій</strong>. Кожна система пише або читає лише з Kafka. Кількість з'єднань = N + M замість N × M.</p>
+            <div class="k-diagram" style="padding: 1rem; background: #D1FAE5;">
+              <svg width="100%" viewBox="0 0 280 180">
+                <rect x="10" y="20" width="60" height="26" rx="5" fill="#A7F3D0" stroke="#059669" stroke-width="0.8"/>
+                <text x="40" y="37" text-anchor="middle" font-size="9" fill="#065F46" font-weight="700">Сайт</text>
+                <rect x="10" y="60" width="60" height="26" rx="5" fill="#A7F3D0" stroke="#059669" stroke-width="0.8"/>
+                <text x="40" y="77" text-anchor="middle" font-size="9" fill="#065F46" font-weight="700">Мобайл</text>
+                <rect x="10" y="100" width="60" height="26" rx="5" fill="#A7F3D0" stroke="#059669" stroke-width="0.8"/>
+                <text x="40" y="117" text-anchor="middle" font-size="9" fill="#065F46" font-weight="700">CRM</text>
+                <rect x="10" y="140" width="60" height="26" rx="5" fill="#A7F3D0" stroke="#059669" stroke-width="0.8"/>
+                <text x="40" y="157" text-anchor="middle" font-size="9" fill="#065F46" font-weight="700">API</text>
+                <rect x="105" y="65" width="70" height="52" rx="8" fill="#1E40AF" stroke="#1E3A8A" stroke-width="1"/>
+                <text x="140" y="85" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">KAFKA</text>
+                <text x="140" y="100" text-anchor="middle" font-size="9" fill="#BFDBFE">Event Bus</text>
+                <rect x="210" y="20" width="62" height="26" rx="5" fill="#A7F3D0" stroke="#059669" stroke-width="0.8"/>
+                <text x="241" y="37" text-anchor="middle" font-size="9" fill="#065F46" font-weight="700">Аналітика</text>
+                <rect x="210" y="60" width="62" height="26" rx="5" fill="#A7F3D0" stroke="#059669" stroke-width="0.8"/>
+                <text x="241" y="77" text-anchor="middle" font-size="9" fill="#065F46" font-weight="700">Email</text>
+                <rect x="210" y="100" width="62" height="26" rx="5" fill="#A7F3D0" stroke="#059669" stroke-width="0.8"/>
+                <text x="241" y="117" text-anchor="middle" font-size="9" fill="#065F46" font-weight="700">Знижки</text>
+                <rect x="210" y="140" width="62" height="26" rx="5" fill="#A7F3D0" stroke="#059669" stroke-width="0.8"/>
+                <text x="241" y="157" text-anchor="middle" font-size="9" fill="#065F46" font-weight="700">Support</text>
+                <line x1="70" y1="33" x2="105" y2="91" stroke="#059669" stroke-width="1" opacity="0.8"/>
+                <line x1="70" y1="73" x2="105" y2="91" stroke="#059669" stroke-width="1" opacity="0.8"/>
+                <line x1="70" y1="113" x2="105" y2="91" stroke="#059669" stroke-width="1" opacity="0.8"/>
+                <line x1="70" y1="153" x2="105" y2="91" stroke="#059669" stroke-width="1" opacity="0.8"/>
+                <line x1="175" y1="91" x2="210" y2="33" stroke="#059669" stroke-width="1" opacity="0.8"/>
+                <line x1="175" y1="91" x2="210" y2="73" stroke="#059669" stroke-width="1" opacity="0.8"/>
+                <line x1="175" y1="91" x2="210" y2="113" stroke="#059669" stroke-width="1" opacity="0.8"/>
+                <line x1="175" y1="91" x2="210" y2="153" stroke="#059669" stroke-width="1" opacity="0.8"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <p>Kafka була створена в <strong>LinkedIn у 2011 році</strong> саме для вирішення цієї проблеми: платформа обробляла понад <strong>1 мільярд подій на день</strong>. Зараз LinkedIn споживає понад <strong>трильйон повідомлень на добу</strong>. Пізніше Kafka була передана Apache Software Foundation.</p>
+
+        <!-- 2. КЛЮЧОВІ КОНЦЕПЦІЇ -->
+        <div id="k-core" class="k-section-divider">
+          <div class="k-section-num">2</div>
+          <h2>Ключові концепції: глосарій з прикладами</h2>
+        </div>
+
+        <div class="k-table-wrap">
+          <table>
+            <thead>
+              <tr><th>Термін</th><th>Визначення</th><th>Аналогія</th><th>Приклад у fintech</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><span class="k-badge-pill k-pill-blue">Event / Message</span></td><td>Найменша одиниця даних. Має: key, value, timestamp, headers</td><td>Запис у журналі</td><td><code>{"event": "payment_created", "amount": 500}</code></td></tr>
+              <tr><td><span class="k-badge-pill k-pill-blue">Topic</span></td><td>Іменований канал для потоку подій</td><td>Папка з файлами</td><td><code>payment-transactions</code>, <code>fraud-alerts</code></td></tr>
+              <tr><td><span class="k-badge-pill k-pill-teal">Producer</span></td><td>Система, яка записує події в topic</td><td>Журналіст</td><td>Payment Service публікує events</td></tr>
+              <tr><td><span class="k-badge-pill k-pill-teal">Consumer</span></td><td>Система, яка читає події з topic</td><td>Читач журналу</td><td>Fraud Service читає events</td></tr>
+              <tr><td><span class="k-badge-pill k-pill-green">Broker</span></td><td>Kafka-сервер, що зберігає і обслуговує дані</td><td>Пошта</td><td>3 брокери в кластері для HA</td></tr>
+              <tr><td><span class="k-badge-pill k-pill-green">Cluster</span></td><td>Група брокерів, що працюють разом</td><td>Мережа відділень</td><td>Kafka cluster з 3 брокерів</td></tr>
+              <tr><td><span class="k-badge-pill k-pill-purple">Partition</span></td><td>Фізичний підрозділ topic'у. Одиниця паралелізму.</td><td>Полиця в архіві</td><td>Topic payments із 6 партиціями</td></tr>
+              <tr><td><span class="k-badge-pill k-pill-purple">Offset</span></td><td>Унікальний порядковий номер повідомлення всередині партиції</td><td>Номер сторінки</td><td>Consumer читає з offset=1500</td></tr>
+              <tr><td><span class="k-badge-pill k-pill-amber">Consumer Group</span></td><td>Набір consumers, що спільно читають topic</td><td>Команда редакторів</td><td>Група fraud-detectors з 3 інстансів</td></tr>
+              <tr><td><span class="k-badge-pill k-pill-amber">Replication Factor</span></td><td>Кількість копій партиції на різних брокерах</td><td>Резервні копії</td><td>RF=3 означає 3 копії кожної партиції</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 3. АРХІТЕКТУРА -->
+        <div id="k-arch" class="k-section-divider">
+          <div class="k-section-num">3</div>
+          <h2>Архітектура та потік даних між системами</h2>
+        </div>
+
+        <div class="k-diagram">
+          <div class="k-diagram-title">Повна схема потоку даних у Kafka-системі</div>
+          <svg width="100%" viewBox="0 0 760 420">
+            <defs>
+              <marker id="k-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 1L8 5L2 9" fill="none" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round"/></marker>
+              <marker id="k-arr-g" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 1L8 5L2 9" fill="none" stroke="#059669" stroke-width="1.5" stroke-linecap="round"/></marker>
+            </defs>
+            <rect x="8" y="30" width="145" height="200" rx="10" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1" stroke-dasharray="4 3"/>
+            <text x="80" y="20" text-anchor="middle" font-size="10" fill="#94A3B8" font-weight="700">PRODUCERS</text>
+            <rect x="20" y="50" width="120" height="38" rx="7" fill="#2563EB" stroke="#1E40AF" stroke-width="0.8"/>
+            <text x="80" y="67" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">Payment Service</text>
+            <text x="80" y="80" text-anchor="middle" font-size="9" fill="#BFDBFE">публікує events</text>
+            <rect x="20" y="100" width="120" height="38" rx="7" fill="#2563EB" stroke="#1E40AF" stroke-width="0.8"/>
+            <text x="80" y="117" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">Order Service</text>
+            <text x="80" y="130" text-anchor="middle" font-size="9" fill="#BFDBFE">публікує events</text>
+            <rect x="20" y="150" width="120" height="38" rx="7" fill="#2563EB" stroke="#1E40AF" stroke-width="0.8"/>
+            <text x="80" y="167" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">Auth Service</text>
+            <text x="80" y="180" text-anchor="middle" font-size="9" fill="#BFDBFE">публікує events</text>
+            <rect x="20" y="200" width="120" height="38" rx="7" fill="#2563EB" stroke="#1E40AF" stroke-width="0.8"/>
+            <text x="80" y="217" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">Web App</text>
+            <text x="80" y="230" text-anchor="middle" font-size="9" fill="#BFDBFE">user events</text>
+            <rect x="185" y="15" width="390" height="350" rx="14" fill="#F8FAFC" stroke="#1E40AF" stroke-width="1.5"/>
+            <text x="380" y="10" text-anchor="middle" font-size="10" fill="#1E40AF" font-weight="800" letter-spacing="1">KAFKA CLUSTER</text>
+            <rect x="200" y="30" width="110" height="310" rx="8" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1"/>
+            <text x="255" y="48" text-anchor="middle" font-size="10" fill="#1E40AF" font-weight="700">Broker 1</text>
+            <text x="255" y="60" text-anchor="middle" font-size="9" fill="#64748B">LEADER</text>
+            <rect x="208" y="70" width="94" height="30" rx="4" fill="#DBEAFE" stroke="#93C5FD" stroke-width="0.8"/>
+            <text x="255" y="83" text-anchor="middle" font-size="9" fill="#1E40AF" font-weight="700">payments P0</text>
+            <text x="255" y="94" text-anchor="middle" font-size="8" fill="#64748B">offset 0→9500</text>
+            <rect x="208" y="108" width="94" height="30" rx="4" fill="#DBEAFE" stroke="#93C5FD" stroke-width="0.8"/>
+            <text x="255" y="121" text-anchor="middle" font-size="9" fill="#1E40AF" font-weight="700">payments P1</text>
+            <text x="255" y="132" text-anchor="middle" font-size="8" fill="#64748B">offset 0→8200</text>
+            <rect x="208" y="146" width="94" height="30" rx="4" fill="#D1FAE5" stroke="#6EE7B7" stroke-width="0.8"/>
+            <text x="255" y="159" text-anchor="middle" font-size="9" fill="#065F46" font-weight="700">orders P0</text>
+            <text x="255" y="170" text-anchor="middle" font-size="8" fill="#64748B">replica</text>
+            <rect x="208" y="184" width="94" height="30" rx="4" fill="#FEF3C7" stroke="#FCD34D" stroke-width="0.8"/>
+            <text x="255" y="197" text-anchor="middle" font-size="9" fill="#92400E" font-weight="700">auth-events P0</text>
+            <text x="255" y="208" text-anchor="middle" font-size="8" fill="#64748B">replica</text>
+            <rect x="325" y="30" width="110" height="310" rx="8" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1"/>
+            <text x="380" y="48" text-anchor="middle" font-size="10" fill="#1E40AF" font-weight="700">Broker 2</text>
+            <rect x="333" y="70" width="94" height="30" rx="4" fill="#DBEAFE" stroke="#93C5FD" stroke-width="0.8"/>
+            <text x="380" y="83" text-anchor="middle" font-size="9" fill="#1E40AF" font-weight="700">payments P2</text>
+            <text x="380" y="94" text-anchor="middle" font-size="8" fill="#64748B">offset 0→7800</text>
+            <rect x="333" y="108" width="94" height="30" rx="4" fill="#D1FAE5" stroke="#6EE7B7" stroke-width="0.8"/>
+            <text x="380" y="121" text-anchor="middle" font-size="9" fill="#065F46" font-weight="700">orders P0</text>
+            <text x="380" y="132" text-anchor="middle" font-size="8" fill="#64748B">LEADER</text>
+            <rect x="333" y="146" width="94" height="30" rx="4" fill="#D1FAE5" stroke="#6EE7B7" stroke-width="0.8"/>
+            <text x="380" y="159" text-anchor="middle" font-size="9" fill="#065F46" font-weight="700">orders P1</text>
+            <text x="380" y="170" text-anchor="middle" font-size="8" fill="#64748B">replica</text>
+            <rect x="333" y="184" width="94" height="30" rx="4" fill="#FEF3C7" stroke="#FCD34D" stroke-width="0.8"/>
+            <text x="380" y="197" text-anchor="middle" font-size="9" fill="#92400E" font-weight="700">auth-events P1</text>
+            <text x="380" y="208" text-anchor="middle" font-size="8" fill="#64748B">LEADER</text>
+            <rect x="450" y="30" width="110" height="310" rx="8" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1"/>
+            <text x="505" y="48" text-anchor="middle" font-size="10" fill="#1E40AF" font-weight="700">Broker 3</text>
+            <rect x="458" y="70" width="94" height="30" rx="4" fill="#DBEAFE" stroke="#93C5FD" stroke-width="0.8"/>
+            <text x="505" y="83" text-anchor="middle" font-size="9" fill="#1E40AF" font-weight="700">payments P0</text>
+            <text x="505" y="94" text-anchor="middle" font-size="8" fill="#64748B">replica</text>
+            <rect x="458" y="108" width="94" height="30" rx="4" fill="#D1FAE5" stroke="#6EE7B7" stroke-width="0.8"/>
+            <text x="505" y="121" text-anchor="middle" font-size="9" fill="#065F46" font-weight="700">orders P1</text>
+            <text x="505" y="132" text-anchor="middle" font-size="8" fill="#64748B">LEADER</text>
+            <rect x="458" y="146" width="94" height="30" rx="4" fill="#FEF3C7" stroke="#FCD34D" stroke-width="0.8"/>
+            <text x="505" y="159" text-anchor="middle" font-size="9" fill="#92400E" font-weight="700">auth-events P0</text>
+            <text x="505" y="170" text-anchor="middle" font-size="8" fill="#64748B">LEADER</text>
+            <rect x="458" y="184" width="94" height="30" rx="4" fill="#DBEAFE" stroke="#93C5FD" stroke-width="0.8"/>
+            <text x="505" y="197" text-anchor="middle" font-size="9" fill="#1E40AF" font-weight="700">payments P1</text>
+            <text x="505" y="208" text-anchor="middle" font-size="8" fill="#64748B">replica</text>
+            <rect x="210" y="300" width="340" height="46" rx="8" fill="#1E3A8A" stroke="#1E40AF" stroke-width="1"/>
+            <text x="380" y="319" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">KRaft Controller Quorum</text>
+            <text x="380" y="335" text-anchor="middle" font-size="9" fill="#93C5FD">Metadata management · Leader election · Cluster coordination</text>
+            <rect x="607" y="30" width="145" height="270" rx="10" fill="#F0FDF4" stroke="#A7F3D0" stroke-width="1" stroke-dasharray="4 3"/>
+            <text x="680" y="20" text-anchor="middle" font-size="10" fill="#94A3B8" font-weight="700">CONSUMERS</text>
+            <rect x="618" y="50" width="120" height="38" rx="7" fill="#059669" stroke="#065F46" stroke-width="0.8"/>
+            <text x="678" y="67" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">Fraud Detection</text>
+            <text x="678" y="80" text-anchor="middle" font-size="9" fill="#A7F3D0">читає payments</text>
+            <rect x="618" y="100" width="120" height="38" rx="7" fill="#059669" stroke="#065F46" stroke-width="0.8"/>
+            <text x="678" y="117" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">Analytics DWH</text>
+            <text x="678" y="130" text-anchor="middle" font-size="9" fill="#A7F3D0">читає всі events</text>
+            <rect x="618" y="150" width="120" height="38" rx="7" fill="#059669" stroke="#065F46" stroke-width="0.8"/>
+            <text x="678" y="167" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">Notification Svc</text>
+            <text x="678" y="180" text-anchor="middle" font-size="9" fill="#A7F3D0">читає orders</text>
+            <rect x="618" y="200" width="120" height="38" rx="7" fill="#059669" stroke="#065F46" stroke-width="0.8"/>
+            <text x="678" y="217" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">Loyalty Service</text>
+            <text x="678" y="230" text-anchor="middle" font-size="9" fill="#A7F3D0">читає payments</text>
+            <rect x="618" y="250" width="120" height="38" rx="7" fill="#059669" stroke="#065F46" stroke-width="0.8"/>
+            <text x="678" y="267" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">Audit Logger</text>
+            <text x="678" y="280" text-anchor="middle" font-size="9" fill="#A7F3D0">читає auth-events</text>
+            <line x1="140" y1="69" x2="199" y2="85" stroke="#2563EB" stroke-width="1.2" marker-end="url(#k-arr)"/>
+            <line x1="140" y1="119" x2="199" y2="160" stroke="#2563EB" stroke-width="1.2" marker-end="url(#k-arr)"/>
+            <line x1="140" y1="169" x2="333" y2="197" stroke="#2563EB" stroke-width="1.2" marker-end="url(#k-arr)"/>
+            <line x1="140" y1="219" x2="333" y2="123" stroke="#2563EB" stroke-width="1.2" marker-end="url(#k-arr)"/>
+            <line x1="574" y1="85" x2="617" y2="69" stroke="#059669" stroke-width="1.2" marker-end="url(#k-arr-g)"/>
+            <line x1="574" y1="117" x2="617" y2="117" stroke="#059669" stroke-width="1.2" marker-end="url(#k-arr-g)"/>
+            <line x1="574" y1="145" x2="617" y2="165" stroke="#059669" stroke-width="1.2" marker-end="url(#k-arr-g)"/>
+            <line x1="574" y1="85" x2="617" y2="215" stroke="#059669" stroke-width="1.2" marker-end="url(#k-arr-g)"/>
+            <line x1="574" y1="159" x2="617" y2="265" stroke="#059669" stroke-width="1.2" marker-end="url(#k-arr-g)"/>
+            <rect x="10" y="275" width="155" height="90" rx="6" fill="#F1F5F9" stroke="#E2E8F0" stroke-width="0.8"/>
+            <text x="20" y="292" font-size="9" fill="#64748B" font-weight="700">ЛЕГЕНДА</text>
+            <rect x="20" y="298" width="10" height="10" rx="2" fill="#DBEAFE" stroke="#93C5FD"/>
+            <text x="34" y="308" font-size="9" fill="#475569">payments topic</text>
+            <rect x="20" y="314" width="10" height="10" rx="2" fill="#D1FAE5" stroke="#6EE7B7"/>
+            <text x="34" y="324" font-size="9" fill="#475569">orders topic</text>
+            <rect x="20" y="330" width="10" height="10" rx="2" fill="#FEF3C7" stroke="#FCD34D"/>
+            <text x="34" y="340" font-size="9" fill="#475569">auth-events topic</text>
+            <text x="20" y="358" font-size="9" fill="#475569">LEADER = основна партиція</text>
+          </svg>
+        </div>
+
+        <div class="k-callout k-callout-teal">
+          <strong>🔑 Ключовий принцип</strong>
+          <p>Producer записує → Kafka зберігає у партиціях брокерів → Consumer читає у своєму темпі. Системи <strong>повністю розв'язані</strong>: Producer не знає, хто читає; Consumer не знає, хто писав. Це і є decoupling.</p>
+        </div>
+
+        <!-- 4. ПАРТИЦІЇ ТА OFFSETS -->
+        <div id="k-partitions" class="k-section-divider">
+          <div class="k-section-num">4</div>
+          <h2>Партиції, offsets та порядок повідомлень</h2>
+        </div>
+
+        <div class="k-diagram">
+          <div class="k-diagram-title">Як виглядає topic із 3 партиціями зсередини</div>
+          <svg width="100%" viewBox="0 0 700 260">
+            <rect x="10" y="10" width="680" height="240" rx="10" fill="#F8FAFC" stroke="#BFDBFE" stroke-width="1"/>
+            <text x="350" y="30" text-anchor="middle" font-size="12" fill="#1E40AF" font-weight="800">Topic: payment-transactions</text>
+            <text x="30" y="60" font-size="10" fill="#475569" font-weight="700">Partition 0</text>
+            <rect x="110" y="50" width="55" height="34" rx="3" fill="#DBEAFE" stroke="#93C5FD" stroke-width="0.8"/>
+            <text x="137" y="63" text-anchor="middle" font-size="8" fill="#64748B">offset 0</text>
+            <text x="137" y="75" text-anchor="middle" font-size="8" fill="#1E40AF" font-weight="700">pay_001</text>
+            <rect x="167" y="50" width="55" height="34" rx="3" fill="#DBEAFE" stroke="#93C5FD" stroke-width="0.8"/>
+            <text x="194" y="63" text-anchor="middle" font-size="8" fill="#64748B">offset 1</text>
+            <text x="194" y="75" text-anchor="middle" font-size="8" fill="#1E40AF" font-weight="700">pay_004</text>
+            <rect x="224" y="50" width="55" height="34" rx="3" fill="#DBEAFE" stroke="#93C5FD" stroke-width="0.8"/>
+            <text x="251" y="63" text-anchor="middle" font-size="8" fill="#64748B">offset 2</text>
+            <text x="251" y="75" text-anchor="middle" font-size="8" fill="#1E40AF" font-weight="700">pay_007</text>
+            <rect x="281" y="50" width="55" height="34" rx="3" fill="#DBEAFE" stroke="#93C5FD" stroke-width="0.8"/>
+            <text x="308" y="63" text-anchor="middle" font-size="8" fill="#64748B">offset 3</text>
+            <text x="308" y="75" text-anchor="middle" font-size="8" fill="#1E40AF" font-weight="700">pay_010</text>
+            <text x="400" y="70" font-size="14" fill="#94A3B8">→ append-only</text>
+            <text x="30" y="115" font-size="10" fill="#475569" font-weight="700">Partition 1</text>
+            <rect x="110" y="105" width="55" height="34" rx="3" fill="#D1FAE5" stroke="#6EE7B7" stroke-width="0.8"/>
+            <text x="137" y="118" text-anchor="middle" font-size="8" fill="#64748B">offset 0</text>
+            <text x="137" y="130" text-anchor="middle" font-size="8" fill="#065F46" font-weight="700">pay_002</text>
+            <rect x="167" y="105" width="55" height="34" rx="3" fill="#D1FAE5" stroke="#6EE7B7" stroke-width="0.8"/>
+            <text x="194" y="118" text-anchor="middle" font-size="8" fill="#64748B">offset 1</text>
+            <text x="194" y="130" text-anchor="middle" font-size="8" fill="#065F46" font-weight="700">pay_005</text>
+            <rect x="224" y="105" width="55" height="34" rx="3" fill="#D1FAE5" stroke="#6EE7B7" stroke-width="0.8"/>
+            <text x="251" y="118" text-anchor="middle" font-size="8" fill="#64748B">offset 2</text>
+            <text x="251" y="130" text-anchor="middle" font-size="8" fill="#065F46" font-weight="700">pay_008</text>
+            <text x="345" y="125" font-size="14" fill="#94A3B8">→ append-only</text>
+            <text x="30" y="170" font-size="10" fill="#475569" font-weight="700">Partition 2</text>
+            <rect x="110" y="160" width="55" height="34" rx="3" fill="#FEF3C7" stroke="#FCD34D" stroke-width="0.8"/>
+            <text x="137" y="173" text-anchor="middle" font-size="8" fill="#64748B">offset 0</text>
+            <text x="137" y="185" text-anchor="middle" font-size="8" fill="#92400E" font-weight="700">pay_003</text>
+            <rect x="167" y="160" width="55" height="34" rx="3" fill="#FEF3C7" stroke="#FCD34D" stroke-width="0.8"/>
+            <text x="194" y="173" text-anchor="middle" font-size="8" fill="#64748B">offset 1</text>
+            <text x="194" y="185" text-anchor="middle" font-size="8" fill="#92400E" font-weight="700">pay_006</text>
+            <rect x="224" y="160" width="55" height="34" rx="3" fill="#FEF3C7" stroke="#FCD34D" stroke-width="0.8"/>
+            <text x="251" y="173" text-anchor="middle" font-size="8" fill="#64748B">offset 2</text>
+            <text x="251" y="185" text-anchor="middle" font-size="8" fill="#92400E" font-weight="700">pay_009</text>
+            <text x="400" y="180" font-size="14" fill="#94A3B8">→ append-only</text>
+            <rect x="30" y="220" width="640" height="22" rx="4" fill="#EDE9FE" stroke="#C4B5FD" stroke-width="0.5"/>
+            <text x="350" y="235" text-anchor="middle" font-size="9" fill="#5B21B6">⚡ Порядок гарантується лише всередині однієї партиції · Між партиціями порядку немає · offset — завжди зростаючий</text>
+          </svg>
+        </div>
+
+        <div class="k-table-wrap">
+          <table>
+            <thead><tr><th>Сценарій</th><th>Скільки партицій</th><th>Чому</th></tr></thead>
+            <tbody>
+              <tr><td>Dev/test</td><td><strong>1–3</strong></td><td>Простота конфігурації, низьке навантаження</td></tr>
+              <tr><td>Середній throughput (10k msg/s)</td><td><strong>6–12</strong></td><td>6 consumers можуть паралельно обробляти</td></tr>
+              <tr><td>Висока навантаженість (100k+ msg/s)</td><td><strong>24–100+</strong></td><td>Максимальний паралелізм</td></tr>
+              <tr><td>Фінансові транзакції (порядок за user)</td><td><strong>12–48</strong></td><td>Key = user_id → всі транзакції одного юзера в одній партиції</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 5. CONSUMER GROUPS -->
+        <div id="k-consumer-groups" class="k-section-divider">
+          <div class="k-section-num">5</div>
+          <h2>Consumer Groups: паралельна обробка без дублювання</h2>
+        </div>
+
+        <p>Consumer Group — це механізм, завдяки якому кілька інстансів одного сервісу можуть читати з topic'у паралельно, не дублюючи обробку. Кожна партиція призначається рівно одному consumer у групі.</p>
+
+        <div class="k-diagram">
+          <div class="k-diagram-title">3 Consumer Groups читають один topic одночасно</div>
+          <svg width="100%" viewBox="0 0 700 320">
+            <rect x="10" y="100" width="210" height="120" rx="8" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1"/>
+            <text x="115" y="90" text-anchor="middle" font-size="10" fill="#1E40AF" font-weight="700">TOPIC: payment-transactions</text>
+            <rect x="20" y="110" width="190" height="28" rx="4" fill="#DBEAFE" stroke="#93C5FD" stroke-width="0.8"/>
+            <text x="115" y="129" text-anchor="middle" font-size="10" fill="#1E40AF" font-weight="700">Partition 0</text>
+            <rect x="20" y="145" width="190" height="28" rx="4" fill="#D1FAE5" stroke="#6EE7B7" stroke-width="0.8"/>
+            <text x="115" y="164" text-anchor="middle" font-size="10" fill="#065F46" font-weight="700">Partition 1</text>
+            <rect x="20" y="180" width="190" height="28" rx="4" fill="#FEF3C7" stroke="#FCD34D" stroke-width="0.8"/>
+            <text x="115" y="199" text-anchor="middle" font-size="10" fill="#92400E" font-weight="700">Partition 2</text>
+            <rect x="270" y="30" width="140" height="100" rx="8" fill="#EDE9FE" stroke="#C4B5FD" stroke-width="1" stroke-dasharray="3 2"/>
+            <text x="340" y="22" text-anchor="middle" font-size="9" fill="#5B21B6" font-weight="700">GROUP: fraud-detectors</text>
+            <rect x="280" y="38" width="120" height="24" rx="4" fill="#7C3AED" stroke="#5B21B6" stroke-width="0.5"/>
+            <text x="340" y="54" text-anchor="middle" font-size="9" fill="#fff" font-weight="700">Consumer 1 → P0</text>
+            <rect x="280" y="68" width="120" height="24" rx="4" fill="#7C3AED" stroke="#5B21B6" stroke-width="0.5"/>
+            <text x="340" y="84" text-anchor="middle" font-size="9" fill="#fff" font-weight="700">Consumer 2 → P1</text>
+            <rect x="280" y="98" width="120" height="24" rx="4" fill="#7C3AED" stroke="#5B21B6" stroke-width="0.5"/>
+            <text x="340" y="114" text-anchor="middle" font-size="9" fill="#fff" font-weight="700">Consumer 3 → P2</text>
+            <rect x="270" y="165" width="140" height="70" rx="8" fill="#D1FAE5" stroke="#6EE7B7" stroke-width="1" stroke-dasharray="3 2"/>
+            <text x="340" y="157" text-anchor="middle" font-size="9" fill="#065F46" font-weight="700">GROUP: analytics-dwh</text>
+            <rect x="280" y="173" width="120" height="54" rx="4" fill="#059669" stroke="#065F46" stroke-width="0.5"/>
+            <text x="340" y="194" text-anchor="middle" font-size="9" fill="#fff" font-weight="700">Consumer 1</text>
+            <text x="340" y="208" text-anchor="middle" font-size="8" fill="#A7F3D0">читає P0+P1+P2</text>
+            <rect x="270" y="262" width="140" height="52" rx="8" fill="#FEF3C7" stroke="#FCD34D" stroke-width="1" stroke-dasharray="3 2"/>
+            <text x="340" y="254" text-anchor="middle" font-size="9" fill="#92400E" font-weight="700">GROUP: notifications</text>
+            <rect x="280" y="268" width="56" height="38" rx="4" fill="#D97706" stroke="#B45309" stroke-width="0.5"/>
+            <text x="308" y="290" text-anchor="middle" font-size="8" fill="#fff" font-weight="700">C1→P0,P2</text>
+            <rect x="344" y="268" width="56" height="38" rx="4" fill="#D97706" stroke="#B45309" stroke-width="0.5"/>
+            <text x="372" y="290" text-anchor="middle" font-size="8" fill="#fff" font-weight="700">C2→P1</text>
+            <line x1="220" y1="124" x2="269" y2="62" stroke="#7C3AED" stroke-width="1.2" stroke-dasharray="3 2"/>
+            <line x1="220" y1="159" x2="269" y2="199" stroke="#059669" stroke-width="1.2" stroke-dasharray="3 2"/>
+            <line x1="220" y1="194" x2="269" y2="280" stroke="#D97706" stroke-width="1.2" stroke-dasharray="3 2"/>
+          </svg>
+        </div>
+
+        <div class="k-callout k-callout-amber">
+          <strong>⚠ Важливе правило партиція:consumer</strong>
+          <p>Кількість активних consumers у групі не може перевищувати кількість партицій. Якщо consumers більше — зайві будуть idle. Якщо менше — один consumer читатиме кілька партицій.</p>
+        </div>
+
+        <!-- 6. РЕПЛІКАЦІЯ -->
+        <div id="k-replication" class="k-section-divider">
+          <div class="k-section-num">6</div>
+          <h2>Реплікація та відмовостійкість</h2>
+        </div>
+
+        <div class="k-grid-3">
+          <div class="k-card" style="border-top: 3px solid #2563EB;">
+            <span class="k-domain-label">RF = 1</span>
+            <strong style="font-size: 1.5rem; color: #DC2626;">❌</strong>
+            <p style="font-size: 13px;">Немає резервних копій. Якщо брокер впав — дані втрачено. Тільки для dev/тестів.</p>
+          </div>
+          <div class="k-card" style="border-top: 3px solid #D97706;">
+            <span class="k-domain-label">RF = 2</span>
+            <strong style="font-size: 1.5rem; color: #D97706;">⚠️</strong>
+            <p style="font-size: 13px;">Витримує відмову 1 брокера. Мінімум для staging.</p>
+          </div>
+          <div class="k-card" style="border-top: 3px solid #059669;">
+            <span class="k-domain-label">RF = 3</span>
+            <strong style="font-size: 1.5rem; color: #059669;">✅</strong>
+            <p style="font-size: 13px;">Стандарт production. Витримує відмову 1 брокера + ще 1 для обслуговування.</p>
+          </div>
+        </div>
+
+        <div class="k-diagram">
+          <div class="k-diagram-title">Реплікація: Leader + Followers та failover</div>
+          <svg width="100%" viewBox="0 0 700 210">
+            <text x="170" y="18" text-anchor="middle" font-size="10" fill="#065F46" font-weight="700">✅ Нормальний стан</text>
+            <rect x="20" y="28" width="300" height="160" rx="8" fill="#F0FDF4" stroke="#6EE7B7" stroke-width="1"/>
+            <rect x="35" y="42" width="80" height="130" rx="6" fill="#059669" stroke="#065F46" stroke-width="0.8"/>
+            <text x="75" y="62" text-anchor="middle" font-size="10" fill="#fff" font-weight="700">Broker 1</text>
+            <text x="75" y="78" text-anchor="middle" font-size="9" fill="#A7F3D0">P0 LEADER</text>
+            <text x="75" y="103" text-anchor="middle" font-size="8" fill="#fff">writes here</text>
+            <rect x="130" y="42" width="80" height="130" rx="6" fill="#0F766E" stroke="#065F46" stroke-width="0.8"/>
+            <text x="170" y="62" text-anchor="middle" font-size="10" fill="#fff" font-weight="700">Broker 2</text>
+            <text x="170" y="78" text-anchor="middle" font-size="9" fill="#99F6E4">P0 Follower</text>
+            <text x="170" y="103" text-anchor="middle" font-size="8" fill="#99F6E4">replicates</text>
+            <rect x="225" y="42" width="80" height="130" rx="6" fill="#0F766E" stroke="#065F46" stroke-width="0.8"/>
+            <text x="265" y="62" text-anchor="middle" font-size="10" fill="#fff" font-weight="700">Broker 3</text>
+            <text x="265" y="78" text-anchor="middle" font-size="9" fill="#99F6E4">P0 Follower</text>
+            <text x="265" y="103" text-anchor="middle" font-size="8" fill="#99F6E4">replicates</text>
+            <text x="530" y="18" text-anchor="middle" font-size="10" fill="#DC2626" font-weight="700">🔴 Broker 1 впав → Failover</text>
+            <rect x="380" y="28" width="300" height="160" rx="8" fill="#FEF2F2" stroke="#FCA5A5" stroke-width="1"/>
+            <rect x="395" y="42" width="80" height="130" rx="6" fill="#9CA3AF" stroke="#6B7280" stroke-width="0.8" opacity="0.5"/>
+            <text x="435" y="90" text-anchor="middle" font-size="10" fill="#fff" font-weight="700">Broker 1</text>
+            <text x="435" y="107" text-anchor="middle" font-size="9" fill="#E5E7EB">💀 DOWN</text>
+            <rect x="490" y="42" width="80" height="130" rx="6" fill="#DC2626" stroke="#991B1B" stroke-width="0.8"/>
+            <text x="530" y="62" text-anchor="middle" font-size="10" fill="#fff" font-weight="700">Broker 2</text>
+            <text x="530" y="78" text-anchor="middle" font-size="9" fill="#FCA5A5">NEW LEADER</text>
+            <text x="530" y="95" text-anchor="middle" font-size="8" fill="#FEE2E2">автоматично</text>
+            <text x="530" y="108" text-anchor="middle" font-size="8" fill="#FEE2E2">обрано via KRaft</text>
+            <rect x="585" y="42" width="80" height="130" rx="6" fill="#0F766E" stroke="#065F46" stroke-width="0.8"/>
+            <text x="625" y="62" text-anchor="middle" font-size="10" fill="#fff" font-weight="700">Broker 3</text>
+            <text x="625" y="78" text-anchor="middle" font-size="9" fill="#99F6E4">Follower</text>
+            <text x="625" y="103" text-anchor="middle" font-size="8" fill="#99F6E4">replicates</text>
+          </svg>
+        </div>
+
+        <!-- 7. ZOOKEEPER VS KRAFT -->
+        <div id="k-kraft" class="k-section-divider">
+          <div class="k-section-num">7</div>
+          <h2>ZooKeeper vs KRaft: еволюція координації</h2>
+        </div>
+
+        <div class="k-callout k-callout-red">
+          <strong>📅 Актуально 2024–2025</strong>
+          <p>У Kafka 4.0 підтримку ZooKeeper офіційно видалено. Усі нові кластери запускаються у режимі KRaft. Якщо твій проект ще використовує ZooKeeper — це технічний борг.</p>
+        </div>
+
+        <div class="k-table-wrap">
+          <table>
+            <thead><tr><th>Аспект</th><th>ZooKeeper (старий)</th><th>KRaft (новий)</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Призначення</strong></td><td>Зовнішній сервіс координації</td><td>Вбудована координація через Raft-протокол</td></tr>
+              <tr><td><strong>Складність операцій</strong></td><td>Потрібно підтримувати окремий ZK-кластер</td><td>Метадані всередині Kafka. Простіший деплой.</td></tr>
+              <tr><td><strong>Швидкість failover</strong></td><td>Повільніший (залежить від ZK)</td><td>Швидший. Metadata log реплікується через Raft</td></tr>
+              <tr><td><strong>Ліміт партицій</strong></td><td>~200k partitions на кластер</td><td>Мільйони партицій</td></tr>
+              <tr><td><strong>Kafka 4.0+</strong></td><td>❌ Видалено</td><td>✅ За замовчуванням</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 8. API ЕКОСИСТЕМА -->
+        <div id="k-apis" class="k-section-divider">
+          <div class="k-section-num">8</div>
+          <h2>API екосистема Kafka</h2>
+        </div>
+
+        <div class="k-grid-2">
+          <div class="k-card" style="border-left: 4px solid #2563EB;">
+            <span class="k-badge-pill k-pill-blue">Producer API</span>
+            <p style="font-size: 13px; margin-top: 8px;">Дозволяє додаткам <strong>записувати</strong> події в topics. Підтримує: batching, compression, acks, idempotent writes.</p>
+            <div class="k-callout k-callout-blue" style="margin-top: 8px; font-size: 12px;">
+              <strong>Acks налаштування:</strong>
+              <p>acks=0 (fire-and-forget) · acks=1 (leader only) · acks=all (всі ISR)</p>
+            </div>
+          </div>
+          <div class="k-card" style="border-left: 4px solid #059669;">
+            <span class="k-badge-pill k-pill-green">Consumer API</span>
+            <p style="font-size: 13px; margin-top: 8px;">Дозволяє додаткам <strong>читати</strong> події з topics. Consumer сам контролює offset. Можна перечитати старі події (replay).</p>
+            <div class="k-callout k-callout-green" style="margin-top: 8px; font-size: 12px;">
+              <strong>Стратегії offset commit:</strong>
+              <p>auto-commit (ризик дублів) · manual commit (точний контроль)</p>
+            </div>
+          </div>
+          <div class="k-card" style="border-left: 4px solid #7C3AED;">
+            <span class="k-badge-pill k-pill-purple">Kafka Streams API</span>
+            <p style="font-size: 13px; margin-top: 8px;"><strong>Обробка потоків</strong> прямо у Kafka без зовнішніх фреймворків. Join, aggregate, windowing.</p>
+            <div class="k-callout k-callout-purple" style="margin-top: 8px; font-size: 12px;">
+              <strong>Приклад:</strong>
+              <p>Підрахунок транзакцій за 5-хвилинне вікно у реальному часі</p>
+            </div>
+          </div>
+          <div class="k-card" style="border-left: 4px solid #0F9488;">
+            <span class="k-badge-pill k-pill-teal">Kafka Connect API</span>
+            <p style="font-size: 13px; margin-top: 8px;"><strong>Конектори</strong> для інтеграції з зовнішніми системами без написання коду. Source та Sink connector.</p>
+            <div class="k-callout k-callout-teal" style="margin-top: 8px; font-size: 12px;">
+              <strong>Готові конектори:</strong>
+              <p>JDBC, S3, ElasticSearch, MongoDB, Salesforce</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 9. USE CASES -->
+        <div id="k-usecases" class="k-section-divider">
+          <div class="k-section-num">9</div>
+          <h2>Use Cases для BA/SA: де застосовувати Kafka</h2>
+        </div>
+
+        <div class="k-table-wrap">
+          <table>
+            <thead><tr><th>Домен</th><th>Use case</th><th>Topic приклад</th><th>Чому саме Kafka</th></tr></thead>
+            <tbody>
+              <tr><td><span class="k-badge-pill k-pill-blue">Fintech</span></td><td>Realtime fraud detection</td><td><code>payment-transactions</code></td><td>Latency &lt;100ms, гарантія порядку</td></tr>
+              <tr><td><span class="k-badge-pill k-pill-blue">Fintech</span></td><td>Audit trail для регулятора</td><td><code>audit-events</code></td><td>Незмінний лог, retention 7 років</td></tr>
+              <tr><td><span class="k-badge-pill k-pill-teal">E-commerce</span></td><td>Order lifecycle events</td><td><code>order-created</code></td><td>Fanout: 1 подія → N subscribers</td></tr>
+              <tr><td><span class="k-badge-pill k-pill-green">Enterprise</span></td><td>CDC з legacy БД</td><td><code>db.orders.changes</code></td><td>Kafka Connect/Debezium без зміни БД</td></tr>
+              <tr><td><span class="k-badge-pill k-pill-green">Enterprise</span></td><td>Microservices EDA</td><td><code>user-registered</code></td><td>Saga pattern: distributed transactions</td></tr>
+              <tr><td><span class="k-badge-pill k-pill-amber">IoT</span></td><td>Sensor data ingestion</td><td><code>iot-telemetry</code></td><td>Мільйони devices, 1M+ msg/s</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="k-callout k-callout-purple">
+          <strong>💡 Коли НЕ використовувати Kafka</strong>
+          <p>1. Якщо система мала і RabbitMQ/SQS вистачить — Kafka overengineering<br>
+          2. Якщо потрібен request-reply патерн (синхронний) — краще REST/gRPC<br>
+          3. Якщо немає DevOps ресурсів для підтримки кластеру — managed рішення (MSK, Confluent Cloud)</p>
+        </div>
+
+        <h3 class="k-sub">Kafka vs альтернативи: матриця вибору</h3>
+        <div class="k-table-wrap">
+          <table>
+            <thead><tr><th>Критерій</th><th>Kafka</th><th>RabbitMQ</th><th>AWS SQS/SNS</th><th>Redis Streams</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Throughput</strong></td><td>🟢 Мільйони msg/s</td><td>🟡 Десятки тисяч</td><td>🟡 ~3000/queue</td><td>🟡 Сотні тисяч</td></tr>
+              <tr><td><strong>Retention</strong></td><td>🟢 Тижні/місяці</td><td>🔴 До споживання</td><td>🔴 14 днів max</td><td>🟡 RAM/disk</td></tr>
+              <tr><td><strong>Replay подій</strong></td><td>🟢 Так, з offset=0</td><td>🔴 Ні</td><td>🔴 Ні</td><td>🟡 Обмежено</td></tr>
+              <tr><td><strong>Порядок</strong></td><td>🟢 В partition</td><td>🟡 В черзі</td><td>🟡 FIFO-черги</td><td>🟢 Строгий</td></tr>
+              <tr><td><strong>Складність ops</strong></td><td>🔴 Висока</td><td>🟡 Середня</td><td>🟢 Managed</td><td>🟡 Середня</td></tr>
+              <tr><td><strong>Ідеально для</strong></td><td>Event streaming, CDC</td><td>Task queues, RPC</td><td>Serverless</td><td>Real-time</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 10. ТИПОВІ ПОМИЛКИ -->
+        <div id="k-mistakes" class="k-section-divider">
+          <div class="k-section-num">10</div>
+          <h2>Типові помилки мідл-аналітика при роботі з Kafka</h2>
+        </div>
+
+        <div class="k-grid-2">
+          <div class="k-callout k-callout-red">
+            <strong>❌ Помилка 1: «Kafka = черга як RabbitMQ»</strong>
+            <p>Kafka зберігає дані за retention policy незалежно від факту читання. Consumer лише переміщує свій offset.</p>
+          </div>
+          <div class="k-callout k-callout-red">
+            <strong>❌ Помилка 2: Ігнорувати ключ повідомлення</strong>
+            <p>Коли key=null, Kafka розподіляє round-robin — порядок для одного entity не гарантується.</p>
+          </div>
+          <div class="k-callout k-callout-red">
+            <strong>❌ Помилка 3: Занадто мало партицій</strong>
+            <p>«Нам достатньо 1 партиції». Потім неможливо масштабувати consumers.</p>
+          </div>
+          <div class="k-callout k-callout-red">
+            <strong>❌ Помилка 4: RF=1 на production</strong>
+            <p>Один падіння брокера = втрата всіх даних для лідер-партицій без реплік.</p>
+          </div>
+          <div class="k-callout k-callout-red">
+            <strong>❌ Помилка 5: 1 consumer на group</strong>
+            <p>Додавання consumers — горизонтальне масштабування до кількості партицій.</p>
+          </div>
+          <div class="k-callout k-callout-red">
+            <strong>❌ Помилка 6: JSON без версіонування</strong>
+            <p>Коли Producer змінює структуру → всі Consumers ламаються. Потрібен Schema Registry.</p>
+          </div>
+        </div>
+
+        <h3 class="k-sub">Базові конфігурації: що треба знати аналітику</h3>
+        <div class="k-code"><span class="c"># ── TOPIC CONFIGURATION ──</span>
+<span class="k">retention.ms</span>=<span class="n">604800000</span>        <span class="c"># retention 7 днів</span>
+<span class="k">partitions</span>=<span class="n">6</span>                    <span class="c"># кількість партицій</span>
+<span class="k">replication.factor</span>=<span class="n">3</span>            <span class="c"># RF=3 для production</span>
+<span class="k">min.insync.replicas</span>=<span class="n">2</span>           <span class="c"># мінімум 2 реплік підтверджують запис</span>
+
+<span class="c"># ── PRODUCER SETTINGS ──</span>
+<span class="k">acks</span>=<span class="s">all</span>                         <span class="c"># найвища надійність</span>
+<span class="k">compression.type</span>=<span class="s">snappy</span>         <span class="c"># стиснення</span>
+<span class="k">enable.idempotence</span>=<span class="s">true</span>         <span class="c"># exactly-once semantics</span>
+
+<span class="c"># ── CONSUMER SETTINGS ──</span>
+<span class="k">group.id</span>=<span class="s">fraud-detectors</span>        <span class="c"># назва consumer group</span>
+<span class="k">auto.offset.reset</span>=<span class="s">earliest</span>      <span class="c"># earliest/latest</span>
+<span class="k">enable.auto.commit</span>=<span class="s">false</span>        <span class="c"># manual commit для точного контролю</span>
+<span class="k">max.poll.records</span>=<span class="n">500</span>           <span class="c"># максимум записів за poll()</span></div>
+
+        <!-- 11. ПИТАННЯ НА СПІВБЕСІДІ -->
+        <div id="k-interview" class="k-section-divider">
+          <div class="k-section-num">11</div>
+          <h2>Питання на senior-співбесіді</h2>
+        </div>
+
+        <div class="k-interview">
+          <h4>🎯 Питання на senior-співбесіді по Kafka</h4>
+          <div class="k-interview-q">«Поясни різницю між topic, partition та offset. Як вони разом забезпечують масштабованість?»</div>
+          <div class="k-interview-q">«Коли ти вибереш Kafka замість RabbitMQ? Наведи конкретний приклад.»</div>
+          <div class="k-interview-q">«Що таке Consumer Group та як вона забезпечує паралельну обробку без дублювання?»</div>
+          <div class="k-interview-q">«Як Kafka гарантує порядок повідомлень? Коли він може порушитись?»</div>
+          <div class="k-interview-q">«Що таке at-least-once, at-most-once і exactly-once delivery?»</div>
+          <div class="k-interview-q">«Навіщо потрібен Schema Registry? Яку проблему він вирішує?»</div>
+          <div class="k-interview-q">«Чим KRaft відрізняється від ZooKeeper? Чому Kafka від нього відмовилась?»</div>
+          <div class="k-interview-q">«Як ти б описав архітектуру Kafka де потрібно: fraud detection, аналітика і email-нотифікації?»</div>
+          <div class="k-interview-q">«Що таке Kafka Connect? Для якого сценарію ти б використав Debezium?»</div>
+          <div class="k-interview-q">«Як моніторити consumer lag? Що це означає для бізнесу?»</div>
+        </div>
+
+        <!-- Самоперевірка -->
+        <h3 class="k-sub" style="margin-top: 2rem;">🧠 Самоперевірка (натисни для відповіді)</h3>
+
+        <div class="k-selfcheck" onclick="this.querySelector('.k-selfcheck-ans').style.display=this.querySelector('.k-selfcheck-ans').style.display==='block'?'none':'block'">
+          <strong>1.</strong> Чому Consumer не може бути більше, ніж партицій у Consumer Group?
+          <div class="k-selfcheck-ans">Кожна партиція призначається рівно одному consumer у групі. Якщо consumers більше — зайві будуть idle.</div>
+        </div>
+        <div class="k-selfcheck" onclick="this.querySelector('.k-selfcheck-ans').style.display=this.querySelector('.k-selfcheck-ans').style.display==='block'?'none':'block'">
+          <strong>2.</strong> Що станеться, якщо ти не вкажеш key при відправці повідомлення?
+          <div class="k-selfcheck-ans">Kafka розподіляє round-robin по партиціях. Порядок для одного entity НЕ гарантується.</div>
+        </div>
+        <div class="k-selfcheck" onclick="this.querySelector('.k-selfcheck-ans').style.display=this.querySelector('.k-selfcheck-ans').style.display==='block'?'none':'block'">
+          <strong>3.</strong> Що таке offset commit і навіщо manual commit кращий за auto?
+          <div class="k-selfcheck-ans">Auto commit може зафіксувати offset до успішної обробки → втрата повідомлень при збої. Manual commit дає at-least-once гарантію.</div>
+        </div>
+        <div class="k-selfcheck" onclick="this.querySelector('.k-selfcheck-ans').style.display=this.querySelector('.k-selfcheck-ans').style.display==='block'?'none':'block'">
+          <strong>4.</strong> Навіщо потрібен min.insync.replicas=2 якщо replication.factor=3?
+          <div class="k-selfcheck-ans">При RF=3 і min.insync=2 Kafka приймає запис якщо хоча б 2 брокери підтвердили. Якщо 2+ недоступні — відхилить запис, щоб не втратити дані.</div>
+        </div>
+        <div class="k-selfcheck" onclick="this.querySelector('.k-selfcheck-ans').style.display=this.querySelector('.k-selfcheck-ans').style.display==='block'?'none':'block'">
+          <strong>5.</strong> Як Kafka відрізняється від традиційної черги?
+          <div class="k-selfcheck-ans">Черга видаляє після споживання. Kafka зберігає за retention policy. Кілька Consumer Groups можуть читати незалежно. Підтримує replay.</div>
+        </div>
+
+        <!-- 12. ЧЕКЛІСТ -->
+        <div id="k-checklist" class="k-section-divider">
+          <div class="k-section-num">12</div>
+          <h2>Чекліст BA/SA при проектуванні Kafka-рішення</h2>
+        </div>
+
+        <div class="k-card">
+          <h3 class="k-sub" style="margin-top: 0;">Discovery — питання до команди</h3>
+          <ul class="k-checklist">
+            <li>Який throughput очікується (messages per second, peak vs average)?</li>
+            <li>Яка retention потрібна для compliance/аудиту?</li>
+            <li>Чи потрібен строгий порядок подій? По якому ключу?</li>
+            <li>Скільки downstream систем будуть читати ці дані?</li>
+            <li>Яка допустима затримка (latency)?</li>
+            <li>Які гарантії доставки потрібні: at-least-once чи exactly-once?</li>
+            <li>Чи є плани на зміну схеми повідомлень? Потрібен Schema Registry?</li>
+          </ul>
+        </div>
+
+        <div class="k-card">
+          <h3 class="k-sub" style="margin-top: 0;">Рішення по архітектурі</h3>
+          <ul class="k-checklist">
+            <li>Визначено naming convention для topics (domain.entity.event)</li>
+            <li>Кількість партицій обрана з урахуванням max parallelism + запас ×2</li>
+            <li>Replication Factor = 3 для production topics</li>
+            <li>Consumer Groups ідентифіковані для кожного downstream сервісу</li>
+            <li>Retention policy погоджена з Compliance/Legal</li>
+            <li>Стратегія моніторингу consumer lag визначена</li>
+            <li>Disaster Recovery: що відбувається при падінні кластеру?</li>
+          </ul>
+        </div>
+
+        <!-- Пов'язані теми -->
+        <div class="k-section-divider">
+          <div class="k-section-num">13</div>
+          <h2>Пов'язані теми для поглибленого вивчення</h2>
+        </div>
+
+        <div class="k-grid-2">
+          <div class="k-card">
+            <span class="k-badge-pill k-pill-blue">Event-Driven Architecture</span>
+            <p style="font-size: 13px;">Патерни: Event Sourcing, CQRS, Saga. Необхідна база для розуміння контексту застосування Kafka.</p>
+          </div>
+          <div class="k-card">
+            <span class="k-badge-pill k-pill-teal">Microservices Integration</span>
+            <p style="font-size: 13px;">Saga Pattern, Outbox Pattern, Transactional Inbox Pattern.</p>
+          </div>
+          <div class="k-card">
+            <span class="k-badge-pill k-pill-green">CDC: Debezium + Kafka Connect</span>
+            <p style="font-size: 13px;">Change Data Capture — читати зміни з PostgreSQL/MySQL як Kafka events без зміни коду.</p>
+          </div>
+          <div class="k-card">
+            <span class="k-badge-pill k-pill-amber">Schema Registry & Data Contracts</span>
+            <p style="font-size: 13px;">Confluent Schema Registry, Avro, Protobuf. Версіонування схем, backward/forward compatibility.</p>
+          </div>
+        </div>
+
+        <div style="margin-top: 2rem; padding: 1.5rem; background: #EFF6FF; border-radius: 10px; border: 1px solid #BFDBFE; text-align: center;">
+          <p style="font-size: 13px; color: #94a3b8; margin: 0;">
+            Модуль: Apache Kafka · Рівень: mid→senior · Wiki BA/SA курс<br>
+            Джерела: Apache Kafka Official Docs · Confluent Documentation · System Design Newsletter
+          </p>
+        </div>
+      </div>
+
+      <div style="margin-top:1.5rem;display:flex;justify-content:space-between;">
+        <div onclick="navigate('sa-mod15','',this)" style="cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.4rem;background:#f1f5f9;color:var(--ink2);border-radius:50px;font-size:.87rem;font-weight:600;">← Модуль 15: UX і прототипи</div>
       </div>
     </div>
 
