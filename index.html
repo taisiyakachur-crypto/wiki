@@ -875,6 +875,7 @@ body {
           <div class="nav-sub-link" onclick="navigate('sa-mod14','Архітектура ПЗ і DevOps',this,'Системний аналіз')">Архітектура ПЗ і DevOps</div>
           <div class="nav-sub-link" onclick="navigate('sa-mod15','UX-дизайн і прототипування',this,'Системний аналіз')">UX і прототипи</div>
           <div class="nav-sub-link" onclick="navigate('sa-kafka','Apache Kafka',this,'Системний аналіз')">Apache Kafka</div>
+          <div class="nav-sub-link" onclick="navigate('sa-rabbitmq','RabbitMQ',this,'Системний аналіз')">RabbitMQ</div>
         </div>
       </div>
 
@@ -19845,6 +19846,516 @@ info:
 
       <div style="margin-top:1.5rem;display:flex;justify-content:space-between;">
         <div onclick="navigate('sa-mod15','',this)" style="cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.4rem;background:#f1f5f9;color:var(--ink2);border-radius:50px;font-size:.87rem;font-weight:600;">← Модуль 15: UX і прототипи</div>
+      </div>
+    </div>
+
+    <!-- ═══ SA RABBITMQ: RabbitMQ ═══ -->
+    <div id="page-sa-rabbitmq" class="page-view" style="display:none;">
+      <nav class="breadcrumb"><span>База знань</span><span class="breadcrumb-sep">›</span><span onclick="navigate('sa-mod1','Системний аналіз',this)" style="cursor:pointer;color:var(--ink-mute);">Системний аналіз</span><span class="breadcrumb-sep">›</span><span class="current">RabbitMQ</span></nav>
+      <style>
+        #page-sa-rabbitmq .rq-wrap{max-width:1000px;margin:0 auto;padding:1rem 0 2rem}
+        #page-sa-rabbitmq .rq-header{background:linear-gradient(135deg,#7C2D12 0%,#EA580C 45%,#F97316 100%);color:#fff;padding:2.5rem 2rem 2rem;border-radius:14px;margin-bottom:2rem;position:relative;overflow:hidden}
+        #page-sa-rabbitmq .rq-header::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='20' cy='20' r='3'/%3E%3C/g%3E%3C/svg%3E")}
+        #page-sa-rabbitmq .rq-header .rq-badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 12px;border-radius:20px;margin-bottom:1rem}
+        #page-sa-rabbitmq .rq-header h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,3rem);font-weight:700;line-height:1.15;margin-bottom:.75rem;position:relative}
+        #page-sa-rabbitmq .rq-header p{font-size:1rem;color:rgba(255,255,255,.92);max-width:640px;position:relative}
+        #page-sa-rabbitmq .rq-header .rq-meta{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1.5rem;font-size:13px;opacity:.85;position:relative}
+        #page-sa-rabbitmq .rq-toc{background:#FFF7ED;border:1px solid #FED7AA;border-radius:12px;padding:1.5rem 1.75rem;margin-bottom:2rem}
+        #page-sa-rabbitmq .rq-toc h3{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:#C2410C;margin-bottom:.75rem}
+        #page-sa-rabbitmq .rq-toc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:6px}
+        #page-sa-rabbitmq .rq-toc-grid a{font-size:13px;color:#EA580C;text-decoration:none;padding:4px 0;display:flex;align-items:center;gap:6px}
+        #page-sa-rabbitmq .rq-toc-grid a::before{content:'→';font-size:11px}
+        #page-sa-rabbitmq .rq-sd{display:flex;align-items:center;gap:1rem;margin:2.5rem 0 1.5rem}
+        #page-sa-rabbitmq .rq-sn{flex-shrink:0;width:36px;height:36px;background:#EA580C;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700}
+        #page-sa-rabbitmq .rq-sd h2{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:700;color:#9A3412;flex:1}
+        #page-sa-rabbitmq .rq-sd::after{content:'';flex:1;height:1px;background:#FED7AA}
+        #page-sa-rabbitmq h3.rq-sh{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:700;color:#C2410C;margin:1.5rem 0 .75rem}
+        #page-sa-rabbitmq .rq-card{background:#fff;border:1px solid #E8E0D8;border-radius:12px;padding:1.25rem 1.5rem;box-shadow:0 1px 3px rgba(0,0,0,.07);margin-bottom:1rem}
+        #page-sa-rabbitmq .rq-g2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+        #page-sa-rabbitmq .rq-g3{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1rem}
+        @media(max-width:700px){#page-sa-rabbitmq .rq-g2,#page-sa-rabbitmq .rq-g3{grid-template-columns:1fr}}
+        #page-sa-rabbitmq .rq-cl{border-radius:10px;padding:1rem 1.25rem;margin:1rem 0;border-left:4px solid;font-size:14px}
+        #page-sa-rabbitmq .rq-cl strong{display:block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
+        #page-sa-rabbitmq .rq-cl p,.rq-cl li{font-size:14px;line-height:1.6;margin-bottom:0}
+        #page-sa-rabbitmq .rq-co{background:#FFF7ED;border-color:#EA580C}.rq-co strong{color:#C2410C}
+        #page-sa-rabbitmq .rq-ct{background:#CCFBF1;border-color:#0F9488}.rq-ct strong{color:#0D7377}
+        #page-sa-rabbitmq .rq-cg{background:#D1FAE5;border-color:#059669}.rq-cg strong{color:#059669}
+        #page-sa-rabbitmq .rq-ca{background:#FEF3C7;border-color:#D97706}.rq-ca strong{color:#D97706}
+        #page-sa-rabbitmq .rq-cr{background:#FEE2E2;border-color:#DC2626}.rq-cr strong{color:#DC2626}
+        #page-sa-rabbitmq .rq-cp{background:#EDE9FE;border-color:#7C3AED}.rq-cp strong{color:#7C3AED}
+        #page-sa-rabbitmq .rq-cb{background:#EFF6FF;border-color:#2563EB}.rq-cb strong{color:#1E3A8A}
+        #page-sa-rabbitmq .rq-pill{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-right:4px;margin-bottom:4px}
+        #page-sa-rabbitmq .rq-po{background:#FED7AA;color:#C2410C}
+        #page-sa-rabbitmq .rq-pt{background:#CCFBF1;color:#0D7377}
+        #page-sa-rabbitmq .rq-pg{background:#D1FAE5;color:#059669}
+        #page-sa-rabbitmq .rq-pa{background:#FEF3C7;color:#D97706}
+        #page-sa-rabbitmq .rq-pr{background:#FEE2E2;color:#DC2626}
+        #page-sa-rabbitmq .rq-pp{background:#EDE9FE;color:#7C3AED}
+        #page-sa-rabbitmq .rq-pb{background:#EFF6FF;color:#1E3A8A}
+        #page-sa-rabbitmq .rq-pgr{background:#E2E8F0;color:#475569}
+        #page-sa-rabbitmq .rq-tw{overflow-x:auto;margin:1rem 0;border-radius:10px;border:1px solid #E8E0D8}
+        #page-sa-rabbitmq .rq-tw table{width:100%;border-collapse:collapse;font-size:13.5px}
+        #page-sa-rabbitmq .rq-tw thead th{background:#C2410C;color:#fff;padding:10px 14px;text-align:left;font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.05em}
+        #page-sa-rabbitmq .rq-tw tbody tr:nth-child(even){background:#FFF7ED}
+        #page-sa-rabbitmq .rq-tw tbody td{padding:9px 14px;border-bottom:1px solid #E8E0D8;vertical-align:top}
+        #page-sa-rabbitmq .rq-tw tbody tr:last-child td{border-bottom:none}
+        #page-sa-rabbitmq .rq-tw td strong{color:#9A3412}
+        #page-sa-rabbitmq .rq-code{background:#0f172a;color:#e2e8f0;border-radius:10px;padding:1.25rem 1.5rem;font-family:'Courier New',monospace;font-size:13px;line-height:1.8;overflow-x:auto;margin:1rem 0;white-space:pre}
+        #page-sa-rabbitmq .rq-code .c{color:#64748b}.rq-code .k{color:#93c5fd}.rq-code .s{color:#86efac}.rq-code .n{color:#fcd34d}.rq-code .fn{color:#fb923c}
+        #page-sa-rabbitmq .rq-dw{background:#fff;border:1px solid #E8E0D8;border-radius:12px;padding:1.5rem;margin:1.25rem 0;overflow-x:auto}
+        #page-sa-rabbitmq .rq-dt{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#94a3b8;margin-bottom:1rem}
+        #page-sa-rabbitmq .rq-ic{background:linear-gradient(135deg,#7C2D12,#EA580C);border-radius:12px;padding:1.5rem;color:#fff;margin-top:1.5rem}
+        #page-sa-rabbitmq .rq-ic h4{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;margin-bottom:1rem;opacity:.9}
+        #page-sa-rabbitmq .rq-iq{background:rgba(255,255,255,.1);border-radius:8px;padding:10px 14px;margin-bottom:8px;font-size:13.5px;border-left:3px solid rgba(255,255,255,.4)}
+        #page-sa-rabbitmq .rq-sc{background:#FFF7ED;border:1px solid #FED7AA;border-radius:8px;padding:12px 16px;margin-bottom:8px;font-size:14px;cursor:pointer}
+        #page-sa-rabbitmq .rq-sc:hover{background:#FED7AA}
+        #page-sa-rabbitmq .rq-sa{display:none;margin-top:8px;padding:8px 12px;background:#D1FAE5;border-radius:6px;font-size:13px;color:#059669;border-left:3px solid #059669}
+        #page-sa-rabbitmq .rq-chk{list-style:none;padding:0}
+        #page-sa-rabbitmq .rq-chk li{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid #E8E0D8;font-size:14px;color:#475569}
+        #page-sa-rabbitmq .rq-chk li:last-child{border-bottom:none}
+        #page-sa-rabbitmq .rq-chk li::before{content:'☐';color:#EA580C;font-size:16px;flex-shrink:0}
+        #page-sa-rabbitmq .rq-ch{background:linear-gradient(135deg,#1E3A8A 0%,#1D4ED8 40%,#EA580C 100%);border-radius:14px;padding:1.5rem 2rem;margin:2rem 0 1.5rem;color:#fff}
+        #page-sa-rabbitmq .rq-ch h2{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;margin-bottom:.4rem}
+        #page-sa-rabbitmq .rq-ch p{font-size:14px;color:rgba(255,255,255,.85);margin:0}
+        #page-sa-rabbitmq .rq-wt{display:inline-block;padding:2px 10px;border-radius:12px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-left:6px}
+        #page-sa-rabbitmq .rq-wr{background:#FED7AA;color:#C2410C}
+        #page-sa-rabbitmq .rq-wk{background:#BFDBFE;color:#1E3A8A}
+        #page-sa-rabbitmq .rq-wb{background:#D1FAE5;color:#059669}
+        #page-sa-rabbitmq p{color:#475569;margin-bottom:.75rem}
+        #page-sa-rabbitmq svg text{font-family:'Nunito',sans-serif}
+      </style>
+      <div class="rq-wrap">
+        <div class="rq-header">
+          <div class="rq-badge">Advanced Tech Skills · Модуль</div>
+          <h1>RabbitMQ</h1>
+          <p>Повний розбір: від AMQP-протоколу до exchange-типів, маршрутизації та production-патернів для BA/SA</p>
+          <div class="rq-meta">
+            <span>⏱ ~40 хв</span>
+            <span>🎯 Рівень: mid → senior</span>
+            <span>🏷 Message Broker · Task Queues · Routing · Integration</span>
+          </div>
+        </div>
+
+        <div class="rq-toc">
+          <h3>Зміст модуля</h3>
+          <div class="rq-toc-grid">
+            <a href="javascript:void(0)" onclick="document.getElementById('rq-what').scrollIntoView({behavior:'smooth'})">Що таке RabbitMQ</a>
+            <a href="javascript:void(0)" onclick="document.getElementById('rq-amqp').scrollIntoView({behavior:'smooth'})">AMQP протокол</a>
+            <a href="javascript:void(0)" onclick="document.getElementById('rq-core').scrollIntoView({behavior:'smooth'})">Ключові концепції</a>
+            <a href="javascript:void(0)" onclick="document.getElementById('rq-flow').scrollIntoView({behavior:'smooth'})">Потік даних у системі</a>
+            <a href="javascript:void(0)" onclick="document.getElementById('rq-exchanges').scrollIntoView({behavior:'smooth'})">4 типи Exchange</a>
+            <a href="javascript:void(0)" onclick="document.getElementById('rq-qfeatures').scrollIntoView({behavior:'smooth'})">Можливості черг</a>
+            <a href="javascript:void(0)" onclick="document.getElementById('rq-ack').scrollIntoView({behavior:'smooth'})">ACK / NACK механізм</a>
+            <a href="javascript:void(0)" onclick="document.getElementById('rq-dlx').scrollIntoView({behavior:'smooth'})">Dead Letter Exchange</a>
+            <a href="javascript:void(0)" onclick="document.getElementById('rq-cluster').scrollIntoView({behavior:'smooth'})">Кластеризація</a>
+            <a href="javascript:void(0)" onclick="document.getElementById('rq-usecases').scrollIntoView({behavior:'smooth'})">Use Cases для BA/SA</a>
+            <a href="javascript:void(0)" onclick="document.getElementById('rq-mistakes').scrollIntoView({behavior:'smooth'})">Типові помилки</a>
+            <a href="javascript:void(0)" onclick="document.getElementById('rq-interview-s').scrollIntoView({behavior:'smooth'})">Питання на співбесіді</a>
+            <a href="javascript:void(0)" onclick="document.getElementById('rq-comparison').scrollIntoView({behavior:'smooth'})">Kafka vs RabbitMQ</a>
+          </div>
+        </div>
+
+        <!-- 1. ЩО ТАКЕ -->
+        <div id="rq-what" class="rq-sd"><div class="rq-sn">1</div><h2>Що таке RabbitMQ і яку проблему він вирішує</h2></div>
+        <div class="rq-cl rq-co"><strong>📌 Контекст для BA/SA</strong><p>Уяви: Payment Service обробив транзакцію і має повідомити 5 сервісів — Email, SMS, Analytics, Fraud, Loyalty. Як зробити це надійно, якщо деякі сервіси можуть бути тимчасово недоступні? Відповідь — RabbitMQ.</p></div>
+        <p>RabbitMQ — це <strong>message broker</strong> з відкритим кодом, написаний на Erlang/OTP. Реалізує протокол <strong>AMQP 0-9-1</strong>. Філософія: <em>«smart broker, dumb consumer»</em> — вся логіка маршрутизації та доставки живе у брокері.</p>
+        <div class="rq-g3">
+          <div class="rq-card" style="border-top:3px solid #EA580C;text-align:center"><div style="font-size:2rem;margin-bottom:8px">📮</div><strong>Message Broker</strong><p style="font-size:13px;margin-top:6px">Приймає, маршрутизує і доставляє повідомлення між системами</p></div>
+          <div class="rq-card" style="border-top:3px solid #EA580C;text-align:center"><div style="font-size:2rem;margin-bottom:8px">🔀</div><strong>Flexible Routing</strong><p style="font-size:13px;margin-top:6px">4 типи Exchange дають гнучку маршрутизацію без змін у producer</p></div>
+          <div class="rq-card" style="border-top:3px solid #EA580C;text-align:center"><div style="font-size:2rem;margin-bottom:8px">✅</div><strong>Delivery Guarantee</strong><p style="font-size:13px;margin-top:6px">ACK/NACK механізм гарантує at-least-once доставку</p></div>
+        </div>
+
+        <!-- 2. AMQP -->
+        <div id="rq-amqp" class="rq-sd"><div class="rq-sn">2</div><h2>AMQP протокол: основа RabbitMQ</h2></div>
+        <p>AMQP (Advanced Message Queuing Protocol) — відкритий стандарт для обміну повідомленнями. RabbitMQ реалізує версію <strong>AMQP 0-9-1</strong>. Також підтримує MQTT, STOMP, HTTP через плагіни.</p>
+        <div class="rq-tw"><table><thead><tr><th>Протокол</th><th>Статус</th><th>Призначення</th><th>Типові клієнти</th></tr></thead><tbody>
+          <tr><td><strong>AMQP 0-9-1</strong></td><td>Основний</td><td>Enterprise messaging, складна маршрутизація</td><td>Java, Python, .NET, Go</td></tr>
+          <tr><td><strong>MQTT</strong></td><td>Плагін</td><td>IoT пристрої, низьке споживання ресурсів</td><td>Arduino, мобільні</td></tr>
+          <tr><td><strong>STOMP</strong></td><td>Плагін</td><td>Простий текстовий протокол, legacy системи</td><td>Ruby, Perl, legacy apps</td></tr>
+          <tr><td><strong>HTTP/WebSocket</strong></td><td>Плагін</td><td>REST API до management UI, web-клієнти</td><td>Браузери, REST clients</td></tr>
+        </tbody></table></div>
+        <div class="rq-cl rq-ct"><strong>🔑 Чому AMQP важливий для BA/SA</strong><p>Multi-protocol підтримка означає, що RabbitMQ може бути «мостом» між modern REST-сервісами і legacy IoT/STOMP-системами без переписування клієнтів — критично при incremental migration від монолітів.</p></div>
+
+        <!-- 3. КЛЮЧОВІ КОНЦЕПЦІЇ -->
+        <div id="rq-core" class="rq-sd"><div class="rq-sn">3</div><h2>Ключові концепції: глосарій з прикладами</h2></div>
+        <div class="rq-tw"><table><thead><tr><th>Термін</th><th>Визначення</th><th>Аналогія</th><th>Приклад у e-commerce</th></tr></thead><tbody>
+          <tr><td><span class="rq-pill rq-po">Message</span></td><td>Одиниця даних: payload, routing key, headers, properties</td><td>Лист у конверті</td><td><code>{"order_id":"123","status":"paid"}</code></td></tr>
+          <tr><td><span class="rq-pill rq-po">Producer</span></td><td>Додаток що публікує повідомлення в Exchange</td><td>Відправник листа</td><td>Order Service публікує order.paid</td></tr>
+          <tr><td><span class="rq-pill rq-po">Exchange</span></td><td>Посередник-маршрутизатор. Отримує msg і вирішує в яку Queue направити</td><td>Сортувальний центр</td><td>Exchange "orders" типу topic</td></tr>
+          <tr><td><span class="rq-pill rq-po">Queue</span></td><td>Буфер де зберігаються повідомлення до обробки consumer'ом</td><td>Поштова скринька</td><td>email-notifications, sms-alerts</td></tr>
+          <tr><td><span class="rq-pill rq-po">Binding</span></td><td>Зв'язок між Exchange і Queue з правилом маршрутизації</td><td>Адреса на конверті</td><td>Bind order.* → email-notifications</td></tr>
+          <tr><td><span class="rq-pill rq-po">Routing Key</span></td><td>Атрибут повідомлення для маршрутизації</td><td>Поштовий індекс</td><td>order.paid, order.shipped</td></tr>
+          <tr><td><span class="rq-pill rq-po">Consumer</span></td><td>Додаток що читає повідомлення з Queue і підтверджує (ACK)</td><td>Одержувач листа</td><td>Email Service читає з queue</td></tr>
+          <tr><td><span class="rq-pill rq-po">Virtual Host</span></td><td>Логічна ізоляція: окремий namespace</td><td>Окремий поштовий відділ</td><td>/production, /staging, /dev</td></tr>
+          <tr><td><span class="rq-pill rq-po">Channel</span></td><td>Легковаге з'єднання всередині TCP connection</td><td>Кілька розмов по 1 телефону</td><td>Кожен thread = окремий channel</td></tr>
+          <tr><td><span class="rq-pill rq-po">ACK / NACK</span></td><td>Підтвердження або відхилення обробки</td><td>Підпис про отримання</td><td>Consumer підтверджує після запису в БД</td></tr>
+        </tbody></table></div>
+
+        <!-- 4. ПОТІК ДАНИХ -->
+        <div id="rq-flow" class="rq-sd"><div class="rq-sn">4</div><h2>Потік даних: як повідомлення ходить між системами</h2></div>
+        <div class="rq-dw">
+          <div class="rq-dt">Повна схема потоку даних у RabbitMQ (e-commerce сценарій)</div>
+          <svg width="100%" viewBox="0 0 750 430">
+            <defs>
+              <marker id="rq-ao" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 1L8 5L2 9" fill="none" stroke="#EA580C" stroke-width="1.5" stroke-linecap="round"/></marker>
+              <marker id="rq-ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 1L8 5L2 9" fill="none" stroke="#DC2626" stroke-width="1.5" stroke-linecap="round"/></marker>
+            </defs>
+            <rect x="8" y="30" width="110" height="52" rx="7" fill="#7C2D12" stroke="#9A3412" stroke-width="0.8"/>
+            <text x="63" y="52" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">Order Service</text>
+            <text x="63" y="66" text-anchor="middle" font-size="9" fill="#FED7AA">PRODUCER</text>
+            <text x="63" y="95" text-anchor="middle" font-size="9" fill="#94A3B8">routing_key:</text>
+            <text x="63" y="108" text-anchor="middle" font-size="9" fill="#EA580C" font-weight="700">"order.paid"</text>
+            <line x1="118" y1="56" x2="175" y2="56" stroke="#EA580C" stroke-width="1.5" marker-end="url(#rq-ao)"/>
+            <text x="146" y="48" text-anchor="middle" font-size="8" fill="#EA580C">① publish</text>
+            <rect x="177" y="18" width="385" height="300" rx="12" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.5"/>
+            <text x="369" y="13" text-anchor="middle" font-size="10" fill="#C2410C" font-weight="800">RABBITMQ BROKER</text>
+            <rect x="190" y="33" width="105" height="54" rx="7" fill="#EA580C" stroke="#C2410C" stroke-width="0.8"/>
+            <text x="242" y="55" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">Exchange</text>
+            <text x="242" y="69" text-anchor="middle" font-size="9" fill="#FED7AA">"orders" · topic</text>
+            <text x="323" y="33" text-anchor="middle" font-size="9" fill="#9A3412" font-weight="700">BINDINGS ③</text>
+            <rect x="310" y="39" width="235" height="20" rx="4" fill="#FED7AA" stroke="#FB923C" stroke-width="0.5"/>
+            <text x="427" y="53" text-anchor="middle" font-size="9" fill="#7C2D12">order.* → email-queue</text>
+            <rect x="310" y="64" width="235" height="20" rx="4" fill="#FED7AA" stroke="#FB923C" stroke-width="0.5"/>
+            <text x="427" y="78" text-anchor="middle" font-size="9" fill="#7C2D12">order.paid → loyalty-queue</text>
+            <rect x="310" y="89" width="235" height="20" rx="4" fill="#FED7AA" stroke="#FB923C" stroke-width="0.5"/>
+            <text x="427" y="103" text-anchor="middle" font-size="9" fill="#7C2D12">payment.# → audit-queue</text>
+            <rect x="190" y="130" width="145" height="38" rx="6" fill="#fff" stroke="#EA580C" stroke-width="1"/>
+            <text x="262" y="147" text-anchor="middle" font-size="10" fill="#7C2D12" font-weight="700">email-queue ④</text>
+            <text x="262" y="161" text-anchor="middle" font-size="8" fill="#94A3B8">durable · persistent</text>
+            <rect x="190" y="180" width="145" height="38" rx="6" fill="#fff" stroke="#EA580C" stroke-width="1"/>
+            <text x="262" y="197" text-anchor="middle" font-size="10" fill="#7C2D12" font-weight="700">loyalty-queue</text>
+            <text x="262" y="211" text-anchor="middle" font-size="8" fill="#94A3B8">durable · persistent</text>
+            <rect x="190" y="230" width="145" height="38" rx="6" fill="#fff" stroke="#EA580C" stroke-width="1"/>
+            <text x="262" y="247" text-anchor="middle" font-size="10" fill="#7C2D12" font-weight="700">audit-queue</text>
+            <text x="262" y="261" text-anchor="middle" font-size="8" fill="#94A3B8">durable · persistent</text>
+            <rect x="365" y="180" width="145" height="38" rx="6" fill="#FEE2E2" stroke="#DC2626" stroke-width="1" stroke-dasharray="3 2"/>
+            <text x="437" y="197" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="700">dead-letter-queue</text>
+            <text x="437" y="211" text-anchor="middle" font-size="8" fill="#DC2626">failed / expired msgs</text>
+            <line x1="335" y1="199" x2="364" y2="199" stroke="#DC2626" stroke-width="1" stroke-dasharray="2 2" marker-end="url(#rq-ar)"/>
+            <text x="350" y="192" text-anchor="middle" font-size="7" fill="#DC2626">NACK/TTL</text>
+            <rect x="365" y="240" width="145" height="28" rx="5" fill="#D1FAE5" stroke="#059669" stroke-width="0.8"/>
+            <text x="437" y="254" text-anchor="middle" font-size="9" fill="#065F46" font-weight="700">ACK → msg deleted ✅</text>
+          </svg>
+          <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:1rem">
+            <div style="background:#FFF7ED;border-radius:6px;padding:8px;font-size:11px;text-align:center;border:1px solid #FED7AA"><b style="color:#C2410C">① Producer</b><br>публікує msg з routing_key</div>
+            <div style="background:#FFF7ED;border-radius:6px;padding:8px;font-size:11px;text-align:center;border:1px solid #FED7AA"><b style="color:#C2410C">② Exchange</b><br>отримує msg і перевіряє bindings</div>
+            <div style="background:#FFF7ED;border-radius:6px;padding:8px;font-size:11px;text-align:center;border:1px solid #FED7AA"><b style="color:#C2410C">③ Routing</b><br>pattern збігається з 2 queues</div>
+            <div style="background:#FFF7ED;border-radius:6px;padding:8px;font-size:11px;text-align:center;border:1px solid #FED7AA"><b style="color:#C2410C">④ Queue</b><br>зберігає msg на диск</div>
+            <div style="background:#D1FAE5;border-radius:6px;padding:8px;font-size:11px;text-align:center;border:1px solid #6EE7B7"><b style="color:#059669">⑤ Consumer</b><br>обробляє, надсилає ACK</div>
+          </div>
+        </div>
+
+        <!-- 5. ТИПИ EXCHANGE -->
+        <div id="rq-exchanges" class="rq-sd"><div class="rq-sn">5</div><h2>4 типи Exchange: логіка маршрутизації</h2></div>
+        <div class="rq-dw">
+          <div class="rq-dt">Порівняння 4 типів Exchange — routing logic</div>
+          <svg width="100%" viewBox="0 0 740 480">
+            <defs>
+              <marker id="rq-xe" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 1L8 5L2 9" fill="none" stroke="#EA580C" stroke-width="1.5" stroke-linecap="round"/></marker>
+              <marker id="rq-xg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 1L8 5L2 9" fill="none" stroke="#059669" stroke-width="1.5" stroke-linecap="round"/></marker>
+            </defs>
+            <rect x="5" y="5" width="355" height="225" rx="10" fill="#FFF7ED" stroke="#EA580C" stroke-width="1"/>
+            <text x="183" y="25" text-anchor="middle" font-size="12" fill="#7C2D12" font-weight="800">① DIRECT Exchange</text>
+            <text x="183" y="39" text-anchor="middle" font-size="9" fill="#94A3B8">Exact match routing key</text>
+            <rect x="18" y="50" width="75" height="32" rx="5" fill="#EA580C"/><text x="55" y="70" text-anchor="middle" font-size="9" fill="#fff" font-weight="700">key="error"</text>
+            <rect x="130" y="47" width="75" height="38" rx="5" fill="#C2410C"/><text x="167" y="63" text-anchor="middle" font-size="9" fill="#fff" font-weight="700">Direct X</text><text x="167" y="77" text-anchor="middle" font-size="8" fill="#FED7AA">exact match</text>
+            <rect x="255" y="40" width="90" height="24" rx="4" fill="#fff" stroke="#EA580C" stroke-width="0.8"/><text x="300" y="56" text-anchor="middle" font-size="9" fill="#7C2D12">Q: error-log ✓</text>
+            <rect x="255" y="69" width="90" height="24" rx="4" fill="#fff" stroke="#94A3B8" stroke-width="0.8" opacity="0.5"/><text x="300" y="85" text-anchor="middle" font-size="9" fill="#94A3B8">Q: info-log ✗</text>
+            <line x1="93" y1="66" x2="129" y2="66" stroke="#EA580C" stroke-width="1.2" marker-end="url(#rq-xe)"/>
+            <line x1="205" y1="62" x2="253" y2="52" stroke="#059669" stroke-width="1.2" marker-end="url(#rq-xg)"/>
+            <line x1="205" y1="66" x2="253" y2="81" stroke="#DC2626" stroke-width="0.8" stroke-dasharray="2 2"/>
+            <rect x="10" y="145" width="335" height="78" rx="5" fill="#FFF7ED" stroke="#FED7AA"/>
+            <text x="20" y="161" font-size="9" fill="#7C2D12" font-weight="700">Коли використовувати:</text>
+            <text x="20" y="175" font-size="9" fill="#475569">• Routing за точним типом події (error/warning/info)</text>
+            <text x="20" y="189" font-size="9" fill="#475569">• Task queues: конкретний worker для конкретної задачі</text>
+            <text x="20" y="217" font-size="9" fill="#EA580C" font-weight="700">Use case: Log-level routing, task distribution</text>
+
+            <rect x="375" y="5" width="360" height="225" rx="10" fill="#EDE9FE" stroke="#7C3AED" stroke-width="1"/>
+            <text x="555" y="25" text-anchor="middle" font-size="12" fill="#4C1D95" font-weight="800">② FANOUT Exchange</text>
+            <text x="555" y="39" text-anchor="middle" font-size="9" fill="#94A3B8">Broadcasts to ALL queues</text>
+            <rect x="388" y="50" width="75" height="32" rx="5" fill="#7C3AED"/><text x="425" y="70" text-anchor="middle" font-size="9" fill="#fff" font-weight="700">any key</text>
+            <rect x="500" y="47" width="75" height="38" rx="5" fill="#5B21B6"/><text x="537" y="63" text-anchor="middle" font-size="9" fill="#fff" font-weight="700">Fanout X</text><text x="537" y="77" text-anchor="middle" font-size="8" fill="#C4B5FD">ignore key</text>
+            <rect x="625" y="35" width="100" height="24" rx="4" fill="#fff" stroke="#7C3AED" stroke-width="0.8"/><text x="675" y="51" text-anchor="middle" font-size="9" fill="#4C1D95">Q: email ✓</text>
+            <rect x="625" y="64" width="100" height="24" rx="4" fill="#fff" stroke="#7C3AED" stroke-width="0.8"/><text x="675" y="80" text-anchor="middle" font-size="9" fill="#4C1D95">Q: sms ✓</text>
+            <rect x="625" y="93" width="100" height="24" rx="4" fill="#fff" stroke="#7C3AED" stroke-width="0.8"/><text x="675" y="109" text-anchor="middle" font-size="9" fill="#4C1D95">Q: push ✓</text>
+            <line x1="463" y1="66" x2="498" y2="66" stroke="#7C3AED" stroke-width="1.2"/>
+            <line x1="575" y1="60" x2="623" y2="47" stroke="#059669" stroke-width="1.2" marker-end="url(#rq-xg)"/>
+            <line x1="575" y1="66" x2="623" y2="76" stroke="#059669" stroke-width="1.2" marker-end="url(#rq-xg)"/>
+            <line x1="575" y1="72" x2="623" y2="105" stroke="#059669" stroke-width="1.2" marker-end="url(#rq-xg)"/>
+            <rect x="380" y="145" width="348" height="78" rx="5" fill="#EDE9FE" stroke="#C4B5FD"/>
+            <text x="390" y="161" font-size="9" fill="#4C1D95" font-weight="700">Коли використовувати:</text>
+            <text x="390" y="175" font-size="9" fill="#475569">• Broadcast: розіслати всім підписникам</text>
+            <text x="390" y="189" font-size="9" fill="#475569">• order.placed → email + sms + push одночасно</text>
+            <text x="390" y="217" font-size="9" fill="#7C3AED" font-weight="700">Use case: Notifications, pub/sub, cache bust</text>
+
+            <rect x="5" y="242" width="355" height="228" rx="10" fill="#D1FAE5" stroke="#059669" stroke-width="1"/>
+            <text x="183" y="262" text-anchor="middle" font-size="12" fill="#065F46" font-weight="800">③ TOPIC Exchange</text>
+            <text x="183" y="276" text-anchor="middle" font-size="9" fill="#94A3B8">Wildcard: * (одне слово) і # (будь-яка кількість)</text>
+            <rect x="18" y="287" width="80" height="40" rx="5" fill="#059669"/><text x="58" y="304" text-anchor="middle" font-size="9" fill="#fff" font-weight="700">Producer</text><text x="58" y="318" text-anchor="middle" font-size="8" fill="#A7F3D0">"eu.payment.failed"</text>
+            <rect x="135" y="285" width="75" height="44" rx="5" fill="#065F46"/><text x="172" y="303" text-anchor="middle" font-size="9" fill="#fff" font-weight="700">Topic X</text><text x="172" y="317" text-anchor="middle" font-size="8" fill="#A7F3D0">wildcard</text>
+            <rect x="258" y="270" width="88" height="26" rx="4" fill="#fff" stroke="#059669"/><text x="302" y="287" text-anchor="middle" font-size="8" fill="#065F46">eu.*.failed ✓</text>
+            <rect x="258" y="300" width="88" height="26" rx="4" fill="#fff" stroke="#059669"/><text x="302" y="317" text-anchor="middle" font-size="8" fill="#065F46">#.payment.# ✓</text>
+            <rect x="258" y="330" width="88" height="26" rx="4" fill="#fff" stroke="#94A3B8" opacity="0.5"/><text x="302" y="347" text-anchor="middle" font-size="8" fill="#94A3B8">us.*.* ✗</text>
+            <line x1="98" y1="307" x2="133" y2="307" stroke="#059669" stroke-width="1.2" marker-end="url(#rq-xg)"/>
+            <line x1="210" y1="302" x2="256" y2="283" stroke="#059669" stroke-width="1.2" marker-end="url(#rq-xg)"/>
+            <line x1="210" y1="307" x2="256" y2="313" stroke="#059669" stroke-width="1.2" marker-end="url(#rq-xg)"/>
+            <rect x="10" y="370" width="340" height="92" rx="5" fill="#D1FAE5" stroke="#A7F3D0"/>
+            <text x="20" y="386" font-size="9" fill="#065F46" font-weight="700">Wildcards:</text>
+            <text x="20" y="400" font-size="9" fill="#475569">• * = рівно одне слово: eu.*.failed → eu.payment.failed ✓</text>
+            <text x="20" y="414" font-size="9" fill="#475569">• # = нуль або більше слів: #.failed → eu.payment.failed ✓</text>
+            <text x="20" y="458" font-size="9" fill="#059669" font-weight="700">Use case: Multi-tenant, regional routing</text>
+
+            <rect x="375" y="242" width="360" height="228" rx="10" fill="#FEF3C7" stroke="#D97706" stroke-width="1"/>
+            <text x="555" y="262" text-anchor="middle" font-size="12" fill="#78350F" font-weight="800">④ HEADERS Exchange</text>
+            <text x="555" y="276" text-anchor="middle" font-size="9" fill="#94A3B8">Routes by message headers (not routing key)</text>
+            <rect x="388" y="287" width="80" height="42" rx="5" fill="#D97706"/><text x="428" y="306" text-anchor="middle" font-size="9" fill="#fff" font-weight="700">Producer</text><text x="428" y="319" text-anchor="middle" font-size="8" fill="#FEF3C7">format=pdf</text>
+            <rect x="505" y="283" width="75" height="50" rx="5" fill="#B45309"/><text x="542" y="302" text-anchor="middle" font-size="9" fill="#fff" font-weight="700">Headers X</text><text x="542" y="316" text-anchor="middle" font-size="8" fill="#FEF3C7">x-match:</text><text x="542" y="328" text-anchor="middle" font-size="8" fill="#FEF3C7">all / any</text>
+            <rect x="628" y="272" width="100" height="36" rx="4" fill="#fff" stroke="#D97706"/><text x="678" y="287" text-anchor="middle" font-size="8" fill="#78350F">x-match: all</text><text x="678" y="300" text-anchor="middle" font-size="8" fill="#78350F">format=pdf + type=report</text>
+            <rect x="628" y="313" width="100" height="36" rx="4" fill="#fff" stroke="#D97706"/><text x="678" y="328" text-anchor="middle" font-size="8" fill="#78350F">x-match: any</text><text x="678" y="341" text-anchor="middle" font-size="8" fill="#78350F">format=pdf OR type=report</text>
+            <rect x="380" y="370" width="348" height="92" rx="5" fill="#FEF3C7" stroke="#FCD34D"/>
+            <text x="390" y="386" font-size="9" fill="#78350F" font-weight="700">x-match параметри:</text>
+            <text x="390" y="400" font-size="9" fill="#475569">• x-match: all — ВСІ headers мають збігтися (AND)</text>
+            <text x="390" y="414" font-size="9" fill="#475569">• x-match: any — достатньо ХОЧА Б ОДНОГО (OR)</text>
+            <text x="390" y="458" font-size="9" fill="#D97706" font-weight="700">Use case: Content-type routing, B2B</text>
+          </svg>
+        </div>
+        <div class="rq-tw"><table><thead><tr><th>Exchange</th><th>Routing Logic</th><th>Routing Key</th><th>Wildcard</th><th>Ідеально для</th></tr></thead><tbody>
+          <tr><td><span class="rq-pill rq-po">Direct</span></td><td>Exact match</td><td>Обов'язковий</td><td>❌</td><td>Task queues, log-level routing</td></tr>
+          <tr><td><span class="rq-pill rq-pp">Fanout</span></td><td>Broadcast all</td><td>Ігнорується</td><td>❌</td><td>Notifications, pub/sub</td></tr>
+          <tr><td><span class="rq-pill rq-pg">Topic</span></td><td>Pattern match</td><td>Патерн</td><td>✅ * та #</td><td>Multi-tenant, event filtering</td></tr>
+          <tr><td><span class="rq-pill rq-pa">Headers</span></td><td>Match by headers</td><td>Не використовується</td><td>❌</td><td>Content-type routing, B2B</td></tr>
+        </tbody></table></div>
+
+        <!-- 6. МОЖЛИВОСТІ ЧЕРГ -->
+        <div id="rq-qfeatures" class="rq-sd"><div class="rq-sn">6</div><h2>Розширені можливості черг</h2></div>
+        <div class="rq-g2">
+          <div class="rq-card" style="border-left:4px solid #EA580C"><span class="rq-pill rq-po">Durable Queues</span><p style="font-size:13px;margin-top:8px">Черга <strong>виживає після перезапуску</strong> брокера. Повідомлення з delivery_mode=2 також зберігаються на диск.</p></div>
+          <div class="rq-card" style="border-left:4px solid #7C3AED"><span class="rq-pill rq-pp">Priority Queues</span><p style="font-size:13px;margin-top:8px">Повідомлення з вищим пріоритетом обробляються <strong>першими</strong>. Пріоритет 0–255.</p></div>
+          <div class="rq-card" style="border-left:4px solid #D97706"><span class="rq-pill rq-pa">TTL (Time-To-Live)</span><p style="font-size:13px;margin-top:8px">Повідомлення <strong>автоматично видаляються</strong> після закінчення часу. Якщо є DLX — переміщується в dead-letter queue.</p></div>
+          <div class="rq-card" style="border-left:4px solid #0F9488"><span class="rq-pill rq-pt">Prefetch / QoS</span><p style="font-size:13px;margin-top:8px">Consumer отримує <strong>не більше N повідомлень</strong> без ACK. Захищає від overload.</p></div>
+          <div class="rq-card" style="border-left:4px solid #059669"><span class="rq-pill rq-pg">Quorum Queues</span><p style="font-size:13px;margin-top:8px">Черга на базі <strong>Raft consensus</strong>. Сильна консистентність, автоматичний failover. Production standard.</p></div>
+          <div class="rq-card" style="border-left:4px solid #2563EB"><span class="rq-pill rq-pb">Lazy Queues</span><p style="font-size:13px;margin-top:8px">Повідомлення <strong>одразу пишуться на диск</strong>. Для черг з великим backlog або повільних consumers.</p></div>
+        </div>
+
+        <!-- 7. ACK/NACK -->
+        <div id="rq-ack" class="rq-sd"><div class="rq-sn">7</div><h2>ACK / NACK: гарантія доставки</h2></div>
+        <div class="rq-tw"><table><thead><tr><th>Дія</th><th>Параметр</th><th>Результат</th><th>Коли використовувати</th></tr></thead><tbody>
+          <tr><td><strong>ACK</strong></td><td><code>basic.ack</code></td><td>Повідомлення видаляється назавжди</td><td>Обробка успішна</td></tr>
+          <tr><td><strong>NACK + requeue=true</strong></td><td><code>basic.nack(requeue=True)</code></td><td>Повертається в чергу</td><td>Тимчасова помилка</td></tr>
+          <tr><td><strong>NACK + requeue=false</strong></td><td><code>basic.nack(requeue=False)</code></td><td>Переміщується у DLX</td><td>Постійна помилка</td></tr>
+          <tr><td><strong>Reject</strong></td><td><code>basic.reject</code></td><td>Аналог NACK для 1 msg</td><td>Невалідний формат</td></tr>
+          <tr><td><strong>Timeout</strong></td><td>consumer falls</td><td>Автоматичний requeue</td><td>Consumer впав без ACK</td></tr>
+        </tbody></table></div>
+        <div class="rq-cl rq-ca"><strong>⚠ Важливо: Infinite Requeue Loop</strong><p>NACK + requeue=true без лічильника спроб = broken message нескінченно повертається. Завжди використовуй DLX або retry counter у headers.</p></div>
+
+        <!-- 8. DLX -->
+        <div id="rq-dlx" class="rq-sd"><div class="rq-sn">8</div><h2>Dead Letter Exchange (DLX): обробка помилок</h2></div>
+        <div class="rq-cl rq-cr"><strong>⚡ Критично для production</strong><p>DLX автоматично перехоплює "проблемні" повідомлення замість їх втрати. Без DLX NACK+requeue=false знищить повідомлення назавжди.</p></div>
+        <div class="rq-cl rq-cg"><strong>💡 Best Practice: Retry Pattern з exponential backoff</strong><p>Main Queue → Consumer FAILS → msg в retry-queue → через TTL → знову в Main Queue → після 3 спроб → final-dlq для ручної перевірки.</p></div>
+        <div class="rq-dw">
+          <div class="rq-dt">Dead Letter Exchange — triggers і lifecycle</div>
+          <svg width="100%" viewBox="0 0 700 130">
+            <defs>
+              <marker id="rq-da" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 1L8 5L2 9" fill="none" stroke="#EA580C" stroke-width="1.5" stroke-linecap="round"/></marker>
+              <marker id="rq-dr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 1L8 5L2 9" fill="none" stroke="#DC2626" stroke-width="1.5" stroke-linecap="round"/></marker>
+              <marker id="rq-dg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 1L8 5L2 9" fill="none" stroke="#059669" stroke-width="1.5" stroke-linecap="round"/></marker>
+            </defs>
+            <rect x="10" y="20" width="80" height="40" rx="6" fill="#EA580C"/><text x="50" y="38" text-anchor="middle" font-size="9" fill="#fff" font-weight="700">Producer</text><text x="50" y="51" text-anchor="middle" font-size="8" fill="#FED7AA">publishes</text>
+            <line x1="90" y1="40" x2="118" y2="40" stroke="#EA580C" stroke-width="1.2" marker-end="url(#rq-da)"/>
+            <rect x="120" y="20" width="90" height="40" rx="6" fill="#C2410C"/><text x="165" y="38" text-anchor="middle" font-size="9" fill="#fff" font-weight="700">Main Queue</text><text x="165" y="51" text-anchor="middle" font-size="8" fill="#FED7AA">x-dead-letter-exchange</text>
+            <line x1="210" y1="40" x2="238" y2="40" stroke="#EA580C" stroke-width="1.2" marker-end="url(#rq-da)"/>
+            <rect x="240" y="20" width="90" height="40" rx="6" fill="#7C3AED"/><text x="285" y="38" text-anchor="middle" font-size="9" fill="#fff" font-weight="700">Consumer</text><text x="285" y="51" text-anchor="middle" font-size="8" fill="#C4B5FD">processing...</text>
+            <text x="285" y="82" text-anchor="middle" font-size="8" fill="#DC2626" font-weight="700">DLX TRIGGERS:</text>
+            <text x="285" y="94" text-anchor="middle" font-size="8" fill="#475569">NACK+requeue=false · TTL expired · Queue max-length</text>
+            <line x1="330" y1="74" x2="378" y2="45" stroke="#DC2626" stroke-width="1.5" marker-end="url(#rq-dr)"/>
+            <rect x="380" y="20" width="90" height="40" rx="6" fill="#991B1B"/><text x="425" y="38" text-anchor="middle" font-size="9" fill="#fff" font-weight="700">Dead Letter</text><text x="425" y="51" text-anchor="middle" font-size="8" fill="#FCA5A5">Exchange</text>
+            <line x1="470" y1="40" x2="498" y2="40" stroke="#DC2626" stroke-width="1.2" marker-end="url(#rq-dr)"/>
+            <rect x="500" y="20" width="90" height="40" rx="6" fill="#FEE2E2" stroke="#DC2626"/><text x="545" y="38" text-anchor="middle" font-size="9" fill="#991B1B" font-weight="700">dead-letter-q</text><text x="545" y="51" text-anchor="middle" font-size="8" fill="#DC2626">stores failed</text>
+            <line x1="590" y1="40" x2="618" y2="40" stroke="#059669" stroke-width="1.2" marker-end="url(#rq-dg)"/>
+            <rect x="620" y="20" width="70" height="40" rx="6" fill="#059669"/><text x="655" y="38" text-anchor="middle" font-size="9" fill="#fff" font-weight="700">Alert</text><text x="655" y="51" text-anchor="middle" font-size="8" fill="#A7F3D0">Handler</text>
+          </svg>
+        </div>
+
+        <!-- 9. КЛАСТЕРИЗАЦІЯ -->
+        <div id="rq-cluster" class="rq-sd"><div class="rq-sn">9</div><h2>Кластеризація та відмовостійкість</h2></div>
+        <div class="rq-tw"><table><thead><tr><th>Тип черги</th><th>Replication</th><th>Consistency</th><th>Performance</th><th>Рекомендація</th></tr></thead><tbody>
+          <tr><td><strong>Classic (no mirror)</strong></td><td>❌ Одна нода</td><td>N/A</td><td>🟢 Найвища</td><td>Dev/тести тільки</td></tr>
+          <tr><td><strong>Classic Mirrored</strong></td><td>✅ Manual</td><td>🟡 Eventually</td><td>🔴 Знижена</td><td>❌ Deprecated</td></tr>
+          <tr><td><strong>Quorum Queue</strong></td><td>✅ Raft (RF=3)</td><td>🟢 Strong</td><td>🟡 Добра</td><td>✅ Production standard</td></tr>
+          <tr><td><strong>Stream Queue</strong></td><td>✅ Append-only</td><td>🟢 Strong</td><td>🟢 Висока</td><td>✅ Для replay/high-throughput</td></tr>
+        </tbody></table></div>
+
+        <!-- 10. USE CASES -->
+        <div id="rq-usecases" class="rq-sd"><div class="rq-sn">10</div><h2>Use Cases для BA/SA</h2></div>
+        <div class="rq-tw"><table><thead><tr><th>Домен</th><th>Use Case</th><th>Exchange</th><th>Чому RabbitMQ</th></tr></thead><tbody>
+          <tr><td><span class="rq-pill rq-po">E-commerce</span></td><td>Order processing pipeline</td><td>Topic</td><td>ACK гарантує що замовлення не втрачено</td></tr>
+          <tr><td><span class="rq-pill rq-po">E-commerce</span></td><td>Multi-channel notifications</td><td>Fanout</td><td>1 event → N channels без coupling</td></tr>
+          <tr><td><span class="rq-pill rq-pb">Fintech</span></td><td>Payment retry з backoff</td><td>Direct + DLX</td><td>DLX + TTL реалізує exponential backoff</td></tr>
+          <tr><td><span class="rq-pill rq-pb">Fintech</span></td><td>Priority transactions (VIP)</td><td>Direct</td><td>Priority 0–255 гарантує VIP першою</td></tr>
+          <tr><td><span class="rq-pill rq-pg">Enterprise</span></td><td>Legacy system integration</td><td>Topic</td><td>Multi-protocol: AMQP + STOMP bridge</td></tr>
+          <tr><td><span class="rq-pill rq-pg">Enterprise</span></td><td>Background jobs</td><td>Direct</td><td>Prefetch=1 балансує між workers</td></tr>
+          <tr><td><span class="rq-pill rq-pt">IoT</span></td><td>Sensor data routing</td><td>Topic</td><td>eu.sensor.temp → eu-analytics</td></tr>
+          <tr><td><span class="rq-pill rq-pgr">SaaS</span></td><td>Request-Reply (RPC)</td><td>Direct</td><td>Correlation ID + reply_to</td></tr>
+        </tbody></table></div>
+        <div class="rq-cl rq-co"><strong>💡 Коли НЕ використовувати RabbitMQ</strong><p>1. Replay подій — Kafka краща<br>2. Throughput &gt;50 MB/s — Kafka або Pulsar<br>3. Довготривала retention (роки) — Kafka<br>4. Managed рішення без ops — SQS/SNS простіші</p></div>
+
+        <!-- 11. ТИПОВІ ПОМИЛКИ -->
+        <div id="rq-mistakes" class="rq-sd"><div class="rq-sn">11</div><h2>Типові помилки аналітика</h2></div>
+        <div class="rq-g2">
+          <div class="rq-cl rq-cr"><strong>❌ Помилка 1: Auto-ack в production</strong><p>При падінні consumer повідомлення вже видалено → безповоротна втрата. Завжди manual ACK.</p></div>
+          <div class="rq-cl rq-cr"><strong>❌ Помилка 2: Infinite requeue loop</strong><p>NACK + requeue=true без лічильника спроб. Потрібен DLX + retry counter.</p></div>
+          <div class="rq-cl rq-cr"><strong>❌ Помилка 3: Non-persistent messages</strong><p>Черга durable=true, але msg без delivery_mode=2. При рестарті всі msg зникають.</p></div>
+          <div class="rq-cl rq-cr"><strong>❌ Помилка 4: Prefetch без ліміту</strong><p>Consumer без basic_qos() → OOM crash. Завжди встановлювати prefetch_count.</p></div>
+          <div class="rq-cl rq-cr"><strong>❌ Помилка 5: Один channel на всі threads</strong><p>Channel не thread-safe! Кожен thread = окремий channel.</p></div>
+          <div class="rq-cl rq-cr"><strong>❌ Помилка 6: Все на /default vhost</strong><p>Prod, staging, dev на одному vhost → тестові msg потрапляють у production.</p></div>
+        </div>
+
+        <h3 class="rq-sh">Базові конфігурації</h3>
+        <div class="rq-code"><span class="c"># ── QUEUE DECLARATION (Python pika) ──</span>
+<span class="k">channel</span>.<span class="fn">queue_declare</span>(
+    queue=<span class="s">'payment-queue'</span>,
+    <span class="k">durable</span>=<span class="n">True</span>,                    <span class="c"># виживає перезапуску брокера</span>
+    arguments={
+        <span class="s">'x-dead-letter-exchange'</span>: <span class="s">'dlx'</span>,  <span class="c"># DLX для failed messages</span>
+        <span class="s">'x-message-ttl'</span>: <span class="n">60000</span>,            <span class="c"># TTL 60 секунд</span>
+        <span class="s">'x-max-length'</span>: <span class="n">10000</span>,              <span class="c"># максимум 10k повідомлень</span>
+        <span class="s">'x-queue-type'</span>: <span class="s">'quorum'</span>            <span class="c"># quorum queue (production)</span>
+    }
+)
+
+<span class="c"># ── CONSUMER з QoS і manual ACK ──</span>
+<span class="k">channel</span>.<span class="fn">basic_qos</span>(<span class="k">prefetch_count</span>=<span class="n">10</span>)  <span class="c"># max 10 unacked messages</span>
+
+def <span class="fn">callback</span>(ch, method, properties, body):
+    try:
+        <span class="fn">process_payment</span>(body)
+        ch.<span class="fn">basic_ack</span>(delivery_tag=method.delivery_tag)      <span class="c"># ✅ success</span>
+    except TransientError:
+        ch.<span class="fn">basic_nack</span>(delivery_tag=method.delivery_tag, requeue=<span class="n">True</span>)   <span class="c"># 🔁 retry</span>
+    except PermanentError:
+        ch.<span class="fn">basic_nack</span>(delivery_tag=method.delivery_tag, requeue=<span class="n">False</span>)  <span class="c"># ☠ DLX</span></div>
+
+        <!-- INTERVIEW -->
+        <div id="rq-interview-s" class="rq-sd"><div class="rq-sn">12</div><h2>Питання на senior-співбесіді</h2></div>
+        <div class="rq-ic">
+          <h4>🎯 Питання на senior-співбесіді по RabbitMQ</h4>
+          <div class="rq-iq">«Поясни різницю між Exchange і Queue. Чому producer пише не напряму в Queue?»</div>
+          <div class="rq-iq">«Коли ти вибереш Topic Exchange замість Direct? Наведи приклад naming convention.»</div>
+          <div class="rq-iq">«Що таке Dead Letter Exchange і як реалізувати retry з exponential backoff?»</div>
+          <div class="rq-iq">«Чим Quorum Queue відрізняється від Classic Mirrored? Чому mirrored deprecated?»</div>
+          <div class="rq-iq">«Що таке prefetch_count і як він захищає від consumer overload?»</div>
+          <div class="rq-iq">«Як реалізувати Request-Reply (RPC) через RabbitMQ?»</div>
+          <div class="rq-iq">«Що станеться якщо consumer впаде після отримання але до ACK?»</div>
+          <div class="rq-iq">«Навіщо потрібні Virtual Hosts?»</div>
+          <div class="rq-iq">«Опиши архітектуру: order created → email + sms + loyalty + audit»</div>
+          <div class="rq-iq">«Коли ти вибереш RabbitMQ, а не Kafka? Конкретні технічні критерії?»</div>
+        </div>
+
+        <!-- САМОПЕРЕВІРКА -->
+        <h3 class="rq-sh" style="margin-top:2rem">🧠 Самоперевірка</h3>
+        <div class="rq-sc" onclick="this.querySelector('.rq-sa').style.display=this.querySelector('.rq-sa').style.display==='block'?'none':'block'"><strong>1.</strong> Що станеться якщо routing key не збігається з жодним binding?<div class="rq-sa">Повідомлення буде <strong>видалено (dropped)</strong>, якщо не налаштований alternate-exchange.</div></div>
+        <div class="rq-sc" onclick="this.querySelector('.rq-sa').style.display=this.querySelector('.rq-sa').style.display==='block'?'none':'block'"><strong>2.</strong> Чим відрізняється NACK+requeue=true від requeue=false?<div class="rq-sa">requeue=true → повертається в чергу (ризик loop!). requeue=false → в DLX або видаляється.</div></div>
+        <div class="rq-sc" onclick="this.querySelector('.rq-sa').style.display=this.querySelector('.rq-sa').style.display==='block'?'none':'block'"><strong>3.</strong> Для чого потрібен prefetch_count?<div class="rq-sa">Обмежує кількість unacked msg. Без нього consumer може отримати тисячі msg і впасти з OOM.</div></div>
+        <div class="rq-sc" onclick="this.querySelector('.rq-sa').style.display=this.querySelector('.rq-sa').style.display==='block'?'none':'block'"><strong>4.</strong> У чому різниця між * та # у topic exchange?<div class="rq-sa">* = рівно одне слово. # = нуль або будь-яка кількість слів (greedy wildcard).</div></div>
+        <div class="rq-sc" onclick="this.querySelector('.rq-sa').style.display=this.querySelector('.rq-sa').style.display==='block'?'none':'block'"><strong>5.</strong> Яка різниця між durable queue і persistent message?<div class="rq-sa">durable=true — queue виживе рестарт. Але якщо msg без delivery_mode=2 — воно зникне при рестарті навіть у durable queue.</div></div>
+
+        <!-- CHECKLIST -->
+        <div class="rq-sd"><div class="rq-sn">13</div><h2>Чекліст BA/SA</h2></div>
+        <div class="rq-card">
+          <h3 class="rq-sh" style="margin-top:0">Discovery — питання до команди</h3>
+          <ul class="rq-chk">
+            <li>Яка гарантія доставки потрібна: at-most-once чи at-least-once?</li>
+            <li>Чи потрібен порядок обробки?</li>
+            <li>Яке максимальне навантаження (msg/s)? RabbitMQ деградує при &gt;30 MB/s.</li>
+            <li>Чи є сценарії retry? Скільки спроб? З яким backoff?</li>
+            <li>Чи є вимоги до TTL повідомлень?</li>
+            <li>Скільки різних типів consumers читатимуть одні й ті самі events?</li>
+            <li>Чи потрібна ізоляція між prod/staging/dev? (Virtual Hosts)</li>
+          </ul>
+        </div>
+
+        <!-- KAFKA VS RABBITMQ -->
+        <div id="rq-comparison" class="rq-ch"><h2>⚔ Kafka vs RabbitMQ: детальне порівняння</h2><p>Яку технологію обрати для конкретного use case — матриця рішень для BA/SA</p></div>
+        <div class="rq-dw">
+          <div class="rq-dt">Архітектурні моделі: Kafka (pull) vs RabbitMQ (push)</div>
+          <svg width="100%" viewBox="0 0 700 200">
+            <defs>
+              <marker id="rq-ck" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 1L8 5L2 9" fill="none" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round"/></marker>
+              <marker id="rq-coo" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 1L8 5L2 9" fill="none" stroke="#EA580C" stroke-width="1.5" stroke-linecap="round"/></marker>
+              <marker id="rq-cgg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 1L8 5L2 9" fill="none" stroke="#059669" stroke-width="1.5" stroke-linecap="round"/></marker>
+            </defs>
+            <rect x="5" y="10" width="335" height="185" rx="10" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5"/>
+            <text x="172" y="30" text-anchor="middle" font-size="12" fill="#1E3A8A" font-weight="800">KAFKA — Pull Model</text>
+            <text x="172" y="43" text-anchor="middle" font-size="9" fill="#94A3B8">"Dumb broker, Smart consumer"</text>
+            <rect x="18" y="55" width="60" height="28" rx="5" fill="#2563EB"/><text x="48" y="73" text-anchor="middle" font-size="9" fill="#fff" font-weight="700">Producer</text>
+            <rect x="110" y="50" width="110" height="56" rx="6" fill="#1E3A8A"/><text x="165" y="72" text-anchor="middle" font-size="10" fill="#fff" font-weight="700">Broker</text><text x="165" y="86" text-anchor="middle" font-size="8" fill="#BFDBFE">Append-only log</text><text x="165" y="98" text-anchor="middle" font-size="8" fill="#BFDBFE">Partitions · Offsets</text>
+            <rect x="262" y="55" width="60" height="28" rx="5" fill="#059669"/><text x="292" y="73" text-anchor="middle" font-size="9" fill="#fff" font-weight="700">Consumer</text>
+            <line x1="78" y1="69" x2="109" y2="69" stroke="#2563EB" stroke-width="1.2" marker-end="url(#rq-ck)"/>
+            <text x="308" y="62" text-anchor="middle" font-size="8" fill="#059669" font-weight="700">← PULL</text>
+            <line x1="292" y1="66" x2="221" y2="78" stroke="#059669" stroke-width="1.2" marker-end="url(#rq-cgg)"/>
+            <rect x="12" y="122" width="320" height="65" rx="5" fill="#EFF6FF"/>
+            <text x="22" y="138" font-size="9" fill="#1E3A8A" font-weight="700">Ключові характеристики:</text>
+            <text x="22" y="152" font-size="9" fill="#475569">✓ Consumer вирішує коли і звідки читати</text>
+            <text x="22" y="166" font-size="9" fill="#475569">✓ Дані зберігаються незалежно від читання</text>
+            <text x="22" y="180" font-size="9" fill="#475569">✓ Replay: перечитати з offset=0</text>
+            <rect x="358" y="10" width="335" height="185" rx="10" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.5"/>
+            <text x="525" y="30" text-anchor="middle" font-size="12" fill="#7C2D12" font-weight="800">RabbitMQ — Push Model</text>
+            <text x="525" y="43" text-anchor="middle" font-size="9" fill="#94A3B8">"Smart broker, Dumb consumer"</text>
+            <rect x="370" y="55" width="60" height="28" rx="5" fill="#EA580C"/><text x="400" y="73" text-anchor="middle" font-size="9" fill="#fff" font-weight="700">Producer</text>
+            <rect x="460" y="48" width="110" height="64" rx="6" fill="#C2410C"/><text x="515" y="68" text-anchor="middle" font-size="10" fill="#fff" font-weight="700">Broker</text><text x="515" y="82" text-anchor="middle" font-size="8" fill="#FED7AA">Exchange + Queues</text><text x="515" y="96" text-anchor="middle" font-size="8" fill="#FED7AA">ACK tracking</text>
+            <rect x="613" y="55" width="60" height="28" rx="5" fill="#059669"/><text x="643" y="73" text-anchor="middle" font-size="9" fill="#fff" font-weight="700">Consumer</text>
+            <line x1="430" y1="69" x2="459" y2="69" stroke="#EA580C" stroke-width="1.2" marker-end="url(#rq-coo)"/>
+            <line x1="570" y1="77" x2="611" y2="69" stroke="#EA580C" stroke-width="1.2" marker-end="url(#rq-coo)"/>
+            <text x="591" y="64" text-anchor="middle" font-size="8" fill="#EA580C" font-weight="700">PUSH →</text>
+            <rect x="362" y="122" width="320" height="65" rx="5" fill="#FFF7ED"/>
+            <text x="372" y="138" font-size="9" fill="#7C2D12" font-weight="700">Ключові характеристики:</text>
+            <text x="372" y="152" font-size="9" fill="#475569">✓ Broker активно пушить msg consumer'у</text>
+            <text x="372" y="166" font-size="9" fill="#475569">✓ ACK/NACK: підтвердження кожного msg</text>
+            <text x="372" y="180" font-size="9" fill="#475569">✓ Повідомлення видаляється після ACK</text>
+          </svg>
+        </div>
+
+        <div class="rq-tw"><table><thead style="background:linear-gradient(90deg,#1E3A8A,#C2410C)"><tr><th>Критерій</th><th>🟠 RabbitMQ</th><th>🔵 Kafka</th><th>Переможець</th></tr></thead><tbody>
+          <tr><td><strong>Throughput</strong></td><td>До ~50 MB/s</td><td>Мільйони msg/s</td><td><span class="rq-wt rq-wk">Kafka</span></td></tr>
+          <tr><td><strong>Latency</strong></td><td>🟢 Sub-millisecond</td><td>🟡 Кілька мс</td><td><span class="rq-wt rq-wr">RabbitMQ</span></td></tr>
+          <tr><td><strong>Маршрутизація</strong></td><td>🟢 4 типи exchange</td><td>🔴 Проста</td><td><span class="rq-wt rq-wr">RabbitMQ</span></td></tr>
+          <tr><td><strong>Replay подій</strong></td><td>🔴 Ні</td><td>🟢 Так</td><td><span class="rq-wt rq-wk">Kafka</span></td></tr>
+          <tr><td><strong>Retention</strong></td><td>🔴 До ACK</td><td>🟢 Тижні/місяці</td><td><span class="rq-wt rq-wk">Kafka</span></td></tr>
+          <tr><td><strong>Priority queue</strong></td><td>🟢 Вбудований</td><td>🔴 Немає</td><td><span class="rq-wt rq-wr">RabbitMQ</span></td></tr>
+          <tr><td><strong>DLX нативно</strong></td><td>🟢 Так</td><td>🔴 Custom код</td><td><span class="rq-wt rq-wr">RabbitMQ</span></td></tr>
+          <tr><td><strong>RPC патерн</strong></td><td>🟢 Нативний</td><td>🔴 Складно</td><td><span class="rq-wt rq-wr">RabbitMQ</span></td></tr>
+          <tr><td><strong>Ops складність</strong></td><td>🟢 Простіший</td><td>🔴 Кластер, KRaft</td><td><span class="rq-wt rq-wr">RabbitMQ</span></td></tr>
+          <tr><td><strong>Масштабованість</strong></td><td>🟡 Обмежено</td><td>🟢 Необмежено</td><td><span class="rq-wt rq-wk">Kafka</span></td></tr>
+          <tr><td><strong>Multi-protocol</strong></td><td>🟢 AMQP, MQTT, STOMP</td><td>🔴 Kafka protocol</td><td><span class="rq-wt rq-wr">RabbitMQ</span></td></tr>
+          <tr><td><strong>Stream processing</strong></td><td>🔴 Обмежений</td><td>🟢 Kafka Streams</td><td><span class="rq-wt rq-wk">Kafka</span></td></tr>
+        </tbody></table></div>
+
+        <h3 class="rq-sh">Матриця вибору: коли що обрати</h3>
+        <div class="rq-tw"><table><thead><tr><th>Сценарій</th><th>Рекомендація</th><th>Причина</th></tr></thead><tbody>
+          <tr><td>Background jobs: resize, email, PDF</td><td><span class="rq-pill rq-po">RabbitMQ</span></td><td>Work queue, ACK гарантія, простота</td></tr>
+          <tr><td>Real-time fraud detection (100k+ tx/s)</td><td><span class="rq-pill rq-pb">Kafka</span></td><td>High throughput, retention, replay</td></tr>
+          <tr><td>Multi-channel notifications</td><td><span class="rq-pill rq-po">RabbitMQ</span></td><td>Fanout exchange, ACK per-consumer</td></tr>
+          <tr><td>Event sourcing / CQRS / аудит-лог</td><td><span class="rq-pill rq-pb">Kafka</span></td><td>Immutable log, retention, replay</td></tr>
+          <tr><td>Мікросервіс RPC</td><td><span class="rq-pill rq-po">RabbitMQ</span></td><td>reply_to + correlation_id нативно</td></tr>
+          <tr><td>IoT: мільйони датчиків</td><td><span class="rq-pill rq-pb">Kafka</span></td><td>Throughput, stream processing</td></tr>
+          <tr><td>Legacy integration (STOMP/MQTT)</td><td><span class="rq-pill rq-po">RabbitMQ</span></td><td>Multi-protocol нативно</td></tr>
+          <tr><td>CDC: зміни БД в реальному часі</td><td><span class="rq-pill rq-pb">Kafka</span></td><td>Debezium + Kafka Connect</td></tr>
+          <tr><td>Priority processing (VIP)</td><td><span class="rq-pill rq-po">RabbitMQ</span></td><td>Priority queues нативно</td></tr>
+          <tr><td>Streaming + task queues</td><td><span class="rq-pill rq-pg">Обидва</span></td><td>Dual-broker pattern (Uber, Zalando)</td></tr>
+        </tbody></table></div>
+
+        <div class="rq-cl rq-ct"><strong>🏆 Резюме: Golden Rule</strong><p><strong>RabbitMQ</strong> — якщо задача «доставити повідомлення надійно» (task queue, RPC, routing, priority). <strong>Kafka</strong> — якщо задача «зберегти потік подій і дати різним системам читати у своєму темпі» (event streaming, CDC, audit, replay). Коли сумніваєшся щодо масштабу — Kafka. Коли щодо складності ops — RabbitMQ.</p></div>
+
+        <div style="margin-top:2rem;padding:1.5rem;background:#FFF7ED;border-radius:10px;border:1px solid #FED7AA;text-align:center">
+          <p style="font-size:13px;color:#94a3b8;margin:0">
+            Модуль: RabbitMQ + Kafka vs RabbitMQ · Рівень: mid→senior · Wiki BA/SA курс<br>
+            Джерела: RabbitMQ Official Docs · CloudAMQP Blog · AWS Compare · Confluent Blog
+          </p>
+        </div>
+      </div>
+
+      <div style="margin-top:1.5rem;display:flex;justify-content:space-between;">
+        <div onclick="navigate('sa-kafka','',this)" style="cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.4rem;background:#f1f5f9;color:var(--ink2);border-radius:50px;font-size:.87rem;font-weight:600;">← Apache Kafka</div>
       </div>
     </div>
 
