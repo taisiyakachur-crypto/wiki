@@ -832,6 +832,10 @@ body.sidebar-collapsed .main {
 .hub-arrow { color:var(--border); font-size:1rem; flex-shrink:0; transition:color .15s; align-self:center; }
 .hub-card:hover .hub-arrow { color:var(--r1); }
 
+/* Breadcrumb-лінк на hub розділу */
+.breadcrumb a.bc-link { color:var(--ink3); text-decoration:none; cursor:pointer; }
+.breadcrumb a.bc-link:hover { color:var(--r6); text-decoration:underline; }
+
 /* Автолінк терміна */
 a.wl {
   color:var(--r6); text-decoration:none;
@@ -871,6 +875,37 @@ a.wl--gloss[data-tip]:hover::after { background:#3A2530; }
 .pager-next { text-align:right; }
 .pager-hub { align-items:center; text-align:center; background:var(--grad-soft); }
 @media(max-width:640px){ .wiki-pager{ grid-template-columns:1fr; } .pager-next{ text-align:left; } }
+
+/* ── Питання на співбесіді: блок-посилання в кінці теми + сторінка-збірка ── */
+.iq-link {
+  display:flex; align-items:center; gap:1rem; margin:2.5rem 0 0;
+  background:linear-gradient(135deg,rgba(192,120,152,.10),rgba(91,174,200,.08));
+  border:1px solid rgba(192,120,152,.28); border-radius:var(--radius); padding:1rem 1.2rem;
+}
+.iq-link-icon { font-size:1.5rem; flex-shrink:0; }
+.iq-link-body { flex:1; min-width:0; }
+.iq-link-title { font-size:.9rem; font-weight:700; color:var(--ink); }
+.iq-link-desc { font-size:.76rem; color:var(--ink3); margin-top:.15rem; }
+.iq-link-btn {
+  flex-shrink:0; text-decoration:none; font-size:.8rem; font-weight:700; color:#fff;
+  background:linear-gradient(135deg,var(--r2),var(--r1)); padding:.5rem 1rem; border-radius:50px; transition:opacity .15s;
+}
+.iq-link-btn:hover { opacity:.88; }
+
+.iq-toc { display:flex; flex-wrap:wrap; gap:.45rem; margin-top:.8rem; }
+.iq-toc a { font-size:.78rem; text-decoration:none; color:var(--ink2); background:#fff; border:1px solid var(--border);
+  border-radius:50px; padding:.3rem .8rem; transition:all .15s; }
+.iq-toc a:hover { border-color:var(--r1); color:var(--r6); }
+.iq-count { font-size:.68rem; color:var(--ink3); margin-left:.3rem; }
+.iq-block { background:#fff; border:1px solid var(--border); border-radius:var(--radius); padding:1rem 1.2rem; margin-bottom:.9rem; scroll-margin-top:80px; }
+.iq-block-head { display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-bottom:.6rem; }
+.iq-block-title { font-size:.9rem; font-weight:700; color:var(--ink); }
+.iq-src { font-size:.74rem; text-decoration:none; color:var(--r6); white-space:nowrap; }
+.iq-src:hover { text-decoration:underline; }
+.iq-list { padding-left:1.3rem; color:var(--ink2); font-size:.88rem; line-height:1.7; }
+.iq-list li { margin-bottom:.35rem; }
+.iq-list li::marker { color:var(--r2); font-weight:700; }
+.iq-section { scroll-margin-top:80px; }
 </style>
 </head>
 <body>
@@ -917,313 +952,370 @@ a.wl--gloss[data-tip]:hover::after { background:#3A2530; }
 
   <!-- SIDEBAR -->
   <nav class="sidebar" id="sidebar">
-
     <div class="sidebar-section">
-      <div class="sidebar-section-label">Навігація</div>
-
-      <!-- 1. Старт та ресурси -->
-      <div class="nav-item open" id="nav-links">
-        <div class="nav-link active" onclick="toggleOrNavigate('nav-links','links','Корисні посилання',this)">
-          <svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M4.715 6.542L3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1 1 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4 4 0 0 1-.128-1.287z"/><path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243z"/></svg>
-          Старт та ресурси
+      <div class="sidebar-section-label">Старт</div>
+      <!-- Старт -->
+      <div class="nav-item open" id="nav-start">
+        <div class="nav-link" onclick="toggleOrNavigate('nav-start','links','Корисні посилання',this)">
+          <svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1 1 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4 4 0 0 1-.128-1.287z"/><path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243z"/></svg>
+          Старт
           <svg class="nav-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M6 4l4 4-4 4"/></svg>
         </div>
         <div class="nav-sub">
-          <div class="nav-sub-link" onclick="navigate('links','Корисні посилання',this,'Старт та ресурси')">Корисні посилання</div>
-          <div class="nav-sub-link" onclick="navigate('ba-daily','Що робить щодня BA',this,'Старт та ресурси')">Що робить щодня BA</div>
-          <div class="nav-sub-link" onclick="navigate('discovery','Чек-лист Discovery Phase',this,'Старт та ресурси')">Чек-лист Discovery Phase</div>
-          <div class="nav-sub-link" onclick="navigate('middle-ba','Middle BA — чек-лист',this,'Старт та ресурси')">Middle BA — чек-лист</div>
-          <div class="nav-sub-link" onclick="navigate('interview-questions','Підготовка до Senior-співбесіди',this,'Старт та ресурси')">Підготовка до Senior-співбесіди</div>
-          <div class="nav-sub-link" onclick="navigate('glossary','Словник IT-термінів',this,'Старт та ресурси')">Словник IT-термінів</div>
+          <div class="nav-sub-link" onclick="navigate('links','Корисні посилання',this,'Старт')">Корисні посилання</div>
+          <div class="nav-sub-link" onclick="navigate('glossary','Словник IT-термінів',this,'Старт')">Словник IT-термінів</div>
+          <div class="nav-sub-link" onclick="navigate('ba-daily','Що робить BA щодня',this,'Старт')">Що робить BA щодня</div>
         </div>
       </div>
 
-      <!-- 2. Системний аналіз -->
-      <div class="nav-item" id="nav-sa">
-        <div class="nav-link" onclick="toggleOrNavigate('nav-sa','sa-mod1','Що таке системний аналіз',this)">
-          <svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H5zm.5 2h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1zm0 2h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1zm0 2h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1 0-1z"/></svg>
-          Системний аналіз
+      <div class="sidebar-section-label">Аналіз: від проблеми до вимог</div>
+      <!-- Основи та мислення аналітика -->
+      <div class="nav-item" id="nav-found">
+        <div class="nav-link" onclick="toggleOrNavigate('nav-found','sa-mod1','Що таке системний аналіз',this)">
+          <svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8 16.016a7.5 7.5 0 0 0 1.962-14.74A1 1 0 0 0 9 0H7a1 1 0 0 0-.962 1.276A7.5 7.5 0 0 0 8 16.016m6.5-7.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0"/><path d="m6.94 7.44 4.95-2.83-2.83 4.95-4.949 2.83 2.828-4.95z"/></svg>
+          Основи та мислення аналітика
           <svg class="nav-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M6 4l4 4-4 4"/></svg>
         </div>
         <div class="nav-sub">
-          <div class="nav-sub-link" onclick="navigate('sa-mod1','Що таке системний аналіз',this,'Системний аналіз')">Що таке СА</div>
-          <div class="nav-sub-link" onclick="navigate('sa-mod2','Властивості систем і системне мислення',this,'Системний аналіз')">Властивості систем</div>
-          <div class="nav-sub-link" onclick="navigate('sa-mod3','Аналіз та Синтез',this,'Системний аналіз')">Аналіз та Синтез</div>
-          <div class="nav-sub-link" onclick="navigate('sa-mod4','Методологія СА',this,'Системний аналіз')">Методологія СА</div>
-          <div class="nav-sub-link" onclick="navigate('sa-mod5','Інструменти СА',this,'Системний аналіз')">Інструменти СА</div>
-          <div class="nav-sub-link" onclick="navigate('sa-mod6','Моделювання систем та вимоги до систем',this,'Системний аналіз')">Моделювання систем</div>
-              <div class="nav-sub-link" onclick="navigate('sa-mod7','Прийняття рішень у СА',this,'Системний аналіз')">Прийняття рішень</div>
-          <div class="nav-sub-link" onclick="navigate('sa-mod9','СА в IT/ERP/CRM/BI',this,'Системний аналіз')">СА в IT/ERP/CRM/BI</div>
-          <div class="nav-sub-link" onclick="navigate('sa-mod10','Архітектура систем',this,'Системний аналіз')">Архітектура систем</div>
-          <div class="nav-sub-link" onclick="navigate('sa-mod11','Синхронні та асинхронні запити',this,'Системний аналіз')">Sync vs Async</div>
-          <div class="nav-sub-link" onclick="navigate('sa-mod13','Кейс-проект для СА',this,'Системний аналіз')">Кейс-проект</div>
-          <div class="nav-sub-link" onclick="navigate('sa-mod14','Архітектура ПЗ і DevOps',this,'Системний аналіз')">Архітектура ПЗ і DevOps</div>
-          <div class="nav-sub-link" onclick="navigate('sa-mod15','UX-дизайн і прототипування',this,'Системний аналіз')">UX і прототипи</div>
-          <div class="nav-sub-link" onclick="navigate('sa-kafka','Apache Kafka',this,'Системний аналіз')">Apache Kafka</div>
-          <div class="nav-sub-link" onclick="navigate('sa-rabbitmq','RabbitMQ',this,'Системний аналіз')">RabbitMQ</div>
+          <div class="nav-sub-link" onclick="navigate('sa-mod1','Що таке системний аналіз',this,'Основи та мислення аналітика')">Що таке системний аналіз</div>
+          <div class="nav-sub-link" onclick="navigate('sa-mod2','Властивості систем',this,'Основи та мислення аналітика')">Властивості систем</div>
+          <div class="nav-sub-link" onclick="navigate('sa-mod3','Аналіз та синтез',this,'Основи та мислення аналітика')">Аналіз та синтез</div>
+          <div class="nav-sub-link" onclick="navigate('sa-mod4','Методологія системного аналізу',this,'Основи та мислення аналітика')">Методологія системного аналізу</div>
+          <div class="nav-sub-link" onclick="navigate('sa-mod5','Інструменти аналітика',this,'Основи та мислення аналітика')">Інструменти аналітика</div>
+          <div class="nav-sub-link" onclick="navigate('sa-mod7','Прийняття рішень',this,'Основи та мислення аналітика')">Прийняття рішень</div>
+          <div class="nav-sub-link" onclick="navigate('ba-m1','Техніки бізнес-аналізу',this,'Основи та мислення аналітика')">Техніки бізнес-аналізу</div>
+          <div class="nav-sub-link" onclick="navigate('ba-m2','BACCM та концепції BABOK',this,'Основи та мислення аналітика')">BACCM та концепції BABOK</div>
+          <div class="nav-sub-link" onclick="navigate('sa-mod9','Аналітик в IT/ERP/CRM/BI',this,'Основи та мислення аналітика')">Аналітик в IT/ERP/CRM/BI</div>
+          <div class="nav-sub-link" onclick="navigate('sa-mod13','Наскрізний кейс-проект',this,'Основи та мислення аналітика')">Наскрізний кейс-проект</div>
         </div>
       </div>
 
-      <!-- 3. Вимоги та документація -->
-      <div class="nav-item" id="nav-requirements">
-        <div class="nav-link" onclick="toggleOrNavigate('nav-requirements','req-overview','Світ вимог',this)">
-          <svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zM4.5 9a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM4 10.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 1 0-1h4a.5.5 0 0 1 0 1h-4z"/></svg>
-          Вимоги та документація
+      <!-- Стратегія та бізнес-кейс -->
+      <div class="nav-item" id="nav-strategy">
+        <div class="nav-link" onclick="toggleOrNavigate('nav-strategy','babok-strategy','Strategy Analysis (BABOK)',this)">
+          <svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/><path d="M8 13A5 5 0 1 1 8 3a5 5 0 0 1 0 10m0 1A6 6 0 1 0 8 2a6 6 0 0 0 0 12"/><path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8"/><path d="M9.5 8a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"/></svg>
+          Стратегія та бізнес-кейс
           <svg class="nav-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M6 4l4 4-4 4"/></svg>
         </div>
         <div class="nav-sub">
-          <div class="nav-sub-link" onclick="navigate('req-overview','Світ вимог',this,'Вимоги та документація')">Огляд: світ вимог</div>
-          <div class="nav-sub-link" onclick="navigate('req-user-stories','User Stories',this,'Вимоги та документація')">User Stories</div>
-          <div class="nav-sub-link" onclick="navigate('ba-m5','User Story Map',this,'Вимоги та документація')">User Story Map</div>
-          <div class="nav-sub-link" onclick="navigate('req-use-cases','Use Cases',this,'Вимоги та документація')">Use Cases</div>
-          <div class="nav-sub-link" onclick="navigate('req-acceptance-criteria','Acceptance Criteria',this,'Вимоги та документація')">Acceptance Criteria</div>
-          <div class="nav-sub-link" onclick="navigate('req-elicitation','Requirements Elicitation',this,'Вимоги та документація')">Requirements Elicitation</div>
-          <div class="nav-sub-link" onclick="navigate('sa-mod17','NFR — нефункціональні вимоги',this,'Вимоги та документація')">NFR — нефункціональні вимоги</div>
-          <div class="nav-sub-link" onclick="navigate('ba-m9','Декомпозиція та пріоритизація',this,'Вимоги та документація')">Декомпозиція та пріоритизація</div>
-          <div class="nav-sub-link" onclick="navigate('ba-m7','Типи та архітектура вимог',this,'Вимоги та документація')">Типи та архітектура вимог</div>
-          <div class="nav-sub-link" onclick="navigate('tech-m28','Traceability Matrix (RTM)',this,'Вимоги та документація')">Traceability Matrix (RTM)</div>
-          <div class="nav-sub-link" onclick="navigate('docs-overview','Документація: огляд',this,'Вимоги та документація')">Документація: огляд</div>
-          <div class="nav-sub-link" onclick="navigate('docs-brd','BRD',this,'Вимоги та документація')">BRD</div>
-          <div class="nav-sub-link" onclick="navigate('docs-srs','SRS',this,'Вимоги та документація')">SRS</div>
-          <div class="nav-sub-link" onclick="navigate('docs-decision-log','Decision Log та ADR',this,'Вимоги та документація')">Decision Log та ADR</div>
+          <div class="nav-sub-link" onclick="navigate('babok-strategy','Strategy Analysis (BABOK)',this,'Стратегія та бізнес-кейс')">Strategy Analysis (BABOK)</div>
+          <div class="nav-sub-link" onclick="navigate('tech-m21','Gap Analysis: AS-IS → TO-BE',this,'Стратегія та бізнес-кейс')">Gap Analysis: AS-IS → TO-BE</div>
+          <div class="nav-sub-link" onclick="navigate('babok-capability-map','Business Capability Map',this,'Стратегія та бізнес-кейс')">Business Capability Map</div>
+          <div class="nav-sub-link" onclick="navigate('tech-m27','Business Case та ROI',this,'Стратегія та бізнес-кейс')">Business Case та ROI</div>
+          <div class="nav-sub-link" onclick="navigate('ba-m24','Аналіз чутливості',this,'Стратегія та бізнес-кейс')">Аналіз чутливості</div>
+          <div class="nav-sub-link" onclick="navigate('ba-m6','Ризики проєкту',this,'Стратегія та бізнес-кейс')">Ризики проєкту</div>
+          <div class="nav-sub-link" onclick="navigate('babok-solution-eval','Solution Evaluation (BABOK)',this,'Стратегія та бізнес-кейс')">Solution Evaluation (BABOK)</div>
+          <div class="nav-sub-link" onclick="navigate('ba-m11','A/B тести та продуктові метрики',this,'Стратегія та бізнес-кейс')">A/B тести та продуктові метрики</div>
         </div>
       </div>
 
-      <!-- 4. Процеси та BPMN -->
-      <div class="nav-item" id="nav-bpmn">
-        <div class="nav-link" onclick="toggleOrNavigate('nav-bpmn','bpmn-m1','BPMN',this)">
-          <svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M2 1a1 1 0 0 0-1 1v4.586a1 1 0 0 0 .293.707l7 7a1 1 0 0 0 1.414 0l4.586-4.586a1 1 0 0 0 0-1.414l-7-7A1 1 0 0 0 6.586 1H2zm4 3.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/></svg>
-          Процеси та BPMN
+      <!-- Збір та аналіз вимог -->
+      <div class="nav-item" id="nav-elicit">
+        <div class="nav-link" onclick="toggleOrNavigate('nav-elicit','babok-planning','BA Planning & Monitoring',this)">
+          <svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0M9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1M4.5 9a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1zM4 10.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m.5 2.5a.5.5 0 0 1 0-1h4a.5.5 0 0 1 0 1z"/></svg>
+          Збір та аналіз вимог
           <svg class="nav-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M6 4l4 4-4 4"/></svg>
         </div>
         <div class="nav-sub">
-          <div class="nav-sub-link" onclick="navigate('bpmn-m1','BPMN — основи та нотація',this,'Процеси та BPMN')">Основи BPMN 2.0</div>
-          <div class="nav-sub-link" onclick="navigate('bpmn-elements','Елементи BPMN 2.0 — повний довідник',this,'Процеси та BPMN')">Елементи BPMN 2.0</div>
-          <div class="nav-sub-link" onclick="navigate('bpmn-m6','Глибоке моделювання BPMN 2.0',this,'Процеси та BPMN')">Глибоке BPMN 2.0</div>
-          <div class="nav-sub-link" onclick="navigate('bpmn-levels','Рівні деталізації BPMN: L1/L2/L3',this,'Процеси та BPMN')">Рівні L1/L2/L3</div>
-          <div class="nav-sub-link" onclick="navigate('bpmn-antipatterns','BPMN Anti-patterns',this,'Процеси та BPMN')">Anti-patterns</div>
-          <div class="nav-sub-link" onclick="navigate('bpmn-m2','Process Analysis та Modeling',this,'Процеси та BPMN')">Process Analysis та Modeling</div>
-          <div class="nav-sub-link" onclick="navigate('bpmn-m3','Root Cause Analysis',this,'Процеси та BPMN')">Root Cause Analysis</div>
-          <div class="nav-sub-link" onclick="navigate('bpmn-m4','Value Diagram',this,'Процеси та BPMN')">Value Diagram</div>
-          <div class="nav-sub-link" onclick="navigate('bpmn-m5','ARIS — моделювання архітектури',this,'Процеси та BPMN')">ARIS</div>
-          <div class="nav-sub-link" onclick="navigate('babok-bpm','BA в управлінні бізнес-процесами (BABOK)',this,'Процеси та BPMN')">BA в управлінні процесами (BABOK)</div>
+          <div class="nav-sub-link" onclick="navigate('babok-planning','BA Planning & Monitoring',this,'Збір та аналіз вимог')">BA Planning &amp; Monitoring</div>
+          <div class="nav-sub-link" onclick="navigate('tech-m22','Stakeholder Management',this,'Збір та аналіз вимог')">Stakeholder Management</div>
+          <div class="nav-sub-link" onclick="navigate('req-elicitation','Техніки збору вимог',this,'Збір та аналіз вимог')">Техніки збору вимог</div>
+          <div class="nav-sub-link" onclick="navigate('discovery','Чек-лист Discovery Phase',this,'Збір та аналіз вимог')">Чек-лист Discovery Phase</div>
+          <div class="nav-sub-link" onclick="navigate('req-overview','Світ вимог: огляд',this,'Збір та аналіз вимог')">Світ вимог: огляд</div>
+          <div class="nav-sub-link" onclick="navigate('ba-m7','Типи та архітектура вимог',this,'Збір та аналіз вимог')">Типи та архітектура вимог</div>
+          <div class="nav-sub-link" onclick="navigate('sa-mod6','Моделювання систем та вимоги',this,'Збір та аналіз вимог')">Моделювання систем та вимоги</div>
+          <div class="nav-sub-link" onclick="navigate('sa-mod17','Нефункціональні вимоги (NFR)',this,'Збір та аналіз вимог')">Нефункціональні вимоги (NFR)</div>
+          <div class="nav-sub-link" onclick="navigate('babok-business-rules','Business Rules та DMN',this,'Збір та аналіз вимог')">Business Rules та DMN</div>
+          <div class="nav-sub-link" onclick="navigate('ba-m9','Декомпозиція та пріоритизація',this,'Збір та аналіз вимог')">Декомпозиція та пріоритизація</div>
+          <div class="nav-sub-link" onclick="navigate('tech-m28','Traceability Matrix (RTM)',this,'Збір та аналіз вимог')">Traceability Matrix (RTM)</div>
         </div>
       </div>
 
-      <!-- 5. Бізнес аналіз -->
-      <div class="nav-item" id="nav-ba">
-        <div class="nav-link" onclick="toggleOrNavigate('nav-ba','ba-m1','Бізнес аналіз',this)">
-          <svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/></svg>
-          Бізнес аналіз
+      <!-- Написання вимог: US / UC / AC -->
+      <div class="nav-item" id="nav-spec">
+        <div class="nav-link" onclick="toggleOrNavigate('nav-spec','req-user-stories','User Stories: повний гайд',this)">
+          <svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325"/></svg>
+          Написання вимог: US / UC / AC
           <svg class="nav-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M6 4l4 4-4 4"/></svg>
         </div>
         <div class="nav-sub">
-          <div class="nav-sub-link" onclick="navigate('ba-m1','Техніки бізнес-аналізу',this,'Бізнес аналіз')">Техніки BA</div>
-          <div class="nav-sub-link" onclick="navigate('ba-m2','BACCM та ключові концепції',this,'Бізнес аналіз')">BACCM та концепції</div>
-          <div class="nav-sub-link" onclick="navigate('babok-planning','BA Planning & Monitoring',this,'Бізнес аналіз')">BA Planning & Monitoring</div>
-          <div class="nav-sub-link" onclick="navigate('babok-solution-eval','Solution Evaluation',this,'Бізнес аналіз')">Solution Evaluation</div>
-          <div class="nav-sub-link" onclick="navigate('babok-strategy','Strategy Analysis (BABOK)',this,'Бізнес аналіз')">Strategy Analysis (BABOK)</div>
-          <div class="nav-sub-link" onclick="navigate('babok-business-rules','Business Rules Analysis',this,'Бізнес аналіз')">Business Rules Analysis</div>
-          <div class="nav-sub-link" onclick="navigate('ba-m3','Agile / Scrum / Kanban / Waterfall',this,'Бізнес аналіз')">Методології (Agile/Scrum/Kanban)</div>
-          <div class="nav-sub-link" onclick="navigate('ba-m4','Lean методологія',this,'Бізнес аналіз')">Lean</div>
-          <div class="nav-sub-link" onclick="navigate('ba-m6','Ризики на проекті',this,'Бізнес аналіз')">Ризики</div>
-          <div class="nav-sub-link" onclick="navigate('ba-m8','Методи моделювання',this,'Бізнес аналіз')">Моделювання</div>
-          <div class="nav-sub-link" onclick="navigate('ba-m10','DoR та DoD',this,'Бізнес аналіз')">DoR та DoD</div>
-          <div class="nav-sub-link" onclick="navigate('ba-m11','A/B тестування та метрики',this,'Бізнес аналіз')">A/B тести та метрики</div>
-          <div class="nav-sub-link" onclick="navigate('ba-m13','PRINCE2',this,'Бізнес аналіз')">PRINCE2</div>
-          <div class="nav-sub-link" onclick="navigate('ba-m21','SAFe для аналітика',this,'Бізнес аналіз')">SAFe</div>
-          <div class="nav-sub-link" onclick="navigate('ba-m22','Change Management для BA',this,'Бізнес аналіз')">Change Management</div>
-          <div class="nav-sub-link" onclick="navigate('ba-m23','Графічні нотації',this,'Бізнес аналіз')">Графічні нотації</div>
-          <div class="nav-sub-link" onclick="navigate('ba-m24','Аналіз чутливості',this,'Бізнес аналіз')">Аналіз чутливості</div>
-          <div class="nav-sub-link" onclick="navigate('tech-m21','Gap Analysis / AS-IS TO-BE',this,'Бізнес аналіз')">Gap Analysis / AS-IS TO-BE</div>
-          <div class="nav-sub-link" onclick="navigate('tech-m22','Stakeholder Management',this,'Бізнес аналіз')">Stakeholder Management</div>
-          <div class="nav-sub-link" onclick="navigate('tech-m27','Business Case і ROI',this,'Бізнес аналіз')">Business Case і ROI</div>
-          <div class="nav-sub-link" onclick="navigate('tech-m29','DDD для аналітика',this,'Бізнес аналіз')">DDD для аналітика</div>
+          <div class="nav-sub-link" onclick="navigate('req-user-stories','User Stories: повний гайд',this,'Написання вимог: US / UC / AC')">User Stories: повний гайд</div>
+          <div class="nav-sub-link" onclick="navigate('ba-m5','User Story Map',this,'Написання вимог: US / UC / AC')">User Story Map</div>
+          <div class="nav-sub-link" onclick="navigate('req-use-cases','Use Cases',this,'Написання вимог: US / UC / AC')">Use Cases</div>
+          <div class="nav-sub-link" onclick="navigate('req-acceptance-criteria','Acceptance Criteria',this,'Написання вимог: US / UC / AC')">Acceptance Criteria</div>
+          <div class="nav-sub-link" onclick="navigate('ba-m10','DoR та DoD',this,'Написання вимог: US / UC / AC')">DoR та DoD</div>
+          <div class="nav-sub-link" onclick="navigate('tech-m24','Agile BA: backlog та refinement',this,'Написання вимог: US / UC / AC')">Agile BA: backlog та refinement</div>
         </div>
       </div>
 
-      <!-- 6. API -->
-      <div class="nav-item" id="nav-api">
-        <div class="nav-link" onclick="toggleOrNavigate('nav-api','api-m1','API',this)">
-          <svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM8 5.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/></svg>
-          API
+      <!-- Документація аналітика -->
+      <div class="nav-item" id="nav-docs">
+        <div class="nav-link" onclick="toggleOrNavigate('nav-docs','docs-overview','Огляд документів аналітика',this)">
+          <svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0M9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1M4.5 9a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1zM4 10.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m.5 2.5a.5.5 0 0 1 0-1h4a.5.5 0 0 1 0 1z"/></svg>
+          Документація аналітика
           <svg class="nav-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M6 4l4 4-4 4"/></svg>
         </div>
         <div class="nav-sub">
-          <div class="nav-sub-link" onclick="navigate('api-m1','Що таке API',this,'API')">Що таке API</div>
-          <div class="nav-sub-link" onclick="navigate('api-m2','Дизайн та проєктування',this,'API')">Дизайн API</div>
-          <div class="nav-sub-link" onclick="navigate('api-m3','REST-принципи',this,'API')">REST-принципи</div>
-          <div class="nav-sub-link" onclick="navigate('api-m4','GraphQL, gRPC, Webhooks',this,'API')">GraphQL, gRPC, Webhooks</div>
-          <div class="nav-sub-link" onclick="navigate('api-m5','Безпека та доступ',this,'API')">Безпека та доступ</div>
-          <div class="nav-sub-link" onclick="navigate('api-m6','Типи даних та помилки',this,'API')">Типи даних та помилки</div>
-          <div class="nav-sub-link" onclick="navigate('api-m7','SOAP Web Services',this,'API')">SOAP Web Services</div>
-          <div class="nav-sub-link" onclick="navigate('api-m8','Логування та трасування',this,'API')">Логування та трасування</div>
-          <div class="nav-sub-link" onclick="navigate('api-m9','WebSocket',this,'API')">WebSocket</div>
-          <div class="nav-sub-link" onclick="navigate('api-m10','Інтеграції та роль аналітика',this,'API')">Інтеграції та аналітик</div>
-          <div class="nav-sub-link" onclick="navigate('api-m11','Системний аналіз у Web і API-середовищі',this,'API')">Web і API-середовище</div>
-          <div class="nav-sub-link" onclick="navigate('api-m12','Безпека та сучасні технології',this,'API')">Безпека та технології</div>
-          <div class="nav-sub-link" onclick="navigate('api-m13','HTTP vs HTTPS',this,'API')">HTTP vs HTTPS</div>
-          <div class="nav-sub-link" onclick="navigate('api-m14','API Versioning та Backward Compatibility',this,'API')">API Versioning</div>
-          <div class="nav-sub-link" onclick="navigate('api-m15','API Gateway та Rate Limiting',this,'API')">API Gateway</div>
-          <div class="nav-sub-link" onclick="navigate('api-m16','OpenAPI/Swagger — hands-on',this,'API')">OpenAPI/Swagger</div>
-          <div class="nav-sub-link" onclick="navigate('tech-m03','API та дизайн (Tech)',this,'API')">API та дизайн (Tech)</div>
-          <div class="nav-sub-link" onclick="navigate('tech-m25','System Integration Analysis',this,'API')">System Integration Analysis</div>
+          <div class="nav-sub-link" onclick="navigate('docs-overview','Огляд документів аналітика',this,'Документація аналітика')">Огляд документів аналітика</div>
+          <div class="nav-sub-link" onclick="navigate('docs-brd','BRD',this,'Документація аналітика')">BRD</div>
+          <div class="nav-sub-link" onclick="navigate('docs-srs','SRS',this,'Документація аналітика')">SRS</div>
+          <div class="nav-sub-link" onclick="navigate('docs-decision-log','Decision Log та ADR',this,'Документація аналітика')">Decision Log та ADR</div>
         </div>
       </div>
 
-      <!-- 7. UML-діаграми -->
+      <!-- Бізнес-процеси та BPMN -->
+      <div class="nav-item" id="nav-process">
+        <div class="nav-link" onclick="toggleOrNavigate('nav-process','bpmn-m1','Основи BPMN 2.0',this)">
+          <svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M6 3.5A1.5 1.5 0 0 1 7.5 2h1A1.5 1.5 0 0 1 10 3.5v1A1.5 1.5 0 0 1 8.5 6v1H14a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 2 7h5.5V6A1.5 1.5 0 0 1 6 4.5zM8.5 5a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5zM0 11.5A1.5 1.5 0 0 1 1.5 10h1A1.5 1.5 0 0 1 4 11.5v1A1.5 1.5 0 0 1 2.5 14h-1A1.5 1.5 0 0 1 0 12.5zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm4.5.5A1.5 1.5 0 0 1 7.5 10h1a1.5 1.5 0 0 1 1.5 1.5v1A1.5 1.5 0 0 1 8.5 14h-1A1.5 1.5 0 0 1 6 12.5zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm4.5.5a1.5 1.5 0 0 1 1.5-1.5h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5z"/></svg>
+          Бізнес-процеси та BPMN
+          <svg class="nav-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M6 4l4 4-4 4"/></svg>
+        </div>
+        <div class="nav-sub">
+          <div class="nav-sub-link" onclick="navigate('bpmn-m1','Основи BPMN 2.0',this,'Бізнес-процеси та BPMN')">Основи BPMN 2.0</div>
+          <div class="nav-sub-link" onclick="navigate('bpmn-elements','Елементи BPMN: довідник',this,'Бізнес-процеси та BPMN')">Елементи BPMN: довідник</div>
+          <div class="nav-sub-link" onclick="navigate('bpmn-m6','Глибоке моделювання BPMN',this,'Бізнес-процеси та BPMN')">Глибоке моделювання BPMN</div>
+          <div class="nav-sub-link" onclick="navigate('bpmn-levels','Рівні деталізації L1/L2/L3',this,'Бізнес-процеси та BPMN')">Рівні деталізації L1/L2/L3</div>
+          <div class="nav-sub-link" onclick="navigate('bpmn-antipatterns','BPMN Anti-patterns',this,'Бізнес-процеси та BPMN')">BPMN Anti-patterns</div>
+          <div class="nav-sub-link" onclick="navigate('bpmn-m2','Process Analysis та Modeling',this,'Бізнес-процеси та BPMN')">Process Analysis та Modeling</div>
+          <div class="nav-sub-link" onclick="navigate('bpmn-m3','Root Cause Analysis',this,'Бізнес-процеси та BPMN')">Root Cause Analysis</div>
+          <div class="nav-sub-link" onclick="navigate('bpmn-m4','Value Diagram',this,'Бізнес-процеси та BPMN')">Value Diagram</div>
+          <div class="nav-sub-link" onclick="navigate('bpmn-m5','ARIS',this,'Бізнес-процеси та BPMN')">ARIS</div>
+          <div class="nav-sub-link" onclick="navigate('babok-bpm','BA в управлінні процесами (BABOK)',this,'Бізнес-процеси та BPMN')">BA в управлінні процесами (BABOK)</div>
+          <div class="nav-sub-link" onclick="navigate('ba-m4','Lean',this,'Бізнес-процеси та BPMN')">Lean</div>
+          <div class="nav-sub-link" onclick="navigate('uml-m14','UML vs BPMN',this,'Бізнес-процеси та BPMN')">UML vs BPMN</div>
+        </div>
+      </div>
+
+      <!-- Моделювання: UML та нотації -->
       <div class="nav-item" id="nav-uml">
-        <div class="nav-link" onclick="toggleOrNavigate('nav-uml','uml-m1','Вступ до UML',this)">
-          <svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M6 1h6v6H6V1zm0 7h6v6H6V8zm-5-7h4v3H1V1zm0 4h4v3H1V5zm0 4h4v6H1V9z"/></svg>
-          UML-діаграми
+        <div class="nav-link" onclick="toggleOrNavigate('nav-uml','ba-m8','Методи моделювання',this)">
+          <svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M0 3a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1zm11 0a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-3a1 1 0 0 1-1-1zM5.5 5h5v1h-5zM0 10a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1zm11 0a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-3a1 1 0 0 1-1-1zM5.5 12h5v1h-5zM2.5 7h1v2h-1zm10 0h1v2h-1z"/></svg>
+          Моделювання: UML та нотації
           <svg class="nav-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M6 4l4 4-4 4"/></svg>
         </div>
         <div class="nav-sub">
-          <div class="nav-sub-link" onclick="navigate('uml-m1','Вступ до UML',this,'UML-діаграми')">Вступ до UML</div>
-          <div class="nav-sub-link" onclick="navigate('uml-m2','Типи діаграм',this,'UML-діаграми')">Типи UML-діаграм</div>
-          <div class="nav-sub-link" onclick="navigate('uml-m3','Діаграма класів',this,'UML-діаграми')">Діаграма класів</div>
-          <div class="nav-sub-link" onclick="navigate('uml-m4','Діаграма послідовностей',this,'UML-діаграми')">Послідовності</div>
-          <div class="nav-sub-link" onclick="navigate('uml-m5','Діаграма активностей',this,'UML-діаграми')">Активності</div>
-          <div class="nav-sub-link" onclick="navigate('uml-m6','Діаграма станів',this,'UML-діаграми')">Стани</div>
-          <div class="nav-sub-link" onclick="navigate('uml-m7','Компоненти',this,'UML-діаграми')">Компоненти</div>
-          <div class="nav-sub-link" onclick="navigate('uml-m8','Розгортання',this,'UML-діаграми')">Розгортання</div>
-          <div class="nav-sub-link" onclick="navigate('uml-m9','Use Case',this,'UML-діаграми')">Use Case</div>
-          <div class="nav-sub-link" onclick="navigate('uml-m10','Пакети та Комунікація',this,'UML-діаграми')">Пакети та Комунікація</div>
-          <div class="nav-sub-link" onclick="navigate('uml-m11','Timing та Профілі',this,'UML-діаграми')">Timing та Профілі</div>
-          <div class="nav-sub-link" onclick="navigate('uml-m12','Обʼєктна діаграма',this,'UML-діаграми')">Обʼєктна діаграма</div>
-          <div class="nav-sub-link" onclick="navigate('uml-m13','Практика UML',this,'UML-діаграми')">Практика UML</div>
-          <div class="nav-sub-link" onclick="navigate('uml-m14','UML vs BPMN',this,'UML-діаграми')">UML vs BPMN</div>
-          <div class="nav-sub-link" onclick="navigate('uml-m15','Поради та практики',this,'UML-діаграми')">Поради та практики</div>
+          <div class="nav-sub-link" onclick="navigate('ba-m8','Методи моделювання',this,'Моделювання: UML та нотації')">Методи моделювання</div>
+          <div class="nav-sub-link" onclick="navigate('ba-m23','Графічні нотації: огляд',this,'Моделювання: UML та нотації')">Графічні нотації: огляд</div>
+          <div class="nav-sub-link" onclick="navigate('uml-m1','Вступ до UML',this,'Моделювання: UML та нотації')">Вступ до UML</div>
+          <div class="nav-sub-link" onclick="navigate('uml-m2','Типи UML-діаграм',this,'Моделювання: UML та нотації')">Типи UML-діаграм</div>
+          <div class="nav-sub-link" onclick="navigate('uml-m3','Діаграма класів',this,'Моделювання: UML та нотації')">Діаграма класів</div>
+          <div class="nav-sub-link" onclick="navigate('uml-m4','Діаграма послідовностей',this,'Моделювання: UML та нотації')">Діаграма послідовностей</div>
+          <div class="nav-sub-link" onclick="navigate('uml-m5','Діаграма активностей',this,'Моделювання: UML та нотації')">Діаграма активностей</div>
+          <div class="nav-sub-link" onclick="navigate('uml-m6','Діаграма станів',this,'Моделювання: UML та нотації')">Діаграма станів</div>
+          <div class="nav-sub-link" onclick="navigate('uml-m7','Діаграма компонентів',this,'Моделювання: UML та нотації')">Діаграма компонентів</div>
+          <div class="nav-sub-link" onclick="navigate('uml-m8','Діаграма розгортання',this,'Моделювання: UML та нотації')">Діаграма розгортання</div>
+          <div class="nav-sub-link" onclick="navigate('uml-m9','Use Case діаграма',this,'Моделювання: UML та нотації')">Use Case діаграма</div>
+          <div class="nav-sub-link" onclick="navigate('uml-m10','Пакети та комунікація',this,'Моделювання: UML та нотації')">Пакети та комунікація</div>
+          <div class="nav-sub-link" onclick="navigate('uml-m11','Timing та профілі',this,'Моделювання: UML та нотації')">Timing та профілі</div>
+          <div class="nav-sub-link" onclick="navigate('uml-m12','Обʼєктна діаграма',this,'Моделювання: UML та нотації')">Обʼєктна діаграма</div>
+          <div class="nav-sub-link" onclick="navigate('uml-m13','Практика UML',this,'Моделювання: UML та нотації')">Практика UML</div>
+          <div class="nav-sub-link" onclick="navigate('uml-m15','Поради та практики UML',this,'Моделювання: UML та нотації')">Поради та практики UML</div>
         </div>
       </div>
 
-      <!-- 8. Бази даних і Power BI -->
+      <div class="sidebar-section-label">Технічна частина: як це працює</div>
+      <!-- Архітектура систем та застосунків -->
+      <div class="nav-item" id="nav-arch">
+        <div class="nav-link" onclick="toggleOrNavigate('nav-arch','tech-m01','Як працюють IT-продукти',this)">
+          <svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8.235 1.559a.5.5 0 0 0-.47 0l-7.5 4a.5.5 0 0 0 0 .882L3.188 8 .264 9.559a.5.5 0 0 0 0 .882l7.5 4a.5.5 0 0 0 .47 0l7.5-4a.5.5 0 0 0 0-.882L12.813 8l2.922-1.559a.5.5 0 0 0 0-.882zm3.515 7.008L14.438 10 8 13.433 1.562 10 4.25 8.567l3.515 1.874a.5.5 0 0 0 .47 0zM8 9.433 1.562 6 8 2.567 14.438 6z"/></svg>
+          Архітектура систем та застосунків
+          <svg class="nav-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M6 4l4 4-4 4"/></svg>
+        </div>
+        <div class="nav-sub">
+          <div class="nav-sub-link" onclick="navigate('tech-m01','Як працюють IT-продукти',this,'Архітектура систем та застосунків')">Як працюють IT-продукти</div>
+          <div class="nav-sub-link" onclick="navigate('tech-m02','Технічний стек',this,'Архітектура систем та застосунків')">Технічний стек</div>
+          <div class="nav-sub-link" onclick="navigate('sa-mod10','Архітектура систем',this,'Архітектура систем та застосунків')">Архітектура систем</div>
+          <div class="nav-sub-link" onclick="navigate('tech-m08','Backend архітектура',this,'Архітектура систем та застосунків')">Backend архітектура</div>
+          <div class="nav-sub-link" onclick="navigate('sa-mod14','Архітектура ПЗ і DevOps-практики',this,'Архітектура систем та застосунків')">Архітектура ПЗ і DevOps-практики</div>
+          <div class="nav-sub-link" onclick="navigate('tech-m05','Frontend: основи',this,'Архітектура систем та застосунків')">Frontend: основи</div>
+          <div class="nav-sub-link" onclick="navigate('tech-m06','Frontend: фреймворки',this,'Архітектура систем та застосунків')">Frontend: фреймворки</div>
+          <div class="nav-sub-link" onclick="navigate('tech-m16','Mobile: розробка та реліз',this,'Архітектура систем та застосунків')">Mobile: розробка та реліз</div>
+          <div class="nav-sub-link" onclick="navigate('sa-mod15','UX і прототипування',this,'Архітектура систем та застосунків')">UX і прототипування</div>
+          <div class="nav-sub-link" onclick="navigate('tech-m29','DDD для аналітика',this,'Архітектура систем та застосунків')">DDD для аналітика</div>
+          <div class="nav-sub-link" onclick="navigate('ea-c4','C4 Model',this,'Архітектура систем та застосунків')">C4 Model</div>
+          <div class="nav-sub-link" onclick="navigate('ea-togaf','TOGAF для аналітика',this,'Архітектура систем та застосунків')">TOGAF для аналітика</div>
+        </div>
+      </div>
+
+      <!-- API: дизайн та контракти -->
+      <div class="nav-item" id="nav-api">
+        <div class="nav-link" onclick="toggleOrNavigate('nav-api','api-m1','Що таке API',this)">
+          <svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 1 1 0v1.5h7v-8h-7V5a.5.5 0 0 1-1 0z"/><path d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/></svg>
+          API: дизайн та контракти
+          <svg class="nav-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M6 4l4 4-4 4"/></svg>
+        </div>
+        <div class="nav-sub">
+          <div class="nav-sub-link" onclick="navigate('api-m1','Що таке API',this,'API: дизайн та контракти')">Що таке API</div>
+          <div class="nav-sub-link" onclick="navigate('api-m2','Дизайн та проєктування API',this,'API: дизайн та контракти')">Дизайн та проєктування API</div>
+          <div class="nav-sub-link" onclick="navigate('api-m3','REST та HTTP-методи',this,'API: дизайн та контракти')">REST та HTTP-методи</div>
+          <div class="nav-sub-link" onclick="navigate('api-m6','Типи даних та помилки',this,'API: дизайн та контракти')">Типи даних та помилки</div>
+          <div class="nav-sub-link" onclick="navigate('api-m13','HTTP vs HTTPS',this,'API: дизайн та контракти')">HTTP vs HTTPS</div>
+          <div class="nav-sub-link" onclick="navigate('api-m5','Безпека та контроль доступу',this,'API: дизайн та контракти')">Безпека та контроль доступу</div>
+          <div class="nav-sub-link" onclick="navigate('api-m12','Безпека та сучасні технології',this,'API: дизайн та контракти')">Безпека та сучасні технології</div>
+          <div class="nav-sub-link" onclick="navigate('api-m14','Versioning та Backward Compatibility',this,'API: дизайн та контракти')">Versioning та Backward Compatibility</div>
+          <div class="nav-sub-link" onclick="navigate('api-m16','OpenAPI / Swagger — hands-on',this,'API: дизайн та контракти')">OpenAPI / Swagger — hands-on</div>
+          <div class="nav-sub-link" onclick="navigate('tech-m03','API та дизайн (поглиблено)',this,'API: дизайн та контракти')">API та дизайн (поглиблено)</div>
+        </div>
+      </div>
+
+      <!-- Інтеграції та обмін повідомленнями -->
+      <div class="nav-item" id="nav-integr">
+        <div class="nav-link" onclick="toggleOrNavigate('nav-integr','api-m10','Інтеграції та роль аналітика',this)">
+          <svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M1 11a1 1 0 1 1 2 0v2a1 1 0 1 1-2 0zm5-4a1 1 0 1 1 2 0v6a1 1 0 1 1-2 0zm5-5a1 1 0 1 1 2 0v11a1 1 0 1 1-2 0z"/><path d="M0 1.5A.5.5 0 0 1 .5 1h15a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5"/></svg>
+          Інтеграції та обмін повідомленнями
+          <svg class="nav-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M6 4l4 4-4 4"/></svg>
+        </div>
+        <div class="nav-sub">
+          <div class="nav-sub-link" onclick="navigate('api-m10','Інтеграції та роль аналітика',this,'Інтеграції та обмін повідомленнями')">Інтеграції та роль аналітика</div>
+          <div class="nav-sub-link" onclick="navigate('api-m11','Web і API-середовище',this,'Інтеграції та обмін повідомленнями')">Web і API-середовище</div>
+          <div class="nav-sub-link" onclick="navigate('tech-m25','System Integration Analysis',this,'Інтеграції та обмін повідомленнями')">System Integration Analysis</div>
+          <div class="nav-sub-link" onclick="navigate('sa-mod11','Синхронні vs асинхронні запити',this,'Інтеграції та обмін повідомленнями')">Синхронні vs асинхронні запити</div>
+          <div class="nav-sub-link" onclick="navigate('api-m4','GraphQL, gRPC, Webhooks',this,'Інтеграції та обмін повідомленнями')">GraphQL, gRPC, Webhooks</div>
+          <div class="nav-sub-link" onclick="navigate('api-m7','SOAP Web Services',this,'Інтеграції та обмін повідомленнями')">SOAP Web Services</div>
+          <div class="nav-sub-link" onclick="navigate('api-m9','WebSocket',this,'Інтеграції та обмін повідомленнями')">WebSocket</div>
+          <div class="nav-sub-link" onclick="navigate('api-m8','Логування та трасування',this,'Інтеграції та обмін повідомленнями')">Логування та трасування</div>
+          <div class="nav-sub-link" onclick="navigate('api-m15','API Gateway та Rate Limiting',this,'Інтеграції та обмін повідомленнями')">API Gateway та Rate Limiting</div>
+          <div class="nav-sub-link" onclick="navigate('db-mod12','Черги повідомлень: огляд',this,'Інтеграції та обмін повідомленнями')">Черги повідомлень: огляд</div>
+          <div class="nav-sub-link" onclick="navigate('sa-kafka','Apache Kafka',this,'Інтеграції та обмін повідомленнями')">Apache Kafka</div>
+          <div class="nav-sub-link" onclick="navigate('sa-rabbitmq','RabbitMQ',this,'Інтеграції та обмін повідомленнями')">RabbitMQ</div>
+        </div>
+      </div>
+
+      <!-- Бази даних та SQL -->
       <div class="nav-item" id="nav-db">
-        <div class="nav-link" onclick="toggleOrNavigate('nav-db','db-mod1','Основи даних та баз даних',this)">
-          <svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M4.318 2.687C5.234 2.271 6.536 2 8 2s2.766.27 3.682.687C12.644 3.125 13 3.627 13 4c0 .374-.356.875-1.318 1.313C10.766 5.729 9.464 6 8 6s-2.766-.271-3.682-.688C3.356 4.875 3 4.373 3 4c0-.373.356-.875 1.318-1.313z"/><path d="M13 5.698V7c0 .374-.356.875-1.318 1.313C10.766 8.729 9.464 9 8 9s-2.766-.27-3.682-.687C3.356 7.875 3 7.373 3 7V5.698c.271.202.58.378.904.525C4.978 6.711 6.427 7 8 7s3.022-.289 4.096-.777A5 5 0 0 0 13 5.698zM3 8.698V10c0 .374.356.875 1.318 1.313C5.234 11.729 6.536 12 8 12s2.766-.27 3.682-.687C12.644 10.875 13 10.373 13 10V8.698c-.271.202-.58.378-.904.525C11.022 9.71 9.573 10 8 10s-3.022-.29-4.096-.777A5 5 0 0 1 3 8.698zM3 11.698V13c0 .374.356.875 1.318 1.313C5.234 14.729 6.536 15 8 15s2.766-.27 3.682-.687C12.644 13.875 13 13.373 13 13v-1.302c-.271.202-.58.378-.904.525C11.022 12.71 9.573 13 8 13s-3.022-.29-4.096-.777A5 5 0 0 1 3 11.698z"/></svg>
-          Бази даних і Power BI
+        <div class="nav-link" onclick="toggleOrNavigate('nav-db','db-mod1','Основи даних та БД',this)">
+          <svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M4.318 2.687C5.234 2.271 6.536 2 8 2s2.766.27 3.682.687C12.644 3.125 13 3.627 13 4c0 .374-.356.875-1.318 1.313C10.766 5.729 9.464 6 8 6s-2.766-.27-3.682-.687C3.356 4.875 3 4.373 3 4c0-.374.356-.875 1.318-1.313M13 5.698V7c0 .374-.356.875-1.318 1.313C10.766 8.729 9.464 9 8 9s-2.766-.27-3.682-.687C3.356 7.875 3 7.373 3 7V5.698c.271.202.58.378.904.525C4.978 6.711 6.427 7 8 7s3.022-.289 4.096-.777A5 5 0 0 0 13 5.698M14 4c0-1.007-.875-1.755-1.904-2.223C11.022 1.289 9.573 1 8 1s-3.022.289-4.096.777C2.875 2.245 2 2.993 2 4v9c0 1.007.875 1.755 1.904 2.223C4.978 15.71 6.427 16 8 16s3.022-.289 4.096-.777C13.125 14.755 14 14.007 14 13zm-1 4.698V10c0 .374-.356.875-1.318 1.313C10.766 11.729 9.464 12 8 12s-2.766-.27-3.682-.687C3.356 10.875 3 10.373 3 10V8.698c.271.202.58.378.904.525C4.978 9.71 6.427 10 8 10s3.022-.289 4.096-.777A5 5 0 0 0 13 8.698m0 3V13c0 .374-.356.875-1.318 1.313C10.766 14.729 9.464 15 8 15s-2.766-.27-3.682-.687C3.356 13.875 3 13.373 3 13v-1.302c.271.202.58.378.904.525C4.978 12.71 6.427 13 8 13s3.022-.289 4.096-.777c.324-.147.633-.323.904-.525"/></svg>
+          Бази даних та SQL
           <svg class="nav-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M6 4l4 4-4 4"/></svg>
         </div>
         <div class="nav-sub">
-          <div class="nav-sub-link" onclick="navigate('db-mod1','Основи даних та баз даних',this,'Бази даних і Power BI')">Основи даних та БД</div>
-          <div class="nav-sub-link" onclick="navigate('db-mod2','Реляційні Бази Даних',this,'Бази даних і Power BI')">Реляційні БД</div>
-          <div class="nav-sub-link" onclick="navigate('db-mod3','Основи SQL для Аналітики',this,'Бази даних і Power BI')">Основи SQL</div>
-          <div class="nav-sub-link" onclick="navigate('db-mod4','Інтеграція Power BI з джерелами даних',this,'Бази даних і Power BI')">Інтеграція Power BI</div>
-          <div class="nav-sub-link" onclick="navigate('db-mod5','Основи моделювання даних: ER-діаграми',this,'Бази даних і Power BI')">Моделювання даних</div>
-          <div class="nav-sub-link" onclick="navigate('db-mod6','Нормалізація даних та оптимізація структури БД',this,'Бази даних і Power BI')">Нормалізація БД</div>
-          <div class="nav-sub-link" onclick="navigate('db-mod8','DAX мова аналітики',this,'Бази даних і Power BI')">DAX аналітика</div>
-          <div class="nav-sub-link" onclick="navigate('db-mod9','Power BI архітектура',this,'Бази даних і Power BI')">Power BI архітектура</div>
-          <div class="nav-sub-link" onclick="navigate('db-mod10','Аналітичні звіти',this,'Бази даних і Power BI')">Аналітичні звіти</div>
-          <div class="nav-sub-link" onclick="navigate('db-practice','Практика SQL і Power BI',this,'Бази даних і Power BI')">Практика: Таблиці і запити</div>
-          <div class="nav-sub-link" onclick="navigate('db-mod11','ACID-транзакції',this,'Бази даних і Power BI')">ACID-транзакції</div>
-          <div class="nav-sub-link" onclick="navigate('db-mod12','Черги повідомлень',this,'Бази даних і Power BI')">Черги повідомлень</div>
-          <div class="nav-sub-link" onclick="navigate('db-mod13','CRUD',this,'Бази даних і Power BI')">CRUD</div>
-          <div class="nav-sub-link" onclick="navigate('db-mod14','Розширені оператори SQL',this,'Бази даних і Power BI')">Розширені оператори SQL</div>
-          <div class="nav-sub-link" onclick="navigate('db-mod16','CTE та Stored Procedures',this,'Бази даних і Power BI')">CTE та Stored Procedures</div>
-          <div class="nav-sub-link" onclick="navigate('db-mod17','Оптимізація БД',this,'Бази даних і Power BI')">Оптимізація БД</div>
-          <div class="nav-sub-link" onclick="navigate('db-mod18','NoSQL для аналітика',this,'Бази даних і Power BI')">NoSQL</div>
-          <div class="nav-sub-link" onclick="navigate('db-mod19','Data Warehouse, Data Lake, ETL',this,'Бази даних і Power BI')">DW та ETL</div>
-          <div class="nav-sub-link" onclick="navigate('db-mod20','CAP, ACID vs BASE',this,'Бази даних і Power BI')">CAP та ACID vs BASE</div>
-          <div class="nav-sub-link" onclick="navigate('tech-m07','Backend та бази даних',this,'Бази даних і Power BI')">Backend та бази даних (Tech)</div>
-          <div class="nav-sub-link" onclick="navigate('tech-m23','Data Analysis для BA',this,'Бази даних і Power BI')">Data Analysis для BA</div>
+          <div class="nav-sub-link" onclick="navigate('db-mod1','Основи даних та БД',this,'Бази даних та SQL')">Основи даних та БД</div>
+          <div class="nav-sub-link" onclick="navigate('db-mod2','Реляційні БД',this,'Бази даних та SQL')">Реляційні БД</div>
+          <div class="nav-sub-link" onclick="navigate('db-mod5','ER-діаграми: моделювання даних',this,'Бази даних та SQL')">ER-діаграми: моделювання даних</div>
+          <div class="nav-sub-link" onclick="navigate('db-mod6','Нормалізація',this,'Бази даних та SQL')">Нормалізація</div>
+          <div class="nav-sub-link" onclick="navigate('db-mod3','Основи SQL',this,'Бази даних та SQL')">Основи SQL</div>
+          <div class="nav-sub-link" onclick="navigate('db-mod14','Розширені оператори SQL',this,'Бази даних та SQL')">Розширені оператори SQL</div>
+          <div class="nav-sub-link" onclick="navigate('db-mod16','CTE та Stored Procedures',this,'Бази даних та SQL')">CTE та Stored Procedures</div>
+          <div class="nav-sub-link" onclick="navigate('db-mod13','CRUD',this,'Бази даних та SQL')">CRUD</div>
+          <div class="nav-sub-link" onclick="navigate('db-mod11','ACID-транзакції',this,'Бази даних та SQL')">ACID-транзакції</div>
+          <div class="nav-sub-link" onclick="navigate('db-mod17','Оптимізація БД',this,'Бази даних та SQL')">Оптимізація БД</div>
+          <div class="nav-sub-link" onclick="navigate('db-practice','Практика: таблиці і запити',this,'Бази даних та SQL')">Практика: таблиці і запити</div>
+          <div class="nav-sub-link" onclick="navigate('db-mod18','NoSQL для аналітика',this,'Бази даних та SQL')">NoSQL для аналітика</div>
+          <div class="nav-sub-link" onclick="navigate('db-mod20','CAP, ACID vs BASE',this,'Бази даних та SQL')">CAP, ACID vs BASE</div>
+          <div class="nav-sub-link" onclick="navigate('tech-m07','Backend та вибір БД',this,'Бази даних та SQL')">Backend та вибір БД</div>
+          <div class="nav-sub-link" onclick="navigate('erp-m1','1С:ERP — консоль запитів',this,'Бази даних та SQL')">1С:ERP — консоль запитів</div>
+          <div class="nav-sub-link" onclick="navigate('erp-m2','1С:ERP — складні запити',this,'Бази даних та SQL')">1С:ERP — складні запити</div>
         </div>
       </div>
 
-      <!-- 8.5 MongoDB для BA/SA -->
-      <div class="nav-item" id="nav-mongodb">
-        <div class="nav-link" onclick="toggleOrNavigate('nav-mongodb','mongodb-intro','MongoDB: Вступ та термінологія',this)">
-          <svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M14.5 1.5a.5.5 0 0 0-.53-.09C11.6 2.4 9.2 2.6 7 3.4 4.4 4.3 2.6 6.2 2.2 8.7c-.25 1.5.1 2.9.9 3.9l-1.45 1.45a.5.5 0 1 0 .7.7l1.46-1.45c1.02.8 2.44 1.14 3.94.88 2.5-.43 4.4-2.25 5.28-4.85.8-2.2 1-4.6 1.99-6.97a.5.5 0 0 0-.09-.53zM7.1 12.2c-1.1.2-2.1 0-2.8-.5l6.3-6.3a.5.5 0 0 0-.7-.7L3.6 11c-.5-.75-.68-1.75-.5-2.83.35-2.1 1.85-3.7 4.1-4.47 1.9-.66 4-.9 6.1-1.6-.7 2.1-.94 4.2-1.6 6.1-.77 2.25-2.37 3.75-4.47 4.1z"/></svg>
-          MongoDB для BA/SA
+      <!-- MongoDB -->
+      <div class="nav-item" id="nav-mongo">
+        <div class="nav-link" onclick="toggleOrNavigate('nav-mongo','mongodb-intro','Вступ та термінологія',this)">
+          <svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8 15c-3 0-6-2.5-6-6 0-3.5 3-7 9-8-1 2-1 4 0 5-3 .5-5 2-6 5 2-1 4-1.5 6-1.5-1 2-2 4-3 5.5"/></svg>
+          MongoDB
           <svg class="nav-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M6 4l4 4-4 4"/></svg>
         </div>
         <div class="nav-sub">
-          <div class="nav-sub-link" onclick="navigate('mongodb-intro','MongoDB: Вступ та термінологія',this,'MongoDB для BA/SA')">Вступ та термінологія</div>
-          <div class="nav-sub-link" onclick="navigate('mongodb-datamodel','Модель даних MongoDB',this,'MongoDB для BA/SA')">Модель даних</div>
-          <div class="nav-sub-link" onclick="navigate('mongodb-queries','Запити та оператори MongoDB',this,'MongoDB для BA/SA')">Запити та оператори</div>
-          <div class="nav-sub-link" onclick="navigate('mongodb-writes','Операції запису MongoDB',this,'MongoDB для BA/SA')">Операції запису</div>
-          <div class="nav-sub-link" onclick="navigate('mongodb-indexes','Індекси MongoDB',this,'MongoDB для BA/SA')">Індекси</div>
-          <div class="nav-sub-link" onclick="navigate('mongodb-aggregation','Агрегація MongoDB',this,'MongoDB для BA/SA')">Агрегація</div>
-          <div class="nav-sub-link" onclick="navigate('mongodb-transactions','Транзакції MongoDB',this,'MongoDB для BA/SA')">Транзакції</div>
-          <div class="nav-sub-link" onclick="navigate('mongodb-schema','Дизайн схеми MongoDB',this,'MongoDB для BA/SA')">Дизайн схеми</div>
-          <div class="nav-sub-link" onclick="navigate('mongodb-replication','Реплікація MongoDB',this,'MongoDB для BA/SA')">Реплікація</div>
-          <div class="nav-sub-link" onclick="navigate('mongodb-sharding','Шардинг MongoDB',this,'MongoDB для BA/SA')">Шардинг</div>
-          <div class="nav-sub-link" onclick="navigate('mongodb-security','Безпека MongoDB',this,'MongoDB для BA/SA')">Безпека та моніторинг</div>
-          <div class="nav-sub-link" onclick="navigate('mongodb-gridfs','GridFS MongoDB',this,'MongoDB для BA/SA')">GridFS та спец. колекції</div>
-          <div class="nav-sub-link" onclick="navigate('mongodb-communication','Комунікація з розробниками',this,'MongoDB для BA/SA')">Як говорити з розробником</div>
+          <div class="nav-sub-link" onclick="navigate('mongodb-intro','Вступ та термінологія',this,'MongoDB')">Вступ та термінологія</div>
+          <div class="nav-sub-link" onclick="navigate('mongodb-datamodel','Модель даних',this,'MongoDB')">Модель даних</div>
+          <div class="nav-sub-link" onclick="navigate('mongodb-queries','Запити та оператори',this,'MongoDB')">Запити та оператори</div>
+          <div class="nav-sub-link" onclick="navigate('mongodb-writes','Операції запису',this,'MongoDB')">Операції запису</div>
+          <div class="nav-sub-link" onclick="navigate('mongodb-indexes','Індекси',this,'MongoDB')">Індекси</div>
+          <div class="nav-sub-link" onclick="navigate('mongodb-aggregation','Агрегація',this,'MongoDB')">Агрегація</div>
+          <div class="nav-sub-link" onclick="navigate('mongodb-transactions','Транзакції',this,'MongoDB')">Транзакції</div>
+          <div class="nav-sub-link" onclick="navigate('mongodb-schema','Дизайн схеми',this,'MongoDB')">Дизайн схеми</div>
+          <div class="nav-sub-link" onclick="navigate('mongodb-replication','Реплікація',this,'MongoDB')">Реплікація</div>
+          <div class="nav-sub-link" onclick="navigate('mongodb-sharding','Шардинг',this,'MongoDB')">Шардинг</div>
+          <div class="nav-sub-link" onclick="navigate('mongodb-security','Безпека та моніторинг',this,'MongoDB')">Безпека та моніторинг</div>
+          <div class="nav-sub-link" onclick="navigate('mongodb-gridfs','GridFS та спец. колекції',this,'MongoDB')">GridFS та спец. колекції</div>
+          <div class="nav-sub-link" onclick="navigate('mongodb-communication','Як говорити з розробником',this,'MongoDB')">Як говорити з розробником</div>
         </div>
       </div>
 
-      <!-- 9. 1C:ERP -->
-      <div class="nav-item" id="nav-erp">
-        <div class="nav-link" onclick="toggleOrNavigate('nav-erp','erp-m1','Консоль запитів 1С:ERP',this)">
-          <svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H5zm.5 1h5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-.5.5h-5a.5.5 0 0 1-.5-.5v-5a.5.5 0 0 1 .5-.5z"/></svg>
-          1C:ERP
+      <!-- Дані та BI-аналітика -->
+      <div class="nav-item" id="nav-data">
+        <div class="nav-link" onclick="toggleOrNavigate('nav-data','tech-m23','Data Analysis для BA',this)">
+          <svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M4 11H2v3h2zm5-4H7v7h2zm5-5v12h-2V2zm-2-1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM6 7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm-5 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1z"/></svg>
+          Дані та BI-аналітика
           <svg class="nav-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M6 4l4 4-4 4"/></svg>
         </div>
         <div class="nav-sub">
-          <div class="nav-sub-link" onclick="navigate('erp-m1','Консоль запитів 1С:ERP',this,'1C:ERP')">Консоль запитів</div>
-          <div class="nav-sub-link" onclick="navigate('erp-m2','Складні запити та зв\'язки',this,'1C:ERP')">Складні запити</div>
+          <div class="nav-sub-link" onclick="navigate('tech-m23','Data Analysis для BA',this,'Дані та BI-аналітика')">Data Analysis для BA</div>
+          <div class="nav-sub-link" onclick="navigate('db-mod19','Data Warehouse, Data Lake, ETL',this,'Дані та BI-аналітика')">Data Warehouse, Data Lake, ETL</div>
+          <div class="nav-sub-link" onclick="navigate('db-mod4','Power BI: інтеграція з джерелами',this,'Дані та BI-аналітика')">Power BI: інтеграція з джерелами</div>
+          <div class="nav-sub-link" onclick="navigate('db-mod9','Power BI: архітектура',this,'Дані та BI-аналітика')">Power BI: архітектура</div>
+          <div class="nav-sub-link" onclick="navigate('db-mod8','DAX',this,'Дані та BI-аналітика')">DAX</div>
+          <div class="nav-sub-link" onclick="navigate('db-mod10','Аналітичні звіти',this,'Дані та BI-аналітика')">Аналітичні звіти</div>
+          <div class="nav-sub-link" onclick="navigate('tech-m13','Аналітика проєкту',this,'Дані та BI-аналітика')">Аналітика проєкту</div>
         </div>
       </div>
 
-      <!-- 10. Tech Skills -->
-      <div class="nav-item" id="nav-tech">
-        <div class="nav-link" onclick="toggleOrNavigate('nav-tech','tech-main','Tech Skills',this)">
-          <svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M5.854 4.854a.5.5 0 1 0-.708-.708l-3.5 3.5a.5.5 0 0 0 0 .708l3.5 3.5a.5.5 0 0 0 .708-.708L2.707 8l3.147-3.146zm4.292 0a.5.5 0 0 1 .708-.708l3.5 3.5a.5.5 0 0 1 0 .708l-3.5 3.5a.5.5 0 0 1-.708-.708L13.293 8l-3.147-3.146z"/></svg>
-          Tech Skills
+      <!-- Інженерні практики -->
+      <div class="nav-item" id="nav-eng">
+        <div class="nav-link" onclick="toggleOrNavigate('nav-eng','tech-m10','Git та контроль версій',this)">
+          <svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"/></svg>
+          Інженерні практики
           <svg class="nav-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M6 4l4 4-4 4"/></svg>
         </div>
         <div class="nav-sub">
-          <div class="nav-sub-link" onclick="navigate('tech-m01','Як працюють IT-продукти',this,'Tech Skills')">Як працюють IT-продукти</div>
-          <div class="nav-sub-link" onclick="navigate('tech-m02','Технічний стек',this,'Tech Skills')">Технічний стек</div>
-          <div class="nav-sub-link" onclick="navigate('tech-m05','Frontend основи',this,'Tech Skills')">Frontend основи</div>
-          <div class="nav-sub-link" onclick="navigate('tech-m06','Frontend фреймворки',this,'Tech Skills')">Frontend фреймворки</div>
-          <div class="nav-sub-link" onclick="navigate('tech-m08','Backend архітектура',this,'Tech Skills')">Backend архітектура</div>
-          <div class="nav-sub-link" onclick="navigate('tech-m09','CI/CD та безпека',this,'Tech Skills')">CI/CD та безпека</div>
-          <div class="nav-sub-link" onclick="navigate('tech-m10','Git та контроль версій',this,'Tech Skills')">Git та контроль версій</div>
-          <div class="nav-sub-link" onclick="navigate('tech-m11','DevOps та Cloud',this,'Tech Skills')">DevOps та Cloud</div>
-          <div class="nav-sub-link" onclick="navigate('tech-m13','Аналітика проєкту',this,'Tech Skills')">Аналітика проєкту</div>
-          <div class="nav-sub-link" onclick="navigate('tech-m14','Тестування — основи та системний підхід',this,'Tech Skills')">Тестування (основи + advanced)</div>
-          <div class="nav-sub-link" onclick="navigate('tech-m16','Mobile — розробка та реліз',this,'Tech Skills')">Mobile (розробка + реліз)</div>
-          <div class="nav-sub-link" onclick="navigate('tech-m18','AI для BA',this,'Tech Skills')">AI для BA</div>
-          <div class="nav-sub-link" onclick="navigate('tech-devtools','Browser DevTools для аналітика',this,'Tech Skills')">Browser DevTools</div>
+          <div class="nav-sub-link" onclick="navigate('tech-m10','Git та контроль версій',this,'Інженерні практики')">Git та контроль версій</div>
+          <div class="nav-sub-link" onclick="navigate('tech-m09','CI/CD та безпека',this,'Інженерні практики')">CI/CD та безпека</div>
+          <div class="nav-sub-link" onclick="navigate('tech-m11','DevOps та Cloud',this,'Інженерні практики')">DevOps та Cloud</div>
+          <div class="nav-sub-link" onclick="navigate('tech-m14','Тестування',this,'Інженерні практики')">Тестування</div>
+          <div class="nav-sub-link" onclick="navigate('tech-devtools','Browser DevTools',this,'Інженерні практики')">Browser DevTools</div>
+          <div class="nav-sub-link" onclick="navigate('tech-m18','AI для BA',this,'Інженерні практики')">AI для BA</div>
         </div>
       </div>
 
-      <!-- 11. Skills -->
-      <div class="nav-item" id="nav-skills">
-        <div class="nav-link" onclick="toggleOrNavigate('nav-skills','tech-m04','Skills',this)">
-          <svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/><path d="M12.5 3a.5.5 0 0 1 .5.5V5h1.5a.5.5 0 0 1 0 1H13v1.5a.5.5 0 0 1-1 0V6h-1.5a.5.5 0 0 1 0-1H12V3.5a.5.5 0 0 1 .5-.5z"/></svg>
-          Skills
+      <div class="sidebar-section-label">Делівері та команда</div>
+      <!-- Методології та команда -->
+      <div class="nav-item" id="nav-method">
+        <div class="nav-link" onclick="toggleOrNavigate('nav-method','ba-m3','Agile / Scrum / Kanban / Waterfall',this)">
+          <svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1L7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002-.014.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a6 6 0 0 0-1.23-.247A7 7 0 0 0 5 9c-4 0-5 3-5 4q0 1 1 1h4.216A2.24 2.24 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.5 5.5 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4"/></svg>
+          Методології та команда
           <svg class="nav-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M6 4l4 4-4 4"/></svg>
         </div>
         <div class="nav-sub">
-          <div class="nav-sub-link" onclick="navigate('tech-m04','Управління IT-командою',this,'Skills')">Управління IT-командою</div>
-          <div class="nav-sub-link" onclick="navigate('sa-mod18','Soft Skills аналітика',this,'Skills')">Soft Skills аналітика</div>
+          <div class="nav-sub-link" onclick="navigate('ba-m3','Agile / Scrum / Kanban / Waterfall',this,'Методології та команда')">Agile / Scrum / Kanban / Waterfall</div>
+          <div class="nav-sub-link" onclick="navigate('ba-m21','SAFe для аналітика',this,'Методології та команда')">SAFe для аналітика</div>
+          <div class="nav-sub-link" onclick="navigate('ba-m13','PRINCE2',this,'Методології та команда')">PRINCE2</div>
+          <div class="nav-sub-link" onclick="navigate('ba-m22','Change Management',this,'Методології та команда')">Change Management</div>
+          <div class="nav-sub-link" onclick="navigate('tech-m04','Управління IT-командою',this,'Методології та команда')">Управління IT-командою</div>
+        </div>
+      </div>
+
+      <div class="sidebar-section-label">Скіли та кар&#x27;єра</div>
+      <!-- Soft Skills -->
+      <div class="nav-item" id="nav-soft">
+        <div class="nav-link" onclick="toggleOrNavigate('nav-soft','sa-mod18','Soft Skills аналітика',this)">
+          <svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"/></svg>
+          Soft Skills
+          <svg class="nav-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M6 4l4 4-4 4"/></svg>
+        </div>
+        <div class="nav-sub">
+          <div class="nav-sub-link" onclick="navigate('sa-mod18','Soft Skills аналітика',this,'Soft Skills')">Soft Skills аналітика</div>
           <div class="nav-sub-link" onclick="window.open('difficult-people-course.html','_blank')">Проблемні люди (курс)</div>
           <div class="nav-sub-link" onclick="window.open('facilitation-mastery-course.html','_blank')">Facilitation Mastery (курс)</div>
           <div class="nav-sub-link" onclick="window.open('conflict-styles-course.html','_blank')">Conflict Styles (курс)</div>
           <div class="nav-sub-link" onclick="window.open('negotiation-course.html','_blank')">Negotiation for BA (курс)</div>
-          <div class="nav-sub-link" onclick="navigate('tech-m24','Agile BA — роль у Scrum',this,'Skills')">Agile BA — роль у Scrum</div>
         </div>
       </div>
 
-      <!-- 12. Enterprise Architecture -->
-      <div class="nav-item" id="nav-ea">
-        <div class="nav-link" onclick="toggleOrNavigate('nav-ea','ea-togaf','TOGAF для аналітика',this)">
-          <svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M1 2a1 1 0 0 1 1-1h11a1 1 0 0 1 1 1v1H1V2zm0 2h13v9a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4zm3 1.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 .5-.5V6a.5.5 0 0 0-.5-.5H4zm4 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 .5-.5V6a.5.5 0 0 0-.5-.5H8zm-4 4a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5H4zm4 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5H8z"/></svg>
-          Enterprise Architecture
+      <!-- Кар'єра та співбесіда -->
+      <div class="nav-item" id="nav-career">
+        <div class="nav-link" onclick="toggleOrNavigate('nav-career','middle-ba','Middle BA — чек-лист навичок',this)">
+          <svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg>
+          Кар&#x27;єра та співбесіда
           <svg class="nav-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M6 4l4 4-4 4"/></svg>
         </div>
         <div class="nav-sub">
-          <div class="nav-sub-link" onclick="navigate('ea-togaf','TOGAF для аналітика',this,'Enterprise Architecture')">TOGAF для аналітика</div>
-          <div class="nav-sub-link" onclick="navigate('ea-c4','C4 Model — візуалізація архітектури',this,'Enterprise Architecture')">C4 Model</div>
-          <div class="nav-sub-link" onclick="navigate('babok-capability-map','Business Capability Mapping',this,'Enterprise Architecture')">Business Capability Mapping</div>
+          <div class="nav-sub-link" onclick="navigate('middle-ba','Middle BA — чек-лист навичок',this,'Кар\'єра та співбесіда')">Middle BA — чек-лист навичок</div>
+          <div class="nav-sub-link" onclick="navigate('interview-questions','Питання на Senior-співбесіді',this,'Кар\'єра та співбесіда')">Питання на Senior-співбесіді</div>
         </div>
       </div>
 
     </div>
-  </nav>
+</nav>
 
   <!-- MAIN CONTENT -->
   <main class="main" id="main-content">
@@ -2066,18 +2158,7 @@ a.wl--gloss[data-tip]:hover::after { background:#3A2530; }
           </div>
         </div>
       </div>
-<div class="doc-section">
-        <h2 class="doc-h2">💼 Питання на Senior-співбесіді</h2>
-        <div class="doc-card doc-card--blue">
-          <ul class="doc-list">
-            <li>Опиши свій типовий день у Agile-команді. Які активності займають найбільше часу?</li>
-            <li>Як вирішуєш конфлікт між вимогами різних стейкхолдерів?</li>
-            <li>Чим відрізняється робота BA у Waterfall від Agile? Де тобі комфортніше і чому?</li>
-            <li>Як вимірюєш ефективність своєї роботи як BA?</li>
-            <li>Розкажи про ситуацію, коли знайшов/ла прогалину у вимогах вже під час розробки. Що зробив/ла?</li>
-          </ul>
-        </div>
-      </div>
+<div class="iq-link" data-nolink><span class="iq-link-icon">💼</span><div class="iq-link-body"><div class="iq-link-title">Питання на senior-співбесіді з цієї теми</div><div class="iq-link-desc">5 питань · розділ «Питання на Senior-співбесіді»</div></div><a class="iq-link-btn" href="#/interview-questions/iq-ba-daily" data-go="interview-questions" data-anchor="iq-ba-daily">Перейти →</a></div>
     </div>
 
     
@@ -2375,18 +2456,7 @@ a.wl--gloss[data-tip]:hover::after { background:#3A2530; }
         </div>
       </div>
 
-      <div class="doc-section">
-        <h2 class="doc-h2">💼 Питання на Senior-співбесіді</h2>
-        <div class="doc-card doc-card--blue">
-          <ul class="doc-list">
-            <li>Як готуєшся до Discovery-сесії? Що робиш до і після?</li>
-            <li>Розкажи про Discovery, де вимоги кардинально змінились після сесії.</li>
-            <li>Як визначаєш scope проєкту під час Discovery?</li>
-            <li>Що робиш якщо стейкхолдери мають суперечливі цілі?</li>
-            <li>Які артефакти створюєш за результатами Discovery?</li>
-          </ul>
-        </div>
-      </div>
+      <div class="iq-link" data-nolink><span class="iq-link-icon">💼</span><div class="iq-link-body"><div class="iq-link-title">Питання на senior-співбесіді з цієї теми</div><div class="iq-link-desc">5 питань · розділ «Питання на Senior-співбесіді»</div></div><a class="iq-link-btn" href="#/interview-questions/iq-discovery" data-go="interview-questions" data-anchor="iq-discovery">Перейти →</a></div>
     </div>
 
     <div id="page-middle-ba" class="page-view" style="display:none;">
@@ -2643,18 +2713,7 @@ a.wl--gloss[data-tip]:hover::after { background:#3A2530; }
         </div>
       </div>
 
-      <div class="doc-section">
-        <h2 class="doc-h2">💼 Питання на Middle/Senior-співбесіді</h2>
-        <div class="doc-card doc-card--blue">
-          <ul class="doc-list">
-            <li>Опиши проєкт де ти вів/вела вимоги повністю самостійно від Discovery до релізу.</li>
-            <li>Як пріоритизуєш вимоги коли стейкхолдери мають різні точки зору?</li>
-            <li>Що таке requirements baseline і коли він потрібен?</li>
-            <li>Як переходиш між Waterfall і Agile в рамках одного проєкту?</li>
-            <li>Наведи приклад де твоя вимога виявилась неправильною. Як вийшло і що змінив/ла?</li>
-          </ul>
-        </div>
-      </div>
+      <div class="iq-link" data-nolink><span class="iq-link-icon">💼</span><div class="iq-link-body"><div class="iq-link-title">Питання на senior-співбесіді з цієї теми</div><div class="iq-link-desc">5 питань · розділ «Питання на Senior-співбесіді»</div></div><a class="iq-link-btn" href="#/interview-questions/iq-middle-ba" data-go="interview-questions" data-anchor="iq-middle-ba">Перейти →</a></div>
     </div>
 
     <div id="page-glossary" class="page-view" style="display:none;">
@@ -16078,17 +16137,7 @@ wss.on('<span style="color:#4898C0;">connection</span>', (ws) => {
     </div>
 
 
-    <div id="page-bpmn-main" class="page-view" style="display:none;">
-      <nav class="breadcrumb"><span>База знань</span><span class="breadcrumb-sep">›</span><span class="current">BPMN</span></nav>
-      <div class="page-header">
-        <div class="page-tag">BPMN</div>
-        <h1 class="page-title">🔄 <span class="grad">BPMN</span></h1>
-        <p class="page-desc">Моделювання бізнес-процесів</p>
-      </div>
-      <div class="doc-section">
-        <div class="doc-callout">Цей розділ доступний через відповідні модулі в боковому меню.</div>
-      </div>
-    </div>
+    
 
     <!-- ═══════════════ ERP M1: Консоль запитів ═══════════════ -->
     <div id="page-erp-m1" class="page-view" style="display:none;">
@@ -16451,67 +16500,7 @@ wss.on('<span style="color:#4898C0;">connection</span>', (ws) => {
 
     
 
-    <div id="page-tech-main" class="page-view" style="display:none;">
-      <nav class="breadcrumb"><span>База знань</span><span class="breadcrumb-sep">›</span><span class="current">Advanced Tech</span></nav>
-      <div class="page-header">
-        <div class="page-tag">Advanced Tech</div>
-        <h1 class="page-title">⚙️ <span class="grad">Advanced Tech</span></h1>
-        <p class="page-desc">Технічні навички аналітика: від архітектури і стеку до тестування, мобільної розробки та AI.</p>
-      </div>
-      <div class="doc-section">
-        <div class="doc-callout">Технічний курс TechMind BA для мідл/сеньор аналітиків. Від архітектури систем і стеку технологій до AI-продуктів і мобільної розробки.</div>
-        <div class="doc-cards-2" style="margin-top:1.2rem;">
-          <div class="doc-card doc-card--blue" style="cursor:pointer;" onclick="navigate('tech-m01','Як працюють IT-продукти',this,'Advanced tech skills')">
-            <div class="doc-card-title">🌐 Як працюють IT-продукти</div>
-            <p style="font-size:.83rem;color:var(--ink2);">Клієнт-серверна архітектура, SDLC, NFR, Waterfall vs Agile.</p>
-          </div>
-          <div class="doc-card doc-card--teal" style="cursor:pointer;" onclick="navigate('tech-m02','Технічний стек',this,'Advanced tech skills')">
-            <div class="doc-card-title">💻 Технічний стек</div>
-            <p style="font-size:.83rem;color:var(--ink2);">Мови програмування, фреймворки, package managers, вибір технологій.</p>
-          </div>
-          <div class="doc-card doc-card--teal" style="cursor:pointer;" onclick="navigate('tech-m05','Frontend основи',this,'Advanced tech skills')">
-            <div class="doc-card-title">🏗 Frontend основи</div>
-            <p style="font-size:.83rem;color:var(--ink2);">HTML, CSS, JavaScript, DevTools, Cookies та LocalStorage.</p>
-          </div>
-          <div class="doc-card doc-card--gold" style="cursor:pointer;" onclick="navigate('tech-m06','Frontend фреймворки',this,'Advanced tech skills')">
-            <div class="doc-card-title">⚛️ Frontend фреймворки</div>
-            <p style="font-size:.83rem;color:var(--ink2);">React, Vue, Angular, State Management, Tailwind CSS.</p>
-          </div>
-          <div class="doc-card doc-card--blue" style="cursor:pointer;" onclick="navigate('tech-m08','Backend архітектура',this,'Advanced tech skills')">
-            <div class="doc-card-title">🏗 Backend архітектура</div>
-            <p style="font-size:.83rem;color:var(--ink2);">ООП, кешування, моноліт vs мікросервіси, документація.</p>
-          </div>
-          <div class="doc-card doc-card--red" style="cursor:pointer;" onclick="navigate('tech-m09','CI/CD та безпека',this,'Advanced tech skills')">
-            <div class="doc-card-title">🔐 CI/CD та безпека</div>
-            <p style="font-size:.83rem;color:var(--ink2);">Pipeline, Docker, OWASP Top 10, Secrets Management.</p>
-          </div>
-          <div class="doc-card doc-card--teal" style="cursor:pointer;" onclick="navigate('tech-m10','Git та контроль версій',this,'Advanced tech skills')">
-            <div class="doc-card-title">🌿 Git та контроль версій</div>
-            <p style="font-size:.83rem;color:var(--ink2);">Branching стратегії, Conventional Commits, Pull Request, code review.</p>
-          </div>
-          <div class="doc-card doc-card--gold" style="cursor:pointer;" onclick="navigate('tech-m11','DevOps та Cloud',this,'Advanced tech skills')">
-            <div class="doc-card-title">☁️ DevOps та Cloud</div>
-            <p style="font-size:.83rem;color:var(--ink2);">Cloud провайдери, хостинг, масштабування, SSH, cost optimization.</p>
-          </div>
-          <div class="doc-card doc-card--teal" style="cursor:pointer;" onclick="navigate('tech-m13','Аналітика проєкту',this,'Advanced tech skills')">
-            <div class="doc-card-title">📊 Аналітика проєкту</div>
-            <p style="font-size:.83rem;color:var(--ink2);">Google Analytics, Hotjar, Amplitude, Jira, Legacy-проєкти.</p>
-          </div>
-          <div class="doc-card doc-card--gold" style="cursor:pointer;" onclick="navigate('tech-m14','Тестування — основи та системний підхід',this,'Advanced tech skills')">
-            <div class="doc-card-title">🧪 Тестування — основи та advanced</div>
-            <p style="font-size:.83rem;color:var(--ink2);">Types of testing, піраміда, 3-Amigos, UAT, тест-кейси, BVA, State Transition, 7 принципів.</p>
-          </div>
-          <div class="doc-card doc-card--teal" style="cursor:pointer;" onclick="navigate('tech-m16','Mobile — розробка та реліз',this,'Advanced tech skills')">
-            <div class="doc-card-title">📱 Mobile — розробка та реліз</div>
-            <p style="font-size:.83rem;color:var(--ink2);">iOS vs Android, Flutter vs React Native, монетизація, Mobile UX, App Store, Google Play, DAU/MAU, ARPU.</p>
-          </div>
-          <div class="doc-card doc-card--red" style="cursor:pointer;" onclick="navigate('tech-m18','AI для BA та менеджерів',this,'Advanced tech skills')">
-            <div class="doc-card-title">🤖 AI для BA</div>
-            <p style="font-size:.83rem;color:var(--ink2);">ML, LLM, Prompt Engineering, AI-вимоги, AI інструменти.</p>
-          </div>
-        </div>
-      </div>
-    </div>
+    
 
 
     <!-- ═══ BPMN M1: Основи (redirect from old bpmn-main) ═══ -->
@@ -17165,18 +17154,7 @@ wss.on('<span style="color:#4898C0;">connection</span>', (ws) => {
       </div>
 
       <!-- ─── SENIOR ПИТАННЯ (з tech-m30) ─── -->
-      <div class="doc-section">
-        <h2 class="doc-h2">💼 Питання на Senior-співбесіді</h2>
-        <div class="doc-card doc-card--blue">
-          <ul class="doc-list">
-            <li>Розкажи про найскладнішу BPMN-діаграму яку ти будував. Які рішення приймав?</li>
-            <li>Як ти вирішуєш конфлікт між деталізацією та читабельністю діаграми?</li>
-            <li>Що таке compensating transaction і як її моделювати в BPMN?</li>
-            <li>Коли BPMN надлишковий — і що краще використати?</li>
-            <li>Як BPMN L3 пов'язаний із мікросервісною архітектурою?</li>
-          </ul>
-        </div>
-      </div>
+      <div class="iq-link" data-nolink><span class="iq-link-icon">💼</span><div class="iq-link-body"><div class="iq-link-title">Питання на senior-співбесіді з цієї теми</div><div class="iq-link-desc">5 питань · розділ «Питання на Senior-співбесіді»</div></div><a class="iq-link-btn" href="#/interview-questions/iq-bpmn-m6" data-go="interview-questions" data-anchor="iq-bpmn-m6">Перейти →</a></div>
 
 
     </div>
@@ -19267,7 +19245,6 @@ info:
       <a href="#apis">API екосистема</a>
       <a href="#usecases">Use cases для BA/SA</a>
       <a href="#mistakes">Типові помилки аналітика</a>
-      <a href="#interview">Питання на співбесіді</a>
       <a href="#checklist">Чекліст</a>
     </div>
   </div>
@@ -20161,23 +20138,8 @@ info:
 <span class="k">session.timeout.ms</span>=<span class="n">30000</span>       <span class="c"># 30s до rebalance при мовчанні</span>
   </div>
 
-  <!-- ═══ ПИТАННЯ НА СПІВБЕСІДІ ═══ -->
-  <div id="interview">
-    <div class="interview-card">
-      <h4>🎯 Питання на senior-співбесіді по Kafka</h4>
+  <div class="iq-link" data-nolink><span class="iq-link-icon">💼</span><div class="iq-link-body"><div class="iq-link-title">Питання на senior-співбесіді з цієї теми</div><div class="iq-link-desc">10 питань · розділ «Питання на Senior-співбесіді»</div></div><a class="iq-link-btn" href="#/interview-questions/iq-sa-kafka" data-go="interview-questions" data-anchor="iq-sa-kafka">Перейти →</a></div>
 
-      <div class="interview-q">«Поясни різницю між topic, partition та offset. Як вони разом забезпечують масштабованість?»</div>
-      <div class="interview-q">«Коли ти вибереш Kafka замість RabbitMQ? Наведи конкретний приклад з фінтех/e-commerce.»</div>
-      <div class="interview-q">«Що таке Consumer Group та як вона забезпечує паралельну обробку без дублювання?»</div>
-      <div class="interview-q">«Як Kafka гарантує порядок повідомлень? Коли він може порушитись?»</div>
-      <div class="interview-q">«Що таке at-least-once, at-most-once і exactly-once delivery? Як досягнути exactly-once в Kafka?»</div>
-      <div class="interview-q">«Навіщо потрібен Schema Registry? Яку проблему він вирішує при evolving contracts між Producer і Consumer?»</div>
-      <div class="interview-q">«Чим KRaft відрізняється від ZooKeeper? Чому Kafka від нього відмовилась?»</div>
-      <div class="interview-q">«Як ти б описав архітектуру Kafka в системі де потрібно: fraud detection, аналітика в DWH і email-нотифікації після оплати? Скільки topics, партицій, consumer groups?»</div>
-      <div class="interview-q">«Що таке Kafka Connect? Для якого сценарію ти б використав Debezium CDC connector?»</div>
-      <div class="interview-q">«Як ти б моніторив «відставання» consumer від producer (consumer lag)? Що це означає для бізнесу?»</div>
-    </div>
-  </div>
 
   <!-- ═══ САМОПЕРЕВІРКА ═══ -->
   <h3 class="sub-heading" style="margin-top: 2rem;">🧠 Самоперевірка (натисни для відповіді)</h3>
@@ -20457,7 +20419,6 @@ function toggleAnswer(el) {
       <a href="#cluster">Кластеризація</a>
       <a href="#usecases">Use Cases для BA/SA</a>
       <a href="#mistakes">Типові помилки</a>
-      <a href="#interview">Питання на співбесіді</a>
       <a href="#comparison">Kafka vs RabbitMQ</a>
     </div>
   </div>
@@ -20930,22 +20891,8 @@ def <span class="fn">callback</span>(ch, method, properties, body):
 <span class="k">channel</span>.<span class="fn">basic_consume</span>(queue=<span class="s">'payment-queue'</span>, on_message_callback=callback)
 </div>
 
-  <!-- INTERVIEW -->
-  <div id="interview">
-    <div class="ic">
-      <h4>🎯 Питання на senior-співбесіді по RabbitMQ</h4>
-      <div class="iq">«Поясни різницю між Exchange і Queue. Чому producer пише не напряму в Queue?»</div>
-      <div class="iq">«Коли ти вибереш Topic Exchange замість Direct? Наведи приклад naming convention для routing key.»</div>
-      <div class="iq">«Що таке Dead Letter Exchange і як реалізувати retry з exponential backoff за допомогою DLX + TTL?»</div>
-      <div class="iq">«Чим Quorum Queue відрізняється від Classic Mirrored Queue? Чому mirrored deprecated?»</div>
-      <div class="iq">«Що таке prefetch_count і як він захищає від consumer overload? Яке значення вибрати для CPU-intensive задач?»</div>
-      <div class="iq">«Як реалізувати Request-Reply патерн (RPC) через RabbitMQ? Що таке reply_to і correlation_id?»</div>
-      <div class="iq">«Що станеться якщо consumer впаде після отримання повідомлення але до ACK? Як це захищає від втрати даних?»</div>
-      <div class="iq">«Навіщо потрібні Virtual Hosts? Як ти б організував vhost для multi-tenant SaaS?»</div>
-      <div class="iq">«Як ти б описав архітектуру: e-commerce order created → email + sms + loyalty + audit? Яку схему exchange і queues обереш?»</div>
-      <div class="iq">«Коли ти вибереш RabbitMQ, а не Kafka? Які конкретні технічні критерії?»</div>
-    </div>
-  </div>
+  <div class="iq-link" data-nolink><span class="iq-link-icon">💼</span><div class="iq-link-body"><div class="iq-link-title">Питання на senior-співбесіді з цієї теми</div><div class="iq-link-desc">10 питань · розділ «Питання на Senior-співбесіді»</div></div><a class="iq-link-btn" href="#/interview-questions/iq-sa-rabbitmq" data-go="interview-questions" data-anchor="iq-sa-rabbitmq">Перейти →</a></div>
+
 
   <!-- САМОПЕРЕВІРКА -->
   <h3 class="sh" style="margin-top:2rem">🧠 Самоперевірка</h3>
@@ -25377,15 +25324,9 @@ project = MYAPP
               <li>Відсутність комунікаційного плану на старті</li>
             </ul>
           </div>
-          <div class="doc-card doc-card--blue">
-            <div class="doc-card-title">Питання на Senior-співбесіді</div>
-            <ul class="doc-list">
-              <li>Як ти управляєш стейкхолдером з високою владою, який блокує проєкт?</li>
-              <li>Розкажи про ситуацію, де стейкхолдери мали протилежні вимоги.</li>
-              <li>Як RACI допомагає вирішувати конфлікти в команді?</li>
-            </ul>
-          </div>
+          
         </div>
+<div class="iq-link" data-nolink><span class="iq-link-icon">💼</span><div class="iq-link-body"><div class="iq-link-title">Питання на senior-співбесіді з цієї теми</div><div class="iq-link-desc">3 питань · розділ «Питання на Senior-співбесіді»</div></div><a class="iq-link-btn" href="#/interview-questions/iq-tech-m22" data-go="interview-questions" data-anchor="iq-tech-m22">Перейти →</a></div>
       </div>
 
       <!-- Power/Interest Grid -->
@@ -26975,24 +26916,7 @@ project = MYAPP
       </div>
 
       <!-- Питання на senior-співбесіді -->
-      <div class="doc-section">
-        <h2 class="doc-h2">Питання на Senior-співбесіді</h2>
-        <div class="doc-card doc-card--blue">
-          <ul class="doc-list">
-            <li>Як перевіряєш якість User Story перед тим як відправити в спринт?</li>
-            <li>Що таке INVEST і як застосовуєш на практиці?</li>
-            <li>Коли б написав/ла Use Case замість User Story? Наведи реальний приклад.</li>
-            <li>Як описати альтернативний потік у User Story?</li>
-            <li>Як відрізнити Story від Task від Bug?</li>
-            <li>Як ти декомпозуєш epic на stories? Яку стратегію обираєш і чому?</li>
-            <li>Як працюєш зі stories, які мають зовнішні залежності (API третьої сторони)?</li>
-            <li>Як пріоритизуєш backlog, коли все «must have»?</li>
-          </ul>
-        </div>
-        <div class="doc-callout" style="margin-top:1rem;border-left-color:#C07898;">
-          <strong>На що звертає увагу інтерв'юер:</strong> Не на знання визначень, а на реальний досвід — конкретні приклади, як вирішував проблеми зі stories на проєкті. Senior має показати, що розуміє контекст і обирає підхід, а не сліпо слідує шаблону.
-        </div>
-      </div>
+      <div class="iq-link" data-nolink><span class="iq-link-icon">💼</span><div class="iq-link-body"><div class="iq-link-title">Питання на senior-співбесіді з цієї теми</div><div class="iq-link-desc">12 питань · розділ «Питання на Senior-співбесіді»</div></div><a class="iq-link-btn" href="#/interview-questions/iq-req-user-stories" data-go="interview-questions" data-anchor="iq-req-user-stories">Перейти →</a></div>
 
       <!-- User Story vs Task (з page-user-story) -->
       <div class="doc-section">
@@ -27731,18 +27655,7 @@ project = MYAPP
       </div>
 
       <!-- Питання на Senior-співбесіді (з page-tech-m19) -->
-      <div class="doc-section">
-        <h2 class="doc-h2">Питання на Senior-співбесіді</h2>
-        <div class="doc-card doc-card--blue">
-          <ul class="doc-list">
-            <li>Як ти справляєшся із суперечливими вимогами від різних стейкхолдерів?</li>
-            <li>Розкажи про воркшоп, де виникли конфлікти. Як ти їх вирішив?</li>
-            <li>Як відрізнити справжню потребу від запропонованого рішення?</li>
-            <li>Які техніки використовуєш для прихованих (tacit) вимог?</li>
-            <li>Як виміряти якість зібраних вимог?</li>
-          </ul>
-        </div>
-      </div>
+      <div class="iq-link" data-nolink><span class="iq-link-icon">💼</span><div class="iq-link-body"><div class="iq-link-title">Питання на senior-співбесіді з цієї теми</div><div class="iq-link-desc">5 питань · розділ «Питання на Senior-співбесіді»</div></div><a class="iq-link-btn" href="#/interview-questions/iq-req-elicitation" data-go="interview-questions" data-anchor="iq-req-elicitation">Перейти →</a></div>
 
       <!-- Navigation -->
 
@@ -29288,18 +29201,7 @@ project = MYAPP
       </div>
 
       <!-- Interview -->
-      <div class="doc-section">
-        <h2 class="doc-h2">Питання на Senior-співбесіді</h2>
-        <div class="doc-card doc-card--blue">
-          <ul class="doc-list">
-            <li>Як ти документуєш архітектурні рішення? Розкажи про конкретний приклад.</li>
-            <li>Що робити, коли рішення прийнято усно і ніхто не хоче його формалізувати?</li>
-            <li>Як визначаєш, чи потрібен ADR, чи достатньо рядка в Decision Log?</li>
-            <li>Нова людина в команді запитує «чому ми використовуємо Kafka, а не RabbitMQ?» — як відповідаєш?</li>
-            <li>Як працюєш з рішеннями, які виявились помилковими через 6 місяців?</li>
-          </ul>
-        </div>
-      </div>
+      <div class="iq-link" data-nolink><span class="iq-link-icon">💼</span><div class="iq-link-body"><div class="iq-link-title">Питання на senior-співбесіді з цієї теми</div><div class="iq-link-desc">5 питань · розділ «Питання на Senior-співбесіді»</div></div><a class="iq-link-btn" href="#/interview-questions/iq-docs-decision-log" data-go="interview-questions" data-anchor="iq-docs-decision-log">Перейти →</a></div>
 
       <!-- Navigation -->
 
@@ -29547,18 +29449,7 @@ project = MYAPP
       </div>
 
       <!-- Pitання на співбесіді -->
-      <div class="doc-section">
-        <h2 class="doc-h2">Питання на Senior-співбесіді</h2>
-        <div class="doc-card doc-card--blue">
-          <ul class="doc-list">
-            <li>Що таке TOGAF і яку проблему він вирішує?</li>
-            <li>Як ADM Cycle допомагає аналітику в роботі?</li>
-            <li>Що таке Architecture View і Viewpoint? Наведи приклад.</li>
-            <li>Яка різниця між ArchiMate та UML?</li>
-            <li>Як ти впишеш нову систему в існуючий enterprise-ландшафт?</li>
-          </ul>
-        </div>
-      </div>
+      <div class="iq-link" data-nolink><span class="iq-link-icon">💼</span><div class="iq-link-body"><div class="iq-link-title">Питання на senior-співбесіді з цієї теми</div><div class="iq-link-desc">5 питань · розділ «Питання на Senior-співбесіді»</div></div><a class="iq-link-btn" href="#/interview-questions/iq-ea-togaf" data-go="interview-questions" data-anchor="iq-ea-togaf">Перейти →</a></div>
 
       <!-- Navigation -->
 
@@ -29876,17 +29767,7 @@ project = MYAPP
       </div>
 
       <!-- Interview -->
-      <div class="doc-section">
-        <h2 class="doc-h2">Питання на Senior-співбесіді</h2>
-        <div class="doc-card doc-card--blue">
-          <ul class="doc-list">
-            <li>Чи знаєш C4 Model? Намалюй Context diagram для системи онлайн-замовлення їжі.</li>
-            <li>Яка різниця між Container та Component у C4?</li>
-            <li>Коли використовуєш C4, а коли — UML?</li>
-            <li>Як пояснити архітектуру системи CEO за 2 хвилини? Який рівень C4 використаєш?</li>
-          </ul>
-        </div>
-      </div>
+      <div class="iq-link" data-nolink><span class="iq-link-icon">💼</span><div class="iq-link-body"><div class="iq-link-title">Питання на senior-співбесіді з цієї теми</div><div class="iq-link-desc">4 питань · розділ «Питання на Senior-співбесіді»</div></div><a class="iq-link-btn" href="#/interview-questions/iq-ea-c4" data-go="interview-questions" data-anchor="iq-ea-c4">Перейти →</a></div>
 
       <!-- Navigation -->
 
@@ -29904,7 +29785,7 @@ project = MYAPP
       </div>
 
       <!-- ── 1. Requirements Engineering ── -->
-      <div class="doc-section">
+      <div class="doc-section" id="iq-general-requirements">
         <h2 class="doc-h2">Requirements Engineering</h2>
         <div class="doc-cards-2">
 
@@ -29984,7 +29865,7 @@ project = MYAPP
       </div>
 
       <!-- ── 2. Process & Architecture ── -->
-      <div class="doc-section">
+      <div class="doc-section" id="iq-general-process">
         <h2 class="doc-h2">Process &amp; Architecture</h2>
         <div class="doc-cards-2">
 
@@ -30040,7 +29921,7 @@ project = MYAPP
       </div>
 
       <!-- ── 3. Stakeholder & Communication ── -->
-      <div class="doc-section">
+      <div class="doc-section" id="iq-general-stakeholders">
         <h2 class="doc-h2">Stakeholder &amp; Communication</h2>
         <div class="doc-cards-2">
 
@@ -30080,7 +29961,7 @@ project = MYAPP
       </div>
 
       <!-- ── 4. Methodology & Tools ── -->
-      <div class="doc-section">
+      <div class="doc-section" id="iq-general-methodology">
         <h2 class="doc-h2">Methodology &amp; Tools</h2>
         <div class="doc-cards-2">
 
@@ -30120,7 +30001,7 @@ project = MYAPP
       </div>
 
       <!-- ── 5. Case Studies ── -->
-      <div class="doc-section">
+      <div class="doc-section" id="iq-general-cases">
         <h2 class="doc-h2">Case Studies — практичні задачі</h2>
         <p class="doc-p">Ці кейси часто дають на senior-співбесідах. Ідеальної відповіді немає — інтерв'юер оцінює структуру мислення, здатність ставити правильні питання і пропонувати конкретний план дій.</p>
 
@@ -30182,7 +30063,407 @@ project = MYAPP
       </div>
 
       <!-- Tips -->
-      <div class="doc-section">
+      <!-- ═══════ ВСТАВИТИ у #page-interview-questions ПІСЛЯ існуючих 5 тематичних груп, ПЕРЕД "Загальні поради для співбесіди" ═══════ -->
+        <div class="doc-section" id="iq-by-topic" data-nolink>
+          <h2 class="doc-h2">Питання за темами wiki</h2>
+          <p class="doc-p">Зібрано з усіх модулів. Кожен блок має кнопку «до теми» — повернутися до матеріалу.</p>
+          <div class="iq-toc" data-nolink><a href="#/interview-questions/iq-sec-nav-start" data-go="interview-questions" data-anchor="iq-sec-nav-start">Старт <span class="iq-count">5</span></a><a href="#/interview-questions/iq-sec-nav-strategy" data-go="interview-questions" data-anchor="iq-sec-nav-strategy">Стратегія та бізнес-кейс <span class="iq-count">15</span></a><a href="#/interview-questions/iq-sec-nav-elicit" data-go="interview-questions" data-anchor="iq-sec-nav-elicit">Збір та аналіз вимог <span class="iq-count">24</span></a><a href="#/interview-questions/iq-sec-nav-spec" data-go="interview-questions" data-anchor="iq-sec-nav-spec">Написання вимог: US / UC / AC <span class="iq-count">12</span></a><a href="#/interview-questions/iq-sec-nav-docs" data-go="interview-questions" data-anchor="iq-sec-nav-docs">Документація аналітика <span class="iq-count">5</span></a><a href="#/interview-questions/iq-sec-nav-process" data-go="interview-questions" data-anchor="iq-sec-nav-process">Бізнес-процеси та BPMN <span class="iq-count">10</span></a><a href="#/interview-questions/iq-sec-nav-arch" data-go="interview-questions" data-anchor="iq-sec-nav-arch">Архітектура систем та застосунків <span class="iq-count">9</span></a><a href="#/interview-questions/iq-sec-nav-integr" data-go="interview-questions" data-anchor="iq-sec-nav-integr">Інтеграції та обмін повідомленнями <span class="iq-count">20</span></a><a href="#/interview-questions/iq-sec-nav-db" data-go="interview-questions" data-anchor="iq-sec-nav-db">Бази даних та SQL <span class="iq-count">6</span></a><a href="#/interview-questions/iq-sec-nav-mongo" data-go="interview-questions" data-anchor="iq-sec-nav-mongo">MongoDB <span class="iq-count">61</span></a><a href="#/interview-questions/iq-sec-nav-eng" data-go="interview-questions" data-anchor="iq-sec-nav-eng">Інженерні практики <span class="iq-count">8</span></a><a href="#/interview-questions/iq-sec-nav-career" data-go="interview-questions" data-anchor="iq-sec-nav-career">Кар&#x27;єра та співбесіда <span class="iq-count">5</span></a></div>
+        </div>
+
+        <div class="doc-section iq-section" id="iq-sec-nav-start">
+          <h2 class="doc-h2">Старт</h2>
+          <div class="iq-block" id="iq-ba-daily">
+            <div class="iq-block-head"><span class="iq-block-title">Що робить BA щодня</span><a class="iq-src" href="#/ba-daily" data-go="ba-daily">↩ до теми</a></div>
+            <ol class="iq-list">
+              <li>Опиши свій типовий день у Agile-команді. Які активності займають найбільше часу?</li>
+              <li>Як вирішуєш конфлікт між вимогами різних стейкхолдерів?</li>
+              <li>Чим відрізняється робота BA у Waterfall від Agile? Де тобі комфортніше і чому?</li>
+              <li>Як вимірюєш ефективність своєї роботи як BA?</li>
+              <li>Розкажи про ситуацію, коли знайшов/ла прогалину у вимогах вже під час розробки. Що зробив/ла?</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="doc-section iq-section" id="iq-sec-nav-strategy">
+          <h2 class="doc-h2">Стратегія та бізнес-кейс</h2>
+          <div class="iq-block" id="iq-babok-solution-eval">
+            <div class="iq-block-head"><span class="iq-block-title">Solution Evaluation (BABOK)</span><a class="iq-src" href="#/babok-solution-eval" data-go="babok-solution-eval">↩ до теми</a></div>
+            <ol class="iq-list">
+              <li>Як ти визначаєш успішність впровадженого рішення? Які метрики використовуєш?</li>
+              <li>Розкажи про випадок, коли технічно правильне рішення не принесло бізнес-цінності. Що було причиною?</li>
+              <li>Як BA бере участь у post-implementation review? Яка його роль там?</li>
+              <li>Чим відрізняється Solution Limitation від Enterprise Limitation? Наведи приклад.</li>
+              <li>Коли ти рекомендував би &quot;Replace&quot; рішення, а не &quot;Improve&quot;?</li>
+            </ol>
+          </div>
+          <div class="iq-block" id="iq-babok-strategy">
+            <div class="iq-block-head"><span class="iq-block-title">Strategy Analysis (BABOK)</span><a class="iq-src" href="#/babok-strategy" data-go="babok-strategy">↩ до теми</a></div>
+            <ol class="iq-list">
+              <li>Як BA бере участь у стратегічному плануванні? Де починається і де закінчується зона відповідальності?</li>
+              <li>Ти отримав завдання &quot;автоматизувати процес X&quot;. Як ти перевіряєш, чи це правильне рішення?</li>
+              <li>Розкажи як ти будував або брав участь у Business Case. Які метрики використовував?</li>
+              <li>Як вибрати між Big Bang і Phased підходом до впровадження? Від чого залежить рішення?</li>
+              <li>Що робити, якщо стейкхолдери мають різне бачення Future State?</li>
+            </ol>
+          </div>
+          <div class="iq-block" id="iq-babok-capability-map">
+            <div class="iq-block-head"><span class="iq-block-title">Business Capability Map</span><a class="iq-src" href="#/babok-capability-map" data-go="babok-capability-map">↩ до теми</a></div>
+            <ol class="iq-list">
+              <li>Що таке business capability і чим вона відрізняється від процесу і функції?</li>
+              <li>Як Capability Map допомагає в пріоритизації бек-логу або roadmap?</li>
+              <li>Як ти пов&#x27;язуєш capabilities зі стратегічними цілями компанії?</li>
+              <li>Які рівні деталізації ти використовуєш і як вирішуєш, коли зупинитись?</li>
+              <li>Як Capability Heat Map допомагає аргументувати інвестиції в нові проєкти?</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="doc-section iq-section" id="iq-sec-nav-elicit">
+          <h2 class="doc-h2">Збір та аналіз вимог</h2>
+          <div class="iq-block" id="iq-discovery">
+            <div class="iq-block-head"><span class="iq-block-title">Чек-лист Discovery Phase</span><a class="iq-src" href="#/discovery" data-go="discovery">↩ до теми</a></div>
+            <ol class="iq-list">
+              <li>Як готуєшся до Discovery-сесії? Що робиш до і після?</li>
+              <li>Розкажи про Discovery, де вимоги кардинально змінились після сесії.</li>
+              <li>Як визначаєш scope проєкту під час Discovery?</li>
+              <li>Що робиш якщо стейкхолдери мають суперечливі цілі?</li>
+              <li>Які артефакти створюєш за результатами Discovery?</li>
+            </ol>
+          </div>
+          <div class="iq-block" id="iq-tech-m22">
+            <div class="iq-block-head"><span class="iq-block-title">Stakeholder Management</span><a class="iq-src" href="#/tech-m22" data-go="tech-m22">↩ до теми</a></div>
+            <ol class="iq-list">
+              <li>Як ти управляєш стейкхолдером з високою владою, який блокує проєкт?</li>
+              <li>Розкажи про ситуацію, де стейкхолдери мали протилежні вимоги.</li>
+              <li>Як RACI допомагає вирішувати конфлікти в команді?</li>
+            </ol>
+          </div>
+          <div class="iq-block" id="iq-req-elicitation">
+            <div class="iq-block-head"><span class="iq-block-title">Техніки збору вимог</span><a class="iq-src" href="#/req-elicitation" data-go="req-elicitation">↩ до теми</a></div>
+            <ol class="iq-list">
+              <li>Як ти справляєшся із суперечливими вимогами від різних стейкхолдерів?</li>
+              <li>Розкажи про воркшоп, де виникли конфлікти. Як ти їх вирішив?</li>
+              <li>Як відрізнити справжню потребу від запропонованого рішення?</li>
+              <li>Які техніки використовуєш для прихованих (tacit) вимог?</li>
+              <li>Як виміряти якість зібраних вимог?</li>
+            </ol>
+          </div>
+          <div class="iq-block" id="iq-babok-planning">
+            <div class="iq-block-head"><span class="iq-block-title">BA Planning &amp; Monitoring</span><a class="iq-src" href="#/babok-planning" data-go="babok-planning">↩ до теми</a></div>
+            <ol class="iq-list">
+              <li>Як ти визначаєш підхід до BA-роботи на початку проєкту? Які фактори враховуєш?</li>
+              <li>Опиши випадок, коли governance вимог не був визначений. Що сталось і як вирішували?</li>
+              <li>Як ти керуєш стейкхолдерами, які або не доступні, або не зацікавлені у роботі з вимогами?</li>
+              <li>Як організуєш сховище BA-артефактів у великому проєкті з кількома командами?</li>
+              <li>Які метрики ти використовуєш для оцінки ефективності власної роботи як BA?</li>
+              <li>Як BA Plan змінюється при переході від Waterfall до Agile на середині проєкту?</li>
+            </ol>
+          </div>
+          <div class="iq-block" id="iq-babok-business-rules">
+            <div class="iq-block-head"><span class="iq-block-title">Business Rules та DMN</span><a class="iq-src" href="#/babok-business-rules" data-go="babok-business-rules">↩ до теми</a></div>
+            <ol class="iq-list">
+              <li>Чим відрізняється бізнес-правило від функціональної вимоги? Наведи приклад.</li>
+              <li>Як ти виявляєш &quot;неявні&quot; бізнес-правила, про які стейкхолдери не думають і не говорять?</li>
+              <li>Що таке Decision Table і коли ти її використовуєш?</li>
+              <li>Як перевірити Decision Table на повноту і несуперечність?</li>
+              <li>Як керувати бізнес-правилами в Agile-проєкті, де вони змінюються щоспринту?</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="doc-section iq-section" id="iq-sec-nav-spec">
+          <h2 class="doc-h2">Написання вимог: US / UC / AC</h2>
+          <div class="iq-block" id="iq-req-user-stories">
+            <div class="iq-block-head"><span class="iq-block-title">User Stories: повний гайд</span><a class="iq-src" href="#/req-user-stories" data-go="req-user-stories">↩ до теми</a></div>
+            <ol class="iq-list">
+              <li>Як перевіряєш якість User Story перед тим як відправити в спринт?</li>
+              <li>Що таке INVEST і як застосовуєш на практиці?</li>
+              <li>Коли б написав/ла Use Case замість User Story? Наведи реальний приклад.</li>
+              <li>Як описати альтернативний потік у User Story?</li>
+              <li>Як відрізнити Story від Task від Bug?</li>
+              <li>Як ти декомпозуєш epic на stories? Яку стратегію обираєш і чому?</li>
+              <li>Як працюєш зі stories, які мають зовнішні залежності (API третьої сторони)?</li>
+              <li>Як пріоритизуєш backlog, коли все «must have»?</li>
+              <li>Каже що саме треба зробити</li>
+              <li>Описує функціонал з точки зору користувача</li>
+              <li>Розділяє фічі на бізнес-процеси</li>
+              <li>Каже як треба робити</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="doc-section iq-section" id="iq-sec-nav-docs">
+          <h2 class="doc-h2">Документація аналітика</h2>
+          <div class="iq-block" id="iq-docs-decision-log">
+            <div class="iq-block-head"><span class="iq-block-title">Decision Log та ADR</span><a class="iq-src" href="#/docs-decision-log" data-go="docs-decision-log">↩ до теми</a></div>
+            <ol class="iq-list">
+              <li>Як ти документуєш архітектурні рішення? Розкажи про конкретний приклад.</li>
+              <li>Що робити, коли рішення прийнято усно і ніхто не хоче його формалізувати?</li>
+              <li>Як визначаєш, чи потрібен ADR, чи достатньо рядка в Decision Log?</li>
+              <li>Нова людина в команді запитує «чому ми використовуємо Kafka, а не RabbitMQ?» — як відповідаєш?</li>
+              <li>Як працюєш з рішеннями, які виявились помилковими через 6 місяців?</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="doc-section iq-section" id="iq-sec-nav-process">
+          <h2 class="doc-h2">Бізнес-процеси та BPMN</h2>
+          <div class="iq-block" id="iq-bpmn-m6">
+            <div class="iq-block-head"><span class="iq-block-title">Глибоке моделювання BPMN</span><a class="iq-src" href="#/bpmn-m6" data-go="bpmn-m6">↩ до теми</a></div>
+            <ol class="iq-list">
+              <li>Розкажи про найскладнішу BPMN-діаграму яку ти будував. Які рішення приймав?</li>
+              <li>Як ти вирішуєш конфлікт між деталізацією та читабельністю діаграми?</li>
+              <li>Що таке compensating transaction і як її моделювати в BPMN?</li>
+              <li>Коли BPMN надлишковий — і що краще використати?</li>
+              <li>Як BPMN L3 пов&#x27;язаний із мікросервісною архітектурою?</li>
+            </ol>
+          </div>
+          <div class="iq-block" id="iq-babok-bpm">
+            <div class="iq-block-head"><span class="iq-block-title">BA в управлінні процесами (BABOK)</span><a class="iq-src" href="#/babok-bpm" data-go="babok-bpm">↩ до теми</a></div>
+            <ol class="iq-list">
+              <li>Як ти підходиш до Process Discovery? Який метод вибереш якщо не можеш спостерігати за процесом live?</li>
+              <li>Як BA визначає, що процес готовий до автоматизації, а не спочатку потребує оптимізації?</li>
+              <li>Що таке Process Owner і чому це важливо для BA?</li>
+              <li>Розкажи як ти застосовував VSM або подібну техніку. Які insights отримав?</li>
+              <li>Як документуєш exception paths у складних процесах?</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="doc-section iq-section" id="iq-sec-nav-arch">
+          <h2 class="doc-h2">Архітектура систем та застосунків</h2>
+          <div class="iq-block" id="iq-ea-togaf">
+            <div class="iq-block-head"><span class="iq-block-title">TOGAF для аналітика</span><a class="iq-src" href="#/ea-togaf" data-go="ea-togaf">↩ до теми</a></div>
+            <ol class="iq-list">
+              <li>Що таке TOGAF і яку проблему він вирішує?</li>
+              <li>Як ADM Cycle допомагає аналітику в роботі?</li>
+              <li>Що таке Architecture View і Viewpoint? Наведи приклад.</li>
+              <li>Яка різниця між ArchiMate та UML?</li>
+              <li>Як ти впишеш нову систему в існуючий enterprise-ландшафт?</li>
+            </ol>
+          </div>
+          <div class="iq-block" id="iq-ea-c4">
+            <div class="iq-block-head"><span class="iq-block-title">C4 Model</span><a class="iq-src" href="#/ea-c4" data-go="ea-c4">↩ до теми</a></div>
+            <ol class="iq-list">
+              <li>Чи знаєш C4 Model? Намалюй Context diagram для системи онлайн-замовлення їжі.</li>
+              <li>Яка різниця між Container та Component у C4?</li>
+              <li>Коли використовуєш C4, а коли — UML?</li>
+              <li>Як пояснити архітектуру системи CEO за 2 хвилини? Який рівень C4 використаєш?</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="doc-section iq-section" id="iq-sec-nav-integr">
+          <h2 class="doc-h2">Інтеграції та обмін повідомленнями</h2>
+          <div class="iq-block" id="iq-sa-rabbitmq">
+            <div class="iq-block-head"><span class="iq-block-title">RabbitMQ</span><a class="iq-src" href="#/sa-rabbitmq" data-go="sa-rabbitmq">↩ до теми</a></div>
+            <ol class="iq-list">
+              <li>Поясни різницю між Exchange і Queue. Чому producer пише не напряму в Queue?</li>
+              <li>Коли ти вибереш Topic Exchange замість Direct? Наведи приклад naming convention для routing key.</li>
+              <li>Що таке Dead Letter Exchange і як реалізувати retry з exponential backoff за допомогою DLX + TTL?</li>
+              <li>Чим Quorum Queue відрізняється від Classic Mirrored Queue? Чому mirrored deprecated?</li>
+              <li>Що таке prefetch_count і як він захищає від consumer overload? Яке значення вибрати для CPU-intensive задач?</li>
+              <li>Як реалізувати Request-Reply патерн (RPC) через RabbitMQ? Що таке reply_to і correlation_id?</li>
+              <li>Що станеться якщо consumer впаде після отримання повідомлення але до ACK? Як це захищає від втрати даних?</li>
+              <li>Навіщо потрібні Virtual Hosts? Як ти б організував vhost для multi-tenant SaaS?</li>
+              <li>Як ти б описав архітектуру: e-commerce order created → email + sms + loyalty + audit? Яку схему exchange і queues обереш?</li>
+            <li>Коли ти вибереш RabbitMQ, а не Kafka? Які конкретні технічні критерії?</li>
+            </ol>
+          </div>
+          <div class="iq-block" id="iq-sa-kafka">
+            <div class="iq-block-head"><span class="iq-block-title">Apache Kafka</span><a class="iq-src" href="#/sa-kafka" data-go="sa-kafka">↩ до теми</a></div>
+            <ol class="iq-list">
+              <li>Поясни різницю між topic, partition та offset. Як вони разом забезпечують масштабованість?</li>
+              <li>Коли ти вибереш Kafka замість RabbitMQ? Наведи конкретний приклад з фінтех/e-commerce.</li>
+              <li>Що таке Consumer Group та як вона забезпечує паралельну обробку без дублювання?</li>
+              <li>Як Kafka гарантує порядок повідомлень? Коли він може порушитись?</li>
+              <li>Що таке at-least-once, at-most-once і exactly-once delivery? Як досягнути exactly-once в Kafka?</li>
+              <li>Навіщо потрібен Schema Registry? Яку проблему він вирішує при evolving contracts між Producer і Consumer?</li>
+              <li>Чим KRaft відрізняється від ZooKeeper? Чому Kafka від нього відмовилась?</li>
+              <li>Як ти б описав архітектуру Kafka в системі де потрібно: fraud detection, аналітика в DWH і email-нотифікації після оплати? Скільки topics, партицій, consumer groups?</li>
+              <li>Що таке Kafka Connect? Для якого сценарію ти б використав Debezium CDC connector?</li>
+              <li>Як ти б моніторив «відставання» consumer від producer (consumer lag)? Що це означає для бізнесу?</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="doc-section iq-section" id="iq-sec-nav-db">
+          <h2 class="doc-h2">Бази даних та SQL</h2>
+          <div class="iq-block" id="iq-db-mod20">
+            <div class="iq-block-head"><span class="iq-block-title">CAP, ACID vs BASE</span><a class="iq-src" href="#/db-mod20" data-go="db-mod20">↩ до теми</a></div>
+            <ol class="iq-list">
+              <li>Поясни ACID простими словами. Наведи приклад порушення кожної букви.</li>
+              <li>Що таке eventual consistency? Наведи бізнес-приклад, де це допустимо.</li>
+              <li>Яка різниця між Strong Consistency та Eventual Consistency? Коли що обираєш?</li>
+              <li>Що таке CAP-теорема? Чому не можна мати всі три одночасно?</li>
+              <li>Як пояснити бізнесу, що «дані можуть бути неконсистентні кілька секунд»?</li>
+              <li>Навіщо в одній системі можуть бути і SQL, і NoSQL? Наведи приклад архітектури.</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="doc-section iq-section" id="iq-sec-nav-mongo">
+          <h2 class="doc-h2">MongoDB</h2>
+          <div class="iq-block" id="iq-mongodb-intro">
+            <div class="iq-block-head"><span class="iq-block-title">Вступ та термінологія</span><a class="iq-src" href="#/mongodb-intro" data-go="mongodb-intro">↩ до теми</a></div>
+            <ol class="iq-list">
+              <li>Опиши ситуацію, коли ти аналізував схему MongoDB і знайшов проблему з дизайном даних</li>
+              <li>Які типи даних MongoDB ти б зазначив у вимогах для фінансового продукту?</li>
+              <li>Як ObjectId впливає на дизайн API контрактів між мікросервісами?</li>
+              <li>Вважати що MongoDB = &quot;база без схеми&quot; і не описувати структуру даних у вимогах</li>
+              <li>Не вказувати тип Decimal128 для фінансових полів</li>
+              <li>Плутати null з відсутністю поля в acceptance criteria</li>
+              <li>Описувати _id як integer у API специфікації</li>
+            </ol>
+          </div>
+          <div class="iq-block" id="iq-mongodb-datamodel">
+            <div class="iq-block-head"><span class="iq-block-title">Модель даних</span><a class="iq-src" href="#/mongodb-datamodel" data-go="mongodb-datamodel">↩ до теми</a></div>
+            <ol class="iq-list">
+              <li>Як ти вирішуєш конфлікт між read optimization та write complexity при дизайні схеми?</li>
+              <li>Розкажи про ситуацію де embedded document виріс до проблемних розмірів</li>
+              <li>Завжди обирати embedding &quot;бо так швидше&quot; без аналізу кардинальності</li>
+              <li>Не враховувати 16 MB ліміт при embedded масивах</li>
+              <li>Нормалізувати все як у SQL — втрачати переваги MongoDB</li>
+            </ol>
+          </div>
+          <div class="iq-block" id="iq-mongodb-queries">
+            <div class="iq-block-head"><span class="iq-block-title">Запити та оператори</span><a class="iq-src" href="#/mongodb-queries" data-go="mongodb-queries">↩ до теми</a></div>
+            <ol class="iq-list">
+              <li>Як ти описуєш acceptance criteria для пошукових фічей з урахуванням індексів?</li>
+              <li>Розкажи про типовий кейс де некоректний запит по масиву об&#x27;єктів спричинив баг</li>
+              <li>Не розрізняти null і відсутнє поле в acceptance criteria</li>
+              <li>Не знати про $elemMatch і описувати некоректні фільтри для масивів</li>
+              <li>Не враховувати що /regex/i без ^ не використовує індекс</li>
+              <li>Описувати skip-based пагінацію для великих колекцій без cursor-based альтернативи</li>
+            </ol>
+          </div>
+          <div class="iq-block" id="iq-mongodb-writes">
+            <div class="iq-block-head"><span class="iq-block-title">Операції запису</span><a class="iq-src" href="#/mongodb-writes" data-go="mongodb-writes">↩ до теми</a></div>
+            <ol class="iq-list">
+              <li>Як ти описуєш idempotent операції в acceptance criteria?</li>
+              <li>Коли б ти рекомендував використовувати bulk operations замість окремих запитів?</li>
+              <li>Плутати updateOne та replaceOne — останній видаляє всі поля!</li>
+              <li>Не знати про upsert при описі інтеграційних сценаріїв</li>
+              <li>Не враховувати атомарність при описі конкурентних сценаріїв</li>
+            </ol>
+          </div>
+          <div class="iq-block" id="iq-mongodb-indexes">
+            <div class="iq-block-head"><span class="iq-block-title">Індекси</span><a class="iq-src" href="#/mongodb-indexes" data-go="mongodb-indexes">↩ до теми</a></div>
+            <ol class="iq-list">
+              <li>Як ти зв&#x27;язуєш NFR по продуктивності з індексами в MongoDB?</li>
+              <li>Розкажи про ситуацію де COLLSCAN на продуктивності спричинив проблему</li>
+              <li>Описувати NFR без згадки індексної стратегії</li>
+              <li>Не знати про prefix rule для compound indexes</li>
+              <li>Не пропонувати TTL index для тимчасових даних</li>
+            </ol>
+          </div>
+          <div class="iq-block" id="iq-mongodb-aggregation">
+            <div class="iq-block-head"><span class="iq-block-title">Агрегація</span><a class="iq-src" href="#/mongodb-aggregation" data-go="mongodb-aggregation">↩ до теми</a></div>
+            <ol class="iq-list">
+              <li>Як ти б описав вимоги для Revenue-звіту в MongoDB системі?</li>
+              <li>Коли aggregation pipeline краще ніж кілька окремих find()-запитів?</li>
+              <li>Забути $unwind перед $group по полях масиву</li>
+              <li>Ставити $sort перед $match</li>
+              <li>Робити $lookup по неіндексованим полям</li>
+            </ol>
+          </div>
+          <div class="iq-block" id="iq-mongodb-transactions">
+            <div class="iq-block-head"><span class="iq-block-title">Транзакції</span><a class="iq-src" href="#/mongodb-transactions" data-go="mongodb-transactions">↩ до теми</a></div>
+            <ol class="iq-list">
+              <li>Розкажи про ситуацію де MongoDB транзакції були потрібні і як ти їх обґрунтував</li>
+              <li>Як ти балансуєш між embedding і транзакціями?</li>
+              <li>Вважати що MongoDB не підтримує транзакції (підтримує з v4.0)</li>
+              <li>Описувати транзакції для операцій на одному документі (зайве)</li>
+              <li>Не враховувати 60-секундний ліміт транзакцій</li>
+            </ol>
+          </div>
+          <div class="iq-block" id="iq-mongodb-schema">
+            <div class="iq-block-head"><span class="iq-block-title">Дизайн схеми</span><a class="iq-src" href="#/mongodb-schema" data-go="mongodb-schema">↩ до теми</a></div>
+            <ol class="iq-list">
+              <li>Як ти вирішував конфлікт між дизайном схеми MongoDB і вимогами до продуктивності?</li>
+              <li>Коли ти б рекомендував НЕ використовувати MongoDB?</li>
+              <li>Не знати про schema validation і покладатись тільки на app-level validation</li>
+              <li>Проектувати MongoDB схему як SQL (повна нормалізація)</li>
+            </ol>
+          </div>
+          <div class="iq-block" id="iq-mongodb-replication">
+            <div class="iq-block-head"><span class="iq-block-title">Реплікація</span><a class="iq-src" href="#/mongodb-replication" data-go="mongodb-replication">↩ до теми</a></div>
+            <ol class="iq-list">
+              <li>Як replication lag впливає на consistency і як це враховувати у вимогах?</li>
+              <li>Не знати про replication lag при описі read consistency</li>
+              <li>Не враховувати failover window при описі availability NFR</li>
+            </ol>
+          </div>
+          <div class="iq-block" id="iq-mongodb-sharding">
+            <div class="iq-block-head"><span class="iq-block-title">Шардинг</span><a class="iq-src" href="#/mongodb-sharding" data-go="mongodb-sharding">↩ до теми</a></div>
+            <ol class="iq-list">
+              <li>Яку стратегію шардингу ти б запропонував для multi-tenant SaaS?</li>
+              <li>Не знати про scatter-gather при описі фічей для шардованих систем</li>
+              <li>Не враховувати вибір shard key при проектуванні API</li>
+            </ol>
+          </div>
+          <div class="iq-block" id="iq-mongodb-security">
+            <div class="iq-block-head"><span class="iq-block-title">Безпека та моніторинг</span><a class="iq-src" href="#/mongodb-security" data-go="mongodb-security">↩ до теми</a></div>
+            <ol class="iq-list">
+              <li>Як ти описуєш security requirements для MongoDB системи з урахуванням GDPR?</li>
+              <li>Не знати про RBAC при описі security вимог</li>
+              <li>Не згадувати шифрування at rest та in transit для compliance</li>
+            </ol>
+          </div>
+          <div class="iq-block" id="iq-mongodb-gridfs">
+            <div class="iq-block-head"><span class="iq-block-title">GridFS та спец. колекції</span><a class="iq-src" href="#/mongodb-gridfs" data-go="mongodb-gridfs">↩ до теми</a></div>
+            <ol class="iq-list">
+              <li>Як ти обираєш між GridFS та об&#x27;єктним сховищем (S3) для зберігання файлів?</li>
+              <li>Не знати про 16 MB ліміт документа</li>
+              <li>Пропонувати cronjob замість TTL index для автовидалення</li>
+            </ol>
+          </div>
+          <div class="iq-block" id="iq-mongodb-communication">
+            <div class="iq-block-head"><span class="iq-block-title">Як говорити з розробником</span><a class="iq-src" href="#/mongodb-communication" data-go="mongodb-communication">↩ до теми</a></div>
+            <ol class="iq-list">
+              <li>Як ти вирішував конфлікт між дизайном схеми MongoDB і вимогами до продуктивності?</li>
+              <li>Як ти перевіряєш що acceptance criteria для пошукових фічей враховують індекси?</li>
+              <li>Як ти описуєш NFR по продуктивності для MongoDB систем?</li>
+              <li>Яку стратегію шардингу ти б запропонував для multi-tenant SaaS?</li>
+              <li>Описувати вимоги без деталей про індекси та продуктивність</li>
+              <li>Не задавати технічних питань на discovery</li>
+              <li>Не знати базових MongoDB термінів при спілкуванні з розробниками</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="doc-section iq-section" id="iq-sec-nav-eng">
+          <h2 class="doc-h2">Інженерні практики</h2>
+          <div class="iq-block" id="iq-tech-devtools">
+            <div class="iq-block-head"><span class="iq-block-title">Browser DevTools</span><a class="iq-src" href="#/tech-devtools" data-go="tech-devtools">↩ до теми</a></div>
+            <ol class="iq-list">
+              <li>Як ти використовуєш DevTools у щоденній роботі аналітика?</li>
+              <li>Як би ти задокументував API-взаємодію, яку побачив у Network tab?</li>
+              <li>Як перевірити чи виконується NFR вимога «response time &amp;lt; 500ms»?</li>
+              <li>Що означає HTTP 422 і чим він відрізняється від 400?</li>
+              <li>Як ти відрізняєш клієнтську помилку від серверної при аналізі бага?</li>
+              <li>Як би ти тестував поведінку додатку при поганому інтернет-з&#x27;єднанні?</li>
+              <li>Чи використовував Lighthouse? Як інтерпретуєш результати?</li>
+              <li>Як перевірити що авторизація працює правильно через DevTools?</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="doc-section iq-section" id="iq-sec-nav-career">
+          <h2 class="doc-h2">Кар&#x27;єра та співбесіда</h2>
+          <div class="iq-block" id="iq-middle-ba">
+            <div class="iq-block-head"><span class="iq-block-title">Middle BA — чек-лист навичок</span><a class="iq-src" href="#/middle-ba" data-go="middle-ba">↩ до теми</a></div>
+            <ol class="iq-list">
+              <li>Опиши проєкт де ти вів/вела вимоги повністю самостійно від Discovery до релізу.</li>
+              <li>Як пріоритизуєш вимоги коли стейкхолдери мають різні точки зору?</li>
+              <li>Що таке requirements baseline і коли він потрібен?</li>
+              <li>Як переходиш між Waterfall і Agile в рамках одного проєкту?</li>
+              <li>Наведи приклад де твоя вимога виявилась неправильною. Як вийшло і що змінив/ла?</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="doc-section">
         <h2 class="doc-h2">Загальні поради для співбесіди</h2>
         <div class="doc-checklist-grid">
           <div class="doc-check-item"><span class="doc-check-icon">✓</span><span><strong>Конкретні приклади</strong> — кожна відповідь має містити приклад з реального проєкту</span></div>
@@ -30674,22 +30955,7 @@ project = MYAPP
       </div>
 
       <!-- Interview -->
-      <div class="doc-section">
-        <h2 class="doc-h2">Питання на Senior-співбесіді</h2>
-        <div class="doc-card doc-card--blue">
-          <ul class="doc-list">
-            <li>Поясни ACID простими словами. Наведи приклад порушення кожної букви.</li>
-            <li>Що таке eventual consistency? Наведи бізнес-приклад, де це допустимо.</li>
-            <li>Яка різниця між Strong Consistency та Eventual Consistency? Коли що обираєш?</li>
-            <li>Що таке CAP-теорема? Чому не можна мати всі три одночасно?</li>
-            <li>Як пояснити бізнесу, що «дані можуть бути неконсистентні кілька секунд»?</li>
-            <li>Навіщо в одній системі можуть бути і SQL, і NoSQL? Наведи приклад архітектури.</li>
-          </ul>
-        </div>
-        <div class="doc-callout" style="margin-top:.8rem;border-left-color:#f59e0b;">
-          <strong>На що звертає увагу інтерв'юер:</strong> Не теоретичні визначення, а розуміння trade-offs і здатність обрати правильну гарантію для конкретного бізнес-сценарію. «Для рахунку клієнта — ACID. Для стрічки новин — eventual consistency» — це відповідь senior-а.
-        </div>
-      </div>
+      <div class="iq-link" data-nolink><span class="iq-link-icon">💼</span><div class="iq-link-body"><div class="iq-link-title">Питання на senior-співбесіді з цієї теми</div><div class="iq-link-desc">6 питань · розділ «Питання на Senior-співбесіді»</div></div><a class="iq-link-btn" href="#/interview-questions/iq-db-mod20" data-go="interview-questions" data-anchor="iq-db-mod20">Перейти →</a></div>
 
 
     </div>
@@ -31122,21 +31388,7 @@ project = MYAPP
       </div>
 
       <!-- ─── СЕКЦІЯ 16: Senior-питання ─── -->
-      <div class="doc-section">
-        <h2 class="doc-h2">💼 Питання на Senior-співбесіді</h2>
-        <div class="doc-card doc-card--blue">
-          <ul class="doc-list">
-            <li>Як ти використовуєш DevTools у щоденній роботі аналітика?</li>
-            <li>Як би ти задокументував API-взаємодію, яку побачив у Network tab?</li>
-            <li>Як перевірити чи виконується NFR вимога «response time &lt; 500ms»?</li>
-            <li>Що означає HTTP 422 і чим він відрізняється від 400?</li>
-            <li>Як ти відрізняєш клієнтську помилку від серверної при аналізі бага?</li>
-            <li>Як би ти тестував поведінку додатку при поганому інтернет-з'єднанні?</li>
-            <li>Чи використовував Lighthouse? Як інтерпретуєш результати?</li>
-            <li>Як перевірити що авторизація працює правильно через DevTools?</li>
-          </ul>
-        </div>
-      </div>
+      <div class="iq-link" data-nolink><span class="iq-link-icon">💼</span><div class="iq-link-body"><div class="iq-link-title">Питання на senior-співбесіді з цієї теми</div><div class="iq-link-desc">8 питань · розділ «Питання на Senior-співбесіді»</div></div><a class="iq-link-btn" href="#/interview-questions/iq-tech-devtools" data-go="interview-questions" data-anchor="iq-tech-devtools">Перейти →</a></div>
 
       <!-- ─── СЕКЦІЯ 17: Ресурси ─── -->
       <div class="doc-section">
@@ -31393,19 +31645,7 @@ project = MYAPP
     </div>
   </div>
 
-  <div class="doc-section">
-    <h2 class="doc-h2">Питання на Senior-співбесіді</h2>
-    <div class="doc-card doc-card--blue">
-      <ul class="doc-list">
-        <li>Як ти визначаєш підхід до BA-роботи на початку проєкту? Які фактори враховуєш?</li>
-        <li>Опиши випадок, коли governance вимог не був визначений. Що сталось і як вирішували?</li>
-        <li>Як ти керуєш стейкхолдерами, які або не доступні, або не зацікавлені у роботі з вимогами?</li>
-        <li>Як організуєш сховище BA-артефактів у великому проєкті з кількома командами?</li>
-        <li>Які метрики ти використовуєш для оцінки ефективності власної роботи як BA?</li>
-        <li>Як BA Plan змінюється при переході від Waterfall до Agile на середині проєкту?</li>
-      </ul>
-    </div>
-  </div>
+  <div class="iq-link" data-nolink><span class="iq-link-icon">💼</span><div class="iq-link-body"><div class="iq-link-title">Питання на senior-співбесіді з цієї теми</div><div class="iq-link-desc">6 питань · розділ «Питання на Senior-співбесіді»</div></div><a class="iq-link-btn" href="#/interview-questions/iq-babok-planning" data-go="interview-questions" data-anchor="iq-babok-planning">Перейти →</a></div>
 
 
 </div>
@@ -31613,18 +31853,7 @@ project = MYAPP
     </div>
   </div>
 
-  <div class="doc-section">
-    <h2 class="doc-h2">Питання на Senior-співбесіді</h2>
-    <div class="doc-card doc-card--blue">
-      <ul class="doc-list">
-        <li>Як ти визначаєш успішність впровадженого рішення? Які метрики використовуєш?</li>
-        <li>Розкажи про випадок, коли технічно правильне рішення не принесло бізнес-цінності. Що було причиною?</li>
-        <li>Як BA бере участь у post-implementation review? Яка його роль там?</li>
-        <li>Чим відрізняється Solution Limitation від Enterprise Limitation? Наведи приклад.</li>
-        <li>Коли ти рекомендував би "Replace" рішення, а не "Improve"?</li>
-      </ul>
-    </div>
-  </div>
+  <div class="iq-link" data-nolink><span class="iq-link-icon">💼</span><div class="iq-link-body"><div class="iq-link-title">Питання на senior-співбесіді з цієї теми</div><div class="iq-link-desc">5 питань · розділ «Питання на Senior-співбесіді»</div></div><a class="iq-link-btn" href="#/interview-questions/iq-babok-solution-eval" data-go="interview-questions" data-anchor="iq-babok-solution-eval">Перейти →</a></div>
 
 
 </div>
@@ -31810,18 +32039,7 @@ project = MYAPP
     </div>
   </div>
 
-  <div class="doc-section">
-    <h2 class="doc-h2">Питання на Senior-співбесіді</h2>
-    <div class="doc-card doc-card--blue">
-      <ul class="doc-list">
-        <li>Як BA бере участь у стратегічному плануванні? Де починається і де закінчується зона відповідальності?</li>
-        <li>Ти отримав завдання "автоматизувати процес X". Як ти перевіряєш, чи це правильне рішення?</li>
-        <li>Розкажи як ти будував або брав участь у Business Case. Які метрики використовував?</li>
-        <li>Як вибрати між Big Bang і Phased підходом до впровадження? Від чого залежить рішення?</li>
-        <li>Що робити, якщо стейкхолдери мають різне бачення Future State?</li>
-      </ul>
-    </div>
-  </div>
+  <div class="iq-link" data-nolink><span class="iq-link-icon">💼</span><div class="iq-link-body"><div class="iq-link-title">Питання на senior-співбесіді з цієї теми</div><div class="iq-link-desc">5 питань · розділ «Питання на Senior-співбесіді»</div></div><a class="iq-link-btn" href="#/interview-questions/iq-babok-strategy" data-go="interview-questions" data-anchor="iq-babok-strategy">Перейти →</a></div>
 
 
 </div>
@@ -32016,18 +32234,7 @@ project = MYAPP
     </div>
   </div>
 
-  <div class="doc-section">
-    <h2 class="doc-h2">Питання на Senior-співбесіді</h2>
-    <div class="doc-card doc-card--blue">
-      <ul class="doc-list">
-        <li>Чим відрізняється бізнес-правило від функціональної вимоги? Наведи приклад.</li>
-        <li>Як ти виявляєш "неявні" бізнес-правила, про які стейкхолдери не думають і не говорять?</li>
-        <li>Що таке Decision Table і коли ти її використовуєш?</li>
-        <li>Як перевірити Decision Table на повноту і несуперечність?</li>
-        <li>Як керувати бізнес-правилами в Agile-проєкті, де вони змінюються щоспринту?</li>
-      </ul>
-    </div>
-  </div>
+  <div class="iq-link" data-nolink><span class="iq-link-icon">💼</span><div class="iq-link-body"><div class="iq-link-title">Питання на senior-співбесіді з цієї теми</div><div class="iq-link-desc">5 питань · розділ «Питання на Senior-співбесіді»</div></div><a class="iq-link-btn" href="#/interview-questions/iq-babok-business-rules" data-go="interview-questions" data-anchor="iq-babok-business-rules">Перейти →</a></div>
 
 
 </div>
@@ -32249,18 +32456,7 @@ project = MYAPP
     </div>
   </div>
 
-  <div class="doc-section">
-    <h2 class="doc-h2">Питання на Senior-співбесіді</h2>
-    <div class="doc-card doc-card--blue">
-      <ul class="doc-list">
-        <li>Як ти підходиш до Process Discovery? Який метод вибереш якщо не можеш спостерігати за процесом live?</li>
-        <li>Як BA визначає, що процес готовий до автоматизації, а не спочатку потребує оптимізації?</li>
-        <li>Що таке Process Owner і чому це важливо для BA?</li>
-        <li>Розкажи як ти застосовував VSM або подібну техніку. Які insights отримав?</li>
-        <li>Як документуєш exception paths у складних процесах?</li>
-      </ul>
-    </div>
-  </div>
+  <div class="iq-link" data-nolink><span class="iq-link-icon">💼</span><div class="iq-link-body"><div class="iq-link-title">Питання на senior-співбесіді з цієї теми</div><div class="iq-link-desc">5 питань · розділ «Питання на Senior-співбесіді»</div></div><a class="iq-link-btn" href="#/interview-questions/iq-babok-bpm" data-go="interview-questions" data-anchor="iq-babok-bpm">Перейти →</a></div>
 
 
 </div>
@@ -32409,18 +32605,7 @@ project = MYAPP
     </div>
   </div>
 
-  <div class="doc-section">
-    <h2 class="doc-h2">Питання на Senior-співбесіді</h2>
-    <div class="doc-card doc-card--blue">
-      <ul class="doc-list">
-        <li>Що таке business capability і чим вона відрізняється від процесу і функції?</li>
-        <li>Як Capability Map допомагає в пріоритизації бек-логу або roadmap?</li>
-        <li>Як ти пов'язуєш capabilities зі стратегічними цілями компанії?</li>
-        <li>Які рівні деталізації ти використовуєш і як вирішуєш, коли зупинитись?</li>
-        <li>Як Capability Heat Map допомагає аргументувати інвестиції в нові проєкти?</li>
-      </ul>
-    </div>
-  </div>
+  <div class="iq-link" data-nolink><span class="iq-link-icon">💼</span><div class="iq-link-body"><div class="iq-link-title">Питання на senior-співбесіді з цієї теми</div><div class="iq-link-desc">5 питань · розділ «Питання на Senior-співбесіді»</div></div><a class="iq-link-btn" href="#/interview-questions/iq-babok-capability-map" data-go="interview-questions" data-anchor="iq-babok-capability-map">Перейти →</a></div>
 
 
 </div>
@@ -32589,14 +32774,7 @@ project = MYAPP
     </ol>
   </div>
 
-  <div class="interview-block">
-    <h3>💼 Питання на senior-співбесіді</h3>
-    <ol>
-      <li>"Опиши ситуацію, коли ти аналізував схему MongoDB і знайшов проблему з дизайном даних"</li>
-      <li>"Які типи даних MongoDB ти б зазначив у вимогах для фінансового продукту?"</li>
-      <li>"Як ObjectId впливає на дизайн API контрактів між мікросервісами?"</li>
-    </ol>
-  </div>
+  <div class="iq-link" data-nolink><span class="iq-link-icon">💼</span><div class="iq-link-body"><div class="iq-link-title">Питання на senior-співбесіді з цієї теми</div><div class="iq-link-desc">7 питань · розділ «Питання на Senior-співбесіді»</div></div><a class="iq-link-btn" href="#/interview-questions/iq-mongodb-intro" data-go="interview-questions" data-anchor="iq-mongodb-intro">Перейти →</a></div>
 
   <div class="mistakes-block">
     <h3>⚠️ Типові помилки мідл-аналітика</h3>
@@ -32837,13 +33015,7 @@ project = MYAPP
       <li>Який максимальний розмір документа в MongoDB?</li>
     </ol>
   </div>
-  <div class="interview-block">
-    <h3>💼 Питання на senior-співбесіді</h3>
-    <ol>
-      <li>"Як ти вирішуєш конфлікт між read optimization та write complexity при дизайні схеми?"</li>
-      <li>"Розкажи про ситуацію де embedded document виріс до проблемних розмірів"</li>
-    </ol>
-  </div>
+  <div class="iq-link" data-nolink><span class="iq-link-icon">💼</span><div class="iq-link-body"><div class="iq-link-title">Питання на senior-співбесіді з цієї теми</div><div class="iq-link-desc">5 питань · розділ «Питання на Senior-співбесіді»</div></div><a class="iq-link-btn" href="#/interview-questions/iq-mongodb-datamodel" data-go="interview-questions" data-anchor="iq-mongodb-datamodel">Перейти →</a></div>
   <div class="mistakes-block">
     <h3>⚠️ Типові помилки мідл-аналітика</h3>
     <ul>
@@ -33089,13 +33261,7 @@ db.orders.<span class="fn">find</span>({ <span class="str">"_id"</span>: { <span
       <li>Чому skip-based пагінація погана для великих колекцій?</li>
     </ol>
   </div>
-  <div class="interview-block">
-    <h3>💼 Питання на senior-співбесіді</h3>
-    <ol>
-      <li>"Як ти описуєш acceptance criteria для пошукових фічей з урахуванням індексів?"</li>
-      <li>"Розкажи про типовий кейс де некоректний запит по масиву об'єктів спричинив баг"</li>
-    </ol>
-  </div>
+  <div class="iq-link" data-nolink><span class="iq-link-icon">💼</span><div class="iq-link-body"><div class="iq-link-title">Питання на senior-співбесіді з цієї теми</div><div class="iq-link-desc">6 питань · розділ «Питання на Senior-співбесіді»</div></div><a class="iq-link-btn" href="#/interview-questions/iq-mongodb-queries" data-go="interview-questions" data-anchor="iq-mongodb-queries">Перейти →</a></div>
   <div class="mistakes-block">
     <h3>⚠️ Типові помилки мідл-аналітика</h3>
     <ul>
@@ -33284,13 +33450,7 @@ bulk.<span class="fn">execute</span>();</div>
       <li>Що станеться при <code>replaceOne</code> якщо не вказати всі поля?</li>
     </ol>
   </div>
-  <div class="interview-block">
-    <h3>💼 Питання на senior-співбесіді</h3>
-    <ol>
-      <li>"Як ти описуєш idempotent операції в acceptance criteria?"</li>
-      <li>"Коли б ти рекомендував використовувати bulk operations замість окремих запитів?"</li>
-    </ol>
-  </div>
+  <div class="iq-link" data-nolink><span class="iq-link-icon">💼</span><div class="iq-link-body"><div class="iq-link-title">Питання на senior-співбесіді з цієї теми</div><div class="iq-link-desc">5 питань · розділ «Питання на Senior-співбесіді»</div></div><a class="iq-link-btn" href="#/interview-questions/iq-mongodb-writes" data-go="interview-questions" data-anchor="iq-mongodb-writes">Перейти →</a></div>
   <div class="mistakes-block">
     <h3>⚠️ Типові помилки мідл-аналітика</h3>
     <ul>
@@ -33474,13 +33634,7 @@ db.stores.<span class="fn">find</span>({
       <li>Що таке правило ESR?</li>
     </ol>
   </div>
-  <div class="interview-block">
-    <h3>💼 Питання на senior-співбесіді</h3>
-    <ol>
-      <li>"Як ти зв'язуєш NFR по продуктивності з індексами в MongoDB?"</li>
-      <li>"Розкажи про ситуацію де COLLSCAN на продуктивності спричинив проблему"</li>
-    </ol>
-  </div>
+  <div class="iq-link" data-nolink><span class="iq-link-icon">💼</span><div class="iq-link-body"><div class="iq-link-title">Питання на senior-співбесіді з цієї теми</div><div class="iq-link-desc">5 питань · розділ «Питання на Senior-співбесіді»</div></div><a class="iq-link-btn" href="#/interview-questions/iq-mongodb-indexes" data-go="interview-questions" data-anchor="iq-mongodb-indexes">Перейти →</a></div>
   <div class="mistakes-block">
     <h3>⚠️ Типові помилки мідл-аналітика</h3>
     <ul>
@@ -33648,13 +33802,7 @@ db.stores.<span class="fn">find</span>({
       <li>Що повертає <code>$lookup</code> — об'єкт чи масив?</li>
     </ol>
   </div>
-  <div class="interview-block">
-    <h3>💼 Питання на senior-співбесіді</h3>
-    <ol>
-      <li>"Як ти б описав вимоги для Revenue-звіту в MongoDB системі?"</li>
-      <li>"Коли aggregation pipeline краще ніж кілька окремих find()-запитів?"</li>
-    </ol>
-  </div>
+  <div class="iq-link" data-nolink><span class="iq-link-icon">💼</span><div class="iq-link-body"><div class="iq-link-title">Питання на senior-співбесіді з цієї теми</div><div class="iq-link-desc">5 питань · розділ «Питання на Senior-співбесіді»</div></div><a class="iq-link-btn" href="#/interview-questions/iq-mongodb-aggregation" data-go="interview-questions" data-anchor="iq-mongodb-aggregation">Перейти →</a></div>
   <div class="mistakes-block">
     <h3>⚠️ Типові помилки мідл-аналітика</h3>
     <ul>
@@ -33774,13 +33922,7 @@ db.stores.<span class="fn">find</span>({
       <li>Яке обмеження часу на транзакцію за замовчуванням?</li>
     </ol>
   </div>
-  <div class="interview-block">
-    <h3>💼 Питання на senior-співбесіді</h3>
-    <ol>
-      <li>"Розкажи про ситуацію де MongoDB транзакції були потрібні і як ти їх обґрунтував"</li>
-      <li>"Як ти балансуєш між embedding і транзакціями?"</li>
-    </ol>
-  </div>
+  <div class="iq-link" data-nolink><span class="iq-link-icon">💼</span><div class="iq-link-body"><div class="iq-link-title">Питання на senior-співбесіді з цієї теми</div><div class="iq-link-desc">5 питань · розділ «Питання на Senior-співбесіді»</div></div><a class="iq-link-btn" href="#/interview-questions/iq-mongodb-transactions" data-go="interview-questions" data-anchor="iq-mongodb-transactions">Перейти →</a></div>
   <div class="mistakes-block">
     <h3>⚠️ Типові помилки мідл-аналітика</h3>
     <ul>
@@ -33879,13 +34021,7 @@ db.stores.<span class="fn">find</span>({
       <li>Як Schema Validation допомагає з data quality?</li>
     </ol>
   </div>
-  <div class="interview-block">
-    <h3>💼 Питання на senior-співбесіді</h3>
-    <ol>
-      <li>"Як ти вирішував конфлікт між дизайном схеми MongoDB і вимогами до продуктивності?"</li>
-      <li>"Коли ти б рекомендував НЕ використовувати MongoDB?"</li>
-    </ol>
-  </div>
+  <div class="iq-link" data-nolink><span class="iq-link-icon">💼</span><div class="iq-link-body"><div class="iq-link-title">Питання на senior-співбесіді з цієї теми</div><div class="iq-link-desc">4 питань · розділ «Питання на Senior-співбесіді»</div></div><a class="iq-link-btn" href="#/interview-questions/iq-mongodb-schema" data-go="interview-questions" data-anchor="iq-mongodb-schema">Перейти →</a></div>
   <div class="mistakes-block">
     <h3>⚠️ Типові помилки мідл-аналітика</h3>
     <ul>
@@ -33983,10 +34119,7 @@ db.products.<span class="fn">find</span>().<span class="fn">readPref</span>(<spa
       <li>Коли використовувати <code>w: "majority"</code>?</li>
     </ol>
   </div>
-  <div class="interview-block">
-    <h3>💼 Питання на senior-співбесіді</h3>
-    <ol><li>"Як replication lag впливає на consistency і як це враховувати у вимогах?"</li></ol>
-  </div>
+  <div class="iq-link" data-nolink><span class="iq-link-icon">💼</span><div class="iq-link-body"><div class="iq-link-title">Питання на senior-співбесіді з цієї теми</div><div class="iq-link-desc">3 питань · розділ «Питання на Senior-співбесіді»</div></div><a class="iq-link-btn" href="#/interview-questions/iq-mongodb-replication" data-go="interview-questions" data-anchor="iq-mongodb-replication">Перейти →</a></div>
   <div class="mistakes-block">
     <h3>⚠️ Типові помилки мідл-аналітика</h3>
     <ul>
@@ -34076,10 +34209,7 @@ sh.<span class="fn">shardCollection</span>(<span class="str">"db.orders"</span>,
       <li>Чому ObjectId — поганий shard key?</li>
     </ol>
   </div>
-  <div class="interview-block">
-    <h3>💼 Питання на senior-співбесіді</h3>
-    <ol><li>"Яку стратегію шардингу ти б запропонував для multi-tenant SaaS?"</li></ol>
-  </div>
+  <div class="iq-link" data-nolink><span class="iq-link-icon">💼</span><div class="iq-link-body"><div class="iq-link-title">Питання на senior-співбесіді з цієї теми</div><div class="iq-link-desc">3 питань · розділ «Питання на Senior-співбесіді»</div></div><a class="iq-link-btn" href="#/interview-questions/iq-mongodb-sharding" data-go="interview-questions" data-anchor="iq-mongodb-sharding">Перейти →</a></div>
   <div class="mistakes-block">
     <h3>⚠️ Типові помилки мідл-аналітика</h3>
     <ul>
@@ -34176,10 +34306,7 @@ db.<span class="fn">currentOp</span>({ <span class="str">"active"</span>: <span 
       <li>Які compliance стандарти вимагають шифрування?</li>
     </ol>
   </div>
-  <div class="interview-block">
-    <h3>💼 Питання на senior-співбесіді</h3>
-    <ol><li>"Як ти описуєш security requirements для MongoDB системи з урахуванням GDPR?"</li></ol>
-  </div>
+  <div class="iq-link" data-nolink><span class="iq-link-icon">💼</span><div class="iq-link-body"><div class="iq-link-title">Питання на senior-співбесіді з цієї теми</div><div class="iq-link-desc">3 питань · розділ «Питання на Senior-співбесіді»</div></div><a class="iq-link-btn" href="#/interview-questions/iq-mongodb-security" data-go="interview-questions" data-anchor="iq-mongodb-security">Перейти →</a></div>
   <div class="mistakes-block">
     <h3>⚠️ Типові помилки мідл-аналітика</h3>
     <ul>
@@ -34255,10 +34382,7 @@ fs.<span class="fn">createReadStream</span>(<span class="str">"/path/to/photo.jp
       <li>Який максимальний розмір документа в MongoDB?</li>
     </ol>
   </div>
-  <div class="interview-block">
-    <h3>💼 Питання на senior-співбесіді</h3>
-    <ol><li>"Як ти обираєш між GridFS та об'єктним сховищем (S3) для зберігання файлів?"</li></ol>
-  </div>
+  <div class="iq-link" data-nolink><span class="iq-link-icon">💼</span><div class="iq-link-body"><div class="iq-link-title">Питання на senior-співбесіді з цієї теми</div><div class="iq-link-desc">3 питань · розділ «Питання на Senior-співбесіді»</div></div><a class="iq-link-btn" href="#/interview-questions/iq-mongodb-gridfs" data-go="interview-questions" data-anchor="iq-mongodb-gridfs">Перейти →</a></div>
   <div class="mistakes-block">
     <h3>⚠️ Типові помилки мідл-аналітика</h3>
     <ul>
@@ -34378,15 +34502,7 @@ fs.<span class="fn">createReadStream</span>(<span class="str">"/path/to/photo.jp
     </ol>
   </div>
 
-  <div class="interview-block">
-    <h3>💼 Питання на senior-співбесіді</h3>
-    <ol>
-      <li>"Як ти вирішував конфлікт між дизайном схеми MongoDB і вимогами до продуктивності?"</li>
-      <li>"Як ти перевіряєш що acceptance criteria для пошукових фічей враховують індекси?"</li>
-      <li>"Як ти описуєш NFR по продуктивності для MongoDB систем?"</li>
-      <li>"Яку стратегію шардингу ти б запропонував для multi-tenant SaaS?"</li>
-    </ol>
-  </div>
+  <div class="iq-link" data-nolink><span class="iq-link-icon">💼</span><div class="iq-link-body"><div class="iq-link-title">Питання на senior-співбесіді з цієї теми</div><div class="iq-link-desc">7 питань · розділ «Питання на Senior-співбесіді»</div></div><a class="iq-link-btn" href="#/interview-questions/iq-mongodb-communication" data-go="interview-questions" data-anchor="iq-mongodb-communication">Перейти →</a></div>
   <div class="mistakes-block">
     <h3>⚠️ Типові помилки мідл-аналітика</h3>
     <ul>
@@ -34886,16 +35002,23 @@ document.addEventListener('DOMContentLoaded', function() {
   };
 
   window.wikiGo = function (pageId, anchor) {
+    var hs = /^hub-(nav-.+)$/.exec(pageId);
+    if (hs) for (var k = 0; k < SECTIONS.length; k++) if (SECTIONS[k].navId === hs[1]) ensureHub(SECTIONS[k]);
     if (!document.getElementById('page-' + pageId)) return;
     _pendingAnchor = anchor || null;
     window.navigate(pageId, '', null, '');
     _pendingAnchor = null;
     if (anchor) {
-      setTimeout(function () {
+      /* 'instant' (не 'auto' — auto бере smooth із CSS): інакше конкурує зі smooth-scrollTo(0,0) у navigate() і губиться;
+         другий виклик — після того, як layout/шрифти дорахувались (cold load 3.4 МБ) */
+      var jump = function () {
         var a = document.getElementById(anchor);
-        if (a) { a.scrollIntoView({ behavior: 'smooth', block: 'center' }); a.classList.add('wl-flash');
+        if (!a) return;
+        a.scrollIntoView({ behavior: 'instant', block: 'center' });
+        if (!a.classList.contains('wl-flash')) { a.classList.add('wl-flash');
           setTimeout(function () { a.classList.remove('wl-flash'); }, 1800); }
-      }, 60);
+      };
+      setTimeout(jump, 60); setTimeout(jump, 450);
     }
   };
 
@@ -34954,8 +35077,28 @@ document.addEventListener('DOMContentLoaded', function() {
     page.appendChild(nav);
   }
 
+  /* Breadcrumb: База знань › Розділ (лінк на hub) › Сторінка — генерується з sidebar,
+     тому старі назви розділів у 168 статичних breadcrumb-ах правити не треба */
+  function syncBreadcrumb(pageId) {
+    var page = document.getElementById('page-' + pageId); if (!page) return;
+    var bc = $('.breadcrumb', page); if (!bc) return;
+    var sec = PAGE2SEC[pageId];
+    var hubSec = /^hub-(nav-.+)$/.exec(pageId);
+    if (!sec && !hubSec) return;
+    var pg = null; if (sec) for (var i = 0; i < sec.pages.length; i++) if (sec.pages[i].id === pageId) pg = sec.pages[i];
+    if (sec && !pg) return;
+    var secTitle = sec ? sec.title : ($('#' + hubSec[1] + ' .nav-link') ? $('#' + hubSec[1] + ' .nav-link').textContent.trim() : '');
+    var html = '<span>База знань</span><span class="breadcrumb-sep">›</span>';
+    if (sec) html += '<a class="bc-link" href="#/hub-' + esc(sec.navId) + '" data-go="hub-' + esc(sec.navId) + '">' + esc(secTitle) + '</a>' +
+                     '<span class="breadcrumb-sep">›</span><span class="current">' + esc(pg.title) + '</span>';
+    else html += '<span class="current">' + esc(secTitle) + '</span>';
+    bc.innerHTML = html;
+    bc.setAttribute('data-nolink', '');
+  }
+
   function afterNavigate(pageId) {
     syncSidebar(pageId);
+    syncBreadcrumb(pageId);
     if (/^hub-/.test(pageId)) { for (var i = 0; i < SECTIONS.length; i++) if ('hub-' + SECTIONS[i].navId === pageId) ensureHub(SECTIONS[i]); }
     if (!_suppressHash) {
       var h = '#/' + pageId + (_pendingAnchor ? '/' + _pendingAnchor : '');
@@ -35202,11 +35345,16 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function init() {
+    try { history.scrollRestoration = 'manual'; } catch (e) {}   /* інакше браузер на load скидає якір до 0 */
     buildSiteMap();
     buildTermIndex();
     wireChevrons();
     window.addEventListener('hashchange', routeFromHash);
     window.addEventListener('popstate', routeFromHash);
+    window.addEventListener('load', function () {                /* повторний стрибок до якоря після повного завантаження */
+      var m = /^#\/[^\/]+\/(.+)$/.exec(location.hash || ''); var a = m && document.getElementById(m[1]);
+      if (a) a.scrollIntoView({ behavior: 'instant', block: 'center' });
+    });
     if (!routeFromHash()) {
       var cur = window.currentPageId || 'links';
       afterNavigate(cur);
