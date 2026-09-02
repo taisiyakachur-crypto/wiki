@@ -1965,9 +1965,13 @@ a.wl--gloss[data-tip]:hover::after { background:#3A2530; }
           <svg class="nav-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M6 4l4 4-4 4"/></svg>
         </div>
         <div class="nav-sub">
-          <div class="nav-sub-link" onclick="navigate('api-m10','Інтеграції та роль аналітика',this,'Інтеграції та обмін повідомленнями')">Інтеграції та роль аналітика</div>
-          <div class="nav-sub-link" onclick="navigate('api-m11','Web і API-середовище',this,'Інтеграції та обмін повідомленнями')">Web і API-середовище</div>
+          <div class="nav-sub-link" onclick="navigate('integr-styles','Стилі інтеграції та матриця вибору',this,'Інтеграції та обмін повідомленнями')">Стилі інтеграції</div>
           <div class="nav-sub-link" onclick="navigate('tech-m25','System Integration Analysis',this,'Інтеграції та обмін повідомленнями')">System Integration Analysis</div>
+          <div class="nav-sub-link" onclick="navigate('integr-eip','Enterprise Integration Patterns',this,'Інтеграції та обмін повідомленнями')">Патерни інтеграції (EIP)</div>
+          <div class="nav-sub-link" onclick="navigate('integr-errors','Обробка помилок в інтеграціях',this,'Інтеграції та обмін повідомленнями')">Обробка помилок</div>
+          <div class="nav-sub-link" onclick="navigate('integr-eda','Event-Driven Architecture: дизайн подій',this,'Інтеграції та обмін повідомленнями')">Дизайн подій (EDA)</div>
+          <div class="nav-sub-link" onclick="navigate('integr-spec','Специфікація інтеграції (ICD)',this,'Інтеграції та обмін повідомленнями')">Специфікація інтеграції</div>
+          <div class="nav-sub-link" onclick="navigate('integr-third-party','Due diligence сторонніх сервісів та API',this,'Інтеграції та обмін повідомленнями')">Оцінка вендорів</div>
           <div class="nav-sub-link" onclick="navigate('sa-mod11','Синхронні vs асинхронні запити',this,'Інтеграції та обмін повідомленнями')">Синхронні vs асинхронні запити</div>
           <div class="nav-sub-link" onclick="navigate('api-m4','GraphQL, gRPC, Webhooks',this,'Інтеграції та обмін повідомленнями')">GraphQL, gRPC, Webhooks</div>
           <div class="nav-sub-link" onclick="navigate('api-m7','SOAP Web Services',this,'Інтеграції та обмін повідомленнями')">SOAP Web Services</div>
@@ -1977,6 +1981,7 @@ a.wl--gloss[data-tip]:hover::after { background:#3A2530; }
           <div class="nav-sub-link" onclick="navigate('db-mod12','Черги повідомлень: огляд',this,'Інтеграції та обмін повідомленнями')">Черги повідомлень: огляд</div>
           <div class="nav-sub-link" onclick="navigate('sa-kafka','Apache Kafka',this,'Інтеграції та обмін повідомленнями')">Apache Kafka</div>
           <div class="nav-sub-link" onclick="navigate('sa-rabbitmq','RabbitMQ',this,'Інтеграції та обмін повідомленнями')">RabbitMQ</div>
+          <div class="nav-sub-link" onclick="navigate('integr-esb-ipaas','ESB, iPaaS та інтеграційні платформи',this,'Інтеграції та обмін повідомленнями')">ESB та iPaaS</div>
         </div>
       </div>
 
@@ -14268,145 +14273,7 @@ wss.on('<span style="color:#4898C0;">connection</span>', (ws) => {
 
 
     <!-- ═══ API M9: Інтеграції та роль аналітика ═══ -->
-    <div id="page-api-m10" class="page-view" style="display:none;">
-      <nav class="breadcrumb"><span>База знань</span><span class="breadcrumb-sep">›</span><span class="current">М9: Інтеграції та аналітик</span></nav>
-      <div class="page-header">
-        <div class="page-tag">Модуль 9 · API</div>
-        <h1 class="page-title">Інтеграції та <span class="grad">роль аналітика</span></h1>
-        <p class="page-desc">Попереднє дослідження, вибір технології, шаблони запитів (OpenAPI, GraphQL, Postman Collection), моніторинг. Практична вправа.</p>
-      </div>
-
-      <div class="doc-section">
-        <h2 class="doc-h2">🔄 Процес API-інтеграції</h2>
-        <div class="doc-callout">Інтеграції — це <strong>більше, ніж код</strong>: це документація, SLA, моніторинг, підтримка.</div>
-        <div class="sa-steps">
-          <div class="sa-step"><div class="sa-step-dot">1</div><div><div style="font-weight:700;color:var(--ink);margin-bottom:.3rem;">Попереднє дослідження</div><p style="font-size:.83rem;color:var(--ink2);margin:0;line-height:1.6;">Перевірка алгоритму API, довідників, error schemas, схеми даних і обмежень. Аналіз документації стороннього API.</p></div></div>
-          <div class="sa-step"><div class="sa-step-dot">2</div><div><div style="font-weight:700;color:var(--ink);margin-bottom:.3rem;">Вибір технології</div><p style="font-size:.83rem;color:var(--ink2);margin:0;line-height:1.6;">REST / GraphQL / gRPC / Webhooks залежно від потреб: частота запитів, розмір даних, складність моделі, real-time або batch.</p></div></div>
-          <div class="sa-step"><div class="sa-step-dot">3</div><div><div style="font-weight:700;color:var(--ink);margin-bottom:.3rem;">Проєктування контракту</div><p style="font-size:.83rem;color:var(--ink2);margin:0;line-height:1.6;">OpenAPI spec, GraphQL SDL, Protobuf. Узгодження з обома сторонами. Визначення помилок та сценаріїв обробки.</p></div></div>
-          <div class="sa-step"><div class="sa-step-dot">4</div><div><div style="font-weight:700;color:var(--ink);margin-bottom:.3rem;">Імплементація</div><p style="font-size:.83rem;color:var(--ink2);margin:0;line-height:1.6;">Шаблонний клієнт, кеш, retry/backoff, logging, health checks. Тестування через Postman / SoapUI.</p></div></div>
-          <div class="sa-step"><div class="sa-step-dot">5</div><div><div style="font-weight:700;color:var(--ink);margin-bottom:.3rem;">Моніторинг</div><p style="font-size:.83rem;color:var(--ink2);margin:0;line-height:1.6;">Логування, response times, error rates, health endpoints, test suites. Налаштування алертів.</p></div></div>
-        </div>
-      </div>
-
-      <div class="doc-section">
-        <h2 class="doc-h2">📄 Шаблони запитів: OpenAPI + GraphQL + Postman</h2>
-        <div class="doc-cards-2">
-          <div class="doc-card doc-card--blue">
-            <div class="doc-card-title">OpenAPI 3.0 — /orders з фільтрами</div>
-            <pre style="background:var(--bg2);border-radius:6px;padding:.8rem;font-size:.77rem;overflow-x:auto;margin:.4rem 0 0;line-height:1.8;font-family:'JetBrains Mono',monospace;"><span style="color:#4898C0;">openapi</span>: 3.0.3
-<span style="color:#4898C0;">paths</span>:
-  <span style="color:#f59e0b;">/orders</span>:
-    <span style="color:#4898C0;">get</span>:
-      <span style="color:#10b981;">parameters</span>:
-        - { name: fromDate, in: query,
-            schema: {type: string, format: date} }
-        - { name: limit, in: query,
-            schema: {type: integer} }
-        - { name: sort, in: query,
-            schema: {type: string} }
-      <span style="color:#10b981;">responses</span>:
-        '200':
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Order'</pre>
-          </div>
-          <div class="doc-card" style="border-top:3px solid var(--r5);">
-            <div class="doc-card-title">GraphQL SDL — Orders schema</div>
-            <pre style="background:var(--bg2);border-radius:6px;padding:.8rem;font-size:.77rem;overflow-x:auto;margin:.4rem 0 0;line-height:1.8;font-family:'JetBrains Mono',monospace;"><span style="color:#4898C0;">type</span> Query {
-  orders(
-    fromDate: String
-    toDate: String
-    limit: Int
-    offset: Int
-    sort: String
-  ): [Order]
-}
-
-<span style="color:#4898C0;">type</span> Order {
-  <span style="color:#10b981;">id</span>: ID!
-  <span style="color:#10b981;">customer</span>: Customer
-  <span style="color:#10b981;">items</span>: [Item]
-  <span style="color:#10b981;">total</span>: Float
-  <span style="color:#10b981;">createdAt</span>: String
-}</pre>
-          </div>
-        </div>
-
-        <div class="doc-cards-2" style="margin-top:.8rem;">
-          <div class="doc-card" style="border-top:3px solid var(--r3);">
-            <div class="doc-card-title">Postman Collection — Get Orders</div>
-            <pre style="background:var(--bg2);border-radius:6px;padding:.8rem;font-size:.77rem;overflow-x:auto;margin:.4rem 0 0;line-height:1.8;font-family:'JetBrains Mono',monospace;">{
-  "name": "Get Orders",
-  "request": {
-    "method": "GET",
-    "header": [{
-      "key": "Authorization",
-      "value": "Bearer {{token}}"
-    }],
-    "url": {
-      "raw": "{{baseUrl}}/orders?limit=10&offset=0&fromDate=2023-01-01"
-    }
-  }
-}</pre>
-          </div>
-          <div class="doc-card" style="border-top:3px solid var(--r4);">
-            <div class="doc-card-title">Retry/Backoff — обробка помилок</div>
-            <pre style="background:var(--bg2);border-radius:6px;padding:.8rem;font-size:.77rem;overflow-x:auto;margin:.4rem 0 0;line-height:1.8;font-family:'JetBrains Mono',monospace;"><span style="color:#94a3b8;"># Стратегія retry з exponential backoff</span>
-<span style="color:#10b981;">def</span> call_with_retry(url, max_retries=3):
-  for attempt in range(max_retries):
-    resp = requests.get(url)
-    if resp.status_code == 200:
-      return resp.json()
-    if resp.status_code in [429, 500, 502, 503]:
-      wait = 2 ** attempt  <span style="color:#94a3b8;"># 1s, 2s, 4s</span>
-      time.sleep(wait)
-    else:
-      raise Exception(f"{resp.status_code}")</pre>
-          </div>
-        </div>
-      </div>
-
-      <div class="doc-section">
-        <h2 class="doc-h2">🧪 Практична вправа</h2>
-        <div style="background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.2);border-radius:var(--radius);padding:1rem 1.2rem;">
-          <div style="font-size:.83rem;font-weight:700;color:var(--r4);margin-bottom:.6rem;">📝 Завдання:</div>
-          <ul class="doc-list">
-            <li><strong>OpenAPI Design:</strong> Опишіть схему API GET /orders з фільтром за датою, пагінацією, сортуванням, деталізацією items.</li>
-            <li><strong>GraphQL:</strong> Спроєктуйте GraphQL-схему для Order з можливістю вкладених запитів customer, items, shipment.</li>
-            <li><strong>Безпека:</strong> Опишіть автентифікацію через OAuth2 з ролями admin, user, audit.</li>
-            <li><strong>Rate limit:</strong> Опишіть застосування 100 req/min на endpoint, використовуючи Leaky Bucket.</li>
-            <li><strong>Інтеграція:</strong> На Python зробіть виклик API із retry/backoff і обробкою помилок 4xx/5xx.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="doc-section">
-        <h2 class="doc-h2">✅ Підсумок курсу API</h2>
-        <div class="doc-checklist-grid">
-          <div class="doc-check-item"><span class="doc-check-icon">✔</span>API — це контракт: дизайн, версіонування і підтримка обов'язкові на рівні СА</div>
-          <div class="doc-check-item"><span class="doc-check-icon">✔</span>Безпека, лімітування, кешування — не опціональні; плануйте з самого початку</div>
-          <div class="doc-check-item"><span class="doc-check-icon">✔</span>Інтеграції — документація, SLA, моніторинг, підтримка</div>
-          <div class="doc-check-item"><span class="doc-check-icon">✔</span>GraphQL, gRPC, Webhooks — розширюють можливості, але несуть складність</div>
-          <div class="doc-check-item"><span class="doc-check-icon">✔</span>SOAP актуальний для корпоративних систем — банки, legacy, WS-Security</div>
-          <div class="doc-check-item"><span class="doc-check-icon">✔</span>Логування + трасування — основа для діагностики та моніторингу</div>
-        </div>
-      </div>
-
-      <div class="doc-section">
-        <h2 class="doc-h2">🔗 Ключові ресурси</h2>
-        <div style="display:grid;gap:.5rem;">
-          <a href="https://swagger.io/specification/" target="_blank" class="link-card"><div class="link-icon">📋</div><div class="link-body"><div class="link-title">OpenAPI Specification</div><div class="link-desc">Офіційна специфікація для проєктування API</div></div><div class="link-arrow">↗</div></a>
-          <a href="https://www.postman.com/" target="_blank" class="link-card"><div class="link-icon">📮</div><div class="link-body"><div class="link-title">Postman</div><div class="link-desc">Найпопулярніший інструмент для тестування API</div></div><div class="link-arrow">↗</div></a>
-          <a href="https://graphql.org/" target="_blank" class="link-card"><div class="link-icon">⚡</div><div class="link-body"><div class="link-title">GraphQL — офіційний сайт</div><div class="link-desc">Документація, специфікація, best practices</div></div><div class="link-arrow">↗</div></a>
-          <a href="https://opentelemetry.io/" target="_blank" class="link-card"><div class="link-icon">🔭</div><div class="link-body"><div class="link-title">OpenTelemetry</div><div class="link-desc">Стандарт збору трейсів, логів та метрик</div></div><div class="link-arrow">↗</div></a>
-        </div>
-      </div>
-
-
-    </div>
+    
 
 
     <!-- ═══ BA M1: Техніки бізнес-аналізу ═══ -->
@@ -18517,87 +18384,7 @@ wss.on('<span style="color:#4898C0;">connection</span>', (ws) => {
     </div>
 
     <!-- ═══ API M11: Web і API-середовище ═══ -->
-    <div id="page-api-m11" class="page-view" style="display:none;">
-      <nav class="breadcrumb"><span>База знань</span><span class="breadcrumb-sep">›</span><span class="current">М11: Web і API-середовище</span></nav>
-      <div class="page-header">
-        <div class="page-tag">Модуль 11 · API</div>
-        <h1 class="page-title">Системний аналіз у <span class="grad">Web і API-середовищі</span></h1>
-        <p class="page-desc">Архітектура web-застосунків (frontend/backend/БД), REST API, HTTP-методи, документація (OpenAPI/Swagger/Postman), роль аналітика в API-first проєктах.</p>
-      </div>
-      <div class="doc-section">
-        <h2 class="doc-h2">🏗️ Архітектура web-застосунків</h2>
-        <div class="doc-cards-3">
-          <div class="doc-card doc-card--blue">
-            <div class="doc-card-title">Frontend (Клієнтська частина)</div>
-            <p style="font-size:.82rem;color:var(--ink2);margin:0 0 .4rem;line-height:1.6;">Це те, що бачить і з чим взаємодіє користувач: веб-сторінки, мобільні додатки. Технології: HTML, CSS, JavaScript. Фреймворки: React, Vue, Angular. Відповідає за відображення інформації і збір введених даних.</p>
-          </div>
-          <div class="doc-card" style="border-top:3px solid var(--r3);">
-            <div class="doc-card-title">Backend (Серверна частина)</div>
-            <p style="font-size:.82rem;color:var(--ink2);margin:0 0 .4rem;line-height:1.6;">Відповідає за бізнес-логіку, обробку даних, авторизацію, роботу з базою даних. Мови: Node.js, Python, Java, .NET, PHP. Приймає запити від фронтенду, обробляє їх, повертає результат.</p>
-          </div>
-          <div class="doc-card" style="border-top:3px solid var(--r5);">
-            <div class="doc-card-title">База даних</div>
-            <p style="font-size:.82rem;color:var(--ink2);margin:0 0 .4rem;line-height:1.6;">Місце зберігання інформації: користувачі, товари, транзакції. Типи БД: реляційні (PostgreSQL, MySQL) і нереляційні (MongoDB). Backend взаємодіє з БД для отримання/запису інформації.</p>
-          </div>
-        </div>
-        <div class="doc-callout" style="margin-top:.8rem;">🔄 <strong>Взаємодія через HTTP:</strong> Клієнт надсилає HTTP-запит → сервер отримує і обробляє → відповідає HTTP-відповіддю → клієнт отримує дані і відображає.</div>
-      </div>
-      <div class="doc-section">
-        <h2 class="doc-h2">📡 REST API — основи</h2>
-        <div class="doc-callout"><strong>REST (Representational State Transfer)</strong> — стиль архітектури, що базується на стандартах HTTP і ресурсах. Кожен ресурс (користувач, товар) доступний за унікальним URL. Клієнт-серверна взаємодія без стану (stateless). Дані передаються у форматі JSON або XML, найчастіше JSON.</div>
-        <div class="doc-cards-2">
-          <div class="doc-card" style="border-top:3px solid var(--r1);">
-            <div class="doc-card-title">Приклад запиту</div>
-            <pre style="background:var(--bg2);border-radius:4px;padding:.6rem;font-size:.79rem;font-family:'JetBrains Mono',monospace;line-height:1.8;"><span style="color:#4898C0;">GET</span> /api/products
-<span style="color:#10b981;">Authorization:</span> Bearer &lt;token&gt;</pre>
-          </div>
-          <div class="doc-card" style="border-top:3px solid var(--r5);">
-            <div class="doc-card-title">Приклад відповіді</div>
-            <pre style="background:var(--bg2);border-radius:4px;padding:.6rem;font-size:.79rem;font-family:'JetBrains Mono',monospace;line-height:1.8;">{
-  "id": 123,
-  "name": "Перфоратор Dnipro-M",
-  "price": 1250
-}</pre>
-          </div>
-        </div>
-      </div>
-      <div class="doc-section">
-        <h2 class="doc-h2">📋 OpenAPI, Swagger, Postman</h2>
-        <div class="doc-cards-2">
-          <div class="doc-card doc-card--teal">
-            <div class="doc-card-title">Інструменти документування</div>
-            <ul class="doc-list">
-              <li><strong>OpenAPI/Swagger</strong> — стандарт опису REST API: формалізовано задокументувати всі ендпоїнти, методи, параметри і відповіді</li>
-              <li><strong>Swagger UI</strong> — візуальний інтерфейс для перегляду документації та тестування API</li>
-              <li><strong>Postman</strong> — потужний інструмент для тестування API, формування запитів, перевірки відповідей</li>
-              <li><strong>Mock API</strong> — створення фейкових відповідей для розробки фронтенду до готовності бекенду</li>
-            </ul>
-          </div>
-          <div class="doc-card" style="border-top:3px solid var(--r4);">
-            <div class="doc-card-title">Роль аналітика в API-проєктах</div>
-            <ul class="doc-list">
-              <li>Аналіз користувацьких сценаріїв (логін, реєстрація, робота з кошиком, оплата)</li>
-              <li>Опис поведінки REST-ендпоїнтів (які дані приймаються, які повертаються, обробка помилок)</li>
-              <li>Валідація даних на рівні API (перевірка коректності, формату, обов'язкових полів)</li>
-              <li>Участь у створенні та підтримці Swagger/OpenAPI документації</li>
-              <li>Верифікація відповідей сервера — відповідність статусів, структур, форматів</li>
-              <li>Співпраця з командами розробки, тестування, бізнесу</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="doc-section">
-        <h2 class="doc-h2">🧪 Практичні завдання</h2>
-        <div style="background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.2);border-radius:var(--radius);padding:1rem 1.2rem;">
-          <ul class="doc-list">
-            <li><strong>Завдання 1:</strong> Опиши 3 запити для e-commerce сайту: GET /api/products | POST /api/orders | PUT /api/users/{id}/address</li>
-            <li><strong>Завдання 2:</strong> Завантаж приклад Swagger/OpenAPI (напр. https://petstore.swagger.io). Знайди endpoint для додавання товару. Опиши параметри. Що повертається у відповіді?</li>
-            <li><strong>Завдання 3:</strong> Опиши у табличному вигляді специфікацію ендпоїнта POST /api/login: поле, тип, обов'язковість, опис.</li>
-          </ul>
-        </div>
-      </div>
-
-    </div>
+    
 
     <!-- ═══ API M12: Безпека та сучасні технології ═══ -->
     <div id="page-api-m12" class="page-view" style="display:none;">
@@ -26135,7 +25922,131 @@ project = MYAPP
       </div>
 
 
-    </div>
+    
+      <div class="doc-section" id="tech-m25-role">
+        <h2 class="doc-h2">Роль системного аналітика в інтеграційному проєкті</h2>
+        <p class="doc-p">Інтеграція — це не «описати ендпоінт». Це шість етапів, на кожному з яких у аналітика є власний результат. Пропуск будь-якого дається взнаки в проді.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Етап</th><th>Що робить аналітик</th><th>Результат</th></tr></thead>
+            <tbody>
+              <tr><td><strong>1. Discovery</strong></td><td>З'ясовує власників, обсяги, SLA, ліміти, формати; обирає стиль інтеграції</td><td>Заповнений чек-лист discovery, рішення про стиль</td></tr>
+              <tr><td><strong>2. Контракт</strong></td><td>Узгоджує структуру повідомлень і операцій з обома сторонами</td><td>OpenAPI / AsyncAPI, погоджений обома командами</td></tr>
+              <tr><td><strong>3. Mapping</strong></td><td>Зіставляє поля, описує трансформації, довідники, ідентифікатори</td><td>Таблиця відповідності полів</td></tr>
+              <tr><td><strong>4. Сценарії помилок</strong></td><td>Проходить таксономію збоїв, описує retry, DLQ, звірку</td><td>Error catalog</td></tr>
+              <tr><td><strong>5. Тест-стратегія</strong></td><td>Домовляється про sandbox, тестові дані, contract-тести</td><td>План тестування інтеграції</td></tr>
+              <tr><td><strong>6. Cutover</strong></td><td>Планує запуск: перемикання, паралельну роботу, відкат</td><td>Чек-лист запуску й критерії go/no-go</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="doc-p">Детально за етапами: <a href="#/integr-styles" data-go="integr-styles">вибір стилю</a>, <a href="#/integr-spec" data-go="integr-spec">специфікація й mapping</a>, <a href="#/integr-errors" data-go="integr-errors">сценарії помилок</a>.</p>
+      </div>
+
+      <div class="doc-section" id="tech-m25-artifacts">
+        <h2 class="doc-h2">Артефакти інтеграційного аналізу</h2>
+        <div class="doc-cards-2">
+          <div class="doc-card doc-card--blue"><div class="doc-card-title">Контекстна діаграма</div><p class="doc-p">Які системи беруть участь, у якому напрямку течуть дані, де межі відповідальності. Одна картинка, яка знімає більшість питань на старті.</p></div>
+          <div class="doc-card doc-card--blue"><div class="doc-card-title">Sequence-діаграма</div><p class="doc-p">Порядок викликів у часі, включно з таймаутами й альтернативними гілками. Обов'язкова там, де кроків більше двох.</p></div>
+          <div class="doc-card doc-card--teal"><div class="doc-card-title">Контракт</div><p class="doc-p">OpenAPI для синхронних викликів, AsyncAPI для подій. Машиночитний і єдиний — не копія в документі.</p></div>
+          <div class="doc-card doc-card--teal"><div class="doc-card-title">Data mapping</div><p class="doc-p">Поле джерела → тип → поле призначення → трансформація → обов'язковість → приклад.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">Error catalog</div><p class="doc-p">Код, причина, дія системи, текст для користувача, алерт.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">Runbook</div><p class="doc-p">Що робити черговому, коли інтеграція впала: як перевірити стан, як перезапустити, кому ескалювати.</p></div>
+        </div>
+      </div>
+
+      <div class="doc-section" id="tech-m25-ids">
+        <h2 class="doc-h2">Ідентифікатори та майстер-дані</h2>
+        <p class="doc-p">Найтихіше джерело дефектів в інтеграціях. Три питання, без яких обмін не проєктується:</p>
+        <ul class="doc-list">
+          <li><strong>Хто джерело істини.</strong> Для кожної сутності має бути рівно одна система, яка вирішує, як воно є насправді. Якщо клієнта можна створити і в CRM, і в білінгу, дублікати з'являться в перший же місяць.</li>
+          <li><strong>Як зіставляються ідентифікатори.</strong> У нас <code>customerId</code> у форматі UUID, у них — числовий код. Потрібна таблиця відповідності, яку хтось веде: де вона живе, хто дописує, що робити при відсутності пари.</li>
+          <li><strong>Як розпізнаються дублікати.</strong> Один клієнт, заведений двічі з різними написаннями назви. Потрібне правило злиття й рішення, чи виконується воно автоматично.</li>
+        </ul>
+        <div class="doc-callout"><strong>✅ Best practice</strong><p>Зберігайте зовнішній ідентифікатор партнера поруч зі своїм (<code>external_id</code> + <code>source_system</code>) із самого початку. Додати це поле пізніше, коли в базі вже мільйон записів без нього, — окремий міграційний проєкт.</p></div>
+      </div>
+
+      <div class="doc-section" id="tech-m25-testing">
+        <h2 class="doc-h2">Тестування інтеграції</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Рівень</th><th>Що перевіряє</th><th>Що потрібно від аналітика</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Contract test</strong></td><td>Що обидві сторони дотримуються схеми</td><td>Актуальна специфікація як джерело істини</td></tr>
+              <tr><td><strong>Stub / mock</strong></td><td>Нашу логіку без залежності від партнера</td><td>Перелік сценаріїв відповідей, включно з помилками</td></tr>
+              <tr><td><strong>Sandbox партнера</strong></td><td>Реальну поведінку чужої системи</td><td>Домовленість про доступ і тестові дані</td></tr>
+              <tr><td><strong>End-to-end</strong></td><td>Наскрізний бізнес-сценарій</td><td>Опис сценарію з очікуваним станом обох систем</td></tr>
+              <tr><td><strong>Навантажувальний</strong></td><td>Поведінку на піку й при лімітах</td><td>Модель навантаження: обсяги, піки, розподіл</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="doc-p">Окреме питання, яке варто ставити рано: <em>чи можна створювати тестові дані в sandbox партнера самостійно</em>. Якщо кожен тестовий клієнт заводиться через їхню підтримку, автоматизувати тести не вийде, і це треба закласти в оцінку.</p>
+      </div>
+
+      <div class="doc-section" id="tech-m25-nfr">
+        <h2 class="doc-h2">Нефункціональні вимоги до інтеграції</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Вимога</th><th>Приклад формулювання</th></tr></thead>
+            <tbody>
+              <tr><td>Пропускна здатність</td><td>«Обробляє 40 замовлень/хв у піку без зростання черги»</td></tr>
+              <tr><td>Затримка</td><td>«95% замовлень потрапляють в ERP протягом 2 хв від оплати»</td></tr>
+              <tr><td>Доступність з урахуванням партнера</td><td>«Недоступність ERP до 4 год не призводить до втрати замовлень: вони накопичуються в черзі»</td></tr>
+              <tr><td>Ліміти</td><td>«Не більше 10 запитів/хв до API партнера; перевищення → черга, а не помилка»</td></tr>
+              <tr><td>Свіжість даних</td><td>«Залишки на сайті відрізняються від ERP не більше ніж на 15 хв»</td></tr>
+              <tr><td>Відновлення</td><td>«Після відновлення партнера накопичені повідомлення обробляються за ≤30 хв»</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="doc-callout"><strong>📌 Правило</strong><p>Ваша доступність не може перевищувати доступність системи, від якої ви синхронно залежите. Якщо партнер обіцяє 99%, а ви пообіцяли клієнтам 99,9%, то або ви помилились, або залежність має стати асинхронною.</p></div>
+      </div>
+
+      <div class="doc-section" id="tech-m25-templates">
+        <h2 class="doc-h2">Шаблони запитів: OpenAPI, GraphQL, Postman</h2>
+        <p class="doc-p">Три способи описати ту саму операцію «отримати замовлення з фільтрами». Корисно бачити поруч: аналітик зазвичай працює з першим, тестувальник — із третім.</p>
+        <div class="code-block"><span class="c"># OpenAPI 3.0 — GET /orders із фільтрами</span>
+<span class="k">paths</span>:
+  <span class="k">/orders</span>:
+    <span class="k">get</span>:
+      <span class="k">parameters</span>:
+        - { <span class="k">name</span>: fromDate, <span class="k">in</span>: query, <span class="k">schema</span>: { <span class="k">type</span>: string, <span class="k">format</span>: date } }
+        - { <span class="k">name</span>: limit,    <span class="k">in</span>: query, <span class="k">schema</span>: { <span class="k">type</span>: integer, <span class="k">maximum</span>: <span class="n">200</span> } }
+        - { <span class="k">name</span>: sort,     <span class="k">in</span>: query, <span class="k">schema</span>: { <span class="k">type</span>: string } }
+      <span class="k">responses</span>:
+        <span class="s">'200'</span>:
+          <span class="k">content</span>:
+            <span class="k">application/json</span>:
+              <span class="k">schema</span>: { <span class="k">type</span>: array, <span class="k">items</span>: { <span class="k">$ref</span>: <span class="s">'#/components/schemas/Order'</span> } }</div>
+        <div class="code-block"><span class="c">// GraphQL SDL — та сама вибірка</span>
+<span class="k">type</span> Query {
+  orders(fromDate: String, toDate: String, limit: Int, offset: Int, sort: String): [Order]
+}
+<span class="k">type</span> Order {
+  id: ID!, customer: Customer, items: [Item], total: Float, createdAt: String
+}</div>
+        <div class="code-block"><span class="c">// Postman collection — запит для тестування</span>
+{
+  <span class="k">"name"</span>: <span class="s">"Get Orders"</span>,
+  <span class="k">"request"</span>: {
+    <span class="k">"method"</span>: <span class="s">"GET"</span>,
+    <span class="k">"header"</span>: [{ <span class="k">"key"</span>: <span class="s">"Authorization"</span>, <span class="k">"value"</span>: <span class="s">"Bearer {{token}}"</span> }],
+    <span class="k">"url"</span>: <span class="s">"{{baseUrl}}/orders?limit=10&amp;fromDate=2026-01-01"</span>
+  }
+}</div>
+      </div>
+
+      <div class="doc-section" id="tech-m25-ba-role">
+        <h2 class="doc-h2">Що саме робить аналітик в API-проєкті</h2>
+        <ul class="doc-list">
+          <li>Аналізує користувацькі сценарії й визначає, які операції API взагалі потрібні</li>
+          <li>Описує поведінку кожного ендпоінта: що приймає, що повертає, які помилки можливі</li>
+          <li>Задає правила валідації на рівні API — формати, межі, обов'язковість полів</li>
+          <li>Бере участь у створенні й підтримці специфікації OpenAPI/AsyncAPI</li>
+          <li>Перевіряє відповіді сервера на відповідність домовленостям: коди, структури, формати</li>
+          <li>Узгоджує контракт між командами розробки, тестування й бізнесом</li>
+        </ul>
+      </div>
+
+      </div>
 
     <!-- ══════════════════════════════════════════════════════════ -->
     <!-- TECH-M26: Non-Functional Requirements                     -->
@@ -30420,7 +30331,7 @@ project = MYAPP
         <div class="doc-section" id="iq-by-topic" data-nolink>
           <h2 class="doc-h2">Питання за темами wiki</h2>
           <p class="doc-p">Зібрано з усіх модулів. Кожен блок має кнопку «до теми» — повернутися до матеріалу.</p>
-          <div class="iq-toc" data-nolink><a href="#/interview-questions/iq-sec-nav-start" data-go="interview-questions" data-anchor="iq-sec-nav-start">Старт <span class="iq-count">5</span></a><a href="#/interview-questions/iq-sec-nav-strategy" data-go="interview-questions" data-anchor="iq-sec-nav-strategy">Стратегія та бізнес-кейс <span class="iq-count">15</span></a><a href="#/interview-questions/iq-sec-nav-elicit" data-go="interview-questions" data-anchor="iq-sec-nav-elicit">Збір та аналіз вимог <span class="iq-count">39</span></a><a href="#/interview-questions/iq-sec-nav-spec" data-go="interview-questions" data-anchor="iq-sec-nav-spec">Написання вимог: US / UC / AC <span class="iq-count">12</span></a><a href="#/interview-questions/iq-sec-nav-docs" data-go="interview-questions" data-anchor="iq-sec-nav-docs">Документація аналітика <span class="iq-count">5</span></a><a href="#/interview-questions/iq-sec-nav-process" data-go="interview-questions" data-anchor="iq-sec-nav-process">Бізнес-процеси та BPMN <span class="iq-count">10</span></a><a href="#/interview-questions/iq-sec-nav-arch" data-go="interview-questions" data-anchor="iq-sec-nav-arch">Архітектура систем та застосунків <span class="iq-count">9</span></a><a href="#/interview-questions/iq-sec-nav-integr" data-go="interview-questions" data-anchor="iq-sec-nav-integr">Інтеграції та обмін повідомленнями <span class="iq-count">20</span></a><a href="#/interview-questions/iq-sec-nav-db" data-go="interview-questions" data-anchor="iq-sec-nav-db">Бази даних та SQL <span class="iq-count">6</span></a><a href="#/interview-questions/iq-sec-nav-mongo" data-go="interview-questions" data-anchor="iq-sec-nav-mongo">MongoDB <span class="iq-count">61</span></a><a href="#/interview-questions/iq-sec-nav-eng" data-go="interview-questions" data-anchor="iq-sec-nav-eng">Інженерні практики <span class="iq-count">8</span></a><a href="#/interview-questions/iq-sec-nav-career" data-go="interview-questions" data-anchor="iq-sec-nav-career">Кар&#x27;єра та співбесіда <span class="iq-count">10</span></a><a href="#/interview-questions/iq-sec-nav-security" data-go="interview-questions" data-anchor="iq-sec-nav-security">Безпека та відповідність вимогам <span class="iq-count">42</span></a><a href="#/interview-questions/iq-sec-nav-found" data-go="interview-questions" data-anchor="iq-sec-nav-found">Основи та мислення аналітика <span class="iq-count">4</span></a></div>
+          <div class="iq-toc" data-nolink><a href="#/interview-questions/iq-sec-nav-start" data-go="interview-questions" data-anchor="iq-sec-nav-start">Старт <span class="iq-count">5</span></a><a href="#/interview-questions/iq-sec-nav-strategy" data-go="interview-questions" data-anchor="iq-sec-nav-strategy">Стратегія та бізнес-кейс <span class="iq-count">15</span></a><a href="#/interview-questions/iq-sec-nav-elicit" data-go="interview-questions" data-anchor="iq-sec-nav-elicit">Збір та аналіз вимог <span class="iq-count">39</span></a><a href="#/interview-questions/iq-sec-nav-spec" data-go="interview-questions" data-anchor="iq-sec-nav-spec">Написання вимог: US / UC / AC <span class="iq-count">12</span></a><a href="#/interview-questions/iq-sec-nav-docs" data-go="interview-questions" data-anchor="iq-sec-nav-docs">Документація аналітика <span class="iq-count">5</span></a><a href="#/interview-questions/iq-sec-nav-process" data-go="interview-questions" data-anchor="iq-sec-nav-process">Бізнес-процеси та BPMN <span class="iq-count">10</span></a><a href="#/interview-questions/iq-sec-nav-arch" data-go="interview-questions" data-anchor="iq-sec-nav-arch">Архітектура систем та застосунків <span class="iq-count">9</span></a><a href="#/interview-questions/iq-sec-nav-integr" data-go="interview-questions" data-anchor="iq-sec-nav-integr">Інтеграції та обмін повідомленнями <span class="iq-count">52</span></a><a href="#/interview-questions/iq-sec-nav-db" data-go="interview-questions" data-anchor="iq-sec-nav-db">Бази даних та SQL <span class="iq-count">6</span></a><a href="#/interview-questions/iq-sec-nav-mongo" data-go="interview-questions" data-anchor="iq-sec-nav-mongo">MongoDB <span class="iq-count">61</span></a><a href="#/interview-questions/iq-sec-nav-eng" data-go="interview-questions" data-anchor="iq-sec-nav-eng">Інженерні практики <span class="iq-count">8</span></a><a href="#/interview-questions/iq-sec-nav-career" data-go="interview-questions" data-anchor="iq-sec-nav-career">Кар&#x27;єра та співбесіда <span class="iq-count">10</span></a><a href="#/interview-questions/iq-sec-nav-security" data-go="interview-questions" data-anchor="iq-sec-nav-security">Безпека та відповідність вимогам <span class="iq-count">42</span></a><a href="#/interview-questions/iq-sec-nav-found" data-go="interview-questions" data-anchor="iq-sec-nav-found">Основи та мислення аналітика <span class="iq-count">4</span></a></div>
         </div>
 
         <div class="doc-section iq-section" id="iq-sec-nav-start">
@@ -30669,6 +30580,80 @@ project = MYAPP
               <li>Як ти б описав архітектуру Kafka в системі де потрібно: fraud detection, аналітика в DWH і email-нотифікації після оплати? Скільки topics, партицій, consumer groups?</li>
               <li>Що таке Kafka Connect? Для якого сценарію ти б використав Debezium CDC connector?</li>
               <li>Як ти б моніторив «відставання» consumer від producer (consumer lag)? Що це означає для бізнесу?</li>
+            </ol>
+          </div>
+        
+          <div class="iq-block" id="iq-integr-styles">
+            <div class="iq-block-head"><span class="iq-block-title">Стилі інтеграції</span><a class="iq-src" href="#/integr-styles" data-go="integr-styles">↩ до теми</a></div>
+            <ol class="iq-list">
+              <li>Які стилі інтеграції ти знаєш і коли обираєш кожен?</li>
+              <li>Чому Shared Database вважають антипатерном?</li>
+              <li>Бізнес каже «потрібен реальний час» — що уточниш?</li>
+              <li>Які питання ти ставиш на discovery інтеграції?</li>
+              <li>Що таке часова зв&#x27;язаність і як її зменшити?</li>
+            </ol>
+          </div>
+        
+          <div class="iq-block" id="iq-integr-eip">
+            <div class="iq-block-head"><span class="iq-block-title">EIP</span><a class="iq-src" href="#/integr-eip" data-go="integr-eip">↩ до теми</a></div>
+            <ol class="iq-list">
+              <li>Чим command message відрізняється від event message?</li>
+              <li>Які три питання обов&#x27;язкові при описі aggregator?</li>
+              <li>Коли канонічна модель виправдана, а коли шкідлива?</li>
+              <li>Що таке CDC і чому це тимчасове рішення?</li>
+              <li>Наведи приклад content-based router із твого досвіду.</li>
+            </ol>
+          </div>
+        
+          <div class="iq-block" id="iq-integr-errors">
+            <div class="iq-block-head"><span class="iq-block-title">Помилки в інтеграціях</span><a class="iq-src" href="#/integr-errors" data-go="integr-errors">↩ до теми</a></div>
+            <ol class="iq-list">
+              <li>Чому таймаут — найнебезпечніший тип збою в інтеграції?</li>
+              <li>Як ти описуєш retry-політику у вимогах?</li>
+              <li>Що таке DLQ і які вимоги до неї потрібні?</li>
+              <li>Навіщо потрібна звірка, якщо є retry та алерти?</li>
+              <li>Партнер відповів 200, а в тілі помилка. Що з цим робити?</li>
+              <li>Оплата пройшла, склад не зарезервував. Опиши вимоги.</li>
+            </ol>
+          </div>
+        
+          <div class="iq-block" id="iq-integr-eda">
+            <div class="iq-block-head"><span class="iq-block-title">Event-Driven Architecture</span><a class="iq-src" href="#/integr-eda" data-go="integr-eda">↩ до теми</a></div>
+            <ol class="iq-list">
+              <li>Як за назвою відрізнити подію від команди?</li>
+              <li>Коли notification краща за event-carried state transfer?</li>
+              <li>Які зміни схеми події зворотно сумісні?</li>
+              <li>Навіщо потрібні correlationId і causationId?</li>
+              <li>Що не так із подією OrderUpdated?</li>
+            </ol>
+          </div>
+        
+          <div class="iq-block" id="iq-integr-spec">
+            <div class="iq-block-head"><span class="iq-block-title">Специфікація інтеграції</span><a class="iq-src" href="#/integr-spec" data-go="integr-spec">↩ до теми</a></div>
+            <ol class="iq-list">
+              <li>Навіщо ICD, якщо є OpenAPI-специфікація?</li>
+              <li>Що обов&#x27;язково має бути в таблиці data mapping?</li>
+              <li>Що записати про поле-довідник?</li>
+              <li>Як зробити, щоб специфікація інтеграції не застаріла?</li>
+            </ol>
+          </div>
+        
+          <div class="iq-block" id="iq-integr-third-party">
+            <div class="iq-block-head"><span class="iq-block-title">Due diligence вендорів</span><a class="iq-src" href="#/integr-third-party" data-go="integr-third-party">↩ до теми</a></div>
+            <ol class="iq-list">
+              <li>Як ти оцінюєш стороннє API перед інтеграцією?</li>
+              <li>Чому sandbox — критерій відбору, а не зручність?</li>
+              <li>Навіщо адаптер, якщо вендор обраний надовго?</li>
+              <li>Що перевірити щодо вебхуків вендора?</li>
+            </ol>
+          </div>
+        
+          <div class="iq-block" id="iq-integr-esb-ipaas">
+            <div class="iq-block-head"><span class="iq-block-title">ESB та iPaaS</span><a class="iq-src" href="#/integr-esb-ipaas" data-go="integr-esb-ipaas">↩ до теми</a></div>
+            <ol class="iq-list">
+              <li>Чим API Management відрізняється від ESB?</li>
+              <li>Коли інтеграційна платформа виправдана?</li>
+              <li>Чому бізнес-логіку не варто класти в шину?</li>
             </ol>
           </div>
         </div>
@@ -41514,6 +41499,1374 @@ Questions / коментарі? Пишіть у thread або прямо мен�
       <div class="iq-link" data-nolink><span class="iq-link-icon">💼</span><div class="iq-link-body"><div class="iq-link-title">Питання на senior-співбесіді з цієї теми</div><div class="iq-link-desc">5 питань · розділ «Питання на Senior-співбесіді»</div></div><a class="iq-link-btn" href="#/interview-questions/iq-career-competency-matrix" data-go="interview-questions" data-anchor="iq-career-competency-matrix">Перейти →</a></div>
     </div>
 
+      <!-- ═══ ІНТЕГРАЦІЇ: Стилі ═══ -->
+    <div id="page-integr-styles" class="page-view" style="display:none;">
+      <nav class="breadcrumb"><span>База знань</span><span class="breadcrumb-sep">›</span><span class="current">Стилі інтеграції</span></nav>
+      <div class="page-header">
+        <div class="page-tag">Інтеграції · Основи</div>
+        <h1 class="page-title">Стилі інтеграції <span class="grad">та матриця вибору</span></h1>
+        <p class="page-desc">Чотири класичні способи з'єднати системи, осі вибору між ними — і двадцять питань, які системний аналітик ставить на discovery кожної інтеграції.</p>
+      </div>
+
+      <div class="doc-section" id="integr-styles-why">
+        <h2 class="doc-h2">Навіщо це аналітику</h2>
+        <div class="doc-callout"><strong>📌 Контекст</strong><p>Уяви, що на планувальній зустрічі звучить: «Треба, щоб замовлення з сайту потрапляли в ERP». Команда за пів години домовляється зробити REST-виклик — бо всі вміють REST. Через три місяці з'ясовується: ERP приймає не більше 10 запитів на хвилину, у «чорну п'ятницю» замовлень 300 на хвилину, а на час нічного обслуговування ERP недоступна чотири години.</p></div>
+        <p class="doc-p">Інтеграції — <strong>головне джерело ризику будь-якого проєкту</strong>. Причина структурна: усе всередині вашої системи ви контролюєте, а в інтеграції половина умов задана чужою системою, чужою командою й чужим графіком релізів. Саме тут проєкти зриваються найчастіше, і саме тут помилка вибору стилю коштує найдорожче — бо переписати інтеграцію означає домовитись із другою стороною ще раз.</p>
+        <p class="doc-p">Хороша новина: варіантів небагато. Класифікація Хопа й Вульфа, якій уже понад двадцять років, досі покриває практично всі випадки.</p>
+      </div>
+
+      <div class="doc-section" id="integr-styles-four">
+        <h2 class="doc-h2">Чотири класичні стилі</h2>
+        <div class="diagram-wrap">
+          <div style="font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#9090B0;margin-bottom:.6rem;">Чотири способи передати дані між системами</div>
+          <svg width="100%" viewBox="0 0 740 330" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;">
+            <defs><marker id="isA" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#484860"/></marker></defs>
+            <text x="14" y="20" font-size="12" font-weight="700" fill="#2E5570">1. File Transfer</text>
+            <rect x="14" y="30" width="90" height="38" rx="6" fill="#F1F7FA" stroke="#5BAEC8" stroke-width="1.2"/>
+            <text x="59" y="54" text-anchor="middle" font-size="11" fill="#1C1E2C">Система A</text>
+            <rect x="146" y="32" width="66" height="34" rx="4" fill="#FBF6EE" stroke="#D4A060" stroke-width="1.2"/>
+            <text x="179" y="53" text-anchor="middle" font-size="10.5" fill="#8A5E22">CSV / XML</text>
+            <rect x="254" y="30" width="90" height="38" rx="6" fill="#F1F9F6" stroke="#60B8A0" stroke-width="1.2"/>
+            <text x="299" y="54" text-anchor="middle" font-size="11" fill="#1C1E2C">Система B</text>
+            <line x1="104" y1="49" x2="142" y2="49" stroke="#484860" stroke-width="1.3" marker-end="url(#isA)"/>
+            <line x1="212" y1="49" x2="250" y2="49" stroke="#484860" stroke-width="1.3" marker-end="url(#isA)"/>
+            <text x="380" y="45" font-size="10.5" fill="#484860">Просто, працює скрізь.</text>
+            <text x="380" y="61" font-size="10.5" fill="#484860">Затримка, немає зворотного зв'язку.</text>
+            <text x="14" y="106" font-size="12" font-weight="700" fill="#2E5570">2. Shared Database</text>
+            <rect x="14" y="116" width="90" height="38" rx="6" fill="#F1F7FA" stroke="#5BAEC8" stroke-width="1.2"/>
+            <text x="59" y="140" text-anchor="middle" font-size="11" fill="#1C1E2C">Система A</text>
+            <rect x="254" y="116" width="90" height="38" rx="6" fill="#F1F9F6" stroke="#60B8A0" stroke-width="1.2"/>
+            <text x="299" y="140" text-anchor="middle" font-size="11" fill="#1C1E2C">Система B</text>
+            <rect x="146" y="112" width="66" height="46" rx="6" fill="#F0ECF5" stroke="#9090B0" stroke-width="1.2"/>
+            <text x="179" y="132" text-anchor="middle" font-size="10.5" fill="#484860">Спільна</text>
+            <text x="179" y="147" text-anchor="middle" font-size="10.5" fill="#484860">БД</text>
+            <line x1="104" y1="135" x2="142" y2="135" stroke="#484860" stroke-width="1.3" marker-end="url(#isA)"/>
+            <line x1="250" y1="135" x2="216" y2="135" stroke="#484860" stroke-width="1.3" marker-end="url(#isA)"/>
+            <text x="380" y="131" font-size="10.5" fill="#484860">Дані завжди узгоджені.</text>
+            <text x="380" y="147" font-size="10.5" fill="#b91c1c">Найгірша зв'язаність: схема стає спільним контрактом.</text>
+            <text x="14" y="192" font-size="12" font-weight="700" fill="#2E5570">3. Remote Procedure Invocation (REST / gRPC / SOAP)</text>
+            <rect x="14" y="202" width="90" height="38" rx="6" fill="#F1F7FA" stroke="#5BAEC8" stroke-width="1.2"/>
+            <text x="59" y="226" text-anchor="middle" font-size="11" fill="#1C1E2C">Система A</text>
+            <rect x="254" y="202" width="90" height="38" rx="6" fill="#F1F9F6" stroke="#60B8A0" stroke-width="1.2"/>
+            <text x="299" y="226" text-anchor="middle" font-size="11" fill="#1C1E2C">Система B</text>
+            <line x1="104" y1="215" x2="250" y2="215" stroke="#484860" stroke-width="1.3" marker-end="url(#isA)"/>
+            <text x="177" y="209" text-anchor="middle" font-size="10" fill="#484860">запит</text>
+            <line x1="250" y1="232" x2="108" y2="232" stroke="#9090B0" stroke-width="1.3" stroke-dasharray="4 3" marker-end="url(#isA)"/>
+            <text x="177" y="245" text-anchor="middle" font-size="10" fill="#484860">відповідь</text>
+            <text x="380" y="217" font-size="10.5" fill="#484860">Миттєвий результат, зрозуміло.</text>
+            <text x="380" y="233" font-size="10.5" fill="#484860">Обидві системи мають бути живі одночасно.</text>
+            <text x="14" y="278" font-size="12" font-weight="700" fill="#2E5570">4. Messaging (черги та потоки)</text>
+            <rect x="14" y="288" width="90" height="38" rx="6" fill="#F1F7FA" stroke="#5BAEC8" stroke-width="1.2"/>
+            <text x="59" y="312" text-anchor="middle" font-size="11" fill="#1C1E2C">Система A</text>
+            <rect x="146" y="288" width="66" height="38" rx="6" fill="#FBF5F8" stroke="#C07898" stroke-width="1.2"/>
+            <text x="179" y="312" text-anchor="middle" font-size="10.5" fill="#8A5070">Черга</text>
+            <rect x="254" y="288" width="90" height="38" rx="6" fill="#F1F9F6" stroke="#60B8A0" stroke-width="1.2"/>
+            <text x="299" y="312" text-anchor="middle" font-size="11" fill="#1C1E2C">Система B</text>
+            <line x1="104" y1="307" x2="142" y2="307" stroke="#484860" stroke-width="1.3" marker-end="url(#isA)"/>
+            <line x1="212" y1="307" x2="250" y2="307" stroke="#484860" stroke-width="1.3" marker-end="url(#isA)"/>
+            <text x="380" y="303" font-size="10.5" fill="#484860">Системи не залежать одна від одної в часі.</text>
+            <text x="380" y="319" font-size="10.5" fill="#484860">Складніше відстежити й налагодити.</text>
+          </svg>
+        </div>
+        <div class="doc-cards-2">
+          <div class="doc-card doc-card--blue">
+            <div class="doc-card-title">File Transfer</div>
+            <p class="doc-p">Одна система кладе файл, інша його забирає. SFTP, CSV, XML, нічні вивантаження.</p>
+            <p class="doc-p"><strong>Зв'язаність:</strong> найнижча — сторони не знають одна про одну нічого, крім формату й розташування файлу.</p>
+            <p class="doc-p"><strong>Де досі живе:</strong> банки, держреєстри, ERP, обмін із бухгалтерією, звітність регулятору. Не варто зневажати: для нічної звірки мільйона записів це й досі найдешевший спосіб.</p>
+          </div>
+          <div class="doc-card doc-card--red">
+            <div class="doc-card-title">Shared Database</div>
+            <p class="doc-p">Дві системи читають і пишуть в одну базу.</p>
+            <p class="doc-p"><strong>Зв'язаність:</strong> максимальна. Схема БД стає контрактом, який неможливо змінити, не зламавши сусіда.</p>
+            <p class="doc-p"><strong>Коли зустрічається:</strong> як «швидке рішення», про яке шкодують роками. Легітимний випадок майже один — тимчасовий місток під час міграції з legacy.</p>
+          </div>
+          <div class="doc-card doc-card--teal">
+            <div class="doc-card-title">Remote Procedure Invocation</div>
+            <p class="doc-p">Синхронний виклик: REST, gRPC, SOAP. Запит — відповідь.</p>
+            <p class="doc-p"><strong>Зв'язаність:</strong> часова (обидві системи мають працювати одночасно) і контрактна.</p>
+            <p class="doc-p"><strong>Коли:</strong> потрібен негайний результат для рішення — перевірка балансу, валідація, авторизація платежу.</p>
+          </div>
+          <div class="doc-card doc-card--gold">
+            <div class="doc-card-title">Messaging</div>
+            <p class="doc-p">Асинхронний обмін через чергу або потік подій: RabbitMQ, Kafka.</p>
+            <p class="doc-p"><strong>Зв'язаність:</strong> низька — відправник не чекає й не знає, хто прочитає.</p>
+            <p class="doc-p"><strong>Коли:</strong> сповіщення про подію, обробка може зачекати секунди, потрібна стійкість до недоступності отримувача.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="doc-section" id="integr-styles-axes">
+        <h2 class="doc-h2">Осі вибору</h2>
+        <p class="doc-p">Стиль — це не одне рішення, а кілька незалежних. Розкладіть питання по осях, і вибір стане очевиднішим.</p>
+        <ul class="doc-list">
+          <li><strong>Синхронно чи асинхронно.</strong> Ключове питання: <em>чи потрібна відповідь, щоб продовжити?</em> Перевірка ліміту — так. Сповіщення про відвантаження — ні. Детально: <a href="#/sa-mod11" data-go="sa-mod11">Синхронні vs асинхронні запити</a>.</li>
+          <li><strong>Пакетно, майже реально чи реально.</strong> Не плутайте «хочемо реального часу» з «потрібен реальний час». Оновлення залишків раз на 15 хвилин задовольняє 90% роздрібних сценаріїв і коштує вдесятеро дешевше.</li>
+          <li><strong>Push чи pull.</strong> Хто ініціює: джерело надсилає (вебхук) чи отримувач опитує (polling). Push економніший, але вимагає від вас публічного ендпоінта й обробки повторів.</li>
+          <li><strong>Точка-точка чи через хаб.</strong> При двох системах прямий зв'язок простіший. При десяти — кількість зв'язків зростає квадратично, і з'являється сенс у брокері чи платформі.</li>
+          <li><strong>Запит-відповідь чи подія.</strong> «Дай мені дані» проти «сталося ось що». Другий підхід не знає своїх споживачів — це і гнучкість, і складність.</li>
+          <li><strong>API чи ETL.</strong> Для аналітики й звітності перевантаження великих обсягів (ETL/ELT) майже завжди доречніше за API. Детальніше: <a href="#/db-mod19" data-go="db-mod19">Data Warehouse, Data Lake, ETL</a>.</li>
+        </ul>
+      </div>
+
+      <div class="doc-section" id="integr-styles-matrix">
+        <h2 class="doc-h2">Матриця вибору</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Критерій</th><th>File Transfer</th><th>Shared DB</th><th>RPI (REST/gRPC)</th><th>Messaging</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Затримка</strong></td><td>Години</td><td>Миттєво</td><td>Мілісекунди</td><td>Секунди</td></tr>
+              <tr><td><strong>Обсяги</strong></td><td>Мільйони записів — легко</td><td>Будь-які</td><td>Погано для великих вивантажень</td><td>Високий потік дрібних повідомлень</td></tr>
+              <tr><td><strong>Надійність доставки</strong></td><td>Файл або є, або ні — просто перевірити</td><td>Транзакції БД</td><td>Потрібні retry, ідемпотентність</td><td>Гарантії брокера, DLQ</td></tr>
+              <tr><td><strong>Зв'язаність</strong></td><td>Найнижча</td><td>Найвища</td><td>Середня (часова + контрактна)</td><td>Низька</td></tr>
+              <tr><td><strong>Зміна контракту</strong></td><td>Домовитись про формат</td><td>Ламає обидві системи</td><td>Версіонування API</td><td>Еволюція схеми події</td></tr>
+              <tr><td><strong>Безпека</strong></td><td>Доступ до файлів, шифрування</td><td>Складно розмежувати</td><td>Зріла (TLS, OAuth)</td><td>Автентифікація брокера, ACL</td></tr>
+              <tr><td><strong>Вартість запуску</strong></td><td>Низька</td><td>Найнижча (оманливо)</td><td>Середня</td><td>Висока (інфраструктура)</td></tr>
+              <tr><td><strong>Вартість володіння</strong></td><td>Середня</td><td><strong>Дуже висока</strong></td><td>Середня</td><td>Середня</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="doc-callout"><strong>✅ Best practice</strong><p>Не існує «правильного» стилю — існує відповідність контексту. Але є одна майже безумовна порада: <strong>уникайте Shared Database</strong>. Це єдиний варіант, де вартість володіння зростає з часом швидше за все інше, а відв'язатись потім найважче.</p></div>
+      </div>
+
+      <div class="doc-section" id="integr-styles-coupling">
+        <h2 class="doc-h2">Зв'язаність: чотири види й що з ними робити</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Вид</th><th>Що означає</th><th>Як зменшити</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Часова</strong> (temporal)</td><td>Системи мають працювати одночасно</td><td>Черга чи файл між ними; асинхронна обробка</td></tr>
+              <tr><td><strong>Просторова</strong> (spatial)</td><td>Відправник знає адресу отримувача</td><td>Брокер, service discovery, publish-subscribe</td></tr>
+              <tr><td><strong>Контрактна</strong></td><td>Зміна структури ламає другу сторону</td><td>Версіонування, зворотно сумісні зміни, tolerant reader</td></tr>
+              <tr><td><strong>Формату даних</strong></td><td>Обидві сторони мусять розуміти внутрішні коди й довідники</td><td>Канонічна модель або anti-corruption layer на своєму боці</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="doc-section" id="integr-styles-discovery">
+        <h2 class="doc-h2">Двадцять питань на discovery інтеграції</h2>
+        <p class="doc-p">Це головний практичний артефакт сторінки. Пройдіть цей список <em>до</em> того, як команда пообіцяє строк.</p>
+        <div class="doc-checklist-grid">
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Хто власник другої системи і хто ухвалює технічні рішення?</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Хто джерело істини для цих даних?</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Який обсяг на добу і який піковий за хвилину?</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Наскільки свіжими мають бути дані? Що станеться при затримці на годину?</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Який SLA другої сторони і чи є вікна обслуговування?</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Які ліміти на кількість запитів?</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Який формат і кодування? Хто задає структуру?</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Які ідентифікатори використовуються з обох сторін і як вони зіставляються?</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Що є ключем унікальності запису?</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Як передаються довідники (статуси, коди) і хто їх змінює?</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Які помилки повертає система і що вони означають?</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Чи безпечно повторити запит? Чи є ключ ідемпотентності?</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Як передається історія: тільки зміни чи повний зріз?</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Як автентифікуємось і хто видає доступи?</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Чи є тестове середовище й наскільки воно схоже на бойове?</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Як друга сторона повідомляє про зміни версії?</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Скільки часу живе підтримка старої версії?</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Як ми дізнаємось, що інтеграція зламалась?</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Хто відповідає за розбір збоїв з обох сторін і як з ним зв'язатись?</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Що робить бізнес, поки інтеграція не працює?</div>
+        </div>
+      </div>
+
+      <div class="doc-section" id="integr-styles-case">
+        <h2 class="doc-h2">Кейс: e-commerce ↔ ERP (1С)</h2>
+        <p class="doc-p">Три сценарії обміну між інтернет-магазином і обліковою системою. Показово, що правильні відповіді різні — попри те, що системи ті самі.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Сценарій</th><th>Вимога бізнесу</th><th>Рішення</th><th>Чому</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>Ціни й номенклатура</strong><br>ERP → сайт</td>
+                <td>Ціни оновлюються раз на добу, зміни рідкісні, обсяг — 200 тис. позицій</td>
+                <td><strong>File Transfer</strong>, нічне вивантаження CSV</td>
+                <td>Великий обсяг, свіжість не критична. API на 200 тис. позицій — це години й ризик таймаутів</td>
+              </tr>
+              <tr>
+                <td><strong>Залишки на складі</strong><br>ERP → сайт</td>
+                <td>Не показувати товар, якого немає; допустима затримка 10–15 хв</td>
+                <td><strong>Messaging</strong>: ERP публікує подію зміни залишку</td>
+                <td>Потік дрібних змін, отримувач не має блокувати ERP. Нічне вивантаження призвело б до продажу відсутнього товару</td>
+              </tr>
+              <tr>
+                <td><strong>Створення замовлення</strong><br>сайт → ERP</td>
+                <td>Клієнт має одразу бачити номер замовлення; ERP іноді недоступна</td>
+                <td><strong>Messaging із власним номером</strong>: сайт присвоює номер і кладе замовлення в чергу</td>
+                <td>Синхронний виклик зробив би оформлення замовлення заручником доступності ERP. Ліміт 10 запитів/хв не витримав би піку</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="doc-p">Зверніть увагу на третій рядок: початкова ідея «зробимо REST» ламалась не на технології, а на бізнес-вимозі — <em>клієнт не повинен чекати на ERP</em>. Це видно лише тоді, коли питання про ліміти й доступність поставлені до вибору стилю.</p>
+      </div>
+
+      <div class="doc-section" id="integr-styles-mistakes">
+        <h2 class="doc-h2">⚠️ Типові помилки мідл-аналітика</h2>
+        <div class="doc-cards-2">
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ REST за замовчуванням</div><p class="doc-p">Обирається не за потребою, а тому що знайомий.</p><p class="doc-p"><strong>✅ Як правильно:</strong> пройти осі вибору й матрицю; свідомо відкинути альтернативи.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ Не запитати про обсяги й піки</div><p class="doc-p">Рішення, яке працює на 100 записах, лягає на 100 тисячах.</p><p class="doc-p"><strong>✅ Як правильно:</strong> добовий обсяг і піковий за хвилину — обов'язкові цифри у вимогах.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ Спільна БД «щоб швидше»</div><p class="doc-p">Економія тижня на старті обертається роками неможливості змінити схему.</p><p class="doc-p"><strong>✅ Як правильно:</strong> лише як тимчасовий місток при міграції, з датою відключення.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ Не спитати про SLA партнера</div><p class="doc-p">Ваша доступність не може бути вищою за доступність системи, від якої ви залежите.</p><p class="doc-p"><strong>✅ Як правильно:</strong> SLA партнера — вхідні дані для вашого SLO.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ Забути про ідентифікатори</div><p class="doc-p">У нас <code>order_id</code>, у них <code>ДокументСсылка</code>. Таблиця відповідності не спроєктована — і зіставити записи неможливо.</p><p class="doc-p"><strong>✅ Як правильно:</strong> mapping ідентифікаторів — окремий розділ специфікації.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ Пакетний обмін без ідемпотентності</div><p class="doc-p">Файл обробився наполовину, запустили повторно — половина записів задвоїлась.</p><p class="doc-p"><strong>✅ Як правильно:</strong> повторна обробка того самого файлу має давати той самий результат.</p></div>
+        </div>
+      </div>
+
+      <div class="doc-section" id="integr-styles-selfcheck">
+        <h2 class="doc-h2">🧠 Самоперевірка</h2>
+        <div class="selfcheck-item" onclick="toggleAnswer(this)"><strong>1.</strong> Чому Shared Database вважають антипатерном, хоча технічно це найпростіше?<div class="selfcheck-answer">Бо схема БД стає неявним контрактом між системами, який ніхто не версіонує. Додати колонку чи змінити тип означає ризик зламати сусіда, про якого ви можете навіть не знати. Зникає інкапсуляція: бізнес-правила однієї системи можна обійти, записавши дані напряму. І відв'язатись потім найважче — на відміну від API, тут немає чіткої межі, яку можна замінити адаптером.</div></div>
+        <div class="selfcheck-item" onclick="toggleAnswer(this)"><strong>2.</strong> Бізнес каже «потрібен реальний час». Що уточнити?<div class="selfcheck-answer">Що станеться, якщо дані запізняться на хвилину, на десять, на годину. Найчастіше з'ясовується, що «реальний час» означає «не раз на добу, як зараз». Різниця у вартості між затримкою в 15 хвилин і в 200 мілісекунд — на порядок, і платити її має сенс лише тоді, коли є конкретний сценарій, який без цього ламається.</div></div>
+        <div class="selfcheck-item" onclick="toggleAnswer(this)"><strong>3.</strong> Що таке часова зв'язаність і як її прибрати?<div class="selfcheck-answer">Це залежність, за якої обидві системи мусять працювати одночасно: якщо отримувач лежить, відправник не може виконати операцію. Прибирається посередником, який приймає дані й тримає їх: чергою повідомлень або файлом. Практичний ефект — нічне обслуговування ERP перестає блокувати оформлення замовлень на сайті.</div></div>
+        <div class="selfcheck-item" onclick="toggleAnswer(this)"><strong>4.</strong> Партнер дає API з лімітом 10 запитів на хвилину, а вам треба передати 50 000 записів на добу. Що робити?</strong><div class="selfcheck-answer">Порахувати: 10 запитів/хв — це 14 400 на добу, тобто ліміту не вистачає навіть теоретично. Варіанти: пакетний метод (один запит на 500 записів), окремий канал вивантаження файлом, домовитись про підвищення ліміту, або перевернути напрямок — хай партнер сам забирає дані. Головне — виявити невідповідність на discovery, а не на навантажувальному тесті.</div></div>
+        <div class="selfcheck-item" onclick="toggleAnswer(this)"><strong>5.</strong> Коли File Transfer — правильний вибір у 2026 році?<div class="selfcheck-answer">Коли обсяг великий, свіжість не критична, а друга сторона — legacy чи зовнішня організація з обмеженими можливостями. Типові випадки: нічна звірка з банком, звітність регулятору, обмін із бухгалтерією, початкове завантаження при міграції. Файл має недооцінену перевагу: його легко перевірити, зберегти й повторно обробити — при розборі інциденту це безцінно.</div></div>
+      </div>
+
+      <div class="doc-section" id="integr-styles-related">
+        <h2 class="doc-h2">🔗 Дивись також</h2>
+        <ul class="doc-list">
+          <li><a href="#/tech-m25" data-go="tech-m25">System Integration Analysis</a> — процес і артефакти інтеграційного аналізу</li>
+          <li><a href="#/integr-errors" data-go="integr-errors">Обробка помилок в інтеграціях</a> — те, що становить 80% вимог</li>
+          <li><a href="#/integr-eip" data-go="integr-eip">Enterprise Integration Patterns</a> — словник патернів</li>
+          <li><a href="#/sa-mod11" data-go="sa-mod11">Синхронні vs асинхронні запити</a> — ключова вісь вибору</li>
+          <li><a href="#/db-mod12" data-go="db-mod12">Черги повідомлень</a> — реалізація стилю Messaging</li>
+        </ul>
+      </div>
+
+      <div class="iq-link" data-nolink><span class="iq-link-icon">💼</span><div class="iq-link-body"><div class="iq-link-title">Питання на senior-співбесіді з цієї теми</div><div class="iq-link-desc">5 питань · розділ «Питання на Senior-співбесіді»</div></div><a class="iq-link-btn" href="#/interview-questions/iq-integr-styles" data-go="interview-questions" data-anchor="iq-integr-styles">Перейти →</a></div>
+    </div>
+
+      <!-- ═══ ІНТЕГРАЦІЇ: EIP ═══ -->
+    <div id="page-integr-eip" class="page-view" style="display:none;">
+      <nav class="breadcrumb"><span>База знань</span><span class="breadcrumb-sep">›</span><span class="current">Enterprise Integration Patterns</span></nav>
+      <div class="page-header">
+        <div class="page-tag">Інтеграції · Патерни</div>
+        <h1 class="page-title">Enterprise Integration Patterns <span class="grad">для аналітика</span></h1>
+        <p class="page-desc">Словник із шістдесяти патернів, з якого аналітику потрібні тридцять — щоб описувати поведінку інтеграції точними словами, а не переказом.</p>
+      </div>
+
+      <div class="doc-section" id="eip-why">
+        <h2 class="doc-h2">Навіщо це аналітику</h2>
+        <div class="doc-callout"><strong>📌 Контекст</strong><p>Уяви, що ви пояснюєте інтеграційному розробнику: «Замовлення приходить одне, але в ньому кілька позицій від різних постачальників, і кожну треба відправити своєму, а потім зібрати відповіді назад і показати клієнту загальний статус». Він слухає п'ять хвилин, а потім каже: «А, splitter, потім content-based router, потім aggregator». І малює це за двадцять секунд.</p></div>
+        <p class="doc-p">Патерни інтеграції — це <strong>спільна мова</strong>. Каталог Хопа й Вульфа став де-факто стандартом: цими назвами оперують Apache Camel, MuleSoft, Spring Integration, більшість iPaaS-платформ. Знання назв дає аналітику дві переваги: розмова з розробником стає вдвічі коротшою, а специфікація — точнішою, бо кожен патерн має однозначну поведінку.</p>
+        <p class="doc-p">Вивчати всі шістдесят не треба. Нижче — ті, які реально зустрічаються.</p>
+      </div>
+
+      <div class="doc-section" id="eip-channels">
+        <h2 class="doc-h2">Канали: як повідомлення рухаються</h2>
+        <div class="doc-cards-2">
+          <div class="doc-card doc-card--blue"><div class="doc-card-title">Point-to-Point Channel</div><p class="doc-p">Повідомлення отримує рівно один споживач. Класична черга задач: якщо обробників кілька, вони конкурують, але кожне повідомлення дістається одному.</p></div>
+          <div class="doc-card doc-card--blue"><div class="doc-card-title">Publish-Subscribe Channel</div><p class="doc-p">Копію отримує кожен підписник. Подія «замовлення створене» доходить і до складу, і до аналітики, і до розсилок — незалежно.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">Dead Letter Channel</div><p class="doc-p">Куди потрапляє повідомлення, яке не вдалося обробити після всіх спроб. Найважливіший патерн для вимог: без нього збої зникають безслідно.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">Invalid Message Channel</div><p class="doc-p">Окремо від DLQ: сюди йде те, що взагалі не відповідає схемі. Розрізняти варто, бо реакція різна — DLQ переобробляють, невалідне повертають відправнику.</p></div>
+        </div>
+      </div>
+
+      <div class="doc-section" id="eip-messages">
+        <h2 class="doc-h2">Повідомлення: що саме передаємо</h2>
+        <ul class="doc-list">
+          <li><strong>Command Message</strong> — «зроби це»: <code>CreateOrder</code>. Є конкретний адресат, є очікування дії.</li>
+          <li><strong>Event Message</strong> — «сталося ось це»: <code>OrderPlaced</code>. Адресата не знає, реакція — справа підписників.</li>
+          <li><strong>Document Message</strong> — «ось дані»: вивантаження довідника. Без наказу й без факту.</li>
+          <li><strong>Request-Reply</strong> — запит із очікуванням відповіді поверх асинхронного каналу.</li>
+          <li><strong>Correlation Identifier</strong> — ідентифікатор, за яким відповідь зіставляється із запитом. Без нього асинхронний request-reply неможливий.</li>
+          <li><strong>Message Expiration</strong> — час, після якого повідомлення втрачає сенс. Сповіщення «ваше таксі під'їхало» через дві години шкідливе, а не корисне.</li>
+          <li><strong>Return Address</strong> — куди надіслати відповідь; задається відправником, а не зашивається в отримувача.</li>
+        </ul>
+        <div class="doc-callout"><strong>📌 Практична цінність</strong><p>Розрізнення <em>command</em> і <em>event</em> — не термінологічна витонченість. Воно визначає, хто володіє логікою: у команди її знає відправник («я знаю, що має статись»), у події — кожен підписник вирішує сам. Плутанина тут породжує систему, де «події» насправді є прихованими викликами методів.</p></div>
+      </div>
+
+      <div class="doc-section" id="eip-routing">
+        <h2 class="doc-h2">Маршрутизація: куди це відправити</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Патерн</th><th>Що робить</th><th>Приклад із життя</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Content-Based Router</strong></td><td>Дивиться всередину повідомлення й обирає напрямок</td><td>Заявка на суму &gt;100 000 → черга ручного розгляду, решта → автообробка</td></tr>
+              <tr><td><strong>Message Filter</strong></td><td>Пропускає лише те, що відповідає умові</td><td>Підписник аналітики бере лише події оплачених замовлень</td></tr>
+              <tr><td><strong>Splitter</strong></td><td>Розбиває одне повідомлення на кілька</td><td>Замовлення з 5 позицій → 5 завдань на комплектацію</td></tr>
+              <tr><td><strong>Aggregator</strong></td><td>Збирає кілька повідомлень в одне</td><td>Відповіді 3 постачальників → єдиний статус замовлення</td></tr>
+              <tr><td><strong>Resequencer</strong></td><td>Відновлює правильний порядок</td><td>Події зміни статусу прийшли не по черзі — вибудувати за часом</td></tr>
+              <tr><td><strong>Scatter-Gather</strong></td><td>Розсилає запит багатьом і збирає відповіді</td><td>Запит ціни доставки до 4 перевізників, показати найдешевшу</td></tr>
+              <tr><td><strong>Routing Slip</strong></td><td>Маршрут «подорожує» разом із повідомленням</td><td>Заявка з індивідуальним ланцюжком погоджень</td></tr>
+              <tr><td><strong>Process Manager</strong></td><td>Центральний координатор багатокрокового процесу</td><td>Оркестратор оформлення замовлення (див. <a href="#/dist-saga-outbox" data-go="dist-saga-outbox">Saga</a>)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="diagram-wrap">
+          <div style="font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#9090B0;margin-bottom:.6rem;">Splitter → паралельна обробка → Aggregator</div>
+          <svg width="100%" viewBox="0 0 740 230" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;">
+            <defs><marker id="eipA" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#484860"/></marker></defs>
+            <rect x="10" y="94" width="110" height="42" rx="6" fill="#F1F7FA" stroke="#5BAEC8" stroke-width="1.2"/>
+            <text x="65" y="112" text-anchor="middle" font-size="11" font-weight="700" fill="#2E5570">Замовлення</text>
+            <text x="65" y="128" text-anchor="middle" font-size="10" fill="#484860">3 позиції</text>
+            <polygon points="160,115 190,94 220,115 190,136" fill="#FBF5F8" stroke="#C07898" stroke-width="1.3"/>
+            <text x="190" y="119" text-anchor="middle" font-size="10" font-weight="700" fill="#8A5070">Splitter</text>
+            <rect x="270" y="26" width="150" height="40" rx="6" fill="#F1F9F6" stroke="#60B8A0" stroke-width="1.2"/>
+            <text x="345" y="44" text-anchor="middle" font-size="10.5" fill="#1C1E2C">Позиція 1 → Постач. A</text>
+            <text x="345" y="59" text-anchor="middle" font-size="9.5" fill="#484860">склад Київ</text>
+            <rect x="270" y="95" width="150" height="40" rx="6" fill="#F1F9F6" stroke="#60B8A0" stroke-width="1.2"/>
+            <text x="345" y="113" text-anchor="middle" font-size="10.5" fill="#1C1E2C">Позиція 2 → Постач. B</text>
+            <text x="345" y="128" text-anchor="middle" font-size="9.5" fill="#484860">дропшипінг</text>
+            <rect x="270" y="164" width="150" height="40" rx="6" fill="#F1F9F6" stroke="#60B8A0" stroke-width="1.2"/>
+            <text x="345" y="182" text-anchor="middle" font-size="10.5" fill="#1C1E2C">Позиція 3 → Постач. A</text>
+            <text x="345" y="197" text-anchor="middle" font-size="9.5" fill="#484860">склад Київ</text>
+            <polygon points="470,115 500,94 530,115 500,136" fill="#FBF6EE" stroke="#D4A060" stroke-width="1.3"/>
+            <text x="500" y="119" text-anchor="middle" font-size="9.5" font-weight="700" fill="#8A5E22">Aggregator</text>
+            <rect x="580" y="94" width="150" height="42" rx="6" fill="#E4F1F7" stroke="#4898C0" stroke-width="1.2"/>
+            <text x="655" y="112" text-anchor="middle" font-size="11" font-weight="700" fill="#2E5570">Статус замовлення</text>
+            <text x="655" y="128" text-anchor="middle" font-size="10" fill="#484860">частково відвантажено</text>
+            <line x1="120" y1="115" x2="156" y2="115" stroke="#484860" stroke-width="1.3" marker-end="url(#eipA)"/>
+            <line x1="220" y1="108" x2="266" y2="52" stroke="#484860" stroke-width="1.2" marker-end="url(#eipA)"/>
+            <line x1="220" y1="115" x2="266" y2="115" stroke="#484860" stroke-width="1.2" marker-end="url(#eipA)"/>
+            <line x1="220" y1="122" x2="266" y2="178" stroke="#484860" stroke-width="1.2" marker-end="url(#eipA)"/>
+            <line x1="420" y1="52" x2="472" y2="108" stroke="#484860" stroke-width="1.2" marker-end="url(#eipA)"/>
+            <line x1="420" y1="115" x2="466" y2="115" stroke="#484860" stroke-width="1.2" marker-end="url(#eipA)"/>
+            <line x1="420" y1="178" x2="472" y2="122" stroke="#484860" stroke-width="1.2" marker-end="url(#eipA)"/>
+            <line x1="530" y1="115" x2="576" y2="115" stroke="#484860" stroke-width="1.3" marker-end="url(#eipA)"/>
+            <text x="500" y="164" text-anchor="middle" font-size="9.5" fill="#8A5E22">чекає всі 3 або таймаут</text>
+          </svg>
+        </div>
+        <p class="doc-p">Саме aggregator найчастіше народжує приховані вимоги. Три питання, без яких його не реалізувати: <em>скільки частин чекаємо</em> (звідки система знає, що їх три), <em>скільки чекаємо</em> (таймаут), <em>що робити з неповним набором</em> (відкинути, обробити частково, ескалювати). Без відповідей інтеграція зависне на першому ж збої.</p>
+      </div>
+
+      <div class="doc-section" id="eip-transform">
+        <h2 class="doc-h2">Трансформація: як привести до потрібного вигляду</h2>
+        <ul class="doc-list">
+          <li><strong>Message Translator</strong> — перетворення формату. Базовий патерн; саме тут живе data mapping.</li>
+          <li><strong>Content Enricher</strong> — доповнення даними з іншого джерела. Партнер прислав лише код товару — додаємо назву й ціну з довідника.</li>
+          <li><strong>Content Filter</strong> — прибирання зайвого. Особливо важливо для персональних даних: не передавати третій стороні більше, ніж потрібно.</li>
+          <li><strong>Claim Check</strong> — замість великого вкладення передається посилання на нього. Скан документа кладемо в сховище, у повідомленні — лише ідентифікатор.</li>
+          <li><strong>Canonical Data Model</strong> — єдина внутрішня модель, до якої зводяться формати всіх партнерів.</li>
+          <li><strong>Envelope Wrapper</strong> — обгортка з технічними полями (ідентифікатор, версія, час, джерело) навколо корисного навантаження.</li>
+        </ul>
+        <div class="doc-callout"><strong>⚠️ Канонічна модель: коли варто, а коли ні</strong><p>Ідея приваблива: замість N×N перетворень робимо N перетворень до спільної моделі. Працює, коли інтеграцій багато (від семи-восьми) і є власник моделі. Але канонічна модель має схильність розростатись, догоджаючи всім, і перетворюватись на вузьке місце, зміну якого треба погоджувати з десятьма командами. Для двох-трьох інтеграцій дешевший <strong>anti-corruption layer</strong> — власний шар перекладу на своєму боці, який захищає вашу модель від чужої. Детальніше про підхід: <a href="#/tech-m29" data-go="tech-m29">DDD для аналітика</a>.</p></div>
+      </div>
+
+      <div class="doc-section" id="eip-endpoints">
+        <h2 class="doc-h2">Кінцеві точки та системне управління</h2>
+        <div class="doc-cards-2">
+          <div class="doc-card doc-card--teal"><div class="doc-card-title">Polling / Event-Driven Consumer</div><p class="doc-p">Отримувач сам опитує джерело за розкладом — або реагує на надходження. Вибір впливає на затримку й на навантаження джерела.</p></div>
+          <div class="doc-card doc-card--teal"><div class="doc-card-title">Competing Consumers</div><p class="doc-p">Кілька обробників читають одну чергу, ділячи навантаження. Стандартний спосіб масштабувати обробку — і причина, чому порядок обробки не гарантується.</p></div>
+          <div class="doc-card doc-card--blue"><div class="doc-card-title">Idempotent Receiver</div><p class="doc-p">Отримувач сам відсіює дублікати за ідентифікатором. Обов'язкова умова, якщо доставка «щонайменше один раз» — а вона майже завжди така.</p></div>
+          <div class="doc-card doc-card--blue"><div class="doc-card-title">Transactional Client</div><p class="doc-p">Повідомлення вважається обробленим лише після підтвердження. Інакше падіння обробника означає втрату даних.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">Wire Tap / Message History</div><p class="doc-p">Копія потоку для аудиту й налагодження; історія систем, через які пройшло повідомлення. Дешева інвестиція, яка рятує при розборі інцидентів.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">Message Store / Control Bus</div><p class="doc-p">Сховище всіх повідомлень для розслідувань і повторної обробки; окремий канал керування (увімкнути, зупинити, перечитати).</p></div>
+        </div>
+      </div>
+
+      <div class="doc-section" id="eip-situations">
+        <h2 class="doc-h2">Бізнес-ситуація → патерн</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Ситуація</th><th>Патерн</th></tr></thead>
+            <tbody>
+              <tr><td>Замовлення треба розкласти на завдання по позиціях</td><td>Splitter</td></tr>
+              <tr><td>Зібрати відповіді кількох служб в один статус</td><td>Aggregator</td></tr>
+              <tr><td>Дорогі заявки — на ручний розгляд, дешеві — автоматично</td><td>Content-Based Router</td></tr>
+              <tr><td>Аналітику цікаві лише оплачені замовлення</td><td>Message Filter</td></tr>
+              <tr><td>Опитати кількох перевізників і взяти найкращу пропозицію</td><td>Scatter-Gather</td></tr>
+              <tr><td>Партнер надсилає лише коди, потрібні назви</td><td>Content Enricher</td></tr>
+              <tr><td>Не передавати партнеру зайві персональні дані</td><td>Content Filter</td></tr>
+              <tr><td>У повідомленні скан на 20 МБ</td><td>Claim Check</td></tr>
+              <tr><td>Один і той самий вебхук прийшов двічі</td><td>Idempotent Receiver</td></tr>
+              <tr><td>Повідомлення не вдалося обробити після 5 спроб</td><td>Dead Letter Channel</td></tr>
+              <tr><td>Прийшло щось, що взагалі не відповідає схемі</td><td>Invalid Message Channel</td></tr>
+              <tr><td>Статуси прийшли в неправильному порядку</td><td>Resequencer</td></tr>
+              <tr><td>Потрібна копія потоку для розбору інцидентів</td><td>Wire Tap</td></tr>
+              <tr><td>Багатокроковий процес із компенсаціями</td><td>Process Manager</td></tr>
+              <tr><td>Кожен клієнт має власний ланцюжок погоджень</td><td>Routing Slip</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="doc-section" id="eip-cdc">
+        <h2 class="doc-h2">CDC: як інтегруватись із системою, яка не вміє надсилати події</h2>
+        <p class="doc-p">Окремий випадок, який варто знати кожному аналітику, що працює з legacy. <strong>Change Data Capture</strong> — читання журналу транзакцій бази даних і перетворення змін на потік подій. Інструменти на кшталт Debezium роблять це без єдиного рядка змін у самій системі-джерелі.</p>
+        <div class="doc-cards-2">
+          <div class="doc-card doc-card--teal"><div class="doc-card-title">Чим цінний</div><p class="doc-p">Дозволяє «навчити» стару систему публікувати події, коли її код чіпати не можна або нікому. Ніякого навантаження на застосунок — читається журнал.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">Чим небезпечний</div><p class="doc-p">Ви прив'язуєтесь до <em>схеми БД</em>, а не до контракту: це та сама Shared Database, лише в один бік. Зміна структури таблиці ламає інтеграцію без попередження. Тому CDC — рішення для перехідного періоду, а не назавжди.</p></div>
+        </div>
+      </div>
+
+      <div class="doc-section" id="eip-case">
+        <h2 class="doc-h2">Кейс: заявки з трьох каналів в один процес</h2>
+        <p class="doc-p">Страхова компанія приймає заявки з сайту (JSON через API), від партнерів (XML-файли по SFTP) і поштою (лист із вкладенням, який парситься). Далі всі мають потрапити в один процес обробки.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Крок</th><th>Патерн</th><th>Що відбувається</th></tr></thead>
+            <tbody>
+              <tr><td>1. Прийом</td><td>Channel Adapter ×3</td><td>Для кожного каналу свій адаптер: API, SFTP-поллер, поштовий парсер</td></tr>
+              <tr><td>2. Валідація</td><td>Invalid Message Channel</td><td>Те, що не відповідає мінімальній схемі, — у канал невалідних із поверненням відправнику</td></tr>
+              <tr><td>3. Приведення</td><td>Message Translator</td><td>Кожен формат → внутрішня модель заявки</td></tr>
+              <tr><td>4. Дозбір</td><td>Content Enricher</td><td>За кодом клієнта підтягуються дані з CRM і історія звернень</td></tr>
+              <tr><td>5. Дедуплікація</td><td>Idempotent Receiver</td><td>Партнер часто дублює файл — відсіюємо за номером заявки й датою</td></tr>
+              <tr><td>6. Вкладення</td><td>Claim Check</td><td>Скани йдуть у сховище, у повідомленні лишається ідентифікатор</td></tr>
+              <tr><td>7. Маршрутизація</td><td>Content-Based Router</td><td>Заявки понад ліміт → черга андеррайтера, решта → автоскоринг</td></tr>
+              <tr><td>8. Спостереження</td><td>Wire Tap</td><td>Копія кожної заявки в сховище для розбору й звітності</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="doc-p">Цінність такої таблиці для аналітика в тому, що кожен рядок — це окрема вимога з власними критеріями приймання. «Заявки з трьох каналів обробляються однаково» перетворюється на вісім перевірюваних пунктів.</p>
+      </div>
+
+      <div class="doc-section" id="eip-mistakes">
+        <h2 class="doc-h2">⚠️ Типові помилки мідл-аналітика</h2>
+        <div class="doc-cards-2">
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ Aggregator без правил завершення</div><p class="doc-p">Не визначено, скільки частин чекати й що робити при таймауті — процес зависає назавжди.</p><p class="doc-p"><strong>✅ Як правильно:</strong> три обов'язкові відповіді: скільки, як довго, що при неповному наборі.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ Канонічна модель на дві інтеграції</div><p class="doc-p">Півроку узгоджень моделі «на майбутнє», яке не настає.</p><p class="doc-p"><strong>✅ Як правильно:</strong> anti-corruption layer, поки інтеграцій менше семи.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ Події, які насправді команди</div><p class="doc-p">«Подія» <code>SendEmailToCustomer</code> — це виклик методу через чергу, з усіма мінусами обох підходів.</p><p class="doc-p"><strong>✅ Як правильно:</strong> подія називається у минулому часі й описує факт, а не наказ.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ Немає Dead Letter Channel</div><p class="doc-p">Повідомлення, які не обробились, зникають; про проблему дізнаються від клієнта.</p><p class="doc-p"><strong>✅ Як правильно:</strong> DLQ + алерт + інтерфейс повторної обробки — три окремі вимоги.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ CDC як постійне рішення</div><p class="doc-p">Прив'язка до схеми чужої БД, яку ніхто не зобов'язувався не міняти.</p><p class="doc-p"><strong>✅ Як правильно:</strong> CDC із датою заміни на нормальний контракт.</p></div>
+        </div>
+      </div>
+
+      <div class="doc-section" id="eip-checklist">
+        <h2 class="doc-h2">✅ Чек-лист опису потоку інтеграції</h2>
+        <div class="doc-checklist-grid">
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Названо тип повідомлення: команда, подія чи документ</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Визначено тип каналу: одному чи всім підписникам</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Описано кожен крок маршруту із назвою патерну</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Для роутера перелічено всі гілки, включно з «інше»</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Для splitter описано, як частини пов'язані з оригіналом</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Для aggregator задано умову завершення й таймаут</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Визначено ключ дедуплікації</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Є Dead Letter Channel і процес роботи з ним</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Невалідні повідомлення відокремлені від невдало оброблених</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Великі вкладення винесені (claim check)</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Зайві персональні дані відфільтровані перед передачею назовні</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Є наскрізний ідентифікатор для трасування потоку</div>
+        </div>
+      </div>
+
+      <div class="doc-section" id="eip-selfcheck">
+        <h2 class="doc-h2">🧠 Самоперевірка</h2>
+        <div class="selfcheck-item" onclick="toggleAnswer(this)"><strong>1.</strong> Чим command message відрізняється від event message і чому це важливо у вимогах?<div class="selfcheck-answer">Команда — наказ конкретному отримувачу («створи замовлення»), подія — повідомлення про факт («замовлення створено»). У команди відправник знає, що має статись, і зв'язаність вища. У події відправник не знає споживачів узагалі — можна додати нового підписника, не змінюючи джерело. У вимогах це визначає, хто володіє логікою реакції й наскільки дорого буде додати нового споживача.</div></div>
+        <div class="selfcheck-item" onclick="toggleAnswer(this)"><strong>2.</strong> Які три питання обов'язкові при описі aggregator?<div class="selfcheck-answer">Скільки частин чекаємо і звідки система це знає (лічильник у повідомленні чи довідник); як довго чекаємо (таймаут); що робимо з неповним набором — відкинути, обробити частково чи ескалювати людині. Без цих відповідей aggregator або зависає назавжди, або мовчки втрачає дані. Це найчастіша прогалина у специфікаціях інтеграцій.</div></div>
+        <div class="selfcheck-item" onclick="toggleAnswer(this)"><strong>3.</strong> Коли канонічна модель виправдана?<div class="selfcheck-answer">Коли інтеграцій достатньо багато (орієнтовно від семи-восьми), вони довгоживучі, і є явний власник моделі з повноваженнями ухвалювати рішення. Тоді N перетворень до спільної моделі дешевші за N×N попарних. Якщо інтеграцій дві-три або власника немає, канонічна модель перетворюється на нескінченне узгодження й вузьке місце — дешевше зробити anti-corruption layer на своєму боці.</div></div>
+        <div class="selfcheck-item" onclick="toggleAnswer(this)"><strong>4.</strong> Партнер періодично надсилає той самий файл двічі. Який патерн і що потрібно від нього?<div class="selfcheck-answer">Idempotent Receiver. Потрібен ключ дедуплікації — стабільний ідентифікатор, який партнер гарантовано не змінює при повторній відправці (номер документа + дата, а не час завантаження). Далі — вікно зберігання оброблених ключів (наприклад, 30 днів) і рішення, що робити при збігу ключа з іншим вмістом: це вже не дублікат, а конфлікт, який має піти в канал невалідних.</div></div>
+        <div class="selfcheck-item" onclick="toggleAnswer(this)"><strong>5.</strong> Чому CDC вважають тимчасовим рішенням?<div class="selfcheck-answer">Бо він прив'язує вас до внутрішньої структури чужої бази, яка ніколи не була контрактом. Команда системи-джерела може перейменувати колонку в звичайному релізі — і ваша інтеграція зламається без попередження, бо ніхто не знав, що на цю таблицю хтось спирається. CDC цінний як спосіб швидко «оживити» legacy, але у плані має бути дата переходу на явний контракт.</div></div>
+      </div>
+
+      <div class="doc-section" id="eip-related">
+        <h2 class="doc-h2">🔗 Дивись також</h2>
+        <ul class="doc-list">
+          <li><a href="#/integr-styles" data-go="integr-styles">Стилі інтеграції</a> — вибір рівнем вище</li>
+          <li><a href="#/integr-errors" data-go="integr-errors">Обробка помилок</a> — DLQ і повторна обробка детально</li>
+          <li><a href="#/integr-eda" data-go="integr-eda">Event-Driven Architecture</a> — дизайн самих подій</li>
+          <li><a href="#/integr-esb-ipaas" data-go="integr-esb-ipaas">ESB та iPaaS</a> — платформи, які реалізують ці патерни</li>
+        </ul>
+      </div>
+
+      <div class="iq-link" data-nolink><span class="iq-link-icon">💼</span><div class="iq-link-body"><div class="iq-link-title">Питання на senior-співбесіді з цієї теми</div><div class="iq-link-desc">5 питань · розділ «Питання на Senior-співбесіді»</div></div><a class="iq-link-btn" href="#/interview-questions/iq-integr-eip" data-go="interview-questions" data-anchor="iq-integr-eip">Перейти →</a></div>
+    </div>
+
+      <!-- ═══ ІНТЕГРАЦІЇ: Помилки ═══ -->
+    <div id="page-integr-errors" class="page-view" style="display:none;">
+      <nav class="breadcrumb"><span>База знань</span><span class="breadcrumb-sep">›</span><span class="current">Обробка помилок в інтеграціях</span></nav>
+      <div class="page-header">
+        <div class="page-tag">Інтеграції · Надійність</div>
+        <h1 class="page-title">Обробка помилок: <span class="grad">retry, DLQ, reconciliation</span></h1>
+        <p class="page-desc">Happy path — це 20% вимог до інтеграції. Решта 80% про те, що робити, коли партнер відповів 500, повідомлення прийшло двічі або гроші списались, а замовлення не створилось.</p>
+      </div>
+
+      <div class="doc-section" id="ie-why">
+        <h2 class="doc-h2">Навіщо це аналітику</h2>
+        <div class="doc-callout"><strong>📌 Контекст</strong><p>Уяви: клієнт оплатив, гроші списались, а замовлення в системі немає. Служба підтримки бачить платіж у виписці й порожнечу в базі. Розробник каже: «Вебхук від платіжки не дійшов». Питання «а що система мала зробити в цьому випадку?» лишається без відповіді, бо у вимогах цього сценарію не було.</p></div>
+        <p class="doc-p">Це найдорожча категорія дефектів. Вона не ловиться на демо, не з'являється в тестовому середовищі й проявляється в проді — на реальних грошах реальних клієнтів. І майже завжди причина одна: <strong>в acceptance criteria був лише успішний сценарій</strong>.</p>
+        <p class="doc-p">Хороша новина: перелік того, що може піти не так, кінцевий і добре відомий. Пройти його — робота на годину, яка економить квартал.</p>
+      </div>
+
+      <div class="doc-section" id="ie-taxonomy">
+        <h2 class="doc-h2">Таксономія збоїв</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Тип збою</th><th>Як виглядає</th><th>Ключове питання до бізнесу</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Мережа недоступна</strong></td><td>З'єднання не встановилось</td><td>Повторювати? Скільки? Що бачить користувач?</td></tr>
+              <tr><td><strong>Таймаут</strong></td><td>Відповіді немає — але операція могла виконатись</td><td>Найнебезпечніший випадок. Як дізнатись, чи пройшло?</td></tr>
+              <tr><td><strong>4xx — наша помилка</strong></td><td>Невалідні дані, немає прав, не знайдено</td><td>Повторювати марно. Хто це виправляє?</td></tr>
+              <tr><td><strong>5xx — їхня помилка</strong></td><td>Збій на боці партнера</td><td>Повторювати варто. З якою затримкою?</td></tr>
+              <tr><td><strong>200 з помилкою в тілі</strong></td><td>HTTP-код успішний, а всередині <code>{"status":"error"}</code></td><td>Класична пастка. Що вважаємо успіхом?</td></tr>
+              <tr><td><strong>Дублікат</strong></td><td>Те саме повідомлення прийшло двічі</td><td>Як розпізнати? За яким ключем?</td></tr>
+              <tr><td><strong>Порушений порядок</strong></td><td>«Скасовано» прийшло раніше за «створено»</td><td>Чи можна обробити не по черзі? Як не втратити свіжіший стан?</td></tr>
+              <tr><td><strong>Невідповідність схеми</strong></td><td>Партнер змінив формат без попередження</td><td>Падаємо чи ігноруємо невідомі поля?</td></tr>
+              <tr><td><strong>Часткова відмова</strong></td><td>З 5 позицій 3 обробились</td><td>Відкотити все, зберегти частину чи ескалювати?</td></tr>
+              <tr><td><strong>Партнер лежить годину</strong></td><td>Тривала недоступність</td><td>Накопичувати чи відмовляти? Скільки накопичувати?</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="doc-section" id="ie-guarantees">
+        <h2 class="doc-h2">Гарантії доставки: що реально можливо</h2>
+        <div class="doc-cards-3">
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">At-most-once</div><p class="doc-p">Максимум один раз: можлива втрата, дублікатів не буде. Годиться для телеметрії, де втрата одного значення нічого не змінює.</p></div>
+          <div class="doc-card doc-card--teal"><div class="doc-card-title">At-least-once</div><p class="doc-p">Щонайменше один раз: втрати не буде, дублікати можливі. <strong>Практичний стандарт</strong> для бізнес-даних.</p></div>
+          <div class="doc-card doc-card--blue"><div class="doc-card-title">Exactly-once</div><p class="doc-p">Рівно один раз. У розподіленій системі недосяжне в чистому вигляді — досягається як at-least-once плюс ідемпотентний отримувач.</p></div>
+        </div>
+        <div class="doc-callout"><strong>📌 Головний висновок для вимог</strong><p>Оскільки робочий режим — at-least-once, <strong>кожен отримувач мусить бути ідемпотентним</strong>. Це не оптимізація, а умова коректності. У специфікації кожної інтеграції має бути рядок: <em>ключ, за яким розпізнається повтор, і вікно, протягом якого повтор відсіюється</em>. Детально — <a href="#/dist-idempotency" data-go="dist-idempotency">Idempotency та circuit breaker</a>.</p></div>
+      </div>
+
+      <div class="doc-section" id="ie-retry">
+        <h2 class="doc-h2">Retry-політика як вимога</h2>
+        <p class="doc-p">«Повторити 3 рази» — не політика. Повна політика відповідає на п'ять питань: <em>які помилки повторюємо, скільки разів, з якою затримкою, скільки часу загалом, що робимо після вичерпання</em>.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Відповідь</th><th>Повторювати?</th><th>Чому</th></tr></thead>
+            <tbody>
+              <tr><td>Мережа недоступна, таймаут з'єднання</td><td>✅ Так</td><td>Тимчасова проблема</td></tr>
+              <tr><td><code>429 Too Many Requests</code></td><td>✅ Так, за <code>Retry-After</code></td><td>Партнер прямо каже, коли можна</td></tr>
+              <tr><td><code>500, 502, 503, 504</code></td><td>✅ Так</td><td>Збій на їхньому боці, ймовірно минущий</td></tr>
+              <tr><td><code>400 Bad Request</code></td><td>❌ Ні</td><td>Дані не стануть валідними від повтору</td></tr>
+              <tr><td><code>401 / 403</code></td><td>❌ Ні (крім оновлення токена)</td><td>Проблема доступу, не навантаження</td></tr>
+              <tr><td><code>404</code></td><td>⚠️ Залежить</td><td>Може означати «ще не створено» — тоді обмежений повтор доречний</td></tr>
+              <tr><td><code>409 Conflict</code></td><td>❌ Ні</td><td>Стан не той; потрібне рішення, а не повтор</td></tr>
+              <tr><td>Таймаут читання після відправки</td><td>⚠️ Лише якщо ідемпотентно</td><td>Операція могла виконатись — повтор без ключа задвоїть її</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="doc-p"><strong>Exponential backoff із jitter.</strong> Затримка подвоюється: 1 с, 2 с, 4 с, 8 с — плюс випадковий розкид. Джиттер потрібен, щоб сотня клієнтів, які отримали помилку одночасно, не повторили запит теж одночасно й не добили партнера, який щойно піднявся.</p>
+        <p class="doc-p"><strong>Бюджет часу.</strong> Ланцюжок викликів має вкладатись у час, який готовий чекати користувач. Якщо сторінка має відповісти за 3 секунди, а всередині три виклики з таймаутом 10 секунд кожен — арифметика не сходиться. Таймаути задаються зверху вниз, а не кожним сервісом окремо.</p>
+        <p class="doc-p"><strong>Circuit breaker.</strong> Коли партнер стабільно падає, продовжувати стукати шкідливо: ви витрачаєте ресурси й заважаєте йому відновитись. «Запобіжник» після N відмов перестає викликати взагалі на певний час, потім пробує одиничний запит. Для аналітика це означає окрему вимогу: <em>що робить система в режимі розімкнутого запобіжника</em> — відмовляє, показує кеш чи ставить у чергу.</p>
+      </div>
+
+      <div class="doc-section" id="ie-dlq">
+        <h2 class="doc-h2">Dead Letter Queue: куди йде те, що не вийшло</h2>
+        <div class="diagram-wrap">
+          <div style="font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#9090B0;margin-bottom:.6rem;">Життєвий цикл повідомлення</div>
+          <svg width="100%" viewBox="0 0 740 250" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;">
+            <defs><marker id="dlqA" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#484860"/></marker></defs>
+            <rect x="14" y="90" width="112" height="44" rx="8" fill="#F1F7FA" stroke="#5BAEC8" stroke-width="1.3"/>
+            <text x="70" y="117" text-anchor="middle" font-size="11.5" font-weight="700" fill="#2E5570">Отримано</text>
+            <rect x="176" y="90" width="112" height="44" rx="8" fill="#E4F1F7" stroke="#4898C0" stroke-width="1.3"/>
+            <text x="232" y="117" text-anchor="middle" font-size="11.5" font-weight="700" fill="#2E5570">Обробка</text>
+            <rect x="338" y="20" width="112" height="44" rx="8" fill="#F0FDF4" stroke="#10b981" stroke-width="1.3"/>
+            <text x="394" y="47" text-anchor="middle" font-size="11.5" font-weight="700" fill="#0f8a5f">Готово</text>
+            <rect x="338" y="90" width="112" height="44" rx="8" fill="#FBF6EE" stroke="#D4A060" stroke-width="1.3"/>
+            <text x="394" y="112" text-anchor="middle" font-size="11.5" font-weight="700" fill="#8A5E22">Retry (n)</text>
+            <text x="394" y="127" text-anchor="middle" font-size="9.5" fill="#484860">backoff + jitter</text>
+            <rect x="338" y="176" width="112" height="44" rx="8" fill="#FEF2F2" stroke="#b91c1c" stroke-width="1.3"/>
+            <text x="394" y="198" text-anchor="middle" font-size="11.5" font-weight="700" fill="#b91c1c">DLQ</text>
+            <text x="394" y="213" text-anchor="middle" font-size="9.5" fill="#484860">+ алерт</text>
+            <rect x="510" y="176" width="130" height="44" rx="8" fill="#F0ECF5" stroke="#9090B0" stroke-width="1.3"/>
+            <text x="575" y="198" text-anchor="middle" font-size="11" font-weight="700" fill="#484860">Розбір людиною</text>
+            <text x="575" y="213" text-anchor="middle" font-size="9.5" fill="#484860">UI повторної обробки</text>
+            <line x1="126" y1="112" x2="172" y2="112" stroke="#484860" stroke-width="1.3" marker-end="url(#dlqA)"/>
+            <line x1="288" y1="104" x2="334" y2="52" stroke="#10b981" stroke-width="1.3" marker-end="url(#dlqA)"/>
+            <line x1="288" y1="112" x2="334" y2="112" stroke="#D4A060" stroke-width="1.3" marker-end="url(#dlqA)"/>
+            <path d="M394 134 Q394 160 300 150 Q240 142 232 136" fill="none" stroke="#D4A060" stroke-width="1.3" marker-end="url(#dlqA)"/>
+            <text x="300" y="166" text-anchor="middle" font-size="9.5" fill="#8A5E22">спроба 2..n</text>
+            <line x1="394" y1="134" x2="394" y2="172" stroke="#b91c1c" stroke-width="1.3" marker-end="url(#dlqA)"/>
+            <text x="404" y="158" font-size="9.5" fill="#b91c1c">n вичерпано</text>
+            <line x1="450" y1="198" x2="506" y2="198" stroke="#484860" stroke-width="1.3" marker-end="url(#dlqA)"/>
+            <path d="M575 176 Q575 60 460 42" fill="none" stroke="#9090B0" stroke-width="1.3" stroke-dasharray="4 3" marker-end="url(#dlqA)"/>
+            <text x="600" y="100" font-size="9.5" fill="#484860">reprocess</text>
+          </svg>
+        </div>
+        <p class="doc-p">DLQ сама по собі нічого не вирішує — вона лише не дає даним зникнути. Щоб вона працювала, потрібні три вимоги, які пишете саме ви:</p>
+        <ul class="doc-list">
+          <li><strong>Алерт.</strong> Хто дізнається про потрапляння в DLQ і за скільки хвилин. Черга, яку ніхто не моніторить, — це смітник.</li>
+          <li><strong>Інтерфейс розбору.</strong> Типова історія: «Як оператор підтримки, я хочу побачити застряглі повідомлення з причиною помилки, виправити дані й запустити повторну обробку». Без цього єдиний спосіб — звернення до розробника.</li>
+          <li><strong>Правила.</strong> Скільки зберігаємо, чи можна редагувати перед повтором, хто має право, чи фіксується це в аудиті.</li>
+        </ul>
+      </div>
+
+      <div class="doc-section" id="ie-recon">
+        <h2 class="doc-h2">Reconciliation: звірка як окрема вимога</h2>
+        <p class="doc-p">Retry й DLQ ловлять збої, про які система <em>знає</em>. Але найдорожчі розбіжності — ті, про які ніхто не знає: платіж пройшов у банку й загубився у вас, статус змінився в них і не оновився у вас. Єдиний спосіб їх виявити — періодично звіряти два стани.</p>
+        <div class="diagram-wrap">
+          <div style="font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#9090B0;margin-bottom:.6rem;">Процес звірки</div>
+          <svg width="100%" viewBox="0 0 740 200" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;">
+            <defs><marker id="rcA" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#484860"/></marker></defs>
+            <rect x="14" y="20" width="140" height="40" rx="8" fill="#F1F7FA" stroke="#5BAEC8" stroke-width="1.2"/>
+            <text x="84" y="45" text-anchor="middle" font-size="11" fill="#1C1E2C">Наш реєстр за добу</text>
+            <rect x="14" y="112" width="140" height="40" rx="8" fill="#F1F9F6" stroke="#60B8A0" stroke-width="1.2"/>
+            <text x="84" y="137" text-anchor="middle" font-size="11" fill="#1C1E2C">Виписка PSP за добу</text>
+            <polygon points="210,86 250,60 290,86 250,112" fill="#FBF5F8" stroke="#C07898" stroke-width="1.3"/>
+            <text x="250" y="90" text-anchor="middle" font-size="10" font-weight="700" fill="#8A5070">Звірка</text>
+            <rect x="340" y="8" width="170" height="40" rx="8" fill="#F0FDF4" stroke="#10b981" stroke-width="1.2"/>
+            <text x="425" y="33" text-anchor="middle" font-size="10.5" fill="#0f8a5f">Збіглось — нічого не робимо</text>
+            <rect x="340" y="60" width="170" height="40" rx="8" fill="#FBF6EE" stroke="#D4A060" stroke-width="1.2"/>
+            <text x="425" y="79" text-anchor="middle" font-size="10.5" fill="#8A5E22">Є в них, немає в нас</text>
+            <text x="425" y="93" text-anchor="middle" font-size="9.5" fill="#484860">→ автостворення або кейс</text>
+            <rect x="340" y="112" width="170" height="40" rx="8" fill="#FEF2F2" stroke="#b91c1c" stroke-width="1.2"/>
+            <text x="425" y="131" text-anchor="middle" font-size="10.5" fill="#b91c1c">Є в нас, немає в них</text>
+            <text x="425" y="145" text-anchor="middle" font-size="9.5" fill="#484860">→ ручний розбір</text>
+            <rect x="340" y="164" width="170" height="30" rx="8" fill="#F0ECF5" stroke="#9090B0" stroke-width="1.2"/>
+            <text x="425" y="184" text-anchor="middle" font-size="10.5" fill="#484860">Суми різні → ескалація</text>
+            <rect x="556" y="60" width="170" height="92" rx="8" fill="#F7F4F8" stroke="#DDD8E8" stroke-width="1"/>
+            <text x="641" y="84" text-anchor="middle" font-size="10.5" font-weight="700" fill="#1C1E2C">Звіт звірки</text>
+            <text x="641" y="104" text-anchor="middle" font-size="10" fill="#484860">кількість, суми,</text>
+            <text x="641" y="120" text-anchor="middle" font-size="10" fill="#484860">розбіжності, статус</text>
+            <text x="641" y="140" text-anchor="middle" font-size="10" fill="#484860">→ фінансам щоранку</text>
+            <line x1="154" y1="40" x2="212" y2="76" stroke="#484860" stroke-width="1.2" marker-end="url(#rcA)"/>
+            <line x1="154" y1="132" x2="212" y2="96" stroke="#484860" stroke-width="1.2" marker-end="url(#rcA)"/>
+            <line x1="290" y1="80" x2="336" y2="34" stroke="#484860" stroke-width="1.2" marker-end="url(#rcA)"/>
+            <line x1="290" y1="86" x2="336" y2="80" stroke="#484860" stroke-width="1.2" marker-end="url(#rcA)"/>
+            <line x1="290" y1="94" x2="336" y2="130" stroke="#484860" stroke-width="1.2" marker-end="url(#rcA)"/>
+            <line x1="510" y1="106" x2="552" y2="106" stroke="#484860" stroke-width="1.2" marker-end="url(#rcA)"/>
+          </svg>
+        </div>
+        <p class="doc-p">Що має описати аналітик: <em>періодичність</em> (для грошей — щодня), <em>ключ зіставлення</em> (за яким полем шукаємо пару), <em>допуски</em> (розбіжність до якої суми вважається нормальною через округлення), <em>які розбіжності виправляються автоматично, а які лише вручну</em>, <em>кому й у якому вигляді йде звіт</em>. Загальне правило: автоматично виправляти можна лише те, де рішення однозначне; усе, що стосується сум, — на людину.</p>
+      </div>
+
+      <div class="doc-section" id="ie-partial">
+        <h2 class="doc-h2">Часткові збої та компенсації</h2>
+        <p class="doc-p">Класична ситуація: замовлення створене, оплата не пройшла. Або навпаки — гроші списані, склад не зарезервував. У розподіленій системі немає спільної транзакції, тому проміжні стани неминучі, і їх треба <strong>назвати й описати</strong>.</p>
+        <ul class="doc-list">
+          <li><strong>Проміжні статуси у вимогах.</strong> Не «замовлення створене / скасоване», а «очікує оплати», «оплата в обробці», «оплачено, очікує резерву», «частково відвантажено». Кожен статус — це те, що бачить користувач і з чим працює підтримка.</li>
+          <li><strong>Таймаути очікування.</strong> Скільки замовлення може висіти в «очікує оплати» — і що станеться потім: скасування, нагадування, ручний розбір.</li>
+          <li><strong>Компенсації.</strong> Скасувати не означає «відкотити»: гроші повертаються окремою операцією повернення, а не зникненням списання. Детально — <a href="#/dist-saga-outbox" data-go="dist-saga-outbox">Saga та Transactional Outbox</a>.</li>
+          <li><strong>Ручні кейси.</strong> Якась частка збоїв завжди потребує людини. Черга таких кейсів у back-office — окрема вимога, і про неї згадують останньою.</li>
+        </ul>
+      </div>
+
+      <div class="doc-section" id="ie-catalog">
+        <h2 class="doc-h2">Error catalog: артефакт, який закриває суперечки</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Код</th><th>Опис</th><th>Джерело</th><th>Дія системи</th><th>Що бачить користувач / оператор</th><th>Алерт</th></tr></thead>
+            <tbody>
+              <tr><td>INT-001</td><td>PSP недоступний</td><td>Мережа</td><td>Retry ×5 з backoff, далі circuit breaker на 60 с</td><td>«Оплата тимчасово недоступна, спробуйте за хвилину»</td><td>&gt;10 за 5 хв</td></tr>
+              <tr><td>INT-002</td><td>Таймаут відповіді PSP</td><td>PSP</td><td>Статус «в обробці», перевірка статусу через 30 с</td><td>«Платіж обробляється»</td><td>&gt;5% за 15 хв</td></tr>
+              <tr><td>INT-003</td><td>Картку відхилено</td><td>Банк-емітент</td><td>Без повтору, замовлення в «очікує оплати»</td><td>Причина відмови зрозумілою мовою</td><td>—</td></tr>
+              <tr><td>INT-004</td><td>Дублікат вебхука</td><td>PSP</td><td>Відсіяти за <code>payment_id</code>, відповісти 200</td><td>Нічого</td><td>—</td></tr>
+              <tr><td>INT-005</td><td>Невалідний підпис вебхука</td><td>Невідоме</td><td>Відхилити з 401, у security log</td><td>Нічого</td><td>Негайно</td></tr>
+              <tr><td>INT-006</td><td>Схема відповіді змінилась</td><td>PSP</td><td>У DLQ, обробка зупиняється</td><td>Кейс у черзі підтримки</td><td>Негайно</td></tr>
+              <tr><td>INT-007</td><td>Склад не зарезервував позицію</td><td>WMS</td><td>Часткове відвантаження, компенсація на решту</td><td>«Частина позицій недоступна»</td><td>&gt;20 за годину</td></tr>
+              <tr><td>INT-008</td><td>Перевищено ліміт запитів</td><td>Партнер</td><td>Пауза за <code>Retry-After</code>, черга</td><td>Нічого (затримка)</td><td>&gt;3 за годину</td></tr>
+              <tr><td>INT-009</td><td>Розбіжність при звірці</td><td>Звірка</td><td>Кейс фінансам</td><td>Рядок у звіті звірки</td><td>Щоранку</td></tr>
+              <tr><td>INT-010</td><td>Повідомлення в DLQ</td><td>Обробник</td><td>Зберегти, чекати розбору</td><td>Кейс у черзі підтримки</td><td>&gt;0</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="doc-callout"><strong>✅ Best practice</strong><p>Колонка «що бачить користувач» — та, заради якої каталог і робиться. Без неї на екрані з'явиться <code>Error 500: Internal Server Error</code>, і служба підтримки дізнається про збій із гнівного дзвінка, а не з алерту.</p></div>
+      </div>
+
+      <div class="doc-section" id="ie-case">
+        <h2 class="doc-h2">Кейс: вебхук від платіжного провайдера не дійшов</h2>
+        <p class="doc-p">Та сама історія з початку. П'ять різних сценаріїв, які виглядають однаково для клієнта, але потребують різних рішень:</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Сценарій</th><th>Що сталось</th><th>Вимога, яка це закриває</th></tr></thead>
+            <tbody>
+              <tr><td>1</td><td>Вебхук не надіслано — збій у PSP</td><td><strong>Активна перевірка статусу:</strong> якщо через 60 с після ініціації немає фінального статусу, система сама запитує його в PSP; далі за розкладом до 24 год</td></tr>
+              <tr><td>2</td><td>Вебхук надіслано, наш сервіс лежав</td><td><strong>Прийом і підтвердження окремо:</strong> вебхук зберігається в чергу і підтверджується одразу; обробка асинхронна. PSP не отримує помилку через нашу внутрішню проблему</td></tr>
+              <tr><td>3</td><td>Вебхук дійшов двічі</td><td><strong>Ідемпотентність:</strong> ключ <code>payment_id + event_type</code>, вікно 7 днів; повтор → 200 без побічних дій</td></tr>
+              <tr><td>4</td><td>Вебхук про успіх прийшов після вебхука про скасування</td><td><strong>Захист від застарілих подій:</strong> обробляється лише подія з новішою міткою часу; старіші ігноруються з записом у лог</td></tr>
+              <tr><td>5</td><td>Вебхук узагалі не дійде ніколи</td><td><strong>Щоденна звірка</strong> з випискою PSP: платежі, яких немає в нас, потрапляють у звіт і в чергу розбору</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="doc-p">П'ять вимог замість однієї фрази «інтеграція з платіжним провайдером». Кожна перевіряється окремим тестом, і жодна не з'явиться сама собою на грумінгу, якщо аналітик не поставить питання «а що, якщо вебхук не прийде».</p>
+      </div>
+
+      <div class="doc-section" id="ie-obs">
+        <h2 class="doc-h2">Як побачити, що інтеграція зламалась</h2>
+        <ul class="doc-list">
+          <li><strong>Наскрізний ідентифікатор.</strong> Один <code>correlation_id</code> проходить через усі системи й з'являється в кожному записі логу. Без нього розбір інциденту перетворюється на археологію.</li>
+          <li><strong>Дашборд інтеграції.</strong> Мінімум: кількість повідомлень, частка помилок за типами, час обробки, глибина черги, розмір DLQ.</li>
+          <li><strong>Бізнес-метрика поруч із технічною.</strong> «Сервіс відповідає 200» і «замовлення створюються» — різні речі. Падіння кількості створених замовлень має алертити навіть тоді, коли технічно все зелене.</li>
+        </ul>
+      </div>
+
+      <div class="doc-section" id="ie-mistakes">
+        <h2 class="doc-h2">⚠️ Типові помилки мідл-аналітика</h2>
+        <div class="doc-cards-2">
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ AC лише на успіх</div><p class="doc-p">«Замовлення передається в ERP» — і жодного слова про те, що робити, коли не передалось.</p><p class="doc-p"><strong>✅ Як правильно:</strong> на кожен позитивний критерій — мінімум два негативні.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ «Повторити 3 рази»</div><p class="doc-p">Без класифікації помилок і затримки: повторюємо 400-ті, добиваємо партнера рівними інтервалами.</p><p class="doc-p"><strong>✅ Як правильно:</strong> таблиця «які коди повторюємо» + backoff із jitter + бюджет часу.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ Retry неідемпотентного виклику</div><p class="doc-p">Таймаут після списання → повтор → подвійне списання.</p><p class="doc-p"><strong>✅ Як правильно:</strong> ключ ідемпотентності обов'язковий скрізь, де є гроші чи створення сутностей.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ DLQ без процесу</div><p class="doc-p">Черга є, алерту немає, інтерфейсу розбору немає — дані лежать місяцями.</p><p class="doc-p"><strong>✅ Як правильно:</strong> DLQ, алерт і UI повторної обробки — три окремі вимоги в одному епіку.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ Звірка «колись потім»</div><p class="doc-p">Її завжди відкладають — до першої розбіжності на сотні тисяч.</p><p class="doc-p"><strong>✅ Як правильно:</strong> для будь-якої інтеграції з грошима звірка входить у перший реліз.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ Помилки лише в логах</div><p class="doc-p">Записалось — і ніхто не подивиться, поки не поскаржиться клієнт.</p><p class="doc-p"><strong>✅ Як правильно:</strong> для кожного класу помилок — поріг і канал алерту.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ Технічна помилка на екрані</div><p class="doc-p">Користувач бачить код відповіді банку або назву сервісу.</p><p class="doc-p"><strong>✅ Як правильно:</strong> текст для користувача — окрема колонка каталогу помилок.</p></div>
+        </div>
+      </div>
+
+      <div class="doc-section" id="ie-checklist">
+        <h2 class="doc-h2">✅ Сценарії помилок для кожної інтеграції</h2>
+        <div class="doc-checklist-grid">
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Партнер недоступний — що робить система і що бачить користувач</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Таймаут після відправки — як з'ясовуємо, чи виконалась операція</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Класифіковано, які коди відповіді повторюються</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Задано кількість спроб, backoff і jitter</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Заданий загальний бюджет часу на ланцюжок викликів</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Визначено поведінку circuit breaker у розімкнутому стані</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Є ключ ідемпотентності й вікно дедуплікації</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Описано поведінку при 200 з помилкою в тілі</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Описано обробку повідомлень, що прийшли не по порядку</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Описано реакцію на зміну схеми партнером</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Визначено поведінку при частковому успіху</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Є DLQ, алерт на неї та інтерфейс повторної обробки</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Є звірка: періодичність, ключ, допуски, звіт</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Описано проміжні статуси й таймаути очікування</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Передбачено чергу ручних кейсів для підтримки</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Складено error catalog із текстами для користувача</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Є наскрізний correlation id</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Є бізнес-метрика в моніторингу, а не лише технічна</div>
+        </div>
+        <div class="doc-callout"><strong>🎯 Практика</strong><p>Складіть error catalog для інтеграції з поштовим сервісом (відправка транзакційних листів). Мінімум 8 рядків. Підказки, про що забувають: лист прийнято сервісом, але відхилено поштовим доменом отримувача; адреса в чорному списку; перевищено денний ліміт; вебхук про доставку прийшов через дві доби; той самий лист відправлено двічі через повтор.</p></div>
+      </div>
+
+      <div class="doc-section" id="ie-selfcheck">
+        <h2 class="doc-h2">🧠 Самоперевірка</h2>
+        <div class="selfcheck-item" onclick="toggleAnswer(this)"><strong>1.</strong> Чому таймаут — найнебезпечніший тип збою?<div class="selfcheck-answer">Бо він не каже, чи виконалась операція. З'єднання розірвалось після відправки — можливо, партнер її отримав і списав гроші, а можливо, ні. Повтор без ключа ідемпотентності може задвоїти списання; відсутність повтору може втратити платіж. Єдиний коректний вихід: ідемпотентний виклик або окремий метод перевірки статусу за нашим ідентифікатором операції.</div></div>
+        <div class="selfcheck-item" onclick="toggleAnswer(this)"><strong>2.</strong> Навіщо в retry потрібен jitter?<div class="selfcheck-answer">Щоб уникнути синхронізованої лавини. Якщо партнер упав, сотні клієнтів отримали помилку одночасно; за чистим exponential backoff усі повторять рівно через 1, 2, 4 секунди — і кожна хвиля добиватиме сервіс, який намагається піднятись. Випадковий розкид розмазує спроби в часі й дає партнеру відновитись.</div></div>
+        <div class="selfcheck-item" onclick="toggleAnswer(this)"><strong>3.</strong> Партнер відповідає HTTP 200, а в тілі <code>{"status":"declined"}</code>. Це помилка?<div class="selfcheck-answer">З погляду транспорту — ні, з погляду бізнесу — так. Це найпоширеніша пастка інтеграцій: система вважає виклик успішним, бо перевіряє лише HTTP-код. У специфікації має бути явно записано, що вважається успіхом: не «200», а «200 і <code>status = approved</code>». І окремо — перелік значень поля статусу з реакцією на кожне.</div></div>
+        <div class="selfcheck-item" onclick="toggleAnswer(this)"><strong>4.</strong> Навіщо звірка, якщо є retry, DLQ та алерти?<div class="selfcheck-answer">Бо всі ці механізми ловлять збої, про які система знає. Звірка ловить те, про що вона не знає: вебхук, який ніколи не надіслали; повідомлення, яке підтвердилось, але не обробилось через помилку логіки; розбіжність, що виникла через ручне втручання в базу. Для грошових потоків звірка — єдина гарантія, що дві системи справді бачать одне й те саме.</div></div>
+        <div class="selfcheck-item" onclick="toggleAnswer(this)"><strong>5.</strong> Що конкретно означає вимога «інтеграція має бути надійною»?<div class="selfcheck-answer">Нічого — це побажання без критерію. Розкладається щонайменше на: гарантію доставки (at-least-once з ідемпотентністю), політику повторів із класифікацією помилок, поведінку при тривалій недоступності партнера, наявність DLQ з процесом розбору, звірку з періодичністю й допусками, цільові показники (частка успішних обробок, час до виявлення збою) і перелік алертів. Кожен пункт перевіряється окремо.</div></div>
+        <div class="selfcheck-item" onclick="toggleAnswer(this)"><strong>6.</strong> Оплата пройшла, склад не зарезервував товар. Що має бути у вимогах?<div class="selfcheck-answer">Проміжний стан («оплачено, очікує резерву») з таймаутом; спроби резерву з політикою повторів; поведінка при вичерпанні — компенсація у вигляді повернення коштів окремою операцією, а не «відкату»; сповіщення клієнта з поясненням і строком повернення; кейс у черзі підтримки, якщо автоматичне повернення не вдалось; і фіксація всього ланцюжка в аудиті. Ключове — стан не може лишатись невизначеним: у кожної гілки є завершення.</div></div>
+      </div>
+
+      <div class="doc-section" id="ie-related">
+        <h2 class="doc-h2">🔗 Дивись також</h2>
+        <ul class="doc-list">
+          <li><a href="#/dist-idempotency" data-go="dist-idempotency">Idempotency, timeouts, circuit breaker</a> — механіка того, про що тут вимоги</li>
+          <li><a href="#/dist-saga-outbox" data-go="dist-saga-outbox">Saga та Transactional Outbox</a> — компенсації при частковому успіху</li>
+          <li><a href="#/integr-spec" data-go="integr-spec">Специфікація інтеграції</a> — де живе error catalog</li>
+          <li><a href="#/rel-observability" data-go="rel-observability">Observability</a> — алерти та наскрізне трасування</li>
+          <li><a href="#/integr-eip" data-go="integr-eip">Enterprise Integration Patterns</a> — DLQ та idempotent receiver як патерни</li>
+        </ul>
+      </div>
+
+      <div class="iq-link" data-nolink><span class="iq-link-icon">💼</span><div class="iq-link-body"><div class="iq-link-title">Питання на senior-співбесіді з цієї теми</div><div class="iq-link-desc">6 питань · розділ «Питання на Senior-співбесіді»</div></div><a class="iq-link-btn" href="#/interview-questions/iq-integr-errors" data-go="interview-questions" data-anchor="iq-integr-errors">Перейти →</a></div>
+    </div>
+
+      <!-- ═══ ІНТЕГРАЦІЇ: EDA ═══ -->
+    <div id="page-integr-eda" class="page-view" style="display:none;">
+      <nav class="breadcrumb"><span>База знань</span><span class="breadcrumb-sep">›</span><span class="current">Event-Driven Architecture</span></nav>
+      <div class="page-header">
+        <div class="page-tag">Інтеграції · Події</div>
+        <h1 class="page-title">Event-Driven Architecture: <span class="grad">дизайн подій</span></h1>
+        <p class="page-desc">Подія — це контракт, який переживе кілька поколінь споживачів. Як її назвати, з чого скласти, як міняти й де документувати.</p>
+      </div>
+
+      <div class="doc-section" id="eda-why">
+        <h2 class="doc-h2">Навіщо це аналітику</h2>
+        <div class="doc-callout"><strong>📌 Контекст</strong><p>Уяви: два роки тому команда випустила подію <code>OrderCreated</code> з трьома полями. Сьогодні на неї підписані шість сервісів, два з яких написані іншими командами, а один — партнером. Продакт просить додати знижку в замовлення. Питання «просто додамо поле?» виявляється питанням про сумісність із шістьма споживачами, яких ніхто не пам'ятає.</p></div>
+        <p class="doc-p">У подієвій архітектурі <strong>подія — це публічний контракт</strong>, і змінити його складніше, ніж API: у API ви хоча б знаєте своїх клієнтів, а подію може слухати будь-хто. Тому дизайн події — робота аналітика, а не «як розробник вирішить».</p>
+      </div>
+
+      <div class="doc-section" id="eda-three">
+        <h2 class="doc-h2">Подія, команда, запит</h2>
+        <div class="doc-cards-3">
+          <div class="doc-card doc-card--blue"><div class="doc-card-title">Event — факт</div><p class="doc-p"><code>OrderPlaced</code>. Минулий час. Уже сталось, скасувати не можна. Відправник не знає й не цікавиться, хто відреагує.</p></div>
+          <div class="doc-card doc-card--teal"><div class="doc-card-title">Command — намір</div><p class="doc-p"><code>PlaceOrder</code>. Наказовий спосіб. Адресат один, він може відмовити. Відправник чекає результату.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">Query — питання</div><p class="doc-p"><code>GetOrderStatus</code>. Нічого не змінює, потребує відповіді.</p></div>
+        </div>
+        <p class="doc-p">Перевірка, яка ловить 90% помилок: <em>чи має сенс речення «сталося: …»?</em> «Сталося: замовлення розміщено» — так, це подія. «Сталося: надіслати лист клієнту» — ні, це команда, замаскована під подію.</p>
+      </div>
+
+      <div class="doc-section" id="eda-types">
+        <h2 class="doc-h2">Три типи подій за наповненням</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Тип</th><th>Що всередині</th><th>Плюси</th><th>Мінуси</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>Notification</strong><br>сповіщення</td>
+                <td>Лише ідентифікатор: «замовлення 123 змінилось»</td>
+                <td>Крихітна, не розкриває зайвого, немає проблем зі схемою</td>
+                <td>Кожен споживач мусить піти й запитати деталі — навантаження на джерело, немає стану на момент події</td>
+              </tr>
+              <tr>
+                <td><strong>Event-carried state transfer</strong><br>зі станом</td>
+                <td>Повний зріз сутності на момент події</td>
+                <td>Споживач автономний, не ходить назад; історія станів зберігається</td>
+                <td>Більший розмір, ризик передати зайве (персональні дані), складніша еволюція схеми</td>
+              </tr>
+              <tr>
+                <td><strong>Event sourcing</strong></td>
+                <td>Подія і <em>є</em> джерелом істини; стан обчислюється з послідовності</td>
+                <td>Повна історія «безкоштовно», можливість перерахувати минуле</td>
+                <td>Суттєва складність — див. <a href="#/dist-cqrs-es" data-go="dist-cqrs-es">CQRS та Event Sourcing</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="diagram-wrap">
+          <div style="font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#9090B0;margin-bottom:.6rem;">Notification проти state transfer</div>
+          <svg width="100%" viewBox="0 0 740 220" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;">
+            <defs><marker id="edaA" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#484860"/></marker></defs>
+            <text x="14" y="20" font-size="11.5" font-weight="700" fill="#2E5570">Notification: подія маленька, споживач іде по деталі</text>
+            <rect x="14" y="32" width="104" height="40" rx="6" fill="#F1F7FA" stroke="#5BAEC8" stroke-width="1.2"/>
+            <text x="66" y="56" text-anchor="middle" font-size="10.5" fill="#1C1E2C">Orders</text>
+            <rect x="170" y="32" width="150" height="40" rx="6" fill="#FBF5F8" stroke="#C07898" stroke-width="1.2"/>
+            <text x="245" y="50" text-anchor="middle" font-size="10" fill="#8A5070">OrderChanged</text>
+            <text x="245" y="64" text-anchor="middle" font-size="9.5" fill="#484860">{ id: 123 }</text>
+            <rect x="372" y="32" width="104" height="40" rx="6" fill="#F1F9F6" stroke="#60B8A0" stroke-width="1.2"/>
+            <text x="424" y="56" text-anchor="middle" font-size="10.5" fill="#1C1E2C">Аналітика</text>
+            <line x1="118" y1="52" x2="166" y2="52" stroke="#484860" stroke-width="1.2" marker-end="url(#edaA)"/>
+            <line x1="320" y1="52" x2="368" y2="52" stroke="#484860" stroke-width="1.2" marker-end="url(#edaA)"/>
+            <path d="M424 72 Q424 100 66 82" fill="none" stroke="#b91c1c" stroke-width="1.3" stroke-dasharray="4 3" marker-end="url(#edaA)"/>
+            <text x="250" y="104" text-anchor="middle" font-size="9.5" fill="#b91c1c">GET /orders/123 — зворотний виклик до джерела</text>
+            <text x="14" y="140" font-size="11.5" font-weight="700" fill="#3E8C74">State transfer: подія самодостатня</text>
+            <rect x="14" y="152" width="104" height="40" rx="6" fill="#F1F7FA" stroke="#5BAEC8" stroke-width="1.2"/>
+            <text x="66" y="176" text-anchor="middle" font-size="10.5" fill="#1C1E2C">Orders</text>
+            <rect x="170" y="146" width="180" height="52" rx="6" fill="#FBF5F8" stroke="#C07898" stroke-width="1.2"/>
+            <text x="260" y="164" text-anchor="middle" font-size="10" fill="#8A5070">OrderPlaced</text>
+            <text x="260" y="178" text-anchor="middle" font-size="9.5" fill="#484860">{ id, customer, items,</text>
+            <text x="260" y="191" text-anchor="middle" font-size="9.5" fill="#484860">total, currency, placedAt }</text>
+            <rect x="402" y="152" width="104" height="40" rx="6" fill="#F1F9F6" stroke="#60B8A0" stroke-width="1.2"/>
+            <text x="454" y="176" text-anchor="middle" font-size="10.5" fill="#1C1E2C">Аналітика</text>
+            <rect x="540" y="152" width="104" height="40" rx="6" fill="#F1F9F6" stroke="#60B8A0" stroke-width="1.2"/>
+            <text x="592" y="176" text-anchor="middle" font-size="10.5" fill="#1C1E2C">Розсилки</text>
+            <line x1="118" y1="172" x2="166" y2="172" stroke="#484860" stroke-width="1.2" marker-end="url(#edaA)"/>
+            <line x1="350" y1="172" x2="398" y2="172" stroke="#484860" stroke-width="1.2" marker-end="url(#edaA)"/>
+            <line x1="506" y1="172" x2="536" y2="172" stroke="#484860" stroke-width="1.2" marker-end="url(#edaA)"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="doc-section" id="eda-naming">
+        <h2 class="doc-h2">Іменування та структура</h2>
+        <p class="doc-p"><strong>Назва</strong> — це <em>сутність + дія в минулому часі</em>, у термінах домену, а не реалізації: <code>OrderPlaced</code>, <code>PaymentCaptured</code>, <code>ShipmentDispatched</code>. Не <code>OrderUpdated</code> (що саме змінилось?) і не <code>OrderTableRowInserted</code> (це деталь бази, а не подія бізнесу).</p>
+        <p class="doc-p"><strong>Структура.</strong> Розділяйте технічну обгортку й корисне навантаження — це дозволяє обробляти будь-яку подію однаково:</p>
+        <div class="code-block"><span class="c">// envelope — однаковий для всіх подій</span>
+<span class="k">eventId</span>:        <span class="s">"01J8Z…"</span>      <span class="c">// унікальний, для дедуплікації</span>
+<span class="k">eventType</span>:      <span class="s">"OrderPlaced"</span>
+<span class="k">eventVersion</span>:   <span class="n">2</span>
+<span class="k">occurredAt</span>:     <span class="s">"2026-09-03T10:15:00Z"</span>  <span class="c">// коли сталось, не коли надіслано</span>
+<span class="k">producer</span>:       <span class="s">"orders-service"</span>
+<span class="k">correlationId</span>:  <span class="s">"req-7f3a…"</span>    <span class="c">// наскрізний для всього ланцюжка</span>
+<span class="k">causationId</span>:    <span class="s">"01J8Y…"</span>       <span class="c">// подія-причина</span>
+<span class="k">payload</span>: {
+  <span class="k">orderId</span>: <span class="s">"A-10023"</span>,
+  <span class="k">customerId</span>: <span class="s">"C-551"</span>,
+  <span class="k">total</span>: { <span class="k">amount</span>: <span class="n">1250.00</span>, <span class="k">currency</span>: <span class="s">"UAH"</span> },
+  <span class="k">items</span>: [ … ]
+}</div>
+        <p class="doc-p">Два поля, які найчастіше забувають і про які найбільше шкодують: <strong>correlationId</strong> (зв'язує все, що сталось у межах одного бізнес-сценарію) і <strong>causationId</strong> (яка саме подія спричинила цю). Разом вони дозволяють відновити повний ланцюжок при розборі інциденту.</p>
+        <p class="doc-p">Ще одна деталь: <code>occurredAt</code> — час <em>події</em>, а не публікації. Різниця стає критичною, коли повідомлення пролежало в черзі десять хвилин або партнер надіслав його з запізненням на добу.</p>
+      </div>
+
+      <div class="doc-section" id="eda-schema">
+        <h2 class="doc-h2">Еволюція схеми: як міняти те, що вже слухають</h2>
+        <div class="doc-cards-2">
+          <div class="doc-card doc-card--teal">
+            <div class="doc-card-title">✅ Сумісні зміни</div>
+            <ul class="doc-list">
+              <li>Додати необов'язкове поле</li>
+              <li>Додати нове значення в перелік, якщо споживачі готові до невідомих</li>
+              <li>Розширити межі (довжину рядка)</li>
+            </ul>
+            <p class="doc-p">Правило <em>tolerant reader</em>: споживач ігнорує невідомі поля, а не падає на них. Це вимога до кожного споживача, і її треба записати.</p>
+          </div>
+          <div class="doc-card doc-card--red">
+            <div class="doc-card-title">❌ Ламкі зміни</div>
+            <ul class="doc-list">
+              <li>Видалити або перейменувати поле</li>
+              <li>Змінити тип чи одиницю виміру (гривні → копійки)</li>
+              <li>Зробити необов'язкове поле обов'язковим</li>
+              <li>Змінити зміст поля, лишивши назву</li>
+            </ul>
+            <p class="doc-p">Тут потрібна нова версія події й період, коли публікуються обидві.</p>
+          </div>
+        </div>
+        <p class="doc-p">Для форматів на кшталт Avro чи Protobuf сумісність перевіряє <strong>Schema Registry</strong> автоматично: публікація несумісної схеми просто відхиляється. Для JSON цю роль виконує дисципліна і рев'ю. Питання «у нас є реєстр схем?» варто ставити на початку проєкту.</p>
+        <div class="doc-callout"><strong>📌 Хто володіє схемою</strong><p>Схемою події володіє <strong>виробник</strong> — але змінити її він не може одноосібно, бо контракт публічний. Робоча практика: виробник веде схему в репозиторії, зміни проходять рев'ю, споживачі підписані на сповіщення. Тут добре працюють <em>consumer-driven contract tests</em>: споживачі публікують свої очікування, і збірка виробника падає, якщо він їх порушує.</p></div>
+      </div>
+
+      <div class="doc-section" id="eda-order">
+        <h2 class="doc-h2">Порядок, ключі та каталог</h2>
+        <ul class="doc-list">
+          <li><strong>Порядок гарантується лише в межах партиції.</strong> Якщо для бізнесу важливо, щоб події одного замовлення оброблялись послідовно, ключем партиціонування має бути <code>orderId</code>. Це рішення аналітика: саме він знає, у яких межах порядок критичний.</li>
+          <li><strong>Тонкі проти товстих подій.</strong> Компроміс між розміром і автономністю споживача. Практичне правило: класти те, що потрібно <em>більшості</em> споживачів, решту — запитом. І ніколи не класти персональні дані, які потрібні одному з шести.</li>
+          <li><strong>Event catalog.</strong> Реєстр усіх подій: назва, версія, виробник, схема, приклад, споживачі, семантика. Без нього через рік ніхто не знає, що взагалі публікується. Машиночитний варіант — <strong>AsyncAPI</strong>, аналог OpenAPI для подій.</li>
+          <li><strong>Event storming</strong> — воркшоп, на якому команда з бізнесом виписує події домену на стікерах у часовому порядку. Найшвидший спосіб знайти справжні події замість вигаданих. Детальніше: <a href="#/tech-m29" data-go="tech-m29">DDD для аналітика</a>.</li>
+        </ul>
+      </div>
+
+      <div class="doc-section" id="eda-case">
+        <h2 class="doc-h2">Кейс: шість споживачів однієї події</h2>
+        <p class="doc-p">Подія <code>OrderPlaced</code> в e-commerce. Хто на неї підписаний і що кожному потрібно:</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Споживач</th><th>Що робить</th><th>Які поля потрібні</th></tr></thead>
+            <tbody>
+              <tr><td>Склад</td><td>Резервує позиції</td><td>orderId, items (SKU, кількість), warehouseHint</td></tr>
+              <tr><td>Платежі</td><td>Ініціює списання</td><td>orderId, customerId, total, currency</td></tr>
+              <tr><td>Розсилки</td><td>Лист «замовлення прийнято»</td><td>orderId, customerId, total, items (назви)</td></tr>
+              <tr><td>Аналітика</td><td>Рахує конверсію й виторг</td><td>orderId, total, currency, channel, occurredAt</td></tr>
+              <tr><td>Антифрод</td><td>Оцінює ризик</td><td>orderId, customerId, total, deviceId, ip</td></tr>
+              <tr><td>Лояльність</td><td>Нараховує бали</td><td>orderId, customerId, total</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="doc-p"><strong>Що сталося при переході з v1 на v2.</strong> Команда вирішила підтримати мультивалютність і змінила <code>total</code> з числа на об'єкт <code>{amount, currency}</code>. Формально «просто уточнили структуру». Наслідки:</p>
+        <ul class="doc-list">
+          <li>Аналітика почала рахувати виторг як нуль — поле стало нечисловим, дашборди показували падіння на 100%.</li>
+          <li>Лояльність нарахувала нуль балів усім клієнтам за дві доби.</li>
+          <li>Розсилки надіслали листи з «Сума: [object Object]».</li>
+          <li>Склад і платежі не постраждали — вони цим полем не користувались.</li>
+        </ul>
+        <div class="doc-callout"><strong>Як мало бути</strong><p>Додати <code>totalAmount</code> і <code>currency</code> як <em>нові необов'язкові</em> поля, лишивши <code>total</code> на місці; підняти <code>eventVersion</code>; повідомити споживачів; дати два-три місяці на перехід; лише потім прибрати старе поле. Це довше, зате без інциденту на дві доби. І окремо: <em>ім'я поля не змінює значення мовчки</em> — якщо семантика інша, то й назва має бути іншою.</p></div>
+      </div>
+
+      <div class="doc-section" id="eda-mistakes">
+        <h2 class="doc-h2">⚠️ Типові помилки мідл-аналітика</h2>
+        <div class="doc-cards-2">
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ Подія як виклик методу</div><p class="doc-p"><code>SendWelcomeEmail</code> — це команда: відправник вирішує, що має статись.</p><p class="doc-p"><strong>✅ Як правильно:</strong> <code>UserRegistered</code>, а рішення про лист ухвалює підписник.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ «God event»</div><p class="doc-p">Одна подія <code>OrderChanged</code> на всі випадки, всередині прапорець «що саме».</p><p class="doc-p"><strong>✅ Як правильно:</strong> окремі події на різні бізнес-факти: <code>OrderPaid</code>, <code>OrderShipped</code>, <code>OrderCancelled</code>.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ Події з чужого домену</div><p class="doc-p">Сервіс замовлень публікує <code>InvoiceIssued</code>, хоча рахунками володіє бухгалтерія.</p><p class="doc-p"><strong>✅ Як правильно:</strong> подію публікує той, хто володіє фактом.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ Немає версії й каталогу</div><p class="doc-p">Через рік ніхто не знає, які події існують і хто їх слухає.</p><p class="doc-p"><strong>✅ Як правильно:</strong> <code>eventVersion</code> з першого дня + реєстр подій зі споживачами.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ Персональні дані в події</div><p class="doc-p">Подія розлітається шести споживачам і осідає в логах кожного — разом із паспортними даними.</p><p class="doc-p"><strong>✅ Як правильно:</strong> ідентифікатори замість даних; чутливе — окремим запитом із контролем доступу.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ Час публікації замість часу події</div><p class="doc-p">Подія пролежала в черзі — і аналітика відносить продаж не до того дня.</p><p class="doc-p"><strong>✅ Як правильно:</strong> <code>occurredAt</code> задає виробник у момент факту.</p></div>
+        </div>
+      </div>
+
+      <div class="doc-section" id="eda-checklist">
+        <h2 class="doc-h2">✅ Чек-лист дизайну події</h2>
+        <div class="doc-checklist-grid">
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Назва — сутність і дія в минулому часі, мовою домену</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Це справді факт, а не замаскована команда</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Визначено власника події</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Обрано тип: notification чи state transfer, і зафіксовано чому</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Є eventId для дедуплікації</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Є occurredAt — час факту, а не публікації</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Є correlationId і causationId</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Є eventVersion</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>У payload немає зайвих персональних даних</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Визначено ключ партиціонування, якщо порядок важливий</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Перелічені відомі споживачі та їхні потреби в полях</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Подія внесена в каталог зі схемою та прикладом</div>
+        </div>
+      </div>
+
+      <div class="doc-section" id="eda-selfcheck">
+        <h2 class="doc-h2">🧠 Самоперевірка</h2>
+        <div class="selfcheck-item" onclick="toggleAnswer(this)"><strong>1.</strong> Як за назвою відрізнити подію від команди?<div class="selfcheck-answer">Подія називається у минулому часі й описує факт, що вже стався: <code>PaymentCaptured</code>. Команда — у наказовому способі й описує намір: <code>CapturePayment</code>. Перевірка: якщо після назви можна поставити «— і це вже не скасувати», це подія. Якщо отримувач може відмовитись виконати — це команда, і вона потребує адресата й відповіді.</div></div>
+        <div class="selfcheck-item" onclick="toggleAnswer(this)"><strong>2.</strong> Коли notification краща за state transfer?<div class="selfcheck-answer">Коли дані чутливі й не всім споживачам потрібні; коли сутність велика, а змінюється часто; коли споживачам потрібен свіжий стан на момент обробки, а не на момент події. Мінус — зворотні виклики до джерела: при тисячах подій на хвилину шість споживачів створять шестикратне навантаження на сервіс, який їх публікує. Тому для потоків високої частоти зазвичай обирають state transfer.</div></div>
+        <div class="selfcheck-item" onclick="toggleAnswer(this)"><strong>3.</strong> Які зміни схеми події зворотно сумісні?<div class="selfcheck-answer">Додавання необов'язкового поля; розширення допустимих меж; додавання нового значення в перелік — за умови, що споживачі толерантні до невідомих значень. Несумісні: видалення чи перейменування поля, зміна типу або одиниці виміру, перетворення необов'язкового на обов'язкове, зміна семантики при збереженні назви. Останнє найпідступніше — формально схема та сама, а дані означають інше.</div></div>
+        <div class="selfcheck-item" onclick="toggleAnswer(this)"><strong>4.</strong> Навіщо потрібні correlationId і causationId?<div class="selfcheck-answer">correlationId зв'язує все, що сталось у межах одного бізнес-сценарію: клік користувача, десяток подій і сотню записів логу в різних сервісах. causationId вказує на конкретну подію-причину — це дозволяє побудувати дерево «що з чого випливло». Разом вони перетворюють розбір інциденту з археології на запит за одним полем.</div></div>
+        <div class="selfcheck-item" onclick="toggleAnswer(this)"><strong>5.</strong> Продакт просить подію <code>OrderUpdated</code> з полем «що саме змінилось». Ваша реакція?<div class="selfcheck-answer">Заперечити: це «god event». Споживачі змушені розбирати прапорець і фільтрувати нецікаве, а схема розростається під усі випадки. Правильно — з'ясувати, які бізнес-факти ховаються за «updated»: адресу доставки змінено, склад позицій змінено, замовлення скасовано. Кожен факт стає окремою подією з власною схемою, і кожен споживач підписується лише на те, що йому потрібно.</div></div>
+      </div>
+
+      <div class="doc-section" id="eda-related">
+        <h2 class="doc-h2">🔗 Дивись також</h2>
+        <ul class="doc-list">
+          <li><a href="#/sa-kafka" data-go="sa-kafka">Apache Kafka</a> — партиції, порядок і Schema Registry</li>
+          <li><a href="#/integr-eip" data-go="integr-eip">Enterprise Integration Patterns</a> — канали й маршрутизація подій</li>
+          <li><a href="#/dist-cqrs-es" data-go="dist-cqrs-es">CQRS та Event Sourcing</a> — коли подія стає джерелом істини</li>
+          <li><a href="#/tech-m29" data-go="tech-m29">DDD для аналітика</a> — event storming і межі контекстів</li>
+          <li><a href="#/integr-spec" data-go="integr-spec">Специфікація інтеграції</a> — де документується схема події</li>
+        </ul>
+      </div>
+
+      <div class="iq-link" data-nolink><span class="iq-link-icon">💼</span><div class="iq-link-body"><div class="iq-link-title">Питання на senior-співбесіді з цієї теми</div><div class="iq-link-desc">5 питань · розділ «Питання на Senior-співбесіді»</div></div><a class="iq-link-btn" href="#/interview-questions/iq-integr-eda" data-go="interview-questions" data-anchor="iq-integr-eda">Перейти →</a></div>
+    </div>
+
+      <!-- ═══ ІНТЕГРАЦІЇ: ICD ═══ -->
+    <div id="page-integr-spec" class="page-view" style="display:none;">
+      <nav class="breadcrumb"><span>База знань</span><span class="breadcrumb-sep">›</span><span class="current">Специфікація інтеграції</span></nav>
+      <div class="page-header">
+        <div class="page-tag">Інтеграції · Документ</div>
+        <h1 class="page-title">Специфікація інтеграції <span class="grad">(Interface Control Document)</span></h1>
+        <p class="page-desc">Один документ, який відповідає на всі питання обох сторін — від автентифікації до того, що робити о третій ночі, коли партнер віддає 500.</p>
+      </div>
+
+      <div class="doc-section" id="ispec-why">
+        <h2 class="doc-h2">Навіщо це аналітику</h2>
+        <div class="doc-callout"><strong>📌 Контекст</strong><p>Уяви, що інтеграцію робили пів року тому. Розробник звільнився, партнер змінив контактну особу, а сьогодні тестувальник питає: «Що має статись, якщо в замовленні порожній список позицій?». Ніхто не знає. Листування в пошті, домовленості в чаті, схема — у голові того, хто пішов.</p></div>
+        <p class="doc-p"><strong>ICD</strong> (Interface Control Document), він же integration design document або просто специфікація інтеграції, вирішує одну задачу: зробити домовленість між двома системами <em>явною й довговічною</em>. Його читають щонайменше чотири категорії людей: розробники обох сторін, тестувальники, підтримка при розборі інцидентів і аналітик, який через рік робитиме наступну версію.</p>
+        <p class="doc-p">Ключова відмінність від OpenAPI-специфікації: <strong>OpenAPI описує технічний контракт, ICD — домовленість</strong>. У ньому є те, чого немає в жодній схемі: хто власник, який SLA, що робити при збоях, як зіставляються ідентифікатори, куди дзвонити.</p>
+      </div>
+
+      <div class="doc-section" id="ispec-template">
+        <h2 class="doc-h2">Шаблон: дванадцять розділів</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>№</th><th>Розділ</th><th>Що містить</th></tr></thead>
+            <tbody>
+              <tr><td>1</td><td><strong>Огляд і контекст</strong></td><td>Навіщо ця інтеграція бізнесу, контекстна діаграма систем, напрямок потоку</td></tr>
+              <tr><td>2</td><td><strong>Сторони й власники</strong></td><td>Системи, команди, технічний контакт з обох боків, ескалація, канал зв'язку</td></tr>
+              <tr><td>3</td><td><strong>Стиль, протокол, формат</strong></td><td>REST / черга / файл, синхронно чи ні, JSON / XML / CSV, кодування, часові зони</td></tr>
+              <tr><td>4</td><td><strong>Автентифікація</strong></td><td>Спосіб, хто видає доступи, ротація секретів, окремо для кожного середовища</td></tr>
+              <tr><td>5</td><td><strong>Операції та повідомлення</strong></td><td>Для кожної: тригер, адреса чи топік, структура запиту й відповіді, приклад</td></tr>
+              <tr><td>6</td><td><strong>Data mapping</strong></td><td>Таблиця відповідності полів із трансформаціями — серце документа</td></tr>
+              <tr><td>7</td><td><strong>Сценарії помилок</strong></td><td>Error catalog, retry, DLQ, звірка — див. <a href="#/integr-errors" data-go="integr-errors">Обробка помилок</a></td></tr>
+              <tr><td>8</td><td><strong>Нефункціональні вимоги</strong></td><td>Обсяги, піки, SLA партнера, ліміти запитів, час відповіді</td></tr>
+              <tr><td>9</td><td><strong>Середовища й доступи</strong></td><td>Адреси dev/test/prod, чим тестове відрізняється від бойового, тестові дані</td></tr>
+              <tr><td>10</td><td><strong>Моніторинг</strong></td><td>Що вимірюємо, які алерти, хто отримує, посилання на дашборд</td></tr>
+              <tr><td>11</td><td><strong>Версіонування та зміни</strong></td><td>Як повідомляють про зміни, скільки живе стара версія, процес узгодження</td></tr>
+              <tr><td>12</td><td><strong>Відкриті питання</strong></td><td>Те, про що ще не домовились, з власником і датою</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="doc-callout"><strong>✅ Best practice</strong><p>Розділ 12 виглядає як ознака незавершеності — насправді це найчесніша частина документа. Явно записане відкрите питання з датою значно кращe за мовчазне припущення, яке виявиться хибним на тестуванні.</p></div>
+      </div>
+
+      <div class="doc-section" id="ispec-operation">
+        <h2 class="doc-h2">Приклад заповненої операції</h2>
+        <p class="doc-p">Розділ 5 для однієї операції — так це виглядає в реальному документі.</p>
+        <div class="table-wrap">
+          <table>
+            <tbody>
+              <tr><td style="width:180px"><strong>Операція</strong></td><td>Передача замовлення в ERP</td></tr>
+              <tr><td><strong>Напрямок</strong></td><td>E-commerce → ERP</td></tr>
+              <tr><td><strong>Тригер</strong></td><td>Замовлення переходить у статус «Оплачено»</td></tr>
+              <tr><td><strong>Канал</strong></td><td>Черга <code>erp.orders.inbound</code>, at-least-once</td></tr>
+              <tr><td><strong>Частота</strong></td><td>~1 200/добу, пік до 40/хв у «чорну п'ятницю»</td></tr>
+              <tr><td><strong>Ключ ідемпотентності</strong></td><td><code>orderId</code>, вікно 30 діб</td></tr>
+              <tr><td><strong>Очікувана відповідь</strong></td><td>Подія <code>erp.orders.ack</code> з номером документа ERP, до 5 хв</td></tr>
+              <tr><td><strong>Якщо відповіді немає</strong></td><td>Через 15 хв — повторна публікація; після 3 спроб — кейс у чергу підтримки</td></tr>
+              <tr><td><strong>Приклад</strong></td><td><code>{"orderId":"A-10023","customerCode":"C-551","lines":[…],"total":{"amount":1250.00,"currency":"UAH"}}</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="doc-section" id="ispec-mapping">
+        <h2 class="doc-h2">Data mapping — серце документа</h2>
+        <p class="doc-p">Таблиця відповідності полів — та частина, заради якої ICD найчастіше й відкривають. Приклад: інтеграція CRM → білінг.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Поле джерела (CRM)</th><th>Тип</th><th>Поле призначення (Білінг)</th><th>Трансформація</th><th>Обов.</th><th>Приклад</th></tr></thead>
+            <tbody>
+              <tr><td><code>account.id</code></td><td>UUID</td><td><code>customer_ext_id</code></td><td>Без змін</td><td>Так</td><td><code>a3f1…9c</code></td></tr>
+              <tr><td><code>account.name</code></td><td>string(200)</td><td><code>customer_name</code></td><td>Обрізати до 100 символів</td><td>Так</td><td>ТОВ «Ромашка»</td></tr>
+              <tr><td><code>account.taxCode</code></td><td>string</td><td><code>tax_id</code></td><td>Прибрати пробіли й дефіси</td><td>Так</td><td><code>12345678</code></td></tr>
+              <tr><td><code>account.type</code></td><td>enum</td><td><code>customer_type</code></td><td><strong>Довідник:</strong> <code>B2B</code>→<code>1</code>, <code>B2C</code>→<code>2</code>, <code>GOV</code>→<code>3</code></td><td>Так</td><td><code>1</code></td></tr>
+              <tr><td><code>account.createdAt</code></td><td>ISO 8601</td><td><code>created_date</code></td><td><strong>UTC → Europe/Kyiv</strong>, формат <code>YYYY-MM-DD</code></td><td>Так</td><td><code>2026-09-03</code></td></tr>
+              <tr><td><code>contact.email</code></td><td>string</td><td><code>billing_email</code></td><td>У нижній регістр</td><td>Так</td><td>a@b.com</td></tr>
+              <tr><td><code>contact.phone</code></td><td>string</td><td><code>phone</code></td><td><strong>У формат E.164:</strong> <code>+380…</code></td><td>Ні</td><td><code>+380671234567</code></td></tr>
+              <tr><td><code>address.city</code></td><td>string</td><td><code>city</code></td><td>Без змін</td><td>Ні</td><td>Київ</td></tr>
+              <tr><td><code>address.zip</code></td><td>string(5)</td><td><code>postal_code</code></td><td>Доповнити нулями зліва до 5</td><td>Ні</td><td><code>01001</code></td></tr>
+              <tr><td><code>contract.number</code></td><td>string</td><td><code>agreement_no</code></td><td>Без змін</td><td>Так</td><td><code>Д-2026/114</code></td></tr>
+              <tr><td><code>contract.sum</code></td><td>decimal(2)</td><td><code>amount_cents</code></td><td><strong>×100, у ціле</strong> (білінг рахує в копійках)</td><td>Так</td><td><code>125000</code></td></tr>
+              <tr><td>—</td><td>—</td><td><code>source_system</code></td><td><strong>Константа</strong> <code>"CRM"</code></td><td>Так</td><td><code>CRM</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="doc-p">Три трансформації з цієї таблиці — типові джерела дефектів, які варто виносити окремо: <strong>часові зони</strong> (дата створення о 23:30 UTC перетворюється на наступний день за київським часом), <strong>одиниці виміру</strong> (гривні проти копійок — класика подвійних і стократних розбіжностей), <strong>довідники</strong> (хто повідомить, коли в CRM з'явиться новий тип клієнта, якого немає в білінгу).</p>
+        <div class="doc-callout"><strong>📌 Питання, яке рятує проєкти</strong><p>Для кожного рядка з довідником запитайте: <em>що робить система, якщо прийшло значення, якого немає в таблиці відповідності?</em> Три можливі відповіді — відхилити запис, підставити значення за замовчуванням, зупинити обробку — дають три різні системи. Мовчазний варіант «підставимо NULL» зазвичай найгірший.</p></div>
+      </div>
+
+      <div class="doc-section" id="ispec-alive">
+        <h2 class="doc-h2">Як тримати документ живим</h2>
+        <ul class="doc-list">
+          <li><strong>Джерело істини — машиночитне.</strong> OpenAPI чи AsyncAPI описує структуру; ICD посилається на них, а не переписує. Дублювання схеми в тексті гарантує розходження за два місяці.</li>
+          <li><strong>Документ поруч із кодом.</strong> Найкраще працює, коли ICD лежить у репозиторії й змінюється тим самим pull request, що й реалізація. Документ в окремій системі оновлюють приблизно ніколи.</li>
+          <li><strong>Версія й дата на першій сторінці.</strong> Разом з ім'ям того, хто відповідає за актуальність.</li>
+          <li><strong>Рев'ю обома сторонами.</strong> ICD, погоджений лише вашою командою, — це не домовленість, а ваше уявлення про неї.</li>
+        </ul>
+      </div>
+
+      <div class="doc-section" id="ispec-mistakes">
+        <h2 class="doc-h2">⚠️ Типові помилки мідл-аналітика</h2>
+        <div class="doc-cards-2">
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ Mapping без трансформацій</div><p class="doc-p">Дві колонки «звідки — куди», і жодного слова про формати, одиниці й часові зони.</p><p class="doc-p"><strong>✅ Як правильно:</strong> колонка трансформації обов'язкова, навіть якщо там «без змін».</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ Немає розділу помилок</div><p class="doc-p">Описано лише успішний обмін — і на першому ж збої починається імпровізація.</p><p class="doc-p"><strong>✅ Як правильно:</strong> error catalog — обов'язковий розділ, не додаток.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ Схема продубльована в тексті</div><p class="doc-p">JSON у документі й реальна схема розходяться вже за місяць.</p><p class="doc-p"><strong>✅ Як правильно:</strong> посилання на OpenAPI/AsyncAPI плюс один приклад для наочності.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ Немає власника з боку партнера</div><p class="doc-p">Інцидент о другій ночі, а писати нікому.</p><p class="doc-p"><strong>✅ Як правильно:</strong> контакт, канал і процедура ескалації — у розділі 2.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ Одна специфікація на всі середовища</div><p class="doc-p">На тестовому інші адреси, ліміти й поведінка — і ніде це не записано.</p><p class="doc-p"><strong>✅ Як правильно:</strong> окремий розділ із відмінностями середовищ.</p></div>
+        </div>
+      </div>
+
+      <div class="doc-section" id="ispec-checklist">
+        <h2 class="doc-h2">✅ Чек-лист повноти ICD</h2>
+        <div class="doc-checklist-grid">
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Є контекстна діаграма з напрямком потоку</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Названі власники систем і технічні контакти обох сторін</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Зафіксовано протокол, формат, кодування й часову зону</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Описано автентифікацію і хто видає доступи</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Для кожної операції є тригер, адреса, структура й приклад</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Таблиця mapping заповнена для всіх полів</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Для кожного довідника описано поведінку при невідомому значенні</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Явно вказані перетворення часових зон і одиниць виміру</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Є ключ ідемпотентності й вікно дедуплікації</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Є error catalog із діями системи й текстами для користувача</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Задані обсяги, піки, ліміти запитів і SLA партнера</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Описані середовища й відмінності тестового від бойового</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Визначено метрики й алерти</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Описано процес зміни версії й строк підтримки старої</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Відкриті питання винесені з власником і датою</div>
+        </div>
+      </div>
+
+      <div class="doc-section" id="ispec-selfcheck">
+        <h2 class="doc-h2">🧠 Самоперевірка</h2>
+        <div class="selfcheck-item" onclick="toggleAnswer(this)"><strong>1.</strong> Навіщо ICD, якщо є OpenAPI-специфікація?<div class="selfcheck-answer">OpenAPI описує технічний контракт: адреси, структури, коди відповідей. Він не відповідає на питання, які виникають у роботі: хто власник системи, який SLA, що робити при недоступності, як зіставляються ідентифікатори двох систем, у яких одиницях сума, чим тестове середовище відрізняється від бойового, кому дзвонити вночі. ICD — це домовленість між командами, OpenAPI — її машиночитна частина.</div></div>
+        <div class="selfcheck-item" onclick="toggleAnswer(this)"><strong>2.</strong> Чому data mapping важливіший за опис ендпоінтів?</strong><div class="selfcheck-answer">Бо структуру запиту розробник побачить у схемі, а от що поле <code>sum</code> у нас у гривнях, а в них у копійках — не побачить ніде. Саме на трансформаціях виникають найдорожчі й найтихіші дефекти: помилка в сто разів у сумі, зсув дати на добу через часову зону, обрізане ім'я. Ці помилки не падають — вони просто дають неправильні дані.</div></div>
+        <div class="selfcheck-item" onclick="toggleAnswer(this)"><strong>3.</strong> Що записати про поле-довідник?<div class="selfcheck-answer">Повну таблицю відповідності значень, хто є джерелом істини для довідника, як обидві сторони дізнаються про нові значення, і — головне — поведінку при невідомому значенні: відхилити запис, підставити дефолт чи зупинити обробку. Останнє питання забувають майже завжди, а нове значення в довіднику партнера з'являється рано чи пізно обов'язково.</div></div>
+        <div class="selfcheck-item" onclick="toggleAnswer(this)"><strong>4.</strong> Як зробити, щоб ICD не застарів за три місяці?<div class="selfcheck-answer">Не дублювати в ньому те, що є в машиночитній схемі — лише посилатись. Тримати документ у тому самому репозиторії, що й код, щоб зміна проходила одним pull request із реалізацією. Призначити відповідального за актуальність і ставити версію з датою на першій сторінці. І погоджувати зміни з другою стороною — документ, який оновлює лише одна команда, швидко перестає описувати реальність.</div></div>
+      </div>
+
+      <div class="doc-section" id="ispec-related">
+        <h2 class="doc-h2">🔗 Дивись також</h2>
+        <ul class="doc-list">
+          <li><a href="#/integr-errors" data-go="integr-errors">Обробка помилок в інтеграціях</a> — вміст сьомого розділу</li>
+          <li><a href="#/tech-m25" data-go="tech-m25">System Integration Analysis</a> — процес, у якому народжується ICD</li>
+          <li><a href="#/api-m16" data-go="api-m16">OpenAPI / Swagger</a> — машиночитна частина контракту</li>
+          <li><a href="#/integr-styles" data-go="integr-styles">Стилі інтеграції</a> — рішення для третього розділу</li>
+        </ul>
+      </div>
+
+      <div class="iq-link" data-nolink><span class="iq-link-icon">💼</span><div class="iq-link-body"><div class="iq-link-title">Питання на senior-співбесіді з цієї теми</div><div class="iq-link-desc">4 питань · розділ «Питання на Senior-співбесіді»</div></div><a class="iq-link-btn" href="#/interview-questions/iq-integr-spec" data-go="interview-questions" data-anchor="iq-integr-spec">Перейти →</a></div>
+    </div>
+
+      <!-- ═══ ІНТЕГРАЦІЇ: Third-party ═══ -->
+    <div id="page-integr-third-party" class="page-view" style="display:none;">
+      <nav class="breadcrumb"><span>База знань</span><span class="breadcrumb-sep">›</span><span class="current">Due diligence сторонніх сервісів</span></nav>
+      <div class="page-header">
+        <div class="page-tag">Інтеграції · Вендори</div>
+        <h1 class="page-title">Due diligence <span class="grad">сторонніх сервісів та API</span></h1>
+        <p class="page-desc">Двадцять питань до вендора, які треба поставити до підписання договору — і scoring-таблиця, що перетворює «мені більше подобається цей» на обґрунтоване рішення.</p>
+      </div>
+
+      <div class="doc-section" id="i3p-why">
+        <h2 class="doc-h2">Навіщо це аналітику</h2>
+        <div class="doc-callout"><strong>📌 Контекст</strong><p>Уяви: обрали SMS-провайдера за ціною — на 20% дешевший. Через три місяці з'ясувалось, що доставка в один із мобільних операторів іде із затримкою до 40 хвилин, вебхуки про доставку приходять не завжди, а sandbox відсутній — тестувати можна лише на бойових SMS за гроші. Міняти провайдера означає переписати інтеграцію.</p></div>
+        <p class="doc-p">Вибір вендора часто вважають комерційним рішенням. Насправді 80% критеріїв — технічні й процесні, і саме аналітик здатен їх зібрати. Ціна за повідомлення видима одразу; вартість поганої документації, відсутнього sandbox і непередбачуваних вебхуків платиться потім і мовчки.</p>
+      </div>
+
+      <div class="doc-section" id="i3p-checklist">
+        <h2 class="doc-h2">Чек-лист оцінки постачальника</h2>
+        <div class="doc-cards-2">
+          <div class="doc-card doc-card--blue">
+            <div class="doc-card-title">Технічна зрілість</div>
+            <ul class="doc-list">
+              <li>Чи є документація і чи вона повна — включно з кодами помилок?</li>
+              <li>Чи є sandbox і наскільки він схожий на бойове середовище?</li>
+              <li>Чи підтримується ідемпотентність запитів?</li>
+              <li>Чи є вебхуки, і чи повторює провайдер невдалі доставки?</li>
+              <li>Чи підписуються вебхуки, щоб можна було перевірити джерело?</li>
+            </ul>
+          </div>
+          <div class="doc-card doc-card--teal">
+            <div class="doc-card-title">Експлуатація</div>
+            <ul class="doc-list">
+              <li>Який заявлений SLA і чи є публічна історія доступності?</li>
+              <li>Чи є status page з історією інцидентів?</li>
+              <li>Які ліміти запитів і що відбувається при перевищенні?</li>
+              <li>Які межі обсягу: розмір запиту, кількість на добу?</li>
+              <li>Як швидко відповідає підтримка і в яких годинах?</li>
+            </ul>
+          </div>
+          <div class="doc-card doc-card--gold">
+            <div class="doc-card-title">Зміни та життєвий цикл</div>
+            <ul class="doc-list">
+              <li>Як версіонується API і як повідомляють про зміни?</li>
+              <li>Скільки живе стара версія після виходу нової?</li>
+              <li>Чи були ламкі зміни без попередження в минулому?</li>
+              <li>Наскільки складно піти: експорт даних, тривалість договору?</li>
+            </ul>
+          </div>
+          <div class="doc-card doc-card--red">
+            <div class="doc-card-title">Безпека й відповідність</div>
+            <ul class="doc-list">
+              <li>Чи є SOC 2 або ISO 27001?</li>
+              <li>Чи готові підписати DPA — див. <a href="#/sec-privacy-gdpr" data-go="sec-privacy-gdpr">GDPR</a>?</li>
+              <li>У якому регіоні фізично зберігаються дані?</li>
+              <li>Хто їхні субпроцесори?</li>
+              <li>Які дані ми змушені їм передати — і чи можна менше?</li>
+            </ul>
+          </div>
+        </div>
+        <div class="doc-callout"><strong>📌 Питання, яке ставлять найрідше</strong><p><em>Що станеться з нашими даними, коли ми підемо?</em> Формат експорту, строк, у якому їх віддадуть, і як довго вони зберігатимуться після розірвання договору. Це питання коштує нічого на етапі вибору і дуже дорого — через два роки.</p></div>
+      </div>
+
+      <div class="doc-section" id="i3p-scoring">
+        <h2 class="doc-h2">Scoring: як зробити вибір обґрунтованим</h2>
+        <p class="doc-p">Оцінка 1–5 за кожним критерієм, помножена на вагу. Ваги узгоджуються <em>до</em> того, як побачили результати — інакше вони підганяються під бажану відповідь.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Критерій</th><th>Вага</th><th>Вендор A</th><th>Вендор B</th><th>Вендор C</th></tr></thead>
+            <tbody>
+              <tr><td>Документація та sandbox</td><td>×3</td><td>5 → 15</td><td>3 → 9</td><td>2 → 6</td></tr>
+              <tr><td>Надійність доставки й SLA</td><td>×3</td><td>4 → 12</td><td>5 → 15</td><td>3 → 9</td></tr>
+              <tr><td>Вебхуки з повторами й підписом</td><td>×2</td><td>5 → 10</td><td>4 → 8</td><td>1 → 2</td></tr>
+              <tr><td>Ціна за одиницю</td><td>×2</td><td>3 → 6</td><td>3 → 6</td><td>5 → 10</td></tr>
+              <tr><td>Покриття операторів / регіонів</td><td>×3</td><td>4 → 12</td><td>5 → 15</td><td>4 → 12</td></tr>
+              <tr><td>Compliance (SOC 2, DPA, регіон даних)</td><td>×2</td><td>5 → 10</td><td>4 → 8</td><td>2 → 4</td></tr>
+              <tr><td>Підтримка та реакція</td><td>×1</td><td>4 → 4</td><td>3 → 3</td><td>2 → 2</td></tr>
+              <tr><td>Легкість виходу</td><td>×1</td><td>4 → 4</td><td>3 → 3</td><td>3 → 3</td></tr>
+              <tr><td><strong>Разом</strong></td><td></td><td><strong>73</strong></td><td><strong>67</strong></td><td><strong>48</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="doc-p">Вендор C виграв за ціною й програв усе інше — саме той випадок, коли рішення «за прайсом» обходиться дорожче. Таблиця не ухвалює рішення замість вас, але робить дискусію предметною: незгодний має назвати критерій і вагу, а не «відчуття».</p>
+      </div>
+
+      <div class="doc-section" id="i3p-poc">
+        <h2 class="doc-h2">PoC і вимога до абстракції</h2>
+        <p class="doc-p"><strong>PoC на 3–5 днів</strong> перевіряє те, що не видно з документації: реальний час відповіді, поведінку при помилці, зручність sandbox, швидкість реакції підтримки на запит. Мінімальний план: один успішний сценарій, один сценарій з помилкою, один із таймаутом, перевірка вебхука й повторної доставки, тест ліміту запитів.</p>
+        <div class="doc-callout"><strong>✅ Best practice — adapter від першого дня</strong><p>Незалежно від того, наскільки ви впевнені у виборі, інтеграція має ховатись за власним інтерфейсом. Домен працює з поняттям «надіслати підтвердження», а не з <code>TwilioClient</code>. Тоді зміна вендора — це новий адаптер, а не переписування половини системи. Це окрема вимога, яку легко втратити на грумінгу: «просто викличемо їхній SDK» коштує дешевше сьогодні й у десять разів дорожче через рік.</p></div>
+        <p class="doc-p">Що варто винести юристу до підписання: строк дії й умови розірвання, індексація цін, відповідальність за простій (і чи є взагалі), право на аудит, місце зберігання даних, перелік субпроцесорів і повідомлення про їх зміну, зобов'язання щодо повідомлення про інциденти безпеки.</p>
+      </div>
+
+      <div class="doc-section" id="i3p-case">
+        <h2 class="doc-h2">Кейс: вибір провайдера OTP</h2>
+        <p class="doc-p">Потрібно надсилати одноразові коди для підтвердження входу. Здавалося б, товар однорідний. Що показало порівняння:</p>
+        <ul class="doc-list">
+          <li><strong>Вендор A</strong> — найкраща документація й sandbox, підтримка ідемпотентності, вебхуки з підписом і повторами. Ціна середня.</li>
+          <li><strong>Вендор B</strong> — найкраще покриття операторів і найвищий заявлений SLA, але sandbox лише за окремим запитом, а вебхуки без підпису.</li>
+          <li><strong>Вендор C</strong> — на 25% дешевший, але немає sandbox, вебхуки без повторів, DPA «розглянемо».</li>
+        </ul>
+        <p class="doc-p">Вирішальним виявився критерій, якого спочатку не було в списку: <em>що робить система, якщо код не дійшов</em>. У A є статус доставки з причиною й можливість повторної відправки альтернативним каналом; у C статус лише «прийнято до відправки». Для сценарію входу це різниця між «клієнт натисне "надіслати ще раз"» і «клієнт не зможе увійти й піде в підтримку».</p>
+      </div>
+
+      <div class="doc-section" id="i3p-mistakes">
+        <h2 class="doc-h2">⚠️ Типові помилки мідл-аналітика</h2>
+        <div class="doc-cards-2">
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ Обирати за ціною за одиницю</div><p class="doc-p">Вартість інтеграції, підтримки й міграції на порядок більша за різницю в тарифі.</p><p class="doc-p"><strong>✅ Як правильно:</strong> зважена оцінка, де ціна — один критерій із восьми.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ Не перевірити sandbox</div><p class="doc-p">З'ясовується вже під час розробки, що тестувати можна лише на бойових даних.</p><p class="doc-p"><strong>✅ Як правильно:</strong> доступ до sandbox — умова потрапляння в короткий список.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ Ігнорувати політику версіонування</div><p class="doc-p">Провайдер вимикає стару версію за місяць — і ви переписуєте інтеграцію позапланово.</p><p class="doc-p"><strong>✅ Як правильно:</strong> питання про строк підтримки старих версій — до договору.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ Прямі виклики SDK по всьому коду</div><p class="doc-p">Заміна вендора стає проєктом на квартал.</p><p class="doc-p"><strong>✅ Як правильно:</strong> адаптер із власним інтерфейсом як вимога першого релізу.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ Не спитати про регіон даних і DPA</div><p class="doc-p">Виявляється на аудиті, коли персональні дані вже два роки їдуть за океан.</p><p class="doc-p"><strong>✅ Як правильно:</strong> compliance-питання — обов'язковий блок оцінки.</p></div>
+        </div>
+      </div>
+
+      <div class="doc-section" id="i3p-final">
+        <h2 class="doc-h2">✅ Чек-лист перед підписанням</h2>
+        <div class="doc-checklist-grid">
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Документація перевірена на повноту, включно з кодами помилок</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Отримано доступ до sandbox і проведено PoC</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Перевірено поведінку при помилці й таймауті, а не лише happy path</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Підтверджено підтримку ідемпотентності</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>З'ясовано, чи повторюються вебхуки й чи підписані вони</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Відомі ліміти запитів і поведінка при перевищенні</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Перевірено SLA та історію доступності на status page</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>З'ясовано політику версіонування й строк життя старої версії</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Підтверджено готовність підписати DPA</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Відомий регіон зберігання даних і перелік субпроцесорів</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Мінімізовано обсяг переданих персональних даних</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Оцінено вартість за реальним профілем навантаження, а не за прайсом</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Зрозуміла процедура виходу й формат експорту даних</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Заплановано адаптер, що ізолює вендора від домену</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Рішення зафіксовано з критеріями й відхиленими варіантами</div>
+        </div>
+      </div>
+
+      <div class="doc-section" id="i3p-selfcheck">
+        <h2 class="doc-h2">🧠 Самоперевірка</h2>
+        <div class="selfcheck-item" onclick="toggleAnswer(this)"><strong>1.</strong> Чому наявність sandbox — критерій відбору, а не зручність?<div class="selfcheck-answer">Без нього неможливо автоматизувати тести й відтворити сценарії помилок: ви не можете «замовити» у бойового провайдера відповідь 500 чи недоставку. Команда або тестує на реальних операціях (за гроші й з ризиком зачепити клієнтів), або не тестує негативні сценарії взагалі — а це саме та частина, де живуть найдорожчі дефекти.</div></div>
+        <div class="selfcheck-item" onclick="toggleAnswer(this)"><strong>2.</strong> Навіщо адаптер, якщо вендор обраний надовго?<div class="selfcheck-answer">Бо «надовго» триває, поки не зміняться ціни, не з'явиться регуляторна вимога зберігати дані в іншому регіоні або вендор не закриється. Адаптер коштує кілька днів на старті й перетворює заміну з проєкту на квартал у роботу на тиждень. Додатковий ефект: він змушує описати інтеграцію в термінах домену, що само собою покращує вимоги.</div></div>
+        <div class="selfcheck-item" onclick="toggleAnswer(this)"><strong>3.</strong> Що перевірити щодо вебхуків, окрім самої їх наявності?<div class="selfcheck-answer">Чи повторює провайдер доставку при недоступності вашого ендпоінта і скільки разів; чи підписані вебхуки, щоб можна було перевірити джерело; чи можливі дублікати й за яким ключем їх розпізнавати; чи гарантується порядок; чи є спосіб отримати пропущені події заднім числом (інакше при вашому простої дані втрачаються назавжди).</div></div>
+        <div class="selfcheck-item" onclick="toggleAnswer(this)"><strong>4.</strong> Комерційний директор наполягає на найдешевшому вендорі. Ваш аргумент?<div class="selfcheck-answer">Порахувати повну вартість, а не тариф: додаткові дні розробки через погану документацію, неможливість автотестів без sandbox, вартість інцидентів через невідтворювані вебхуки, ризик позапланової міграції при ламкій зміні API. Показати це таблицею з вагами, узгодженими до порівняння. Якщо після цього рішення лишається на користь ціни — зафіксувати його в Decision log разом із прийнятими ризиками.</div></div>
+      </div>
+
+      <div class="doc-section" id="i3p-related">
+        <h2 class="doc-h2">🔗 Дивись також</h2>
+        <ul class="doc-list">
+          <li><a href="#/integr-errors" data-go="integr-errors">Обробка помилок</a> — що робити, коли вендор недоступний</li>
+          <li><a href="#/sec-privacy-gdpr" data-go="sec-privacy-gdpr">GDPR та персональні дані</a> — DPA й субпроцесори</li>
+          <li><a href="#/sec-domain-compliance" data-go="sec-domain-compliance">Регуляторика домену</a> — SOC 2 та вимоги до вендорів</li>
+          <li><a href="#/integr-spec" data-go="integr-spec">Специфікація інтеграції</a> — де фіксуються домовленості</li>
+        </ul>
+      </div>
+
+      <div class="iq-link" data-nolink><span class="iq-link-icon">💼</span><div class="iq-link-body"><div class="iq-link-title">Питання на senior-співбесіді з цієї теми</div><div class="iq-link-desc">4 питань · розділ «Питання на Senior-співбесіді»</div></div><a class="iq-link-btn" href="#/interview-questions/iq-integr-third-party" data-go="interview-questions" data-anchor="iq-integr-third-party">Перейти →</a></div>
+    </div>
+
+      <!-- ═══ ІНТЕГРАЦІЇ: ESB та iPaaS ═══ -->
+    <div id="page-integr-esb-ipaas" class="page-view" style="display:none;">
+      <nav class="breadcrumb"><span>База знань</span><span class="breadcrumb-sep">›</span><span class="current">ESB, iPaaS та платформи</span></nav>
+      <div class="page-header">
+        <div class="page-tag">Інтеграції · Платформи</div>
+        <h1 class="page-title">ESB, iPaaS <span class="grad">та інтеграційні платформи</span></h1>
+        <p class="page-desc">Коли інтеграцій стає багато, з'являється спокуса купити платформу. Коли вона виправдана, коли це надлишок — і що змінюється в роботі аналітика.</p>
+      </div>
+
+      <div class="doc-section" id="esb-why">
+        <h2 class="doc-h2">Навіщо це аналітику</h2>
+        <div class="doc-callout"><strong>📌 Контекст</strong><p>Уяви enterprise-компанію: ERP, CRM, склад, кадри, білінг, три банки, маркетплейс і держреєстр. Двадцять три інтеграції, кожна написана окремо, у чотирьох різних командах, у різні роки. Ніхто не знає повної картини, а зміна формату в ERP означає обхід усіх, хто «здається, теж це читає».</p></div>
+        <p class="doc-p">Саме на цьому етапі виникає розмова про платформу. Аналітику треба розуміти три речі: чим класи платформ відрізняються, коли вони виправдані, і як змінюється його власна робота, якщо платформу впровадили.</p>
+      </div>
+
+      <div class="doc-section" id="esb-classes">
+        <h2 class="doc-h2">Три класи, які плутають</h2>
+        <div class="doc-cards-3">
+          <div class="doc-card doc-card--blue">
+            <div class="doc-card-title">ESB — Enterprise Service Bus</div>
+            <p class="doc-p">Централізована шина: маршрутизація, трансформація, канонічна модель, оркестрація. MuleSoft, WSO2, IBM Integration Bus, Oracle SOA.</p>
+            <p class="doc-p"><strong>Де живе:</strong> великий enterprise, часто on-premise, багато legacy й SOAP.</p>
+          </div>
+          <div class="doc-card doc-card--teal">
+            <div class="doc-card-title">iPaaS — Integration Platform as a Service</div>
+            <p class="doc-p">Хмарна платформа з готовими конекторами. Boomi, Workato, Celigo; на простішому рівні — Make, Zapier, Power Automate.</p>
+            <p class="doc-p"><strong>Де живе:</strong> SaaS-ландшафти, автоматизація бізнес-процесів, задачі, які раніше робили вручну.</p>
+          </div>
+          <div class="doc-card doc-card--gold">
+            <div class="doc-card-title">API Management</div>
+            <p class="doc-p">Не про з'єднання систем, а про керування <em>вашими</em> API: шлюз, ключі, ліміти, версії, портал розробника, аналітика. Apigee, Kong, AWS API Gateway, Azure APIM.</p>
+            <p class="doc-p"><strong>Де живе:</strong> скрізь, де API віддаються назовні — партнерам чи публічно.</p>
+          </div>
+        </div>
+        <p class="doc-p">Плутанина найчастіше між першими двома й третім: API Management <strong>не замінює</strong> ESB чи iPaaS. Шлюз керує входом до ваших сервісів, платформа інтеграції з'єднує різні системи між собою. Багато компаній мають і те, й інше.</p>
+      </div>
+
+      <div class="doc-section" id="esb-when">
+        <h2 class="doc-h2">Коли платформа виправдана</h2>
+        <div class="doc-cards-2">
+          <div class="doc-card doc-card--teal">
+            <div class="doc-card-title">✅ Ознаки, що вона потрібна</div>
+            <ul class="doc-list">
+              <li>Інтеграцій більше десяти, і вони множаться</li>
+              <li>Ті самі дані потрібні багатьом системам у різних форматах</li>
+              <li>Потрібне централізоване управління: хто з ким обмінюється, ким і коли змінено</li>
+              <li>Багато готових конекторів до ваших SaaS-систем уже існує</li>
+              <li>Є потреба в аудиті та відповідності — усі потоки в одному місці</li>
+              <li>Частину інтеграцій хочуть робити не розробники, а аналітики чи адміністратори</li>
+            </ul>
+          </div>
+          <div class="doc-card doc-card--gold">
+            <div class="doc-card-title">❌ Ознаки, що це надлишок</div>
+            <ul class="doc-list">
+              <li>Інтеграцій три-п'ять і зростання не планується</li>
+              <li>Команда мала: платформу треба супроводжувати, і це окрема компетенція</li>
+              <li>Головна складність у бізнес-логіці, а не в з'єднанні систем</li>
+              <li>Потрібна висока продуктивність і низька затримка — зайвий шар додає обидві</li>
+              <li>Ліцензія коштує більше, ніж уся економія на розробці</li>
+            </ul>
+          </div>
+        </div>
+        <div class="doc-callout"><strong>⚠️ Класична пастка</strong><p>Платформа не вирішує проблему <em>відсутності домовленостей</em>. Якщо ніхто не володіє форматом даних і ніхто не веде реєстр інтеграцій, ESB стане тим самим хаосом, лише в дорожчому інтерфейсі. Спершу — власники й реєстр, потім — інструмент.</p></div>
+      </div>
+
+      <div class="doc-section" id="esb-ba">
+        <h2 class="doc-h2">Що змінюється в роботі аналітика</h2>
+        <ul class="doc-list">
+          <li><strong>Потік стає артефактом.</strong> У платформі інтеграція виглядає як послідовність кроків — фактично BPMN-подібна схема. Аналітик описує її саме так: тригер, кроки, розгалуження, обробка помилок. Це ближче до моделювання процесів, ніж до написання вимог.</li>
+          <li><strong>Mapping робиться в інструменті.</strong> Таблиця відповідності полів переходить із документа в конфігурацію платформи. Це зручно, але з'являється ризик: mapping перестає бути видимим поза інструментом. Тримайте таблицю в специфікації як джерело істини для рев'ю.</li>
+          <li><strong>Обробка помилок — теж конфігурація.</strong> Retry, DLQ і алерти налаштовуються на платформі. Вимоги від цього не зникають: ви все одно описуєте, скільки спроб, куди йде невдале й хто отримує алерт.</li>
+          <li><strong>З'являється governance.</strong> Хто має право створити нову інтеграцію, як вона рев'юється, як версіонується, як переноситься між середовищами. Без цих правил low-code-платформа перетворюється на сотні неконтрольованих сценаріїв, створених «на швидку руку».</li>
+        </ul>
+      </div>
+
+      <div class="doc-section" id="esb-mistakes">
+        <h2 class="doc-h2">⚠️ Типові помилки</h2>
+        <div class="doc-cards-2">
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ «ESB вирішить усе»</div><p class="doc-p">Платформа з'єднує системи, але не домовляється за вас про формати, власників і SLA.</p><p class="doc-p"><strong>✅ Як правильно:</strong> реєстр інтеграцій і власники даних — до впровадження інструмента.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ Бізнес-логіка в шині</div><p class="doc-p">Правила розрахунку знижки опиняються в трансформації ESB — там, де їх ніхто не шукатиме.</p><p class="doc-p"><strong>✅ Як правильно:</strong> у шині — маршрутизація й перетворення форматів; логіка лишається в сервісах.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ Немає governance у low-code</div><p class="doc-p">За рік — 200 сценаріїв у Make, половина створена людьми, які вже не працюють.</p><p class="doc-p"><strong>✅ Як правильно:</strong> правила створення, іменування, рев'ю й інвентаризація.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ Vendor lock-in без оцінки</div><p class="doc-p">Логіка, описана в пропрієтарному форматі, не переноситься нікуди.</p><p class="doc-p"><strong>✅ Як правильно:</strong> оцінити вартість виходу до впровадження — див. <a href="#/integr-third-party" data-go="integr-third-party">Due diligence</a>.</p></div>
+        </div>
+      </div>
+
+      <div class="doc-section" id="esb-selfcheck">
+        <h2 class="doc-h2">🧠 Самоперевірка</h2>
+        <div class="selfcheck-item" onclick="toggleAnswer(this)"><strong>1.</strong> Чим API Management відрізняється від ESB?<div class="selfcheck-answer">API Management керує доступом до <em>ваших</em> API: автентифікація, ключі, ліміти запитів, версіонування, портал для споживачів, аналітика використання. Це «вхідні двері». ESB з'єднує різні системи між собою: маршрутизує, трансформує формати, оркеструє багатокрокові потоки. Одне не замінює інше — велика компанія зазвичай має обидва інструменти для різних задач.</div></div>
+        <div class="selfcheck-item" onclick="toggleAnswer(this)"><strong>2.</strong> Компанія має чотири інтеграції й хоче купити iPaaS. Ваша позиція?<div class="selfcheck-answer">Уточнити, яку саме проблему вирішують. Якщо це «важко підтримувати» — швидше за все проблема в документації та власниках, а не в інструменті, і платформа її не вилікує. Якщо очікується зростання до двадцяти інтеграцій із SaaS-системами, для яких є готові конектори, — рішення розумне. Порахувати вартість ліцензії плюс супровід платформи проти вартості розробки чотирьох інтеграцій вручну.</div></div>
+        <div class="selfcheck-item" onclick="toggleAnswer(this)"><strong>3.</strong> Чому бізнес-логіку не варто класти в шину?<div class="selfcheck-answer">Бо вона стає невидимою: розробник шукає правило в коді сервісу, а воно живе в конфігурації трансформації, куди мають доступ інші люди. Це ускладнює тестування (логіку не покриєш модульними тестами), змінює межі відповідальності й розмиває володіння правилом. Шина має відповідати на питання «куди й у якому вигляді», а не «за яких умов і скільки».</div></div>
+      </div>
+
+      <div class="doc-section" id="esb-related">
+        <h2 class="doc-h2">🔗 Дивись також</h2>
+        <ul class="doc-list">
+          <li><a href="#/integr-eip" data-go="integr-eip">Enterprise Integration Patterns</a> — патерни, які реалізують ці платформи</li>
+          <li><a href="#/integr-styles" data-go="integr-styles">Стилі інтеграції</a> — рішення до вибору інструмента</li>
+          <li><a href="#/api-m15" data-go="api-m15">API Gateway та Rate Limiting</a> — технічний бік API Management</li>
+          <li><a href="#/integr-third-party" data-go="integr-third-party">Due diligence вендорів</a> — як оцінювати платформу</li>
+        </ul>
+      </div>
+
+      <div class="iq-link" data-nolink><span class="iq-link-icon">💼</span><div class="iq-link-body"><div class="iq-link-title">Питання на senior-співбесіді з цієї теми</div><div class="iq-link-desc">3 питань · розділ «Питання на Senior-співбесіді»</div></div><a class="iq-link-btn" href="#/interview-questions/iq-integr-esb-ipaas" data-go="interview-questions" data-anchor="iq-integr-esb-ipaas">Перейти →</a></div>
+    </div>
+
   </main>
 </div>
 
@@ -42232,7 +43585,7 @@ function toggleAnswer(el) {
     'api-m14':                 ['API Versioning', 'Backward Compatibility', 'версіонування API'],
     'api-m15':                 ['API Gateway', 'Rate Limiting', 'рейт-ліміт'],
     'api-m16':                 ['OpenAPI', 'Swagger'],
-    'tech-m25':                ['System Integration', 'інтеграція систем', 'ESB', 'iPaaS'],
+    'tech-m25': ['System Integration', 'інтеграція систем', 'інтеграційний аналіз', 'source of truth', 'майстер-дані'],
     'sa-mod11':                ['синхронні', 'асинхронні', 'Sync vs Async'],
     'sa-kafka':                ['Kafka', 'Apache Kafka'],
     'sa-rabbitmq':             ['RabbitMQ', 'AMQP'],
@@ -42284,6 +43637,13 @@ function toggleAnswer(el) {
     'req-accessibility': ['WCAG', 'accessibility', 'доступність', 'a11y', 'screen reader'],
     'std-map': ['BABOK', 'IREB', 'CPRE', 'стандарти аналітика', 'IEEE 1016'],
     'career-competency-matrix': ['матриця компетенцій', 'competency matrix', 'senior BA', 'рівень аналітика'],
+    'integr-styles': ['стилі інтеграції', 'integration styles', 'file transfer', 'shared database', 'batch', 'near-real-time', 'coupling', 'зв\'язаність'],
+    'integr-eip': ['Enterprise Integration Patterns', 'EIP', 'splitter', 'aggregator', 'content-based router', 'canonical data model', 'claim check', 'wire tap', 'CDC', 'change data capture'],
+    'integr-errors': ['retry', 'backoff', 'circuit breaker', 'DLQ', 'dead letter queue', 'reconciliation', 'звірка', 'partial failure', 'обробка помилок', 'error catalog', 'at-least-once', 'exactly-once'],
+    'integr-eda': ['event-driven', 'EDA', 'подієва архітектура', 'domain event', 'event catalog', 'AsyncAPI', 'schema evolution', 'causation id', 'event storming'],
+    'integr-spec': ['ICD', 'Interface Control Document', 'специфікація інтеграції', 'integration spec', 'data mapping', 'мапінг даних', 'таблиця мапінгу'],
+    'integr-third-party': ['third-party', 'сторонній сервіс', 'вендор', 'vendor evaluation', 'due diligence', 'sandbox'],
+    'integr-esb-ipaas': ['ESB', 'iPaaS', 'MuleSoft', 'Boomi', 'інтеграційна платформа', 'API management'],
     'glossary':                []
   };
 
