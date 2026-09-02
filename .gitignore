@@ -1,0 +1,9 @@
+# локальні бекапи index.html
+index.backup-*.html
+
+# локальний дев-сервер і налаштування Claude Code
+serve.py
+.claude/
+
+# macOS
+.DS_Store
