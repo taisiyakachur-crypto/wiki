@@ -1761,6 +1761,7 @@ a.wl--gloss[data-tip]:hover::after { background:#3A2530; }
           <div class="nav-sub-link" onclick="navigate('sa-mod7','Прийняття рішень',this,'Основи та мислення аналітика')">Прийняття рішень</div>
           <div class="nav-sub-link" onclick="navigate('ba-m1','Техніки бізнес-аналізу',this,'Основи та мислення аналітика')">Техніки бізнес-аналізу</div>
           <div class="nav-sub-link" onclick="navigate('ba-m2','BACCM та концепції BABOK',this,'Основи та мислення аналітика')">BACCM та концепції BABOK</div>
+          <div class="nav-sub-link" onclick="navigate('std-map','Карта стандартів аналітика',this,'Основи та мислення аналітика')">Карта стандартів</div>
           <div class="nav-sub-link" onclick="navigate('sa-mod9','Аналітик в IT/ERP/CRM/BI',this,'Основи та мислення аналітика')">Аналітик в IT/ERP/CRM/BI</div>
           <div class="nav-sub-link" onclick="navigate('sa-mod13','Наскрізний кейс-проект',this,'Основи та мислення аналітика')">Наскрізний кейс-проект</div>
         </div>
@@ -1801,9 +1802,12 @@ a.wl--gloss[data-tip]:hover::after { background:#3A2530; }
           <div class="nav-sub-link" onclick="navigate('ba-m7','Типи та архітектура вимог',this,'Збір та аналіз вимог')">Типи та архітектура вимог</div>
           <div class="nav-sub-link" onclick="navigate('sa-mod6','Моделювання систем та вимоги',this,'Збір та аналіз вимог')">Моделювання систем та вимоги</div>
           <div class="nav-sub-link" onclick="navigate('sa-mod17','Нефункціональні вимоги (NFR)',this,'Збір та аналіз вимог')">Нефункціональні вимоги (NFR)</div>
+          <div class="nav-sub-link" onclick="navigate('req-accessibility','Accessibility (WCAG 2.2) для аналітика',this,'Збір та аналіз вимог')">Accessibility (WCAG)</div>
           <div class="nav-sub-link" onclick="navigate('babok-business-rules','Business Rules та DMN',this,'Збір та аналіз вимог')">Business Rules та DMN</div>
           <div class="nav-sub-link" onclick="navigate('ba-m9','Декомпозиція та пріоритизація',this,'Збір та аналіз вимог')">Декомпозиція та пріоритизація</div>
           <div class="nav-sub-link" onclick="navigate('tech-m28','Traceability Matrix (RTM)',this,'Збір та аналіз вимог')">Traceability Matrix (RTM)</div>
+          <div class="nav-sub-link" onclick="navigate('req-verification','Верифікація та валідація вимог',this,'Збір та аналіз вимог')">Верифікація та валідація</div>
+          <div class="nav-sub-link" onclick="navigate('req-conflicts-raid','Конфлікти вимог, припущення та RAID-log',this,'Збір та аналіз вимог')">Конфлікти вимог та RAID</div>
         </div>
       </div>
 
@@ -2104,6 +2108,7 @@ a.wl--gloss[data-tip]:hover::after { background:#3A2530; }
           <svg class="nav-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M6 4l4 4-4 4"/></svg>
         </div>
         <div class="nav-sub">
+          <div class="nav-sub-link" onclick="navigate('career-competency-matrix','Матриця компетенцій Junior → Lead',this,'Кар\'єра та співбесіда')">Матриця компетенцій</div>
           <div class="nav-sub-link" onclick="navigate('middle-ba','Middle BA — чек-лист навичок',this,'Кар\'єра та співбесіда')">Middle BA — чек-лист навичок</div>
           <div class="nav-sub-link" onclick="navigate('interview-questions','Питання на Senior-співбесіді',this,'Кар\'єра та співбесіда')">Питання на Senior-співбесіді</div>
         </div>
@@ -21638,7 +21643,64 @@ def <span class="fn">callback</span>(ch, method, properties, body):
       </div>
 
 
-    </div>
+    
+      <div class="doc-section" id="sa-mod17-iso25010">
+        <h2 class="doc-h2">Модель якості ISO/IEC 25010:2023 — повний каркас</h2>
+        <p class="doc-p">Якщо категорії NFR вище — робочий мінімум, то модель якості ISO/IEC 25010 дає <strong>повний перелік</strong>, за яким видно прогалини. Редакція 2023 року оновила склад: з'явилась окрема характеристика <em>Safety</em>, Usability переоформлено в <em>Interaction Capability</em>, Portability — у <em>Flexibility</em>. Використовуйте таблицю як чек-лист: порожній рядок — це питання до архітектора чи власника продукту, а не «нам не треба».</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Характеристика</th><th>Підхарактеристики</th><th>Вимірювана метрика</th><th>Приклад AC</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Functional suitability</strong><br>функційна придатність</td><td>completeness, correctness, appropriateness</td><td>Частка сценаріїв, покритих функціоналом</td><td>«Усі 12 сценаріїв оформлення замовлення проходять без обхідних шляхів»</td></tr>
+              <tr><td><strong>Performance efficiency</strong><br>продуктивність</td><td>time behaviour, resource utilization, capacity</td><td>Час відповіді (перцентиль), RPS, споживання пам'яті</td><td>«Пошук по каталогу — ≤800 мс для 95% запитів при 200 одночасних користувачах»</td></tr>
+              <tr><td><strong>Compatibility</strong><br>сумісність</td><td>co-existence, interoperability</td><td>Перелік підтримуваних версій і форматів обміну</td><td>«Експорт формується у форматі, який приймає 1С:Підприємство 8.3 без ручних правок»</td></tr>
+              <tr><td><strong>Interaction capability</strong><br>взаємодія (кол. Usability)</td><td>learnability, operability, user error protection, accessibility, UI aesthetics</td><td>Час виконання завдання, частка помилок, рівень WCAG</td><td>«Новий користувач оформлює замовлення за ≤3 хв; інтерфейс відповідає WCAG 2.2 AA»</td></tr>
+              <tr><td><strong>Reliability</strong><br>надійність</td><td>faultlessness, availability, fault tolerance, recoverability</td><td>Доступність за період, MTBF, RTO/RPO</td><td>«Доступність 99,9% на місяць; RTO 4 год, RPO 15 хв»</td></tr>
+              <tr><td><strong>Security</strong><br>безпека</td><td>confidentiality, integrity, non-repudiation, accountability, authenticity</td><td>Наявність контролю й доказу його роботи</td><td>«PAN не зберігається; кожна зміна ліміту фіксується з актором і значеннями до/після»</td></tr>
+              <tr><td><strong>Maintainability</strong><br>супроводжуваність</td><td>modularity, reusability, analysability, modifiability, testability</td><td>Покриття тестами, час на типову зміну</td><td>«Додавання нового способу оплати не потребує змін у модулі кошика»</td></tr>
+              <tr><td><strong>Flexibility</strong><br>гнучкість (кол. Portability)</td><td>adaptability, scalability, installability, replaceability</td><td>Межа масштабування, час розгортання</td><td>«Система витримує зростання до 100 000 користувачів горизонтальним масштабуванням, без зміни коду»</td></tr>
+              <tr><td><strong>Safety</strong><br>безпечність</td><td>operational constraint, risk identification, fail safe, hazard warning</td><td>Поведінка при небезпечному стані</td><td>«При розбіжності балансу понад 0,01 ₴ операція блокується і формується алерт»</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="doc-section" id="sa-mod17-slo">
+        <h2 class="doc-h2">Від NFR до SLO: що саме ми обіцяємо</h2>
+        <p class="doc-p">NFR описує бажану якість, але сам по собі нічого не гарантує. Щоб він працював в експлуатації, його треба перевести у трійку понять:</p>
+        <div class="doc-cards-3">
+          <div class="doc-card doc-card--blue"><div class="doc-card-title">SLI — індикатор</div><p class="doc-p">Що саме вимірюємо. «Частка запитів до <code>/checkout</code>, оброблених за ≤500 мс».</p></div>
+          <div class="doc-card doc-card--teal"><div class="doc-card-title">SLO — ціль</div><p class="doc-p">Яке значення індикатора вважаємо достатнім. «99,5% за календарний місяць».</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">SLA — зобов'язання</div><p class="doc-p">Те саме, але в договорі, з наслідками за порушення. Завжди м'якший за внутрішній SLO.</p></div>
+        </div>
+        <p class="doc-p">Практичне правило для аналітика: <strong>NFR без визначеного способу вимірювання в експлуатації — це побажання</strong>. Якщо після релізу ніхто не бачить графік із цим показником, вимога не діє. Тому в шаблоні нижче спосіб вимірювання — обов'язкове поле.</p>
+      </div>
+
+      <div class="doc-section" id="sa-mod17-a11y-l10n">
+        <h2 class="doc-h2">Доступність і локалізація як NFR</h2>
+        <div class="doc-cards-2">
+          <div class="doc-card doc-card--blue"><div class="doc-card-title">Accessibility</div><p class="doc-p">У ISO 25010 — підхарактеристика Interaction capability. Задається рівнем відповідності WCAG (зазвичай AA) і переліком критеріїв для ключових сценаріїв.</p><p class="doc-p">Детально: <a href="#/req-accessibility" data-go="req-accessibility">Accessibility (WCAG 2.2)</a>.</p></div>
+          <div class="doc-card doc-card--teal"><div class="doc-card-title">Localization &amp; internationalization</div><p class="doc-p">i18n — технічна здатність підтримати іншу мову й регіон, l10n — власне переклад і адаптація. Типові вимоги: формати дат, чисел і валют за локаллю, часові пояси, довжина рядків у макетах, напрямок письма, сортування за правилами мови, відмінювання у шаблонах повідомлень.</p></div>
+        </div>
+      </div>
+
+      <div class="doc-section" id="sa-mod17-template">
+        <h2 class="doc-h2">Шаблон запису NFR</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>ID</th><th>Категорія</th><th>Вимога</th><th>Метрика</th><th>Ціль</th><th>Спосіб вимірювання</th><th>Пріор.</th></tr></thead>
+            <tbody>
+              <tr><td>NFR-01</td><td>Performance</td><td>Сторінка каталогу відкривається швидко при типовому навантаженні</td><td>Час до інтерактивності, p95</td><td>≤1,5 с</td><td>Синтетичний моніторинг, щогодини</td><td>Must</td></tr>
+              <tr><td>NFR-02</td><td>Reliability</td><td>Оформлення замовлення доступне цілодобово</td><td>Доступність за місяць</td><td>99,9%</td><td>Health-check кожні 30 с, звіт місячний</td><td>Must</td></tr>
+              <tr><td>NFR-03</td><td>Interaction</td><td>Інтерфейс придатний для користувачів із порушеннями зору</td><td>Рівень WCAG</td><td>2.2 AA</td><td>axe + ручний тест зі скрінрідером перед релізом</td><td>Must</td></tr>
+              <tr><td>NFR-04</td><td>Flexibility</td><td>Система витримує сезонне зростання навантаження</td><td>Пікові RPS без деградації p95</td><td>×5 від середнього</td><td>Навантажувальний тест щокварталу</td><td>Should</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="doc-callout"><strong>✅ Best practice</strong><p>Порожня колонка «спосіб вимірювання» — найнадійніша ознака того, що вимогу не перевірять ніколи. Заповнюйте її одночасно з формулюванням, а не «потім, разом з QA».</p></div>
+      </div>
+
+      </div>
 
     <!-- ═══ SA MOD18: Soft Skills ═══ -->
     <div id="page-sa-mod18" class="page-view" style="display:none;">
@@ -28132,8 +28194,8 @@ project = MYAPP
         <p class="doc-p">Дотримання стандартів є критично важливим для забезпечення якості та однорідності документації.</p>
         <div class="doc-cards-3">
           <div class="doc-card" style="border-top:3px solid var(--r1);">
-            <div class="doc-card-title">📘 IEEE 830</div>
-            <p style="font-size:.83rem;color:var(--ink2);margin:0;line-height:1.6;">Встановлює рекомендації для специфікації вимог до програмного забезпечення (SRS), забезпечуючи їх повноту та однозначність.</p>
+            <div class="doc-card-title">📘 IEEE 830 <span class="tag tag-yellow">відкликаний</span></div>
+            <p style="font-size:.83rem;color:var(--ink2);margin:0;line-height:1.6;">Історична основа структури SRS. <strong>Відкликаний і замінений на ISO/IEC/IEEE 29148:2018</strong> — не посилайтесь на нього в нових документах.</p>
           </div>
           <div class="doc-card" style="border-top:3px solid var(--r2);">
             <div class="doc-card-title">🌐 ISO/IEC/IEEE 29148</div>
@@ -28762,8 +28824,8 @@ project = MYAPP
 
       <!-- SRS Structure -->
       <div class="doc-section">
-        <h2 class="doc-h2">Структура SRS за IEEE 29148</h2>
-        <p class="doc-p">Стандарт IEEE 29148:2018 визначає рекомендовану структуру SRS. Нижче — шаблон з поясненнями для проєкту <em>«E-commerce платформа для продажу електроніки»</em>.</p>
+        <h2 class="doc-h2">Структура SRS за ISO/IEC/IEEE 29148:2018</h2>
+        <p class="doc-p">Стандарт ISO/IEC/IEEE 29148:2018 визначає рекомендовану структуру SRS. Нижче — шаблон з поясненнями для проєкту <em>«E-commerce платформа для продажу електроніки»</em>.</p>
 
         <div class="sa-steps">
           <!-- 1. Introduction -->
@@ -29197,7 +29259,40 @@ project = MYAPP
 
       <!-- Navigation -->
 
-    </div>
+    
+      <div class="doc-section" id="docs-srs-29148-agile">
+        <h2 class="doc-h2">Розділи 29148 і що з них потрібно в Agile</h2>
+        <div class="doc-callout"><strong>📌 IEEE 830 відкликаний</strong><p>IEEE 830-1998, на який досі посилаються багато корпоративних шаблонів, скасований. Чинний стандарт — <strong>ISO/IEC/IEEE 29148:2018</strong> (Systems and software engineering — Life cycle processes — Requirements engineering). Структура нижче відповідає 29148; IEEE 830 варто згадувати лише як історичну основу.</p></div>
+        <p class="doc-p">Стандарт описує повний склад SRS для системної інженерії. У продуктовій розробці частина розділів надлишкова — нижче чесна оцінка, що брати завжди, що за потреби, а що майже ніколи.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Розділ 29148</th><th>Про що</th><th>В Agile</th></tr></thead>
+            <tbody>
+              <tr><td>Purpose, Scope</td><td>Навіщо система, її межі</td><td><strong>Завжди</strong> — але кількома абзацами, не сторінками</td></tr>
+              <tr><td>Product perspective / overview</td><td>Місце системи в ландшафті, контекстна діаграма</td><td><strong>Завжди</strong> — одна діаграма економить години пояснень</td></tr>
+              <tr><td>Product functions</td><td>Функції верхнього рівня</td><td>Замінюється картою історій або структурою епіків</td></tr>
+              <tr><td>User characteristics</td><td>Хто користувачі, їхня кваліфікація</td><td>Замінюється персонами</td></tr>
+              <tr><td>Usability / Interaction</td><td>Вимоги до зручності й доступності</td><td><strong>Завжди</strong> — як NFR із метриками</td></tr>
+              <tr><td>Performance</td><td>Час відповіді, пропускна здатність</td><td><strong>Завжди</strong> — у форматі SLI/SLO</td></tr>
+              <tr><td>System interfaces</td><td>Інтеграції та контракти</td><td><strong>Завжди</strong> — окремим документом інтеграції</td></tr>
+              <tr><td>System operations</td><td>Режими експлуатації, ролі операторів</td><td>За потреби — для систем із черговою підтримкою</td></tr>
+              <tr><td>System modes and states</td><td>Стани системи й переходи</td><td>За потреби — цінно для платежів і пристроїв</td></tr>
+              <tr><td>Physical characteristics</td><td>Габарити, живлення, монтаж</td><td>Майже ніколи (актуально для вбудованих систем)</td></tr>
+              <tr><td>Environmental conditions</td><td>Температура, вологість, вібрація</td><td>Майже ніколи</td></tr>
+              <tr><td>Security</td><td>Захист, доступ, аудит</td><td><strong>Завжди</strong> — окремим розділом із вимірюваними вимогами</td></tr>
+              <tr><td>Information management</td><td>Дані, зберігання, retention</td><td><strong>Завжди</strong> — особливо retention і персональні дані</td></tr>
+              <tr><td>Policies and regulations</td><td>Регуляторні обмеження</td><td>Якщо домен регульований — обов'язково</td></tr>
+              <tr><td>Life cycle sustainment</td><td>Супровід, оновлення, виведення з експлуатації</td><td>За потреби — для довгоживучих систем</td></tr>
+              <tr><td>Packaging, handling, shipping</td><td>Постачання й транспортування</td><td>Майже ніколи</td></tr>
+              <tr><td>Verification</td><td>Як перевіряється кожна вимога</td><td><strong>Завжди</strong> — як колонка «спосіб перевірки»</td></tr>
+              <tr><td>Assumptions and dependencies</td><td>Припущення й залежності</td><td><strong>Завжди</strong> — див. <a href="#/req-conflicts-raid" data-go="req-conflicts-raid">RAID-log</a></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="doc-p">Головна ідея: <strong>стандарт — це чек-лист повноти, а не обов'язковий зміст</strong>. Пройдіть по ньому і для кожного розділу свідомо вирішіть «беремо» або «не застосовно» — друге теж корисно зафіксувати, щоб на аудиті не виглядало як прогалина. Критерії якості самих вимог — на сторінці <a href="#/req-verification" data-go="req-verification">Верифікація та валідація вимог</a>.</p>
+      </div>
+
+      </div>
 
     <!-- ═══════════════════════════════════════════════════════════════ -->
     <!-- PAGE: Decision Log та Architecture Decision Records             -->
@@ -30325,7 +30420,7 @@ project = MYAPP
         <div class="doc-section" id="iq-by-topic" data-nolink>
           <h2 class="doc-h2">Питання за темами wiki</h2>
           <p class="doc-p">Зібрано з усіх модулів. Кожен блок має кнопку «до теми» — повернутися до матеріалу.</p>
-          <div class="iq-toc" data-nolink><a href="#/interview-questions/iq-sec-nav-start" data-go="interview-questions" data-anchor="iq-sec-nav-start">Старт <span class="iq-count">5</span></a><a href="#/interview-questions/iq-sec-nav-strategy" data-go="interview-questions" data-anchor="iq-sec-nav-strategy">Стратегія та бізнес-кейс <span class="iq-count">15</span></a><a href="#/interview-questions/iq-sec-nav-elicit" data-go="interview-questions" data-anchor="iq-sec-nav-elicit">Збір та аналіз вимог <span class="iq-count">24</span></a><a href="#/interview-questions/iq-sec-nav-spec" data-go="interview-questions" data-anchor="iq-sec-nav-spec">Написання вимог: US / UC / AC <span class="iq-count">12</span></a><a href="#/interview-questions/iq-sec-nav-docs" data-go="interview-questions" data-anchor="iq-sec-nav-docs">Документація аналітика <span class="iq-count">5</span></a><a href="#/interview-questions/iq-sec-nav-process" data-go="interview-questions" data-anchor="iq-sec-nav-process">Бізнес-процеси та BPMN <span class="iq-count">10</span></a><a href="#/interview-questions/iq-sec-nav-arch" data-go="interview-questions" data-anchor="iq-sec-nav-arch">Архітектура систем та застосунків <span class="iq-count">9</span></a><a href="#/interview-questions/iq-sec-nav-integr" data-go="interview-questions" data-anchor="iq-sec-nav-integr">Інтеграції та обмін повідомленнями <span class="iq-count">20</span></a><a href="#/interview-questions/iq-sec-nav-db" data-go="interview-questions" data-anchor="iq-sec-nav-db">Бази даних та SQL <span class="iq-count">6</span></a><a href="#/interview-questions/iq-sec-nav-mongo" data-go="interview-questions" data-anchor="iq-sec-nav-mongo">MongoDB <span class="iq-count">61</span></a><a href="#/interview-questions/iq-sec-nav-eng" data-go="interview-questions" data-anchor="iq-sec-nav-eng">Інженерні практики <span class="iq-count">8</span></a><a href="#/interview-questions/iq-sec-nav-career" data-go="interview-questions" data-anchor="iq-sec-nav-career">Кар&#x27;єра та співбесіда <span class="iq-count">5</span></a><a href="#/interview-questions/iq-sec-nav-security" data-go="interview-questions" data-anchor="iq-sec-nav-security">Безпека та відповідність вимогам <span class="iq-count">42</span></a></div>
+          <div class="iq-toc" data-nolink><a href="#/interview-questions/iq-sec-nav-start" data-go="interview-questions" data-anchor="iq-sec-nav-start">Старт <span class="iq-count">5</span></a><a href="#/interview-questions/iq-sec-nav-strategy" data-go="interview-questions" data-anchor="iq-sec-nav-strategy">Стратегія та бізнес-кейс <span class="iq-count">15</span></a><a href="#/interview-questions/iq-sec-nav-elicit" data-go="interview-questions" data-anchor="iq-sec-nav-elicit">Збір та аналіз вимог <span class="iq-count">39</span></a><a href="#/interview-questions/iq-sec-nav-spec" data-go="interview-questions" data-anchor="iq-sec-nav-spec">Написання вимог: US / UC / AC <span class="iq-count">12</span></a><a href="#/interview-questions/iq-sec-nav-docs" data-go="interview-questions" data-anchor="iq-sec-nav-docs">Документація аналітика <span class="iq-count">5</span></a><a href="#/interview-questions/iq-sec-nav-process" data-go="interview-questions" data-anchor="iq-sec-nav-process">Бізнес-процеси та BPMN <span class="iq-count">10</span></a><a href="#/interview-questions/iq-sec-nav-arch" data-go="interview-questions" data-anchor="iq-sec-nav-arch">Архітектура систем та застосунків <span class="iq-count">9</span></a><a href="#/interview-questions/iq-sec-nav-integr" data-go="interview-questions" data-anchor="iq-sec-nav-integr">Інтеграції та обмін повідомленнями <span class="iq-count">20</span></a><a href="#/interview-questions/iq-sec-nav-db" data-go="interview-questions" data-anchor="iq-sec-nav-db">Бази даних та SQL <span class="iq-count">6</span></a><a href="#/interview-questions/iq-sec-nav-mongo" data-go="interview-questions" data-anchor="iq-sec-nav-mongo">MongoDB <span class="iq-count">61</span></a><a href="#/interview-questions/iq-sec-nav-eng" data-go="interview-questions" data-anchor="iq-sec-nav-eng">Інженерні практики <span class="iq-count">8</span></a><a href="#/interview-questions/iq-sec-nav-career" data-go="interview-questions" data-anchor="iq-sec-nav-career">Кар&#x27;єра та співбесіда <span class="iq-count">10</span></a><a href="#/interview-questions/iq-sec-nav-security" data-go="interview-questions" data-anchor="iq-sec-nav-security">Безпека та відповідність вимогам <span class="iq-count">42</span></a><a href="#/interview-questions/iq-sec-nav-found" data-go="interview-questions" data-anchor="iq-sec-nav-found">Основи та мислення аналітика <span class="iq-count">4</span></a></div>
         </div>
 
         <div class="doc-section iq-section" id="iq-sec-nav-start">
@@ -30425,6 +30520,39 @@ project = MYAPP
               <li>Що таке Decision Table і коли ти її використовуєш?</li>
               <li>Як перевірити Decision Table на повноту і несуперечність?</li>
               <li>Як керувати бізнес-правилами в Agile-проєкті, де вони змінюються щоспринту?</li>
+            </ol>
+          </div>
+        
+          <div class="iq-block" id="iq-req-verification">
+            <div class="iq-block-head"><span class="iq-block-title">Верифікація вимог</span><a class="iq-src" href="#/req-verification" data-go="req-verification">↩ до теми</a></div>
+            <ol class="iq-list">
+              <li>Чим верифікація вимог відрізняється від валідації?</li>
+              <li>Які характеристики якісної вимоги ти знаєш?</li>
+              <li>Як ти перевіряєш, що вимогу можна протестувати?</li>
+              <li>Наведи приклади «запахів» у формулюванні вимог.</li>
+              <li>Як ти організовуєш рев&#x27;ю вимог у команді?</li>
+              <li>Які метрики якості вимог ти використовував?</li>
+            </ol>
+          </div>
+        
+          <div class="iq-block" id="iq-req-conflicts-raid">
+            <div class="iq-block-head"><span class="iq-block-title">Конфлікти вимог та RAID</span><a class="iq-src" href="#/req-conflicts-raid" data-go="req-conflicts-raid">↩ до теми</a></div>
+            <ol class="iq-list">
+              <li>Як ти виявляєш конфлікти між вимогами?</li>
+              <li>Два стейкхолдери наполягають на протилежному. Твої дії?</li>
+              <li>Чим припущення відрізняється від ризику?</li>
+              <li>Що таке RAID-log і хто його веде?</li>
+              <li>Наведи приклад конфлікту функціональної вимоги з NFR.</li>
+            </ol>
+          </div>
+        
+          <div class="iq-block" id="iq-req-accessibility">
+            <div class="iq-block-head"><span class="iq-block-title">Accessibility (WCAG)</span><a class="iq-src" href="#/req-accessibility" data-go="req-accessibility">↩ до теми</a></div>
+            <ol class="iq-list">
+              <li>Що таке WCAG і який рівень зазвичай вимагають?</li>
+              <li>Як ти пишеш acceptance criteria для доступності?</li>
+              <li>Чому автоматичного аудиту доступності недостатньо?</li>
+              <li>Які критерії доступності ламають найчастіше?</li>
             </ol>
           </div>
         </div>
@@ -30719,6 +30847,17 @@ project = MYAPP
               <li>Наведи приклад де твоя вимога виявилась неправильною. Як вийшло і що змінив/ла?</li>
             </ol>
           </div>
+        
+          <div class="iq-block" id="iq-career-competency-matrix">
+            <div class="iq-block-head"><span class="iq-block-title">Матриця компетенцій</span><a class="iq-src" href="#/career-competency-matrix" data-go="career-competency-matrix">↩ до теми</a></div>
+            <ol class="iq-list">
+              <li>Чим senior відрізняється від middle у твоєму розумінні?</li>
+              <li>Наведи приклад рішення, яке ти прийняв самостійно.</li>
+              <li>Як ти оцінюєш власні прогалини в компетенціях?</li>
+              <li>Розкажи про ситуацію, де довелось змінити scope.</li>
+              <li>Як ти менториш молодших аналітиків?</li>
+            </ol>
+          </div>
         </div>
 
         <div class="doc-section iq-section" id="iq-sec-nav-security">
@@ -30811,6 +30950,20 @@ project = MYAPP
               <li>Які поля обов&#x27;язкові в записі аудиту?</li>
               <li>Чому запис аудиту має бути незмінним і як це забезпечити?</li>
               <li>Що робити, якщо сховище аудиту недоступне в момент операції?</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="doc-section iq-section" id="iq-sec-nav-found">
+          <h2 class="doc-h2">Основи та мислення аналітика</h2>
+        
+          <div class="iq-block" id="iq-std-map">
+            <div class="iq-block-head"><span class="iq-block-title">Стандарти аналітика</span><a class="iq-src" href="#/std-map" data-go="std-map">↩ до теми</a></div>
+            <ol class="iq-list">
+              <li>Чим BABOK відрізняється від ISO 29148?</li>
+              <li>На який стандарт ти спираєшся, коли пишеш вимоги?</li>
+              <li>Що таке ISO 25010 і навіщо він аналітику?</li>
+              <li>Як правильно посилатись на стандарт у документі?</li>
             </ol>
           </div>
         </div>
@@ -40360,6 +40513,1007 @@ Questions / коментарі? Пишіть у thread або прямо мен�
       <div class="iq-link" data-nolink><span class="iq-link-icon">💼</span><div class="iq-link-body"><div class="iq-link-title">Питання на senior-співбесіді з цієї теми</div><div class="iq-link-desc">4 питань · розділ «Питання на Senior-співбесіді»</div></div><a class="iq-link-btn" href="#/interview-questions/iq-sec-audit-logging" data-go="interview-questions" data-anchor="iq-sec-audit-logging">Перейти →</a></div>
     </div>
 
+      <!-- ═══ ВИМОГИ: Верифікація та валідація ═══ -->
+    <div id="page-req-verification" class="page-view" style="display:none;">
+      <nav class="breadcrumb"><span>База знань</span><span class="breadcrumb-sep">›</span><span class="current">Верифікація та валідація вимог</span></nav>
+      <div class="page-header">
+        <div class="page-tag">Вимоги · Якість</div>
+        <h1 class="page-title">Верифікація та валідація вимог: <span class="grad">чи правильно і чи те</span></h1>
+        <p class="page-desc">Характеристики якісної вимоги за ISO 29148, каталог із п'ятнадцяти «запахів», техніки рев'ю — і чек-лист на 20 пунктів, яким можна користуватись завтра.</p>
+      </div>
+
+      <div class="doc-section" id="req-ver-why">
+        <h2 class="doc-h2">Навіщо це аналітику</h2>
+        <div class="doc-callout"><strong>📌 Контекст</strong><p>Уяви, що ти передав SRS на 120 вимог. Через два спринти розробник питає: «Тут написано "система повинна швидко обробляти запити" — це скільки?». Через місяць QA не може написати тест на вимогу «інтерфейс має бути зручним». А на демо замовник каже: «Так, написано правильно, але нам було потрібно не це».</p></div>
+        <p class="doc-p">Ці три ситуації — про дві різні перевірки, які постійно плутають:</p>
+        <div class="doc-cards-2">
+          <div class="doc-card doc-card--blue">
+            <div class="doc-card-title">Verification — «чи правильно написали?»</div>
+            <p class="doc-p">Перевірка вимоги як тексту: однозначна, повна, перевірювана, несуперечлива. Робиться <strong>всередині</strong> команди аналізу.</p>
+            <p class="doc-p"><em>Питання:</em> чи зрозуміє це розробник однаково зі мною? чи зможе QA написати тест?</p>
+          </div>
+          <div class="doc-card doc-card--teal">
+            <div class="doc-card-title">Validation — «чи те написали?»</div>
+            <p class="doc-p">Перевірка відповідності реальній потребі бізнесу. Робиться <strong>зі стейкхолдерами</strong>.</p>
+            <p class="doc-p"><em>Питання:</em> чи вирішує ця вимога проблему? чи веде вона до бізнес-цілі?</p>
+          </div>
+        </div>
+        <p class="doc-p">Вимога може бути ідеально написаною і при цьому непотрібною. І навпаки — правильною по суті, але сформульованою так, що кожен зрозуміє її по-своєму. У BABOK це дві окремі задачі області знань Requirements Analysis and Design Definition: <em>Verify Requirements</em> і <em>Validate Requirements</em>.</p>
+      </div>
+
+      <div class="doc-section" id="req-ver-iso">
+        <h2 class="doc-h2">Характеристики якісної вимоги за ISO/IEC/IEEE 29148</h2>
+        <p class="doc-p">Стандарт 29148:2018 дає перелік властивостей, який зручно використовувати як мірку. Нижче — характеристики окремої вимоги з прикладами «до / після».</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Характеристика</th><th>Як порушується</th><th>❌ До</th><th>✅ Після</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Necessary</strong><br>потрібна</td><td>Вимога є, але жодна мета її не потребує</td><td>«Система повинна підтримувати експорт у XML»</td><td>Прибрати або пов'язати з реальним споживачем формату</td></tr>
+              <tr><td><strong>Unambiguous</strong><br>однозначна</td><td>Слова з різним тлумаченням</td><td>«Звіт формується швидко»</td><td>«Звіт за місяць формується не довше 5 с для 95% запитів»</td></tr>
+              <tr><td><strong>Singular</strong><br>одинична</td><td>Кілька вимог в одному реченні</td><td>«Система надсилає email і SMS та зберігає історію»</td><td>Три окремі вимоги з окремими ID</td></tr>
+              <tr><td><strong>Complete</strong><br>повна</td><td>Немає умов, меж, поведінки при помилці</td><td>«Користувач завантажує файл»</td><td>«…файл до 10 МБ форматів PDF/JPG; більший — помилка з текстом…»</td></tr>
+              <tr><td><strong>Verifiable</strong><br>перевірювана</td><td>Неможливо придумати тест</td><td>«Інтерфейс має бути інтуїтивним»</td><td>«Новий користувач оформлює замовлення за ≤3 хв без підказок (тест на 5 респондентах)»</td></tr>
+              <tr><td><strong>Feasible</strong><br>здійсненна</td><td>Технічно чи фінансово неможлива</td><td>«Доступність 100%»</td><td>«Доступність 99,9% на місяць»</td></tr>
+              <tr><td><strong>Correct</strong><br>коректна</td><td>Суперечить реальному правилу бізнесу</td><td>«ПДВ 20% на всі товари»</td><td>Уточнити пільгові категорії з фінансистами</td></tr>
+              <tr><td><strong>Appropriate</strong><br>доречна</td><td>Рівень деталізації не той (рішення замість потреби)</td><td>«Використати Redis для кешу»</td><td>«Повторний перегляд каталогу — ≤200 мс» (як — вирішує архітектор)</td></tr>
+              <tr><td><strong>Conforming</strong><br>відповідна формату</td><td>Не за шаблоном, без ID, без пріоритету</td><td>Абзац у листі</td><td>Вимога з ID, пріоритетом, джерелом і способом перевірки</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="doc-p">Окремо стандарт задає характеристики <strong>для набору вимог</strong>: повнота (немає прогалин у покритті цілей), несуперечливість (вимоги не конфліктують між собою), здійсненність у сукупності (разом вкладаються у бюджет і строки), зрозумілість, придатність до валідації. Перевіряти набір треба окремо: тридцять ідеальних вимог можуть суперечити одна одній.</p>
+      </div>
+
+      <div class="doc-section" id="req-ver-smells">
+        <h2 class="doc-h2">Каталог «запахів» вимог</h2>
+        <p class="doc-p">На практиці зручніше шукати не порушення характеристик, а конкретні мовні конструкції. Це швидко, механічно і працює навіть на чужому документі.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>№</th><th>«Запах»</th><th>Приклад</th><th>Що робити</th></tr></thead>
+            <tbody>
+              <tr><td>1</td><td>Слабкі прикметники</td><td>швидко, зручно, надійно, ефективно, дружній</td><td>Замінити метрикою або способом вимірювання</td></tr>
+              <tr><td>2</td><td>«тощо», «і так далі», «зокрема»</td><td>«…підтримує PDF, DOCX тощо»</td><td>Перелічити повністю або задати правило</td></tr>
+              <tr><td>3</td><td>«і/або»</td><td>«надсилає email і/або SMS»</td><td>Вирішити й записати умову вибору</td></tr>
+              <tr><td>4</td><td>Пасив без виконавця</td><td>«Заявка має бути погоджена»</td><td>Вказати, ким саме і за яким правилом</td></tr>
+              <tr><td>5</td><td>Негативна вимога</td><td>«Система не повинна падати»</td><td>Переформулювати позитивно й вимірювано</td></tr>
+              <tr><td>6</td><td>Посилання «як у системі X»</td><td>«Пошук працює як у попередній версії»</td><td>Описати поведінку явно: старої системи не буде під рукою</td></tr>
+              <tr><td>7</td><td>Комбінована вимога</td><td>Кілька дій в одному реченні</td><td>Розділити за принципом «одна вимога — один тест»</td></tr>
+              <tr><td>8</td><td>Рішення замість потреби</td><td>«Додати кнопку в правому верхньому куті»</td><td>Піднятись на рівень потреби, лишити реалізацію команді</td></tr>
+              <tr><td>9</td><td>Невимірюваний NFR</td><td>«Висока продуктивність»</td><td>Метрика + умови навантаження + перцентиль</td></tr>
+              <tr><td>10</td><td>Невизначені займенники</td><td>«Він передається до неї»</td><td>Назвати сутності явно</td></tr>
+              <tr><td>11</td><td>Слова-припущення</td><td>«зазвичай», «як правило», «у більшості випадків»</td><td>Задати правило й винятки</td></tr>
+              <tr><td>12</td><td>Відсутність меж</td><td>«Користувач вводить суму»</td><td>Мін/макс, точність, валюта, поведінка поза межами</td></tr>
+              <tr><td>13</td><td>Подвійне заперечення</td><td>«Не дозволяється не вказувати email»</td><td>Переписати прямо</td></tr>
+              <tr><td>14</td><td>«Система повинна вміти»</td><td>«…вміти обробляти платежі»</td><td>«Вміти» ≠ «робить». Прибрати й описати поведінку</td></tr>
+              <tr><td>15</td><td>Немає поведінки при помилці</td><td>Описаний лише happy path</td><td>Додати негативні сценарії</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="doc-callout"><strong>✅ Best practice</strong><p>Перші три «запахи» шукаються звичайним пошуком по документу. Прогнати SRS через список слів <em>швидко, зручно, надійно, тощо, і/або, зазвичай, оптимально, легко, простий, мінімальний</em> — це п'ять хвилин і зазвичай десятки знахідок.</p></div>
+      </div>
+
+      <div class="doc-section" id="req-ver-techniques">
+        <h2 class="doc-h2">Техніки верифікації</h2>
+        <div class="doc-cards-2">
+          <div class="doc-card doc-card--blue"><div class="doc-card-title">Self-review за чек-листом</div><p class="doc-p">Найдешевша й найнедооціненіша. Автор проходить власний документ за списком нижче. Ловить 40–60% дефектів до того, як їх побачить хтось інший.</p></div>
+          <div class="doc-card doc-card--blue"><div class="doc-card-title">Peer review</div><p class="doc-p">Колега-аналітик читає документ. Дає свіжий погляд на неоднозначності, до яких автор «звик».</p></div>
+          <div class="doc-card doc-card--teal"><div class="doc-card-title">Walkthrough</div><p class="doc-p">Автор веде групу документом і пояснює логіку. Добре для складних процесів; слабко ловить дрібні дефекти, бо група йде за автором.</p></div>
+          <div class="doc-card doc-card--teal"><div class="doc-card-title">Inspection (Fagan)</div><p class="doc-p">Формальний процес із ролями (модератор, читач, автор, інспектори), підготовкою наперед і фіксацією дефектів. Найдорожча й найрезультативніша — використовують там, де ціна помилки висока.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">Read-by-role</div><p class="doc-p">Кожен читає своє: розробник шукає технічні прогалини, QA — неперевірюваність, архітектор — суперечності з NFR, дизайнер — незакриті стани. Дешево, дає різні класи знахідок.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">Написання тест-кейсів як верифікація</div><p class="doc-p">Найсильніший практичний прийом: <strong>якщо на вимогу неможливо написати тест — вимога погана</strong>. Залучення QA на етапі аналізу ловить дефекти дешевше, ніж будь-яке рев'ю.</p></div>
+        </div>
+        <p class="doc-p">Частину перевірок можна автоматизувати: лінтери для Gherkin-сценаріїв, шаблони з обов'язковими полями в Jira, пошук слабких слів скриптом, перевірка, що кожна вимога має ID і трасування.</p>
+      </div>
+
+      <div class="doc-section" id="req-ver-validation">
+        <h2 class="doc-h2">Техніки валідації</h2>
+        <ul class="doc-list">
+          <li><strong>Демонстрація стейкхолдерам.</strong> Не переказ документа, а показ поведінки — на прототипі чи ранній збірці. Люди погано читають специфікації й добре реагують на побачене.</li>
+          <li><strong>Прототипування.</strong> Клікабельний макет виявляє незрозумілі сценарії за годину замість трьох спринтів.</li>
+          <li><strong>Приймальні критерії разом із бізнесом.</strong> Якщо власник процесу не може сформулювати, за чим він визнає роботу зробленою, — потреба ще не зрозуміла.</li>
+          <li><strong>Симуляція процесу.</strong> Пройти сценарій «на папері» з реальними учасниками: хто що робить, які дані передає, де зупиняється.</li>
+          <li><strong>Трасування до цілей.</strong> Кожна вимога має вести до бізнес-цілі чи ключового результату. Вимога, яку неможливо пов'язати з жодною метою, — кандидат на видалення.</li>
+        </ul>
+      </div>
+
+      <div class="doc-section" id="req-ver-process">
+        <h2 class="doc-h2">Процес рев'ю</h2>
+        <div class="diagram-wrap">
+          <div style="font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#9090B0;margin-bottom:.6rem;">V-модель: що з чим перевіряється</div>
+          <svg width="100%" viewBox="0 0 720 280" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;">
+            <defs><marker id="rvA" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#C07898"/></marker></defs>
+            <rect x="20" y="26" width="170" height="46" rx="8" fill="#F1F7FA" stroke="#5BAEC8" stroke-width="1.3"/>
+            <text x="105" y="46" text-anchor="middle" font-size="11.5" font-weight="700" fill="#2E5570">Бізнес-потреби</text>
+            <text x="105" y="63" text-anchor="middle" font-size="10" fill="#484860">навіщо взагалі</text>
+            <rect x="80" y="96" width="170" height="46" rx="8" fill="#E4F1F7" stroke="#4898C0" stroke-width="1.3"/>
+            <text x="165" y="116" text-anchor="middle" font-size="11.5" font-weight="700" fill="#2E5570">Вимоги</text>
+            <text x="165" y="133" text-anchor="middle" font-size="10" fill="#484860">що система робить</text>
+            <rect x="140" y="166" width="170" height="46" rx="8" fill="#F0ECF5" stroke="#9090B0" stroke-width="1.3"/>
+            <text x="225" y="186" text-anchor="middle" font-size="11.5" font-weight="700" fill="#484860">Дизайн і код</text>
+            <text x="225" y="203" text-anchor="middle" font-size="10" fill="#484860">як зроблено</text>
+            <rect x="430" y="26" width="180" height="46" rx="8" fill="#F1F9F6" stroke="#60B8A0" stroke-width="1.3"/>
+            <text x="520" y="46" text-anchor="middle" font-size="11.5" font-weight="700" fill="#3E8C74">Приймальні тести</text>
+            <text x="520" y="63" text-anchor="middle" font-size="10" fill="#484860">UAT, демо бізнесу</text>
+            <rect x="430" y="96" width="180" height="46" rx="8" fill="#F1F9F6" stroke="#60B8A0" stroke-width="1.3"/>
+            <text x="520" y="116" text-anchor="middle" font-size="11.5" font-weight="700" fill="#3E8C74">Системні тести</text>
+            <text x="520" y="133" text-anchor="middle" font-size="10" fill="#484860">за вимогами</text>
+            <rect x="430" y="166" width="180" height="46" rx="8" fill="#F1F9F6" stroke="#60B8A0" stroke-width="1.3"/>
+            <text x="520" y="186" text-anchor="middle" font-size="11.5" font-weight="700" fill="#3E8C74">Модульні тести</text>
+            <text x="520" y="203" text-anchor="middle" font-size="10" fill="#484860">за дизайном</text>
+            <line x1="190" y1="49" x2="424" y2="49" stroke="#C07898" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#rvA)"/>
+            <text x="307" y="42" text-anchor="middle" font-size="10.5" font-weight="700" fill="#8A5070">VALIDATION — чи те зробили</text>
+            <line x1="250" y1="119" x2="424" y2="119" stroke="#4898C0" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#rvA)"/>
+            <text x="337" y="112" text-anchor="middle" font-size="10.5" font-weight="700" fill="#2E5570">VERIFICATION</text>
+            <line x1="310" y1="189" x2="424" y2="189" stroke="#4898C0" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#rvA)"/>
+            <rect x="20" y="234" width="590" height="34" rx="8" fill="#F7F4F8" stroke="#DDD8E8" stroke-width="1"/>
+            <text x="40" y="256" font-size="10.5" fill="#484860">Рев'ю вимог = зсув цих перевірок ліворуч: знайти невідповідність до того, як з неї виросте код і тести.</text>
+          </svg>
+        </div>
+        <p class="doc-p">Практичні правила організації рев'ю:</p>
+        <ul class="doc-list">
+          <li><strong>Коли.</strong> Дві природні точки: перед refinement (щоб команда не витрачала час на сире) і перед sign-off чи включенням у спринт.</li>
+          <li><strong>Обсяг.</strong> Не більше 10–15 вимог або 5 сторінок за сесію. Далі уважність падає, і рев'ю стає формальністю.</li>
+          <li><strong>SLA.</strong> Домовтесь про строк: два робочі дні на рев'ю. Без строку документ висить тижнями.</li>
+          <li><strong>Фіксація.</strong> Зауваження — у коментарях документа або окремій таблиці дефектів вимог із типом, критичністю і статусом.</li>
+          <li><strong>Метрики.</strong> Найкорисніші дві: <em>defect density</em> (дефектів на 10 вимог) і частка вимог, які довелось переробляти після старту розробки. Друга напряму показує якість аналізу.</li>
+        </ul>
+        <p class="doc-p"><strong>Baseline і sign-off.</strong> У класичних проєктах — формальне погодження зафіксованої версії, після чого зміни йдуть через change request. В Agile ту саму роль виконує <em>Definition of Ready</em>: історія не береться у спринт, поки не відповідає критеріям. Це і є «легкий sign-off».</p>
+      </div>
+
+      <div class="doc-section" id="req-ver-case">
+        <h2 class="doc-h2">Кейс: інспекція SRS на 120 вимог</h2>
+        <p class="doc-p">Enterprise-проєкт, документ від підрядника. Формальна інспекція за участю аналітика, архітектора, двох розробників і QA виявила 34 дефекти за три сесії по 90 хвилин. Найтиповіші:</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>❌ Як було</th><th>Тип</th><th>✅ Як стало</th></tr></thead>
+            <tbody>
+              <tr><td>«Система повинна забезпечувати високу швидкодію при роботі з великими обсягами даних»</td><td>Невимірюваний NFR</td><td>«Пошук по каталогу з 2 млн позицій повертає перші 50 результатів за ≤800 мс для 95% запитів при 200 одночасних користувачах»</td></tr>
+              <tr><td>«Менеджер може редагувати замовлення»</td><td>Неповна</td><td>«Менеджер може змінювати склад і адресу замовлення у статусах "Новий" і "Підтверджений". У статусі "Відвантажено" редагування недоступне; спроба → повідомлення "…"»</td></tr>
+              <tr><td>«Дані синхронізуються з ERP і надсилаються повідомлення»</td><td>Комбінована</td><td>Дві вимоги з окремими ID і різними критеріями приймання</td></tr>
+              <tr><td>«Звіт формується за період, обраний користувачем»</td><td>Без меж</td><td>«…період до 12 місяців; при більшому — повідомлення про обмеження. Максимум 100 000 рядків, далі — вивантаження файлом»</td></tr>
+              <tr><td>«Інтеграція має бути надійною»</td><td>Слабке слово</td><td>«Втрата повідомлення неприпустима: at-least-once з підтвердженням, повтор до 5 разів з exponential backoff, після — DLQ і алерт»</td></tr>
+              <tr><td>«Система підтримує ролі згідно з матрицею доступу»</td><td>Посилання в нікуди</td><td>Матрицю додано до документа як розділ 4.2 із версією й датою</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="doc-p">Оцінка команди: три сесії коштували ~15 людино-годин, а виправлення тих самих дефектів на етапі тестування коштувало б орієнтовно 120–150 годин без урахування зсуву строків.</p>
+      </div>
+
+      <div class="doc-section" id="req-ver-mistakes">
+        <h2 class="doc-h2">⚠️ Типові помилки мідл-аналітика</h2>
+        <div class="doc-cards-2">
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ Плутати верифікацію з валідацією</div><p class="doc-p">Перевірили текст і вважаємо, що потребу підтверджено.</p><p class="doc-p"><strong>✅ Як правильно:</strong> дві різні перевірки з різними учасниками — команда й бізнес.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ Рев'ю «на 60 сторінок за годину»</div><p class="doc-p">Після п'ятнадцятої вимоги учасники читають, не бачачи.</p><p class="doc-p"><strong>✅ Як правильно:</strong> 10–15 вимог за сесію, з підготовкою наперед.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ Немає QA на етапі вимог</div><p class="doc-p">Найдешевша перевірка перевірюваності просто не проводиться.</p><p class="doc-p"><strong>✅ Як правильно:</strong> QA читає вимоги до розробки й пише чернетки тестів.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ Зауваження в усному вигляді</div><p class="doc-p">«Ми ж проговорили» — і половина не виправлена.</p><p class="doc-p"><strong>✅ Як правильно:</strong> фіксація дефектів зі статусом і перевірка закриття.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ Валідація документом</div><p class="doc-p">Стейкхолдеру надсилають SRS на 80 сторінок і просять підтвердити.</p><p class="doc-p"><strong>✅ Як правильно:</strong> прототип, демо, приймальні критерії його словами.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ Перевіряти лише окремі вимоги</div><p class="doc-p">Кожна бездоганна, а разом вони суперечать одна одній або не покривають мету.</p><p class="doc-p"><strong>✅ Як правильно:</strong> окрема перевірка набору на повноту й несуперечливість.</p></div>
+        </div>
+      </div>
+
+      <div class="doc-section" id="req-ver-checklist">
+        <h2 class="doc-h2">✅ Чек-лист рев'ю вимоги — 20 пунктів</h2>
+        <div class="doc-checklist-grid">
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Вимога має унікальний ID</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Описує одну річ, а не кілька</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Немає слабких слів: швидко, зручно, надійно, оптимально</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Немає «тощо», «і так далі», «і/або»</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Явно вказано, хто виконує дію</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Задано межі значень: мін, макс, точність, формат</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Описано поведінку при помилці й на межі</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Описано передумови та стани, у яких вимога діє</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Можна придумати тест, який її провалить</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Не містить рішення замість потреби</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Не посилається на «як у системі X» без опису</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Сформульована позитивно, без подвійних заперечень</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Технічно й фінансово здійсненна</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Не суперечить іншим вимогам і NFR</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Пов'язана з бізнес-ціллю або потребою стейкхолдера</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Має пріоритет</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Має джерело: хто цього хоче й чому</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Зазначено спосіб перевірки</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Терміни вжито узгоджено з глосарієм проєкту</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Трасована: мета → вимога → задача → тест</div>
+        </div>
+        <div class="doc-callout"><strong>🎯 Практика</strong><p>Перепишіть вісім вимог: «Система має бути зручною» · «Звіт вивантажується швидко» · «Дані передаються в ERP та зберігаються в архіві» · «Користувач не повинен мати можливість не заповнити обов'язкові поля» · «Пошук працює як у старій системі» · «Адміністратор може все» · «Система витримує велике навантаження» · «Повідомлення надсилаються зазвичай протягом хвилини». Для кожної вкажіть, який «запах» ви виправляєте.</p></div>
+      </div>
+
+      <div class="doc-section" id="req-ver-selfcheck">
+        <h2 class="doc-h2">🧠 Самоперевірка</h2>
+        <div class="selfcheck-item" onclick="toggleAnswer(this)"><strong>1.</strong> Вимога написана бездоганно, але реалізована функція нікому не потрібна. Яка перевірка не спрацювала?<div class="selfcheck-answer">Валідація. Верифікація перевіряє форму — вона пройшла успішно. Валідація перевіряє, чи вирішує вимога реальну потребу і чи веде до бізнес-цілі. Саме тому трасування «вимога → мета» є технікою валідації: вимога, яку неможливо прив'язати до жодної мети, з високою ймовірністю зайва.</div></div>
+        <div class="selfcheck-item" onclick="toggleAnswer(this)"><strong>2.</strong> Чому написання тест-кейсів вважають технікою верифікації?<div class="selfcheck-answer">Бо це найпрактичніший тест на перевірюваність і повноту. Щоб написати тест, потрібні передумови, конкретні вхідні дані, очікуваний результат і критерій успіху. Якщо чогось із цього у вимозі немає, тест-кейс не пишеться — і дефект вимоги виявляється миттєво, ще до розробки. Тому залучення QA на етапі аналізу дає найкраще співвідношення витрат і знайдених дефектів.</div></div>
+        <div class="selfcheck-item" onclick="toggleAnswer(this)"><strong>3.</strong> Чим inspection відрізняється від walkthrough і коли обирати кожен?<div class="selfcheck-answer">Walkthrough веде автор: він пояснює логіку, група слухає й ставить питання. Дешево, добре для передачі розуміння складного процесу, але група йде за думкою автора й погано ловить дрібні дефекти. Inspection — формальний процес із ролями, підготовкою наперед, чек-листом і фіксацією метрик; автор там не веде, а відповідає. Дорожче, зате знаходить значно більше. Inspection обирають там, де ціна дефекту висока: регуляторика, платежі, медичні системи.</div></div>
+        <div class="selfcheck-item" onclick="toggleAnswer(this)"><strong>4.</strong> Що не так із вимогою «Система не повинна дозволяти несанкціонований доступ»?<div class="selfcheck-answer">Це негативна вимога без критерію перевірки. Неможливо протестувати відсутність <em>усіх</em> способів несанкціонованого доступу — можна лише перевірити конкретні правила. Правильний підхід: розкласти на позитивні перевірювані твердження — хто до чого має доступ (permission matrix), що відбувається при спробі доступу без прав, як це фіксується. Кожне з них тестується.</div></div>
+        <div class="selfcheck-item" onclick="toggleAnswer(this)"><strong>5.</strong> В Agile немає формального sign-off. Що виконує його роль?<div class="selfcheck-answer">Definition of Ready — набір критеріїв, яким має відповідати історія, щоб її взяли у спринт: є AC, оцінена, залежності зняті, макети готові, NFR враховані. Це той самий контроль якості вимог, лише розподілений у часі й застосований до дрібнішої одиниці. Плюс сама церемонія refinement виконує роль колективного рев'ю.</div></div>
+        <div class="selfcheck-item" onclick="toggleAnswer(this)"><strong>6.</strong> Які дві метрики якості вимог найкорисніші?<div class="selfcheck-answer">Defect density — кількість дефектів на 10 вимог, знайдених на рев'ю: показує якість письма й дозволяє порівнювати документи. І частка вимог, перероблених після початку розробки (requirements rework): показує, скільки дефектів рев'ю пропустило й у скільки це обійшлось команді. Друга метрика чесніша, бо вимірює наслідки, а не активність.</div></div>
+      </div>
+
+      <div class="doc-section" id="req-ver-related">
+        <h2 class="doc-h2">🔗 Дивись також</h2>
+        <ul class="doc-list">
+          <li><a href="#/req-conflicts-raid" data-go="req-conflicts-raid">Конфлікти вимог та RAID-log</a> — що робити з несуперечливістю набору</li>
+          <li><a href="#/req-acceptance-criteria" data-go="req-acceptance-criteria">Acceptance Criteria</a> — форма, у якій вимога стає перевірюваною</li>
+          <li><a href="#/tech-m28" data-go="tech-m28">Traceability Matrix</a> — інструмент перевірки повноти покриття</li>
+          <li><a href="#/docs-srs" data-go="docs-srs">SRS</a> — документ, який найчастіше проходить інспекцію</li>
+          <li><a href="#/sa-mod17" data-go="sa-mod17">Нефункціональні вимоги</a> — де невимірюваність зустрічається найчастіше</li>
+        </ul>
+      </div>
+
+      <div class="iq-link" data-nolink><span class="iq-link-icon">💼</span><div class="iq-link-body"><div class="iq-link-title">Питання на senior-співбесіді з цієї теми</div><div class="iq-link-desc">6 питань · розділ «Питання на Senior-співбесіді»</div></div><a class="iq-link-btn" href="#/interview-questions/iq-req-verification" data-go="interview-questions" data-anchor="iq-req-verification">Перейти →</a></div>
+    </div>
+
+      <!-- ═══ ВИМОГИ: Конфлікти та RAID ═══ -->
+    <div id="page-req-conflicts-raid" class="page-view" style="display:none;">
+      <nav class="breadcrumb"><span>База знань</span><span class="breadcrumb-sep">›</span><span class="current">Конфлікти вимог та RAID-log</span></nav>
+      <div class="page-header">
+        <div class="page-tag">Вимоги · Аналіз</div>
+        <h1 class="page-title">Конфлікти вимог, <span class="grad">припущення та RAID-log</span></h1>
+        <p class="page-desc">Як знаходити суперечності до того, як їх знайде розробник, ухвалювати рішення прозоро — і навіщо вести журнал припущень, які всі вважають очевидними.</p>
+      </div>
+
+      <div class="doc-section" id="req-raid-why">
+        <h2 class="doc-h2">Навіщо це аналітику</h2>
+        <div class="doc-callout"><strong>📌 Контекст</strong><p>Уяви: маркетинг хоче запускати промоакції «за кілька хвилин, поки тренд живий». Фінанси вимагають, щоб кожна знижка проходила погодження — «мінімум два дні, це гроші компанії». Обидві вимоги записані в беклозі, обидві погоджені, обидві потрапили в один спринт. Розробник відкриває їх поруч і йде питати, що робити.</p></div>
+        <p class="doc-p">Конфлікт вимог — не помилка аналітика й не ознака поганих стейкхолдерів. Це <strong>нормальний стан будь-якої системи з кількома зацікавленими сторонами</strong>. Помилка починається тоді, коли конфлікт виявляє розробник у спринті, а не аналітик на етапі аналізу.</p>
+        <p class="doc-p">Друга половина сторінки — про припущення. Це те, що команда вважає правдою, не перевіривши. Непозначене припущення поводиться як міна: воно не заважає, поки не виявиться хибним, і тоді ламає план.</p>
+      </div>
+
+      <div class="doc-section" id="req-raid-types">
+        <h2 class="doc-h2">Чотири типи конфліктів</h2>
+        <div class="doc-cards-2">
+          <div class="doc-card doc-card--blue"><div class="doc-card-title">Стейкхолдер ↔ стейкхолдер</div><p class="doc-p">Різні цілі підрозділів. Маркетинг проти фінансів, продажі проти підтримки.</p><p class="doc-p"><em>Приклад:</em> «спростити реєстрацію до email» проти «зібрати дані для сегментації».</p></div>
+          <div class="doc-card doc-card--blue"><div class="doc-card-title">Вимога ↔ обмеження</div><p class="doc-p">Потреба реальна, але не вкладається в бюджет, строк, платформу чи наявну архітектуру.</p><p class="doc-p"><em>Приклад:</em> «звіт у реальному часі» на базі нічної вивантаження з ERP.</p></div>
+          <div class="doc-card doc-card--teal"><div class="doc-card-title">Функціональна ↔ NFR</div><p class="doc-p">Найпідступніший тип: обидві вимоги правильні, разом несумісні.</p><p class="doc-p"><em>Приклад:</em> «показувати повну історію операцій одразу» проти «сторінка вантажиться ≤1 с».</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">Вимога ↔ регуляторика</div><p class="doc-p">Бізнес хоче того, що не дозволено. Не обговорюється — але потребує альтернативи.</p><p class="doc-p"><em>Приклад:</em> «зберігати картку для швидкої оплати» без токенізації.</p></div>
+        </div>
+      </div>
+
+      <div class="doc-section" id="req-raid-detect">
+        <h2 class="doc-h2">Як їх знаходити</h2>
+        <ul class="doc-list">
+          <li><strong>Матриця взаємодії вимог.</strong> Для критичних вимог — таблиця «вимога × вимога» з позначками: підсилює, нейтральна, конфліктує. Повну матрицю будувати не треба; достатньо для 10–15 ключових.</li>
+          <li><strong>Прохід по NFR.</strong> Найпродуктивніший прийом: узяти нову функціональну вимогу й перевірити її проти кожної категорії NFR — продуктивність, безпека, доступність, зберігання. Більшість конфліктів «функціональна ↔ NFR» виявляється саме тут.</li>
+          <li><strong>Трасування до цілей.</strong> Дві вимоги, що ведуть до протилежних цілей, майже завжди конфліктують у деталях.</li>
+          <li><strong>Опитування «а що, якщо одночасно».</strong> На грумінгу: «що станеться, якщо ці два правила спрацюють разом?» — питання, яке ловить конфлікти безкоштовно.</li>
+          <li><strong>Глосарій.</strong> Частина «конфліктів» — насправді різні значення одного слова. «Активний клієнт» для продажів і для фінансів — різні люди.</li>
+        </ul>
+      </div>
+
+      <div class="doc-section" id="req-raid-resolve">
+        <h2 class="doc-h2">Як вирішувати</h2>
+        <p class="doc-p">Порядок дій, від дешевого до дорогого:</p>
+        <ol class="doc-list">
+          <li><strong>Перевірити, чи конфлікт справжній.</strong> Часто сторони говорять про різні речі або про різні сегменти користувачів. Уточнення знімає до третини «конфліктів».</li>
+          <li><strong>Піднятись на рівень потреби.</strong> Сторони сперечаються про рішення, а не про потребу. «Кнопка тут» проти «кнопка там» — це насправді «швидкий доступ» проти «менше помилкових натискань», і обидві потреби можна задовольнити інакше.</li>
+          <li><strong>Decision matrix.</strong> Критерії у рядках, варіанти у стовпцях, ваги за важливістю. Робить вибір прозорим і знімає особистий бік суперечки.</li>
+          <li><strong>Пріоритет за бізнес-ціллю.</strong> Виграє та вимога, яка ближча до узгодженої мети кварталу. Тому цілі й треба фіксувати заздалегідь.</li>
+          <li><strong>Прототип.</strong> Коли сперечаються про UX, макет вирішує швидше за годинну дискусію.</li>
+          <li><strong>Ескалація.</strong> Останній крок, але легітимний. Головне — заздалегідь знати, <em>хто</em> арбітр, і зафіксувати рішення письмово.</li>
+        </ol>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Критерій (вага)</th><th>А: миттєве промо без погодження</th><th>Б: погодження 2 дні</th><th>В: авто-погодження до ліміту</th></tr></thead>
+            <tbody>
+              <tr><td>Швидкість запуску (×3)</td><td>5 → 15</td><td>1 → 3</td><td>4 → 12</td></tr>
+              <tr><td>Фінансовий контроль (×3)</td><td>1 → 3</td><td>5 → 15</td><td>4 → 12</td></tr>
+              <tr><td>Складність реалізації (×2)</td><td>5 → 10</td><td>4 → 8</td><td>2 → 4</td></tr>
+              <tr><td>Ризик зловживань (×2)</td><td>1 → 2</td><td>5 → 10</td><td>4 → 8</td></tr>
+              <tr><td><strong>Разом</strong></td><td><strong>30</strong></td><td><strong>36</strong></td><td><strong>36</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="doc-p">Матриця рідко дає однозначного переможця — і це нормально. Її цінність у тому, що вона перетворює «мені здається» на розмову про критерії й ваги, а ваги легше узгодити, ніж рішення.</p>
+      </div>
+
+      <div class="doc-section" id="req-raid-log">
+        <h2 class="doc-h2">RAID-log: чотири речі, які треба тримати на видноті</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th></th><th>Що це</th><th>Ключове питання</th><th>Хто веде</th></tr></thead>
+            <tbody>
+              <tr><td><strong>R</strong>isks<br>ризики</td><td>Те, що може статись і зашкодити</td><td>Яка ймовірність і вплив? Що робимо заздалегідь?</td><td>PM, аналітик постачає технічні</td></tr>
+              <tr><td><strong>A</strong>ssumptions<br>припущення</td><td>Те, що вважаємо правдою, не перевіривши</td><td>Що зламається, якщо це неправда?</td><td>Аналітик</td></tr>
+              <tr><td><strong>I</strong>ssues<br>проблеми</td><td>Те, що вже сталось і блокує</td><td>Хто розблокує і до якої дати?</td><td>PM</td></tr>
+              <tr><td><strong>D</strong>ependencies<br>залежності</td><td>Те, що ми чекаємо ззовні</td><td>Від кого, до якої дати, що робимо, якщо запізниться?</td><td>PM, аналітик по інтеграціях</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="doc-p">Мінімальний набір колонок робочого RAID-log: ID · тип · опис · вплив, якщо справдиться · ймовірність · власник · дата перевірки · статус · що зробили.</p>
+        <div class="diagram-wrap">
+          <div style="font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#9090B0;margin-bottom:.6rem;">Життєвий цикл припущення</div>
+          <svg width="100%" viewBox="0 0 720 230" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;">
+            <defs><marker id="raA" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#9090B0"/></marker></defs>
+            <rect x="14" y="80" width="150" height="54" rx="8" fill="#F0ECF5" stroke="#9090B0" stroke-width="1.3"/>
+            <text x="89" y="102" text-anchor="middle" font-size="12" font-weight="700" fill="#484860">Припущення</text>
+            <text x="89" y="120" text-anchor="middle" font-size="10" fill="#484860">зафіксоване, з датою</text>
+            <rect x="222" y="80" width="150" height="54" rx="8" fill="#E4F1F7" stroke="#4898C0" stroke-width="1.3"/>
+            <text x="297" y="102" text-anchor="middle" font-size="12" font-weight="700" fill="#2E5570">Перевірка</text>
+            <text x="297" y="120" text-anchor="middle" font-size="10" fill="#484860">хто і до якої дати</text>
+            <rect x="430" y="16" width="170" height="52" rx="8" fill="#F0FDF4" stroke="#10b981" stroke-width="1.3"/>
+            <text x="515" y="38" text-anchor="middle" font-size="11.5" font-weight="700" fill="#0f8a5f">Підтверджено</text>
+            <text x="515" y="55" text-anchor="middle" font-size="10" fill="#484860">стає фактом у вимогах</text>
+            <rect x="430" y="82" width="170" height="52" rx="8" fill="#FBF6EE" stroke="#D4A060" stroke-width="1.3"/>
+            <text x="515" y="104" text-anchor="middle" font-size="11.5" font-weight="700" fill="#8A5E22">Стало ризиком</text>
+            <text x="515" y="121" text-anchor="middle" font-size="10" fill="#484860">є план пом'якшення</text>
+            <rect x="430" y="148" width="170" height="52" rx="8" fill="#FEF2F2" stroke="#b91c1c" stroke-width="1.3"/>
+            <text x="515" y="170" text-anchor="middle" font-size="11.5" font-weight="700" fill="#b91c1c">Спростовано</text>
+            <text x="515" y="187" text-anchor="middle" font-size="10" fill="#484860">вимоги переглядаються</text>
+            <line x1="164" y1="107" x2="216" y2="107" stroke="#9090B0" stroke-width="1.4" marker-end="url(#raA)"/>
+            <line x1="372" y1="100" x2="424" y2="52" stroke="#9090B0" stroke-width="1.4" marker-end="url(#raA)"/>
+            <line x1="372" y1="107" x2="424" y2="107" stroke="#9090B0" stroke-width="1.4" marker-end="url(#raA)"/>
+            <line x1="372" y1="115" x2="424" y2="168" stroke="#9090B0" stroke-width="1.4" marker-end="url(#raA)"/>
+            <rect x="14" y="160" width="358" height="56" rx="8" fill="#F7F4F8" stroke="#DDD8E8" stroke-width="1"/>
+            <text x="32" y="182" font-size="10.5" font-weight="700" fill="#1C1E2C">Припущення без дати перевірки</text>
+            <text x="32" y="202" font-size="10.5" fill="#484860">= ризик, про який дізнаються останніми</text>
+          </svg>
+        </div>
+        <p class="doc-p">Практичне правило: <strong>у кожного припущення має бути дата перевірки й власник</strong>. Припущення, яке «колись уточнимо», не існує — воно просто чекає, поки зламає план.</p>
+        <p class="doc-p">Припущення варто виносити явно і в самі артефакти вимог: у User Story — окремим рядком «Припущення: …», у SRS — окремим розділом. Приклади реальних припущень, які регулярно виявляються хибними: «партнер віддає дані в UTF-8», «в довіднику не буде дублікатів», «замовлення не може бути від'ємним», «користувач має лише один активний договір», «файли не перевищать 10 МБ».</p>
+        <p class="doc-p">Поруч живуть <strong>обмеження (constraints)</strong> — те, що не обговорюється й задане ззовні: технічні (наявний стек, версія БД), бізнесові (бюджет, дата запуску), регуляторні, організаційні (команда розподілена, підрядник працює лише за фіксованим обсягом). На відміну від припущень, обмеження не перевіряються — вони фіксуються на початку й враховуються в рішеннях.</p>
+      </div>
+
+      <div class="doc-section" id="req-raid-case">
+        <h2 class="doc-h2">Кейс: промоакції проти погодження</h2>
+        <p class="doc-p">Той самий конфлікт із початку сторінки. Розбір:</p>
+        <ul class="doc-list">
+          <li><strong>Крок 1 — чи справжній.</strong> Уточнення показало: фінанси турбує не швидкість, а <em>розмір збитку</em> від помилкової знижки. Маркетингу потрібна швидкість лише для акцій «до 10% на категорію», великі кампанії вони й самі планують за тиждень.</li>
+          <li><strong>Крок 2 — рівень потреби.</strong> Потреба маркетингу — «реагувати на тренд у день його появи». Потреба фінансів — «жодної знижки, здатної зробити маржу від'ємною, без другої пари очей».</li>
+          <li><strong>Крок 3 — рішення.</strong> Варіант В із матриці: авто-погодження до порогу (знижка ≤10%, бюджет акції ≤50 000 ₴, категорія не в стоп-листі), понад поріг — погодження фінансами з SLA 4 години в робочий час.</li>
+          <li><strong>Крок 4 — фіксація.</strong> Рішення в Decision log: дата, учасники, критерії, відхилені варіанти й чому. Пороги винесені в налаштування, бо їх переглядатимуть.</li>
+        </ul>
+        <div class="doc-callout"><strong>Що додалось у RAID-log</strong><p><em>Припущення:</em> «маржинальність по категорії доступна в реальному часі» — перевірити з фінансовою системою до 12.09, власник — аналітик. Якщо ні, авто-погодження неможливе, і рішення повертається до варіанта Б.</p></div>
+      </div>
+
+      <div class="doc-section" id="req-raid-mistakes">
+        <h2 class="doc-h2">⚠️ Типові помилки мідл-аналітика</h2>
+        <div class="doc-cards-2">
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ Записати обидві вимоги й піти далі</div><p class="doc-p">Конфлікт «виявить розробка». Виявить — у спринті, з зупинкою роботи.</p><p class="doc-p"><strong>✅ Як правильно:</strong> перевірка на суперечності — частина аналізу, а не тестування.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ Вирішувати конфлікт самотужки</div><p class="doc-p">Аналітик обирає «розумніший» варіант, і одна зі сторін дізнається про це на демо.</p><p class="doc-p"><strong>✅ Як правильно:</strong> рішення ухвалюють стейкхолдери; аналітик готує варіанти й критерії.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ Усні домовленості</div><p class="doc-p">Через три місяці сторони пам'ятають різне, і суперечка починається спочатку.</p><p class="doc-p"><strong>✅ Як правильно:</strong> Decision log із датою, учасниками й відхиленими варіантами.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ Припущення в голові</div><p class="doc-p">«Ну очевидно ж, що дані приходять щодня» — до дня, коли не приходять.</p><p class="doc-p"><strong>✅ Як правильно:</strong> явний запис із власником і датою перевірки.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ RAID як разовий документ</div><p class="doc-p">Заповнили на старті проєкту й забули; за квартал він неактуальний.</p><p class="doc-p"><strong>✅ Як правильно:</strong> перегляд на регулярному ритмі, наприклад раз на спринт, 10 хвилин.</p></div>
+        </div>
+      </div>
+
+      <div class="doc-section" id="req-raid-checklist">
+        <h2 class="doc-h2">✅ Чек-лист роботи з конфліктами та припущеннями</h2>
+        <div class="doc-checklist-grid">
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Нову вимогу перевірено проти всіх категорій NFR</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Перевірено, чи не суперечить вона наявним вимогам</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Спірні терміни звірені з глосарієм проєкту</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Для кожного конфлікту з'ясовано, чи він справжній</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Сторони обговорювали потреби, а не рішення</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Заздалегідь відомо, хто арбітр у разі ескалації</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Рішення зафіксовано з критеріями й відхиленими варіантами</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Усі припущення винесені явно, а не «маються на увазі»</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>У кожного припущення є власник і дата перевірки</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Обмеження проєкту зафіксовані окремо від припущень</div>
+        </div>
+        <div class="doc-callout"><strong>🎯 Практика</strong><p>Візьміть епік, над яким працюєте зараз, і випишіть п'ять припущень, на яких він тримається. Для кожного дайте відповідь: як ми дізнаємось, що це неправда, і що доведеться переробити. Ті, у яких відповідь на друге питання дорога, — перевірте цього тижня.</p></div>
+      </div>
+
+      <div class="doc-section" id="req-raid-selfcheck">
+        <h2 class="doc-h2">🧠 Самоперевірка</h2>
+        <div class="selfcheck-item" onclick="toggleAnswer(this)"><strong>1.</strong> Чим припущення відрізняється від ризику?<div class="selfcheck-answer">Припущення — твердження, яке ми вважаємо істинним зараз, не перевіривши («партнер віддає дані щодня о 6:00»). Ризик — подія, яка може статись і зашкодити («партнер може затримати вивантаження»). Зв'язок прямий: непідтверджене припущення з часом перетворюється на ризик, а спростоване — на проблему. Тому в RAID вони поруч: це стадії одного явища.</div></div>
+        <div class="selfcheck-item" onclick="toggleAnswer(this)"><strong>2.</strong> Дві вимоги конфліктують, обидва стейкхолдери наполягають. Ваші дії?<div class="selfcheck-answer">Не обирати самому. Спершу перевірити, чи конфлікт справжній і чи говорять сторони про одне й те саме. Далі піднятись від рішень до потреб — часто обидві потреби задовольняються третім варіантом. Якщо конфлікт лишається, підготувати 2–3 варіанти з оцінкою за узгодженими критеріями й винести на рішення того, хто відповідає за продукт. Результат зафіксувати письмово разом із відхиленими варіантами.</div></div>
+        <div class="selfcheck-item" onclick="toggleAnswer(this)"><strong>3.</strong> Наведіть приклад конфлікту «функціональна вимога проти NFR».<div class="selfcheck-answer">«Показувати повну історію операцій за весь час одразу при відкритті сторінки» проти «сторінка відкривається не довше секунди». Для клієнта з десятьма тисячами операцій обидві вимоги одночасно нездійсненні. Вирішення зазвичай не «одна перемагає», а зміна дизайну: пагінація, ліниве довантаження, окремий екран історії з фільтрами. Саме тому такі конфлікти цінно ловити на аналізі — вони змінюють рішення, а не текст.</div></div>
+        <div class="selfcheck-item" onclick="toggleAnswer(this)"><strong>4.</strong> Навіщо в Decision log записувати відхилені варіанти?<div class="selfcheck-answer">Щоб через півроку не проходити ту саму дискусію знову. Новий учасник команди неминуче запропонує варіант, який уже розглядали; запис із причиною відхилення закриває питання за хвилину. Крім того, коли змінюються обставини (з'явився бюджет, змінилась регуляторика), відхилений варіант може стати актуальним — і тоді видно, яка саме умова має змінитись.</div></div>
+        <div class="selfcheck-item" onclick="toggleAnswer(this)"><strong>5.</strong> Хто має вести RAID-log — PM чи аналітик?<div class="selfcheck-answer">Формально власником журналу зазвичай є PM, бо ризики й проблеми — його зона. Але припущення й технічні залежності постачає аналітик: саме він бачить, на чому тримаються вимоги і чого команда чекає від зовнішніх систем. На практиці найкраще працює спільне ведення з чітким правилом: хто вніс запис, той і власник до його закриття.</div></div>
+      </div>
+
+      <div class="doc-section" id="req-raid-related">
+        <h2 class="doc-h2">🔗 Дивись також</h2>
+        <ul class="doc-list">
+          <li><a href="#/req-verification" data-go="req-verification">Верифікація та валідація вимог</a> — перевірка набору на несуперечливість</li>
+          <li><a href="#/docs-decision-log" data-go="docs-decision-log">Decision Log та ADR</a> — де фіксуються рішення</li>
+          <li><a href="#/course-negotiation" data-go="course-negotiation">Negotiation for BA</a> — техніки переговорів при ескалації</li>
+          <li><a href="#/ba-m9" data-go="ba-m9">Декомпозиція та пріоритизація</a> — коли конфлікт вирішується пріоритетом</li>
+          <li><a href="#/ba-m6" data-go="ba-m6">Ризики проєкту</a> — «R» у RAID детальніше</li>
+        </ul>
+      </div>
+
+      <div class="iq-link" data-nolink><span class="iq-link-icon">💼</span><div class="iq-link-body"><div class="iq-link-title">Питання на senior-співбесіді з цієї теми</div><div class="iq-link-desc">5 питань · розділ «Питання на Senior-співбесіді»</div></div><a class="iq-link-btn" href="#/interview-questions/iq-req-conflicts-raid" data-go="interview-questions" data-anchor="iq-req-conflicts-raid">Перейти →</a></div>
+    </div>
+
+      <!-- ═══ ВИМОГИ: Accessibility ═══ -->
+    <div id="page-req-accessibility" class="page-view" style="display:none;">
+      <nav class="breadcrumb"><span>База знань</span><span class="breadcrumb-sep">›</span><span class="current">Accessibility (WCAG 2.2)</span></nav>
+      <div class="page-header">
+        <div class="page-tag">Вимоги · NFR</div>
+        <h1 class="page-title">Accessibility <span class="grad">(WCAG 2.2) для аналітика</span></h1>
+        <p class="page-desc">Доступність як вимірюваний NFR: чотири принципи, дванадцять критеріїв, які ламають найчастіше, і як писати для них acceptance criteria.</p>
+      </div>
+
+      <div class="doc-section" id="req-a11y-why">
+        <h2 class="doc-h2">Навіщо це аналітику</h2>
+        <div class="doc-callout"><strong>📌 Контекст</strong><p>Уяви: банк випускає мобільний застосунок, і за місяць до релізу приходить лист від регулятора з вимогою відповідності рівню AA. Команда дивиться на макети: колірні контрасти нижчі за норму, поля форми підписані лише плейсхолдером, помилки позначені червоною рамкою без тексту. Це не «підкрутити CSS» — це переробка дизайн-системи й половини екранів.</p></div>
+        <p class="doc-p">Дві причини, чому доступність — не «добра справа», а вимога:</p>
+        <ul class="doc-list">
+          <li><strong>Юридична.</strong> European Accessibility Act став обов'язковим для широкого кола продуктів на ринку ЄС із червня 2025 року; у США діє ADA з рясною судовою практикою; в Україні діють державні стандарти доступності для публічних сервісів. Для держзамовлень і фінансових продуктів це вже не опція.</li>
+          <li><strong>Практична.</strong> Постійні або тимчасові обмеження має значна частина аудиторії, і йдеться не лише про повну сліпоту. Дальтонізм, знижений зір із віком, тремор, зламана рука, яскраве сонце на екрані, гучне метро без навушників — усе це ситуації, у яких доступний інтерфейс працює, а недоступний ні.</li>
+        </ul>
+        <p class="doc-p">Ключова теза для аналітика: <strong>доступність — це нефункціональна вимога, яку можна виміряти</strong>. Її не треба «відчувати»: у WCAG кожен критерій сформульований як перевірюване твердження.</p>
+      </div>
+
+      <div class="doc-section" id="req-a11y-pour">
+        <h2 class="doc-h2">Чотири принципи POUR</h2>
+        <div class="doc-cards-2">
+          <div class="doc-card doc-card--blue"><div class="doc-card-title">P — Perceivable, сприйнятний</div><p class="doc-p">Інформацію можна отримати доступним каналом: текстова альтернатива до зображень, субтитри, достатній контраст, зміст не передається лише кольором.</p></div>
+          <div class="doc-card doc-card--blue"><div class="doc-card-title">O — Operable, керований</div><p class="doc-p">Усім можна керувати з клавіатури, є час на дію, немає пасток фокуса, елементи керування достатнього розміру.</p></div>
+          <div class="doc-card doc-card--teal"><div class="doc-card-title">U — Understandable, зрозумілий</div><p class="doc-p">Мова сторінки визначена, поведінка передбачувана, помилки пояснені текстом і підказано, як їх виправити.</p></div>
+          <div class="doc-card doc-card--teal"><div class="doc-card-title">R — Robust, надійний</div><p class="doc-p">Коректна семантична розмітка, з якою працюють допоміжні технології; статуси повідомляються програмно.</p></div>
+        </div>
+        <p class="doc-p"><strong>Рівні відповідності.</strong> A — мінімум, без якого частина користувачів не може працювати взагалі. <strong>AA — практичний стандарт</strong>: саме його вимагають регулятори й закладають у контракти. AAA — окремі критерії, які реалістично виконати лише для частини контенту; вимагати AAA для всього продукту не рекомендує й сам стандарт. <strong>Обирайте AA</strong> і фіксуйте це в NFR явно.</p>
+      </div>
+
+      <div class="doc-section" id="req-a11y-criteria">
+        <h2 class="doc-h2">Дванадцять критеріїв AA, які ламають найчастіше</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Критерій</th><th>Вимога</th><th>Як перевірити</th></tr></thead>
+            <tbody>
+              <tr><td>Контраст тексту</td><td>Не менше 4,5:1 для звичайного тексту, 3:1 для великого (від 18,66 px жирного або 24 px)</td><td>Піпетка + калькулятор контрасту, axe</td></tr>
+              <tr><td>Контраст елементів керування</td><td>Не менше 3:1 для меж полів, іконок-кнопок, індикаторів стану</td><td>Те саме, окремо для бордерів і фокуса</td></tr>
+              <tr><td>Клавіатурна навігація</td><td>Кожна дія доступна з клавіатури, порядок обходу логічний</td><td>Пройти сценарій лише Tab / Shift+Tab / Enter / Esc</td></tr>
+              <tr><td>Видимий фокус</td><td>Поточний елемент явно виділений, індикатор не перекритий</td><td>Візуальна перевірка при обході Tab</td></tr>
+              <tr><td>Пастка фокуса</td><td>З модального вікна можна вийти клавіатурою; фокус повертається на місце</td><td>Відкрити модалку й спробувати вийти без миші</td></tr>
+              <tr><td>Підписи полів</td><td>Поле має програмно пов'язаний підпис; плейсхолдер підписом не є</td><td>Скрінрідер називає поле при фокусі</td></tr>
+              <tr><td>Помилки форм</td><td>Помилка описана текстом, пов'язана з полем, підказано, як виправити</td><td>Відправити форму з помилками й послухати скрінрідер</td></tr>
+              <tr><td>Колір як єдиний засіб</td><td>Статус не передається лише кольором — потрібен текст або іконка</td><td>Знімок екрана у відтінках сірого</td></tr>
+              <tr><td>Текстові альтернативи</td><td>Змістовні зображення мають alt; декоративні — порожній alt</td><td>Перевірка розмітки, axe</td></tr>
+              <tr><td>Заголовки та структура</td><td>Один h1, ієрархія без пропусків рівнів, списки розміченi як списки</td><td>Огляд дерева заголовків</td></tr>
+              <tr><td>Обмеження часу</td><td>Таймаут можна подовжити або вимкнути; попередження до завершення сесії</td><td>Дочекатись таймауту</td></tr>
+              <tr><td>Розмір цілі (2.2)</td><td>Інтерактивна ціль не менше 24×24 px або має достатній відступ</td><td>Вимірювання в інспекторі</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="doc-callout"><strong>📌 Що нового у WCAG 2.2</strong><p>Версія 2.2 додала критерії, які найчастіше зачіпають продуктові команди: <em>Focus Not Obscured</em> (сфокусований елемент не перекритий липкою шапкою чи банером — типова проблема з cookie-банерами), <em>Dragging Movements</em> (для будь-якого перетягування має бути альтернатива одним кліком), <em>Target Size (Minimum)</em> і <em>Accessible Authentication</em> (не можна вимагати запам'ятовування чи розпізнавання зображень як єдиний спосіб входу — це прямо впливає на дизайн капчі й двофакторної автентифікації).</p></div>
+      </div>
+
+      <div class="doc-section" id="req-a11y-ac">
+        <h2 class="doc-h2">Як писати acceptance criteria</h2>
+        <p class="doc-p">Найгірше формулювання — «форма має відповідати WCAG AA»: воно не підказує ані розробнику, що робити, ані QA, що перевіряти. Розкладаємо на перевірювані критерії. Приклад для форми входу:</p>
+        <div class="doc-callout"><p><strong>Given</strong> користувач на сторінці входу<br><strong>When</strong> він переміщується лише клавіатурою<br><strong>Then</strong> фокус послідовно проходить: email → пароль → «показати пароль» → «Забули пароль?» → «Увійти»; кожен елемент має видимий індикатор фокуса з контрастом ≥3:1.</p></div>
+        <div class="doc-callout"><p><strong>Given</strong> користувач зі скрінрідером відкрив форму<br><strong>When</strong> фокус переходить на поле пароля<br><strong>Then</strong> зачитується підпис «Пароль», стан «обов'язкове» і підказка щодо вимог до пароля.</p></div>
+        <div class="doc-callout"><p><strong>Given</strong> користувач відправив форму з порожнім email<br><strong>When</strong> система показує помилку<br><strong>Then</strong> текст помилки пов'язаний із полем через <code>aria-describedby</code>, фокус переміщується на перше помилкове поле, повідомлення оголошується скрінрідером, а сама помилка позначена не лише кольором.</p></div>
+        <p class="doc-p">Три прийоми, які роблять доступність частиною процесу, а не окремим проєктом:</p>
+        <ul class="doc-list">
+          <li><strong>Внести в Definition of Done.</strong> Пункти: клавіатурна навігація пройдена, контрасти перевірені, автоматичний аудит без критичних помилок, нові компоненти мають доступні стани.</li>
+          <li><strong>Домовитись із дизайнером про токени.</strong> Якщо палітра й стани фокуса перевірені на контраст один раз на рівні дизайн-системи, 80% проблем не виникає взагалі.</li>
+          <li><strong>Перевіряти на макеті, а не після розробки.</strong> Контраст і структуру видно ще у Figma — це найдешевша точка виправлення.</li>
+        </ul>
+        <p class="doc-p"><strong>Інструменти:</strong> axe DevTools і Lighthouse для автоматичної частини (ловлять приблизно третину проблем — решта потребує людини), перевірка контрасту в дизайні, і найголовніше — <em>ручний прохід сценарію з клавіатури</em> та тест зі скрінрідером (VoiceOver на macOS/iOS, NVDA на Windows, TalkBack на Android). Півгодини такого тесту дає більше, ніж будь-який автоматичний звіт.</p>
+        <p class="doc-p"><strong>Мобільна доступність</strong> має свою специфіку: підтримка системного збільшення шрифту без обрізання тексту, робота з VoiceOver і TalkBack, достатній розмір цілей для дотику, підтримка альбомної орієнтації, коректні мітки для іконкових кнопок.</p>
+      </div>
+
+      <div class="doc-section" id="req-a11y-case">
+        <h2 class="doc-h2">Кейс: мобільний застосунок банку під вимогу AA</h2>
+        <p class="doc-p">Аудит перед релізом дав 47 знахідок. Найдорожчі виявились не технічними, а дизайнерськими:</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Знахідка</th><th>Вплив</th><th>Рішення</th></tr></thead>
+            <tbody>
+              <tr><td>Сірий текст підказок на світлому фоні — контраст 2,8:1</td><td>Уся дизайн-система</td><td>Змінено токен кольору; перевірено всі стани в Figma</td></tr>
+              <tr><td>Статус платежу лише кольором крапки</td><td>18 екранів</td><td>Додано текстову мітку поруч з індикатором</td></tr>
+              <tr><td>Поля форм підписані лише плейсхолдером</td><td>Усі форми</td><td>Постійні підписи над полями</td></tr>
+              <tr><td>Іконкові кнопки без назв</td><td>Уся навігація</td><td>Додано доступні назви для кожної дії</td></tr>
+              <tr><td>Таймаут сесії 5 хв без попередження</td><td>Уся сесія</td><td>Попередження за 60 с із можливістю продовжити</td></tr>
+              <tr><td>Підтвердження переказу — лише перетягування слайдера</td><td>Ключовий сценарій</td><td>Додано альтернативну кнопку (критерій 2.2)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="doc-p">Висновок команди на ретроспективі: якби контраст і підписи полів були закладені в дизайн-систему на старті, 31 із 47 знахідок не виникла б.</p>
+      </div>
+
+      <div class="doc-section" id="req-a11y-mistakes">
+        <h2 class="doc-h2">⚠️ Типові помилки мідл-аналітика</h2>
+        <div class="doc-cards-2">
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ «Має відповідати WCAG AA» одним рядком</div><p class="doc-p">Ані розробник, ані QA не знають, що конкретно робити й перевіряти.</p><p class="doc-p"><strong>✅ Як правильно:</strong> перелік критеріїв і AC для ключових сценаріїв.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ Доступність наприкінці проєкту</div><p class="doc-p">Виправлення після розробки означає переробку дизайн-системи.</p><p class="doc-p"><strong>✅ Як правильно:</strong> перевірка на макетах і в Definition of Done.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ Покластись на автоматичний аудит</div><p class="doc-p">Lighthouse показує 100, а сценарій із клавіатури не проходиться.</p><p class="doc-p"><strong>✅ Як правильно:</strong> автотести плюс обов'язковий ручний прохід.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ Плейсхолдер замість підпису</div><p class="doc-p">Найпоширеніша помилка форм: після введення користувач уже не бачить, що це за поле.</p><p class="doc-p"><strong>✅ Як правильно:</strong> постійний видимий підпис, програмно пов'язаний із полем.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ Статус лише кольором</div><p class="doc-p">Червоне й зелене нерозрізненні для частини користувачів.</p><p class="doc-p"><strong>✅ Як правильно:</strong> колір плюс текст або іконка; перевірка знімком у сірих тонах.</p></div>
+        </div>
+      </div>
+
+      <div class="doc-section" id="req-a11y-checklist">
+        <h2 class="doc-h2">✅ Чек-лист AA для фічі</h2>
+        <div class="doc-checklist-grid">
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Контраст тексту ≥4,5:1, великого тексту ≥3:1</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Контраст меж полів та іконок-кнопок ≥3:1</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Увесь сценарій проходиться лише з клавіатури</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Порядок обходу відповідає візуальному порядку</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Індикатор фокуса видимий і не перекритий</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>З модальних вікон можна вийти клавіатурою</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Кожне поле має постійний програмно пов'язаний підпис</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Помилки описані текстом і пов'язані з полями</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Жодна інформація не передається лише кольором</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Змістовні зображення мають alt, декоративні — порожній</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Ієрархія заголовків без пропусків рівнів</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Для перетягування є альтернатива одним натисканням</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Інтерактивні цілі не менші за 24×24 px</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Таймаути попереджають і дозволяють продовжити</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Пройдено ручний тест зі скрінрідером</div>
+        </div>
+      </div>
+
+      <div class="doc-section" id="req-a11y-selfcheck">
+        <h2 class="doc-h2">🧠 Самоперевірка</h2>
+        <div class="selfcheck-item" onclick="toggleAnswer(this)"><strong>1.</strong> Чому плейсхолдер не вважається підписом поля?<div class="selfcheck-answer">Бо він зникає, щойно користувач починає вводити текст: людина втрачає контекст і не може перевірити, що саме заповнює. До того ж плейсхолдери зазвичай мають низький контраст, а частина скрінрідерів зачитує їх непослідовно. Правильно — постійний видимий підпис, програмно пов'язаний із полем; плейсхолдер можна лишити як приклад формату.</div></div>
+        <div class="selfcheck-item" onclick="toggleAnswer(this)"><strong>2.</strong> Автоматичний аудит показує 100 балів. Чи означає це відповідність AA?<div class="selfcheck-answer">Ні. Автоматичні інструменти виявляють приблизно третину проблем — ті, що видно з розмітки: відсутній alt, недостатній контраст, порушена ієрархія заголовків. Вони не оцінюють, чи <em>осмислений</em> alt, чи логічний порядок фокуса, чи зрозуміле повідомлення про помилку, чи можна пройти сценарій без миші. Обов'язковими лишаються ручний прохід із клавіатури й тест зі скрінрідером.</div></div>
+        <div class="selfcheck-item" onclick="toggleAnswer(this)"><strong>3.</strong> Дизайнер пропонує позначати обов'язкові поля червоною зірочкою. Що уточнити?<div class="selfcheck-answer">Чи достатній контраст зірочки й чи не є колір єдиним засобом передачі. Сама зірочка як символ прийнятна, але їй потрібне текстове пояснення («поля з * обов'язкові»), а стан «обов'язкове» має передаватись і програмно, щоб скрінрідер оголосив його при фокусі. Додатково варто розглянути протилежний підхід — позначати необов'язкові поля, якщо їх менше.</div></div>
+        <div class="selfcheck-item" onclick="toggleAnswer(this)"><strong>4.</strong> Що означає критерій Accessible Authentication із WCAG 2.2 для дизайну входу?<div class="selfcheck-answer">Що не можна робити єдиним способом входу тест, який вимагає когнітивних зусиль: запам'ятати пароль без можливості вставити його з менеджера, розпізнати спотворені символи чи знайти світлофори на картинках. Практичні наслідки: дозволити вставку в поле пароля (заборона вставки — поширена й шкідлива практика), підтримати менеджери паролів і passkeys, а для капчі передбачити альтернативу, яка не спирається на розпізнавання зображень.</div></div>
+      </div>
+
+      <div class="doc-section" id="req-a11y-related">
+        <h2 class="doc-h2">🔗 Дивись також</h2>
+        <ul class="doc-list">
+          <li><a href="#/sa-mod17" data-go="sa-mod17">Нефункціональні вимоги</a> — місце доступності серед інших NFR</li>
+          <li><a href="#/sa-mod15" data-go="sa-mod15">UX і прототипування</a> — де доступність перевіряється найдешевше</li>
+          <li><a href="#/req-verification" data-go="req-verification">Верифікація вимог</a> — як зробити критерії перевірюваними</li>
+          <li><a href="#/sec-domain-compliance" data-go="sec-domain-compliance">Регуляторика домену</a> — юридичний бік вимоги доступності</li>
+        </ul>
+      </div>
+
+      <div class="iq-link" data-nolink><span class="iq-link-icon">💼</span><div class="iq-link-body"><div class="iq-link-title">Питання на senior-співбесіді з цієї теми</div><div class="iq-link-desc">4 питань · розділ «Питання на Senior-співбесіді»</div></div><a class="iq-link-btn" href="#/interview-questions/iq-req-accessibility" data-go="interview-questions" data-anchor="iq-req-accessibility">Перейти →</a></div>
+    </div>
+
+      <!-- ═══ ОСНОВИ: Карта стандартів ═══ -->
+    <div id="page-std-map" class="page-view" style="display:none;">
+      <nav class="breadcrumb"><span>База знань</span><span class="breadcrumb-sep">›</span><span class="current">Карта стандартів аналітика</span></nav>
+      <div class="page-header">
+        <div class="page-tag">Основи · Стандарти</div>
+        <h1 class="page-title">Карта стандартів: <span class="grad">хто що описує</span> і що з цього брати</h1>
+        <p class="page-desc">BABOK, IREB, ISO 29148, ISO 25010, TOGAF, OMG — навігація по світу стандартів аналітика без спроби вивчити їх напам'ять.</p>
+      </div>
+
+      <div class="doc-section" id="std-map-why">
+        <h2 class="doc-h2">Навіщо це аналітику</h2>
+        <div class="doc-callout"><strong>📌 Контекст</strong><p>Уяви, що на співбесіді питають: «На який стандарт ви спираєтесь, коли пишете вимоги?». Відповідь «на здоровий глузд» технічно правдива, але позбавляє вас аргументу в суперечці. Стандарт — це не бюрократія, а <em>готова відповідь, яку не треба захищати</em>: «характеристики якісної вимоги за ISO 29148» звучить інакше, ніж «мені здається, так краще».</p></div>
+        <p class="doc-p">Знати всі стандарти напам'ять не потрібно й неможливо. Потрібно інше: <strong>розуміти, який стандарт відповідає на яке питання</strong>, і вміти знайти в ньому потрібний розділ за десять хвилин. Ця сторінка — саме така карта.</p>
+      </div>
+
+      <div class="doc-section" id="std-map-table">
+        <h2 class="doc-h2">Карта: стандарт → що з нього бере аналітик</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Стандарт</th><th>Орган</th><th>Що описує</th><th>Що бере аналітик</th></tr></thead>
+            <tbody>
+              <tr><td><strong>BABOK v3</strong></td><td>IIBA</td><td>Звід знань бізнес-аналізу</td><td>Структуру діяльності, 50 технік, спільну термінологію</td></tr>
+              <tr><td><strong>IREB CPRE</strong></td><td>IREB</td><td>Requirements Engineering</td><td>Глибину в елісітації, моделюванні, RE в Agile</td></tr>
+              <tr><td><strong>ISO/IEC/IEEE 29148:2018</strong></td><td>ISO/IEEE</td><td>Процеси RE, характеристики вимог, шаблони</td><td>Критерії якості вимоги, структуру SRS/StRS/SyRS</td></tr>
+              <tr><td><strong>ISO/IEC 25010</strong></td><td>ISO</td><td>Модель якості ПЗ</td><td>Каркас для NFR: характеристики й підхарактеристики</td></tr>
+              <tr><td><strong>TOGAF 10 + ArchiMate 3.2</strong></td><td>The Open Group</td><td>Enterprise-архітектура та її нотація</td><td>Мову опису зв'язку бізнесу й систем</td></tr>
+              <tr><td><strong>BPMN 2.0 / DMN 1.5 / UML 2.5</strong></td><td>OMG</td><td>Нотації процесів, рішень, систем</td><td>Стандартні діаграми, зрозумілі без пояснень</td></tr>
+              <tr><td><strong>PMBOK 7 / PMI-PBA</strong></td><td>PMI</td><td>Управління проєктами та аналіз у ньому</td><td>Роботу зі scope, ризиками, стейкхолдерами</td></tr>
+              <tr><td><strong>ITIL 4</strong></td><td>Axelos</td><td>Управління ІТ-послугами</td><td>Термінологію incident/problem/change для support-процесів</td></tr>
+              <tr><td><strong>ISO 27001 / SOC 2</strong></td><td>ISO / AICPA</td><td>Управління інформаційною безпекою</td><td>Вимоги до контролів, які стають вимогами до системи</td></tr>
+              <tr><td><strong>WCAG 2.2</strong></td><td>W3C</td><td>Доступність вебконтенту</td><td>Перевірювані критерії доступності</td></tr>
+              <tr><td><strong>OpenAPI / AsyncAPI</strong></td><td>Linux Foundation</td><td>Опис синхронних і подієвих API</td><td>Формат специфікації контрактів</td></tr>
+              <tr><td><strong>RFC (IETF)</strong></td><td>IETF</td><td>HTTP, OAuth, JSON, JWT тощо</td><td>Першоджерело, коли документація суперечлива</td></tr>
+              <tr><td><strong>IEEE 1016</strong></td><td>IEEE</td><td>Опис дизайну системи (SDD)</td><td>Структуру документа проєктного рішення</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="doc-section" id="std-map-key">
+        <h2 class="doc-h2">Шість ключових — детальніше</h2>
+        <div class="doc-cards-2">
+          <div class="doc-card doc-card--blue">
+            <div class="doc-card-title">📘 BABOK v3 — IIBA</div>
+            <p class="doc-p">Шість областей знань (планування, елісітація, управління життєвим циклом, аналіз стратегії, аналіз вимог і дизайн, оцінка рішення), близько 50 технік і концептуальна модель <strong>BACCM</strong>: потреба, зміна, рішення, зацікавлена сторона, цінність, контекст.</p>
+            <p class="doc-p"><strong>Сильний бік:</strong> повнота картини й спільна мова. <strong>Слабкий:</strong> описує «що», майже не описує «як» у конкретному проєкті.</p>
+          </div>
+          <div class="doc-card doc-card--blue">
+            <div class="doc-card-title">📗 IREB CPRE</div>
+            <p class="doc-p">Європейська школа requirements engineering. Foundation дає основи, Advanced розгалужується на Elicitation, Requirements Modeling і <strong>RE@Agile</strong>.</p>
+            <p class="doc-p"><strong>Сильний бік:</strong> глибина в самих вимогах і практичність. <strong>Порівняно з BABOK:</strong> вужча, але детальніша.</p>
+          </div>
+          <div class="doc-card doc-card--teal">
+            <div class="doc-card-title">📐 ISO/IEC/IEEE 29148:2018</div>
+            <p class="doc-p">Головний стандарт про вимоги: процеси RE, характеристики окремої вимоги й набору, шаблони документів <strong>StRS</strong> (потреби зацікавлених сторін), <strong>SyRS</strong> (системні вимоги), <strong>SRS</strong> (програмні вимоги).</p>
+            <p class="doc-p"><strong>Важливо:</strong> саме він замінив відкликаний IEEE 830-1998. Якщо у ваших документах є посилання на 830 — це привід оновити.</p>
+          </div>
+          <div class="doc-card doc-card--teal">
+            <div class="doc-card-title">📊 ISO/IEC 25010</div>
+            <p class="doc-p">Модель якості: характеристики та підхарактеристики, за якими описують NFR. Редакція 2023 року розширила модель — зокрема виділила <em>Safety</em> й переоформила Usability як <em>Interaction Capability</em>.</p>
+            <p class="doc-p"><strong>Практична цінність:</strong> готовий чек-лист, за яким видно, яку категорію якості ви ще не покрили жодною вимогою.</p>
+          </div>
+          <div class="doc-card doc-card--gold">
+            <div class="doc-card-title">🏛 TOGAF 10 + ArchiMate 3.2</div>
+            <p class="doc-p">TOGAF — метод розробки enterprise-архітектури (цикл ADM, чотири домени: бізнес, дані, застосунки, технології). ArchiMate — нотація для їх опису.</p>
+            <p class="doc-p"><strong>Кому:</strong> системним аналітикам у великих організаціях, де треба показати зв'язок «бізнес-здатність → процес → система → інфраструктура».</p>
+          </div>
+          <div class="doc-card doc-card--gold">
+            <div class="doc-card-title">🔷 OMG: BPMN, DMN, UML, SysML</div>
+            <p class="doc-p"><strong>BPMN 2.0</strong> — бізнес-процеси. <strong>DMN 1.5</strong> — правила й таблиці рішень окремо від процесу. <strong>UML 2.5</strong> — структура й поведінка систем. <strong>SysML</strong> — системна інженерія, де є залізо.</p>
+            <p class="doc-p"><strong>Головна вигода:</strong> діаграму за стандартом читає будь-хто, хто знає нотацію, без вашого пояснення.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="doc-section" id="std-map-diagram">
+        <h2 class="doc-h2">Який стандарт на якому етапі</h2>
+        <div class="diagram-wrap">
+          <div style="font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#9090B0;margin-bottom:.6rem;">Етап роботи аналітика → де шукати відповідь</div>
+          <svg width="100%" viewBox="0 0 740 300" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;">
+            <defs><marker id="smA" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#9090B0"/></marker></defs>
+            <rect x="10" y="30" width="132" height="46" rx="8" fill="#F1F7FA" stroke="#5BAEC8" stroke-width="1.3"/>
+            <text x="76" y="50" text-anchor="middle" font-size="11.5" font-weight="700" fill="#2E5570">Стратегія</text>
+            <text x="76" y="67" text-anchor="middle" font-size="10" fill="#484860">навіщо змінюємо</text>
+            <rect x="158" y="30" width="132" height="46" rx="8" fill="#E4F1F7" stroke="#4898C0" stroke-width="1.3"/>
+            <text x="224" y="50" text-anchor="middle" font-size="11.5" font-weight="700" fill="#2E5570">Елісітація</text>
+            <text x="224" y="67" text-anchor="middle" font-size="10" fill="#484860">збір вимог</text>
+            <rect x="306" y="30" width="132" height="46" rx="8" fill="#F1F9F6" stroke="#60B8A0" stroke-width="1.3"/>
+            <text x="372" y="50" text-anchor="middle" font-size="11.5" font-weight="700" fill="#3E8C74">Моделювання</text>
+            <text x="372" y="67" text-anchor="middle" font-size="10" fill="#484860">процеси й системи</text>
+            <rect x="454" y="30" width="132" height="46" rx="8" fill="#FBF6EE" stroke="#D4A060" stroke-width="1.3"/>
+            <text x="520" y="50" text-anchor="middle" font-size="11.5" font-weight="700" fill="#8A5E22">Специфікація</text>
+            <text x="520" y="67" text-anchor="middle" font-size="10" fill="#484860">документування</text>
+            <rect x="602" y="30" width="128" height="46" rx="8" fill="#FBF5F8" stroke="#C07898" stroke-width="1.3"/>
+            <text x="666" y="50" text-anchor="middle" font-size="11.5" font-weight="700" fill="#8A5070">Рішення</text>
+            <text x="666" y="67" text-anchor="middle" font-size="10" fill="#484860">оцінка й приймання</text>
+            <line x1="76" y1="76" x2="76" y2="106" stroke="#9090B0" stroke-width="1.3" marker-end="url(#smA)"/>
+            <line x1="224" y1="76" x2="224" y2="106" stroke="#9090B0" stroke-width="1.3" marker-end="url(#smA)"/>
+            <line x1="372" y1="76" x2="372" y2="106" stroke="#9090B0" stroke-width="1.3" marker-end="url(#smA)"/>
+            <line x1="520" y1="76" x2="520" y2="106" stroke="#9090B0" stroke-width="1.3" marker-end="url(#smA)"/>
+            <line x1="666" y1="76" x2="666" y2="106" stroke="#9090B0" stroke-width="1.3" marker-end="url(#smA)"/>
+            <rect x="10" y="110" width="132" height="86" rx="8" fill="#fff" stroke="#DDD8E8" stroke-width="1"/>
+            <text x="76" y="132" text-anchor="middle" font-size="10.5" fill="#1C1E2C">BABOK</text>
+            <text x="76" y="150" text-anchor="middle" font-size="10.5" fill="#1C1E2C">(Strategy Analysis)</text>
+            <text x="76" y="170" text-anchor="middle" font-size="10.5" fill="#1C1E2C">TOGAF</text>
+            <text x="76" y="188" text-anchor="middle" font-size="10.5" fill="#1C1E2C">PMBOK 7</text>
+            <rect x="158" y="110" width="132" height="86" rx="8" fill="#fff" stroke="#DDD8E8" stroke-width="1"/>
+            <text x="224" y="132" text-anchor="middle" font-size="10.5" fill="#1C1E2C">BABOK</text>
+            <text x="224" y="150" text-anchor="middle" font-size="10.5" fill="#1C1E2C">(Elicitation)</text>
+            <text x="224" y="170" text-anchor="middle" font-size="10.5" fill="#1C1E2C">IREB CPRE</text>
+            <text x="224" y="188" text-anchor="middle" font-size="10.5" fill="#1C1E2C">Advanced</text>
+            <rect x="306" y="110" width="132" height="86" rx="8" fill="#fff" stroke="#DDD8E8" stroke-width="1"/>
+            <text x="372" y="132" text-anchor="middle" font-size="10.5" fill="#1C1E2C">BPMN 2.0</text>
+            <text x="372" y="150" text-anchor="middle" font-size="10.5" fill="#1C1E2C">UML 2.5</text>
+            <text x="372" y="170" text-anchor="middle" font-size="10.5" fill="#1C1E2C">DMN 1.5</text>
+            <text x="372" y="188" text-anchor="middle" font-size="10.5" fill="#1C1E2C">ArchiMate</text>
+            <rect x="454" y="110" width="132" height="86" rx="8" fill="#fff" stroke="#DDD8E8" stroke-width="1"/>
+            <text x="520" y="132" text-anchor="middle" font-size="10.5" fill="#1C1E2C">ISO 29148</text>
+            <text x="520" y="150" text-anchor="middle" font-size="10.5" fill="#1C1E2C">ISO 25010</text>
+            <text x="520" y="170" text-anchor="middle" font-size="10.5" fill="#1C1E2C">OpenAPI</text>
+            <text x="520" y="188" text-anchor="middle" font-size="10.5" fill="#1C1E2C">IEEE 1016</text>
+            <rect x="602" y="110" width="128" height="86" rx="8" fill="#fff" stroke="#DDD8E8" stroke-width="1"/>
+            <text x="666" y="132" text-anchor="middle" font-size="10.5" fill="#1C1E2C">BABOK</text>
+            <text x="666" y="150" text-anchor="middle" font-size="10.5" fill="#1C1E2C">(Solution Eval)</text>
+            <text x="666" y="170" text-anchor="middle" font-size="10.5" fill="#1C1E2C">ISO 25010</text>
+            <text x="666" y="188" text-anchor="middle" font-size="10.5" fill="#1C1E2C">WCAG 2.2</text>
+            <rect x="10" y="216" width="720" height="70" rx="8" fill="#F7F4F8" stroke="#DDD8E8" stroke-width="1"/>
+            <text x="28" y="240" font-size="11" font-weight="700" fill="#1C1E2C">Наскрізні, потрібні на всіх етапах:</text>
+            <text x="28" y="262" font-size="10.5" fill="#484860">ISO 27001 / SOC 2 — вимоги безпеки · ITIL 4 — експлуатація · RFC — першоджерело з протоколів</text>
+            <text x="28" y="278" font-size="10.5" fill="#484860">Жоден стандарт не замінює розмову зі стейкхолдером. Стандарт задає форму, зміст дає контекст.</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="doc-section" id="std-map-cite">
+        <h2 class="doc-h2">Як цитувати стандарт у документі</h2>
+        <p class="doc-p">Посилання на стандарт має бути перевірюваним. Мінімальна форма: <strong>назва, номер, рік редакції, конкретний розділ</strong>.</p>
+        <div class="doc-cards-2">
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ Так не треба</div><p class="doc-p">«Вимоги оформлені за стандартом ISO»<br>«Згідно з BABOK, ми провели елісітацію»<br>«Структура документа відповідає IEEE»</p></div>
+          <div class="doc-card doc-card--teal"><div class="doc-card-title">✅ Так треба</div><p class="doc-p">«Характеристики вимог перевірені за ISO/IEC/IEEE 29148:2018, п. 5.2.5»<br>«Категорії NFR — за ISO/IEC 25010:2023, розділ 4»<br>«Рівень відповідності — WCAG 2.2, рівень AA (станом на 03.09.2026)»</p></div>
+        </div>
+        <p class="doc-p">Для норм, що змінюються (регуляторика, WCAG, PSD2), додавайте <em>дату перевірки актуальності</em>. Це рятує від ситуації, коли документ посилається на скасовану редакцію, а помічають це на аудиті.</p>
+      </div>
+
+      <div class="doc-section" id="std-map-limits">
+        <h2 class="doc-h2">Чого стандарти не вирішують</h2>
+        <ul class="doc-list">
+          <li><strong>Не скажуть, що саме потрібно вашому бізнесу.</strong> BABOK описує техніку інтерв'ю, але не дасть відповіді, кого інтерв'ювати у вашій компанії.</li>
+          <li><strong>Не замінять домену.</strong> Ідеально оформлена вимога, яка суперечить логіці бухобліку, лишається помилкою.</li>
+          <li><strong>Не гарантують якості.</strong> Документ можна оформити за 29148 і при цьому описати непотрібну систему.</li>
+          <li><strong>Часто відстають від практики.</strong> Стандарти оновлюються роками, індустрія — місяцями. Подієві архітектури, ML-функції, LLM у продуктах описані в стандартах слабо або ніяк.</li>
+          <li><strong>Суперечать один одному в термінах.</strong> «Requirement» у BABOK і в 29148 — не зовсім те саме. Усередині проєкту потрібен власний глосарій, а не сподівання, що стандарт усе узгодить.</li>
+        </ul>
+        <div class="doc-callout"><strong>✅ Практичний висновок</strong><p>Використовуйте стандарти як <em>чек-листи й спільну мову</em>, а не як інструкцію. Найбільша користь від них — не в дотриманні букви, а в тому, що вони підказують питання, які ви забули поставити.</p></div>
+      </div>
+
+      <div class="doc-section" id="std-map-mistakes">
+        <h2 class="doc-h2">⚠️ Типові помилки мідл-аналітика</h2>
+        <div class="doc-cards-2">
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ Посилатись на відкликаний стандарт</div><p class="doc-p">IEEE 830 досі кочує шаблонами SRS, хоча його замінено ISO 29148 ще у 2011 році.</p><p class="doc-p"><strong>✅ Як правильно:</strong> раз на рік перевіряти актуальність стандартів у своїх шаблонах.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ Дотримуватись форми заради форми</div><p class="doc-p">SRS на 90 сторінок за шаблоном для двотижневої фічі.</p><p class="doc-p"><strong>✅ Як правильно:</strong> брати зі стандарту релевантні розділи, решту явно позначати як не застосовні.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ Плутати сертифікацію з компетенцією</div><p class="doc-p">Сертифікат підтверджує знання зводу, а не вміння вести проєкт.</p><p class="doc-p"><strong>✅ Як правильно:</strong> вчити стандарт заради інструментів, а не заради рядка в резюме.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ Один стандарт на всі випадки</div><p class="doc-p">Спроба описати інтеграційний контракт мовою BABOK або процес — через UML.</p><p class="doc-p"><strong>✅ Як правильно:</strong> для кожного питання свій інструмент: BPMN для процесів, OpenAPI для контрактів, 25010 для NFR.</p></div>
+        </div>
+      </div>
+
+      <div class="doc-section" id="std-map-selfcheck">
+        <h2 class="doc-h2">🧠 Самоперевірка</h2>
+        <div class="selfcheck-item" onclick="toggleAnswer(this)"><strong>1.</strong> Чим BABOK відрізняється від ISO 29148?<div class="selfcheck-answer">BABOK — звід знань про діяльність бізнес-аналітика загалом: області знань, техніки, компетенції, спільна термінологія. ISO 29148 — інженерний стандарт саме про вимоги: процеси requirements engineering, критерії якості вимоги та набору вимог, шаблони документів. Спрощено: BABOK відповідає «що робить аналітик», 29148 — «якою має бути вимога і документ». Вони не конкурують, а доповнюють одне одного.</div></div>
+        <div class="selfcheck-item" onclick="toggleAnswer(this)"><strong>2.</strong> У шаблоні SRS вашої компанії стоїть посилання на IEEE 830. Що робити?<div class="selfcheck-answer">IEEE 830-1998 відкликаний; чинний стандарт — ISO/IEC/IEEE 29148:2018. Різко переписувати всі шаблони не обов'язково: структура 830 багато в чому увійшла в 29148. Практичний крок — оновити посилання, звірити структуру з чинним стандартом, додати розділи, яких у 830 не було (зокрема характеристики якості вимог і трасування), і згадати 830 як історичну основу, щоб не плутати тих, хто звик до старої нумерації.</div></div>
+        <div class="selfcheck-item" onclick="toggleAnswer(this)"><strong>3.</strong> Навіщо ISO 25010, якщо категорії NFR і так відомі?<div class="selfcheck-answer">Щоб не покладатись на пам'ять. Модель дає повний перелік характеристик і підхарактеристик, за яким видно прогалини: більшість команд пам'ятає про продуктивність і безпеку, але забуває про сумісність, супроводжуваність чи переносимість. Крім того, це спільна мова з архітекторами й аудиторами: посилання на характеристику стандарту знімає суперечку про те, «чи це взагалі вимога».</div></div>
+        <div class="selfcheck-item" onclick="toggleAnswer(this)"><strong>4.</strong> Коли аналітику справді потрібні TOGAF і ArchiMate?<div class="selfcheck-answer">Коли робота виходить за межі однієї системи: треба показати, як бізнес-здатність підтримується процесами, застосунками й інфраструктурою, або обґрунтувати рішення на рівні ландшафту організації. У продуктовій команді з одним застосунком це надлишок — там достатньо C4 чи простої контекстної діаграми. Ознака, що TOGAF потрібен: у розмові регулярно звучать «поточний ландшафт», «цільова архітектура» й «перехідні стани».</div></div>
+      </div>
+
+      <div class="doc-section" id="std-map-related">
+        <h2 class="doc-h2">🔗 Дивись також</h2>
+        <ul class="doc-list">
+          <li><a href="#/ba-m2" data-go="ba-m2">BACCM та концепції BABOK</a> — концептуальна модель детальніше</li>
+          <li><a href="#/req-verification" data-go="req-verification">Верифікація вимог</a> — характеристики якості за ISO 29148 у роботі</li>
+          <li><a href="#/sa-mod17" data-go="sa-mod17">Нефункціональні вимоги</a> — ISO 25010 як каркас NFR</li>
+          <li><a href="#/docs-srs" data-go="docs-srs">SRS</a> — структура документа за чинним стандартом</li>
+          <li><a href="#/ea-togaf" data-go="ea-togaf">TOGAF для аналітика</a> — enterprise-рівень</li>
+        </ul>
+      </div>
+
+      <div class="iq-link" data-nolink><span class="iq-link-icon">💼</span><div class="iq-link-body"><div class="iq-link-title">Питання на senior-співбесіді з цієї теми</div><div class="iq-link-desc">4 питань · розділ «Питання на Senior-співбесіді»</div></div><a class="iq-link-btn" href="#/interview-questions/iq-std-map" data-go="interview-questions" data-anchor="iq-std-map">Перейти →</a></div>
+    </div>
+
+      <!-- ═══ КАР'ЄРА: Матриця компетенцій ═══ -->
+    <div id="page-career-competency-matrix" class="page-view" style="display:none;">
+      <nav class="breadcrumb"><span>База знань</span><span class="breadcrumb-sep">›</span><span class="current">Матриця компетенцій</span></nav>
+      <div class="page-header">
+        <div class="page-tag">Кар'єра · Розвиток</div>
+        <h1 class="page-title">Матриця компетенцій: <span class="grad">Junior → Middle → Senior → Lead</span></h1>
+        <p class="page-desc">Не роки й не список технологій, а поведінкові індикатори: що саме людина робить на кожному рівні — і як чесно оцінити себе.</p>
+      </div>
+
+      <div class="doc-section" id="ccm-why">
+        <h2 class="doc-h2">Навіщо це аналітику</h2>
+        <div class="doc-callout"><strong>📌 Контекст</strong><p>Уяви розмову з менеджером: «Я вже три роки мідл, хочу сеньйора». — «Ти ще не готовий». — «А що конкретно треба?» — «Ну… більше самостійності». Обидва вийшли незадоволеними, і жоден не знає, що робити в понеділок.</p></div>
+        <p class="doc-p">Проблема не в менеджері, а у відсутності спільної мірки. «Більше самостійності» — не критерій. Матриця компетенцій перетворює цю розмову на предметну: не «ти не готовий», а «ось три рядки, де ти на рівні мідла, і ось що в них означає senior».</p>
+      </div>
+
+      <div class="doc-section" id="ccm-axes">
+        <h2 class="doc-h2">Що насправді визначає рівень</h2>
+        <p class="doc-p">Рівень — це не стаж і не кількість відомих технік. Це чотири осі, і рухатись треба по всіх.</p>
+        <div class="doc-cards-2">
+          <div class="doc-card doc-card--blue"><div class="doc-card-title">1. Scope — масштаб</div><p class="doc-p">Junior — задача. Middle — фіча чи модуль. Senior — продукт або напрямок. Lead — практика в кількох командах.</p></div>
+          <div class="doc-card doc-card--blue"><div class="doc-card-title">2. Автономність</div><p class="doc-p">Junior працює за поставленою задачею. Middle — за метою. Senior сам знаходить задачі. Lead формує, які задачі мають ставити інші.</p></div>
+          <div class="doc-card doc-card--teal"><div class="doc-card-title">3. Вплив</div><p class="doc-p">Junior впливає на свою роботу. Middle — на команду. Senior — на рішення продукту. Lead — на процеси й людей за межами команди.</p></div>
+          <div class="doc-card doc-card--teal"><div class="doc-card-title">4. Невизначеність</div><p class="doc-p">Головна вісь. Junior потребує чіткого контексту. Middle працює з неповним. Senior комфортно почувається там, де не знає ніхто. Lead структурує хаос для інших.</p></div>
+        </div>
+        <p class="doc-p">Саме четверта вісь найкраще пояснює, чому «п'ять років досвіду» не дорівнює senior: можна п'ять років працювати в добре визначеному контексті й ніколи не тренувати цю здатність.</p>
+      </div>
+
+      <div class="doc-section" id="ccm-matrix">
+        <h2 class="doc-h2">Матриця: дванадцять компетенцій × чотири рівні</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Компетенція</th><th>Junior</th><th>Middle</th><th>Senior</th><th>Lead</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>Елісітація</strong></td>
+                <td>Бере участь у зустрічах, конспектує, ставить уточнювальні питання за підготовленим списком</td>
+                <td>Проводить інтерв'ю за підготовленим планом, обирає техніку зі знайомих</td>
+                <td>Сам визначає, кого й у якому порядку опитувати, добирає техніку під стейкхолдера, витягує невисловлені потреби</td>
+                <td>Будує підхід до елісітації для практики, навчає інших, працює з опором на рівні організації</td>
+              </tr>
+              <tr>
+                <td><strong>Аналіз і моделювання</strong></td>
+                <td>Малює діаграми за зразком, описує as-is</td>
+                <td>Самостійно моделює процес і дані, обирає нотацію під задачу</td>
+                <td>Моделює складні домени, бачить системні наслідки, пропонує альтернативи to-be</td>
+                <td>Задає конвенції моделювання, рев'ює моделі інших</td>
+              </tr>
+              <tr>
+                <td><strong>Документація</strong></td>
+                <td>Пише за шаблоном, потребує рев'ю</td>
+                <td>Пише зрозуміло для команди, підтримує актуальність</td>
+                <td>Обирає, який документ потрібен, а який ні; пише під аудиторію; безжально скорочує</td>
+                <td>Створює шаблони й стандарти документації, будує базу знань</td>
+              </tr>
+              <tr>
+                <td><strong>NFR і технічна глибина</strong></td>
+                <td>Знає, що NFR існують</td>
+                <td>Пише вимірювані NFR за категоріями, розуміє архітектуру верхнеьрівнево</td>
+                <td>Веде розмову з архітектором на рівних, оцінює наслідки рішень, бачить ризики інтеграцій</td>
+                <td>Впливає на технічну стратегію, ставить питання, яких не ставить ніхто</td>
+              </tr>
+              <tr>
+                <td><strong>Стейкхолдери</strong></td>
+                <td>Спілкується з призначеними контактами</td>
+                <td>Веде кількох стейкхолдерів, помічає розбіжності</td>
+                <td>Будує карту впливу, працює зі складними й конфліктними, знаходить справжнього замовника</td>
+                <td>Працює на рівні C-level, вибудовує довіру до практики аналізу</td>
+              </tr>
+              <tr>
+                <td><strong>Комунікація і фасилітація</strong></td>
+                <td>Веде нотатки, розсилає підсумки</td>
+                <td>Проводить робочі зустрічі за агендою</td>
+                <td>Фасилітує воркшопи з конфліктом інтересів, доводить групу до рішення</td>
+                <td>Фасилітує стратегічні сесії, навчає фасилітації</td>
+              </tr>
+              <tr>
+                <td><strong>Пріоритизація і scope</strong></td>
+                <td>Виконує узгоджений обсяг</td>
+                <td>Пропонує пріоритети, помічає розростання обсягу</td>
+                <td>Каже «ні» аргументовано, керує scope через цінність, веде переговори про обсяг</td>
+                <td>Керує портфелем ініціатив, узгоджує пріоритети між командами</td>
+              </tr>
+              <tr>
+                <td><strong>Домен</strong></td>
+                <td>Вчить базову термінологію</td>
+                <td>Впевнено працює у своєму домені</td>
+                <td>Глибоко знає домен, помічає помилки експертів, швидко освоює новий</td>
+                <td>Є визнаним доменним експертом, до якого йдуть по консультацію</td>
+              </tr>
+              <tr>
+                <td><strong>Інструменти</strong></td>
+                <td>Користується за інструкцією</td>
+                <td>Вільно володіє Jira, Confluence, Figma, SQL на рівні запитів</td>
+                <td>Вибудовує процес в інструментах під команду, автоматизує рутину</td>
+                <td>Обирає інструментарій для практики, впроваджує його</td>
+              </tr>
+              <tr>
+                <td><strong>Процеси і методології</strong></td>
+                <td>Дотримується прийнятого процесу</td>
+                <td>Розуміє, навіщо кожна церемонія, пропонує дрібні покращення</td>
+                <td>Адаптує процес під контекст команди, бачить, коли методологія шкодить</td>
+                <td>Проєктує процес delivery, впроваджує зміни в кількох командах</td>
+              </tr>
+              <tr>
+                <td><strong>Лідерство і менторинг</strong></td>
+                <td>Вчиться сам</td>
+                <td>Допомагає новачкам із конкретними питаннями</td>
+                <td>Менторить джунів і мідлів, проводить рев'ю їхніх артефактів</td>
+                <td>Будує систему розвитку: онбординг, IDP, кар'єрні розмови</td>
+              </tr>
+              <tr>
+                <td><strong>Стратегічне мислення</strong></td>
+                <td>Розуміє мету своєї задачі</td>
+                <td>Пов'язує вимоги з цілями продукту</td>
+                <td>Обґрунтовує рішення в грошах, рахує ROI, впливає на дорожню карту</td>
+                <td>Бере участь у формуванні продуктової і технологічної стратегії</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="doc-section" id="ccm-sa">
+        <h2 class="doc-h2">Додатково для системного аналітика</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Компетенція</th><th>Junior</th><th>Middle</th><th>Senior</th><th>Lead</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>Архітектура</strong></td>
+                <td>Знає, що таке клієнт-сервер і БД</td>
+                <td>Читає й малює компонентні діаграми, розуміє наслідки моноліт/мікросервіси</td>
+                <td>Оцінює архітектурні компроміси, бере участь в ADR, ставить питання про масштабування й відмовостійкість</td>
+                <td>Впливає на цільову архітектуру, узгоджує її з бізнес-здатностями</td>
+              </tr>
+              <tr>
+                <td><strong>Інтеграції</strong></td>
+                <td>Розуміє, що таке API</td>
+                <td>Описує REST-контракт, читає OpenAPI, тестує в Postman</td>
+                <td>Проєктує інтеграцію: стиль, контракт, mapping, сценарії помилок, ідемпотентність</td>
+                <td>Задає інтеграційні стандарти й канонічні моделі організації</td>
+              </tr>
+              <tr>
+                <td><strong>Дані</strong></td>
+                <td>Пише прості SELECT</td>
+                <td>JOIN, агрегації, читає ER-діаграму, описує модель даних фічі</td>
+                <td>Проєктує модель даних, розуміє нормалізацію й історичність, оцінює вплив на продуктивність</td>
+                <td>Впливає на стратегію даних: майстер-дані, governance, сховище</td>
+              </tr>
+              <tr>
+                <td><strong>Безпека</strong></td>
+                <td>Знає про ролі й доступи</td>
+                <td>Складає матрицю прав, пише базові security-вимоги</td>
+                <td>Веде threat modeling, працює з регуляторикою, проєктує аудит</td>
+                <td>Вбудовує безпеку в процес розробки як стандарт</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="doc-section" id="ccm-ceiling">
+        <h2 class="doc-h2">П'ять «стель» на шляху middle → senior</h2>
+        <div class="doc-cards-2">
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">1. Робота за ТЗ замість формування ТЗ</div><p class="doc-p">Мідл чудово виконує поставлену задачу. Senior помічає, що задачу поставлено неправильно, і йде з'ясовувати справжню потребу — навіть коли його не просили.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">2. «Я передав розробникам»</div><p class="doc-p">Відповідальність закінчується на передачі документа. Senior відповідає за те, що фіча вирішила проблему, а не за те, що вимоги були написані.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">3. Уникання конфліктів</div><p class="doc-p">Мідл записує обидві суперечливі вимоги й сподівається, що якось вирішиться. Senior виносить конфлікт на поверхню — це найнеприємніша й найцінніша частина роботи.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">4. Немає домену</div><p class="doc-p">Можна знати всі техніки BABOK і бути безпорадним у розмові з бухгалтером. Домен — те, що не масштабується технікою.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">5. Не рахує гроші</div><p class="doc-p">«Користувачам буде зручніше» — аргумент мідла. «Це скоротить обробку заявки на 4 хвилини, при 3000 заявок на місяць — 200 годин» — аргумент сеньйора.</p></div>
+        </div>
+      </div>
+
+      <div class="doc-section" id="ccm-selfassess">
+        <h2 class="doc-h2">Як провести самооцінку</h2>
+        <p class="doc-p">Оцініть кожен із дванадцяти рядків за шкалою: <strong>1</strong> — рівень Junior, <strong>2</strong> — Middle, <strong>3</strong> — Senior, <strong>4</strong> — Lead. Правило чесності: ставте бал, який зможете підтвердити <em>конкретним прикладом за останні півроку</em>. Не «я вмію фасилітувати», а «я провів воркшоп на 12 людей із конфліктом між продажами й фінансами, результат — узгоджені пороги».</p>
+        <div class="diagram-wrap">
+          <div style="font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#9090B0;margin-bottom:.6rem;">Приклад профілю: Middle із сильним аналізом і слабкою стратегією</div>
+          <svg width="100%" viewBox="0 0 720 330" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;">
+            <g transform="translate(230,165)">
+              <circle cx="0" cy="0" r="35" fill="none" stroke="#DDD8E8" stroke-width="1"/>
+              <circle cx="0" cy="0" r="70" fill="none" stroke="#DDD8E8" stroke-width="1"/>
+              <circle cx="0" cy="0" r="105" fill="none" stroke="#DDD8E8" stroke-width="1"/>
+              <circle cx="0" cy="0" r="140" fill="none" stroke="#DDD8E8" stroke-width="1.2"/>
+              <line x1="0" y1="0" x2="0" y2="-140" stroke="#DDD8E8"/>
+              <line x1="0" y1="0" x2="121" y2="-70" stroke="#DDD8E8"/>
+              <line x1="0" y1="0" x2="121" y2="70" stroke="#DDD8E8"/>
+              <line x1="0" y1="0" x2="0" y2="140" stroke="#DDD8E8"/>
+              <line x1="0" y1="0" x2="-121" y2="70" stroke="#DDD8E8"/>
+              <line x1="0" y1="0" x2="-121" y2="-70" stroke="#DDD8E8"/>
+              <polygon points="0,-105 60.6,-35 60.6,35 0,70 -60.6,35 -90.9,-52.5" fill="rgba(91,174,200,.22)" stroke="#4898C0" stroke-width="2"/>
+              <circle cx="0" cy="-105" r="3.5" fill="#4898C0"/>
+              <circle cx="60.6" cy="-35" r="3.5" fill="#4898C0"/>
+              <circle cx="60.6" cy="35" r="3.5" fill="#4898C0"/>
+              <circle cx="0" cy="70" r="3.5" fill="#4898C0"/>
+              <circle cx="-60.6" cy="35" r="3.5" fill="#4898C0"/>
+              <circle cx="-90.9" cy="-52.5" r="3.5" fill="#4898C0"/>
+              <text x="0" y="-152" text-anchor="middle" font-size="10.5" font-weight="700" fill="#1C1E2C">Аналіз</text>
+              <text x="136" y="-74" text-anchor="middle" font-size="10.5" font-weight="700" fill="#1C1E2C">Документація</text>
+              <text x="136" y="80" text-anchor="middle" font-size="10.5" font-weight="700" fill="#1C1E2C">NFR</text>
+              <text x="0" y="160" text-anchor="middle" font-size="10.5" font-weight="700" fill="#1C1E2C">Стратегія</text>
+              <text x="-136" y="80" text-anchor="middle" font-size="10.5" font-weight="700" fill="#1C1E2C">Стейкхолдери</text>
+              <text x="-136" y="-74" text-anchor="middle" font-size="10.5" font-weight="700" fill="#1C1E2C">Елісітація</text>
+            </g>
+            <rect x="440" y="60" width="260" height="200" rx="10" fill="#F7F4F8" stroke="#DDD8E8" stroke-width="1"/>
+            <text x="460" y="88" font-size="11.5" font-weight="700" fill="#1C1E2C">Як читати профіль</text>
+            <text x="460" y="112" font-size="10.5" fill="#484860">Кільця зсередини назовні:</text>
+            <text x="460" y="130" font-size="10.5" fill="#484860">Junior · Middle · Senior · Lead</text>
+            <text x="460" y="158" font-size="10.5" fill="#484860">Рівний профіль важливіший</text>
+            <text x="460" y="175" font-size="10.5" fill="#484860">за один високий промінь:</text>
+            <text x="460" y="192" font-size="10.5" fill="#484860">рівень визначає найслабша вісь,</text>
+            <text x="460" y="209" font-size="10.5" fill="#484860">а не найсильніша.</text>
+            <text x="460" y="237" font-size="10.5" font-weight="700" fill="#8A5070">Тут: тягнути стратегію й NFR,</text>
+            <text x="460" y="254" font-size="10.5" font-weight="700" fill="#8A5070">а не поглиблювати аналіз.</text>
+          </svg>
+        </div>
+        <p class="doc-p"><strong>Як обговорювати з менеджером.</strong> Принесіть заповнену матрицю й попросіть оцінити вас незалежно. Розбіжності — найцінніша частина розмови: там, де ви поставили 3, а менеджер 2, ховається різне розуміння очікувань. Далі домовтесь про <strong>2–3 рядки на квартал</strong>, а не про «стати сеньйором».</p>
+        <p class="doc-p"><strong>Шаблон IDP на шість місяців:</strong> компетенція · поточний рівень · цільовий · що робитиму (конкретна робоча ситуація, не курс) · як побачимо результат · дата перевірки. Ключове — розвиток відбувається в задачах, а не в навчанні: щоб вирости в фасилітації, треба провести воркшоп, а не подивитись про нього відео.</p>
+        <p class="doc-p"><strong>Як демонструвати рівень на співбесіді.</strong> Під кожну компетенцію заготуйте приклад за схемою STAR: ситуація, задача, ваші дії, результат у цифрах. Питання «чим ви відрізняєтесь від мідла» тоді отримує відповідь не «я досвідченіший», а конкретну історію про рішення, яке ви прийняли самостійно, і його наслідки.</p>
+      </div>
+
+      <div class="doc-section" id="ccm-mistakes">
+        <h2 class="doc-h2">⚠️ Типові помилки</h2>
+        <div class="doc-cards-2">
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ Оцінювати рівень роками</div><p class="doc-p">Три роки в добре визначеному контексті не тренують роботу з невизначеністю.</p><p class="doc-p"><strong>✅ Як правильно:</strong> оцінювати за поведінковими індикаторами, а не за стажем.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ Senior = «знає все»</div><p class="doc-p">Сеньйор відрізняється не обсягом знань, а якістю рішень в умовах, коли знань бракує.</p><p class="doc-p"><strong>✅ Як правильно:</strong> тренувати роботу з невизначеністю, а не поповнювати список технік.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ Ігнорувати домен</div><p class="doc-p">Техніки універсальні, домен — ні; саме він робить аналітика незамінним.</p><p class="doc-p"><strong>✅ Як правильно:</strong> свідомо інвестувати в домен так само, як у hard skills.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ Розвивати лише hard skills</div><p class="doc-p">Стеля мідла майже завжди в комунікації, конфліктах і scope, а не в нотаціях.</p><p class="doc-p"><strong>✅ Як правильно:</strong> подивитись на найнижчі промені профілю — там зазвичай soft.</p></div>
+          <div class="doc-card doc-card--gold"><div class="doc-card-title">❌ Чекати, що рівень «дадуть»</div><p class="doc-p">Підвищення фіксує те, що людина вже робить, а не авансує.</p><p class="doc-p"><strong>✅ Як правильно:</strong> почати діяти на цільовому рівні, а потім прийти з прикладами.</p></div>
+        </div>
+      </div>
+
+      <div class="doc-section" id="ccm-checklist">
+        <h2 class="doc-h2">✅ Практика</h2>
+        <div class="doc-checklist-grid">
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Оцінити всі 12 рядків за шкалою 1–4</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Для кожного бала записати підтвердний приклад за останні 6 місяців</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Позначити рядки без прикладу — це завищені оцінки</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Попросити менеджера оцінити вас незалежно</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Обговорити рядки з найбільшою розбіжністю</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Обрати 3 найслабші компетенції на квартал</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Для кожної знайти реальну робочу ситуацію, а не курс</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Домовитись, за яким результатом буде видно прогрес</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Заготувати STAR-приклад під кожну компетенцію</div>
+          <div class="doc-check-item"><span class="doc-check-icon">☐</span>Повторити оцінку через 6 місяців</div>
+        </div>
+      </div>
+
+      <div class="doc-section" id="ccm-selfcheck">
+        <h2 class="doc-h2">🧠 Самоперевірка</h2>
+        <div class="selfcheck-item" onclick="toggleAnswer(this)"><strong>1.</strong> Чому «п'ять років досвіду» не робить аналітика сеньйором?<div class="selfcheck-answer">Бо рівень визначається не тривалістю, а типом задач. Можна п'ять років працювати в стабільному контексті з готовими постановками — і не натренувати роботу з невизначеністю, конфліктами й формуванням scope. Показовий тест: скільки разів за останній рік ви самостійно визначили, <em>що саме</em> треба зробити, а не виконали визначене кимось.</div></div>
+        <div class="selfcheck-item" onclick="toggleAnswer(this)"><strong>2.</strong> Профіль нерівний: аналіз на 3, стратегія на 1. Що розвивати?<div class="selfcheck-answer">Найслабшу вісь. Рівень людини на практиці визначається не сильними сторонами, а тим, де вона «провалюється»: аналітик із блискучим моделюванням, який не може обґрунтувати рішення в грошах, не отримає впливу на дорожню карту. До того ж віддача від підтягування 1→2 майже завжди більша, ніж від 3→4.</div></div>
+        <div class="selfcheck-item" onclick="toggleAnswer(this)"><strong>3.</strong> Що конкретно означає «senior працює з невизначеністю»?<div class="selfcheck-answer">Що людина здатна діяти, коли немає ані готової постановки, ані очевидного замовника, ані впевненості в даних. Практично це виглядає так: сформулювати гіпотезу про проблему, знайти, у кого перевірити, поставити явні припущення з датою перевірки, ухвалити рішення з неповною інформацією і зафіксувати, за яких умов його треба переглянути. Мідл у такій ситуації чекає, поки хтось внесе ясність.</div></div>
+        <div class="selfcheck-item" onclick="toggleAnswer(this)"><strong>4.</strong> Менеджер каже «стань сеньйором за пів року». Ваша відповідь?<div class="selfcheck-answer">Попросити перевести це в конкретику: узяти матрицю, оцінити мене за кожним рядком і назвати три, які найважливіші для команди зараз. Далі домовитись про робочі ситуації, у яких я зможу ці рядки продемонструвати — провести воркшоп із конфліктом, узяти інтеграційний епік, обґрунтувати ініціативу в грошах — і про те, як ми зрозуміємо, що вийшло. Без цього «стати сеньйором» лишається побажанням.</div></div>
+        <div class="selfcheck-item" onclick="toggleAnswer(this)"><strong>5.</strong> Чи може аналітик бути senior без доменної експертизи?<div class="selfcheck-answer">Формально трапляється, фактично це крихкий стан. Техніки універсальні й швидко копіюються; домен — ні. Саме доменне знання дозволяє помітити, що експерт помиляється, оцінити наслідки рішення в грошах і говорити з бізнесом його мовою. Аналітик без домену лишається «оформлювачем чужих думок» — і першим потрапляє під скорочення, бо його роботу легко замінити.</div></div>
+      </div>
+
+      <div class="doc-section" id="ccm-related">
+        <h2 class="doc-h2">🔗 Дивись також</h2>
+        <ul class="doc-list">
+          <li><a href="#/middle-ba" data-go="middle-ba">Middle BA — чек-лист навичок</a> — деталізація рівня Middle</li>
+          <li><a href="#/interview-questions" data-go="interview-questions">Питання на Senior-співбесіді</a> — де компетенції перевіряють</li>
+          <li><a href="#/sa-mod18" data-go="sa-mod18">Soft Skills аналітика</a> — компетенції, що найчастіше стають стелею</li>
+          <li><a href="#/course-negotiation" data-go="course-negotiation">Negotiation for BA</a> — робота зі scope і конфліктами</li>
+        </ul>
+      </div>
+
+      <div class="iq-link" data-nolink><span class="iq-link-icon">💼</span><div class="iq-link-body"><div class="iq-link-title">Питання на senior-співбесіді з цієї теми</div><div class="iq-link-desc">5 питань · розділ «Питання на Senior-співбесіді»</div></div><a class="iq-link-btn" href="#/interview-questions/iq-career-competency-matrix" data-go="interview-questions" data-anchor="iq-career-competency-matrix">Перейти →</a></div>
+    </div>
+
   </main>
 </div>
 
@@ -41043,17 +42197,17 @@ function toggleAnswer(el) {
     'req-use-cases':           ['Use Case', 'Use Cases', 'юзкейс', 'юзкейси', 'варіант використання'],
     'req-acceptance-criteria': ['Acceptance Criteria', 'критерії прийняття', 'критерії приймання', 'Given-When-Then', 'Gherkin'],
     'req-elicitation':         ['Elicitation', 'елісітація', 'виявлення вимог', 'збір вимог'],
-    'sa-mod17':                ['NFR', 'нефункціональні вимоги', 'Non-Functional Requirements'],
+    'sa-mod17':                ['NFR', 'нефункціональні вимоги', 'Non-Functional Requirements', 'ISO 25010', 'модель якості'],
     'ba-m9':                   ['MoSCoW', 'пріоритизація', 'WSJF', 'Kano'],
     'tech-m28':                ['Traceability Matrix', 'RTM', 'матриця трасування', 'трасування вимог'],
     'docs-brd':                ['BRD', 'Business Requirements Document'],
-    'docs-srs':                ['SRS', 'Software Requirements Specification'],
+    'docs-srs':                ['SRS', 'Software Requirements Specification', 'IEEE 830'],
     'docs-decision-log':       ['Decision Log', 'ADR', 'Architecture Decision Record'],
     'bpmn-m1':                 ['BPMN', 'BPMN 2.0'],
     'bpmn-m3':                 ['Root Cause Analysis', 'RCA', '5 Whys', 'Ishikawa', 'діаграма Ісікави', 'Fishbone'],
     'bpmn-m4':                 ['Value Stream', 'Value Stream Mapping', 'VSM'],
     'bpmn-m5':                 ['ARIS', 'EPC'],
-    'ba-m2':                   ['BACCM', 'BABOK'],
+    'ba-m2':                   ['BACCM'],
     'babok-planning':          ['BA Planning', 'Planning & Monitoring'],
     'babok-solution-eval':     ['Solution Evaluation'],
     'babok-strategy':          ['Strategy Analysis', 'SWOT', 'PESTLE', 'Porter'],
@@ -41117,7 +42271,7 @@ function toggleAnswer(el) {
     'sa-mod15':                ['прототип', 'прототипування', 'wireframe', 'вайрфрейм', 'UX'],
     'ba-m6':                   ['ризик', 'ризики', 'ризик-менеджмент', 'Risk Register'],
     'discovery':               ['Discovery', 'discovery-фаза', 'Discovery Phase'],
-    'sec-requirements': ['security requirements', 'security-вимоги', 'вимоги безпеки', 'CIA', 'ISO 25010'],
+    'sec-requirements': ['security requirements', 'security-вимоги', 'вимоги безпеки', 'CIA'],
     'sec-authn': ['OIDC', 'SSO', 'SAML', 'MFA', 'PKCE', 'автентифікація', 'passkeys', 'WebAuthn'],
     'sec-authz': ['RBAC', 'ABAC', 'ReBAC', 'permission matrix', 'матриця доступу', 'матриця ролей', 'авторизація', 'least privilege', 'IDOR', 'separation of duties'],
     'sec-owasp': ['OWASP', 'OWASP Top 10', 'injection', 'SQL injection', 'XSS', 'CSRF', 'BOLA', 'input validation', 'валідація вводу'],
@@ -41125,6 +42279,11 @@ function toggleAnswer(el) {
     'sec-privacy-gdpr': ['GDPR', 'PII', 'персональні дані', 'privacy by design', 'DPIA', 'consent', 'згода на обробку', 'анонімізація', 'псевдонімізація', 'retention', 'right to be forgotten'],
     'sec-domain-compliance': ['PCI DSS', 'PSD2', 'Open Banking', 'KYC', 'AML', 'SOC 2', 'ISO 27001', 'SCA', 'strong customer authentication', 'compliance', 'комплаєнс', 'санкційні списки'],
     'sec-audit-logging': ['audit trail', 'audit log', 'аудит дій', 'журнал аудиту', 'логування', 'SIEM'],
+    'req-verification': ['верифікація вимог', 'валідація вимог', 'requirements review', 'рев\'ю вимог', 'requirements smells', 'inspection', 'walkthrough', 'ISO 29148'],
+    'req-conflicts-raid': ['RAID', 'RAID log', 'конфлікт вимог', 'припущення', 'assumptions', 'constraints', 'обмеження проєкту', 'decision matrix'],
+    'req-accessibility': ['WCAG', 'accessibility', 'доступність', 'a11y', 'screen reader'],
+    'std-map': ['BABOK', 'IREB', 'CPRE', 'стандарти аналітика', 'IEEE 1016'],
+    'career-competency-matrix': ['матриця компетенцій', 'competency matrix', 'senior BA', 'рівень аналітика'],
     'glossary':                []
   };
 
